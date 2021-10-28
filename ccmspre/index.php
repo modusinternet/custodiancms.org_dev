@@ -833,6 +833,7 @@ function CCMS_Main() {
 
 
 
+
 		if($ccms_extention[0] === "php") {
 			// Looking for a PHP template.  Do not check or save cached version.
 			// Headers in this type of template call are set in the template, not here.
@@ -854,6 +855,8 @@ echo "A PHP template was found on the disk.\n\n";
 				$replace = $CFG["nonce"];
 				echo str_replace($search, $replace, $buf);
 			}
+
+
 
 
 
@@ -893,7 +896,6 @@ echo "A template was found on the disk.\n\n";
 				$replace = $CFG["nonce"];
 				echo str_replace($search, $replace, $buf);
 			}
-
 
 
 
