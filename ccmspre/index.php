@@ -607,13 +607,16 @@ function CCMS_TPL_Insert($a) {
 	WARNING: It is recommended that you do NOT store two files of the same name with different extensions in the same directory at the same time.  You'll save yourself from pulling out all your hair trying to figure out why the newer file simply isn't being called.  In these cases it's best to remove the original and replace with the new file extension all together.
 	*/
 
-	if(preg_match('/\.php\z/i', $a[2])) {
+	//if(preg_match('/\.php\z/i', $a[2])) {
+	if(preg_match("/\.php\z/i", $a[3])) {
 		ob_start();
-		include $_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . "/" . $a[2];
+		//include $_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . "/" . $a[2];
+		include $_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $a[2];
 		$buf = ob_get_contents();
 		ob_end_clean();
 		echo CCMS_TPL_Parser($buf);
-	} elseif(preg_match('/\.html\z/i', $a[2])) {
+	//} elseif(preg_match('/\.html\z/i', $a[2])) {
+	} elseif(preg_match("/\.html\z/i", $a[3])) {
 		if(($buf = @file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . "/" . $a[2])) !== false) {
 			echo CCMS_TPL_Parser($buf);
 		} else {
@@ -731,6 +734,7 @@ function CCMS_TPL_Parser($a = null) {
 //echo "c = [" . $c . "]";
 print_r($c);
 exit;
+
 				CCMS_TPL_Insert($c);
 			} else {
 
