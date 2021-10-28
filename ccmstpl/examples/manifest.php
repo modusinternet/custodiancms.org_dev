@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: application/manifest+json; charset=utf-8");
-header('Expires: ' . gmdate('D, d M Y H:i:s T', time() + ($CFG["CACHE_EXPIRE"] * 60)));
+header("Expires: " . gmdate("D, d M Y H:i:s T", time() + ($CFG["CACHE_EXPIRE"] * 60)));
 ?>{
 	"short_name": "CustodianCMS",
 	"name": "{CCMS_DB:all,company-name}",
