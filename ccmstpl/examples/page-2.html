@@ -1,0 +1,98 @@
+{CCMS_DB_PRELOAD:all,page,page-2}<!DOCTYPE html>
+<html lang="{CCMS_LIB:_default.php;FUNC:ccms_lng}">
+	<head>
+		{CCMS_TPL:/examples/header-head.html}
+		<title>{CCMS_DB:all,company-name} | {CCMS_DB:page,title}2</title>
+		<meta name="description" content="Welcome to Custodian CMS, a multilingual, template and content management system.  Write one template, using one domain, on one server and support multipule languages." />
+
+		<!-- Google / Search Engine Tags -->
+		<meta itemprop="name" content="{CCMS_DB:all,company-name} | {CCMS_DB:page,title}2" />
+		<meta itemprop="description" content="Welcome to Custodian CMS, a multilingual, template and content management system.  Write one template, using one domain, on one server and support multipule languages." />
+
+		<!-- Facebook Meta Tags -->
+		<meta property="og:url" content="https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/en/" />
+		<meta property="og:title" content="{CCMS_DB:all,company-name} | {CCMS_DB:page,title}2" />
+		<meta property="og:description" content="Welcome to Custodian CMS, a multilingual, template and content management system.  Write one template, using one domain, on one server and support multipule languages." />
+
+		<!-- Twitter Meta Tags -->
+		<meta name="twitter:title" content="{CCMS_DB:all,company-name} | {CCMS_DB:page,title}2" />
+		<meta name="twitter:description" content="Welcome to Custodian CMS, a multilingual, template and content management system.  Write one template, using one domain, on one server and support multipule languages." />
+
+		<script type="application/ld+json">
+		[
+			{
+				"@context":"https://schema.org",
+				"@type":"WebSite",
+				"name":"{CCMS_DB:all,company-name}",
+				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/examples/page-2.html",
+				"alternateName":"{CCMS_DB:all,company-name} | {CCMS_DB:page,title}2"
+			},{
+				"@context":"https://schema.org",
+				"@type":"Organization",
+				"name":"{CCMS_DB:all,company-name}",
+				"description":"Welcome to Custodian CMS, a multilingual, template and content management system.  Write one template, using one domain, on one server and support multipule languages.",
+				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/examples/page-2.html",
+				"logo":{
+					"@type":"ImageObject",
+					"url":"/ccmstpl/examples/_img/logo1.png"
+				}{CCMS_TPL:/examples/schema.html}
+			}
+		]
+		</script>
+		<style nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
+			{CCMS_TPL:/examples/_css/header.html}
+		</style>
+		<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
+			let activeArray_01 = ["lng-{CCMS_LIB:_default.php;FUNC:ccms_lng}"];
+			/* let activeArray_02 = ["fl-homepage"]; */
+		</script>
+	</head>
+	<body>
+		<div id="loading_svg"></div>
+		{CCMS_TPL:examples/header-body.html}
+		<ul>
+			{CCMS_LIB:examples/xyzzy.php;FUNC:example_lngList_2}
+		</ul>
+		<p dir="{CCMS_DB_DIR:page,page-num}">
+			<a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/examples/page-1.html">{CCMS_DB:page,page-num}1</a> |
+			<a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/examples/page-2.html" style="text-decoration-style:double">{CCMS_DB:page,page-num}2</a> |
+			<a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/examples/page-3.html">{CCMS_DB:page,page-num}3</a>
+		</p>
+		<p dir="{CCMS_DB_DIR:page-2,para1:1}">{CCMS_DB:page-2,para1}</p>
+		{CCMS_TPL:/examples/footer.html}
+		{CCMS_TPL:/examples/a2hs-box.html}
+		<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
+			{CCMS_TPL:/examples/_js/footer-js.html}
+
+			/*
+			var l=document.createElement("link");
+			l.rel="stylesheet";
+			l.href = "/ccmstpl/examples/_css/style.css?v=1";
+			var h=document.getElementsByTagName("head")[0];
+			h.parentNode.insertBefore(l,h);
+			*/
+
+			/*
+			Argument details for example_build_css_link() and example_build_js_link() function calls:
+			arg1 = (1 = append AWS link), (empty = do not append AWS link)
+			arg2 = (1 = append language code to link), (empty = do not append language code to link)	In other words, send it through the parser first like a normal template. ie: https://yourdomain.com/en/somefile.css, adding the 'en' will push this template through the parser first before outputting it to the browser.
+			arg3 = a variable found in the config file that represents a partial pathway to the style sheet, not including and details about AWS, language code, or language direction)
+			arg4 = (1 = append language direction to link), (empty = do not append language direction to link)
+			arg5 = Version number, this is very helpful when trying to update files like css and js that don't get called by serviceWorker after they are stored. (empty = do not append '?v=some_number' to the URL.)
+
+			Argument details for example_build_js_sri() function calls:
+			arg1 = 1 = build sri code based on version stored on AWS.  empty = build sri code based on version stored on our own server.
+			arg2 = a variable found in the config file that represents a partial pathway to the style sheet. (Not including details about AWS, language code, or language direction)
+			*/
+
+			{CCMS_LIB:examples/xyzzy.php;FUNC:example_build_css_link("","","CSS-01","","1")}
+
+			function loadJSResources(){
+				loadFirst("{CCMS_LIB:examples/xyzzy.php;FUNC:example_build_js_link("","","JS-01","","1")}",function(){
+
+				}{CCMS_LIB:examples/xyzzy.php;FUNC:example_build_js_sri("","JS-01")});
+				/*});*/
+			}
+		</script>
+	</body>
+</html>
