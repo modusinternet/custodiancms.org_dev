@@ -728,7 +728,8 @@ function CCMS_TPL_Parser($a = null) {
 				// {CCMS_TPL:temp/test_05.html}
 				// {CCMS_TPL:temp/test_06.php}
 
-echo "c = [" . $c . "]";
+//echo "c = [" . $c . "]";
+print_r($c);
 exit;
 				CCMS_TPL_Insert($c);
 			} else {
