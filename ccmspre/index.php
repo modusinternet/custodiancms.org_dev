@@ -838,11 +838,11 @@ function CCMS_Main() {
 			// Looking for a PHP template.  Do not check or save cached version.
 			// Headers in this type of template call are set in the template, not here.
 
-echo "File type IS php.\n\n";
+//echo "File type IS php.\n\n";
 
 			if(is_file($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"])) {
 
-echo "A PHP template was found on the disk.\n\n";
+//echo "A PHP template was found on the disk.\n\n";
 
 				$found = true;
 
