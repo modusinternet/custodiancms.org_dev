@@ -610,12 +610,12 @@ function CCMS_TPL_Insert($a) {
 	if(preg_match('/\.php\z/i', $a[2])) {
 		ob_start();
 		include $_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . "/" . $a[2];
-		$html = ob_get_contents();
+		$buf = ob_get_contents();
 		ob_end_clean();
-		echo CCMS_TPL_Parser($html);
+		echo CCMS_TPL_Parser($buf);
 	} elseif(preg_match('/\.html\z/i', $a[2])) {
-		if(($html = @file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . "/" . $a[2])) !== false) {
-			echo CCMS_TPL_Parser($html);
+		if(($buf = @file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . "/" . $a[2])) !== false) {
+			echo CCMS_TPL_Parser($buf);
 		} else {
 			echo $a[0] . " ERROR: CCMS_TPL '" . $a[2] . "' not performed.  Be sure the file exists and ends in a .html extention.";
 		}
@@ -655,16 +655,16 @@ function CCMS_TPL_Parser($a = null) {
 					{CCMS_LIB:user_lib.php;FUNC:test1}
 				The function test1 inside the _default.php template gets loaded first by PHP with the require_once(). When PHP attempts to load the the user_lib.php template it will produce an error complaining that the test1 function is already in use because it was previously loaded on the _default.php template. Rule of thumb, make sure all your functions have different names.
 				*/
-				if (function_exists($c[4])) {
-					if ($c["5"] == "") {
+				if(function_exists($c[4])) {
+					if($c["5"] == "") {
 						call_user_func($c[4]);
 					} else {
 						call_user_func_array($c[4], $tmp);
 					}
 				} else {
 					require_once $_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["LIBDIR"] . "/" . $c[2];
-					if (function_exists($c[4])) {
-						if ($c["5"] == "") {
+					if(function_exists($c[4])) {
+						if($c["5"] == "") {
 							call_user_func($c[4]);
 						} else {
 							call_user_func_array($c[4], $tmp);
@@ -707,6 +707,18 @@ function CCMS_TPL_Parser($a = null) {
 				// {CCMS_DB_PRELOAD:all,index}<!DOCTYPE html>
 				// {CCMS_DB_PRELOAD:about_us_filter,footer_filter,header_filter,twiter_feed_filter}<!DOCTYPE html>
 				CCMS_DB_Preload($c);
+
+
+
+
+
+
+
+
+
+
+
+
 			} elseif (preg_match('/^\{(CCMS_TPL):([a-z\-_\pN\/]+(\.php|\.html)?)}\z/i', $b, $c)) {
 				// This preg_match helps prevent CCMS_TPL calls like this; {CCMS_TPL:css/../../../../../../../etc/passwd}
 				// {CCMS_TPL:test_01}
@@ -715,8 +727,23 @@ function CCMS_TPL_Parser($a = null) {
 				// {CCMS_TPL:temp/test_04}
 				// {CCMS_TPL:temp/test_05.html}
 				// {CCMS_TPL:temp/test_06.php}
+
+echo "c = [" . $c . "]";
+exit;
 				CCMS_TPL_Insert($c);
 			} else {
+
+
+
+
+
+
+
+
+
+
+
+
 				echo $b;
 			}
 		}
@@ -909,7 +936,7 @@ echo "A template was found on the disk.\n\n";
 		} else {
 			// This is a normal user session and a non PHP template request.
 
-echo "This is a normal user session and a non PHP template request.\n\n";
+//echo "This is a normal user session and a non PHP template request.\n\n";
 
 			if($CFG["CACHE"] === 1) {
 				// Cache IS turned on.
@@ -1048,11 +1075,11 @@ echo "A template was found on the disk.\n\n";
 			} else {
 				// Cache is NOT truned on.
 
-echo "Cache is NOT truned on.\n\n";
+//echo "Cache is NOT truned on.\n\n";
 
 				if(is_file($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"])) {
 
-echo "A template was found on the disk.\n\n";
+//echo "A template was found on the disk.\n\n";
 
 					$found = true;
 
