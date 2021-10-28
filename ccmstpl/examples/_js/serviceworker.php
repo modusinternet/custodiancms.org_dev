@@ -31,7 +31,7 @@ Add these to the right box under Whitelist Headers, add as custom if necessary:
 Then click the 'Yes, Edit' button at the bottom and give it about 10 minutes to propagate through the system and test using Chrome.
 */
 
-const cacheName = '2021-08-25.v2';
+const cacheName = '2021-10-28.v1';
 
 /* Point this array item to your own 'offline' template if you plan on removing the 'examples' folder in your own development. */
 var cacheFiles = [
@@ -98,7 +98,7 @@ self.addEventListener('fetch',(event) => {
 					return response || fetchPromise;
 				}).catch(function() {
 					/* The template being called was not found in cache and there is not internet connection at the moment so display the offline page instead.  The code below makes sure we're dispalying the appropriate offline template for the language that's currently selected by the client. */
-					const regex = /\/(([a-z]{2})(-[a-z]{2})?)\//i;
+					const regex = /\/(([a-z]{2,3})(-[a-z0-9]{2,3})?)\//i;
 					const lng = event.request.url.match(regex);
 					const searchForThis = '/' + lng[1] + '/examples/offline.html';
 					return caches.match(searchForThis);
