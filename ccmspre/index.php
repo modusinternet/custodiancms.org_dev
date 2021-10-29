@@ -1037,11 +1037,11 @@ echo "A template was found on the disk.\n\n";
 				} else {
 					// NOT found in database.
 
-echo "A cached version of the template is NOT found in the database.\n\n";
+//echo "A cached version of the template is NOT found in the database.\n\n";
 
 					if(is_file($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"])) {
 
-echo "A template was found on the disk.\n\n";
+//echo "A template was found on the disk.\n\n";
 
 						$found = true;
 
@@ -1067,6 +1067,10 @@ echo "A template was found on the disk.\n\n";
 						header("ETag: " . $etag);
 
 						$buf = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]);
+
+echo $buf;
+exit;
+
 						$buf = CCMS_TPL_Parser($buf);
 
 						$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (url, exp, content) VALUES (:url, :exp, :content);");
