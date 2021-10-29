@@ -1070,13 +1070,14 @@ echo "A template was found on the disk.\n\n";
 
 						$buf2 = CCMS_TPL_Parser($buf);
 
+						$asdf = $date + ($CFG["CACHE_EXPIRE"] * 60);
 						$buf2 = "test";
 
 //echo $buf;
 //exit;
 
 						$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (`id`, `url`, `exp`, `content`) VALUES (NULL, :url, :exp, :content);");
-						$qry->execute(array(':url' => "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"], ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf2));
+						$qry->execute(array(':url' => "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"], ':exp' => $asdf, ':content' => $buf2));
 
 						/*
 						$data = [
