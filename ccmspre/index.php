@@ -1070,6 +1070,8 @@ echo "A template was found on the disk.\n\n";
 
 						$buf2 = CCMS_TPL_Parser($buf);
 
+						$buf2 = "test";
+
 //echo $buf;
 //exit;
 
