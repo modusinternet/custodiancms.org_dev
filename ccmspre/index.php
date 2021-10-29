@@ -946,7 +946,7 @@ echo "A template was found on the disk.\n\n";
 			if($CFG["CACHE"] === 1) {
 				// Cache IS turned on.
 
-echo "Cache IS trunned on.\n\n";
+//echo "Cache IS trunned on.\n\n";
 
 				$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_cache` WHERE `url` = :url LIMIT 1;");
 				$qry->execute(array(':url' => "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]));
@@ -1068,10 +1068,10 @@ echo "A template was found on the disk.\n\n";
 
 						$buf = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]);
 
+						$buf = CCMS_TPL_Parser($buf);
+
 echo $buf;
 exit;
-
-						$buf = CCMS_TPL_Parser($buf);
 
 						$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (url, exp, content) VALUES (:url, :exp, :content);");
 						$qry->execute(array(':url' => "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"], ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));
