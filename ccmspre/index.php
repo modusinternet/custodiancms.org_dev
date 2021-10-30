@@ -1074,7 +1074,7 @@ echo "A template was found on the disk.\n\n";
 //exit;
 
 						$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (`url`, `exp`, `content`) VALUES (:url, :exp, :content)");
-						$qry->execute(array(':url' => "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"], ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));
+						$qry->execute(array(':url' => "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"], ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':content' => (str)$buf));
 
 						/*
 						$data = [
