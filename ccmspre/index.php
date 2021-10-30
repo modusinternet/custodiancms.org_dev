@@ -882,10 +882,13 @@ function CCMS_Main() {
 				include $_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"];
 				$buf = ob_get_contents();
 				ob_end_clean();
+				/*
 				$buf = CCMS_TPL_Parser($buf);
 				$search = "{NONCE}";
 				$replace = $CFG["nonce"];
 				echo str_replace($search, $replace, $buf);
+				*/
+				CCMS_TPL_Parser($buf);
 			}
 
 
@@ -900,11 +903,7 @@ function CCMS_Main() {
 		} elseif(isset($_SESSION["USER_ID"])) {
 			// The user is logged in, do NOT pull content from the cache for this visit.
 
-echo "There IS a logged in user.\n\n";
-
 			if(is_file($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"])) {
-
-echo "A template was found on the disk.\n\n";
 
 				$found = true;
 
@@ -941,24 +940,19 @@ echo "A template was found on the disk.\n\n";
 		} else {
 			// This is a normal user session and a non PHP template request.
 
-//echo "This is a normal user session and a non PHP template request.\n\n";
-
 			if($CFG["CACHE"] === 1) {
-				// Cache IS turned on.
-
-//echo "Cache IS trunned on.\n\n";
+				// Cache setting in config IS turned on.
 
 				$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_cache` WHERE `url` = :url LIMIT 1;");
-				$qry->execute(array(':url' => "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]));
+				/*$qry->execute(array(':url' => "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]));*/
+				$qry->execute(array(':url' => $CLEAN["ccms_tpl"]));
 				$row = $qry->fetch(PDO::FETCH_ASSOC);
 
 				if($row) {
-					// FOUND in the database.
-
-//echo "A cached version WAS found.\n\n";
+					// Cache template IS found in the database.
 
 					if(time() <= $row["exp"]) {
-						// The cached template is NOT expried.  It should be used.
+						// Cached template is NOT expried.  It should be used.
 
 						$found = true;
 
@@ -972,28 +966,6 @@ echo "A template was found on the disk.\n\n";
 							header("Content-Type: text/plain; charset=utf-8");
 						}
 
-						/*
-						header("pulled-from-cache: true");
-						header("Expires: " . gmdate('D, d M Y H:i:s T', $row["exp"]));
-						header('Last-Modified: ' . gmdate('D, d M Y H:i:s T', $row["date"]));
-
-						$tmp = $CFG["CACHE_EXPIRE"] * 60;
-						// NOTE: If the template is later called using a serviceWorker be aware that will not respect the settings of the 'cache-control' header as noted in here: https://web.dev/service-workers-cache-storage/#api-nuts-and-bolts
-
-						header("Cache-Control: max-age=" . $tmp);
-						$etag = md5("/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]) . "." . $row["date"];
-						header("ETag: " . $etag);
-
-						$search = "{NONCE}";
-						$replace = $CFG["nonce"];
-						echo str_replace($search, $replace, $row["content"]);
-						*/
-
-
-
-						//$date = time();
-
-						header("pulled-from-cache: true");
 						header("Expires: " . gmdate('D, d M Y H:i:s T', $row["exp"]));
 						header("Last-Modified: " . gmdate('D, d M Y H:i:s T', $row["date"]));
 
@@ -1001,24 +973,19 @@ echo "A template was found on the disk.\n\n";
 						// NOTE: If the template is later called using a serviceWorker be aware that will not respect the settings of the 'cache-control' header as noted in here: https://web.dev/service-workers-cache-storage/#api-nuts-and-bolts
 
 						header("Cache-Control: max-age=" . $tmp);
-						$etag = md5("/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]) . "." . $row["date"];
+						$etag = md5($CLEAN["ccms_tpl"]) . "." . $row["date"];
 						header("ETag: " . $etag);
 
 						$search = "{NONCE}";
 						$replace = $CFG["nonce"];
 						echo str_replace($search, $replace, $row["content"]);
-
 					} else {
-						// The cached template is expried.  It should be removed, rebuilt and recached.
-
-echo "The cached template IS expired.\n\n";
+						// Cached template IS expried.  It should be removed, rebuilt and recached.
 
 						$qry = $CFG["DBH"]->prepare("DELETE FROM `ccms_cache` WHERE `id` = :id LIMIT 1;");
 						$qry->execute(array(':id' => $row["id"]));
 
 						if(is_file($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"])) {
-
-echo "A template was found on the disk.\n\n";
 
 							$found = true;
 
@@ -1039,23 +1006,30 @@ echo "A template was found on the disk.\n\n";
 
 							$tmp = $CFG["CACHE_EXPIRE"] * 60;
 							// NOTE: If the template is later called using a serviceWorker be aware that will not respect the settings of the 'cache-control' header as noted in here: https://web.dev/service-workers-cache-storage/#api-nuts-and-bolts
+
 							header("Cache-Control: max-age=" . $tmp);
-							$etag = md5("/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]) . "." . $date;
+							$etag = md5($CLEAN["ccms_tpl"]) . "." . $date;
 							header("ETag: " . $etag);
 
 							$buf = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]);
-							$buf = CCMS_TPL_Parser($buf);
 
-							$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (url, exp, content) VALUES (:url, :exp, :content);");
-							$qry->execute(array(':url' => "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"], ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));
+							ob_start();
+							CCMS_TPL_Parser($buf);
+							$buf = ob_get_contents();
+							ob_end_clean();
 
-							$search = "{NONCE}";
-							$replace = $CFG["nonce"];
-							echo str_replace($search, $replace, $buf);
+							echo $buf;
+
+							$search = $CFG["nonce"];
+							$replace = "{NONCE}";
+							$buf = str_replace($search, $replace, $buf);
+
+							$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (`url`, `date`, `exp`, `content`) VALUES (:url, :date, :exp, :content)");
+							$qry->execute(array(':url' => $CLEAN["ccms_tpl"], ':date' => $date, ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));
 						}
 					}
 				} else {
-					// NOT found in database.
+					// Cache template is NOT found in the database.
 
 					if(is_file($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"])) {
 
@@ -1080,10 +1054,11 @@ echo "A template was found on the disk.\n\n";
 						// NOTE: If the template is later called using a serviceWorker be aware that will not respect the settings of the 'cache-control' header as noted in here: https://web.dev/service-workers-cache-storage/#api-nuts-and-bolts
 
 						header("Cache-Control: max-age=" . $tmp);
-						$etag = md5("/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]) . "." . $date;
+						$etag = md5($CLEAN["ccms_tpl"]) . "." . $date;
 						header("ETag: " . $etag);
 
 						$buf = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]);
+
 						ob_start();
 						CCMS_TPL_Parser($buf);
 						$buf = ob_get_contents();
@@ -1095,18 +1070,14 @@ echo "A template was found on the disk.\n\n";
 						$replace = "{NONCE}";
 						$buf = str_replace($search, $replace, $buf);
 
-						$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (`url`, `exp`, `content`) VALUES (:url, :exp, :content)");
-						$qry->execute(array(':url' => "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"], ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));
+						$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (`url`, `date`, `exp`, `content`) VALUES (:url, :date, :exp, :content)");
+						$qry->execute(array(':url' => $CLEAN["ccms_tpl"], ':date' => $date, ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));
 					}
 				}
 			} else {
-				// Cache is NOT truned on.
-
-//echo "Cache is NOT truned on.\n\n";
+				// Cache setting in config is NOT truned on.
 
 				if(is_file($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"])) {
-
-//echo "A template was found on the disk.\n\n";
 
 					$found = true;
 
@@ -1121,10 +1092,8 @@ echo "A template was found on the disk.\n\n";
 					}
 
 					$buf = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]);
-					$buf = CCMS_TPL_Parser($buf);
-					$search = "{NONCE}";
-					$replace = $CFG["nonce"];
-					echo str_replace($search, $replace, $buf);
+
+					CCMS_TPL_Parser($buf);
 				}
 			}
 		}
@@ -1142,7 +1111,8 @@ echo "A template was found on the disk.\n\n";
 		include $_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"];
 		$buf = ob_get_contents();
 		ob_end_clean();
-		echo CCMS_TPL_Parser($buf);
+		//echo CCMS_TPL_Parser($buf);
+		CCMS_TPL_Parser($buf);
 	}
 }
 
