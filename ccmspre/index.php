@@ -1008,6 +1008,7 @@ function CCMS_Main() {
 
 							$date = time();
 
+							header("cache: expired-so-rebuilt-and-recached");
 							header("Expires: " . gmdate('D, d M Y H:i:s T', $date + ($CFG["CACHE_EXPIRE"] * 60)));
 							header("Last-Modified: " . gmdate('D, d M Y H:i:s T', $date));
 
