@@ -1068,6 +1068,9 @@ echo "A template was found on the disk.\n\n";
 
 						$buf = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]);
 
+echo var_dump($buf);
+exit;
+
 						$buf = (string)CCMS_TPL_Parser($buf);
 
 echo var_dump($buf);
