@@ -943,6 +943,13 @@ function CCMS_Main() {
 			if($CFG["CACHE"] === 1) {
 				// Cache setting in config IS turned on.
 
+echo $CLEAN["ccms_tpl"];
+exit;
+
+				if($CLEAN["ccms_tpl"] === "/"){
+
+				}
+
 				$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_cache` WHERE `url` = :url LIMIT 1;");
 				/*$qry->execute(array(':url' => "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]));*/
 				$qry->execute(array(':url' => $CLEAN["ccms_tpl"]));
