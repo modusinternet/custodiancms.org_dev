@@ -1066,6 +1066,8 @@ echo "A template was found on the disk.\n\n";
 						$etag = md5("/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]) . "." . $date;
 						header("ETag: " . $etag);
 
+echo $_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"] . "\n\n";
+
 						$buf = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]);
 
 echo var_dump($buf);
