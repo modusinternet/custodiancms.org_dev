@@ -943,16 +943,16 @@ function CCMS_Main() {
 			if($CFG["CACHE"] === 1) {
 				// Cache setting in config IS turned on.
 
-echo $CLEAN["ccms_tpl"];
-exit;
+//echo $CLEAN["ccms_tpl"];
+//exit;
 
-				if($CLEAN["ccms_tpl"] === "/"){
+	//			if($CLEAN["ccms_tpl"] === "/index.html"){
 
-				}
+		//		}
 
 				$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_cache` WHERE `url` = :url LIMIT 1;");
 				/*$qry->execute(array(':url' => "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]));*/
-				$qry->execute(array(':url' => $CLEAN["ccms_tpl"]));
+				$qry->execute(array(':url' => "/" . $CLEAN["ccms_lng"] . $CLEAN["ccms_tpl"]));
 				$row = $qry->fetch(PDO::FETCH_ASSOC);
 
 				if($row) {
@@ -1032,7 +1032,7 @@ exit;
 							$buf = str_replace($search, $replace, $buf);
 
 							$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (`url`, `date`, `exp`, `content`) VALUES (:url, :date, :exp, :content)");
-							$qry->execute(array(':url' => $CLEAN["ccms_tpl"], ':date' => $date, ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));
+							$qry->execute(array(':url' => "/" . $CLEAN["ccms_lng"] . $CLEAN["ccms_tpl"], ':date' => $date, ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));
 						}
 					}
 				} else {
@@ -1078,7 +1078,7 @@ exit;
 						$buf = str_replace($search, $replace, $buf);
 
 						$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (`url`, `date`, `exp`, `content`) VALUES (:url, :date, :exp, :content)");
-						$qry->execute(array(':url' => $CLEAN["ccms_tpl"], ':date' => $date, ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));
+						$qry->execute(array(':url' => "/" . $CLEAN["ccms_lng"] . $CLEAN["ccms_tpl"], ':date' => $date, ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));
 					}
 				}
 			} else {
