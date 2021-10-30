@@ -1091,7 +1091,7 @@ ob_end_clean();
 
 						//$buf = (string)CCMS_TPL_Parser($buf);
 
-//echo var_dump($buf);
+echo $buf;
 //exit;
 
 						$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (`url`, `exp`, `content`) VALUES (:url, :exp, :content)");
@@ -1108,8 +1108,8 @@ ob_end_clean();
 						$qry->execute($data);
 						*/
 
-						$search = "{NONCE}";
-						$replace = $CFG["nonce"];
+						$search = $CFG["nonce"];
+						$replace = "{NONCE}";
 						echo str_replace($search, $replace, $buf);
 					}
 				}
