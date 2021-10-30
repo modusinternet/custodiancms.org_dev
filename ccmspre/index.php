@@ -962,8 +962,6 @@ echo "A cached version WAS found.\n\n";
 
 						$found = true;
 
-echo "The cached template is NOT expired.\n\n";
-
 						if($ccms_extention[0] === "css"){
 							header("Content-Type: text/css; charset=utf-8");
 						} elseif($ccms_extention[0] === "html") {
@@ -974,20 +972,42 @@ echo "The cached template is NOT expired.\n\n";
 							header("Content-Type: text/plain; charset=utf-8");
 						}
 
+						/*
 						header("pulled-from-cache: true");
 						header("Expires: " . gmdate('D, d M Y H:i:s T', $row["exp"]));
 						header('Last-Modified: ' . gmdate('D, d M Y H:i:s T', $row["date"]));
 
 						$tmp = $CFG["CACHE_EXPIRE"] * 60;
 						// NOTE: If the template is later called using a serviceWorker be aware that will not respect the settings of the 'cache-control' header as noted in here: https://web.dev/service-workers-cache-storage/#api-nuts-and-bolts
-						header("Cache-Control: max-age=" . $tmp);
 
+						header("Cache-Control: max-age=" . $tmp);
 						$etag = md5("/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]) . "." . $row["date"];
 						header("ETag: " . $etag);
 
 						$search = "{NONCE}";
 						$replace = $CFG["nonce"];
 						echo str_replace($search, $replace, $row["content"]);
+						*/
+
+
+
+						//$date = time();
+
+						header("pulled-from-cache: true");
+						header("Expires: " . gmdate('D, d M Y H:i:s T', $row["exp"]));
+						header("Last-Modified: " . gmdate('D, d M Y H:i:s T', $row["date"]));
+
+						$tmp = $CFG["CACHE_EXPIRE"] * 60;
+						// NOTE: If the template is later called using a serviceWorker be aware that will not respect the settings of the 'cache-control' header as noted in here: https://web.dev/service-workers-cache-storage/#api-nuts-and-bolts
+
+						header("Cache-Control: max-age=" . $tmp);
+						$etag = md5("/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]) . "." . $row["date"];
+						header("ETag: " . $etag);
+
+						$search = "{NONCE}";
+						$replace = $CFG["nonce"];
+						echo str_replace($search, $replace, $row["content"]);
+
 					} else {
 						// The cached template is expried.  It should be removed, rebuilt and recached.
 
@@ -1037,11 +1057,7 @@ echo "A template was found on the disk.\n\n";
 				} else {
 					// NOT found in database.
 
-//echo "A cached version of the template is NOT found in the database.\n\n";
-
 					if(is_file($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"])) {
-
-//echo "A template was found on the disk.\n\n";
 
 						$found = true;
 
@@ -1062,6 +1078,7 @@ echo "A template was found on the disk.\n\n";
 
 						$tmp = $CFG["CACHE_EXPIRE"] * 60;
 						// NOTE: If the template is later called using a serviceWorker be aware that will not respect the settings of the 'cache-control' header as noted in here: https://web.dev/service-workers-cache-storage/#api-nuts-and-bolts
+
 						header("Cache-Control: max-age=" . $tmp);
 						$etag = md5("/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]) . "." . $date;
 						header("ETag: " . $etag);
