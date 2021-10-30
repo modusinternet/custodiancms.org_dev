@@ -955,7 +955,7 @@ echo "A template was found on the disk.\n\n";
 				if($row) {
 					// FOUND in the database.
 
-echo "A cached version WAS found.\n\n";
+//echo "A cached version WAS found.\n\n";
 
 					if(time() <= $row["exp"]) {
 						// The cached template is NOT expried.  It should be used.
