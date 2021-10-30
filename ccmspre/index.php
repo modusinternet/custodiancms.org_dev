@@ -1066,14 +1066,30 @@ echo "A template was found on the disk.\n\n";
 						$etag = md5("/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]) . "." . $date;
 						header("ETag: " . $etag);
 
-echo $_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"] . "\n\n";
+//echo $_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"] . "\n\n";
 
-						$buf = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]);
 
-echo var_dump($buf);
-exit;
 
-						$buf = (string)CCMS_TPL_Parser($buf);
+
+
+
+$buf = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]);
+ob_start();
+CCMS_TPL_Parser($buf);
+$buf = ob_get_contents();
+ob_end_clean();
+
+
+
+
+
+
+						//$buf = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]);
+
+//echo var_dump($buf);
+//exit;
+
+						//$buf = (string)CCMS_TPL_Parser($buf);
 
 echo var_dump($buf);
 exit;
