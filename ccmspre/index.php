@@ -1066,33 +1066,13 @@ echo "A template was found on the disk.\n\n";
 						$etag = md5("/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]) . "." . $date;
 						header("ETag: " . $etag);
 
-//echo $_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"] . "\n\n";
+						$buf = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]);
+						ob_start();
+						CCMS_TPL_Parser($buf);
+						$buf = ob_get_contents();
+						ob_end_clean();
 
-
-
-
-
-
-$buf = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]);
-ob_start();
-CCMS_TPL_Parser($buf);
-$buf = ob_get_contents();
-ob_end_clean();
-
-
-
-
-
-
-						//$buf = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]);
-
-//echo var_dump($buf);
-//exit;
-
-						//$buf = (string)CCMS_TPL_Parser($buf);
-
-echo $buf;
-//exit;
+						echo $buf;
 
 						$search = $CFG["nonce"];
 						$replace = "{NONCE}";
@@ -1100,23 +1080,6 @@ echo $buf;
 
 						$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (`url`, `exp`, `content`) VALUES (:url, :exp, :content)");
 						$qry->execute(array(':url' => "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"], ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));
-
-//exit;
-
-						/*
-						$data = [
-							'url' => "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"],
-							'exp' => $date + ($CFG["CACHE_EXPIRE"] * 60),
-							'content' => $buf
-						];
-						$sql = "INSERT INTO `ccms_cache` (`url`, `exp`, `content`) VALUES (?,?,?)";
-						$qry = $CFG["DBH"]->prepare($sql);
-						$qry->execute($data);
-						*/
-
-						//$search = $CFG["nonce"];
-						//$replace = "{NONCE}";
-						//echo str_replace($search, $replace, $buf);
 					}
 				}
 			} else {
