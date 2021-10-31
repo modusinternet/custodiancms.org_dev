@@ -731,9 +731,6 @@ function CCMS_TPL_Parser($a = null) {
 function CCMS_Main() {
 	global $CFG, $CLEAN;
 
-echo "/ccmspre/index.php\n\n";
-exit;
-
 	// If there is no template requested, show $CFG["INDEX"].
 	// This code is used when accessing the /user/ templates, before login credentials have between
 	// verified and when dealing with URL's that resemble:
@@ -1030,9 +1027,6 @@ exit;
 			}
 		}
 	}
-
-echo "/ccmspre/index.php\n\n";
-exit;
 
 	if(!$found) {
 		// Store a copy of the original tpl requested for use later on in the error page.
