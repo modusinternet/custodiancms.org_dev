@@ -496,10 +496,8 @@ function CCMS_DB_Dir($a) {
 	global $CFG, $CLEAN;
 
 	if(isset($CLEAN["CCMS_DB_Preload_Content"])) {
-		//if($a[5] === "1") {
 		if(($a[5] ?? null) === "1") {
 			// Make editable on the public side.
-			//if($CLEAN["CCMS_DB_Preload_Content"][$a[2]][$a[3]][$CLEAN["ccms_lng"]]["content"] != "") {
 			if($CLEAN["CCMS_DB_Preload_Content"][$a[2]][$a[3]][$CLEAN["ccms_lng"]]["content"] ?? null) {
 				echo $CLEAN["CCMS_DB_Preload_Content"][$a[2]][$a[3]][$CLEAN["ccms_lng"]]["dir"] . "\" data-ccms=\"" . $CLEAN["CCMS_DB_Preload_Content"][$a[2]][$a[3]][$CLEAN["ccms_lng"]]["id"] . "\" data-ccms-grp=\"" . $CLEAN["CCMS_DB_Preload_Content"][$a[2]][$a[3]][$CLEAN["ccms_lng"]]["grp"] . "\" data-ccms-name=\"" . $CLEAN["CCMS_DB_Preload_Content"][$a[2]][$a[3]][$CLEAN["ccms_lng"]]["name"];
 			} else {
@@ -562,6 +560,7 @@ function CCMS_DB_Preload($a = null) {
 	}
 }
 
+
 function CCMS_html_min($buffer) {
 	global $CFG, $CLEAN;
 
@@ -576,7 +575,6 @@ function CCMS_html_min($buffer) {
 	*/
 
 	if($CFG["HTML_MIN"] === 1 && (!isset($_SESSION["USER_ID"]))) {
-
 		// If HTML_MIN is set to 1 in the config file and this is a normal session and the user is not logged in.
 
 		$search = array("\r\n", "\n", "\t");
@@ -594,6 +592,7 @@ function CCMS_html_min($buffer) {
 	}
 	return $buffer;
 }
+
 
 function CCMS_TPL_Insert($a) {
 	global $CFG;
@@ -626,6 +625,7 @@ function CCMS_TPL_Insert($a) {
 		echo $a[0] . " ERROR: CCMS_TPL '" . $a[2] . "' not performed.  Be sure the file exists and has either a .php or .html extention.";
 	}
 }
+
 
 function CCMS_TPL_Parser($a = null) {
 	global $CFG;
@@ -710,18 +710,6 @@ function CCMS_TPL_Parser($a = null) {
 				// {CCMS_DB_PRELOAD:all,index}<!DOCTYPE html>
 				// {CCMS_DB_PRELOAD:about_us_filter,footer_filter,header_filter,twiter_feed_filter}<!DOCTYPE html>
 				CCMS_DB_Preload($c);
-
-
-
-
-
-
-
-
-
-
-
-
 			} elseif (preg_match('/^\{(CCMS_TPL):([a-z\-_\pN\/]+(\.php|\.html)?)}\z/i', $b, $c)) {
 				// This preg_match helps prevent CCMS_TPL calls like this; {CCMS_TPL:css/../../../../../../../etc/passwd}
 				// {CCMS_TPL:test_01}
@@ -730,25 +718,8 @@ function CCMS_TPL_Parser($a = null) {
 				// {CCMS_TPL:temp/test_04}
 				// {CCMS_TPL:temp/test_05.html}
 				// {CCMS_TPL:temp/test_06.php}
-
-//echo "c = [" . $c . "]";
-//print_r($c);
-//exit;
-
 				CCMS_TPL_Insert($c);
 			} else {
-
-
-
-
-
-
-
-
-
-
-
-
 				echo $b;
 			}
 		}
@@ -763,23 +734,14 @@ function CCMS_Main() {
 	// If there is no template requested, show $CFG["INDEX"].
 	// This code is used when accessing the /user/ templates, before login credentials have between
 	// verified and when dealing with URL's that resemble:
-	// $CLEAN["INDEX"] == BLANK
+	// $CLEAN["INDEX"] === BLANK
 	// /
 	// Make into:
-	// index
-	// index
-
-//echo "ccms_tpl = [".$CLEAN["ccms_tpl"]."]\n";
-//print_r($ccms_file);
-//exit;
-
+	// /index.html
+	// /index.html
 	if(!isset($CLEAN["ccms_tpl"]) || $CLEAN["ccms_tpl"] === "" || $CLEAN["ccms_tpl"] === "/") {
 		$CLEAN["ccms_tpl"] = "/" . $CFG["INDEX"];
 	}
-
-//echo "ccms_tpl = [".$CLEAN["ccms_tpl"]."]\n\n";
-//print_r($ccms_file);
-//exit;
 
 	CCMS_Set_Headers();
 
@@ -798,47 +760,17 @@ function CCMS_Main() {
 		$CLEAN["ccms_tpl"] .= "index.html";
 	}
 
-//echo "ccms_tpl = [".$CLEAN["ccms_tpl"]."]\n\n";
-//print_r($ccms_file);
-//exit;
-
-	// Trims the forward slash (/) from the beginning and trims .css, .html, .js, and .php from the end.  Resave back to CLEAN["ccms_tpl"]:
-	// /index.php
-	// /fruit/orange.html
-	// /fruit/orange/vitamin.css
-	// /fruit/orange/vitamin/c.html
-	// /fruit/orange/vitamin/js/c.js
-	// Make into:
-	// index
-	// fruit/orange
-	// fruit/orange/vitamin
-	// fruit/orange/vitamin/c
-	// fruit/orange/vitamin/js/c
-	//$CLEAN["ccms_tpl"] = preg_replace('/^(\/)(.*?)(\.css?)?(\.html?)?(\.js?)?(\.php?)?\z/i', '$2', $CLEAN["ccms_tpl"]);
-
-//echo $CLEAN["ccms_tpl"];
-//print_r($ccms_file);
-//exit;
-
 	// Copys the end of the string found inside $CLEAN["ccms_tpl"] after the last /.
 	// fruit/orange
 	// becomes:
 	// orange
 	preg_match("/[^\.]*\z/", $CLEAN["ccms_tpl"], $ccms_extention);
 
-//echo "ccms_extention[0] = [".$ccms_extention[0]."]\n\n";
-//print_r($ccms_extention);
-//exit;
-
 	// Copys the first part of the string inside $CLEAN["ccms_tpl"] before the last /.
 	// /fruit/orange/vitamin/js/c.js
 	// Make into:
 	// /fruit/orange/vitamin/js/
 	//$ccms_dir = @strstr($CLEAN["ccms_tpl"], $ccms_file[0], true);
-
-//echo $ccms_dir;
-//print_r($ccms_dir);
-//exit;
 
 	// Test to see if CLEAN["ccms_tpl"] file being requested is stored on server with a .php or
 	// .html extension.  .php is tested for first, if found it is pre-parsed by php, stored in
@@ -852,19 +784,11 @@ function CCMS_Main() {
 	// yourself from pulling out all your hair trying to figure out why the newer file simply
 	// isn't being called.  In these cases it's best to remove the original and replace with
 	// the new file extension all together.
+
 	$found = false;
 
 	if($CFG["lngCodeFoundFlag"] && $CFG["lngCodeActiveFlag"]) {
 		// Test to make sure the visitor is not requesting a language which is either non existant or status not live.  If so they should be sent to the error.php template regardless.
-
-
-
-
-
-
-
-
-
 
 		if(isset($_SESSION["USER_ID"])) {
 			// The user is logged in, do NOT pull content from the cache for this visit.
@@ -893,16 +817,6 @@ function CCMS_Main() {
 				$replace = $CFG["nonce"];
 				echo str_replace($search, $replace, $buf);
 			}
-
-
-
-
-
-
-
-
-
-
 		} elseif($ccms_extention[0] === "php") {
 			// Looking for a PHP template.  Do not check or save cached version.
 			// Headers in this type of template call are set in the template, not here.
@@ -925,16 +839,6 @@ function CCMS_Main() {
 				*/
 				CCMS_TPL_Parser($buf);
 			}
-
-
-
-
-
-
-
-
-
-
 		} else {
 			// The user is NOT logged in and this is NOT a PHP template request.
 
