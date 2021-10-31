@@ -1028,6 +1028,9 @@ function CCMS_Main() {
 		}
 	}
 
+	echo $CLEAN["ccms_tpl"];
+	exit;
+
 	if(!$found) {
 		// Store a copy of the original tpl requested for use later on in the error page.
 		$CLEAN["ccms_tpl_org"] = $CLEAN["ccms_tpl"];
