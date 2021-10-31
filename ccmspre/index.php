@@ -793,6 +793,16 @@ function CCMS_Main() {
 		if(isset($_SESSION["USER_ID"])) {
 			// The user is logged in, do NOT pull content from the cache for this visit.
 
+
+
+
+
+
+
+
+
+
+
 			if(is_file($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"])) {
 
 				$found = true;
@@ -817,6 +827,18 @@ function CCMS_Main() {
 				$replace = $CFG["nonce"];
 				echo str_replace($search, $replace, $buf);
 			}
+
+
+
+
+
+
+
+
+
+
+
+
 		} elseif($ccms_extention[0] === "php") {
 			// Looking for a PHP template.  Do not check or save cached version.
 			// Headers in this type of template call are set in the template, not here.
