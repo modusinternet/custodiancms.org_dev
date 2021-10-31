@@ -911,7 +911,7 @@ function CCMS_Main() {
 
 				$found = true;
 
-				header("cache: NOT tested because this is a PHP template request which are generated in real-time.");
+				header("cache: NOT tested because this is a PHP template request which are always generated in real-time.");
 
 				ob_start();
 				include $_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"];
