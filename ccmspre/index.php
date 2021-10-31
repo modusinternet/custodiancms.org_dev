@@ -1028,8 +1028,8 @@ function CCMS_Main() {
 		}
 	}
 
-	echo $CLEAN["ccms_tpl"];
-	exit;
+echo "/ccmspre/index.php\n\n";
+exit;
 
 	if(!$found) {
 		// Store a copy of the original tpl requested for use later on in the error page.

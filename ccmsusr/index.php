@@ -2,7 +2,7 @@
 // benchmark start
 //$time_start = microtime(true);
 
-echo $CLEAN["ccms_tpl"];
+echo "/ccmsusr/index.php\n\n";
 exit;
 
 // Use the ini_set function to set value of the include_path option on your server if necessary.
