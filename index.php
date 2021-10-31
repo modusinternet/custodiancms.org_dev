@@ -6,6 +6,9 @@
 // e.g.: ini_set('include_path', 'ccmslib:ccmspre:ccmstpl:ccmsusr' . ini_get('include_path'));
 //ini_set('include_path', $CFG["LIBDIR"] . ':' . $CFG["PREDIR"] . ':' . $CFG["TPLDIR"] . ':' . $CFG["USRDIR"] . ':' . ini_get('include_path'));
 
+echo "/index.php\n\n";
+exit;
+
 $CFG = array();
 $CLEAN = array();
 
