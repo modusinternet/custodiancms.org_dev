@@ -934,7 +934,7 @@ function CCMS_Main() {
 
 
 		} else {
-			// This is a normal user session and a non PHP template request.
+			// The user is NOT logged in and this is NOT a PHP template request.
 
 			if($CFG["CACHE"] === 1) {
 				// Cache setting in config IS turned on.
