@@ -866,41 +866,7 @@ function CCMS_Main() {
 
 
 
-		if($ccms_extention[0] === "php") {
-			// Looking for a PHP template.  Do not check or save cached version.
-			// Headers in this type of template call are set in the template, not here.
-
-//echo "File type IS php.\n\n";
-
-			if(is_file($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"])) {
-
-//echo "A PHP template was found on the disk.\n\n";
-
-				$found = true;
-
-				ob_start();
-				include $_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"];
-				$buf = ob_get_contents();
-				ob_end_clean();
-				/*
-				$buf = CCMS_TPL_Parser($buf);
-				$search = "{NONCE}";
-				$replace = $CFG["nonce"];
-				echo str_replace($search, $replace, $buf);
-				*/
-				CCMS_TPL_Parser($buf);
-			}
-
-
-
-
-
-
-
-
-
-
-		} elseif(isset($_SESSION["USER_ID"])) {
+		if(isset($_SESSION["USER_ID"])) {
 			// The user is logged in, do NOT pull content from the cache for this visit.
 
 			if(is_file($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"])) {
@@ -937,18 +903,41 @@ function CCMS_Main() {
 
 
 
+		} elseif($ccms_extention[0] === "php") {
+			// Looking for a PHP template.  Do not check or save cached version.
+			// Headers in this type of template call are set in the template, not here.
+
+			if(is_file($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"])) {
+
+				$found = true;
+
+				ob_start();
+				include $_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"];
+				$buf = ob_get_contents();
+				ob_end_clean();
+				/*
+				$buf = CCMS_TPL_Parser($buf);
+				$search = "{NONCE}";
+				$replace = $CFG["nonce"];
+				echo str_replace($search, $replace, $buf);
+				*/
+				CCMS_TPL_Parser($buf);
+			}
+
+
+
+
+
+
+
+
+
+
 		} else {
 			// This is a normal user session and a non PHP template request.
 
 			if($CFG["CACHE"] === 1) {
 				// Cache setting in config IS turned on.
-
-//echo $CLEAN["ccms_tpl"];
-//exit;
-
-	//			if($CLEAN["ccms_tpl"] === "/index.html"){
-
-		//		}
 
 				$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_cache` WHERE `url` = :url LIMIT 1;");
 				/*$qry->execute(array(':url' => "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]));*/
@@ -1085,7 +1074,7 @@ function CCMS_Main() {
 					}
 				}
 			} else {
-				// Cache setting in config is NOT truned on.
+				// Cache setting in config is NOT turned on.
 
 				if(is_file($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"])) {
 
