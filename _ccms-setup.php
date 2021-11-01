@@ -85,11 +85,6 @@ if(!(($_SERVER["SCRIPT_NAME"] == "/index.php") || ($_SERVER["SCRIPT_NAME"] == "/
 
 			html{font-size:62.5%}
 
-			/*a{text-decoration-style:dotted}*/
-
-
-
-
 			a,a:visited {
 				border:0px none;
 				outline:0px;
@@ -97,9 +92,6 @@ if(!(($_SERVER["SCRIPT_NAME"] == "/index.php") || ($_SERVER["SCRIPT_NAME"] == "/
 			}
 
 			a:hover,a:focus{text-decoration-style:double}
-
-
-
 
 			body{
 				color:var(--cl2);
