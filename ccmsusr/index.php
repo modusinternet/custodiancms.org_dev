@@ -51,7 +51,7 @@ if($_SESSION["FAIL"] >= 5) {
 
 
 if(!isset($_SESSION["USER_ID"]) || isset($_POST["ccms_login"]) || isset($_POST["ccms_logout"]) || isset($_POST["ccms_pass_reset_part_1"]) || isset($_POST["ccms_pass_reset_part_2"])) {
-	$CLEAN["ccms_tpl"] = "/ccmsusr/login.html";
+	$CLEAN["ccms_tpl"] = "/login.html";
 }
 
 //echo "ccms_tpl = [" . $CLEAN["ccms_tpl"] . "]<br>\n\n";
