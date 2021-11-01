@@ -3,8 +3,8 @@
 //$time_start = microtime(true);
 
 
-echo "/ccmsusr/index.html";
-exit;
+//echo "/ccmsusr/index.html";
+//exit;
 
 
 // Use the ini_set function to set value of the include_path option on your server if necessary.
@@ -49,6 +49,11 @@ if($_SESSION["FAIL"] >= 5) {
 	header("Location: /");
 	exit;
 }
+
+
+echo "ccms_tpl = [" . $CLEAN["ccms_tpl"] . "]\n\n";
+exit;
+
 
 if(!isset($_SESSION["USER_ID"]) || isset($_POST["ccms_login"]) || isset($_POST["ccms_logout"]) || isset($_POST["ccms_pass_reset_part_1"]) || isset($_POST["ccms_pass_reset_part_2"])) {
 	$CLEAN["ccms_tpl"] = "login";
