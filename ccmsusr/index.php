@@ -2,11 +2,6 @@
 // benchmark start
 //$time_start = microtime(true);
 
-
-//echo "/ccmsusr/index.html";
-//exit;
-
-
 // Use the ini_set function to set value of the include_path option on your server if necessary.
 // e.g.: ini_set('include_path', 'ccmslib:ccmspre:ccmstpl:ccmsusr' . ini_get('include_path'));
 //ini_set('include_path', $CFG["LIBDIR"] . ':' . $CFG["PREDIR"] . ':' . $CFG["TPLDIR"] . ':' . $CFG["USRDIR"] . ':' . ini_get('include_path'));
@@ -51,16 +46,16 @@ if($_SESSION["FAIL"] >= 5) {
 }
 
 
-echo "ccms_tpl = [" . $CLEAN["ccms_tpl"] . "]<br>\n\n";
+//echo "ccms_tpl = [" . $CLEAN["ccms_tpl"] . "]<br>\n\n";
 //exit;
 
 
 if(!isset($_SESSION["USER_ID"]) || isset($_POST["ccms_login"]) || isset($_POST["ccms_logout"]) || isset($_POST["ccms_pass_reset_part_1"]) || isset($_POST["ccms_pass_reset_part_2"])) {
-	$CLEAN["ccms_tpl"] = "/user/login.html";
+	$CLEAN["ccms_tpl"] = "/ccmsusr/login.html";
 }
 
-echo "ccms_tpl = [" . $CLEAN["ccms_tpl"] . "]<br>\n\n";
-exit;
+//echo "ccms_tpl = [" . $CLEAN["ccms_tpl"] . "]<br>\n\n";
+//exit;
 
 CCMS_Main();
 

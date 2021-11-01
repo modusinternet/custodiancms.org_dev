@@ -793,19 +793,21 @@ function CCMS_Main() {
 		if(isset($_SESSION["USER_ID"])) {
 			// The user is logged in, do NOT pull content from the cache for this visit.
 
+			if(preg_match("/^\/ccmsusr/(.*)\z/i", $CLEAN["ccms_tpl"])) {
+				// This URL points to something inside the CCMSUSR dir.
 
+				if(is_file($_SERVER["DOCUMENT_ROOT"] . "/" . $CLEAN["ccms_tpl"])) {
+					$found = true;
+				}
+			} else {
+				// This URL points to something inside the CCMSTPL dir.
 
+				if(is_file($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"])) {
+					$found = true;
+				}
+			}
 
-
-
-
-
-
-
-
-			if(is_file($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"])) {
-
-				$found = true;
+			if(isset($found) === true) {
 
 				if($ccms_extention[0] === "css"){
 					header("Content-Type: text/css; charset=utf-8");
@@ -821,24 +823,20 @@ function CCMS_Main() {
 				header("Cache-Control: no-cache, must-revalidate");
 				header("Pragma: no-cache");
 
-				$buf = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]);
-				$buf = CCMS_TPL_Parser($buf);
-				$search = "{NONCE}";
-				$replace = $CFG["nonce"];
-				echo str_replace($search, $replace, $buf);
+				header("cache: NOT cached because this is a logged in user.");
+
+				ob_start();
+				if(preg_match("/^\/ccmsusr/(.*)\z/i", $CLEAN["ccms_tpl"])) {
+					// This URL points to something inside the CCMSUSR dir.
+
+					$buf = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/" . $CLEAN["ccms_tpl"]);
+				} else {
+					// This URL points to something inside the CCMSTPL dir.
+
+					$buf = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]);
+				}
+				CCMS_TPL_Parser($buf);
 			}
-
-
-
-
-
-
-
-
-
-
-
-
 		} elseif($ccms_extention[0] === "php") {
 			// Looking for a PHP template.  Do not check or save cached version.
 			// Headers in this type of template call are set in the template, not here.

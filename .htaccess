@@ -180,7 +180,7 @@ AddOutputFilterByType DEFLATE application/x-javascript
 
 	# Custodian CMS URL Rewrite
 	# ------------------------------
-	RewriteRule ^(([a-z]{2,3})(-[a-z0-9]{2,3})?)/user(/.*)$ /ccmsusr/index.php?ccms_lng=$1&ccms_tpl=/user$4 [QSA,L,NC]
+	RewriteRule ^(([a-z]{2,3})(-[a-z0-9]{2,3})?)/user(/.*)$ /ccmsusr/index.php?ccms_lng=$1&ccms_tpl=/ccmsusr$4 [QSA,L,NC]
 	RewriteRule ^(([a-z]{2,3})(-[a-z0-9]{2,3})?)(/([a-z0-9-_\./]*))?$ /index.php?ccms_lng=$1&ccms_tpl=$4 [QSA,L,NC]
 
 	# The following examples will FAIL and result in /ccmstpl/error.php page being called.
