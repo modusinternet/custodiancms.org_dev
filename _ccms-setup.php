@@ -437,21 +437,24 @@ if(!(($_SERVER["SCRIPT_NAME"] == "/index.php") || ($_SERVER["SCRIPT_NAME"] == "/
 			</div>
 
 <?php
-	$host	= $CFG["DB_HOST"];
-	$dbname	= $CFG["DB_NAME"];
-	$user	= $CFG["DB_USERNAME"];
-	$pass	= $CFG["DB_PASSWORD"];
-	try {
-		$CFG["DBH"] = @new PDO("mysql:host=$host;dbname=$dbname", $user, $pass, array(PDO::ATTR_PERSISTENT => true));
-		/* Great sites talking about how to handle the utf-8 character sets properly:
-		https://www.toptal.com/php/a-utf-8-primer-for-php-and-mysql
-		https://mathiasbynens.be/notes/mysql-utf8mb4 */
-		$CFG["DBH"]->exec("set names utf8mb4");
-		$CFG["DBH"]->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$CFG["pass"] = 1;
-	} catch(PDOException $e) {
-		$CFG["pass"] = 0;
-		$msg = $e->getCode() . ' ' . $e->getMessage();
+	if($CFG["pass"]==1) {
+		$host	= $CFG["DB_HOST"];
+		$dbname	= $CFG["DB_NAME"];
+		$user	= $CFG["DB_USERNAME"];
+		$pass	= $CFG["DB_PASSWORD"];
+		try {
+			$CFG["DBH"] = @new PDO("mysql:host=$host;dbname=$dbname", $user, $pass, array(PDO::ATTR_PERSISTENT => true));
+			/* Great sites talking about how to handle the utf-8 character sets properly:
+			https://www.toptal.com/php/a-utf-8-primer-for-php-and-mysql
+			https://mathiasbynens.be/notes/mysql-utf8mb4 */
+			$CFG["DBH"]->exec("set names utf8mb4");
+			$CFG["DBH"]->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		} catch(PDOException $e) {
+			$CFG["pass"] = 0;
+			$msg = $e->getCode() . ' ' . $e->getMessage();
+		}
+	} else {
+		$msg = "Connect to database test not preformed because no database settings detected in the /ccmspre/config.php template.";
 	}
 ?>
 			<div class="collapsible <?=($CFG["pass"]==1) ? "gr":"rd";?>">
