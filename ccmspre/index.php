@@ -797,30 +797,31 @@ function CCMS_Main() {
 
 				$found = true;
 
-				if($ccms_extention[0] === "css"){
-					header("Content-Type: text/css; charset=utf-8");
-				} elseif($ccms_extention[0] === "html") {
-					header("Content-Type: text/html; charset=utf-8");
-				} elseif($ccms_extention[0] === "js") {
-					header("Content-Type: application/javascript");
-				} else {
-					header("Content-Type: text/plain; charset=utf-8");
-				}
-
-				// NOTE: If the template is later called using a serviceWorker be aware that will not respect the settings of the 'cache-control' header as noted in here: https://web.dev/service-workers-cache-storage/#api-nuts-and-bolts
+				header("cache: NOT cached because this is a logged in user.");
 				header("Cache-Control: no-cache, must-revalidate");
 				header("Pragma: no-cache");
 
-				header("cache: NOT cached because this is a logged in user.");
+				if($ccms_extention[0] === "php") {
+					ob_start();
+					include $_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"];
+					$buf = ob_get_contents();
+					ob_end_clean();
+					CCMS_TPL_Parser($buf);
+				} else {
+					if($ccms_extention[0] === "css"){
+						header("Content-Type: text/css; charset=utf-8");
+					} elseif($ccms_extention[0] === "html") {
+						header("Content-Type: text/html; charset=utf-8");
+					} elseif($ccms_extention[0] === "js") {
+						header("Content-Type: application/javascript");
+					} else {
+						header("Content-Type: text/plain; charset=utf-8");
+					}
 
-				$buf = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]);
+					$buf = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]);
 
-				ob_start();
-				CCMS_TPL_Parser($buf);
-				$buf = ob_get_contents();
-				ob_end_clean();
-
-				echo $buf;
+					CCMS_TPL_Parser($buf);
+				}
 			}
 		} elseif($ccms_extention[0] === "php") {
 			// Looking for a PHP template.  Do not check or save cached version.
@@ -836,12 +837,6 @@ function CCMS_Main() {
 				include $_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"];
 				$buf = ob_get_contents();
 				ob_end_clean();
-				/*
-				$buf = CCMS_TPL_Parser($buf);
-				$search = "{NONCE}";
-				$replace = $CFG["nonce"];
-				echo str_replace($search, $replace, $buf);
-				*/
 				CCMS_TPL_Parser($buf);
 			}
 		} else {
