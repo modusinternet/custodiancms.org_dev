@@ -3,8 +3,8 @@
 //$time_start = microtime(true);
 
 
-echo "/ccmsusr/index.html";
-exit;
+//echo "/ccmsusr/index.html";
+//exit;
 
 
 // Use the ini_set function to set value of the include_path option on your server if necessary.
