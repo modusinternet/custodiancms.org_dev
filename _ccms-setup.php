@@ -455,7 +455,7 @@ if(!(($_SERVER["SCRIPT_NAME"] == "/index.php") || ($_SERVER["SCRIPT_NAME"] == "/
 			$CFG["DBH"]->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		} catch(PDOException $e) {
 			$CFG["pass"] = 0;
-			$msg = $e->getCode() . ' ' . $e->getMessage();
+			$msg = $e->getCode() . ' ' . $e->getMessage() . "<br>\nYou probably need to either created the '$dbname' database or add the '$user' user to it still.";
 		}
 	} else {
 		$msg = "Connect to database test not preformed because no database settings detected in the /ccmspre/config.php template.";
