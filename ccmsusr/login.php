@@ -80,7 +80,23 @@ if($_SESSION['EXPIRED'] == "1") {
 				$_SESSION["FAIL"] = 0;
 				$_SESSION["HTTP_USER_AGENT"] = md5($_SERVER["HTTP_USER_AGENT"]);
 
-				header("Location: /" . $CLEAN["ccms_lng"] . "/user/" . $CFG["INDEX"]);
+
+
+
+
+if($row["2fa_secret"] !== null){
+		header("Location: /" . $CLEAN["ccms_lng"] . "/user/authenticator.php");
+} else {
+	header("Location: /" . $CLEAN["ccms_lng"] . "/user/" . $CFG["INDEX"]);
+}
+
+
+
+
+
+
+
+
 				exit;
 			} else {
 				// Password failed so we increment the fail field by 1, once it reaches 5 the login page wont even be available to the user anymore till their session expires.
