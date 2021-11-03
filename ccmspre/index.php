@@ -495,7 +495,6 @@ function CCMS_DB($a) {
 			$tmp = (isset($CLEAN["CCMS_DB_Preload_Content"][$a[2]]) === false) ? " grp '$a[2]'" : "";
 			$tmp = (isset($CLEAN["CCMS_DB_Preload_Content"][$a[3]]) === false) ? " grp '$a[2]' with name '$a[3]'" : "";
 			echo (empty($tmp)) ? " Not found in 'ccms_ins_db' table." : $tmp . " not found in 'ccms_ins_db' table.";
-			//echo " not found in 'ccms_ins_db' table.";
 		}
 	} else {
 		echo $a[0] . " ERROR: Either CCMS_DB_Preload function was not called or the CCMS_DB_PRELOAD tag was not found on your template prior to calling this CCMS_DB tag. ";
