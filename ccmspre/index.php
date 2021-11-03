@@ -769,8 +769,6 @@ header("ccms_tpl3: " . $CLEAN["ccms_tpl"]);
 		$CLEAN["ccms_tpl"] .= "index.php";
 	}
 
-header("ccms_tpl4: " . $CLEAN["ccms_tpl"]);
-
 	// Copys the end of the string found inside $CLEAN["ccms_tpl"] after the last /.
 	// fruit/orange
 	// becomes:
@@ -803,8 +801,6 @@ header("ccms_tpl4: " . $CLEAN["ccms_tpl"]);
 
 		if(isset($_SESSION["USER_ID"])) {
 			// The user is logged in, do NOT pull content from the cache for this visit.
-
-header("ccms_tpl5: " . $_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]);
 
 			if(is_file($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"])) {
 

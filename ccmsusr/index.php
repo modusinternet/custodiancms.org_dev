@@ -45,22 +45,11 @@ if($_SESSION["FAIL"] >= 5) {
 	exit;
 }
 
-
-//echo "ccms_tpl = [" . $CLEAN["ccms_tpl"] . "]<br>\n\n";
-//exit;
-
-
 if(!isset($_SESSION["USER_ID"]) || isset($_POST["ccms_login"]) || isset($_POST["ccms_logout"]) || isset($_POST["ccms_pass_reset_part_1"]) || isset($_POST["ccms_pass_reset_part_2"])) {
 	$CLEAN["ccms_tpl"] = "/login.php";
 }
 
-//echo "ccms_tpl = [" . $CLEAN["ccms_tpl"] . "]<br>\n\n";
-header("ccms_tpl1: " . $CLEAN["ccms_tpl"]);
-//exit;
-
 CCMS_Main();
-
-header("ccms_tpl2: " . $CLEAN["ccms_tpl"]);
 
 // benchmark end
 //echo 'Total execution time in seconds: ' . (microtime(true) - $time_start);

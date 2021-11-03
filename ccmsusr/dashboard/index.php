@@ -207,7 +207,6 @@ overflow: scroll;
 
 		</main>
 
-
 		{CCMS_TPL:/body-head.php}
 
 		<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">

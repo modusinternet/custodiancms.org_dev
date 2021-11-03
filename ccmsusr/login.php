@@ -25,8 +25,6 @@ if($_SESSION['EXPIRED'] == "1") {
 } elseif($CLEAN["ccms_login"] == "1") {
 	// Login credentials posted, test them.
 
-echo "1<br>\n";
-
 	if(!ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
 		$ccms_login_message["FAIL"] = "There is a problem with your login, your IP Address is currently being blocked.  Please contact the website administrators directly if you feel this message is in error.";
 	} elseif(empty($CLEAN["ccms_login_email"])) {
@@ -60,16 +58,12 @@ echo "1<br>\n";
 	if($ccms_login_message["FAIL"] == "") {
 		// No missing, over sized or invalid content submitted in the form so we can procced.
 
-echo "2<br>\n";
-
 		$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_user` WHERE `email` = :email && `status` = 1 LIMIT 1;");
 		$qry->execute(array(':email' => $CLEAN["ccms_login_email"]));
 		$row = $qry->fetch(PDO::FETCH_ASSOC);
 
 		if($row) {
 			// An active user with the same email address WAS found in the database.
-
-echo "3<br>\n";
 
 			if(password_verify($CLEAN["ccms_login_password"], $row["hash"])) {
 				// The submitted password matches the hashed password stored on the server.
@@ -86,35 +80,7 @@ echo "3<br>\n";
 				$_SESSION["FAIL"] = 0;
 				$_SESSION["HTTP_USER_AGENT"] = md5($_SERVER["HTTP_USER_AGENT"]);
 
-echo "4<br>\n";
-
-
-
-header("Location: /" . $CLEAN["ccms_lng"] . "/user/" . $CFG["INDEX"]);
-
-
-/*
-if(!empty($row["2fa_secret"])){
-
-echo "5<br>\n";
-//exit;
-
-		header("Location: /" . $CLEAN["ccms_lng"] . "/user/authenticator.php");
-} else {
-
-echo "6<br>\n";
-//exit;
-
-	header("Location: /" . $CLEAN["ccms_lng"] . "/user/" . $CFG["INDEX"]);
-}
-*/
-
-
-
-
-
-
-
+				header("Location: /" . $CLEAN["ccms_lng"] . "/user/" . $CFG["INDEX"]);
 				exit;
 			} else {
 				// Password failed so we increment the fail field by 1, once it reaches 5 the login page wont even be available to the user anymore till their session expires.
