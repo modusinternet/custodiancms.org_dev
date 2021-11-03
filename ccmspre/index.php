@@ -308,7 +308,7 @@ function CCMS_Set_SESSION() {
 				if(!isset($_SESSION["2FA_VALID"])) {
 					// The user is logged in successfully but they have 2FA enabled and haven't verified it yet.
 
-					$CLEAN["ccms_tpl"] = "authenticator";
+					$CLEAN["ccms_tpl"] = "authenticator.php";
 				}
 			} else {
 				// The user is valid and nothing is outstanding so just update the most current privilages.

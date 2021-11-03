@@ -90,7 +90,10 @@ echo "4<br>\n";
 
 
 
+header("Location: /" . $CLEAN["ccms_lng"] . "/user/" . $CFG["INDEX"]);
 
+
+/*
 if(!empty($row["2fa_secret"])){
 
 echo "5<br>\n";
@@ -104,7 +107,7 @@ echo "6<br>\n";
 
 	header("Location: /" . $CLEAN["ccms_lng"] . "/user/" . $CFG["INDEX"]);
 }
-
+*/
 
 
 
