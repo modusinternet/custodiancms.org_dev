@@ -738,6 +738,8 @@ function CCMS_TPL_Parser($a = null) {
 function CCMS_Main() {
 	global $CFG, $CLEAN;
 
+header("ccms_tpl3: " . $CLEAN["ccms_tpl"]);
+
 	// If there is no template requested, show $CFG["INDEX"].
 	// This code is used when accessing the /user/ templates, before login credentials have between
 	// verified and when dealing with URL's that resemble:
@@ -766,6 +768,8 @@ function CCMS_Main() {
 	if(preg_match("/[\/]\z/", $CLEAN["ccms_tpl"])) {
 		$CLEAN["ccms_tpl"] .= "index.html";
 	}
+
+header("ccms_tpl4: " . $CLEAN["ccms_tpl"]);
 
 	// Copys the end of the string found inside $CLEAN["ccms_tpl"] after the last /.
 	// fruit/orange
@@ -799,6 +803,8 @@ function CCMS_Main() {
 
 		if(isset($_SESSION["USER_ID"])) {
 			// The user is logged in, do NOT pull content from the cache for this visit.
+
+header("ccms_tpl5: " . $_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]);
 
 			if(is_file($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"])) {
 
