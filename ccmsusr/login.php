@@ -84,7 +84,7 @@ if($_SESSION['EXPIRED'] == "1") {
 
 
 
-if($row["2fa_secret"] !== null){
+if(!empty($row["2fa_secret"])){
 		header("Location: /" . $CLEAN["ccms_lng"] . "/user/authenticator.php");
 } else {
 	header("Location: /" . $CLEAN["ccms_lng"] . "/user/" . $CFG["INDEX"]);
