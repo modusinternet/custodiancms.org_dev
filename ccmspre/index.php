@@ -766,7 +766,7 @@ header("ccms_tpl3: " . $CLEAN["ccms_tpl"]);
 	// /fruit/orange/index
 	// /fruit/orange/vitamin/index
 	if(preg_match("/[\/]\z/", $CLEAN["ccms_tpl"])) {
-		$CLEAN["ccms_tpl"] .= "index.html";
+		$CLEAN["ccms_tpl"] .= "index.php";
 	}
 
 header("ccms_tpl4: " . $CLEAN["ccms_tpl"]);
