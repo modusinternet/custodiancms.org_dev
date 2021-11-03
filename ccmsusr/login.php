@@ -94,13 +94,13 @@ echo "4<br>\n";
 if(!empty($row["2fa_secret"])){
 
 echo "5<br>\n";
-exit;
+//exit;
 
 		header("Location: /" . $CLEAN["ccms_lng"] . "/user/authenticator.php");
 } else {
 
 echo "6<br>\n";
-exit;
+//exit;
 
 	header("Location: /" . $CLEAN["ccms_lng"] . "/user/" . $CFG["INDEX"]);
 }
