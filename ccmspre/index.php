@@ -491,9 +491,9 @@ function CCMS_DB($a) {
 				echo CCMS_TPL_Parser($CLEAN["CCMS_DB_Preload_Content"][$a[2]][$a[3]][$CFG["DEFAULT_SITE_CHAR_SET"]]["content"]);
 			}
 		} else {
-			echo "MISSING: ";
-			echo (isset($CLEAN["CCMS_DB_Preload_Content"][$a[2]]) === false) ? "grp '$a[2]'" : "";
-			echo (isset($CLEAN["CCMS_DB_Preload_Content"][$a[3]]) === false) ? "grp '$a[2]' with name '$a[3]'" : "";
+			echo "MISSING:";
+			echo (isset($CLEAN["CCMS_DB_Preload_Content"][$a[2]]) === false) ? " grp '$a[2]'" : "";
+			echo (isset($CLEAN["CCMS_DB_Preload_Content"][$a[3]]) === false) ? " grp '$a[2]' with name '$a[3]'" : "";
 			echo " not found in 'ccms_ins_db' table.";
 		}
 	} else {
