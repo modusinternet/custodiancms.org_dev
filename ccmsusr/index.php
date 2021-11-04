@@ -38,7 +38,8 @@ CCMS_User_Filter($_SERVER + $_REQUEST, $whitelist);
 
 CCMS_Set_SESSION();
 
-if(isset($_SESSION["FAIL"]) >= 5) {
+//if(isset($_SESSION["FAIL"]) >= 5) {
+if(($_SESSION["FAIL"] ?? null) >= 5) {
 	// If the users session record indicates that they have attempted to login 5 or more times and failed; do not show this page at all.  Simply redirect them base to the homepage for this site immediatly.
 
 	header("Location: /");

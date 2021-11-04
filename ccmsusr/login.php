@@ -25,7 +25,7 @@ if(isset($_SESSION['EXPIRED']) == "1") {
 } elseif(isset($CLEAN["ccms_login"]) == "1") {
 	// Login credentials posted, test them.
 
-	if(!ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
+	if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
 		$ccms_login_message["FAIL"] = "There is a problem with your login, your IP Address is currently being blocked.  Please contact the website administrators directly if you feel this message is in error.";
 	} elseif(empty($CLEAN["ccms_login_email"])) {
 		$ccms_login_message["FAIL"] = "'Email' field missing content.";
@@ -55,7 +55,7 @@ if(isset($_SESSION['EXPIRED']) == "1") {
 		}
 	}
 
-	if($ccms_login_message["FAIL"] == "") {
+	if(!isset($ccms_login_message["FAIL"])) {
 		// No missing, over sized or invalid content submitted in the form so we can procced.
 
 		$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_user` WHERE `email` = :email && `status` = 1 LIMIT 1;");
@@ -113,7 +113,7 @@ if(isset($_SESSION['EXPIRED']) == "1") {
 	} else {
 		// Login failed so we increment the fail field by 1, once it reaches 5 the login page wont even be available to the user anymore till their session expires.
 
-		$_SESSION["FAIL"] = $_SESSION["FAIL"] + 1;
+		isset($_SESSION["FAIL"]) ? $_SESSION["FAIL"] + 1 : $_SESSION["FAIL"] = 1;
 
 		if($_SESSION["FAIL"] >= 5) {
 			// Maximum number of fails for this session have been reached.  Do not accept anymore tries till this session record expires.
@@ -125,7 +125,7 @@ if(isset($_SESSION['EXPIRED']) == "1") {
 } elseif(isset($CLEAN["ccms_pass_reset_part_1"]) == "1") {
 	// Password reset requested.
 
-	if(!ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
+	if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
 		$ccms_pass_reset_message["FAIL"] = "There is a problem with your login, your IP Address is currently being blocked.  Please contact the website administrators directly if you feel this message is in error for more information.";
 	} elseif(empty($CLEAN["ccms_pass_reset_part_1_email"])) {
 		$ccms_pass_reset_message["FAIL"] = "'ccms_pass_reset_part_1_email' field missing content.";
@@ -233,7 +233,7 @@ $email_message .= "\r\n\r\n--" . $boundary . "--";
 } elseif(isset($CLEAN["ccms_pass_reset_part_2"]) == "1") {
 	// The website is being called using the link sent to the users email address.  Now we clean and verify it's authenticity.
 
-	if(!ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
+	if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
 		$ccms_pass_reset_message["FAIL"] = "There is a problem with your login, your IP Address is currently being blocked.  Please contact the website administrators directly if you feel this message is in error for more information.";
 	} elseif(empty($CLEAN["ccms_pass_reset_form_code"])) {
 		$ccms_pass_reset_message["FAIL"] = "'ccms_pass_reset_form_code' field missing content.";
@@ -311,7 +311,7 @@ $email_message .= "\r\n\r\n--" . $boundary . "--";
 } elseif(isset($CLEAN["ccms_pass_reset_part_2"]) == "2") {
 	// This is an incoming password reset hyperlink.
 
-	if(!ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
+	if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
 		$ccms_pass_reset_message["FAIL"] = "There is a problem with your login, your IP Address is currently being blocked.  Please contact the website administrators directly if you feel this message is in error for more information.";
 	//} elseif($CLEAN["ccms_pass_reset_form_code"] == "") {
 	} elseif(empty($CLEAN["ccms_pass_reset_form_code"])) {
