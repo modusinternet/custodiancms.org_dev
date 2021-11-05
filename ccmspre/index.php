@@ -1017,13 +1017,11 @@ function CCMS_Main() {
 		// Store a copy of the original tpl requested for use later on in the error page.
 		$CLEAN["ccms_tpl_org"] = $CLEAN["ccms_tpl"];
 
-		// Reset the tpl variable to the error page.
-		$CLEAN["ccms_tpl"] = "/error.php";
 		header("HTTP/1.0 404 not found");
 
-		if(is_file($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"])) {
+		if(is_file($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . "/error.php")) {
 			ob_start();
-			include $_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"];
+			include $_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . "/error.php";
 			$buf = ob_get_contents();
 			ob_end_clean();
 			//echo CCMS_TPL_Parser($buf);
