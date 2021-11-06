@@ -114,8 +114,8 @@ AddOutputFilterByType DEFLATE application/x-javascript
 	RewriteCond %{HTTP_REFERER} !^https?://(www\.)?linkedin\..+$ [NC,OR]
 	RewriteCond %{HTTP_REFERER} !^https?://(www\.)?reddit\..+$ [NC,OR]
 	RewriteCond %{HTTP_REFERER} !^https?://(www\.)?twitter\..+$ [NC,OR]
-	RewriteCond %{REQUEST_URI} !^/cross-origin-resources/  [NC,OR]
-	RewriteCond %{HTTP_HOST}@@%{HTTP_REFERER} !^([^@]*)@@https?://\1/.* [NC]
+	RewriteCond %{REQUEST_URI} !^/cross-origin-resources/  [NC]
+	#RewriteCond %{HTTP_HOST}@@%{HTTP_REFERER} !^([^@]*)@@https?://\1/.* [NC]
 	RewriteRule \.(bmp|gif|jpe?g|png|webp)$ - [F,L,NC]
 
 
