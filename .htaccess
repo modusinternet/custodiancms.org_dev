@@ -108,12 +108,20 @@ AddOutputFilterByType DEFLATE application/x-javascript
 	# Stop hot linking.
 	# ------------------------------
 	RewriteCond %{HTTP_REFERER} !^$
-	# Allow abc.com to pull images from the server.
-	#RewriteCond %{HTTP_REFERER} !^https://abc.com [NC]
-	# Allow www.123.com to pull images from the server.
-	#RewriteCond %{HTTP_REFERER} !^https://www.123.com [NC]
+	RewriteCond %{HTTP_REFERER} !^https?://(www\.)?bing\..+$ [NC,OR]
+	RewriteCond %{HTTP_REFERER} !^https?://(www\.)?facebook\..+$ [NC,OR]
+	RewriteCond %{HTTP_REFERER} !^https?://(www\.)?google\..+$ [NC,OR]
+	RewriteCond %{HTTP_REFERER} !^https?://(www\.)?linkedin\..+$ [NC,OR]
+	RewriteCond %{HTTP_REFERER} !^https?://(www\.)?reddit\..+$ [NC,OR]
+	RewriteCond %{HTTP_REFERER} !^https?://(www\.)?twitter\..+$ [NC,OR]
+	RewriteCond %{REQUEST_URI} !^/cross-origin-resources/  [NC,OR]
 	RewriteCond %{HTTP_HOST}@@%{HTTP_REFERER} !^([^@]*)@@https?://\1/.* [NC]
-	RewriteRule \.(bmp|gif|jpe?g|png|swf|webp)$ - [F,L,NC]
+	RewriteRule \.(bmp|gif|jpe?g|png|webp)$ - [F,L,NC]
+
+
+
+
+
 
 	# Block suspicious request methods.
 	# ------------------------------
