@@ -108,11 +108,11 @@ AddOutputFilterByType DEFLATE application/x-javascript
 	# Stop hot linking.
 	# ------------------------------
 	# Explains line below: https://perishablepress.com/creating-the-ultimate-htaccess-anti-hotlinking-strategy/
-	RewriteCond %{HTTP_REFERER} .
-	RewriteCond %{HTTP_REFERER} !^https?://(www\.)?(bing|facebook|google|instagram|linkedin|reddit|twitter)\..+$ [NC]
+	RewriteCond %{HTTP_REFERER} !^$
+	RewriteCond %{HTTP_REFERER} !^https?://(www\.)?(bing|facebook|google|instagram|linkedin|reddit|twitter)\. [NC]
 	# Explains line below: http://tltech.com/info/referrer-htaccess/
-	RewriteCond %{HTTP_HOST}@@%{HTTP_REFERER} !^([^@]*)@@https?://\1/.* [NC]
-	RewriteRule \.(css|gif|jpe?g|js|png|webp)$ - [F,L,NC]
+	RewriteCond %{HTTP_HOST}@@%{HTTP_REFERER} !^([^@]*)@@https?://\1/ [NC]
+	RewriteRule \.(css|gif|jpe?g|js|png|webp)$ - [F,NC]
 
 	# Block suspicious request methods.
 	# ------------------------------
