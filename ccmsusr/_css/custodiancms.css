@@ -51,8 +51,9 @@ form{padding-bottom:10px}
 .alertDiv.success{background-color:var(--cl3)}
 
 .logo{
-	/*filter:drop-shadow(5px 5px 5px rgba(10,37,64,.5));*/
-	filter:drop-shadow(1px 1px rgba(0,0,0,.6));
+	/*filter:drop-shadow(5px 5px 5px rgba(10,37,64,.5));
+	filter:drop-shadow(1px 1px rgba(0,0,0,.6));*/
+	filter:drop-shadow(2px 2px 4px rgba(0,0,0,.2));
 	-webkit-transition:all 1.0s ease-in-out;
 	-moz-transition:all 1.0s ease-in-out;
 	-o-transition:all 1.0s ease-in-out;
