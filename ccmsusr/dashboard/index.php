@@ -136,7 +136,7 @@ overflow: scroll;
   animation: rotate-bottom-bar-2 0.4s reverse;
 }
 
-.menu-bars.hamburger{filter:drop-shadow(2px 2px 4px rgba(0,0,0,.2))}
+#menu-ctn{filter:drop-shadow(2px 2px 4px rgba(0,0,0,.2))}
 
 /* ANIMATION KEYFRAMES */
 @keyframes rotate-top-bar {
