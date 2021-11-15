@@ -124,10 +124,12 @@ if(!is_callable('shell_exec') && true === stripos(ini_get('disable_functions'), 
 									git push
 								</p>
 								<p>
-									Note: Or, if all you want to do is overwrite a single file on your server with what's currently on the GitHub repo you can try the following command.
+									Note: Or, if all you want to do is overwrite a single file on your server with what's currently on the GitHub repo you can try the following command. (NOTE: You may need to navigate into the dir that contains the file you want to overwrite first.)
 								</p>
 								<p class="boxed">
-									git checkout origin/master -- {filename}
+									git checkout origin/master -- {filename}<br>
+									git checkout -- .htaccess<br>
+									git checkout origin/main -- ccmstpl/examples/index.html
 								</p>
 							</div>
 						</div>
