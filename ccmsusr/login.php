@@ -470,11 +470,12 @@ if(
 			box-shadow:3px 3px 3px var(--cl12)
 		}
 
+		.formDiv>div{padding:10px 20px}
+
 		.formDiv>div:first-child{
 			background-color:var(--cl4);
 			border-radius:6px 6px 0 0;
-			color:var(--cl0);
-			padding:5px 10px
+			color:var(--cl0)
 		}
 
 		.logo{
@@ -534,7 +535,7 @@ if(
 	<?php endif ?>
 			<div class="formDiv">
 				<div>Login</div>
-				<div style="padding:10px">
+				<div>
 					<form action="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/" id="ccms_login_form" class="aGrid" method="post" novalidate="novalidate">
 						<input type="hidden" name="ccms_login" value="1">
 						<label for="ccms_login_email">Email Address <span class="rd">*</span></label>
@@ -562,7 +563,7 @@ if(
 	<?php endif ?>
 				<div class="formDiv">
 					<div>Password Reset</div>
-					<div style="padding:10px">
+					<div>
 						<p style="margin-bottom:10px">Please enter the email address associated with your account below. We will send you a link via email you can use to reset your password.</p>
 						<form action="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/" id="ccms_pass_reset_part_1" class="aGrid" method="post" novalidate="novalidate">
 							<input type="hidden" name="ccms_pass_reset_part_1" value="1">
@@ -587,7 +588,7 @@ if(
 	<?php endif ?>
 			<div class="formDiv">
 				<div>New Password</div>
-				<div style="padding:10px">
+				<div>
 					<p style="margin-bottom:10px">
 						Use the form below to reset your password. Remember, this form will only work one time.  Once you press submit it will not work again unless you request a new Password Reset link.
 					</p>
