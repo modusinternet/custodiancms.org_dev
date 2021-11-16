@@ -161,11 +161,9 @@ if(isset($_SESSION['EXPIRED']) == "1") {
 			$headers .= "Content-Type: multipart/alternative;boundary=" . $boundary . "\r\n";
 			$email_message = "This is a MIME encoded message.\r\n\r\n--" . $boundary . "\r\nContent-type: text/plain;charset=utf-8\r\n\r\n";
 			//Plain text body
-			$email_message .= 'To whom it may concern,
+			$email_message .= 'A password reset was requested for an account associated with this email address at ' . $CFG["DOMAIN"] . '. If you did not request this email please delete this message.
 
-A password reset was requested for an account at ' . $CFG["DOMAIN"] . ' using this email address. If you did not request this email please delete this message.
-
-Click or Copy and Paste the link bellow into your browser to proceed.
+Either click or copy/paste the following link into your browser to proceed.
 
 https://' . $CFG["DOMAIN"] . '/' . $CLEAN["ccms_lng"] . '/user/?ccms_pass_reset_part_2=1&ccms_pass_reset_form_code='.$a.'
 
@@ -182,11 +180,9 @@ $email_message .= "\r\n\r\n--" . $boundary . "\r\nContent-type: text/html;charse
 
 //Html body
 $email_message .= '<html><body style="font-size:1.2em">
-To whom it may concern,<br>
+A password reset was requested for an account associated with this email address at ' . $CFG["DOMAIN"] . '. If you did not request this email please delete this message.<br>
 <br>
-A password reset was requested for an account at ' . $CFG["DOMAIN"] . ' using this email address. If you did not request this email please delete this message.<br>
-<br>
-Click or Copy and Paste the link bellow into your browser to proceed.<br>
+Either click or copy/paste the following link into your browser to proceed.<br>
 <br>
 <a href="https://' . $CFG["DOMAIN"] . '/' . $CLEAN["ccms_lng"] . '/user/?ccms_pass_reset_part_2=1&ccms_pass_reset_form_code='.$a.'">' . $_SERVER["REQUEST_SCHEME"] . '://' . $CFG["DOMAIN"] . '/' . $CLEAN["ccms_lng"] . '/user/?ccms_pass_reset_part_2=1&ccms_pass_reset_form_code='.$a.'</a><br>
 <br>
