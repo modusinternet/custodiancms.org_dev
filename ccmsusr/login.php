@@ -467,7 +467,7 @@ if(
 			background-color:var(--cl0);
 			border:1px solid var(--cl2-tran);
 			border-radius:6px;
-			box-shadow:3px 3px 3px var(--cl12)
+			box-shadow:2px 2px 5px 0px rgba(0,0,0,.2)
 		}
 
 		.formDiv>div{padding:10px 20px}
