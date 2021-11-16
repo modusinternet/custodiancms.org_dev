@@ -466,19 +466,19 @@ if(
 		.formDiv{
 			background-color:var(--cl0);
 			border:1px solid var(--cl2-tran);
-			border-radius:4px;
-			box-shadow:5px 5px 5px var(--cl12)
+			border-radius:6px;
+			box-shadow:3px 3px 3px var(--cl12)
 		}
 
 		.formDiv>div:first-child{
 			background-color:var(--cl4);
-			border-radius:4px 4px 0 0;
+			border-radius:6px 6px 0 0;
 			color:var(--cl0);
 			padding:5px 10px
 		}
 
 		.logo{
-			filter:drop-shadow(5px 5px 5px rgba(10,37,64,.5));
+			filter:drop-shadow(3px 3px 3px var(--cl12));
 			-webkit-transition:all 1.0s ease-in-out;
 			-moz-transition:all 1.0s ease-in-out;
 			-o-transition:all 1.0s ease-in-out;

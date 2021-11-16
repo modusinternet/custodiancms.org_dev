@@ -23,10 +23,12 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 		/* VARIABLES */
+/*
 :root {
   --coal: #3A3A3A;
   --apple: #FF4D3A;
 }
+*/
 
 /* DEFAULT PROPERTIES */
 /*
@@ -96,11 +98,9 @@ overflow: scroll;
   background: var(--cl1);
 }
 
-.dropped {
-  display: block!important;
-
-
-  transition: 0.4s all ease-in;
+.dropped{
+	display:block!important;
+	transition:0.4s all ease-in
 }
 
 .menu-bars::before, .menu-bars::after {
