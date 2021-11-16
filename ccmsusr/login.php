@@ -125,6 +125,8 @@ if(isset($_SESSION['EXPIRED']) == "1") {
 } elseif(isset($CLEAN["ccms_pass_reset_part_1"]) == "1") {
 	// Password reset requested.
 
+	$ccms_pass_reset_message["FAIL"] = "";
+
 	if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
 		$ccms_pass_reset_message["FAIL"] = "There is a problem with your login, your IP Address is currently being blocked.  Please contact the website administrators directly if you feel this message is in error for more information.";
 	} elseif(empty($CLEAN["ccms_pass_reset_part_1_email"])) {
@@ -161,7 +163,7 @@ if(isset($_SESSION['EXPIRED']) == "1") {
 			$headers .= "Content-Type: multipart/alternative;boundary=" . $boundary . "\r\n";
 			$email_message = "This is a MIME encoded message.\r\n\r\n--" . $boundary . "\r\nContent-type: text/plain;charset=utf-8\r\n\r\n";
 			//Plain text body
-			$email_message .= 'A password reset was requested for an account associated with this email address at ' . $CFG["DOMAIN"] . '. If you did not request this email please delete this message.
+			$email_message .= 'A password reset was requested for an account associated with this email address at ' . $CFG["DOMAIN"] . '. If you did not submit this request please delete this message.
 
 Either click or copy/paste the following link into your browser to proceed.
 
@@ -180,7 +182,7 @@ $email_message .= "\r\n\r\n--" . $boundary . "\r\nContent-type: text/html;charse
 
 //Html body
 $email_message .= '<html><body style="font-size:1.2em">
-A password reset was requested for an account associated with this email address at ' . $CFG["DOMAIN"] . '. If you did not request this email please delete this message.<br>
+A password reset was requested for an account associated with this email address at ' . $CFG["DOMAIN"] . '. If you did not submit this request please delete this message.<br>
 <br>
 Either click or copy/paste the following link into your browser to proceed.<br>
 <br>
@@ -226,8 +228,10 @@ $email_message .= "\r\n\r\n--" . $boundary . "--";
 			$ccms_pass_reset_message["FAIL"] .= "Password reset failed, please try again.";
 		}
 	}
-} elseif(isset($CLEAN["ccms_pass_reset_part_2"]) == "1") {
+} elseif(($CLEAN["ccms_pass_reset_part_2"] ?? null) === "1") {
 	// The website is being called using the link sent to the users email address.  Now we clean and verify it's authenticity.
+
+	$ccms_pass_reset_message["FAIL"] = "";
 
 	if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
 		$ccms_pass_reset_message["FAIL"] = "There is a problem with your login, your IP Address is currently being blocked.  Please contact the website administrators directly if you feel this message is in error for more information.";
@@ -258,7 +262,11 @@ $email_message .= "\r\n\r\n--" . $boundary . "--";
 				$CLEAN["ccms_pass_reset_part_2"] = "";
 				// Something was wrong with the ccms_pass_reset_form_code variable.
 
-				$_SESSION["FAIL"] = $_SESSION["FAIL"] + 1;
+				if($_SESSION["FAIL"] ?? null){
+					$_SESSION["FAIL"] = $_SESSION["FAIL"] + 1;
+				} else {
+					$_SESSION["FAIL"] = 1;
+				}
 				// Password reset failed so we increment the fail field by 1, once it reaches 5 the login page wont even be available to the user anymore till their session expires.
 
 				if($_SESSION["FAIL"] >= 5) {
@@ -276,7 +284,11 @@ $email_message .= "\r\n\r\n--" . $boundary . "--";
 			$CLEAN["ccms_pass_reset_part_2"] = "";
 			// Password reset failed so we increment the fail field by 1, once it reaches 5 the login page wont even be available to the user anymore till their session expires.
 
-			$_SESSION["FAIL"] = $_SESSION["FAIL"] + 1;
+			if($_SESSION["FAIL"] ?? null){
+				$_SESSION["FAIL"] = $_SESSION["FAIL"] + 1;
+			} else {
+				$_SESSION["FAIL"] = 1;
+			}
 
 			if($_SESSION["FAIL"] >= 5) {
 				// Maximum number of fails for this session have been reached.  Do not accept anymore tries till this session record expires.
@@ -304,8 +316,10 @@ $email_message .= "\r\n\r\n--" . $boundary . "--";
 			$ccms_pass_reset_message["FAIL"] .= " Password reset failed, try again.";
 		}
 	}
-} elseif(isset($CLEAN["ccms_pass_reset_part_2"]) == "2") {
+} elseif(($CLEAN["ccms_pass_reset_part_2"] ?? null) === "2") {
 	// This is an incoming password reset hyperlink.
+
+	$ccms_pass_reset_message["FAIL"] = "";
 
 	if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
 		$ccms_pass_reset_message["FAIL"] = "There is a problem with your login, your IP Address is currently being blocked.  Please contact the website administrators directly if you feel this message is in error for more information.";
@@ -344,7 +358,9 @@ $email_message .= "\r\n\r\n--" . $boundary . "--";
 		}
 	}
 
-	if($ccms_pass_reset_message["FAIL"] == "") {
+//header("aa_ccms_pass_reset_message: " . $ccms_pass_reset_message["FAIL"]);
+
+	if($ccms_pass_reset_message["FAIL"] === "") {
 		// This is an password reset submittion, so first we need to make sure the ccms_pass_reset_form_code record is still available.
 
 		$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_password_recovery` WHERE `code` = :code AND `ip` = :ip AND `user_agent` = :user_agent LIMIT 1;");
@@ -360,6 +376,7 @@ $email_message .= "\r\n\r\n--" . $boundary . "--";
 			// The session is valid. Remove the record from the database because they are one time use only.
 
 			$user_id = $row["user_id"];
+
 			$qry = $CFG["DBH"]->prepare("DELETE FROM `ccms_password_recovery` WHERE `id` = :id LIMIT 1;");
 			$qry->execute(array(':id' => $row["id"]));
 			// Confirm there is a live, active, user account under the specified user id.
@@ -379,7 +396,7 @@ $email_message .= "\r\n\r\n--" . $boundary . "--";
 				$hash = password_hash($CLEAN["ccms_pass_reset_part_2_pass_1"], PASSWORD_BCRYPT, $options);
 				$qry = $CFG["DBH"]->prepare("UPDATE `ccms_user` SET `hash` = :hash WHERE `id` = :id LIMIT 1;");
 				$qry->execute(array(':hash' => $hash, ':id' => $user_id));
-				$ccms_pass_reset_message["SUCCESS"] = "Success!  Your password has been updated.";
+				$ccms_pass_reset_message["SUCCESS"] = "Success!  Your password has been updated.  Return to the <a href='/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/'>login</a> page now.";
 			}
 		}
 	} else {
@@ -573,13 +590,13 @@ if(
 				</div>
 			</div>
 <?php else: ?>
-	<?php if(!empty($ccms_login_message["FAIL"])): ?>
+	<?php if(!empty($ccms_pass_reset_message["FAIL"])): ?>
 			<div class="alertDiv fail">
-				<?php echo $ccms_login_message["FAIL"]; ?>
+				<?php echo $ccms_pass_reset_message["FAIL"]; ?>
 			</div>
-	<?php elseif(!empty($ccms_login_message["SUCCESS"])): ?>
+	<?php elseif(!empty($ccms_pass_reset_message["SUCCESS"])): ?>
 			<div class="alertDiv success">
-				<?php echo $ccms_login_message["SUCCESS"]; ?>
+				<?php echo $ccms_pass_reset_message["SUCCESS"]; ?>
 			</div>
 	<?php endif ?>
 			<div class="formDiv">
@@ -597,7 +614,7 @@ if(
 						<label for="ccms_pass_reset_part_2_pass_2">Re-Type Password <span class="rd">*</span></label>
 						<input class="placeholder" id="ccms_pass_reset_part_2_pass_2" name="ccms_pass_reset_part_2_pass_2" placeholder="Re-Type Password" style="margin-bottom:1rem" type="password" autocomplete="off" readonly>
 						<label id="ccms_pass_reset_part_2_pass_2_error" class="error" for="ccms_pass_reset_part_2_pass_2" style="display:none"></label>
-						<button type="submit">Submit</button>
+						<button type="submit"<?php if(!empty($ccms_pass_reset_message["SUCCESS"])) { echo " disabled";} ?>>Submit</button>
 					</form>
 				</div>
 			</div>
