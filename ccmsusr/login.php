@@ -478,7 +478,7 @@ if(
 		}
 
 		.logo{
-			filter:drop-shadow(3px 3px 3px var(--cl12));
+			filter:drop-shadow(3px 3px 3px rgba(10,37,64,0.5));
 			-webkit-transition:all 1.0s ease-in-out;
 			-moz-transition:all 1.0s ease-in-out;
 			-o-transition:all 1.0s ease-in-out;
