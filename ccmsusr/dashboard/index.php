@@ -82,6 +82,19 @@ height: 80%;
 overflow: scroll;
 }
 
+#menu-cnt svg{
+	width:30px;
+	position:relative;
+	top:5px;
+}
+
+#menu-cnt svg>path{fill:var(--cl11)}
+
+
+
+
+
+
 /* ELEMENT PROPERTIES */
 .menu-bars {
   height: 4px;
