@@ -33,7 +33,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 	top:80px;
 	left:0px;
 	height:80%;
-	overflow:scroll
+	overflow:auto
 }
 
 #menu-cnt svg{
