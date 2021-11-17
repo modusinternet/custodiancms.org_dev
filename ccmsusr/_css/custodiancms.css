@@ -94,7 +94,7 @@ form{padding-bottom:10px}
 }
 
 .sidebar-nav .metismenu a{
-	color:#adb5bd;
+	color:var(--cl0);
 	display:block;
 	outline-width:0;
 	padding:13px 15px;
