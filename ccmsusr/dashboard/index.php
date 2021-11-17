@@ -87,7 +87,7 @@ nav {
 	top:5px;
 }
 
-#menu-cnt a.active>svg>path{fill:var(--cl0)}
+#menu-cnt a>svg>path{fill:var(--cl0)}
 
 /* ELEMENT PROPERTIES */
 .menu-bars {
