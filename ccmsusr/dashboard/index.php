@@ -19,42 +19,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 	<style>
 		{CCMS_TPL:/_css/head-css.html}
 
-
-
-
-		/* VARIABLES */
-/*
-:root {
-  --coal: #3A3A3A;
-  --apple: #FF4D3A;
-}
-*/
-
-/* DEFAULT PROPERTIES */
-/*
-*, *::before, *::after {
-  box-sizing: border-box;
-  font: 500 16pt Lato;
-  color: #7A7A7A;
-  transition: 0.3s all;
-  cursor: default;
-}
-*/
-
-/* CONTAINER PROPERTIES */
-/*
-body {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-}
-
-nav {
-  height: 60px;
-  background: var(--coal);
-}
-*/
-
 #menu-ctn {
 	position: absolute;
 	top: 20px;
@@ -63,16 +27,7 @@ nav {
 	cursor: pointer;
 }
 
-/*a{cursor:pointer}*/
-
 #menu-cnt {
-  /*
-	transform: translate(16px, -10px) scale(0.7);
-  background: #FFF;
-  padding: 20px;
-  box-shadow: 1px 2px 1px var(--coal);
-  display: none;
-	*/
   display:none;
 	position:fixed;
 	top:80px;
