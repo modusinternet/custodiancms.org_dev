@@ -88,7 +88,7 @@ overflow: scroll;
 	top:5px;
 }
 
-#menu-cnt svg>path{fill:var(--cl11)}
+#menu-cnt a.active>svg>path{fill:var(--cl11)}
 
 
 
