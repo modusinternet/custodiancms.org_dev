@@ -74,7 +74,7 @@ form{padding-bottom:10px}
 
 .rd{color:var(--cl11)}
 
-/* metisMenu open */
+/* metisMenu START */
 .sidebar-nav{background:#212529}
 
 .sidebar-nav ul{
@@ -104,10 +104,6 @@ form{padding-bottom:10px}
 .sidebar-nav .metismenu a:hover,
 .sidebar-nav .metismenu a:focus,
 .sidebar-nav .metismenu a:active{
-	/*
-	background:#0b7285;
-	color:#f8f9fa;
-	*/
 	background:var(--cl3);
 	color:var(--cl0);
 	text-decoration:none
@@ -125,4 +121,47 @@ form{padding-bottom:10px}
 	flex-direction:column;
 	position:relative
 }
-/* metisMenu close */
+/* metisMenu END */
+
+/* w3school dropdown START */
+.dropbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #3e8e41;
+}
+
+.dropdown {
+  float: right;
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  right: 0;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+/* w3school dropdown END */
