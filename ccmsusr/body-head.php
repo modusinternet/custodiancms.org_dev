@@ -7,7 +7,7 @@
 	</div>
 
 	<div class="dropdown">
-		<button onclick="myFunction()" class="dropbtn">Dropdown</button>
+		<button class="dropbtn" onclick="myFunction()" nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">Dropdown</button>
 		<div id="myDropdown" class="dropdown-content">
 			<a href="#home">Home</a>
 			<a href="#about">About</a>
