@@ -73,13 +73,12 @@ nav {
   box-shadow: 1px 2px 1px var(--coal);
   display: none;
 	*/
-
-  display: none;
-	position: fixed;
-top: 80px;
-left: 0px;
-height: 80%;
-overflow: scroll;
+  display:none;
+	position:fixed;
+	top:80px;
+	left:0px;
+	height:80%;
+	overflow:scroll
 }
 
 #menu-cnt svg{
@@ -88,12 +87,7 @@ overflow: scroll;
 	top:5px;
 }
 
-#menu-cnt a.active>svg>path{fill:var(--cl11)}
-
-
-
-
-
+#menu-cnt a.active>svg>path{fill:var(--cl0)}
 
 /* ELEMENT PROPERTIES */
 .menu-bars {
