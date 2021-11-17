@@ -75,10 +75,7 @@ form{padding-bottom:10px}
 .rd{color:var(--cl11)}
 
 /* metisMenu open */
-.sidebar-nav{
-	background:#212529;
-	/*width:320px*/
-}
+.sidebar-nav{background:#212529}
 
 .sidebar-nav ul{
 	background:#343a40;
