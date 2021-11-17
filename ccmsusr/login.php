@@ -623,6 +623,18 @@ if(
 		<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 			{CCMS_TPL:/_js/footer-1.php}
 
+			/* Loading Screen START */
+			window.setTimeout(function(){
+				document.getElementById("loading_svg").style.opacity="0";
+				window.setTimeout(function(){
+					document.getElementById("loading_svg").style.display="none";
+				},500);
+			},500);
+			window.setTimeout(function(){
+				document.getElementsByTagName("main")[0].style.opacity="1";
+			},250);
+			/* Loading Screen END */
+
 			var l = document.createElement("link");
 			l.rel = "stylesheet";
 			l.href = "/ccmsusr/_css/custodiancms.css";
@@ -631,7 +643,7 @@ if(
 
 			function loadJSResources() {
 				loadFirst("/ccmsusr/_js/jquery-3.6.0.min.js", function() {
-					loadFirst("/ccmsusr/_js/custodiancms.js", function() {
+					/*loadFirst("/ccmsusr/_js/custodiancms.js", function() {*/
 						loadFirst("https://www.google.com/recaptcha/api.js?hl={CCMS_LIB:_default.php;FUNC:ccms_lng}&render={CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}", function() {
 							loadFirst("/ccmsusr/_js/jquery-validate-1.19.3.min.js", function() {
 
@@ -745,7 +757,7 @@ if(
 
 							});
 						});
-					});
+					/*});*/
 				});
 			}
 		</script>
