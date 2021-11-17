@@ -14,7 +14,7 @@
 	<ul class="metismenu" id="menu1">
 		<li id="nav-dashboard">
 			<a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/">
-				<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24"><path fill="#6563ff" d="M10.5,13h-7C3.2,13,3,13.2,3,13.5v7C3,20.8,3.2,21,3.5,21h7c0.3,0,0.5-0.2,0.5-0.5v-7C11,13.2,10.8,13,10.5,13z M10,20H4v-6h6V20z M10.5,3h-7C3.2,3,3,3.2,3,3.5v7C3,10.8,3.2,11,3.5,11h7c0.3,0,0.5-0.2,0.5-0.5v-7C11,3.2,10.8,3,10.5,3z M10,10H4V4h6V10z M20.5,3h-7C13.2,3,13,3.2,13,3.5v7c0,0.3,0.2,0.5,0.5,0.5h7c0.3,0,0.5-0.2,0.5-0.5v-7C21,3.2,20.8,3,20.5,3z M20,10h-6V4h6V10z M20.5,16.5h-3v-3c0-0.3-0.2-0.5-0.5-0.5s-0.5,0.2-0.5,0.5v3h-3c-0.3,0-0.5,0.2-0.5,0.5s0.2,0.5,0.5,0.5h3v3c0,0.3,0.2,0.5,0.5,0.5h0c0.3,0,0.5-0.2,0.5-0.5v-3h3c0.3,0,0.5-0.2,0.5-0.5S20.8,16.5,20.5,16.5z"/></svg><!-- a href="https://iconscout.com/">Unicons by Iconscout</a -->
+				<svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 24 24"><path fill="#6563ff" d="M10,13H4a1,1,0,0,0-1,1v6a1,1,0,0,0,1,1h6a1,1,0,0,0,1-1V14A1,1,0,0,0,10,13ZM9,19H5V15H9ZM20,3H14a1,1,0,0,0-1,1v6a1,1,0,0,0,1,1h6a1,1,0,0,0,1-1V4A1,1,0,0,0,20,3ZM19,9H15V5h4Zm1,7H18V14a1,1,0,0,0-2,0v2H14a1,1,0,0,0,0,2h2v2a1,1,0,0,0,2,0V18h2a1,1,0,0,0,0-2ZM10,3H4A1,1,0,0,0,3,4v6a1,1,0,0,0,1,1h6a1,1,0,0,0,1-1V4A1,1,0,0,0,10,3ZM9,9H5V5H9Z"/></svg><!-- a href="https://iconscout.com/">Unicons by Iconscout</a -->
 				Dashboard
 			</a>
 		</li>
@@ -25,7 +25,10 @@
 			</a>
 			<ul aria-expanded="false">
 				<li id="nav-admin-user_privileges">
-					<a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/admin/user_privileges/">User Privileges</a>
+					<a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/admin/user_privileges/">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#6563ff" d="M14.55,12.22a4.92,4.92,0,0,0,1.7-3.72,5,5,0,0,0-10,0A4.92,4.92,0,0,0,8,12.22a8,8,0,0,0-4.7,7.28,1,1,0,0,0,2,0,6,6,0,0,1,12,0,1,1,0,0,0,2,0A8,8,0,0,0,14.55,12.22Zm-3.3-.72a3,3,0,1,1,3-3A3,3,0,0,1,11.25,11.5Zm8.5-5a1,1,0,0,0-1,1v2a1,1,0,0,0,2,0v-2A1,1,0,0,0,19.75,6.5ZM19,11.79a1.05,1.05,0,0,0-.29.71,1,1,0,0,0,.29.71,1.15,1.15,0,0,0,.33.21.94.94,0,0,0,.76,0,.9.9,0,0,0,.54-.54.84.84,0,0,0,.08-.38A1,1,0,0,0,19,11.79Z"/></svg><!-- a href="https://iconscout.com/">Unicons by Iconscout</a -->
+						User Privileges
+					</a>
 				</li>
 				<li id="nav-admin-language_support">
 					<a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/admin/language_support/">Language Support</a>
