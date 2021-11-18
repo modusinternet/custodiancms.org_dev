@@ -241,11 +241,15 @@ $(() => {
 
 
 /* When the user clicks on the svg button, toggle between hiding and showing the dropdown content */
-///*
+/*
 document.getElementById("user_dropdown_btn").addEventListener("click",function(){
 	document.getElementById("user_dropdown").classList.toggle("show");
 });
-//*/
+*/
+
+$( "#user_dropdown_btn" ).click(function() {
+  $( "#user_dropdown" ).toggle( "show");
+});
 
 /*
 document.addEventListener("click", function (event) {
