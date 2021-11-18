@@ -30,6 +30,7 @@ toggle between hiding and showing the dropdown content */
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 
+console.log("inside myFunction");
 
 
 }
@@ -38,6 +39,8 @@ function myFunction() {
 document.addEventListener('DOMContentLoaded', function () {
 	document.getElementById('user_dropdown')
 	.addEventListener('click', myFunction);
+
+console.log("inside event");
 
 	var dropdowns = document.getElementsByClassName("dropdown-content");
 	var i;
