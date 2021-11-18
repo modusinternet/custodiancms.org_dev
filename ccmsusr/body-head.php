@@ -6,7 +6,7 @@
 		</a>
 	</div>
 
-	<div id="menu-ctn" style="float:right">
+	<div id="menu-ctn">
 		<li class="menu-bars"></li>
 	</div>
 

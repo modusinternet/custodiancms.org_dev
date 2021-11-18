@@ -20,11 +20,14 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 		{CCMS_TPL:/_css/head-css.html}
 
 #menu-ctn {
-	position: absolute;
-	top: 20px;
-  height: 40px;
-	right: 20px;
-	cursor: pointer;
+	cursor:pointer;
+	float:right;
+	height:40px;
+	/*
+	position:absolute;
+	right:20px;
+	top:20px;
+	*/
 }
 
 #menu-cnt {
