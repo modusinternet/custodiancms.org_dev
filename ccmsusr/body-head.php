@@ -6,17 +6,17 @@
 		</a>
 	</div>
 
-	<div class="dropdown">
+	<div id="menu-ctn" style="float:right">
+		<li class="menu-bars"></li>
+	</div>
+
+	<div class="dropdown" style="float:right">
 		<button class="dropbtn" id="user_dropdown_btn">Dropdown</button>
 		<div id="user_dropdown" class="dropdown-content">
 			<a href="#home">Home</a>
 			<a href="#about">About</a>
 			<a href="#contact">Contact</a>
 		</div>
-	</div>
-
-	<div id="menu-ctn" style="float:right">
-		<li class="menu-bars"></li>
 	</div>
 </header>
 
