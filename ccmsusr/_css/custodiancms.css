@@ -133,10 +133,6 @@ form{padding-bottom:10px}
 	margin-top:3px
 }
 
-.dropbtn:hover, .dropbtn:focus {
-  background-color:var(--cl2-tran);
-}
-
 .dropdown {
   float: right;
   position: relative;
