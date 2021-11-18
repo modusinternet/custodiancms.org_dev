@@ -242,7 +242,7 @@ document.getElementById("user_dropdown_btn").addEventListener("click",function()
 */
 
 document.addEventListener("click", function (event) {
-	if(!event.target.closest("#user_dropdown_btn")) return;
+	if(!event.target.closest(".user_dropdown_btn")) return;
 	document.getElementById("user_dropdown").classList.toggle("show");
 }, false);
 
