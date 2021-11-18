@@ -125,21 +125,12 @@ form{padding-bottom:10px}
 
 /* w3school dropdown START */
 .dropbtn {
-  /*
-	background-color: #04AA6D;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-	*/
   background-color: unset;
 	cursor: pointer;
-
-
-
-	fill:rgb(241, 158, 0);
+	fill:var(--cl4);
 	filter:drop-shadow(2px 2px 4px rgba(0,0,0,.2));
-	width:50px
+	width:50px;
+	margin-top:3px
 }
 
 .dropbtn:hover, .dropbtn:focus {
