@@ -142,6 +142,12 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 }
 
 
+
+
+
+#user_dropdown_btn>*{pointer-events:none}
+
+
 	</style>
 	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 		let navActiveItem = ["nav-dashboard"];
@@ -242,9 +248,11 @@ document.getElementById("user_dropdown_btn").addEventListener("click",function()
 */
 
 document.addEventListener("click", function (event) {
-	if(!event.target.closest(".user_dropdown_btn")) return;
+	if(!event.target.closest("#user_dropdown_btn")) return;
 	document.getElementById("user_dropdown").classList.toggle("show");
 }, false);
+
+
 
 
 
@@ -253,15 +261,15 @@ document.addEventListener("click", function (event) {
 window.onclick = function(event) {
 	if(!event.target.matches('.dropbtn')){
 		var dropdowns = document.getElementsByClassName("dropdown-content");
-			var i;
-			for(i=0;i<dropdowns.length;i++){
-				var openDropdown = dropdowns[i];
-				if(openDropdown.classList.contains('show')){
-					openDropdown.classList.remove('show');
-				}
+		var i;
+		for(i=0;i<dropdowns.length;i++){
+			var openDropdown = dropdowns[i];
+			if(openDropdown.classList.contains('show')){
+				openDropdown.classList.remove('show');
 			}
 		}
 	}
+}
 
 
 

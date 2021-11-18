@@ -125,12 +125,11 @@ form{padding-bottom:10px}
 
 /* w3school dropdown START */
 .dropbtn {
-  background-color: unset;
-	cursor: pointer;
+  background-color:unset;
+	cursor:pointer;
 	fill:var(--cl4);
 	filter:drop-shadow(2px 2px 4px rgba(0,0,0,.2));
 	margin-top:3px;
-	pointer-events:unset;
 	width:50px
 }
 
