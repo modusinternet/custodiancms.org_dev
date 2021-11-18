@@ -230,6 +230,37 @@ $(() => {
 
 
 
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+
+console.log("inside myFunction");
+
+
+}
+
+// Close the dropdown if the user clicks outside of it
+document.addEventListener('DOMContentLoaded', function () {
+	document.getElementById('user_dropdown')
+	.addEventListener('click', myFunction);
+
+console.log("inside event");
+
+	var dropdowns = document.getElementsByClassName("dropdown-content");
+	var i;
+	for (i = 0; i < dropdowns.length; i++) {
+		var openDropdown = dropdowns[i];
+		if (openDropdown.classList.contains('show')) {
+			openDropdown.classList.remove('show');
+		}
+	}
+
+});
+
+
+
+
 
 
 							});
