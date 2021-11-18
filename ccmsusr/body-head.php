@@ -7,8 +7,8 @@
 	</div>
 
 	<div class="dropdown">
-		<button class="dropbtn" id="user_dropdown">Dropdown</button>
-		<div id="myDropdown" class="dropdown-content">
+		<button class="dropbtn" id="user_dropdown_btn">Dropdown</button>
+		<div id="user_dropdown" class="dropdown-content">
 			<a href="#home">Home</a>
 			<a href="#about">About</a>
 			<a href="#contact">Contact</a>
