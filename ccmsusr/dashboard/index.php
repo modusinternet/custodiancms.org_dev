@@ -232,12 +232,11 @@ $(() => {
 
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
+/*
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 
 console.log("inside myFunction");
-
-
 }
 
 // Close the dropdown if the user clicks outside of it
@@ -255,6 +254,15 @@ console.log("inside event");
 			openDropdown.classList.remove('show');
 		}
 	}
+
+});
+*/
+
+document.getElementById("user_dropdown").addEventListener("click", function() {
+  this.classList.toggle("show");
+
+
+
 
 });
 
