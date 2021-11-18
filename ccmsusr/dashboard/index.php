@@ -23,6 +23,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 	cursor:pointer;
 	float:right;
 	height:40px;
+	margin:10px;
 	/*
 	position:absolute;
 	right:20px;
