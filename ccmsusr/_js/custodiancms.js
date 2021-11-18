@@ -30,6 +30,15 @@ toggle between hiding and showing the dropdown content */
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 
+
+
+}
+
+// Close the dropdown if the user clicks outside of it
+document.addEventListener('DOMContentLoaded', function () {
+	document.getElementById('user_dropdown')
+	.addEventListener('click', myFunction);
+
 	var dropdowns = document.getElementsByClassName("dropdown-content");
 	var i;
 	for (i = 0; i < dropdowns.length; i++) {
@@ -38,14 +47,6 @@ function myFunction() {
 			openDropdown.classList.remove('show');
 		}
 	}
-	
-}
-
-// Close the dropdown if the user clicks outside of it
-document.addEventListener('DOMContentLoaded', function () {
-	document.getElementById('user_dropdown').addEventListener('click', myFunction);
-
-
 
 });
 
