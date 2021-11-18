@@ -235,9 +235,15 @@ $(() => {
 
 
 /* When the user clicks on the svg button, toggle between hiding and showing the dropdown content */
-document.getElementById("user_dropdown_btn").addEventListener("click",function(){
+
+
+document.addEventListener('click', function (event) {
+	if(!event.target.closest(".user_dropdown_btn")) return;
 	document.getElementById("user_dropdown").classList.toggle("show");
-});
+}, false);
+
+
+
 
 // Close the dropdown if the user clicks outside of it
 window.onclick = function(event) {
