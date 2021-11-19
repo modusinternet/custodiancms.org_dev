@@ -246,40 +246,24 @@ $(() => {
 
 
 
-/* When the user clicks on the svg button, toggle between hiding and showing the dropdown content */
-/*
-document.getElementById("user_dropdown_btn").addEventListener("click",function(){
-	document.getElementById("user_dropdown").classList.toggle("show");
-});
-*/
-
+/* When the user clicks on the svg button add the 'show' class to the dropdown box below it. */
 $("#user_dropdown_btn").click(function() {
-
-console.log("button clicked");
-
-//	$("#user_dropdown").classList.toggle("show");
 	$("#user_dropdown").addClass("show");
 });
 
+// Hide dropdown menu on click outside
+$(document).on("click", function(e){
+	if(!$(e.target).closest(".user_dropdown_btn").length){
+		$("#user_dropdown").removeClass("show");
+	}
+});
+
 /*
-document.addEventListener("click", function (event) {
-	if(!event.target.closest(".user_dropdown_btn")) return;
-	document.getElementById("user_dropdown").classList.toggle("show");
-}, false);
-*/
-
-
-
-
-
 // Close the dropdown if the user clicks outside of it
 window.onclick = function(event) {
 	if(!event.target.matches('.dropbtn')){
 		var dropdowns = document.getElementsByClassName("dropdown-content");
 		var i;
-
-//console.log("dropdowns.length=["+dropdowns.length+"]");
-
 		for(i=0;i<dropdowns.length;i++){
 			var openDropdown = dropdowns[i];
 			if(openDropdown.classList.contains('show')){
@@ -288,7 +272,7 @@ window.onclick = function(event) {
 		}
 	}
 }
-
+*/
 
 
 
