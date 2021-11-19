@@ -24,11 +24,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 	float:right;
 	height:40px;
 	margin:25px 20px 0 10px;
-	/*
-	position:absolute;
-	right:20px;
-	top:20px;
-	*/
 }
 
 #menu-cnt {
