@@ -253,8 +253,8 @@ document.getElementById("user_dropdown_btn").addEventListener("click",function()
 });
 */
 
-$( "#user_dropdown_btn" ).click(function() {
-  $( "#user_dropdown" ).addClass( "show");
+$("#user_dropdown_btn").click(function() {
+  $("#user_dropdown").addClass("show");
 });
 
 /*
@@ -274,7 +274,7 @@ window.onclick = function(event) {
 		var dropdowns = document.getElementsByClassName("dropdown-content");
 		var i;
 
-console.log("dropdowns.length=["+dropdowns.length+"]");
+//console.log("dropdowns.length=["+dropdowns.length+"]");
 
 		for(i=0;i<dropdowns.length;i++){
 			var openDropdown = dropdowns[i];
