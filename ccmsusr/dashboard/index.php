@@ -19,40 +19,16 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 	<style>
 		{CCMS_TPL:/_css/head-css.html}
 
-#menu-ctn {
-	cursor:pointer;
-	float:right;
-	height:40px;
-	margin:25px 20px 0 10px;
-}
-
-#menu-cnt {
-  display:none;
-	position:fixed;
-	top:80px;
-	left:0px;
-	height:80%;
-	overflow:auto
-}
-
-#menu-cnt svg{
+/* metisMenu START */
+.menu-bars{
+	background:var(--cl4);
+	height:4px;
+	list-style:none;
 	width:30px;
+	margin:0 7px;
 	position:relative;
-	top:5px;
-}
-
-#menu-cnt a>svg>path{fill:var(--cl0)}
-
-/* ELEMENT PROPERTIES */
-.menu-bars {
-  height: 4px;
-  width: 30px;
-  list-style: none;
-  background: var(--cl4);
-  margin: 0 7px;
-  position: relative;
-  top: 18px;
-  transition: 0.4s all ease-in;
+	top:18px;
+	transition:0.4s all ease-in
 }
 
 .crossed {
@@ -97,47 +73,61 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
   animation: rotate-bottom-bar-2 0.4s reverse;
 }
 
-#menu-ctn{filter:drop-shadow(2px 2px 4px rgba(0,0,0,.2))}
+#menu-cnt {
+  display:none;
+	position:fixed;
+	top:80px;
+	left:0px;
+	height:80%;
+	overflow:auto
+}
+
+#menu-cnt svg{
+	width:30px;
+	position:relative;
+	top:5px
+}
+
+#menu-cnt a>svg>path{fill:var(--cl0)}
+
+#menu-ctn {
+	cursor:pointer;
+	filter:drop-shadow(2px 2px 4px rgba(0,0,0,.2));
+	height:40px;
+	position:absolute;
+	right:10px;
+	top:10px
+}
 
 /* ANIMATION KEYFRAMES */
-@keyframes rotate-top-bar {
-  40% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(0) rotate(45deg);
-  }
+@keyframes rotate-top-bar{
+	40%{transform:translateY(0)}
+	100%{transform:translateY(0) rotate(45deg)}
 }
 
 @keyframes rotate-bottom-bar {
-  40% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(0) rotate(-45deg);
-  }
+	40%{transform:translateY(0)}
+	100%{transform: translateY(0) rotate(-45deg)}
 }
 
 @keyframes rotate-top-bar-2 {
-  40% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(0) rotate(45deg);
-  }
+	40%{transform:translateY(0)}
+	100%{transform:translateY(0) rotate(45deg)}
 }
 
 @keyframes rotate-bottom-bar-2 {
-  40% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(0) rotate(-45deg);
-  }
+	40%{transform:translateY(0)}
+	100%{transform:translateY(0) rotate(-45deg)}
 }
+/* metisMenu END */
 
 
 
+#user_dropdown{
+	position:fixed;
+	top:10px;
+	right:100px;
+}
 
 #user_dropdown_btn{
 	cursor:pointer;
@@ -243,31 +233,15 @@ $(() => {
 
 /* When the user clicks on the svg button add the 'show' class to the dropdown box below it. */
 $("#user_dropdown_btn").click(function() {
-	$("#user_dropdown").addClass("show");
+	$("#user_dropdown_list").addClass("show");
 });
 
 // Hide dropdown menu on click outside
 $(document).on("click", function(e){
 	if(!$(e.target).closest("#user_dropdown_btn").length){
-		$("#user_dropdown").removeClass("show");
+		$("#user_dropdown_list").removeClass("show");
 	}
 });
-
-/*
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-	if(!event.target.matches('.dropbtn')){
-		var dropdowns = document.getElementsByClassName("dropdown-content");
-		var i;
-		for(i=0;i<dropdowns.length;i++){
-			var openDropdown = dropdowns[i];
-			if(openDropdown.classList.contains('show')){
-				openDropdown.classList.remove('show');
-			}
-		}
-	}
-}
-*/
 
 
 
