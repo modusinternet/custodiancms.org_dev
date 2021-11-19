@@ -23,7 +23,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 	cursor:pointer;
 	float:right;
 	height:40px;
-	margin:10px;
+	margin:25px 20px 0 10px;
 	/*
 	position:absolute;
 	right:20px;
@@ -148,7 +148,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 	cursor:pointer;
 	background-color:unset;
 	border:none;
-	padding:2px 10px
+	padding:16px 0px
 }
 
 #user_dropdown_btn>svg>*{pointer-events:none}
