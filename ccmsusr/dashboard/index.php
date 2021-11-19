@@ -151,7 +151,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 	padding:2px 10px
 }
 
-#user_dropdown_btn>*{pointer-events:none}
+#user_dropdown_btn>svg>*{pointer-events:none}
 
 
 	</style>
@@ -253,7 +253,7 @@ $("#user_dropdown_btn").click(function() {
 
 // Hide dropdown menu on click outside
 $(document).on("click", function(e){
-	if(!$(e.target).closest(".user_dropdown_btn").length){
+	if(!$(e.target).closest("#user_dropdown_btn").length){
 		$("#user_dropdown").removeClass("show");
 	}
 });
