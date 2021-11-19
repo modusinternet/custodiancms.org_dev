@@ -146,6 +146,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 #user_dropdown_btn{
 	cursor:pointer;
+	background-color:unset;
 	border:none;
 	padding:2px 10px
 }
