@@ -254,7 +254,7 @@ document.getElementById("user_dropdown_btn").addEventListener("click",function()
 */
 
 $( "#user_dropdown_btn" ).click(function() {
-  $( "#user_dropdown" ).toggle( "show");
+  $( "#user_dropdown" ).classList.toggle( "show");
 });
 
 /*
