@@ -10,7 +10,7 @@
 		<li class="menu-bars"></li>
 	</div>
 
-	<div class="dropdown" style="float:right">
+	<div class="dropdown">
 
 
 

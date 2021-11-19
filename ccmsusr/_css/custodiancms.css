@@ -134,9 +134,9 @@ form{padding-bottom:10px}
 }
 
 .dropdown {
-  float: right;
-  position: relative;
-  display: inline-block;
+	display:inline-block;
+	float:right;
+	position:relative
 }
 
 .dropdown-content {
