@@ -93,8 +93,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 #menu-ctn {
 	cursor:pointer;
 	filter:drop-shadow(2px 2px 4px rgba(0,0,0,.2));
-	height:40px;
-	position:absolute;
+	position:fixed;
 	right:10px;
 	top:10px
 }
@@ -125,15 +124,14 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 #user_dropdown{
 	position:fixed;
-	top:10px;
-	right:100px;
+	top:4px;
+	right:70px;
 }
 
 #user_dropdown_btn{
 	cursor:pointer;
 	background-color:unset;
-	border:none;
-	padding:16px 0px
+	border:none
 }
 
 #user_dropdown_btn>svg>*{pointer-events:none}
