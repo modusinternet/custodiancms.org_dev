@@ -76,7 +76,7 @@ form{padding-bottom:10px}
 
 
 /* metisMenu START */
-.sidebar-nav{background:#212529}
+.sidebar-nav{background-color:var(--cl4)}
 
 .sidebar-nav ul{
 	background:#343a40;
@@ -140,7 +140,7 @@ form{padding-bottom:10px}
 }
 
 .dropdown-content {
-	background-color:#212529;
+	background-color:var(--cl4);
 	box-shadow:0 5px 10px 0 rgba(0,0,0,0.2);
 	display:none;
 	overflow:auto;
