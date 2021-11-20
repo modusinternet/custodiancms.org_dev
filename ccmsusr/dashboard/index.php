@@ -76,7 +76,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 #menu-cnt {
   display:none;
 	position:fixed;
-	top:80px;
+	top:100px;
 	left:0px;
 	height:80%;
 	overflow:auto
