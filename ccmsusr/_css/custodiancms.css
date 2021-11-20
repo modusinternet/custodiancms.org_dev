@@ -86,7 +86,7 @@ form{padding-bottom:10px}
 }
 
 .sidebar-nav .metismenu{
-	background:#212529;
+	background-color:var(--cl4);
 	display:flex;
 	flex-direction:column
 }
