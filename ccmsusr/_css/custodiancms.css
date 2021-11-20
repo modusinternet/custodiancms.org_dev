@@ -156,7 +156,7 @@ form{padding-bottom:10px}
   display: block;
 }
 
-.dropdown a:hover {background-color: #ddd;}
+.dropdown-content a:hover {background-color: #ddd;}
 
 .show {display: block;}
 /* w3school dropdown END */
