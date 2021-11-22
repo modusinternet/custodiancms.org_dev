@@ -95,8 +95,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 	cursor:pointer;
 	filter:drop-shadow(2px 2px 4px rgba(0,0,0,.2));
 	position:fixed;
-	right:10px;
-	top:10px
+	right:18px;
+	top:25px
 }
 
 /* ANIMATION KEYFRAMES */
@@ -125,8 +125,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 #user_dropdown{
 	position:fixed;
-	top:4px;
-	right:70px;
+	top:20px;
+	right:80px;
 }
 
 #user_dropdown_btn{
