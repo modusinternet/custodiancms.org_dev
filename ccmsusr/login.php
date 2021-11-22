@@ -19,6 +19,8 @@ if(isset($_SESSION['EXPIRED']) == "1") {
 } elseif(isset($CLEAN["ccms_logout"]) == "1") {
 	// Log out
 
+header("ccms_logout = [".$CLEAN["ccms_logout"]."]");
+
 	$_SESSION["USER_ID"] = null;
 	$_SESSION["2FA_VALID"] = null;
 	$ccms_login_message["SUCCESS"] = "Logout Successful";
