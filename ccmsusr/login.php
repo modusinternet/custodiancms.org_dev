@@ -423,7 +423,7 @@ $email_message .= "\r\n\r\n--" . $boundary . "--";
 //if(empty($CLEAN["ccms_login"]) && empty($CLEAN["ccms_logout"]) && $CLEAN["ccms_pass_reset_part_1"] == "" && $CLEAN["ccms_pass_reset_part_2"] == "") {
 if(
 	(empty($CLEAN["ccms_login"]) || $CLEAN["ccms_login"] == "MAXLEN" || $CLEAN["ccms_login"] == "INVAL") &&
-	(empty($CLEAN["ccms_logout"]) || $CLEAN["ccms_logout"] == "MAXLEN" || $CLEAN["ccms_logout"] == "INVAL") &&
+	(empty($CLEAN["ccms_logout"]) || $CLEAN["ccms_logout"] == "1" || $CLEAN["ccms_logout"] == "MAXLEN" || $CLEAN["ccms_logout"] == "INVAL") &&
 	(empty($CLEAN["ccms_pass_reset_part_1"]) || $CLEAN["ccms_pass_reset_part_1"] == "MAXLEN" || $CLEAN["ccms_pass_reset_part_1"] == "INVAL") &&
 	(empty($CLEAN["ccms_pass_reset_part_2"]) || $CLEAN["ccms_pass_reset_part_2"] == "MAXLEN" || $CLEAN["ccms_pass_reset_part_2"] == "INVAL")) {
 	$_POST["ccms_login"] = "1";
