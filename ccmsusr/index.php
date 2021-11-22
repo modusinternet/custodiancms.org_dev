@@ -46,6 +46,8 @@ if(($_SESSION["FAIL"] ?? null) >= 5) {
 	exit;
 }
 
+header("ccms_logout: ".$_POST["ccms_logout"]);
+
 if(!isset($_SESSION["USER_ID"]) || isset($_POST["ccms_login"]) || isset($_POST["ccms_logout"]) || isset($_POST["ccms_pass_reset_part_1"]) || isset($_POST["ccms_pass_reset_part_2"])) {
 	$CLEAN["ccms_tpl"] = "/login.php";
 }
