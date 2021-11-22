@@ -74,6 +74,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 }
 
 #menu-cnt {
+	box-shadow:2px 3px 10px 0 rgba(0,0,0,0.2);
   display:none;
 	position:fixed;
 	top:100px;
