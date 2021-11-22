@@ -137,6 +137,9 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 #user_dropdown_btn>svg>*{pointer-events:none}
 
+#user_dropdown_list a>svg{width:30px}
+
+#user_dropdown_list a>svg>path{fill:var(--cl0)}
 
 	</style>
 	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
