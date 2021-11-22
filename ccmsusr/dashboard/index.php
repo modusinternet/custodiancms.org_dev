@@ -137,7 +137,11 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 #user_dropdown_btn>svg>*{pointer-events:none}
 
-#user_dropdown_list a>svg{width:30px}
+#user_dropdown_list a>svg{
+	position:relative;
+	top:5px;
+	width:30px;
+}
 
 #user_dropdown_list a>svg>path{fill:var(--cl0)}
 

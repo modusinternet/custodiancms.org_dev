@@ -146,6 +146,7 @@ form{padding-bottom:10px}
 	overflow:auto;
 	position:absolute;
 	right:0;
+	width:max-content;
 	z-index:1;
 }
 
