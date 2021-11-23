@@ -187,8 +187,9 @@ function ccms_user_admin_slider() {
 		<div id="CCMSTab-slide-inner">
 			<div class="CCMSTab-slide-header">User Admin Slider</div>
 			<div id="CCMSEdit-edit-mode-switch">
+				<span>Edit Mode On/Off: </span>
 				<label id="CCMSEdit-edit-mode-switch-label">
-					Edit Mode On/Off <input id="CCMSEdit-edit-mode-switch-check" type="checkbox" onclick="ccms_edit_mode_switch();">
+					<input id="CCMSEdit-edit-mode-switch-check" type="checkbox" onclick="ccms_edit_mode_switch();">
 					<span class="slider round"></span>
 				</label>
 			</div>
