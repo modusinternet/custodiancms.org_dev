@@ -176,7 +176,16 @@ function ccms_user_admin_slider() {
 	if(($json_a["priv"]["content_manager"]["r"] ?? null) === 1): ?>
 <!-- link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" charset="utf-8" -->
 <style>
-	#CCMSTab-slide{position:fixed;top:90px;right:0;z-index:99999999;font:600 20px/32px "Open Sans",sans-serif;-webkit-transition-duration:.3s;-moz-transition-duration:.3s;-o-transition-duration:.3s;transition-duration:.3s}
+	#CCMSTab-slide{
+		font:600 20px/32px "Open Sans",sans-serif;
+		position:fixed;
+		right:-35px;
+		top:90px;
+		z-index:99999999;
+		-webkit-transition-duration:.3s;
+		-moz-transition-duration:.3s;
+		-o-transition-duration:.3s;
+		transition-duration:.3s}
 
 	#CCMSTab-slide-tab{
 		background:#86B135;
