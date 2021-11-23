@@ -210,7 +210,7 @@ function ccms_user_admin_slider() {
 		</ul>
 		<div id="CCMSEdit-user">
 			<a class="CCMSEdit-alias" href="/<?php echo $CLEAN["ccms_lng"]; ?>/user/">
-				<?php echo $CLEAN["alias"]; ?>
+				<?php echo $_SESSION["ALIAS"]; ?>
 			</a>
 			<span>
 				<a class="CCMSEdit-logout" href="/<?php echo $CLEAN["ccms_lng"]; ?>/user/?ccms_logout=1" title="<?php echo $CLEAN["CCMS_DB_Preload_Content"]["all"]["login3"][$CLEAN["ccms_lng"]]["content"]; ?>">
