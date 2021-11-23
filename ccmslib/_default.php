@@ -174,24 +174,23 @@ function ccms_user_admin_slider() {
 	if(($json_a["priv"]["content_manager"]["r"] ?? null) === 1): ?>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" charset="utf-8">
 <style>
-	#CCMSTab-slide{position:fixed;top:90px;right:0;z-index:99999999;font: 16px/1.8 'Open Sans';-webkit-transition-duration:.3s;-moz-transition-duration:.3s;-o-transition-duration:.3s;transition-duration:.3s;box-shadow:10px 10px 10px #888}
+	#CCMSTab-slide{position:fixed;top:90px;right:0;z-index:99999999;font: 16px/1.8 'Open Sans';-webkit-transition-duration:.3s;-moz-transition-duration:.3s;-o-transition-duration:.3s;transition-duration:.3s}
 
 	#CCMSTab-slide-tab{
 		background:#86B135;
 		border-radius:5px 0 0 5px;
+		box-shadow: 10px 5px 10px #888;
 		color:#fff;
 		cursor:pointer;
-		display:inline;
-		left:0;
-		padding:12px 6px 12px 12px;
+		display:block;
+		padding:8px 0 3px 8px;
 		position:relative;
-		text-align:center;
-		top:0;
+		top:-62px;
 		-moz-border-radius:5px 0 0 5px;
 		-webkit-border-radius:5px 0 0 5px;
 	}
 
-	#CCMSTab-slide-tab svg{width:20px}
+	#CCMSTab-slide-tab svg{width:30px}
 
 	#CCMSTab-slide-tab svg>path{fill:var(--cl0)}
 
