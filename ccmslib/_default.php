@@ -52,10 +52,12 @@ function ccms_googleRecapPubKey() {
 	echo $CFG["GOOGLE_RECAPTCHA_PUBLICKEY"];
 }
 
+
 function ccms_googleCredKey() {
 	global $CFG;
 	echo $CFG["GOOGLE_CREDENTIALS_KEY"];
 }
+
 
 function ccms_hrefLang_list() {
 	// International targeting by listing alternate language pages.
@@ -199,9 +201,13 @@ function ccms_user_admin_slider() {
 			while($row = $qry->fetch()) {
 				if($json_a["priv"]["content_manager"]["lng"][$row["lng"]] == 1 || $json_a["priv"]["content_manager"]["lng"][$row["lng"]] == 2) {
 					if($row["ptrLng"]) {
-						echo "<li id=\"ccms-lng-" . $row["lng"] . "\"><a href=\"/" . $row["ptrLng"] . "/" . $tpl . "\" title=\"Points to lng code: " . $row["ptrLng"] . "\">" . $row["lngDesc"] . "</a></li>";
+						echo "<li id=\"ccms_lng-" . $row["lng"] . "\"><a href=\"/" . $row["ptrLng"] . "/" . $tpl . "\" title=\"Points to lng code: " . $row["ptrLng"] . "\">" . $row["lngDesc"] . "</a></li>";
 					} else {
-						echo "<li id=\"ccms-lng-" . $row["lng"] . "\"><a href=\"/" . $row["lng"] . "/" . $tpl . "\" title=\"lng code: " . $row["lng"] . "\">" . $row["lngDesc"] . "</a></li>";
+						echo "<li id=\"ccms_lng-" . $row["lng"] . "\"";
+
+if($row["lng"] === $CLEAN["ccms_lng"]){echo ' style="text-decoration:underline dotted"';}
+
+						echo "><a href=\"/" . $row["lng"] . "/" . $tpl . "\" title=\"lng code: " . $row["lng"] . "\">" . $row["lngDesc"] . "</a></li>";
 					}
 				}
 			}
