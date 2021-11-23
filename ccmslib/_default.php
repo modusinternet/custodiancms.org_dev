@@ -180,7 +180,7 @@ function ccms_user_admin_slider() {
 		font:600 20px/32px "Open Sans",sans-serif;
 		position:fixed;
 		right:-35px;
-		top:90px;
+		top:120px;
 		z-index:99999999;
 		-webkit-transition-duration:.3s;
 		-moz-transition-duration:.3s;
