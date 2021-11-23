@@ -241,7 +241,7 @@ function ccms_user_admin_slider() {
 
 
 	<?php endif;
-
+}
 
 
 
@@ -250,10 +250,12 @@ function ccms_dateYear() {
 	echo date("Y");
 }
 
+
 function ccms_lng() {
 	global $CLEAN;
 	echo $CLEAN["ccms_lng"];
 }
+
 
 function ccms_lng_ret() {
 	/* Used to return a value without submitting it to a template buffer prematurely. */
@@ -261,10 +263,12 @@ function ccms_lng_ret() {
 	return $CLEAN["ccms_lng"];
 }
 
+
 function ccms_lng_dir() {
 	global $CFG;
 	echo $CFG["CCMS_LNG_DIR"];
 }
+
 
 function ccms_lng_dir_ret() {
 	/* Used to return a value without submitting it to a template buffer prematurely. */
@@ -272,9 +276,11 @@ function ccms_lng_dir_ret() {
 	return $CFG["CCMS_LNG_DIR"];
 }
 
+
 function ccms_token() {
 	echo md5(time());
 }
+
 
 function ccms_printrClean() {
 	global $CLEAN;
@@ -283,20 +289,24 @@ function ccms_printrClean() {
 	echo "</pre>]\n";
 }
 
+
 function ccms_version() {
 	global $CFG;
 	echo $CFG["VERSION"];
 }
+
 
 function ccms_release_date() {
 	global $CFG;
 	echo $CFG["RELEASE_DATE"];
 }
 
+
 function ccms_tpl() {
 	global $CLEAN;
 	echo $CLEAN["ccms_tpl"];
 }
+
 
 function _phpinfo() {
 	return phpinfo();
