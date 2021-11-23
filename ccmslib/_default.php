@@ -174,7 +174,7 @@ function ccms_user_admin_slider() {
 	if(($json_a["priv"]["content_manager"]["r"] ?? null) === 1): ?>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" charset="utf-8">
 <style>
-	#CCMSTab-slide{position:fixed;top:90px;right:0;z-index:99999999;font: 16px/1.8 'Open Sans';-webkit-transition-duration:.3s;-moz-transition-duration:.3s;-o-transition-duration:.3s;transition-duration:.3s;box-shadow:10px 10px 10px #888}#CCMSTab-slide-tab{position:relative;top:0;left:0;display:inline;padding:12px 6px 12px 12px;text-align:center;background:#86B135;color:#fff;cursor:pointer;-webkit-border-radius:5px 0 0 5px;-moz-border-radius:5px 0 0 5px;border-radius:5px 0 0 5px}#CCMSTab-slide-outer{position:absolute;top:-70px;left:35px;width:265px;background:#86B135;border-radius:5px 0 0 5px;box-shadow:10px 5px 10px #888;-webkit-border-radius:5px 0 0 5px;-moz-border-radius:5px 0 0 5px;}#CCMSTab-slide-inner{color:#fff;margin:15px;}#CCMSTab-slide-tab-checkbox:checked + #CCMSTab-slide{right:265px}#CCMSTab-slide-tab-checkbox{display:none}.CCMSTab-slide-header{font-size:18px;font-weight:700;text-align:center;color:inherit;border-bottom:1px solid #fff;padding-bottom:10px;margin-bottom:20px}#CCMSEdit-edit-mode-switch,#CCMSEdit-edit-mode-switch > p{color:inherit}#CCMSEdit-edit-mode-switch > p{float:right!important}#CCMSEdit-edit-mode-switch > p > label{float:left!important}#CCMSEdit-edit-mode-switch-label{position:relative;top:-7px;display:inline-block;width:60px;height:34px}#CCMSEdit-edit-mode-switch-label input{display:none}.slider{position:absolute;cursor:pointer;top:4px;left:0;right:0;bottom:-3px;background-color:#ccc;-webkit-transition:.4s;transition:.4s}.slider:before{position:absolute;content:"";height:26px;width:26px;left:4px;bottom:4px;background-color:#fff;-webkit-transition:.4s;transition:.4s}#CCMSEdit-edit-mode-switch-label input{display:none}#CCMSEdit-edit-mode-switch-label input:checked + .slider{background-color:#A2D345}#CCMSEdit-edit-mode-switch-label input:focus + .slider{box-shadow:0 0 1px #A2D345}#CCMSEdit-edit-mode-switch-label input:checked + .slider:before{-webkit-transform:translateX(26px);-ms-transform:translateX(26px);transform:translateX(26px)}.slider.round{border-radius:34px}.slider.round:before{border-radius:50%}#CCMSlng-list{list-style:none;margin:0 0 15px 0;padding:0;max-height:200px;overflow-y:scroll;overflow-x:hidden;width:100%}#CCMSlng-list li{margin:5px 0;}#CCMSlng-list li > a:link,#CCMSlng-list li > a:visited{color:#fff;text-decoration:none}#CCMSlng-list li > a:hover,#CCMSlng-list li > a:active{color:#fff;text-decoration:none;border-bottom:1px solid #fff}@media (max-height:340px){#CCMSlng-list{max-height:90px;overflow-y:scroll;overflow-x:hidden}}.CCMSEdit-logout:link,.CCMSEdit-logout:visited{color:#fff;font-size:22px;text-decoration:none}.CCMSEdit-logout:hover,.CCMSEdit-logout:active{color:#fff;text-decoration:none}.CCMS-wrap{position:relative}.CCMSEdit-edit-link-border{border:1px dashed #86B135;padding:30px 10px 0 5px;display:block;background-color:#E5F2CD}.CCMS-editor-but{position:absolute;top:-10px;right:20px;z-index:9999999;padding:4px 8px;font-size:16px;line-height:1.5;border-radius:3px;color:#fff;background-color:#86B135;border:1px solid transparent;cursor:pointer;vertical-align:middle;text-align:center;box-shadow:5px 5px 10px #888}.CCMS-editor-savebut{right:110px}.CCMS-editor-textarea{width:99%;overflow-y:auto;font-family:inherit;font-style:inherit;font-variant:inherit;font-weight:inherit;font-stretch:inherit;font-size:inherit;line-height:inherit;resize:both}.hidden{display:none}#CCMS-loadingSpinner{display:none;position:absolute;background:#fff}#CCMS-loadingSpinner-load{position:absolute}#CCMSEdit-edit-mode-lng{width:100%;height:34px;padding:6px 12px;margin-bottom:10px;font-size:14px;line-height:1.42857143;color:#555;background-color:#fff;background-image:none;border:1px solid #ccc;border-radius:4px;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075);box-shadow:inset 0 1px 1px rgba(0,0,0,.075);-webkit-transition:border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s}
+	#CCMSTab-slide{position:fixed;top:90px;right:0;z-index:99999999;font: 16px/1.8 'Open Sans';-webkit-transition-duration:.3s;-moz-transition-duration:.3s;-o-transition-duration:.3s;transition-duration:.3s;box-shadow:10px 10px 10px #888}#CCMSTab-slide-tab{position:relative;top:0;left:0;display:inline;padding:12px 6px 12px 12px;text-align:center;background:#86B135;color:#fff;cursor:pointer;-webkit-border-radius:5px 0 0 5px;-moz-border-radius:5px 0 0 5px;border-radius:5px 0 0 5px}#CCMSTab-slide-outer{position:absolute;top:-70px;left:35px;width:265px;background:#86B135;border-radius:5px 0 0 5px;box-shadow:10px 5px 10px #888;-webkit-border-radius:5px 0 0 5px;-moz-border-radius:5px 0 0 5px;}#CCMSTab-slide-inner{color:#fff;margin:15px;}#CCMSTab-slide-tab-checkbox:checked + #CCMSTab-slide{right:265px}#CCMSTab-slide-tab-checkbox{display:none}.CCMSTab-slide-header{font-size:18px;font-weight:700;text-align:center;color:inherit;border-bottom:1px solid #fff;padding-bottom:10px;margin-bottom:20px}#CCMSEdit-edit-mode-switch,#CCMSEdit-edit-mode-switch > p{color:inherit}#CCMSEdit-edit-mode-switch > p{float:right!important}#CCMSEdit-edit-mode-switch > p > label{float:left!important}#CCMSEdit-edit-mode-switch-label{position:relative;top:-7px;display:inline-block;width:60px;height:34px}#CCMSEdit-edit-mode-switch-label input{display:none}.slider{position:absolute;cursor:pointer;top:4px;left:0;right:0;bottom:-3px;background-color:#ccc;-webkit-transition:.4s;transition:.4s}.slider:before{position:absolute;content:"";height:26px;width:26px;left:4px;bottom:4px;background-color:#fff;-webkit-transition:.4s;transition:.4s}#CCMSEdit-edit-mode-switch-label input{display:none}#CCMSEdit-edit-mode-switch-label input:checked + .slider{background-color:#A2D345}#CCMSEdit-edit-mode-switch-label input:focus + .slider{box-shadow:0 0 1px #A2D345}#CCMSEdit-edit-mode-switch-label input:checked + .slider:before{-webkit-transform:translateX(26px);-ms-transform:translateX(26px);transform:translateX(26px)}.slider.round{border-radius:34px}.slider.round:before{border-radius:50%}#CCMSlng-list{list-style:none;margin:0 0 15px 0;padding:0;max-height:200px;overflow-y:scroll;overflow-x:hidden;width:100%}#CCMSlng-list li{margin:5px 0;}#CCMSlng-list li > a:link,#CCMSlng-list li > a:visited{color:#fff;text-decoration:none}#CCMSlng-list li > a:hover,#CCMSlng-list li > a:active{color:#fff;text-decoration:none;border-bottom:1px solid #fff}@media (max-height:340px){#CCMSlng-list{max-height:90px;overflow-y:scroll;overflow-x:hidden}}.CCMS-wrap{position:relative}.CCMSEdit-edit-link-border{border:1px dashed #86B135;padding:30px 10px 0 5px;display:block;background-color:#E5F2CD}.CCMS-editor-but{position:absolute;top:-10px;right:20px;z-index:9999999;padding:4px 8px;font-size:16px;line-height:1.5;border-radius:3px;color:#fff;background-color:#86B135;border:1px solid transparent;cursor:pointer;vertical-align:middle;text-align:center;box-shadow:5px 5px 10px #888}.CCMS-editor-savebut{right:110px}.CCMS-editor-textarea{width:99%;overflow-y:auto;font-family:inherit;font-style:inherit;font-variant:inherit;font-weight:inherit;font-stretch:inherit;font-size:inherit;line-height:inherit;resize:both}.hidden{display:none}#CCMS-loadingSpinner{display:none;position:absolute;background:#fff}#CCMS-loadingSpinner-load{position:absolute}#CCMSEdit-edit-mode-lng{width:100%;height:34px;padding:6px 12px;margin-bottom:10px;font-size:14px;line-height:1.42857143;color:#555;background-color:#fff;background-image:none;border:1px solid #ccc;border-radius:4px;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075);box-shadow:inset 0 1px 1px rgba(0,0,0,.075);-webkit-transition:border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s}
 </style>
 <input type="checkbox" id="CCMSTab-slide-tab-checkbox" onclick="ccms_tab_switch();">
 <div id="CCMSTab-slide">
@@ -182,16 +182,16 @@ function ccms_user_admin_slider() {
 		<i class="fa fa-cogs fa-spin"></i>
 	</label>
 	<div id="CCMSTab-slide-outer">
-	<div id="CCMSTab-slide-inner">
-		<div class="CCMSTab-slide-header">User Admin Slider</div>
-		<div id="CCMSEdit-edit-mode-switch">
-			<p>Edit Mode</p>
-			<label id="CCMSEdit-edit-mode-switch-label">
-				<input id="CCMSEdit-edit-mode-switch-check" type="checkbox" onclick="ccms_edit_mode_switch();">
-				<span class="slider round"></span>
-			</label>
-		</div>
-		<ul id="CCMSlng-list">
+		<div id="CCMSTab-slide-inner">
+			<div class="CCMSTab-slide-header">User Admin Slider</div>
+			<div id="CCMSEdit-edit-mode-switch">
+				<p>Edit Mode</p>
+				<label id="CCMSEdit-edit-mode-switch-label">
+					<input id="CCMSEdit-edit-mode-switch-check" type="checkbox" onclick="ccms_edit_mode_switch();">
+					<span class="slider round"></span>
+				</label>
+			</div>
+			<ul id="CCMSlng-list">
 		<?php
 		$tpl = htmlspecialchars(preg_replace('/^\/([\pL\pN-]*)\/?(.*)\z/i', '${2}', $_SERVER['REQUEST_URI']));
 		$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_lng_charset` ORDER BY lngDesc ASC;");
@@ -199,27 +199,25 @@ function ccms_user_admin_slider() {
 			while($row = $qry->fetch()) {
 				if($json_a["priv"]["content_manager"]["lng"][$row["lng"]] == 1 || $json_a["priv"]["content_manager"]["lng"][$row["lng"]] == 2) {
 					if($row["ptrLng"]) {
-						echo "\t\t\t<li id=\"ccms-lng-" . $row["lng"] . "\" onclick=\"ccms_lcu('" . $row["ptrLng"] . "');\" title=\"Points to lng code: " . $row["ptrLng"] . "\"><a href=\"/" . $row["ptrLng"] . "/" . $tpl . "\">" . $row["lngDesc"] . "</a></li>\n";
+						echo "<li id=\"ccms-lng-" . $row["lng"] . "\"><a href=\"/" . $row["ptrLng"] . "/" . $tpl . "\" title=\"Points to lng code: " . $row["ptrLng"] . "\">" . $row["lngDesc"] . "</a></li>";
 					} else {
-						echo "\t\t\t<li id=\"ccms-lng-" . $row["lng"] . "\" onclick=\"ccms_lcu('" . $row["lng"] . "');\" title=\"lng code: " . $row["lng"] . "\"><a href=\"/" . $row["lng"] . "/" . $tpl . "\">" . $row["lngDesc"] . "</a></li>\n";
+						echo "<li id=\"ccms-lng-" . $row["lng"] . "\"><a href=\"/" . $row["lng"] . "/" . $tpl . "\" title=\"lng code: " . $row["lng"] . "\">" . $row["lngDesc"] . "</a></li>";
 					}
 				}
 			}
 		}
 		?>
-		</ul>
-		<div id="CCMSEdit-user">
-			<a class="CCMSEdit-alias" href="/<?php echo $CLEAN["ccms_lng"]; ?>/user/" title="Dashboard">
-				<svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 24 24"><path fill="#fff" d="M10,13H4a1,1,0,0,0-1,1v6a1,1,0,0,0,1,1h6a1,1,0,0,0,1-1V14A1,1,0,0,0,10,13ZM9,19H5V15H9ZM20,3H14a1,1,0,0,0-1,1v6a1,1,0,0,0,1,1h6a1,1,0,0,0,1-1V4A1,1,0,0,0,20,3ZM19,9H15V5h4Zm1,7H18V14a1,1,0,0,0-2,0v2H14a1,1,0,0,0,0,2h2v2a1,1,0,0,0,2,0V18h2a1,1,0,0,0,0-2ZM10,3H4A1,1,0,0,0,3,4v6a1,1,0,0,0,1,1h6a1,1,0,0,0,1-1V4A1,1,0,0,0,10,3ZM9,9H5V5H9Z"/></svg>
-				<!-- a href="https://iconscout.com/">Unicons by Iconscout</a -->
-			</a>
-			<span>
-				<a class="CCMSEdit-logout" href="/<?php echo $CLEAN["ccms_lng"]; ?>/user/?ccms_logout=1" title="<?php echo $CLEAN["CCMS_DB_Preload_Content"]["all"]["login3"][$CLEAN["ccms_lng"]]["content"]; ?>">
-					<i class="fa fa-sign-out fa-fw"></i>
+			</ul>
+			<div>
+				<a href="/<?php echo $CLEAN["ccms_lng"]; ?>/user/" title="Dashboard">
+					<svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 24 24"><path fill="#fff" d="M10,13H4a1,1,0,0,0-1,1v6a1,1,0,0,0,1,1h6a1,1,0,0,0,1-1V14A1,1,0,0,0,10,13ZM9,19H5V15H9ZM20,3H14a1,1,0,0,0-1,1v6a1,1,0,0,0,1,1h6a1,1,0,0,0,1-1V4A1,1,0,0,0,20,3ZM19,9H15V5h4Zm1,7H18V14a1,1,0,0,0-2,0v2H14a1,1,0,0,0,0,2h2v2a1,1,0,0,0,2,0V18h2a1,1,0,0,0,0-2ZM10,3H4A1,1,0,0,0,3,4v6a1,1,0,0,0,1,1h6a1,1,0,0,0,1-1V4A1,1,0,0,0,10,3ZM9,9H5V5H9Z"/></svg>
+					<!-- a href="https://iconscout.com/">Unicons by Iconscout</a -->
 				</a>
-			</span>
+				<a href="/<?php echo $CLEAN["ccms_lng"]; ?>/user/?ccms_logout=1" title="<?php echo $CLEAN["CCMS_DB_Preload_Content"]["all"]["login3"][$CLEAN["ccms_lng"]]["content"]; ?>">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#fff" d="M4,12a1,1,0,0,0,1,1h7.59l-2.3,2.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l4-4a1,1,0,0,0,.21-.33,1,1,0,0,0,0-.76,1,1,0,0,0-.21-.33l-4-4a1,1,0,1,0-1.42,1.42L12.59,11H5A1,1,0,0,0,4,12ZM17,2H7A3,3,0,0,0,4,5V8A1,1,0,0,0,6,8V5A1,1,0,0,1,7,4H17a1,1,0,0,1,1,1V19a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V16a1,1,0,0,0-2,0v3a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V5A3,3,0,0,0,17,2Z"/></svg>
+				</a>
+			</div>
 		</div>
-	</div>
 	</div>
 </div>
 <div id="CCMS-loadingSpinner">
