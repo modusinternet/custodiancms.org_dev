@@ -591,7 +591,7 @@ if($row["lng"] === $CLEAN["ccms_lng"]){echo ' style="text-decoration:underline d
 		});
 	}
 
-	$("#CCMSTab-slide-tab-checkbox").click(ccms_tab_switch());
+	$("#CCMSTab-slide-tab-checkbox").click(ccms_tab_switch);
 
 	if(window.addEventListener)
 		window.addEventListener("load", ccms_load_jquery, false);
