@@ -534,6 +534,7 @@ if($row["lng"] === $CLEAN["ccms_lng"]){echo ' style="text-decoration:underline d
 			jq.type = 'text/javascript';
 			jq.src = '/ccmsusr/_js/jquery-3.6.0.min.js';
 			//jq.integrity = 'sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=';
+			jq.nonce = '<?=$CFG["nonce"];?>';
 			//jq.crossOrigin = 'anonymous';
 			document.getElementsByTagName('head')[0].appendChild(jq);
 		} else if(-1 == compVer(jQuery.fn.jquery, "2.2.4")) {
