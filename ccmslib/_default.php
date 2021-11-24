@@ -532,9 +532,9 @@ if($row["lng"] === $CLEAN["ccms_lng"]){echo ' style="text-decoration:underline d
 			// jQuery is not loaded
 			var jq = document.createElement('script');
 			jq.type = 'text/javascript';
-			jq.src = '//code.jquery.com/jquery-2.2.4.min.js';
-			jq.integrity = 'sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=';
-			jq.crossOrigin = 'anonymous';
+			jq.src = '/ccmsusr/_js/jquery-3.6.0.min.js';
+			//jq.integrity = 'sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=';
+			//jq.crossOrigin = 'anonymous';
 			document.getElementsByTagName('head')[0].appendChild(jq);
 		} else if(-1 == compVer(jQuery.fn.jquery, "2.2.4")) {
 			// jQuery is loaded but the version is too low, kill the process
