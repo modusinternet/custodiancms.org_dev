@@ -530,6 +530,9 @@ if($row["lng"] === $CLEAN["ccms_lng"]){echo ' style="text-decoration:underline d
 	function ccms_load_jquery() {
 		if(typeof jQuery == 'undefined') {
 			// jQuery is not loaded
+
+console.log("jQuery not found, trying to load now.")
+
 			var jq = document.createElement('script');
 			jq.type = 'text/javascript';
 			jq.src = '/ccmsusr/_js/jquery-3.6.0.min.js';
