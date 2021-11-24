@@ -267,7 +267,7 @@ if($row["lng"] === $CLEAN["ccms_lng"]){echo ' style="text-decoration:underline d
 
 
 
-<script>
+<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 	function ccms_tab_switch() {
 		if($("#CCMSTab-slide-tab-checkbox").is(":checked")) {
 			// Tab Open
