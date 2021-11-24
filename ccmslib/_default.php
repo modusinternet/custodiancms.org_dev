@@ -544,8 +544,8 @@ if($row["lng"] === $CLEAN["ccms_lng"]){echo ' style="text-decoration:underline d
 			alert("The User Admin Slider requires jQuery v2.2.4 or higher to run properly.");
 			return false;
 		}
-		document.getElementById("ccms-lng-<?php echo $CLEAN["ccms_lng"]; ?>").scrollIntoView();
-		document.getElementById("ccms-lng-<?php echo $CLEAN["ccms_lng"]; ?>").children[0].style.textDecoration = "underline";
+		document.getElementById("ccms_lng-<?php echo $CLEAN["ccms_lng"]; ?>").scrollIntoView();
+		document.getElementById("ccms_lng-<?php echo $CLEAN["ccms_lng"]; ?>").children[0].style.textDecoration = "underline";
 		setTimeout(function() {ccms_admin_slider_token();}, 1000);
 		setTimeout(function() {ccms_edit_mode_switch_main();}, 1000);
 
