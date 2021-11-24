@@ -267,14 +267,352 @@ if($row["lng"] === $CLEAN["ccms_lng"]){echo ' style="text-decoration:underline d
 
 
 
+<script>
+	function ccms_tab_switch() {
+		if($("#CCMSTab-slide-tab-checkbox").is(":checked")) {
+			// Tab Open
+			if(-1 == compVer(jQuery.fn.jquery, "2.2.4")) {
+				// jQuery version is not high enough
+				$('#CCMSEdit-edit-mode-switch-check').prop('checked', false);
+				$('#CCMSEdit-edit-mode-switch-check').prop('disabled', true);
+				localStorage.setItem("CCMSEdit-edit-mode-switch-check", false);
+
+				$('#CCCMSTab-slide-tab-checkbox').prop('checked', false);
+				$('#CCMSTab-slide-tab-checkbox').prop('disabled', true);
+				localStorage.setItem("CCMSTab-slide-tab-checkbox", false);
+
+				alert("The User Admin Slider requires jQuery v2.2.4 or higher to run properly.");
+				return false;
+			} else {
+				localStorage.setItem("CCMSTab-slide-tab-checkbox", true);
+			}
+		} else {
+			// Tab Closed
+			localStorage.setItem("CCMSTab-slide-tab-checkbox", false);
+		}
+	}
+
+	function ccms_edit_mode_switch() {
+		if($("#CCMSEdit-edit-mode-switch-check").is(":checked")) {
+			// Edit Switch On
+			localStorage.setItem("CCMSEdit-edit-mode-switch-check", true);
+
+			$.fn.setCursorPosition = function(pos) {
+				this.each(function(index, elem) {
+					if(elem.setSelectionRange) {
+						elem.setSelectionRange(pos, pos);
+					} else if(elem.createTextRange) {
+						var range = elem.createTextRange();
+						range.collapse(true);
+						range.moveEnd('character', pos);
+						range.moveStart('character', pos);
+						range.select();
+					}
+				});
+				return this;
+			};
+
+			NodeList.prototype.forEach = Array.prototype.forEach;
+
+			var divs = document.querySelectorAll('[data-ccms]').forEach(function(el) {
+				var textOrig = [], textNew = null, editor = null;
+				// We add a new class to the node containing the data-ccms attribute.  This generates the box.
+				el.className += " CCMSEdit-edit-link-border";
+				$(el).wrap("<div class=\"CCMS-wrap\"/>");
+				var editbtn = $("<button class=\"CCMS-editor-but CCMS-editor-editbut\">Edit</button>");
+				var savebtn = $("<button class=\"CCMS-editor-but CCMS-editor-savebut hidden\">Save</button>");
+				var cancelbtn = $("<button class=\"CCMS-editor-but hidden\">Cancel</button>");
+				$(editbtn).prependTo($(el).parent());
+				$(savebtn).prependTo($(el).parent());
+				$(cancelbtn).prependTo($(el).parent());
+
+				$(editbtn).click(function() {
+					$(editbtn).addClass("hidden");
+					$(savebtn).removeClass("hidden");
+					$(cancelbtn).removeClass("hidden");
+					textOrig[0] = el.getAttribute("data-ccms");
+					textOrig[2] = el.getAttribute("data-ccms-grp");
+					textOrig[3] = el.getAttribute("data-ccms-name");
+					$.ajax({
+						url: "/<?php echo $CLEAN["ccms_lng"]; ?>/user/_js/ccms-user-admin-slider-01-ajax.html?ajax_flag=1",
+						cache: false,
+						type: "post",
+						data: "ccms_ins_db_id=" + textOrig[0]
+					}).done(function(msg) {
+						textOrig[1] = $.trim($(el).html());
+						$(el).html("");
+						editor=$("<textarea class=\"CCMS-editor-textarea\" rows=\"5\">"+msg+"</textarea><div style=\"position:relative;color:#000;font:16px/1.2 normal;text-align:left;text-transform:none;\"><span><strong>Warning</strong>: Only &lt;a&gt;, &lt;blockquote&gt;, &lt;br&gt;, &lt;i&gt;, &lt;img&gt;, &lt;p&gt;, &lt;pre&gt;, &lt;span&gt;, &lt;ul&gt;, &lt;ol&gt;, &lt;li&gt; and CCMS tags like <span style=\"word-break:break-all;\">&#123;CCMS_LIB:_default.php;FUNC:ccms_lng}</span> or &#123;CCMS_DB:index,para1} are permitted here.  All else is automatically removed at the server.<br />Shift+[Enter] for Break</span><span style=\"position:absolute;bottom:0;right:0;\">( ID:"+textOrig[0]+", GRP:"+textOrig[2]+", NAME:"+textOrig[3]+")</span></div>").appendTo($(el));
+						$(el).find('textarea').keyup(function (e) {
+							if(e.keyCode == 13 && e.shiftKey) {
+								var content = this.value;
+								var caret = getCaret(this);
+								this.value = content.substring(0, caret - 1) + "<br />\n" + content.substring(caret, content.length);
+								$(el).find('textarea').setCursorPosition(caret + 6);
+								e.preventDefault();
+							}
+						});
+					}).fail(function (jqXHR, textStatus, errorThrown){
+						// Called on failure.
+						// log the error to the console
+						console.error( "The following error occured: " + textStatus, errorThrown );
+						alert("The following error occured: " + textStatus, errorThrown);
+					}).always(function () {
+						// Loading Spinner Stop
+						$("#CCMS-loadingSpinner").fadeOut();
+					});
+				});
+
+				$(savebtn).click(function() {
+					if(textOrig[1] != $(el).find('textarea').val()) {
+						textNew = $(el).find('textarea').val();
+						textNew = textNew.replace("{ CCMS", "{CCMS");
+						// Loading Spinner Start
+						$t = $(el);
+						$("#CCMS-loadingSpinner").css({
+							opacity : 0.5,
+							top     : $t.offset().top,
+							width   : $t.outerWidth(),
+							height  : $t.outerHeight()
+						});
+						$("#CCMS-loadingSpinner-load").css({
+							top  : ($t.height() / 2),
+							left : ($t.width() / 2)
+						});
+						$("#CCMS-loadingSpinner").fadeIn();
+						$.ajax({
+							url: "/<?php echo $CLEAN["ccms_lng"]; ?>/user/_js/ccms-user-admin-slider-02-ajax.html?ajax_flag=1",
+							cache: false,
+							type: "post",
+							data: "ccms_ins_db_id=" + textOrig[0] + "&ccms_ins_db_text=" + encodeURIComponent(textNew)
+						}).done(function(msg) {
+							if(msg == "1") {
+								$(editbtn).removeClass("hidden");
+								$(savebtn).addClass("hidden");
+								$(cancelbtn).addClass("hidden");
+								$(el).html(textNew);
+								try {
+									document.execCommand("styleWithCSS", 0, false);
+								} catch (e) {
+									try {
+										document.execCommand("useCSS", 0, true);
+									} catch (e) {
+										try {
+											document.execCommand('styleWithCSS', false, false);
+										} catch (e) {}
+									}
+								}
+							} else {
+								alert(msg);
+								//console.log(msg);
+							}
+						}).fail(function (jqXHR, textStatus, errorThrown){
+							// Called on failure.
+							// log the error to the console
+							console.error( "The following error occured: " + textStatus, errorThrown );
+							alert("The following error occured: " + textStatus, errorThrown);
+						}).always(function () {
+							// Loading Spinner Stop
+							$("#CCMS-loadingSpinner").fadeOut();
+						});
+					} else {
+						// There was no change to the content so simply close the textarea.
+						$(editbtn).removeClass("hidden");
+						$(savebtn).addClass("hidden");
+						$(cancelbtn).addClass("hidden");
+						$(el).html(textOrig[1]);
+						try {
+							document.execCommand("styleWithCSS", 0, false);
+						} catch (e) {
+							try {
+								document.execCommand("useCSS", 0, true);
+							} catch (e) {
+								try {
+									document.execCommand('styleWithCSS', false, false);
+								} catch (e) {}
+							}
+						}
+					}
+				});
+
+				$(cancelbtn).click(function(){
+					$(editbtn).removeClass("hidden");
+					$(savebtn).addClass("hidden");
+					$(cancelbtn).addClass("hidden");
+					try {
+						document.execCommand("styleWithCSS", 0, false);
+					} catch (e) {
+						try {
+							document.execCommand("useCSS", 0, true);
+						} catch (e) {
+							try {
+								document.execCommand('styleWithCSS', false, false);
+							} catch (e) {}
+						}
+					}
+					$(el).html(textOrig[1]);
+				});
+
+			})
+		} else {
+			// Edit Switch Off
+			var a = document.querySelectorAll('[data-ccms]');
+			for(var i in a) {
+				if(a.hasOwnProperty(i)) {
+					if($(a).find('textarea').length) {
+						alert("Edit Mode can not be disabled while edit windows are still open.  Please saved or cancel open edits before using this switch.");
+						$('#CCMSEdit-edit-mode-switch-check').prop('checked', true);
+						localStorage.setItem("CCMSEdit-edit-mode-switch-check", true);
+						return false;
+					} else {
+						$(".CCMS-wrap button").remove();
+						$(a[i]).unwrap();
+						a[i].className = a[i].className.replace(/\bCCMSEdit-edit-link-border\b/, "");
+						localStorage.setItem("CCMSEdit-edit-mode-switch-check", false);
+					}
+				}
+			}
+		}
+	}
+
+	function getCaret(el) {
+		if(el.selectionStart) {
+			return el.selectionStart;
+		} else if(document.selection) {
+			el.focus();
+			var r = document.selection.createRange();
+			if(r == null) {return 0;}
+			var re = el.createTextRange(),
+			rc = re.duplicate();
+			re.moveToBookmark(r.getBookmark());
+			rc.setEndPoint('EndToStart', re);
+			return rc.text.length;
+		}
+		return 0;
+	}
+
+	function compVer(a_components, b_components) {
+		// Return 1  if a > b
+		// Return -1 if a < b
+		// Return 0  if a == b
+		if (a_components === b_components) {return 0;}
+		var partsNumberA = a_components.split(".");
+		var partsNumberB = b_components.split(".");
+		for (var i = 0; i < partsNumberA.length; i++) {
+			var valueA = parseInt(partsNumberA[i]);
+			var valueB = parseInt(partsNumberB[i]);
+			// A bigger than B
+			if (valueA > valueB || isNaN(valueB)) {return 1;}
+			// B bigger than A
+			if (valueA < valueB) {return -1;}
+		}
+	}
+
+	function ccms_edit_mode_switch_main() {
+		if(localStorage.getItem("CCMSTab-slide-tab-checkbox") == "true") {
+			$('#CCMSTab-slide-tab-checkbox').prop('checked', true);
+		}
+		if(localStorage.getItem("CCMSEdit-edit-mode-switch-check") == "true") {
+			$('#CCMSEdit-edit-mode-switch-check').prop('checked', true);
+			ccms_edit_mode_switch();
+		}
+	}
+
+	function ccms_lcu(lng) { // ccms_lcu = language cookie update
+		document.cookie = "ccms_lng={CCMS_LIB:_default.php;FUNC:ccms_lng}; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+		/* insert a new cookie and get it in the cache, just incase we're dealing with the home page.  */
+		var d = new Date();
+		d.setTime(d.getTime() + (365*24*60*60*1000));
+		var expires = "expires=" + d.toUTCString();
+		document.cookie = "ccms_lng=" + lng + "; " + expires + "; path=/";
+		return;
+	}
+
+	function ccms_load_jquery() {
+		if(typeof jQuery == 'undefined') {
+			// jQuery is not loaded
+			var jq = document.createElement('script');
+			jq.type = 'text/javascript';
+			jq.src = '//code.jquery.com/jquery-2.2.4.min.js';
+			jq.integrity = 'sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=';
+			jq.crossOrigin = 'anonymous';
+			document.getElementsByTagName('head')[0].appendChild(jq);
+		} else if(-1 == compVer(jQuery.fn.jquery, "2.2.4")) {
+			// jQuery is loaded but the version is too low, kill the process
+			localStorage.setItem("CCMSTab-slide-tab-checkbox", false);
+			localStorage.setItem("CCMSEdit-edit-mode-switch-check", false);
+			document.getElementById("CCMSTab-slide").innerHTML = "";
+			alert("The User Admin Slider requires jQuery v2.2.4 or higher to run properly.");
+			return false;
+		}
+		document.getElementById("ccms-lng-<?php echo $CLEAN["ccms_lng"]; ?>").scrollIntoView();
+		document.getElementById("ccms-lng-<?php echo $CLEAN["ccms_lng"]; ?>").children[0].style.textDecoration = "underline";
+		setTimeout(function() {ccms_admin_slider_token();}, 1000);
+		setTimeout(function() {ccms_edit_mode_switch_main();}, 1000);
+
+	}
+
+	function ccms_admin_slider_token() {
+		// Needed because of page caching.  If you login as a user and need to edit templates using the
+		// User Admin Slider you will have trouble finding your controls if you don't refresh your page because
+		// the browser is set to cache the pages in visitors browsers to help imporve it's speed.
+		var parser = document.createElement('a'),
+			searchObject = {},
+			queries,
+			split,
+			i,
+			ccms_token = "ccms_token=<?php echo md5(time()); ?>";
+		$("a").each(function() {
+			parser.href = this.href;
+			// Convert query string to object
+			queries = parser.search.replace(/^\?/, '').split('&');
+			for( i = 0; i < queries.length; i++ ) {
+				split = queries[i].split('=');
+				searchObject[split[0]] = split[1];
+			}
+			/*
+				parser.protocol
+				parser.host
+				parser.hostname
+				parser.port
+				parser.pathname
+				parser.search
+				parser.searchObject
+				parser.hash
+			*/
+			//console.log('protocol: '+parser.protocol+'\nhost: '+parser.host+'\nhostname: '+parser.hostname+'\nport: '+parser.port+'\npathname: '+parser.pathname+'\nsearch: '+parser.search+'\searchObject: '+parser.searchObject+'\nhash: '+parser.hash+'\n\n');
+			if(parser.hostname == "<?php global $CFG; echo $CFG["DOMAIN"]; ?>") {
+				// First we test to make sure the href belongs to our site and is not a link to another site.
+				// if so then we clean out any previous instances of the ccms_token variable to prevent accumulation.
+				parser.search = parser.search.replace(/([&\?]ccms_token=[a-z0-9]*$|ccms_token=[a-z0-9]*&|[?&]ccms_token=[a-z0-9]*(?=#))/ig, '');
+				// Now we rebuild the link to include a fresh ccms_token to help makesure we don't pull a cached version from
+				// the browser when we get there.
+				this.href = parser.protocol+'//'+parser.hostname+(parser.port ? ':'+parser.port : '')+parser.pathname+(parser.search ? parser.search+'&'+ccms_token : '?'+ccms_token)+parser.hash
+			}
+		});
+	}
+
+	if(window.addEventListener)
+		window.addEventListener("load", ccms_load_jquery, false);
+	else if(window.attachEvent)
+		window.attachEvent("onload", ccms_load_jquery);
+	else window.onload = ccms_load_jquery;
+</script>
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 	<?php endif;
 }
-
-
 
 
 function ccms_dateYear() {
