@@ -596,7 +596,7 @@ console.log("jQuery not found, trying to load now.")
 	}
 
 	//$("#CCMSTab-slide-tab-checkbox").click(ccms_tab_switch);
-	document.getElementById("#CCMSEdit-edit-mode-switch-check").addEventListener("click", ccms_edit_mode_switch);
+	document.getElementById("CCMSEdit-edit-mode-switch-check").addEventListener("click", ccms_edit_mode_switch);
 
 	if(window.addEventListener)
 		window.addEventListener("load", ccms_load_jquery, false);
