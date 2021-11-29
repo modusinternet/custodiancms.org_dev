@@ -24,6 +24,8 @@ if(isset($_SESSION['EXPIRED']) == "1") {
 	$error = "Session Expried";
 } else{
 	$json_a = json_decode($CLEAN["SESSION"]["priv"], true);
+
+	$error = "json_a['priv']['content_manager']['r'] = [" . $json_a["priv"]["content_manager"]["r"] . "]";
 }
 
 if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
