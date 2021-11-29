@@ -334,7 +334,7 @@ if($row["lng"] === $CLEAN["ccms_lng"]){echo ' style="text-decoration:underline d
 					textOrig[2] = el.getAttribute("data-ccms-grp");
 					textOrig[3] = el.getAttribute("data-ccms-name");
 					$.ajax({
-						url: "/<?php echo $CLEAN["ccms_lng"]; ?>/user/_js/ccms-user-admin-slider-01-ajax.html?ajax_flag=1",
+						url: "/<?= $CLEAN["ccms_lng"]; ?>/user/_js/ccms-user-admin-slider-01-ajax.php?ccms_ajax_flag=1",
 						cache: false,
 						type: "post",
 						data: "ccms_ins_db_id=" + textOrig[0]

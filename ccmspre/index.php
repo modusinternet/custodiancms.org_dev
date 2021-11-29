@@ -58,17 +58,27 @@ define('UTF8_STRING_DIGIT_PUNC_WHITE', '/^[\pL\pM*+\pN\pP\s]*\z/u');
 // \z End of subject or newline at end. (Better then $ because $ does not include /n characters at the end of a line.)
 // /u Pattern strings are treated as UTF-8
 
+define('WHOLE_NUMBER', '/^[\pN]*\z/');
+// ^		Start of line
+// [		Starts the character class.
+// \pN		Any number.
+// ]		Ends the character class.
+// *		Zero or more
+// \z		End of subject or newline at end. (Better then $ because $ does not include /n characters at the end of a line.)
+// /		End of the Pattern.
+
 $ccms_whitelist = array(
-	"ccms_lngSelect"				=> array("type" => "LNG",											"maxlength" => 5),
-	"ccms_parms"						=> array("type" => "PARMS",										"maxlength" => 128),
-	"ccms_tpl"							=> array("type" => "TPL",											"maxlength" => 256),
-	"ccms_session"					=> array("type" => "SESSION_ID",							"maxlength" => 64),
-	"ccms_cid"							=> array("type" => "SESSION_ID",							"maxlength" => 64),
-	"ccms_lng"							=> array("type" => "LNG",											"maxlength" => 5),
-	"ccms_token"						=> array("type" => "UTF8_STRING_DIGIT_WHITE",	"maxlength" => 64),
-	"HTTP_COOKIE"						=> array("type" => "HTTP_COOKIE",							"maxlength" => 512),
-	"HTTP_USER_AGENT"				=> array("type" => "HTTP_USER_AGENT",					"maxlength" => 512),
-	"QUERY_STRING"					=> array("type" => "QUERY_STRING",						"maxlength" => 1024)
+	"ccms_ajax_flag"	=> array("type" => "WHOLE_NUMBER",				"maxlength" => 1),
+	"ccms_lngSelect"	=> array("type" => "LNG",						"maxlength" => 5),
+	"ccms_parms"		=> array("type" => "PARMS",						"maxlength" => 128),
+	"ccms_tpl"			=> array("type" => "TPL",						"maxlength" => 256),
+	"ccms_session"		=> array("type" => "SESSION_ID",				"maxlength" => 64),
+	"ccms_cid"			=> array("type" => "SESSION_ID",				"maxlength" => 64),
+	"ccms_lng"			=> array("type" => "LNG",						"maxlength" => 5),
+	"ccms_token"		=> array("type" => "UTF8_STRING_DIGIT_WHITE",	"maxlength" => 64),
+	"HTTP_COOKIE"		=> array("type" => "HTTP_COOKIE",				"maxlength" => 512),
+	"HTTP_USER_AGENT"	=> array("type" => "HTTP_USER_AGENT",			"maxlength" => 512),
+	"QUERY_STRING"		=> array("type" => "QUERY_STRING",				"maxlength" => 1024)
 );
 
 
@@ -466,6 +476,9 @@ function CCMS_Filter($input, $whitelist) {
 						break;
 					case "UTF8_STRING_DIGIT_PUNC_WHITE":
 						$buf = (preg_match(UTF8_STRING_DIGIT_PUNC_WHITE, $value)) ? $value : "INVAL";
+						break;
+					case "WHOLE_NUMBER":
+						$buf = (preg_match(WHOLE_NUMBER, $value)) ? $value : "INVAL";
 						break;
 				}
 			}
