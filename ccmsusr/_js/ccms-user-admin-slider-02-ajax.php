@@ -31,7 +31,8 @@ if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
 } elseif(!($json_a["priv"]["content_manager"]["r"] == 1 && $json_a["priv"]["content_manager"]["lng"][$CLEAN["ccms_lng"]] == 2)) {
     $error = "You are not permitted to make edits to content in this language, at this time.  You can double check your privileges in the user/admin area.\n";
 
-	$error = "json_a['priv']['content_manager']['r'] = [" . $json_a["priv"]["content_manager"]["r"] . "]";
+	//$error = "json_a['priv']['content_manager']['r'] = [" . $json_a["priv"]["content_manager"]["r"] . "]";
+	$error = $CLEAN["SESSION"]["priv"];
 
 } elseif ($CLEAN["ccms_ins_db_id"] == "") {
     $error = "Database record missing.";
