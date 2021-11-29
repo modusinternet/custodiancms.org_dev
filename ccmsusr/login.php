@@ -503,10 +503,9 @@ if(
 		.logo_a{
 			border:0 none;
 			display:block;
+			margin:unset;
 			text-align:left;
-			text-decoration:none;
-			/*margin:10px 10px 10px 60px;*/
-			margin:unset
+			text-decoration:none
 		}
 
 		/* 500px or wider. */
