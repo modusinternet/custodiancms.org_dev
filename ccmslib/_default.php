@@ -118,63 +118,14 @@ function ccms_canonical() {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function ccms_user_admin_slider() {
 	global $CFG, $CLEAN;
-
-	/*
-	$qry = $CFG["DBH"]->prepare("SELECT b.alias, b.priv FROM `ccms_session` AS a INNER JOIN `ccms_user` AS b On b.id = a.user_id WHERE a.code = :code AND a.ip = :ip AND b.status = '1' LIMIT 1;");
-	$qry->execute(array(':code' => $CLEAN["SESSION"]["code"], ':ip' => $_SERVER["REMOTE_ADDR"]));
-	$row = $qry->fetch(PDO::FETCH_ASSOC);
-	if($row) {
-		//$CFG['loggedIn'] = TRUE;
-		$CLEAN['alias'] = $row["alias"];
-		//echo $CLEAN["CCMS_DB_Preload_Content"]["all"]["login2"][$CLEAN["ccms_lng"]]["content"] . ": <a href='/" . $CLEAN["ccms_lng"] . "/user/'>" . $row["alias"] . "</a> (<a href='/" . $CLEAN["ccms_lng"] . "/user/?logout=1'>" . $CLEAN["CCMS_DB_Preload_Content"]["all"]["login3"][$CLEAN["ccms_lng"]]["content"] . "</a>)";
-		$json_a = json_decode($row["priv"], true);
-		$json_a[priv][content_manager][r] == 1 ? $CFG['loggedIn'] = TRUE : $CFG['loggedIn'] = FALSE;
-	} else {
-		$CFG['loggedIn'] = FALSE;
-		//echo "<a href='/" . $CLEAN["ccms_lng"] . "/user/'>" . $CLEAN["CCMS_DB_Preload_Content"]["all"]["login1"][$CLEAN["ccms_lng"]]["content"] . "</a>";
-	}
-	//echo $CLEAN["CCMS_DB_Preload_Content"]["all"]["login2"][$CLEAN["ccms_lng"]]["content"] . ": <a href='/" . $CLEAN["ccms_lng"] . "/user/'>" . $row["alias"] . "</a> (<a href='/" . $CLEAN["ccms_lng"] . "/user/?logout=1'>" . $CLEAN["CCMS_DB_Preload_Content"]["all"]["login3"][$CLEAN["ccms_lng"]]["content"] . "</a>)";
-	if($CFG['loggedIn'] == TRUE) { ?>
-	*/
-
 
 	if(isset($_SESSION["USER_ID"])) {
 		$json_a = json_decode($_SESSION["PRIV"], true);
 	}
 
-	//$json_a[priv][content_manager][r] == 1 ? $CFG['loggedIn'] = TRUE : $CFG['loggedIn'] = FALSE;
-
 	if(($json_a["priv"]["content_manager"]["r"] ?? null) === 1): ?>
-<!-- link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" charset="utf-8" -->
 <style>
 	#CCMSTab-slide{
 		font:600 20px/32px "Open Sans",sans-serif;
@@ -247,6 +198,7 @@ if($row["lng"] === $CLEAN["ccms_lng"]){echo ' style="text-decoration:underline d
 				</a>
 				<a href="/<?php echo $CLEAN["ccms_lng"]; ?>/user/?ccms_logout=1" title="<?php echo $CLEAN["CCMS_DB_Preload_Content"]["all"]["login3"][$CLEAN["ccms_lng"]]["content"]; ?>">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#fff" d="M4,12a1,1,0,0,0,1,1h7.59l-2.3,2.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l4-4a1,1,0,0,0,.21-.33,1,1,0,0,0,0-.76,1,1,0,0,0-.21-.33l-4-4a1,1,0,1,0-1.42,1.42L12.59,11H5A1,1,0,0,0,4,12ZM17,2H7A3,3,0,0,0,4,5V8A1,1,0,0,0,6,8V5A1,1,0,0,1,7,4H17a1,1,0,0,1,1,1V19a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V16a1,1,0,0,0-2,0v3a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V5A3,3,0,0,0,17,2Z"/></svg>
+					<!-- a href="https://iconscout.com/">Unicons by Iconscout</a -->
 				</a>
 			</div>
 		</div>
@@ -255,17 +207,6 @@ if($row["lng"] === $CLEAN["ccms_lng"]){echo ' style="text-decoration:underline d
 <div id="CCMS-loadingSpinner">
   <i class="fa fa-spinner fa-spin fa-5x" id="CCMS-loadingSpinner-load" aria-hidden="true"></i>
 </div>
-
-
-
-
-
-
-
-
-
-
-
 
 <script nonce="<?=$CFG["nonce"];?>">
 	function ccms_tab_switch() {
@@ -548,8 +489,8 @@ console.log("jQuery not found, trying to load now.")
 			alert("The User Admin Slider requires jQuery v2.2.4 or higher to run properly.");
 			return false;
 		}
-		document.getElementById("ccms_lng-<?php echo $CLEAN["ccms_lng"]; ?>").scrollIntoView();
-		document.getElementById("ccms_lng-<?php echo $CLEAN["ccms_lng"]; ?>").children[0].style.textDecoration = "underline";
+		document.getElementById("ccms_lng-<?= $CLEAN["ccms_lng"]; ?>").scrollIntoView();
+		document.getElementById("ccms_lng-<?= $CLEAN["ccms_lng"]; ?>").children[0].style.textDecoration = "underline";
 		setTimeout(function() {ccms_admin_slider_token();}, 1000);
 		setTimeout(function() {ccms_edit_mode_switch_main();}, 1000);
 
@@ -604,20 +545,6 @@ console.log("jQuery not found, trying to load now.")
 		window.attachEvent("onload", ccms_load_jquery);
 	else window.onload = ccms_load_jquery;
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	<?php endif;
 }
 
