@@ -25,8 +25,8 @@ if(isset($_SESSION['EXPIRED']) == "1") {
 } else{
 	$json_a = json_decode($_SESSION["PRIV"], true);
 
-	echo $_SESSION["PRIV"];
-	die;
+	//echo $_SESSION["PRIV"];
+	//die;
 }
 
 if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
