@@ -519,7 +519,8 @@ function CCMS_DB_Dir($a) {
 	if(isset($CLEAN["CCMS_DB_Preload_Content"])) {
 		if(($a[5] ?? null) === "1") {
 			// Make editable on the public side.
-			if($CLEAN["CCMS_DB_Preload_Content"][$a[2]][$a[3]][$CLEAN["ccms_lng"]]["content"] ?? null) {
+			//if($CLEAN["CCMS_DB_Preload_Content"][$a[2]][$a[3]][$CLEAN["ccms_lng"]]["content"] ?? null) {
+			if($CLEAN["CCMS_DB_Preload_Content"][$a[2]][$a[3]][$CLEAN["ccms_lng"]]["content"] !== "") {
 				echo $CLEAN["CCMS_DB_Preload_Content"][$a[2]][$a[3]][$CLEAN["ccms_lng"]]["dir"] . "\" data-ccms=\"" . $CLEAN["CCMS_DB_Preload_Content"][$a[2]][$a[3]][$CLEAN["ccms_lng"]]["id"] . "\" data-ccms-grp=\"" . $CLEAN["CCMS_DB_Preload_Content"][$a[2]][$a[3]][$CLEAN["ccms_lng"]]["grp"] . "\" data-ccms-name=\"" . $CLEAN["CCMS_DB_Preload_Content"][$a[2]][$a[3]][$CLEAN["ccms_lng"]]["name"];
 			} else {
 				echo $CLEAN["CCMS_DB_Preload_Content"][$a[2]][$a[3]][$CFG["DEFAULT_SITE_CHAR_SET"]]["dir"] . "\" data-ccms=\"" . $CLEAN["CCMS_DB_Preload_Content"][$a[2]][$a[3]][$CLEAN["ccms_lng"]]["id"] . "\" data-ccms-grp=\"" . $CLEAN["CCMS_DB_Preload_Content"][$a[2]][$a[3]][$CLEAN["ccms_lng"]]["grp"] . "\" data-ccms-name=\"" . $CLEAN["CCMS_DB_Preload_Content"][$a[2]][$a[3]][$CLEAN["ccms_lng"]]["name"];
