@@ -50,10 +50,8 @@ if(($_SESSION["FAIL"] ?? null) >= 5) {
 }
 
 if(!isset($_SESSION["USER_ID"]) || isset($_POST["ccms_login"]) || isset($_REQUEST["ccms_logout"]) || isset($_POST["ccms_pass_reset_part_1"]) || isset($_POST["ccms_pass_reset_part_2"])) {
-	//$CLEAN["ccms_tpl"] = "/login.php";
-
-
-	if($CLEAN["ccms_ajax_flag"] == 1) { // if this call contains an Ajax flag set to 1 we don't actually want to send them to the login page, we'll just send a session expired message instead.
+	if($CLEAN["ccms_ajax_flag"] == 1) {
+		// if this call contains an Ajax flag set to 1 we don't actually want to send them to the login page, we'll just send a session expired message instead.
 			header("Content-Type: application/javascript; charset=UTF-8");
 			header("Expires: on, 01 Jan 1970 00:00:00 GMT");
 			header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
@@ -62,13 +60,11 @@ if(!isset($_SESSION["USER_ID"]) || isset($_POST["ccms_login"]) || isset($_REQUES
 			header("Pragma: no-cache");
 
 			echo "Session Expired, please login and try again.";
-			die();
+			exit;
 	} else {
 			// Show login template because they are NOT logged in.
-			$CLEAN["ccms_tpl"] = "login.php";
+			$CLEAN["ccms_tpl"] = "/login.php";
 	}
-
-
 }
 
 CCMS_Main();
