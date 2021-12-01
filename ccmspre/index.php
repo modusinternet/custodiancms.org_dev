@@ -522,10 +522,13 @@ function CCMS_DB_Dir($a) {
 			//if($CLEAN["CCMS_DB_Preload_Content"][$a[2]][$a[3]][$CLEAN["ccms_lng"]]["content"] ?? null) {
 			if($CLEAN["CCMS_DB_Preload_Content"][$a[2]][$a[3]][$CLEAN["ccms_lng"]]["content"] !== "") {
 
-				echo "\n\na[2] = [".$a[2]."]\n";
-				echo "a[3] = [".$a[3]."]\n";
-				echo "a[4] = [".$a[4]."]\n";
-				echo "a[5] = [".$a[5]."]\n\n";
+echo "\n\na[2] = [".$a[2]."]\n";
+echo "a[3] = [".$a[3]."]\n";
+echo "a[4] = [".$a[4]."]\n";
+echo "a[5] = [".$a[5]."]\n\n";
+print_r($CLEAN["CCMS_DB_Preload_Content"]);
+echo "\n\n";
+
 exit;
 
 				echo $CLEAN["CCMS_DB_Preload_Content"][$a[2]][$a[3]][$CLEAN["ccms_lng"]]["dir"] . "\" data-ccms=\"" . $CLEAN["CCMS_DB_Preload_Content"][$a[2]][$a[3]][$CLEAN["ccms_lng"]]["id"] . "\" data-ccms-grp=\"" . $CLEAN["CCMS_DB_Preload_Content"][$a[2]][$a[3]][$CLEAN["ccms_lng"]]["grp"] . "\" data-ccms-name=\"" . $CLEAN["CCMS_DB_Preload_Content"][$a[2]][$a[3]][$CLEAN["ccms_lng"]]["name"]
