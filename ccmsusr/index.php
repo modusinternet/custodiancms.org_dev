@@ -55,9 +55,12 @@ if(!isset($_SESSION["USER_ID"]) || isset($_POST["ccms_login"]) || isset($_REQUES
 
 	if($CLEAN["ccms_ajax_flag"] == 1) { // if this call contains an Ajax flag set to 1 we don't actually want to send them to the login page, we'll just send a session expired message instead.
 			header("Content-Type: application/javascript; charset=UTF-8");
+			header("Expires: on, 01 Jan 1970 00:00:00 GMT");
+			header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 			header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
 			header("Cache-Control: post-check=0, pre-check=0", false);
 			header("Pragma: no-cache");
+
 			echo "/* Session Error */";
 			die();
 	} else {
