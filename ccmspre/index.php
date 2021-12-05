@@ -779,7 +779,7 @@ function CCMS_Main() {
 	// /fruit/orange/index
 	// /fruit/orange/vitamin/index
 	if(preg_match("/[\/]\z/", $CLEAN["ccms_tpl"])) {
-		$CLEAN["ccms_tpl"] .= $CFG["INDEX"];
+		$CLEAN["ccms_tpl"] .= "index.html";
 	}
 
 	// Copys the end of the string found inside $CLEAN["ccms_tpl"] after the last /.
