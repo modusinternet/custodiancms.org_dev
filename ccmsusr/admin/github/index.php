@@ -63,7 +63,7 @@ if(!is_callable('shell_exec') && true === stripos(ini_get('disable_functions'), 
 		<meta charset="utf-8">
 		<title>GitHub</title>
 		<meta name="description" content="" />
-		{CCMS_TPL:header-head.html}
+		{CCMS_TPL:head-meta.html}
 		<script>
 			var navActiveArray = ["github"];
 		</script>
