@@ -76,8 +76,8 @@ if(!isset($_SESSION["USER_ID"]) || isset($_POST["ccms_login"]) || isset($_REQUES
 //if(preg_match("/[\/]\z/", $CLEAN["ccms_tpl"])) {
 //	$CLEAN["ccms_tpl"] .= "index.php";
 //}
-echo $CLEAN["ccms_tpl"];
-exit;
+//echo $CLEAN["ccms_tpl"];
+//exit;
 
 // If there is no template requested, show $CFG["INDEX"].
 // This code is used when accessing the /user/ templates, before login credentials have between
