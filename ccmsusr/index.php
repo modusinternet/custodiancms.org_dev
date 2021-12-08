@@ -67,9 +67,46 @@ if(!isset($_SESSION["USER_ID"]) || isset($_POST["ccms_login"]) || isset($_REQUES
 	}
 }
 
+
+
+
+
+
+
+//if(preg_match("/[\/]\z/", $CLEAN["ccms_tpl"])) {
+//	$CLEAN["ccms_tpl"] .= "index.php";
+//}
+
+
+// If there is no template requested, show $CFG["INDEX"].
+// This code is used when accessing the /user/ templates, before login credentials have between
+// verified and when dealing with URL's that resemble:
+// $CLEAN["INDEX"] === BLANK
+// /
+// Make into:
+// /index.html
+// /index.html
+if(!isset($CLEAN["ccms_tpl"]) || $CLEAN["ccms_tpl"] === "" || $CLEAN["ccms_tpl"] === "/") {
+	$CLEAN["ccms_tpl"] = "/dashboard/";
+}
+
+// If the template being requested is inside a dir and no specific template name is
+// part of that request, add index to the end.
+// /fruit/
+// /fruit/orange/
+// /fruit/orange/vitamin/
+// Make into:
+// /fruit/index
+// /fruit/orange/index
+// /fruit/orange/vitamin/index
 if(preg_match("/[\/]\z/", $CLEAN["ccms_tpl"])) {
 	$CLEAN["ccms_tpl"] .= "index.php";
 }
+
+
+
+
+
 
 CCMS_Main();
 
