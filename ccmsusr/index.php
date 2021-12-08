@@ -106,8 +106,7 @@ if(preg_match("/[\/]\z/", $CLEAN["ccms_tpl"])) {
 }
 
 
-echo $CLEAN["ccms_tpl"];
-exit;
+
 
 
 
