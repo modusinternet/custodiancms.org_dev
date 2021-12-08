@@ -782,9 +782,6 @@ function CCMS_Main() {
 		$CLEAN["ccms_tpl"] .= "index.html";
 	}
 
-	echo $CLEAN["ccms_tpl"];
-	exit;
-	
 	// Copys the end of the string found inside $CLEAN["ccms_tpl"] after the last /.
 	// fruit/orange
 	// becomes:
