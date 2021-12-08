@@ -67,6 +67,10 @@ if(!isset($_SESSION["USER_ID"]) || isset($_POST["ccms_login"]) || isset($_REQUES
 	}
 }
 
+if(preg_match("/[\/]\z/", $CLEAN["ccms_tpl"])) {
+	$CLEAN["ccms_tpl"] .= "index.php";
+}
+
 CCMS_Main();
 
 // benchmark end
