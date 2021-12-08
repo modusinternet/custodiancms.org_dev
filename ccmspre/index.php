@@ -765,9 +765,6 @@ function CCMS_Main() {
 		$CLEAN["ccms_tpl"] = "/" . $CFG["INDEX"];
 	}
 
-	echo $CLEAN["ccms_tpl"];
-	exit;
-	
 	CCMS_Set_Headers();
 
 	CCMS_Set_LNG();
@@ -785,6 +782,9 @@ function CCMS_Main() {
 		$CLEAN["ccms_tpl"] .= "index.html";
 	}
 
+	echo $CLEAN["ccms_tpl"];
+	exit;
+	
 	// Copys the end of the string found inside $CLEAN["ccms_tpl"] after the last /.
 	// fruit/orange
 	// becomes:
