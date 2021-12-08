@@ -90,8 +90,7 @@ if(!isset($CLEAN["ccms_tpl"]) || $CLEAN["ccms_tpl"] === "" || $CLEAN["ccms_tpl"]
 	$CLEAN["ccms_tpl"] = "/dashboard/";
 }
 
-echo $CLEAN["ccms_tpl"];
-exit;
+
 
 // If the template being requested is inside a dir and no specific template name is
 // part of that request, add index to the end.
@@ -107,7 +106,8 @@ if(preg_match("/[\/]\z/", $CLEAN["ccms_tpl"])) {
 }
 
 
-
+echo $CLEAN["ccms_tpl"];
+exit;
 
 
 
