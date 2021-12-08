@@ -76,8 +76,7 @@ if(!isset($_SESSION["USER_ID"]) || isset($_POST["ccms_login"]) || isset($_REQUES
 //if(preg_match("/[\/]\z/", $CLEAN["ccms_tpl"])) {
 //	$CLEAN["ccms_tpl"] .= "index.php";
 //}
-echo $CLEAN["ccms_tpl"];
-exit;
+
 
 // If there is no template requested, show $CFG["INDEX"].
 // This code is used when accessing the /user/ templates, before login credentials have between
@@ -90,6 +89,9 @@ exit;
 if(!isset($CLEAN["ccms_tpl"]) || $CLEAN["ccms_tpl"] === "" || $CLEAN["ccms_tpl"] === "/") {
 	$CLEAN["ccms_tpl"] = "/dashboard/";
 }
+
+echo $CLEAN["ccms_tpl"];
+exit;
 
 // If the template being requested is inside a dir and no specific template name is
 // part of that request, add index to the end.
