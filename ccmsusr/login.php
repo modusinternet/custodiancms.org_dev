@@ -80,7 +80,6 @@ if(isset($_SESSION['EXPIRED']) == "1") {
 				$_SESSION["FAIL"] = 0;
 				$_SESSION["HTTP_USER_AGENT"] = md5($_SERVER["HTTP_USER_AGENT"]);
 
-				//header("Location: /" . $CLEAN["ccms_lng"] . "/user/" . $CFG["INDEX"]);
 				header("Location: /" . $CLEAN["ccms_lng"] . "/user/dashboard/");
 				exit;
 			} else {
