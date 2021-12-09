@@ -21,16 +21,16 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 		p{margin:0 0 20px}
 
-		.formDiv{
+		.modal{
 			background-color:var(--cl0);
 			border:1px solid var(--cl2-tran);
 			border-radius:6px;
 			box-shadow:2px 2px 5px 0px rgba(0,0,0,.2)
 		}
 
-		.formDiv>div{padding:10px 20px}
+		.modal>div{padding:10px 20px}
 
-		.formDiv>div:first-child{
+		.modal>div:first-child{
 			background-color:var(--cl4);
 			border-radius:6px 6px 0 0;
 			color:var(--cl0)
@@ -42,48 +42,42 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 	</script>
 	<body>
 		<main style="padding:20px 20px 20px 0">
+			<h1 style="padding-bottom:9px;margin:40px 0 20px;border-bottom:1px solid #eee">Dashboard</h1>
 
 
-			<h1 style="padding-bottom: 9px;
-margin: 40px 0 20px;
-border-bottom: 1px solid #eee;">Dashboard</h1>
-			<p>This section of the Custodian CMS admin is currently under development.</p>
+			<div class="modal">
+				<div>About Custodian CMS</div>
+				<div>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quid de Platone aut de Democrito loquar? Scisse enim te quis coarguere possit? Duo Reges: constructio interrete.</p>
+				</div>
+			</div>
 
-			<div class="formDiv">
+
+			<div class="modal">
 				<div>Security Logs</div>
 				<div>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quid de Platone aut de Democrito loquar? Scisse enim te quis coarguere possit? Duo Reges: constructio interrete. </p>
-
-<p>Contineo me ab exemplis. Non laboro, inquit, de nomine. Respondeat totidem verbis. Ego vero isti, inquam, permitto. Beatum, inquit. Primum quid tu dicis breve? </p>
-
-<p>Summum ením bonum exposuit vacuitatem doloris; Tollitur beneficium, tollitur gratia, quae sunt vincla concordiae. Bonum incolumis acies: misera caecitas. Falli igitur possumus. </p>
-
-<dl>
-	<dt><dfn>Eam stabilem appellas.</dfn></dt>
-	<dd>Huius ego nunc auctoritatem sequens idem faciam.</dd>
-	<dt><dfn>Sullae consulatum?</dfn></dt>
-	<dd>An vero displicuit ea, quae tributa est animi virtutibus tanta praestantia?</dd>
-	<dt><dfn>Equidem e Cn.</dfn></dt>
-	<dd>Rhetorice igitur, inquam, nos mavis quam dialectice disputare?</dd>
-</dl>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quid de Platone aut de Democrito loquar? Scisse enim te quis coarguere possit? Duo Reges: constructio interrete.</p>
+				</div>
+			</div>
 
 
-<p>Suo genere perveniant ad extremum; Que Manilium, ab iisque M. Quam ob rem tandem, inquit, non satisfacit? In schola desinis. </p>
+			<div class="modal">
+				<div>System Info</div>
+				<div>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quid de Platone aut de Democrito loquar? Scisse enim te quis coarguere possit? Duo Reges: constructio interrete.</p>
+				</div>
+			</div>
 
-<p>Itaque his sapiens semper vacabit. Sed quod proximum fuit non vidit. Idem iste, inquam, de voluptate quid sentit? Nonne igitur tibi videntur, inquit, mala? Apparet statim, quae sint officia, quae actiones. De vacuitate doloris eadem sententia erit. </p>
 
-
+			<div class="modal">
+				<div>News</div>
+				<div>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quid de Platone aut de Democrito loquar? Scisse enim te quis coarguere possit? Duo Reges: constructio interrete.</p>
 				</div>
 			</div>
 
 
 			<ul>
-				<li>About Custodian CMS</li>
-				<li>Security Logs</li>
-				<li>News</li>
-				<li>System Info</li>
-
-
 				<li>HTML Minify</li>
 				<li>Templates in Database Cache</li>
 				<li>Clear Cache</li>
