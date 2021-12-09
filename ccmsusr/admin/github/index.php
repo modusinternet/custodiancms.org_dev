@@ -227,7 +227,7 @@ if(!is_callable('shell_exec') && true === stripos(ini_get('disable_functions'), 
 			else window.addEventListener('load', cb);
 
 			function loadJSResources() {
-				/*loadFirst("/ccmsusr/_js/jquery-2.2.0.min.js", function() { /* JQuery is loaded */*/
+				/*loadFirst("/ccmsusr/_js/jquery-2.2.0.min.js", function() {*/
 				loadFirst("/ccmsusr/_js/jquery-3.6.0.min.js", function() {
 					loadFirst("/ccmsusr/_js/bootstrap-3.3.7.min.js", function() {
 						loadFirst("/ccmsusr/_js/metisMenu-3.0.7.min.js", function() {
