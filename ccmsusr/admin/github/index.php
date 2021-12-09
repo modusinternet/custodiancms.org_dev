@@ -64,7 +64,7 @@ if(!is_callable('shell_exec') && true === stripos(ini_get('disable_functions'), 
 		<title>GitHub</title>
 		<meta name="description" content="" />
 		{CCMS_TPL:head-meta.html}
-		<script>
+		<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 			var navActiveArray = ["github"];
 		</script>
 	</head>
@@ -200,7 +200,7 @@ if(!is_callable('shell_exec') && true === stripos(ini_get('disable_functions'), 
 			</div>
 		</div>
 
-		<script>
+		<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 			function loadFirst(e,t){var a=document.createElement("script");a.async = true;a.readyState?a.onreadystatechange=function(){("loaded"==a.readyState||"complete"==a.readyState)&&(a.onreadystatechange=null,t())}:a.onload=function(){t()},a.src=e,document.body.appendChild(a)}
 
 			var cb = function() {
