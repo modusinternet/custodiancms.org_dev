@@ -18,6 +18,21 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 	</head>
 	<style>
 		{CCMS_TPL:/_css/head-css.html}
+
+		.formDiv{
+			background-color:var(--cl0);
+			border:1px solid var(--cl2-tran);
+			border-radius:6px;
+			box-shadow:2px 2px 5px 0px rgba(0,0,0,.2)
+		}
+
+		.formDiv>div{padding:10px 20px}
+
+		.formDiv>div:first-child{
+			background-color:var(--cl4);
+			border-radius:6px 6px 0 0;
+			color:var(--cl0)
+		}
 	</style>
 	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 		let navActiveItem = ["nav-dashboard"];
