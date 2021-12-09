@@ -43,7 +43,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 	</script>
 	<body>
 		<main style="padding:20px 20px 20px 0">
-			<h1 style="padding-bottom:9px;margin:40px 0 20px;border-bottom:1px solid #eee">Dashboard</h1>
+			<h1 style="padding-bottom:20px;margin:40px 0 20px;border-bottom:1px solid #eee">Dashboard</h1>
 
 
 			<div class="modal">
