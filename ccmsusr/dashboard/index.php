@@ -27,8 +27,9 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 		<main style="">
 
 
-			<h1>Dashboard</h1>
-			<hr>
+			<h1 style="padding-bottom: 9px;
+margin: 40px 0 20px;
+border-bottom: 1px solid #eee;">Dashboard</h1>
 			<p>This section of the Custodian CMS admin is currently under development.</p>
 
 			<div class="formDiv">
