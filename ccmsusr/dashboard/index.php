@@ -28,17 +28,47 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 			<h1>Dashboard</h1>
+			<hr>
 			<p>This section of the Custodian CMS admin is currently under development.</p>
+
+			<div class="formDiv">
+				<div>Security Logs</div>
+				<div>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quid de Platone aut de Democrito loquar? Scisse enim te quis coarguere possit? Duo Reges: constructio interrete. </p>
+
+<p>Contineo me ab exemplis. Non laboro, inquit, de nomine. Respondeat totidem verbis. Ego vero isti, inquam, permitto. Beatum, inquit. Primum quid tu dicis breve? </p>
+
+<p>Summum ením bonum exposuit vacuitatem doloris; Tollitur beneficium, tollitur gratia, quae sunt vincla concordiae. Bonum incolumis acies: misera caecitas. Falli igitur possumus. </p>
+
+<dl>
+	<dt><dfn>Eam stabilem appellas.</dfn></dt>
+	<dd>Huius ego nunc auctoritatem sequens idem faciam.</dd>
+	<dt><dfn>Sullae consulatum?</dfn></dt>
+	<dd>An vero displicuit ea, quae tributa est animi virtutibus tanta praestantia?</dd>
+	<dt><dfn>Equidem e Cn.</dfn></dt>
+	<dd>Rhetorice igitur, inquam, nos mavis quam dialectice disputare?</dd>
+</dl>
+
+
+<p>Suo genere perveniant ad extremum; Que Manilium, ab iisque M. Quam ob rem tandem, inquit, non satisfacit? In schola desinis. </p>
+
+<p>Itaque his sapiens semper vacabit. Sed quod proximum fuit non vidit. Idem iste, inquam, de voluptate quid sentit? Nonne igitur tibi videntur, inquit, mala? Apparet statim, quae sint officia, quae actiones. De vacuitate doloris eadem sententia erit. </p>
+
+
+				</div>
+			</div>
+
+
 			<ul>
-				<li>Security Alerts</li>
-				<li>Access Logs</li>
-				<li>System Info</li>
-				<li>HTML Minify</li>
-				<li>Cache Rendered Templates in Database</li>
-				<li>Clear Cache</li>
 				<li>About Custodian CMS</li>
+				<li>Security Logs</li>
 				<li>News</li>
-				<li>Content Changes/Updates</li>
+				<li>System Info</li>
+
+
+				<li>HTML Minify</li>
+				<li>Templates in Database Cache</li>
+				<li>Clear Cache</li>
 				<li>Backup/Restore</li>
 				<li>Password Recovery attempts currently in the ccms_password_recovery table</li>
 				<li></li>
