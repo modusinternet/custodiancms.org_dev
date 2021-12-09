@@ -41,7 +41,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 		let navActiveSub = [];
 	</script>
 	<body>
-		<main style="20px 20px 20px 0">
+		<main style="padding:20px 20px 20px 0">
 
 
 			<h1 style="padding-bottom: 9px;
