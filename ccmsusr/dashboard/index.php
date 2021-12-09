@@ -19,6 +19,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 	<style>
 		{CCMS_TPL:/_css/head-css.html}
 
+		p{margin:0 0 20px}
+
 		.formDiv{
 			background-color:var(--cl0);
 			border:1px solid var(--cl2-tran);
@@ -39,7 +41,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 		let navActiveSub = [];
 	</script>
 	<body>
-		<main style="">
+		<main style="20px 20px 20px 0;">
 
 
 			<h1 style="padding-bottom: 9px;
