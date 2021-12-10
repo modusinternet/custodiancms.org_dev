@@ -45,14 +45,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 		<main style="padding:20px 20px 20px 0">
 			<h1 style="padding-bottom:20px;margin:40px 0 20px;border-bottom:1px solid #eee">Dashboard</h1>
 
-
-			<div class="modal">
-				<div>About Custodian CMS</div>
-				<div>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quid de Platone aut de Democrito loquar? Scisse enim te quis coarguere possit? Duo Reges: constructio interrete.</p>
-				</div>
-			</div>
-
+			<p>This section of the Custodian CMS admin is currently under development.</p>
 
 			<div class="modal">
 				<div>System Info</div>
@@ -61,7 +54,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				</div>
 			</div>
 
-
 			<div class="modal">
 				<div>Security Logs</div>
 				<div>
@@ -69,14 +61,12 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				</div>
 			</div>
 
-
 			<div class="modal">
 				<div>News</div>
 				<div>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quid de Platone aut de Democrito loquar? Scisse enim te quis coarguere possit? Duo Reges: constructio interrete.</p>
 				</div>
 			</div>
-
 
 			<ul>
 				<li>HTML Minify</li>
