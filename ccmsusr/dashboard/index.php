@@ -66,7 +66,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				<div>Security Logs</div>
 				<div>
 					<p>List of sessions and or form calls. found in the ccms_log table, that failed.</p>
-					<?php 
+					<?php
 						$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_log`;");
 						$qry->execute();
 						$qry->setFetchMode(PDO::FETCH_ASSOC);
@@ -76,7 +76,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 								echo "<p>" . $row["date"] . ", " . $row["ip"] . ", " . $row["url"] . ", " . $row["log"] . "</p>\n";
 							}
 						} else {
-							echo "<p>No records found.</p>\n"
+							echo "<p>No records found.</p>\n";
 						}
 					?>
 				</div>
