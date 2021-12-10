@@ -50,7 +50,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			<div class="modal">
 				<div>System Info</div>
 				<div>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quid de Platone aut de Democrito loquar? Scisse enim te quis coarguere possit? Duo Reges: constructio interrete.</p>
+					<p>PHP Version: <?= phpversion();?></p>
 				</div>
 			</div>
 
