@@ -65,7 +65,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			<div class="modal">
 				<div>Security Logs</div>
 				<div>
-					<p>List of sessions and or form calls. found in the ccms_log table, that failed.</p>
+					<p>List of sessions and or form calls, found in the 'ccms_log' table, that failed.</p>
 					<?php
 						$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_log`;");
 						$qry->execute();
