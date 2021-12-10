@@ -69,7 +69,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					<?php
 						$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_log`;");
 						$qry->execute();
-						$qry->setFetchMode(PDO::FETCH_ASSOC);
+						$row = $qry->setFetchMode(PDO::FETCH_ASSOC);
 
 						if($row) {
 							while($row = $qry->fetch()) {
@@ -85,7 +85,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					<?php
 						$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_ins_db`;");
 						$qry->execute();
-						$qry->setFetchMode(PDO::FETCH_ASSOC);
+						$row = $qry->setFetchMode(PDO::FETCH_ASSOC);
 
 						if($row) {
 							while($row = $qry->fetch()) {
