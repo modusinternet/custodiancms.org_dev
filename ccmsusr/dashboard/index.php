@@ -72,7 +72,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 						$row = $qry->setFetchMode(PDO::FETCH_ASSOC);
 
 						//if($row) {
-						if(count((array) $row) > 0) {
+						//if(count((array) $row) > 0) {
+						if(is_array($row)) {
 							while($row = $qry->fetch()) {
 								echo "<p>" . $row["date"] . ", " . $row["ip"] . ", " . $row["url"] . ", " . $row["log"] . "</p>\n";
 							}
