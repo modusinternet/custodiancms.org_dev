@@ -53,6 +53,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					<p>PHP Version: <?= phpversion();?></p>
 					<p>System Address: <?= $_SERVER["SERVER_ADDR"];?></p>
 					<p>Web Server: <?php $a = explode(" ",$_SERVER["SERVER_SOFTWARE"]);echo $a[0];?></p>
+					<p>MySQL Version: <?=$CFG["DBH"]->getAttribute(PDO::ATTR_SERVER_VERSION);?></p>
 
 
 
