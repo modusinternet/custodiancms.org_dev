@@ -71,32 +71,12 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 						$qry->execute();
 						$row = $qry->setFetchMode(PDO::FETCH_ASSOC);
 
-						//if($row) {
-						//if(count((array) $row) > 0) {
 						if(is_array($row)) {
 							while($row = $qry->fetch()) {
 								echo "<p>" . $row["date"] . ", " . $row["ip"] . ", " . $row["url"] . ", " . $row["log"] . "</p>\n";
 							}
 						} else {
 							echo "<p>No records found.</p>\n";
-						}
-					?>
-
-
-					<p>Temp</p>
-					<?php
-						$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_password_recovery`;");
-						$qry->execute();
-						$row = $qry->setFetchMode(PDO::FETCH_ASSOC);
-
-						//if($row) {
-						//if(count((array) $row) > 0) {
-						if(is_array($row)) {
-							while($row = $qry->fetch()) {
-								echo "<p>" . $row["grp"] . ", " . $row["name"] . ", " . $row["en"] . "</p>\n";
-							}
-						} else {
-							echo "<p>No 'ccms_password_recovery' records found.</p>\n";
 						}
 					?>
 				</div>
