@@ -52,7 +52,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				<div>
 					<p>PHP Version: <?= phpversion();?></p>
 					<p>System Address: <?= $_SERVER['SERVER_ADDR'];?></p>
-					<p>Web Server: <?php $a=explode(" ", $_SERVER["SERVER_SOFTWARE"]); print_r($a);?></p>
+					<p>Web Server: <?= $a[0] = explode(" ",$_SERVER["SERVER_SOFTWARE"]);?></p>
 
 
 
