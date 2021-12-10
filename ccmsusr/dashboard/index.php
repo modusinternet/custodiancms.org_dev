@@ -81,6 +81,20 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					?>
 
 
+					<p>Temp</p>
+					<?php
+						$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_password_recovery`;");
+						$qry->execute();
+						$row = $qry->setFetchMode(PDO::FETCH_ASSOC);
+
+						if($row) {
+							while($row = $qry->fetch()) {
+								echo "<p>" . $row["grp"] . ", " . $row["name"] . ", " . $row["en"] . "</p>\n";
+							}
+						} else {
+							echo "<p>No records found.</p>\n";
+						}
+					?>
 				</div>
 			</div>
 
