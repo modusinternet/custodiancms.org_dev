@@ -51,7 +51,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				<div>System Info</div>
 				<div>
 					<p>PHP Version: <?= phpversion();?></p>
-					<p>System Address: <?= $_SERVER['SERVER_ADDR'];?></p>
+					<p>System Address: <?= $_SERVER["SERVER_ADDR"];?></p>
 					<p>Web Server: <?= $a[0] = explode(" ",$_SERVER["SERVER_SOFTWARE"]);?></p>
 
 
