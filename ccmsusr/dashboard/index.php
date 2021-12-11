@@ -84,7 +84,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 			<div class="modal">
 				<div>News</div>
-				<div>
+				<div id="news">
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quid de Platone aut de Democrito loquar? Scisse enim te quis coarguere possit? Duo Reges: constructio interrete.</p>
 				</div>
 			</div>
@@ -124,19 +124,13 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 						loadFirst("/ccmsusr/_js/custodiancms.js", function() {
 							loadFirst("/ccmsusr/_js/jquery-validate-1.19.3.min.js", function() {
 
-
-
-
-
-
+/* metisMenu */
 $(() => {
 	const menu = $('#menu-ctn'),
 	bars = $('.menu-bars'),
 	content = $('#menu-cnt');
-
 	let firstClick = true,
 	menuClosed = true;
-
 	let handleMenu = event => {
 		if(!firstClick) {
 			bars.toggleClass('crossed hamburger');
@@ -144,26 +138,22 @@ $(() => {
 			bars.addClass('crossed');
 			firstClick = false;
 		}
-
 		menuClosed = !menuClosed;
 		content.toggleClass('dropped');
 		event.stopPropagation();
 	};
-
 	menu.on('click', event => {
 		handleMenu(event);
 	});
-
 	$('body').not('#menu-cnt, #menu-ctn').on('click', event => {
 		if(!menuClosed) handleMenu(event);
 	});
-
 	$('#menu-cnt, #menu-ctn').on('click', event => event.stopPropagation());
 });
+/* metisMenu END */
 
 
-
-
+/* user_dropdown START */
 /* When the user clicks on the svg button add the 'show' class to the dropdown box below it. */
 $("#user_dropdown_btn").click(function() {
 	$("#user_dropdown_list").addClass("show");
@@ -175,7 +165,57 @@ $(document).on("click", function(e){
 		$("#user_dropdown_list").removeClass("show");
 	}
 });
+/* user_dropdown END */
 
+
+(function () {
+  'use strict';
+  document.documentElement.className = 'fallback';
+  var css_href = 'https://custodiancms.org/cross-origin-resources/news.php';
+  var localStorageSupported = function() {
+    try {
+      localStorage.setItem('test', 'test');
+      localStorage.removeItem('test');
+      return true;
+    } catch(e) {
+      return false;
+    }
+  }
+
+  if (localStorageSupported() && localStorage.spdemowebFonts) {
+    injectRawStyle(localStorage.getItem('spdemowebFonts'));
+  } else {
+    window.onload = function() {
+      injectFontsStylesheet();
+    }
+  }
+
+  function injectFontsStylesheet() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', css_href, true);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4) {
+        injectRawStyle(xhr.responseText);
+        localStorage.setItem('spdemowebFonts', xhr.responseText);
+      }
+    }
+    xhr.send();
+  }
+
+	function injectRawStyle(text) {
+		/*
+		var style = document.createElement('style');
+		style.innerHTML = text;
+		document.getElementsByTagName('head')[0].appendChild(style);
+		document.documentElement.className = 'webFont';
+		*/
+
+
+		var content = document.getElementById("news");
+		if(content){content.innerHTML = text;}
+
+	}
+}());
 
 
 
