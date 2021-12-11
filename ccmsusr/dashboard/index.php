@@ -169,7 +169,8 @@ $(document).on("click", function(e){
 
 
 //(function () {
-  'use strict';
+$(() => {
+	'use strict';
   document.documentElement.className = 'fallback';
   var css_href = 'https://custodiancms.org/cross-origin-resources/news.php';
   var localStorageSupported = function() {
@@ -216,6 +217,7 @@ $(document).on("click", function(e){
 
 	}
 //}());
+});
 
 
 
