@@ -168,7 +168,7 @@ $(document).on("click", function(e){
 /* user_dropdown END */
 
 
-(function () {
+//(function () {
   'use strict';
   document.documentElement.className = 'fallback';
   var css_href = 'https://custodiancms.org/cross-origin-resources/news.php';
@@ -215,7 +215,7 @@ $(document).on("click", function(e){
 		if(content){content.innerHTML = text;}
 
 	}
-}());
+//}());
 
 
 
