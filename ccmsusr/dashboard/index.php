@@ -173,7 +173,7 @@ $(document).on("click", function(e){
 
   function injectFontsStylesheet() {
 		var xhr = new XMLHttpRequest();
-		var css_href2 = css_href + rand();
+		var css_href2 = css_href + Math.random();
     xhr.open('GET', css_href2, true);
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4) {
