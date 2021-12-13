@@ -200,24 +200,15 @@ console.log("inside injectFontsStylesheet()");
 
 		var content = document.getElementById("news");
 		if(content){
-			text = text + " <button id='ccms_news_reload'>Reload</button>";
+			text = text + " <button id='ccms_news_reload' onclick='ccms_news_reload'>Reload</button>";
 			content.innerHTML = text;}
 
 	}
 
-	$("#ccms_news_reload").click(function() {
+	function ccms_news_reload(){
 		localStorage.removeItem("spdemowebFonts");
 		injectFontsStylesheet();
-
-
-
-
-
-
-
-
-	});
-
+	}
 
 
 	var css_href = 'https://custodiancms.org/cross-origin-resources/news.php';
