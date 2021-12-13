@@ -173,7 +173,7 @@ $(document).on("click", function(e){
 
   function injectFontsStylesheet() {
 		var xhr = new XMLHttpRequest();
-    xhr.open('GET', css_href, true);
+    xhr.open('GET', css_href + rand(), true);
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4) {
         injectRawStyle(xhr.responseText);
@@ -194,7 +194,7 @@ $(document).on("click", function(e){
 
 
 
-	var css_href = 'https://custodiancms.org/cross-origin-resources/news.php';
+	var css_href = 'https://custodiancms.org/cross-origin-resources/news.php?ccms_token=';
   var localStorageSupported = function() {
     try {
       localStorage.setItem('test', 'test');
