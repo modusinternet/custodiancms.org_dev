@@ -200,7 +200,7 @@ console.log("inside injectFontsStylesheet()");
 
 		var content = document.getElementById("news");
 		if(content){
-			text = text + " <button id='ccms_news_reload' onclick='ccms_news_reload()' nonce='{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}'>Reload</button>";
+			text = text + " <button id='ccms_news_reload' onclick='ccms_news_reload();' nonce='{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}'>Reload</button>";
 			content.innerHTML = text;}
 
 	}
