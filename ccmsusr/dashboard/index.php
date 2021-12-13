@@ -173,7 +173,8 @@ $(document).on("click", function(e){
 
   function injectFontsStylesheet() {
 		var xhr = new XMLHttpRequest();
-    xhr.open('GET', css_href + rand(), true);
+		var css_href2 = css_href + rand();
+    xhr.open('GET', css_href2, true);
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4) {
         injectRawStyle(xhr.responseText);
