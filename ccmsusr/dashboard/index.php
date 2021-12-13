@@ -83,9 +83,9 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			</div>
 
 			<div class="modal">
-				<div>News</div>
+				<div>News From CustodianCMS.org</div>
 				<div id="news">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quid de Platone aut de Democrito loquar? Scisse enim te quis coarguere possit? Duo Reges: constructio interrete.</p>
+					<p>Nothing to see at the moment.  Try Reloading</p>
 				</div>
 			</div>
 
@@ -199,9 +199,24 @@ console.log("inside injectFontsStylesheet()");
 
 
 		var content = document.getElementById("news");
-		if(content){content.innerHTML = text;}
+		if(content){
+			text = text + " <button id='ccms_news_reload'>Reload</button>";
+			content.innerHTML = text;}
 
 	}
+
+	$("#ccms_news_reload").click(function() {
+		localStorage.removeItem("spdemowebFonts");
+		injectFontsStylesheet();
+
+
+
+
+
+
+
+
+	});
 
 
 
