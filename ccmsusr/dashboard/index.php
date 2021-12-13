@@ -221,11 +221,11 @@ console.log("localStorageSupported 1");
     injectRawStyle(localStorage.getItem('spdemowebFonts'));
   } else {
 console.log("localStorageSupported 2");
-    window.onload = function() {
+    //window.onload = function() {
       injectFontsStylesheet();
-    }
+    //}
   }
-	
+
 //}());
 //});
 
