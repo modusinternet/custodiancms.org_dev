@@ -217,8 +217,10 @@ console.log("inside injectFontsStylesheet()");
   }
 
   if(localStorageSupported() && localStorage.spdemowebFonts) {
+console.log("localStorageSupported 1");
     injectRawStyle(localStorage.getItem('spdemowebFonts'));
   } else {
+console.log("localStorageSupported 2");
     window.onload = function() {
       injectFontsStylesheet();
     }
