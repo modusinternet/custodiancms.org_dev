@@ -225,6 +225,7 @@ console.log("localStorageSupported 2");
       injectFontsStylesheet();
     }
   }
+	
 //}());
 //});
 
