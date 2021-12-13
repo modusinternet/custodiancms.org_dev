@@ -169,27 +169,12 @@ $(document).on("click", function(e){
 
 
 //(function () {
+/*
 $(() => {
 	'use strict';
   document.documentElement.className = 'fallback';
-  var css_href = 'https://custodiancms.org/cross-origin-resources/news.php';
-  var localStorageSupported = function() {
-    try {
-      localStorage.setItem('test', 'test');
-      localStorage.removeItem('test');
-      return true;
-    } catch(e) {
-      return false;
-    }
-  }
+*/
 
-  if (localStorageSupported() && localStorage.spdemowebFonts) {
-    injectRawStyle(localStorage.getItem('spdemowebFonts'));
-  } else {
-    window.onload = function() {
-      injectFontsStylesheet();
-    }
-  }
 
   function injectFontsStylesheet() {
     var xhr = new XMLHttpRequest();
@@ -216,8 +201,29 @@ $(() => {
 		if(content){content.innerHTML = text;}
 
 	}
+
+
+
+	var css_href = 'https://custodiancms.org/cross-origin-resources/news.php';
+  var localStorageSupported = function() {
+    try {
+      localStorage.setItem('test', 'test');
+      localStorage.removeItem('test');
+      return true;
+    } catch(e) {
+      return false;
+    }
+  }
+
+  if(localStorageSupported() && localStorage.spdemowebFonts) {
+    injectRawStyle(localStorage.getItem('spdemowebFonts'));
+  } else {
+    window.onload = function() {
+      injectFontsStylesheet();
+    }
+  }
 //}());
-});
+//});
 
 
 
