@@ -168,16 +168,10 @@ $(document).on("click", function(e){
 /* user_dropdown END */
 
 
-//(function () {
-/*
-$(() => {
-	'use strict';
-  document.documentElement.className = 'fallback';
-*/
+
 
 
   function injectFontsStylesheet() {
-console.log("inside injectFontsStylesheet()");
 		var xhr = new XMLHttpRequest();
     xhr.open('GET', css_href, true);
     xhr.onreadystatechange = function() {
@@ -190,25 +184,14 @@ console.log("inside injectFontsStylesheet()");
   }
 
 	function injectRawStyle(text) {
-		/*
-		var style = document.createElement('style');
-		style.innerHTML = text;
-		document.getElementsByTagName('head')[0].appendChild(style);
-		document.documentElement.className = 'webFont';
-		*/
-
-
 		var content = document.getElementById("news");
 		if(content){
-			text = text + " <button id='ccms_news_reload' onclick='ccms_news_reload();' nonce='{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}'>Reload</button>";
-			content.innerHTML = text;}
-
+			text = text + ' <button id="ccms_news_reload">Reload</button>';
+			content.innerHTML = text;
+		}
 	}
 
-	function ccms_news_reload(){
-		localStorage.removeItem("spdemowebFonts");
-		injectFontsStylesheet();
-	}
+
 
 
 	var css_href = 'https://custodiancms.org/cross-origin-resources/news.php';
@@ -223,19 +206,16 @@ console.log("inside injectFontsStylesheet()");
   }
 
   if(localStorageSupported() && localStorage.spdemowebFonts) {
-console.log("localStorageSupported 1");
     injectRawStyle(localStorage.getItem('spdemowebFonts'));
   } else {
-console.log("localStorageSupported 2");
-    //window.onload = function() {
       injectFontsStylesheet();
-    //}
   }
 
-//}());
-//});
 
-
+	$("#ccms_news_reload").click(function() {
+		localStorage.removeItem("spdemowebFonts");
+		injectFontsStylesheet();
+	});
 
 
 							});
