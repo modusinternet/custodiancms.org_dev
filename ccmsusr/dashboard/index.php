@@ -177,7 +177,8 @@ $(() => {
 
 
   function injectFontsStylesheet() {
-    var xhr = new XMLHttpRequest();
+console.log("inside injectFontsStylesheet()");
+		var xhr = new XMLHttpRequest();
     xhr.open('GET', css_href, true);
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4) {
