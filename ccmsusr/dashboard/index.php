@@ -117,6 +117,36 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				return Math.floor(1000000000000000 + Math.random() * 9000000000000000).toString(36).substr(0, 10)
 			}
 
+			function injectFontsStylesheet() {
+				var xhr = new XMLHttpRequest();
+				var css_href2 = css_href + generateToken();
+				//var css_href2 = css_href + Math.random();
+		    xhr.open('GET', css_href2, true);
+		    xhr.onreadystatechange = function() {
+		      if (xhr.readyState === 4) {
+		        injectRawStyle(xhr.responseText);
+		        localStorage.setItem('spdemowebFonts', xhr.responseText);
+		      }
+		    }
+		    xhr.send();
+		  }
+
+			function injectRawStyle(text) {
+				var content = document.getElementById("news");
+				if(content){
+					text = text + ' <button id="ccms_news_reload">Reload</button>';
+					content.innerHTML = text;
+				}
+			}
+
+			$("#ccms_news_reload").click(function() {
+				localStorage.removeItem("spdemowebFonts");
+				injectFontsStylesheet();
+			});
+
+
+
+
 			var l=document.createElement("link");l.rel="stylesheet";
 			l.href = "/ccmsusr/_css/custodiancms.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
@@ -166,7 +196,7 @@ $("#user_dropdown_btn").click(function() {
 	$("#user_dropdown_list").addClass("show");
 });
 
-// Hide dropdown menu on click outside
+/* Hide dropdown menu on click outside */
 $(document).on("click", function(e){
 	if(!$(e.target).closest("#user_dropdown_btn").length){
 		$("#user_dropdown_list").removeClass("show");
@@ -178,27 +208,7 @@ $(document).on("click", function(e){
 
 
 
-  function injectFontsStylesheet() {
-		var xhr = new XMLHttpRequest();
-		var css_href2 = css_href + generateToken();
-		//var css_href2 = css_href + Math.random();
-    xhr.open('GET', css_href2, true);
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState === 4) {
-        injectRawStyle(xhr.responseText);
-        localStorage.setItem('spdemowebFonts', xhr.responseText);
-      }
-    }
-    xhr.send();
-  }
 
-	function injectRawStyle(text) {
-		var content = document.getElementById("news");
-		if(content){
-			text = text + ' <button id="ccms_news_reload">Reload</button>';
-			content.innerHTML = text;
-		}
-	}
 
 
 
@@ -221,10 +231,6 @@ $(document).on("click", function(e){
   }
 
 
-	$("#ccms_news_reload").click(function() {
-		localStorage.removeItem("spdemowebFonts");
-		injectFontsStylesheet();
-	});
 
 
 							});
