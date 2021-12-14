@@ -110,6 +110,13 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 		<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 			{CCMS_TPL:/_js/footer-1.php}
 
+
+
+
+			function generateToken() {
+				return Math.floor(1000000000000000 + Math.random() * 9000000000000000).toString(36).substr(0, 10)
+			}
+
 			var l=document.createElement("link");l.rel="stylesheet";
 			l.href = "/ccmsusr/_css/custodiancms.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
@@ -173,7 +180,8 @@ $(document).on("click", function(e){
 
   function injectFontsStylesheet() {
 		var xhr = new XMLHttpRequest();
-		var css_href2 = css_href + Math.random();
+		var css_href2 = css_href + generateToken();
+		//var css_href2 = css_href + Math.random();
     xhr.open('GET', css_href2, true);
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4) {
