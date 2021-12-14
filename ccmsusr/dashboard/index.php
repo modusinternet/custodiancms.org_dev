@@ -110,40 +110,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 		<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 			{CCMS_TPL:/_js/footer-1.php}
 
-
-
-
-			function generateToken() {
-				return Math.floor(1000000000000000 + Math.random() * 9000000000000000).toString(36).substr(0, 10)
-			}
-
-			function injectFontsStylesheet() {
-				var xhr = new XMLHttpRequest();
-				var css_href2 = css_href + generateToken();
-				//var css_href2 = css_href + Math.random();
-		    xhr.open('GET', css_href2, true);
-		    xhr.onreadystatechange = function() {
-		      if (xhr.readyState === 4) {
-		        injectRawStyle(xhr.responseText);
-		        localStorage.setItem('spdemowebFonts', xhr.responseText);
-		      }
-		    }
-		    xhr.send();
-		  }
-
-			function injectRawStyle(text) {
-				var content = document.getElementById("news");
-				if(content){
-					text = text + ' <button id="ccms_news_reload">Reload</button>';
-					content.innerHTML = text;
-				}
-			}
-
-
-
-
-
-
 			var l=document.createElement("link");l.rel="stylesheet";
 			l.href = "/ccmsusr/_css/custodiancms.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
@@ -158,48 +124,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 						loadFirst("/ccmsusr/_js/custodiancms.js", function() {
 							loadFirst("/ccmsusr/_js/jquery-validate-1.19.3.min.js", function() {
 
-/* metisMenu */
-$(() => {
-	const menu = $('#menu-ctn'),
-	bars = $('.menu-bars'),
-	content = $('#menu-cnt');
-	let firstClick = true,
-	menuClosed = true;
-	let handleMenu = event => {
-		if(!firstClick) {
-			bars.toggleClass('crossed hamburger');
-		} else {
-			bars.addClass('crossed');
-			firstClick = false;
-		}
-		menuClosed = !menuClosed;
-		content.toggleClass('dropped');
-		event.stopPropagation();
-	};
-	menu.on('click', event => {
-		handleMenu(event);
-	});
-	$('body').not('#menu-cnt, #menu-ctn').on('click', event => {
-		if(!menuClosed) handleMenu(event);
-	});
-	$('#menu-cnt, #menu-ctn').on('click', event => event.stopPropagation());
-});
-/* metisMenu END */
-
-
-/* user_dropdown START */
-/* When the user clicks on the svg button add the 'show' class to the dropdown box below it. */
-$("#user_dropdown_btn").click(function() {
-	$("#user_dropdown_list").addClass("show");
-});
-
-/* Hide dropdown menu on click outside */
-$(document).on("click", function(e){
-	if(!$(e.target).closest("#user_dropdown_btn").length){
-		$("#user_dropdown_list").removeClass("show");
-	}
-});
-/* user_dropdown END */
 
 $("#ccms_news_reload").click(function() {
 	localStorage.removeItem("spdemowebFonts");
@@ -207,37 +131,56 @@ $("#ccms_news_reload").click(function() {
 });
 
 
-
-
-
-
-
-
-	var css_href = 'https://custodiancms.org/cross-origin-resources/news.php?ccms_token=';
-  var localStorageSupported = function() {
-    try {
-      localStorage.setItem('test', 'test');
-      localStorage.removeItem('test');
-      return true;
-    } catch(e) {
-      return false;
-    }
-  }
-
-  if(localStorageSupported() && localStorage.spdemowebFonts) {
-    injectRawStyle(localStorage.getItem('spdemowebFonts'));
-  } else {
-      injectFontsStylesheet();
-  }
-
-
-
-
 							});
 						});
 					});
 				});
 			}
+
+			function generateToken() {
+				return Math.floor(1000000000000000 + Math.random() * 9000000000000000).toString(36).substr(0, 10)
+			}
+
+			function injectFontsStylesheet() {
+				var xhr = new XMLHttpRequest();
+				var css_href2 = css_href + generateToken();
+				//var css_href2 = css_href + Math.random();
+				xhr.open('GET', css_href2, true);
+				xhr.onreadystatechange = function() {
+					if(xhr.readyState === 4) {
+						injectRawStyle(xhr.responseText);
+						localStorage.setItem('spdemowebFonts', xhr.responseText);
+					}
+				}
+				xhr.send();
+			}
+
+			function injectRawStyle(text) {
+				var content = document.getElementById("news");
+				if(content){
+					text = text + ' <button id="ccms_news_reload">Reload</button>';
+					content.innerHTML = text;
+				}
+			}
+
+			var css_href = 'https://custodiancms.org/cross-origin-resources/news.php?ccms_token=';
+			var localStorageSupported = function() {
+				try {
+					localStorage.setItem('test', 'test');
+					localStorage.removeItem('test');
+					return true;
+				} catch(e) {
+					return false;
+				}
+			}
+
+			if(localStorageSupported() && localStorage.spdemowebFonts) {
+				injectRawStyle(localStorage.getItem('spdemowebFonts'));
+			} else {
+				injectFontsStylesheet();
+			}
+
+
 		</script>
 	</body>
 </html>

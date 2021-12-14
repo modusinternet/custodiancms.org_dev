@@ -10,17 +10,56 @@ window.setTimeout(function(){
 },250);
 /* Loading Screen END */
 
-/* Load metisMenu START */
+
+/* metisMenu START */
+$(() => {
+	const menu = $('#menu-ctn'),
+	bars = $('.menu-bars'),
+	content = $('#menu-cnt');
+	let firstClick = true,
+	menuClosed = true;
+	let handleMenu = event => {
+		if(!firstClick) {
+			bars.toggleClass('crossed hamburger');
+		} else {
+			bars.addClass('crossed');
+			firstClick = false;
+		}
+		menuClosed = !menuClosed;
+		content.toggleClass('dropped');
+		event.stopPropagation();
+	};
+	menu.on('click', event => {
+		handleMenu(event);
+	});
+	$('body').not('#menu-cnt, #menu-ctn').on('click', event => {
+		if(!menuClosed) handleMenu(event);
+	});
+	$('#menu-cnt, #menu-ctn').on('click', event => event.stopPropagation());
+});
+
 $("#menu1").metisMenu();
 navActiveSub.forEach(function(nl){$("#"+nl).addClass("mm-active");});
 navActiveSub.forEach(function(nl){$("#"+nl+">a").attr("aria-expanded","true");});
 navActiveSub.forEach(function(nl){$("#"+nl+">a").addClass("active");});
 navActiveSub.forEach(function(nl){$("#"+nl+">ul").addClass("mm-show");});
 navActiveItem.forEach(function(nl){$("#"+nl+">a").addClass("active");});
-/* Load metisMenu END */
+/* metisMenu END */
 
 
+/* user_dropdown START */
+/* When the user clicks on the svg button add the 'show' class to the dropdown box below it. */
+$("#user_dropdown_btn").click(function() {
+	$("#user_dropdown_list").addClass("show");
+});
 
+/* Hide dropdown menu on click outside */
+$(document).on("click", function(e){
+	if(!$(e.target).closest("#user_dropdown_btn").length){
+		$("#user_dropdown_list").removeClass("show");
+	}
+});
+/* user_dropdown END */
 
 
 
