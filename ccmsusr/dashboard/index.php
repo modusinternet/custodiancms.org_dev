@@ -139,10 +139,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				}
 			}
 
-			$("#ccms_news_reload").click(function() {
-				localStorage.removeItem("spdemowebFonts");
-				injectFontsStylesheet();
-			});
+
 
 
 
@@ -204,7 +201,10 @@ $(document).on("click", function(e){
 });
 /* user_dropdown END */
 
-
+$("#ccms_news_reload").click(function() {
+	localStorage.removeItem("spdemowebFonts");
+	injectFontsStylesheet();
+});
 
 
 
