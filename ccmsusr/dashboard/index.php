@@ -138,7 +138,10 @@ $("#ccms_news_reload").click(function() {
 			}
 
 			function generateToken() {
-				return Math.floor(1000000000000000 + Math.random() * 9000000000000000).toString(36).substr(0, 10)
+				//return Math.floor(1000000000000000 + Math.random() * 9000000000000000).toString(36).substr(0, 10);
+				var asdf = Math.floor(1000000000000000 + Math.random() * 9000000000000000).toString(36).substr(0, 10);
+				consol.log(asdf);
+				return asdf;
 			}
 
 			function injectFontsStylesheet() {
