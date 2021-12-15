@@ -128,7 +128,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 $("#ccms_news_reload").click(function() {
 	localStorage.removeItem("spdemowebFonts");
 	injectFontsStylesheet();
-	return;
 });
 
 
