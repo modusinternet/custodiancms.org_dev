@@ -48,7 +48,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			color:var(--cl0)
 		}
 
-		#ccms_news_items{padding-left:10px}
+		#ccms_news_items{padding-left:30px}
 		#ccms_news_items li{margin-bottom:10px}
 
 		/* 824px or larger. Pixel Xl Landscape resolution is 411 x 823. */
