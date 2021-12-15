@@ -143,7 +143,7 @@ console.log(asdf);
 
 			function injectFontsStylesheet() {
 				var xhr = new XMLHttpRequest();
-				var css_href2 = css_href += generateToken();
+				var css_href2 = css_href + generateToken();
 				//var css_href2 = css_href + Math.random();
 				xhr.open('GET', css_href2, true);
 				xhr.onreadystatechange = function() {
