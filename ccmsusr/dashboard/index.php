@@ -83,9 +83,9 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			</div>
 
 			<div class="modal">
-				<div>News From CustodianCMS.org</div>
+				<div>News From CustodianCMS.org <button id="ccms_news_reload">Reload</button></div>
 				<div id="news">
-					<p>Nothing to see at the moment.  Try Reloading</p>
+					<p>Nothing to see at the moment.</p>
 				</div>
 			</div>
 
@@ -158,7 +158,6 @@ console.log(asdf);
 			function injectRawStyle(text) {
 				var content = document.getElementById("news");
 				if(content){
-					text = text + ' <button id="ccms_news_reload">Reload</button>';
 					content.innerHTML = text;
 				}
 			}
@@ -174,10 +173,6 @@ console.log(asdf);
 				localStorage.removeItem("spdemowebFonts");
 				injectFontsStylesheet();
 			});
-
-
-
-
 
 			var css_href = 'https://custodiancms.org/cross-origin-resources/news.php?ccms_token=';
 			var localStorageSupported = function() {
