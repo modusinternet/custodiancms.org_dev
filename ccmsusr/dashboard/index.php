@@ -32,9 +32,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				"c2"
 		}
 
-		.ccms_news_items{padding-left:10px}
-		.ccms_news_items li{margin-bottom:10px}
-
 		.modal{
 			background-color:var(--cl0);
 			border:1px solid var(--cl2-tran);
@@ -50,6 +47,9 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			border-radius:6px 6px 0 0;
 			color:var(--cl0)
 		}
+
+		#ccms_news_items{padding-left:10px}
+		#ccms_news_items li{margin-bottom:10px}
 
 		/* 824px or larger. Pixel Xl Landscape resolution is 411 x 823. */
 		@media only screen and (min-width: 824px){
