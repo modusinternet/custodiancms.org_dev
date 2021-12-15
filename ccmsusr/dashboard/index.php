@@ -222,6 +222,16 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			} else {
 				injectFontsStylesheet();
 			}
+
+
+
+
+var d1 = new Date();
+localStorage.setItem("key", d1.getTime());
+var d2 = new Date(parseInt(localStorage.getItem[key]));
+
+
+
 		</script>
 	</body>
 </html>
