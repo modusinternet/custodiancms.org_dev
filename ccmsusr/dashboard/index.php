@@ -131,7 +131,19 @@ cursor: pointer;" title="Reload"><path fill="#fff" d="M19.91,15.51H15.38a1,1,0,0
 							loadFirst("/ccmsusr/_js/jquery-validate-1.19.3.min.js", function() {
 
 
+								/* user_dropdown START */
+								/* When the user clicks on the svg button add the 'show' class to the dropdown box below it. */
+								$("#user_dropdown_btn").click(function() {
+									$("#user_dropdown_list").addClass("show");
+								});
 
+								/* Hide dropdown menu on click outside */
+								$(document).on("click", function(e){
+									if(!$(e.target).closest("#user_dropdown_btn").length){
+										$("#user_dropdown_list").removeClass("show");
+									}
+								});
+								/* user_dropdown END */
 
 
 							});
@@ -141,10 +153,7 @@ cursor: pointer;" title="Reload"><path fill="#fff" d="M19.91,15.51H15.38a1,1,0,0
 			}
 
 			function generateToken() {
-				//return Math.floor(1000000000000000 + Math.random() * 9000000000000000).toString(36).substr(0, 10);
-				var asdf = Math.floor(1000000000000000 + Math.random() * 9000000000000000).toString(36).substr(0, 10);
-console.log(asdf);
-				return asdf;
+				return Math.floor(1000000000000000 + Math.random() * 9000000000000000).toString(36).substr(0, 10);
 			}
 
 			function injectFontsStylesheet() {
@@ -168,13 +177,6 @@ console.log(asdf);
 				}
 			}
 
-			/*
-			$("#ccms_news_reload").click(function() {
-				localStorage.removeItem("spdemowebFonts");
-				injectFontsStylesheet();
-			});
-			*/
-
 			document.getElementById("ccms_news_reload").addEventListener("click", function() {
 				localStorage.removeItem("spdemowebFonts");
 				injectFontsStylesheet();
@@ -196,8 +198,6 @@ console.log(asdf);
 			} else {
 				injectFontsStylesheet();
 			}
-
-
 		</script>
 	</body>
 </html>

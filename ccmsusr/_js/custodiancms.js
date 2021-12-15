@@ -47,19 +47,7 @@ navActiveItem.forEach(function(nl){$("#"+nl+">a").addClass("active");});
 /* metisMenu END */
 
 
-/* user_dropdown START */
-/* When the user clicks on the svg button add the 'show' class to the dropdown box below it. */
-$("#user_dropdown_btn").click(function() {
-	$("#user_dropdown_list").addClass("show");
-});
 
-/* Hide dropdown menu on click outside */
-$(document).on("click", function(e){
-	if(!$(e.target).closest("#user_dropdown_btn").length){
-		$("#user_dropdown_list").removeClass("show");
-	}
-});
-/* user_dropdown END */
 
 
 
