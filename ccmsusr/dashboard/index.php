@@ -21,6 +21,12 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 		p{margin:0 0 20px}
 
+		.cssGrid-Dashboard-01{
+			display:grid;
+			grid-gap:1em;
+			grid-template-columns:auto auto
+		}
+
 		.modal{
 			background-color:var(--cl0);
 			border:1px solid var(--cl2-tran);
@@ -67,31 +73,33 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				</div>
 			</div>
 
-			<div class="modal">
-				<div>System Info</div>
-				<div>
-					<p>Server Name: <?= $_SERVER["SERVER_NAME"];?></p>
-					<p>Document Root: <?=$_SERVER["DOCUMENT_ROOT"];?></p>
-					<p>System Address: <?= $_SERVER["SERVER_ADDR"];?></p>
-					<p>Web Server: <?php $a = explode(" ",$_SERVER["SERVER_SOFTWARE"]);echo $a[0];?></p>
-					<p>PHP Version: <?= phpversion();?></p>
-					<p>PHP Memory Limit: <?= ini_get("memory_limit");?></p>
-					<p>MySQL Version: <?= $CFG["DBH"]->getAttribute(PDO::ATTR_SERVER_VERSION);?></p>
+			<div class="cssGrid-Dashboard-01">
+				<div class="modal">
+					<div>System Info</div>
+					<div>
+						<p>Server Name: <?= $_SERVER["SERVER_NAME"];?></p>
+						<p>Document Root: <?=$_SERVER["DOCUMENT_ROOT"];?></p>
+						<p>System Address: <?= $_SERVER["SERVER_ADDR"];?></p>
+						<p>Web Server: <?php $a = explode(" ",$_SERVER["SERVER_SOFTWARE"]);echo $a[0];?></p>
+						<p>PHP Version: <?= phpversion();?></p>
+						<p>PHP Memory Limit: <?= ini_get("memory_limit");?></p>
+						<p>MySQL Version: <?= $CFG["DBH"]->getAttribute(PDO::ATTR_SERVER_VERSION);?></p>
 
 
+					</div>
 				</div>
-			</div>
 
-			<div class="modal">
-				<div>News From CustodianCMS.org
-					<svg id="ccms_news_reload" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width: 28px;
-position: relative;
-float: right;
-top: 5px;
-cursor: pointer;" title="Reload"><path fill="#fff" d="M19.91,15.51H15.38a1,1,0,0,0,0,2h2.4A8,8,0,0,1,4,12a1,1,0,0,0-2,0,10,10,0,0,0,16.88,7.23V21a1,1,0,0,0,2,0V16.5A1,1,0,0,0,19.91,15.51ZM15,12a3,3,0,1,0-3,3A3,3,0,0,0,15,12Zm-4,0a1,1,0,1,1,1,1A1,1,0,0,1,11,12ZM12,2A10,10,0,0,0,5.12,4.77V3a1,1,0,0,0-2,0V7.5a1,1,0,0,0,1,1h4.5a1,1,0,0,0,0-2H6.22A8,8,0,0,1,20,12a1,1,0,0,0,2,0A10,10,0,0,0,12,2Z"/></svg>
-				</div>
-				<div id="news">
-					<p>Nothing to see at the moment.</p>
+				<div class="modal">
+					<div>News From CustodianCMS.org
+						<svg id="ccms_news_reload" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width: 28px;
+	position: relative;
+	float: right;
+	top: 5px;
+	cursor: pointer;" title="Reload"><path fill="#fff" d="M19.91,15.51H15.38a1,1,0,0,0,0,2h2.4A8,8,0,0,1,4,12a1,1,0,0,0-2,0,10,10,0,0,0,16.88,7.23V21a1,1,0,0,0,2,0V16.5A1,1,0,0,0,19.91,15.51ZM15,12a3,3,0,1,0-3,3A3,3,0,0,0,15,12Zm-4,0a1,1,0,1,1,1,1A1,1,0,0,1,11,12ZM12,2A10,10,0,0,0,5.12,4.77V3a1,1,0,0,0-2,0V7.5a1,1,0,0,0,1,1h4.5a1,1,0,0,0,0-2H6.22A8,8,0,0,1,20,12a1,1,0,0,0,2,0A10,10,0,0,0,12,2Z"/></svg>
+					</div>
+					<div id="news">
+						<p>Nothing to see at the moment.</p>
+					</div>
 				</div>
 			</div>
 
