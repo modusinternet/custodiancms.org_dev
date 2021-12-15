@@ -125,10 +125,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 							loadFirst("/ccmsusr/_js/jquery-validate-1.19.3.min.js", function() {
 
 
-$("#ccms_news_reload").click(function() {
-	localStorage.removeItem("spdemowebFonts");
-	injectFontsStylesheet();
-});
+
 
 
 							});
@@ -165,6 +162,22 @@ console.log(asdf);
 					content.innerHTML = text;
 				}
 			}
+
+			/*
+			$("#ccms_news_reload").click(function() {
+				localStorage.removeItem("spdemowebFonts");
+				injectFontsStylesheet();
+			});
+			*/
+
+			document.getElementById("ccms_news_reload").addEventListener("click", function() {
+				localStorage.removeItem("spdemowebFonts");
+				injectFontsStylesheet();
+			});
+
+
+
+
 
 			var css_href = 'https://custodiancms.org/cross-origin-resources/news.php?ccms_token=';
 			var localStorageSupported = function() {
