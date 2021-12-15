@@ -21,10 +21,15 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 		p{margin:0 0 20px}
 
+		.cssGrid-Dashboard-01>.c1{grid-area:c1}
+		.cssGrid-Dashboard-01>.c2{grid-area:c2}
+
 		.cssGrid-Dashboard-01{
 			display:grid;
 			grid-gap:1em;
-			grid-template-columns:auto auto
+			grid-template-areas:
+				"c1"
+				"c2"
 		}
 
 		.modal{
@@ -41,6 +46,14 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			background-color:var(--cl4);
 			border-radius:6px 6px 0 0;
 			color:var(--cl0)
+		}
+
+		/* 824px or larger. Pixel Xl Landscape resolution is 411 x 823. */
+		@media only screen and (min-width: 824px){
+			.cssGrid-Dashboard-01{
+				grid-template-areas:
+					"c1 c2"
+			}
 		}
 	</style>
 	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
