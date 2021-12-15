@@ -48,21 +48,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			<p>This section is still under development, but if you come across any unresolved issues please let us know at: <a href="mailto:info@custodiancms.org?subject=unresolved+issue+report">info@custodiancms.org</a></p>
 
 			<div class="modal">
-				<div>System Info</div>
-				<div>
-					<p>Server Name: <?= $_SERVER["SERVER_NAME"];?></p>
-					<p>Document Root: <?=$_SERVER["DOCUMENT_ROOT"];?></p>
-					<p>System Address: <?= $_SERVER["SERVER_ADDR"];?></p>
-					<p>Web Server: <?php $a = explode(" ",$_SERVER["SERVER_SOFTWARE"]);echo $a[0];?></p>
-					<p>PHP Version: <?= phpversion();?></p>
-					<p>PHP Memory Limit: <?= ini_get("memory_limit");?></p>
-					<p>MySQL Version: <?= $CFG["DBH"]->getAttribute(PDO::ATTR_SERVER_VERSION);?></p>
-
-
-				</div>
-			</div>
-
-			<div class="modal">
 				<div>Security Logs</div>
 				<div>
 					<p>List of sessions and or form calls, found in the 'ccms_log' table, that failed.</p>
@@ -79,6 +64,21 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 							echo "<p>No records found.</p>\n";
 						}
 					?>
+				</div>
+			</div>
+
+			<div class="modal">
+				<div>System Info</div>
+				<div>
+					<p>Server Name: <?= $_SERVER["SERVER_NAME"];?></p>
+					<p>Document Root: <?=$_SERVER["DOCUMENT_ROOT"];?></p>
+					<p>System Address: <?= $_SERVER["SERVER_ADDR"];?></p>
+					<p>Web Server: <?php $a = explode(" ",$_SERVER["SERVER_SOFTWARE"]);echo $a[0];?></p>
+					<p>PHP Version: <?= phpversion();?></p>
+					<p>PHP Memory Limit: <?= ini_get("memory_limit");?></p>
+					<p>MySQL Version: <?= $CFG["DBH"]->getAttribute(PDO::ATTR_SERVER_VERSION);?></p>
+
+
 				</div>
 			</div>
 
