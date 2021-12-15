@@ -32,6 +32,9 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				"c2"
 		}
 
+		.ccms_news_items{padding-left:10px}
+		.ccms_news_items li{margin-bottom:10px}
+
 		.modal{
 			background-color:var(--cl0);
 			border:1px solid var(--cl2-tran);
@@ -110,7 +113,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 	top: 5px;
 	cursor: pointer;" title="Reload"><path fill="#fff" d="M19.91,15.51H15.38a1,1,0,0,0,0,2h2.4A8,8,0,0,1,4,12a1,1,0,0,0-2,0,10,10,0,0,0,16.88,7.23V21a1,1,0,0,0,2,0V16.5A1,1,0,0,0,19.91,15.51ZM15,12a3,3,0,1,0-3,3A3,3,0,0,0,15,12Zm-4,0a1,1,0,1,1,1,1A1,1,0,0,1,11,12ZM12,2A10,10,0,0,0,5.12,4.77V3a1,1,0,0,0-2,0V7.5a1,1,0,0,0,1,1h4.5a1,1,0,0,0,0-2H6.22A8,8,0,0,1,20,12a1,1,0,0,0,2,0A10,10,0,0,0,12,2Z"/></svg>
 					</div>
-					<div id="news">
+					<div id="ccms_news_items">
 						<p>Nothing to see at the moment.</p>
 					</div>
 				</div>
@@ -192,7 +195,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			}
 
 			function injectRawStyle(text) {
-				var content = document.getElementById("news");
+				var content = document.getElementById("ccms_news_items");
 				if(content){
 					content.innerHTML = text;
 				}
