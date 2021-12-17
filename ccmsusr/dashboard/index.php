@@ -176,6 +176,50 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				});
 			}
 
+
+
+
+
+
+
+
+			var css_href = 'https://custodiancms.org/cross-origin-resources/news.php?ccms_token=';
+
+			var localStorageSupport = function() {
+				try {
+					localStorage.setItem('test', 'test');
+					localStorage.removeItem('test');
+					return true;
+				} catch(e) {
+					return false;
+				}
+			}
+
+			if(localStorageSupport() && localStorage.ccms_news_expire && localStorage.ccms_news) {
+				//const value = ccms_get_news("ccms_news_expire","ccms_news")
+				const value = ccms_get_news()
+				//injectRawStyle(localStorage.getItem('ccms_news'));
+
+
+
+			} else {
+				setWithExpiry("ccms_news_expire", inputSet.value, 10000)
+				injectFontsStylesheet();
+			}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 			function generateToken() {
 				return Math.floor(1000000000000000 + Math.random() * 9000000000000000).toString(36).substr(0, 10);
 			}
@@ -188,7 +232,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				xhr.onreadystatechange = function() {
 					if(xhr.readyState === 4) {
 						injectRawStyle(xhr.responseText);
-						localStorage.setItem('spdemowebFonts', xhr.responseText);
+						localStorage.setItem('ccms_news', xhr.responseText);
 					}
 				}
 				xhr.send();
@@ -202,31 +246,11 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			}
 
 			document.getElementById("ccms_news_reload").addEventListener("click", () => {
-				localStorage.removeItem("spdemowebFonts");
+				localStorage.removeItem("ccms_news");
 				injectFontsStylesheet();
 			});
 
-			var css_href = 'https://custodiancms.org/cross-origin-resources/news.php?ccms_token=';
-			var localStorageSupported = function() {
-				try {
-					localStorage.setItem('test', 'test');
-					localStorage.removeItem('test');
-					return true;
-				} catch(e) {
-					return false;
-				}
-			}
 
-			if(localStorageSupported() && localStorage.spdemowebFontsExp && localStorage.spdemowebFonts) {
-				const value = getWithExpiry("spdemowebFontsExp","spdemowebFonts")
-				injectRawStyle(localStorage.getItem('spdemowebFonts'));
-
-
-
-			} else {
-				setWithExpiry("spdemowebFontsExp", inputSet.value, 10000)
-				injectFontsStylesheet();
-			}
 
 
 
@@ -245,37 +269,43 @@ btnSet.addEventListener("click", () => {
 })
 
 btnGet.addEventListener("click", () => {
-	const value = getWithExpiry("myKey")
+	const value = ccms_get_news("myKey")
 	valueDisplay.innerHTML = value
 })
 */
 
-function setWithExpiry(key, value, ttl) {
+//function setWithExpiry(key, value, ttl) {
+function setWithExpiry(key, ttl) {
 	const now = new Date()
+console.log(now);
+return;
 
 	// `item` is an object which contains the original value
 	// as well as the time when it's supposed to expire
-	const item = {
-		value: value,
-		expiry: now.getTime() + ttl,
-	}
-	localStorage.setItem(key, JSON.stringify(item))
+	//const item = {
+		//value: value,
+		//expiry: now.getTime() + ttl,
+	//}
+	//localStorage.setItem(key, JSON.stringify(item))
 }
 
-function getWithExpiry(keyExp, key) {
-	const keyExpStr = localStorage.getItem(keyExp)
-	const keyStr = localStorage.getItem(key)
+function ccms_get_news() {
+
+	const ccms_news_expire_str = localStorage.getItem("ccms_news_expire")
+	const ccms_news_str = localStorage.getItem("ccms_news")
 
 	// if the item doesn't exist, return null
-	if (!keyExpStr) {
-		return null
-	}
+	//if(!ccms_news_expire_str) {
+		//return null
+	//}
 
-	const item = JSON.parse(keyExpStr)
+	//const item = JSON.parse(ccms_news_expire_str)
 	const now = new Date()
+console.log(now);
+return;
 
 	// compare the expiry time of the item with the current time
-	if (now.getTime() > item.expiry) {
+	if(now.getTime() > ccms_news_expire_str) {
 		// If the item is expired, delete the item from storage
 		// and return null
 		localStorage.removeItem(keyExp)
