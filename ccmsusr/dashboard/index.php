@@ -66,7 +66,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 	</script>
 	<body>
 		<main style="padding:20px 20px 20px 0">
-			<h1 style="padding-bottom:20px;margin:40px 0 20px;border-bottom:1px solid #eee">Dashboard</h1>
+			<h1 style="border-bottom:1px solid var(--cl2)">Dashboard</h1>
 
 			<p>This section is still under development, but if you come across any unresolved issues please let us know at: <a class="oj" href="mailto:info@custodiancms.org?subject=unresolved+issue+report">info@custodiancms.org</a></p>
 
