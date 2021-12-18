@@ -218,22 +218,24 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 				// if the item doesn't exist, return null
 				if(!itemStr) {
-					//console.log("itemStr not found");
+					console.log("itemStr not found");
 					return null;
 				}
 
-				//console.log("itemStr found");
+				console.log("itemStr found");
 
 				const item = JSON.parse(itemStr);
 				const now = new Date();
 
 				// compare the expiry time of the item with the current time
 				if(now.getTime() > item.expiry) {
+					console.log("news too old");
 					// If the item is expired, delete the item from storage
 					// and return null
 					localStorage.removeItem("ccms_news");
 					return null;
 				}
+				console.log("news NOT too old");
 				ccms_news_inject(item.value);
 			}
 
