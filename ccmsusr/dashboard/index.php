@@ -251,11 +251,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				ccms_get_news_xhr();
 			});
 
-
-
-
-
-
 		</script>
 	</body>
 </html>
