@@ -190,6 +190,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			}
 
 			function ccms_xhr_get_news() {
+				const now = new Date()
 				var xhr = new XMLHttpRequest();
 				// Its necessary to call the custodiancms.org website with a token in your URL because you might
 				// be running a serviceworker on your site which want's to try and cache everything.  So to prevent
