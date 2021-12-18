@@ -189,7 +189,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				return Math.floor(1000000000000000 + Math.random() * 9000000000000000).toString(36).substr(0, 10);
 			}
 
-			function ccms_xhr_get_news() {
+			function ccms_get_news_xhr() {
 				const now = new Date()
 				var xhr = new XMLHttpRequest();
 				// Its necessary to call the custodiancms.org website with a token in your URL because you might
@@ -212,6 +212,32 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				}
 				xhr.send();
 			}
+
+
+
+			function ccms_get_news() {
+				const itemStr = localStorage.getItem("ccms_news");
+
+				// if the item doesn't exist, return null
+				if (!itemStr) {
+					return null;
+				}
+
+				const item = JSON.parse(itemStr);
+				const now = new Date();
+
+				// compare the expiry time of the item with the current time
+				if(now.getTime() > item.expiry) {
+					// If the item is expired, delete the item from storage
+					// and return null
+					localStorage.removeItem(key);
+					return null;
+				}
+				ccms_news_inject(item.value);
+			}
+
+
+
 
 			function ccms_news_inject(text) {
 				var content = document.getElementById("ccms_news_items");
@@ -240,7 +266,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 				} else {
 					//setWithExpiry(inputSet.value);
-					ccms_xhr_get_news()
+					ccms_get_news_xhr()
 
 				}
 			}
