@@ -130,7 +130,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			</ul>
 
 
-
+			{CCMS_TPL:/footer.html}
 		</main>
 
 		{CCMS_TPL:/body-head.php}
