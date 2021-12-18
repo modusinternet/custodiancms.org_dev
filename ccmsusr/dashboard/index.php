@@ -182,8 +182,42 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 
+			const ccms_news_href = 'https://custodiancms.org/cross-origin-resources/news.php?ccms_token=';
+			const ccms_ttl = 10000;
 
-			var css_href = 'https://custodiancms.org/cross-origin-resources/news.php?ccms_token=';
+			function ccms_news_generate_token() {
+				return Math.floor(1000000000000000 + Math.random() * 9000000000000000).toString(36).substr(0, 10);
+			}
+
+			function ccms_xhr_get_news() {
+				var xhr = new XMLHttpRequest();
+				// Its necessary to call the custodiancms.org website with a token in your URL because you might
+				// be running a serviceworker on your site which want's to try and cache everything.  So to prevent
+				// it from pulling a previous call from the cache instead of getting it fresh we change the URL a
+				// a little each time.  This ofcourse means your cache will eventually fill with outdatted calls to
+				// the news feed but we'll have to look into it down the road to see if there is anything more we
+				// can do to improve this process later.
+				var ccms_news_href_2 = ccms_news_href + ccms_news_generate_token();
+				xhr.open('GET', ccms_news_href_2, true);
+				xhr.onreadystatechange = function() {
+					if(xhr.readyState === 4) {
+						ccms_news_inject(xhr.responseText);
+						const temp = {
+							value: xhr.responseText,
+							expiry: now.getTime() + ccms_ttl
+						}
+						localStorage.setItem("ccms_news", JSON.stringify(temp))
+					}
+				}
+				xhr.send();
+			}
+
+			function ccms_news_inject(text) {
+				var content = document.getElementById("ccms_news_items");
+				if(content){
+					content.innerHTML = text;
+				}
+			}
 
 			var localStorageSupport = function() {
 				try {
@@ -195,125 +229,21 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				}
 			}
 
-			if(localStorageSupport() && localStorage.ccms_news_expire && localStorage.ccms_news) {
-				//const value = ccms_get_news("ccms_news_expire","ccms_news")
-				const value = ccms_get_news()
-				//injectRawStyle(localStorage.getItem('ccms_news'));
+			if(localStorageSupport()) {
+				if(localStorage.ccms_news) {
+						//const value = ccms_get_news("ccms_news_expire","ccms_news")
+					//const value = ccms_get_news()
+					//injectRawStyle(localStorage.getItem('ccms_news'));
 
 
 
-			} else {
-				setWithExpiry("ccms_news_expire", inputSet.value, 10000)
-				injectFontsStylesheet();
-			}
+				} else {
+					//setWithExpiry(inputSet.value);
+					ccms_xhr_get_news()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-			function generateToken() {
-				return Math.floor(1000000000000000 + Math.random() * 9000000000000000).toString(36).substr(0, 10);
-			}
-
-			function injectFontsStylesheet() {
-				var xhr = new XMLHttpRequest();
-				var css_href2 = css_href + generateToken();
-				//var css_href2 = css_href + Math.random();
-				xhr.open('GET', css_href2, true);
-				xhr.onreadystatechange = function() {
-					if(xhr.readyState === 4) {
-						injectRawStyle(xhr.responseText);
-						localStorage.setItem('ccms_news', xhr.responseText);
-					}
-				}
-				xhr.send();
-			}
-
-			function injectRawStyle(text) {
-				var content = document.getElementById("ccms_news_items");
-				if(content){
-					content.innerHTML = text;
 				}
 			}
 
-			document.getElementById("ccms_news_reload").addEventListener("click", () => {
-				localStorage.removeItem("ccms_news");
-				injectFontsStylesheet();
-			});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-btnSet.addEventListener("click", () => {
-	setWithExpiry("myKey", inputSet.value, 5000)
-})
-
-btnGet.addEventListener("click", () => {
-	const value = ccms_get_news("myKey")
-	valueDisplay.innerHTML = value
-})
-*/
-
-//function setWithExpiry(key, value, ttl) {
-function setWithExpiry(key, ttl) {
-	const now = new Date()
-console.log(now);
-return;
-
-	// `item` is an object which contains the original value
-	// as well as the time when it's supposed to expire
-	//const item = {
-		//value: value,
-		//expiry: now.getTime() + ttl,
-	//}
-	//localStorage.setItem(key, JSON.stringify(item))
-}
-
-function ccms_get_news() {
-
-	const ccms_news_expire_str = localStorage.getItem("ccms_news_expire")
-	const ccms_news_str = localStorage.getItem("ccms_news")
-
-	// if the item doesn't exist, return null
-	//if(!ccms_news_expire_str) {
-		//return null
-	//}
-
-	//const item = JSON.parse(ccms_news_expire_str)
-	const now = new Date()
-console.log(now);
-return;
-
-	// compare the expiry time of the item with the current time
-	if(now.getTime() > ccms_news_expire_str) {
-		// If the item is expired, delete the item from storage
-		// and return null
-		localStorage.removeItem(keyExp)
-		localStorage.removeItem(key)
-		return null
-	}
-	return item.value
-}
 
 
 
