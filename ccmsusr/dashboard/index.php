@@ -218,11 +218,11 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 				// if the item doesn't exist, return null
 				if(!itemStr) {
-					console.log("itemStr not found");
+					//console.log("itemStr not found");
 					return null;
 				}
 
-				console.log("itemStr found");
+				//console.log("itemStr found");
 
 				const item = JSON.parse(itemStr);
 				const now = new Date();
@@ -259,12 +259,13 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 						//const value = ccms_get_news("ccms_news_expire","ccms_news")
 					//const value = ccms_get_news()
 					//injectRawStyle(localStorage.getItem('ccms_news'));
+					ccms_get_news();
 
 
 
 				} else {
 					//setWithExpiry(inputSet.value);
-					ccms_get_news_xhr()
+					ccms_get_news_xhr();
 
 				}
 			}
