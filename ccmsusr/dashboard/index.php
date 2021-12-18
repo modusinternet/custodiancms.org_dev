@@ -52,7 +52,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 		#ccms_news_items li{margin-bottom:10px}
 
 		/* 824px or larger. Pixel Xl Landscape resolution is 411 x 823. */
-		@media only screen and (min-width: 824px){
+		/* 875px or larger. Pixel Xl Landscape resolution is 411 x 823. */
+		@media only screen and (min-width: 875px){
 			.cssGrid-Dashboard-01{
 				grid-template-areas:
 					"c1 c2"
