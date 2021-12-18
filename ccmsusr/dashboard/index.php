@@ -227,6 +227,9 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				const item = JSON.parse(itemStr);
 				const now = new Date();
 
+				console.log("now=["+now+"]");
+				console.log("nowgeTime=["+now.getTime()+"]");
+
 				// compare the expiry time of the item with the current time
 				if(now.getTime() > item.expiry) {
 					console.log("news too old");
