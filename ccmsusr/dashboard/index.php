@@ -228,8 +228,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				const now = new Date();
 
 				console.log("now=["+now+"]");
-				console.log("now.geTime=["+now.getTime()+"]");
-				console.log("item.expiry=["+item.expiry+"]");
+				console.log("now.geTime=[  "+now.getTime()+"]");
+				console.log("item.expiry=[ "+item.expiry+"]");
 
 				// compare the expiry time of the item with the current time
 				if(now.getTime() > item.expiry) {
