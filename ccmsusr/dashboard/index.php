@@ -183,7 +183,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 			const ccms_news_href = 'https://custodiancms.org/cross-origin-resources/news.php?ccms_token=';
-			const ccms_ttl = 10; // seconds
+			const ccms_ttl = 30; // seconds
 
 			function ccms_news_generate_token() {
 				return Math.floor(1000000000000000 + Math.random() * 9000000000000000).toString(36).substr(0, 10);
@@ -239,7 +239,12 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					// If the item is expired, delete the item from storage
 					// and return null
 					localStorage.removeItem("ccms_news");
-					return null;
+					//return null;
+					ccms_get_news_xhr();
+
+
+
+
 				}
 				console.log("news NOT too old");
 				ccms_news_inject(item.value);
