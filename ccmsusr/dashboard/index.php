@@ -213,15 +213,16 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				xhr.send();
 			}
 
-
-
 			function ccms_get_news() {
 				const itemStr = localStorage.getItem("ccms_news");
 
 				// if the item doesn't exist, return null
-				if (!itemStr) {
+				if(!itemStr) {
+					console.log("itemStr not found");
 					return null;
 				}
+
+				console.log("itemStr found");
 
 				const item = JSON.parse(itemStr);
 				const now = new Date();
