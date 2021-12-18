@@ -107,11 +107,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 				<div class="modal">
 					<div>News From CustodianCMS.org
-						<svg id="ccms_news_reload" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width: 28px;
-	position: relative;
-	float: right;
-	top: 5px;
-	cursor: pointer;" title="Reload"><path fill="#fff" d="M19.91,15.51H15.38a1,1,0,0,0,0,2h2.4A8,8,0,0,1,4,12a1,1,0,0,0-2,0,10,10,0,0,0,16.88,7.23V21a1,1,0,0,0,2,0V16.5A1,1,0,0,0,19.91,15.51ZM15,12a3,3,0,1,0-3,3A3,3,0,0,0,15,12Zm-4,0a1,1,0,1,1,1,1A1,1,0,0,1,11,12ZM12,2A10,10,0,0,0,5.12,4.77V3a1,1,0,0,0-2,0V7.5a1,1,0,0,0,1,1h4.5a1,1,0,0,0,0-2H6.22A8,8,0,0,1,20,12a1,1,0,0,0,2,0A10,10,0,0,0,12,2Z"/></svg>
+						<svg id="ccms_news_reload" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width:28px;position:relative;float:right;top:5px;cursor:pointer" title="Reload"><path fill="#fff" d="M19.91,15.51H15.38a1,1,0,0,0,0,2h2.4A8,8,0,0,1,4,12a1,1,0,0,0-2,0,10,10,0,0,0,16.88,7.23V21a1,1,0,0,0,2,0V16.5A1,1,0,0,0,19.91,15.51ZM15,12a3,3,0,1,0-3,3A3,3,0,0,0,15,12Zm-4,0a1,1,0,1,1,1,1A1,1,0,0,1,11,12ZM12,2A10,10,0,0,0,5.12,4.77V3a1,1,0,0,0-2,0V7.5a1,1,0,0,0,1,1h4.5a1,1,0,0,0,0-2H6.22A8,8,0,0,1,20,12a1,1,0,0,0,2,0A10,10,0,0,0,12,2Z"/></svg>
 					</div>
 					<div id="ccms_news_items">
 						<p>Nothing to see at the moment.</p>
@@ -183,7 +179,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 			const ccms_news_href = 'https://custodiancms.org/cross-origin-resources/news.php?ccms_token=';
-			const ccms_ttl = 30; // seconds
+			const ccms_ttl = 3600; // seconds, ie: 3600 = 1 hour
 
 			function ccms_news_generate_token() {
 				return Math.floor(1000000000000000 + Math.random() * 9000000000000000).toString(36).substr(0, 10);
@@ -249,6 +245,11 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					ccms_get_news_xhr();
 				}
 			}
+
+			document.getElementById("ccms_news_reload").addEventListener("click", () => {
+				localStorage.removeItem("ccms_news");
+				ccms_get_news_xhr();
+			});
 
 
 
