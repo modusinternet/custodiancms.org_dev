@@ -204,8 +204,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					if(xhr.readyState === 4) {
 						ccms_news_inject(xhr.responseText);
 						const temp = {
+							expiry: now.getTime() + ccms_ttl,
 							value: xhr.responseText,
-							expiry: now.getTime() + ccms_ttl
 						}
 						localStorage.setItem("ccms_news", JSON.stringify(temp))
 					}
@@ -235,9 +235,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				}
 				ccms_news_inject(item.value);
 			}
-
-
-
 
 			function ccms_news_inject(text) {
 				var content = document.getElementById("ccms_news_items");
