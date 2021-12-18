@@ -66,8 +66,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 	</script>
 	<body>
 		<main style="padding:20px 20px 20px 0">
-			<h1 style="border-bottom:1px solid var(--cl3)">Dashboard</h1>
-
+			<h1 style="border-bottom:1px dashed var(--cl3)">Dashboard</h1>
 			<p>This section is still under development, but if you come across any unresolved issues please let us know at: <a class="oj" href="mailto:info@custodiancms.org?subject=unresolved+issue+report">info@custodiancms.org</a></p>
 
 			<div class="modal">
@@ -78,7 +77,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 						$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_log`;");
 						$qry->execute();
 						$row = $qry->setFetchMode(PDO::FETCH_ASSOC);
-
 						if(is_array($row)) {
 							while($row = $qry->fetch()) {
 								echo "<p>" . $row["date"] . ", " . $row["ip"] . ", " . $row["url"] . ", " . $row["log"] . "</p>\n";
@@ -115,8 +113,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 						<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
 						<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
 						<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
-
-
 					</div>
 				</div>
 
