@@ -102,7 +102,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 						<p>PHP Memory Limit: <?= ini_get("memory_limit");?></p>
 						<p>MySQL Version: <?= $CFG["DBH"]->getAttribute(PDO::ATTR_SERVER_VERSION);?></p>
 
-						<h1>Custodian CMS Info:</h1>
+						<h1>Custodian CMS Info</h1>
 						@Version
 						<p style="margin-left:20px;">
 							{CCMS_LIB:_default.php;FUNC:ccms_version} (Release Date: {CCMS_LIB:_default.php;FUNC:ccms_release_date})
