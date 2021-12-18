@@ -118,9 +118,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				</div>
 			</div>
 
-			<?php echo "Session Save Path: " . ini_get( 'session.save_path');?>
-
-
 			<ul>
 				<li>HTML Minify</li>
 				<li>Templates in Database Cache</li>
