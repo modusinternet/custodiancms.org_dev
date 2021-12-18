@@ -102,7 +102,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 						<p>PHP Memory Limit: <?= ini_get("memory_limit");?></p>
 						<p>MySQL Version: <?= $CFG["DBH"]->getAttribute(PDO::ATTR_SERVER_VERSION);?></p>
 
-						<h1>Custodian CMS Info</h1>
+						<h2>Custodian CMS Info</h2>
 						@Version
 						<p style="margin-left:20px;">
 							{CCMS_LIB:_default.php;FUNC:ccms_version} (Release Date: {CCMS_LIB:_default.php;FUNC:ccms_release_date})
@@ -111,7 +111,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 						<p style="margin-left:20px;">
 							&copy; {CCMS_LIB:_default.php;FUNC:ccms_dateYear} assigned by Vincent Hallberg of <a class='oj' href="https://custodiancms.org" rel="noopener" target="_blank">custodiancms.org</a> and <a class='oj' href="https://modusinternet.com" rel="noopener" target="_blank">modusinternet.com</a>
 						</p>
-						<span style="color:var(--cl2);font-family:Roboto,sans-serif;font-weight:100;margin:40px 020px">License (MIT)</span>
+						<span style="margin:0 20px">License (MIT)</span>
 						<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
 						<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
 						<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
