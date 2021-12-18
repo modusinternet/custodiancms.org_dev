@@ -231,7 +231,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				if(now.getTime() > item.expiry) {
 					// If the item is expired, delete the item from storage
 					// and return null
-					localStorage.removeItem(key);
+					localStorage.removeItem("ccms_news");
 					return null;
 				}
 				ccms_news_inject(item.value);
