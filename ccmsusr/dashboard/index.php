@@ -191,8 +191,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 			function ccms_get_news_xhr() {
 				const now = new Date()
-				ccms_ttl = ccms_ttl*1000;
-				
+				const ccms_ttl_2 = ccms_ttl*1000;
+
 				var xhr = new XMLHttpRequest();
 				// Its necessary to call the custodiancms.org website with a token in your URL because you might
 				// be running a serviceworker on your site which want's to try and cache everything.  So to prevent
@@ -206,7 +206,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					if(xhr.readyState === 4) {
 						ccms_news_inject(xhr.responseText);
 						const temp = {
-							expiry: now.getTime() + ccms_ttl,
+							expiry: now.getTime() + ccms_ttl_2,
 							value: xhr.responseText,
 						}
 						localStorage.setItem("ccms_news", JSON.stringify(temp))
