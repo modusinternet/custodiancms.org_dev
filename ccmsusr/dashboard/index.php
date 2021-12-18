@@ -183,7 +183,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 			const ccms_news_href = 'https://custodiancms.org/cross-origin-resources/news.php?ccms_token=';
-			const ccms_ttl = 10000;
+			const ccms_ttl = 10; // seconds
 
 			function ccms_news_generate_token() {
 				return Math.floor(1000000000000000 + Math.random() * 9000000000000000).toString(36).substr(0, 10);
@@ -191,6 +191,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 			function ccms_get_news_xhr() {
 				const now = new Date()
+				ccms_ttl = ccms_ttl*1000;
+				
 				var xhr = new XMLHttpRequest();
 				// Its necessary to call the custodiancms.org website with a token in your URL because you might
 				// be running a serviceworker on your site which want's to try and cache everything.  So to prevent
