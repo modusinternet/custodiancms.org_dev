@@ -835,7 +835,7 @@ function CCMS_Main() {
 					} elseif($ccms_extention[0] === "html") {
 						header("Content-Type: text/html; charset=utf-8");
 					} elseif($ccms_extention[0] === "js") {
-						header("Content-Type: application/javascript");
+						header("Content-Type: application/javascript; charset=utf-8");
 					} else {
 						header("Content-Type: text/plain; charset=utf-8");
 					}
@@ -885,7 +885,7 @@ function CCMS_Main() {
 						} elseif($ccms_extention[0] === "html") {
 							header("Content-Type: text/html; charset=utf-8");
 						} elseif($ccms_extention[0] === "js") {
-							header("Content-Type: application/javascript");
+							header("Content-Type: application/javascript; charset=utf-8");
 						} else {
 							header("Content-Type: text/plain; charset=utf-8");
 						}
@@ -919,7 +919,7 @@ function CCMS_Main() {
 							} elseif($ccms_extention[0] === "html") {
 								header("Content-Type: text/html; charset=utf-8");
 							} elseif($ccms_extention[0] === "js") {
-								header("Content-Type: application/javascript");
+								header("Content-Type: application/javascript; charset=utf-8");
 							} else {
 								header("Content-Type: text/plain; charset=utf-8");
 							}
@@ -966,7 +966,7 @@ function CCMS_Main() {
 						} elseif($ccms_extention[0] === "html") {
 							header("Content-Type: text/html; charset=utf-8");
 						} elseif($ccms_extention[0] === "js") {
-							header("Content-Type: application/javascript");
+							header("Content-Type: application/javascript; charset=utf-8");
 						} else {
 							header("Content-Type: text/plain; charset=utf-8");
 						}
@@ -1013,7 +1013,7 @@ function CCMS_Main() {
 					} elseif($ccms_extention[0] === "html") {
 						header("Content-Type: text/html; charset=utf-8");
 					} elseif($ccms_extention[0] === "js") {
-						header("Content-Type: application/javascript");
+						header("Content-Type: application/javascript; charset=utf-8");
 					} else {
 						header("Content-Type: text/plain; charset=utf-8");
 					}
