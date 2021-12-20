@@ -890,7 +890,7 @@ function CCMS_Main() {
 							header("Content-Type: text/plain; charset=utf-8");
 						}
 
-						header("cache: ENABLED but NOT expired so submitted.");
+						header("cache: ENABLED but NOT expired so returned.");
 						header("Expires: " . gmdate('D, d M Y H:i:s T', $row["exp"]));
 						header("Last-Modified: " . gmdate('D, d M Y H:i:s T', $row["date"]));
 
@@ -926,7 +926,7 @@ function CCMS_Main() {
 
 							$date = time();
 
-							header("cache: ENABLED but EXPIRED so rebuilt, submitted and recached.");
+							header("cache: ENABLED but EXPIRED so rebuilt, returned and recached.");
 							header("Expires: " . gmdate('D, d M Y H:i:s T', $date + ($CFG["CACHE_EXPIRE"] * 60)));
 							header("Last-Modified: " . gmdate('D, d M Y H:i:s T', $date));
 
@@ -973,7 +973,7 @@ function CCMS_Main() {
 
 						$date = time();
 
-						header("cache: ENABLED but NOT found in the database so built, submitted and cached.");
+						header("cache: ENABLED but NOT found in the database so built, returned and cached.");
 						header("Expires: " . gmdate('D, d M Y H:i:s T', $date + ($CFG["CACHE_EXPIRE"] * 60)));
 						header("Last-Modified: " . gmdate('D, d M Y H:i:s T', $date));
 
@@ -1002,7 +1002,7 @@ function CCMS_Main() {
 					}
 				}
 			} else {
-				// Cache setting in config is NOT turned on.
+				// Cache setting in config NOT ENABLED.
 
 				if(is_file($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"])) {
 
@@ -1018,7 +1018,7 @@ function CCMS_Main() {
 						header("Content-Type: text/plain; charset=utf-8");
 					}
 
-					header("cache: NOT enabled so just submitted.");
+					header("cache: NOT ENABLED so just returned.");
 
 					$buf = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . $CLEAN["ccms_tpl"]);
 
