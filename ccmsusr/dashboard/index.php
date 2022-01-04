@@ -21,6 +21,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 		p{margin:0 0 20px}
 
+		/*
 		.cssGrid-Dashboard-01>{grid-area:c1}
 		.cssGrid-Dashboard-01>{grid-area:c2}
 
@@ -31,6 +32,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				"c1"
 				"c2"
 		}
+		*/
 
 		.modal{
 			background-color:var(--cl0);
@@ -54,10 +56,12 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 		/* 824px or larger. Pixel Xl Landscape resolution is 411 x 823. */
 		/* 875px or larger. Pixel Xl Landscape resolution is 411 x 823. */
 		@media only screen and (min-width: 875px){
+			/*
 			.cssGrid-Dashboard-01{
 				grid-template-areas:
 					"c1 c2"
 			}
+			*/
 		}
 	</style>
 	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
