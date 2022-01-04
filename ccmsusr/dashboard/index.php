@@ -24,6 +24,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 		/*
 		.cssGrid-Dashboard-01>{grid-area:c1}
 		.cssGrid-Dashboard-01>{grid-area:c2}
+		*/
 
 		.cssGrid-Dashboard-01{
 			display:grid;
@@ -32,7 +33,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				"c1"
 				"c2"
 		}
-		*/
 
 		.modal{
 			background-color:var(--cl0);
