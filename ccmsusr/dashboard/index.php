@@ -29,9 +29,11 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 		.cssGrid-Dashboard-01{
 			display:grid;
 			grid-gap:1em;
+			/*
 			grid-template-areas:
 				"c1"
 				"c2"
+			*/
 		}
 
 		.modal{
