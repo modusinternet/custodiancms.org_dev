@@ -21,8 +21,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 		p{margin:0 0 20px}
 
-		.cssGrid-Dashboard-01>.c1{grid-area:c1}
-		.cssGrid-Dashboard-01>.c2{grid-area:c2}
+		.cssGrid-Dashboard-01>{grid-area:c1}
+		.cssGrid-Dashboard-01>{grid-area:c2}
 
 		.cssGrid-Dashboard-01{
 			display:grid;
@@ -127,6 +127,15 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					</div>
 				</div>
 			</div>
+
+
+
+
+
+
+
+
+
 
 			<ul>
 				<li>HTML Minify</li>
