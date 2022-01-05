@@ -256,12 +256,12 @@ function CCMS_Set_SESSION() {
 			if(isset($_SESSION["USER_ID"])) {
 				// The user was logged in but their session is now expired so send them back to the login page.
 
-header("debug: 1");
+//header("debug: 1");
 
 				if($CFG["LOG_EVENTS"] === "1") {
 					// Save a log of this event.
 
-header("debug: 2");
+//header("debug: 2");
 
 					$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_log` (`id`, `date`, `ip`, `url`, `log`) VALUES (NULL, :date, :ip, :url, :log);");
 					$qry->execute(array(':date' => time(), ':ip' => $_SERVER["REMOTE_ADDR"], ':url' => $_SERVER["REQUEST_URI"], ':log' => "User ID (".$_SESSION["USER_ID"].") session expired, redirected to login page.\n\n".$_SERVER["HTTP_USER_AGENT"]."\n\n".var_dump($argv)));
@@ -295,8 +295,13 @@ header("debug: 2");
 		if($_SESSION["HTTP_USER_AGENT"] != md5($_SERVER["HTTP_USER_AGENT"])) {
 			// Possible session highjacking attempt, destroy the session and restart it but direct logged in users to relogin.
 
+header("debug: 1");
+
 			if($CFG["LOG_EVENTS"] === "1") {
 				// Save a log of this event.
+
+header("debug: 2");
+
 				$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_log` (`id`, `date`, `ip`, `url`, `log`) VALUES (NULL, :date, :ip, :url, :log);");
 				$qry->execute(array(':date' => time(), ':ip' => $_SERVER["REMOTE_ADDR"], ':url' => $_SERVER["REQUEST_URI"], ':log' => "User ID (".$_SESSION["USER_ID"].") under possible session highjacking attempt.  Session deleted and user redirected to login page.\n\n".$_SERVER["HTTP_USER_AGENT"]."\n\n".var_dump($argv)));
 			}
