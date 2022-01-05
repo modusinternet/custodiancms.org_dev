@@ -223,6 +223,7 @@ var tabledata = [
 ];
 
 var table = new Tabulator("#example-table", {
+	data:tabledata, //assign data to table
 	layout:"fitDataFill",
 	autoColumns:true,
 });
