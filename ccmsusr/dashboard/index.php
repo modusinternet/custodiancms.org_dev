@@ -68,18 +68,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 		let navActiveItem = ["nav-dashboard"];
 		let navActiveSub = [];
 	</script>
-
-
-
-
-
-<link href="https://unpkg.com/tabulator-tables@5.0.10/dist/css/tabulator.min.css" rel="stylesheet">
-<script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.0.10/dist/js/tabulator.min.js"></script>
-
-
-
-
-
 	<body>
 		<main style="padding:20px 20px 20px 0">
 			<h1 style="border-bottom:1px dashed var(--cl3)">Dashboard</h1>
@@ -113,7 +101,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 
-					
+
 				</div>
 			</div>
 
@@ -187,28 +175,69 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			l.href = "/ccmsusr/_css/metisMenu-3.0.6.min.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
+			var l=document.createElement("link");l.rel="stylesheet";
+			l.href = "/ccmsusr/_css/tabulator.5.0.10.min.css";
+			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
+
 			function loadJSResources() {
 				loadFirst("/ccmsusr/_js/jquery-3.6.0.min.js", function() {
 					loadFirst("/ccmsusr/_js/metisMenu-3.0.7.min.js", function() {
 						loadFirst("/ccmsusr/_js/custodiancms.js", function() {
 							loadFirst("/ccmsusr/_js/jquery-validate-1.19.3.min.js", function() {
+								loadFirst("/ccmsusr/_js/tabulator.5.0.10.min.js", function() {
 
 
-								/* user_dropdown START */
-								/* When the user clicks on the svg button add the 'show' class to the dropdown box below it. */
-								$("#user_dropdown_btn").click(function() {
-									$("#user_dropdown_list").addClass("show");
+
+									/* user_dropdown START */
+									/* When the user clicks on the svg button add the 'show' class to the dropdown box below it. */
+									$("#user_dropdown_btn").click(function() {
+										$("#user_dropdown_list").addClass("show");
+									});
+
+									/* Hide dropdown menu on click outside */
+									$(document).on("click", function(e){
+										if(!$(e.target).closest("#user_dropdown_btn").length){
+											$("#user_dropdown_list").removeClass("show");
+										}
+									});
+									/* user_dropdown END */
+
+
+
+
+
+
+
+//define data
+var tabledata = [
+	{id:1, name:"Billy Bob", age:"12", gender:"male", height:1, col:"red", dob:"", cheese:1},
+	{id:2, name:"Mary May", age:"1", gender:"female", height:2, col:"blue", dob:"14/05/1982", cheese:true},
+	{id:3, name:"Christine Lobowski", age:"42", height:0, col:"green", dob:"22/05/1982", cheese:"true"},
+	{id:4, name:"Brendon Philips", age:"125", gender:"male", height:1, col:"orange", dob:"01/08/1980"},
+	{id:5, name:"Margret Marmajuke", age:"16", gender:"female", height:5, col:"yellow", dob:"31/01/1999"},
+	{id:6, name:"Billy Bob", age:"12", gender:"male", height:1, col:"red", dob:"", cheese:1},
+	{id:7, name:"Mary May", age:"1", gender:"female", height:2, col:"blue", dob:"14/05/1982", cheese:true},
+	{id:8, name:"Christine Lobowski", age:"42", height:0, col:"green", dob:"22/05/1982", cheese:"true"},
+	{id:9, name:"Brendon Philips", age:"125", gender:"male", height:1, col:"orange", dob:"01/08/1980"},
+	{id:10, name:"Margret Marmajuke", age:"16", gender:"female", height:5, col:"yellow", dob:"31/01/1999"},
+];
+
+var table = new Tabulator("#example-table", {
+	data:tabledata,
+	autoColumns:true,
+	autoColumnsDefinitions:[
+		{field:"name", editor:"input"}, //add input editor to the name column
+		{field:"age", headerFilter:true}, //add header filters to the age column
+	],
+	index:"age", //set the index field to the "age" field.
+});
+
+
+
+
+
+
 								});
-
-								/* Hide dropdown menu on click outside */
-								$(document).on("click", function(e){
-									if(!$(e.target).closest("#user_dropdown_btn").length){
-										$("#user_dropdown_list").removeClass("show");
-									}
-								});
-								/* user_dropdown END */
-
-
 							});
 						});
 					});
@@ -293,42 +322,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				localStorage.removeItem("ccms_news");
 				ccms_get_news_xhr();
 			});
-
-
-
-
-
-
-
-
-
-
-
-
-			//define data
-var tabledata = [
-    {id:1, name:"Billy Bob", age:"12", gender:"male", height:1, col:"red", dob:"", cheese:1},
-    {id:2, name:"Mary May", age:"1", gender:"female", height:2, col:"blue", dob:"14/05/1982", cheese:true},
-    {id:3, name:"Christine Lobowski", age:"42", height:0, col:"green", dob:"22/05/1982", cheese:"true"},
-    {id:4, name:"Brendon Philips", age:"125", gender:"male", height:1, col:"orange", dob:"01/08/1980"},
-    {id:5, name:"Margret Marmajuke", age:"16", gender:"female", height:5, col:"yellow", dob:"31/01/1999"},
-    {id:6, name:"Billy Bob", age:"12", gender:"male", height:1, col:"red", dob:"", cheese:1},
-    {id:7, name:"Mary May", age:"1", gender:"female", height:2, col:"blue", dob:"14/05/1982", cheese:true},
-    {id:8, name:"Christine Lobowski", age:"42", height:0, col:"green", dob:"22/05/1982", cheese:"true"},
-    {id:9, name:"Brendon Philips", age:"125", gender:"male", height:1, col:"orange", dob:"01/08/1980"},
-    {id:10, name:"Margret Marmajuke", age:"16", gender:"female", height:5, col:"yellow", dob:"31/01/1999"},
-];
-
-var table = new Tabulator("#example-table", {
-    data:tabledata,
-    autoColumns:true,
-    autoColumnsDefinitions:[
-        {field:"name", editor:"input"}, //add input editor to the name column
-        {field:"age", headerFilter:true}, //add header filters to the age column
-    ],
-		index:"age", //set the index field to the "age" field.
-});
-
 
 
 
