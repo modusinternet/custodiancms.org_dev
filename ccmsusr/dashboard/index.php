@@ -79,14 +79,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					<p>List of sessions and or form calls, found in the 'ccms_log' table, that failed.</p>
 					<?php
 						$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_log`;");
-						/*
-						$qry->execute();
-						$row = $qry->setFetchMode(PDO::FETCH_ASSOC);
-						if(is_array($row)) {
-						*/
-
 						if($qry->execute()) {
-
 							while($row = $qry->fetch()) {
 								echo "<p>" . $row["date"] . ", " . $row["ip"] . ", " . $row["url"] . ", " . $row["log"] . "</p>\n";
 							}
@@ -123,7 +116,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				</div>
 			</div>
 
-
 			<div class="modal">
 				<div>License Info</div>
 				<div>
@@ -143,23 +135,12 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			</div>
 
 
-
-
-
-
-
-
-
-
 			<ul>
 				<li>HTML Minify</li>
 				<li>Templates in Database Cache</li>
 				<li>Clear Cache</li>
 				<li>Backup/Restore</li>
 				<li>Password Recovery attempts currently in the ccms_password_recovery table</li>
-				<li></li>
-				<li></li>
-				<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec ligula id nisl fringilla finibus. Vestibulum rhoncus, felis at fringilla ullamcorper, ante mi tincidunt nunc, ac ultrices odio odio vitae lorem. Morbi quis elit id urna efficitur aliquam ut et sapien. Fusce porttitor vel ligula faucibus tempor. Pellentesque tincidunt imperdiet enim, id lobortis ipsum tempus id. In facilisis elementum dictum. Donec suscipit ornare tortor, sed volutpat mauris volutpat at. Pellentesque porttitor ut augue at ultrices. Proin egestas semper lorem quis suscipit. Vivamus eget magna tincidunt, semper sem eu, molestie quam. Praesent nisl velit, ultricies ac malesuada id, dapibus in dui. Mauris luctus velit non mi condimentum rhoncus. Nullam sit amet aliquet turpis, id malesuada nulla. Ut sit amet nisl nec ante commodo eleifend.</li>
 			</ul>
 
 
