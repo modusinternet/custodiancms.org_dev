@@ -223,9 +223,13 @@ var tabledata = [
 ];
 
 var table = new Tabulator("#example-table", {
+	height:"300px",
 	data:tabledata, //assign data to table
 	layout:"fitDataStretch",
 	autoColumns:true,
+	columns:[
+		{title:"Name", field:"name", width:250, frozen:true}, //frozen column
+	],
 });
 
 
