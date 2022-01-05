@@ -256,9 +256,9 @@ function CCMS_Set_SESSION() {
 			if(isset($_SESSION["USER_ID"])) {
 				// The user was logged in but their session is now expired so send them back to the login page.
 
-				if($CFG["LOG_EVENTS"] === '1') {
+				if($CFG["LOG_EVENTS"] === "1") {
 					// Save a log of this event.
-					$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_log` (date, ip, url, log) VALUES (:date, :ip, :url, :log);");
+					$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_log` (`id`, `date`, `ip`, `url`, `log`) VALUES (NULL, :date, :ip, :url, :log);");
 					$qry->execute(array(':date' => time(), ':ip' => $_SERVER["REMOTE_ADDR"], ':url' => $_SERVER["REQUEST_URI"], ':log' => "User ID (".$_SESSION["USER_ID"].") session expired, redirected to login page.\n\n".$_SERVER["HTTP_USER_AGENT"]."\n\n".var_dump($argv)));
 				}
 
@@ -290,9 +290,9 @@ function CCMS_Set_SESSION() {
 		if($_SESSION["HTTP_USER_AGENT"] != md5($_SERVER["HTTP_USER_AGENT"])) {
 			// Possible session highjacking attempt, destroy the session and restart it but direct logged in users to relogin.
 
-			if($CFG["LOG_EVENTS"] === '1') {
+			if($CFG["LOG_EVENTS"] === "1") {
 				// Save a log of this event.
-				$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_log` (date, ip, url, log) VALUES (:date, :ip, :url, :log);");
+				$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_log` (`id`, `date`, `ip`, `url`, `log`) VALUES (NULL, :date, :ip, :url, :log);");
 				$qry->execute(array(':date' => time(), ':ip' => $_SERVER["REMOTE_ADDR"], ':url' => $_SERVER["REQUEST_URI"], ':log' => "User ID (".$_SESSION["USER_ID"].") under possible session highjacking attempt.  Session deleted and user redirected to login page.\n\n".$_SERVER["HTTP_USER_AGENT"]."\n\n".var_dump($argv)));
 			}
 
@@ -330,8 +330,8 @@ function CCMS_Set_SESSION() {
 		} else {
 			// Looks like they were properly logged in at one point but their account has either been removed or 'status' is set to '0' now.
 
-			if($CFG["LOG_EVENTS"] === '1') {
-				$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_log` (date, ip, url, log) VALUES (:date, :ip, :url, :log);");
+			if($CFG["LOG_EVENTS"] === "1") {
+				$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_log` (`id`, `date`, `ip`, `url`, `log`) VALUES (NULL, :date, :ip, :url, :log);");
 				$qry->execute(array(':date' => time(), ':ip' => $_SERVER["REMOTE_ADDR"], ':url' => $_SERVER["REQUEST_URI"], ':log' => "User ID (".$_SESSION["USER_ID"].") was properly logged in at one point but their 'status' is set to '0' now.  Session deleted and user redirected to login page.\n\n".$_SERVER["HTTP_USER_AGENT"]."\n\n".var_dump($argv)));
 			}
 
