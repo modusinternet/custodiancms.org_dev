@@ -223,9 +223,8 @@ var tabledata = [
 ];
 
 var table = new Tabulator("#example-table", {
-	height:"311px",
 	layout:"fitDataFill",
-	responsiveLayout:"collapse",
+	autoColumns:true,
 });
 
 
