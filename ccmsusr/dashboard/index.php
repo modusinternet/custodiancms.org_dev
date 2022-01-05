@@ -230,6 +230,15 @@ var table = new Tabulator("#example-table", {
 	pagination:"local",
 	paginationSize:4,
 	paginationSizeSelector:[2, 4, 8, 16],
+	selectable:true, //make rows selectable
+
+	columns:[
+		{
+			formatter:"rowSelection", titleFormatter:"rowSelection", hozAlign:"center", headerSort:false, cellClick:function(e, cell){
+				cell.getRow().toggleSelect();
+			}
+		},
+	],
 });
 
 
