@@ -225,11 +225,15 @@ var tabledata = [
 var table = new Tabulator("#example-table", {
 	data:tabledata,
 	autoColumns:true,
-	autoColumnsDefinitions:[
-		{field:"name", editor:"input"}, //add input editor to the name column
-		{field:"age", headerFilter:true}, //add header filters to the age column
-	],
-	index:"age", //set the index field to the "age" field.
+    autoColumnsDefinitions:function(definitions){
+        //definitions - array of column definition objects
+
+        definitions.forEach((column) => {
+            column.headerFilter = true; // add header filter to every column
+        });
+
+        return definitions;
+    },
 });
 
 
