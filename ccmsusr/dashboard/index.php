@@ -81,6 +81,9 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 						$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_log`;");
 						$qry->execute();
 						$row = $qry->setFetchMode(PDO::FETCH_ASSOC);
+
+print_r($row);
+
 						if(is_array($row)) {
 							while($row = $qry->fetch()) {
 								echo "<p>" . $row["date"] . ", " . $row["ip"] . ", " . $row["url"] . ", " . $row["log"] . "</p>\n";
