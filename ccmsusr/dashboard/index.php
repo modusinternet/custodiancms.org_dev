@@ -227,9 +227,9 @@ var table = new Tabulator("#example-table", {
 	data:tabledata, //assign data to table
 	layout:"fitDataStretch",
 	autoColumns:true,
-	columns:[
-		{title:"ID", field:"id", frozen:true}, //frozen column
-	],
+	pagination:"local",
+	paginationSize:4,
+	paginationSizeSelector:[2, 4, 8, 16],
 });
 
 
