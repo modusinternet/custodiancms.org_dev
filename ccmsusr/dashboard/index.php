@@ -224,16 +224,8 @@ var tabledata = [
 
 var table = new Tabulator("#example-table", {
 	height:"311px",
-	layout:"fitColumns",
-	columns:[
-		{title:"Name", field:"name", width:200},
-		{title:"Progress", field:"progress", hozAlign:"right", sorter:"number"},
-		{title:"Gender", field:"gender", widthGrow:2},
-		{title:"Rating", field:"rating", hozAlign:"center"},
-		{title:"Favourite Color", field:"col", widthGrow:3},
-		{title:"Date Of Birth", field:"dob", hozAlign:"center", sorter:"date", widthGrow:2},
-		{title:"Driver", field:"car", hozAlign:"center"},
-	],
+	layout:"fitDataFill",
+	responsiveLayout:"collapse",
 });
 
 
