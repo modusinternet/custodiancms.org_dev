@@ -79,12 +79,14 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					<p>List of sessions and or form calls, found in the 'ccms_log' table, that failed.</p>
 					<?php
 						$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_log`;");
+						/*
 						$qry->execute();
 						$row = $qry->setFetchMode(PDO::FETCH_ASSOC);
-
-print_r($row);
-
 						if(is_array($row)) {
+						*/
+
+						if($qry1->execute()) {
+
 							while($row = $qry->fetch()) {
 								echo "<p>" . $row["date"] . ", " . $row["ip"] . ", " . $row["url"] . ", " . $row["log"] . "</p>\n";
 							}
