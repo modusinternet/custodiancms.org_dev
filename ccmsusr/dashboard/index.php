@@ -223,17 +223,17 @@ var tabledata = [
 ];
 
 var table = new Tabulator("#example-table", {
-	data:tabledata,
-	autoColumns:true,
-    autoColumnsDefinitions:function(definitions){
-        //definitions - array of column definition objects
-
-        definitions.forEach((column) => {
-            column.headerFilter = true; // add header filter to every column
-        });
-
-        return definitions;
-    },
+	height:"311px",
+	layout:"fitColumns",
+	columns:[
+		{title:"Name", field:"name", width:200},
+		{title:"Progress", field:"progress", hozAlign:"right", sorter:"number"},
+		{title:"Gender", field:"gender", widthGrow:2},
+		{title:"Rating", field:"rating", hozAlign:"center"},
+		{title:"Favourite Color", field:"col", widthGrow:3},
+		{title:"Date Of Birth", field:"dob", hozAlign:"center", sorter:"date", widthGrow:2},
+		{title:"Driver", field:"car", hozAlign:"center"},
+	],
 });
 
 
