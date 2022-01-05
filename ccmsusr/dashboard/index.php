@@ -85,7 +85,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 						if(is_array($row)) {
 						*/
 
-						if($qry1->execute()) {
+						if($qry->execute()) {
 
 							while($row = $qry->fetch()) {
 								echo "<p>" . $row["date"] . ", " . $row["ip"] . ", " . $row["url"] . ", " . $row["log"] . "</p>\n";
