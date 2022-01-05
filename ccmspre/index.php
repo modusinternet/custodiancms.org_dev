@@ -297,7 +297,7 @@ function CCMS_Set_SESSION() {
 
 header("debug: 1");
 
-			if($CFG["LOG_EVENTS"] === "1") {
+			if($CFG["LOG_EVENTS"] === 1) {
 				// Save a log of this event.
 
 header("debug: 2");
