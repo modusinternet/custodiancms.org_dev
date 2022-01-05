@@ -230,7 +230,7 @@ var table = new Tabulator("#example-table", {
 	pagination:"local",
 	paginationSize:4,
 	paginationSizeSelector:[2, 4, 8, 16],
-	selectable:true, //make rows selectable
+	//selectable:true, //make rows selectable
 
 	columns:[
 		{
