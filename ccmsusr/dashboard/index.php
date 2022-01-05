@@ -228,7 +228,7 @@ var table = new Tabulator("#example-table", {
 	layout:"fitDataStretch",
 	autoColumns:true,
 	columns:[
-		{title:"Name", field:"name", width:250, frozen:true}, //frozen column
+		{title:"ID", field:"id", frozen:true}, //frozen column
 	],
 });
 
