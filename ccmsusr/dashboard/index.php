@@ -68,6 +68,18 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 		let navActiveItem = ["nav-dashboard"];
 		let navActiveSub = [];
 	</script>
+
+
+
+
+
+<link href="https://unpkg.com/tabulator-tables@5.0.10/dist/css/tabulator.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.0.10/dist/js/tabulator.min.js"></script>
+
+
+
+
+
 	<body>
 		<main style="padding:20px 20px 20px 0">
 			<h1 style="border-bottom:1px dashed var(--cl3)">Dashboard</h1>
