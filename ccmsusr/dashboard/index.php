@@ -210,16 +210,16 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 //define data
 var tabledata = [
-    {id:1, name:"Oli Bob", location:"United Kingdom", gender:"male", rating:1, col:"red", dob:"14/04/1984"},
-    {id:2, name:"Mary May", location:"Germany", gender:"female", rating:2, col:"blue", dob:"14/05/1982"},
-    {id:3, name:"Christine Lobowski", location:"France", gender:"female", rating:0, col:"green", dob:"22/05/1982"},
-    {id:4, name:"Brendon Philips", location:"USA", gender:"male", rating:1, col:"orange", dob:"01/08/1980"},
-    {id:5, name:"Margret Marmajuke", location:"Canada", gender:"female", rating:5, col:"yellow", dob:"31/01/1999"},
-    {id:6, name:"Frank Harbours", location:"Russia", gender:"male", rating:4, col:"red", dob:"12/05/1966"},
-    {id:7, name:"Jamie Newhart", location:"India", gender:"male", rating:3, col:"green", dob:"14/05/1985"},
-    {id:8, name:"Gemma Jane", location:"China", gender:"female", rating:0, col:"red", dob:"22/05/1982"},
-    {id:9, name:"Emily Sykes", location:"South Korea", gender:"female", rating:1, col:"maroon", dob:"11/11/1970"},
-    {id:10, name:"James Newman", location:"Japan", gender:"male", rating:5, col:"red", dob:"22/03/1998"},
+	{id:1, name:"Oli Bob", progress:12, location:"United Kingdom", gender:"male", rating:1, col:"red", dob:"14/04/1984", car:1, lucky_no:5, lorem:"Lorem ipsum dolor sit amet, elit consectetur adipisicing "},
+	{id:2, name:"Mary May", progress:1, location:"Germany", gender:"female", rating:2, col:"blue", dob:"14/05/1982", car:true, lucky_no:10, lorem:"Lorem ipsum dolor sit amet, elit consectetur adipisicing "},
+	{id:3, name:"Christine Lobowski", progress:42, location:"France", gender:"female", rating:0, col:"green", dob:"22/05/1982", car:"true", lucky_no:12, lorem:"Lorem ipsum dolor sit amet, elit consectetur adipisicing "},
+	{id:4, name:"Brendon Philips", progress:100, location:"USA", gender:"male", rating:1, col:"orange", dob:"01/08/1980", car:false, lucky_no:18, lorem:"Lorem ipsum dolor sit amet, elit consectetur adipisicing "},
+	{id:5, name:"Margret Marmajuke", progress:16, location:"Canada", gender:"female", rating:5, col:"yellow", dob:"31/01/1999", car:false, lucky_no:33, lorem:"Lorem ipsum dolor sit amet, elit consectetur adipisicing "},
+	{id:6, name:"Frank Harbours", progress:38, location:"Russia", gender:"male", rating:4, col:"red", dob:"12/05/1966", car:1, lucky_no:2, lorem:"Lorem ipsum dolor sit amet, elit consectetur adipisicing "},
+	{id:7, name:"Jamie Newhart", progress:23, location:"India", gender:"male", rating:3, col:"green", dob:"14/05/1985", car:true, lucky_no:63, lorem:"Lorem ipsum dolor sit amet, elit consectetur adipisicing "},
+	{id:8, name:"Gemma Jane", progress:60, location:"China", gender:"female", rating:0, col:"red", dob:"22/05/1982", car:"true", lucky_no:72, lorem:"Lorem ipsum dolor sit amet, elit consectetur adipisicing "},
+	{id:9, name:"Emily Sykes", progress:42, location:"South Korea", gender:"female", rating:1, col:"maroon", dob:"11/11/1970", car:false, lucky_no:44, lorem:"Lorem ipsum dolor sit amet, elit consectetur adipisicing "},
+	{id:10, name:"James Newman", progress:73, location:"Japan", gender:"male", rating:5, col:"red", dob:"22/03/1998", car:false, lucky_no:9, lorem:"Lorem ipsum dolor sit amet, elit consectetur adipisicing "},
 ];
 
 /*
@@ -234,94 +234,69 @@ var table = new Tabulator("#example-table", {
 });
 */
 
-//define row context menu contents
-var rowMenu = [
-	{
-		label:"<i class='fas fa-user'></i> Change Name",
-		action:function(e, row){
-			row.update({name:"Steve Bobberson"});
-		}
-	},{
-		label:"<i class='fas fa-check-square'></i> Select Row",
-		action:function(e, row){
-			row.select();
-		}
-	},{
-		separator:true,
-	},{
-		label:"Admin Functions",
-		menu:[
-			{
-				label:"<i class='fas fa-trash'></i> Delete Row",
-				action:function(e, row){
-					row.delete();
-				}
-			},{
-				label:"<i class='fas fa-ban'></i> Disabled Option",
-				disabled:true,
-			},
-		]
-	}
-]
+//Create Date Editor
+var dateEditor = function(cell, onRendered, success, cancel){
+    //cell - the cell component for the editable cell
+    //onRendered - function to call when the editor has been rendered
+    //success - function to call to pass the successfuly updated value to Tabulator
+    //cancel - function to call to abort the edit and return to a normal cell
 
-//define column header menu as column visibility toggle
-var headerMenu = function(){
-    var menu = [];
-    var columns = this.getColumns();
+    //create and style input
+    var cellValue = luxon.DateTime.fromFormat(cell.getValue(), "dd/MM/yyyy").toFormat("yyyy-MM-dd"),
+    input = document.createElement("input");
 
-    for(let column of columns){
+    input.setAttribute("type", "date");
 
-        //create checkbox element using font awesome icons
-        let icon = document.createElement("i");
-        icon.classList.add("fas");
-        icon.classList.add(column.isVisible() ? "fa-check-square" : "fa-square");
+    input.style.padding = "4px";
+    input.style.width = "100%";
+    input.style.boxSizing = "border-box";
 
-        //build label
-        let label = document.createElement("span");
-        let title = document.createElement("span");
+    input.value = cellValue;
 
-        title.textContent = " " + column.getDefinition().title;
+    onRendered(function(){
+        input.focus();
+        input.style.height = "100%";
+    });
 
-        label.appendChild(icon);
-        label.appendChild(title);
-
-        //create menu item
-        menu.push({
-            label:label,
-            action:function(e){
-                //prevent menu closing
-                e.stopPropagation();
-
-                //toggle current column visibility
-                column.toggle();
-
-                //change menu item icon
-                if(column.isVisible()){
-                    icon.classList.remove("fa-square");
-                    icon.classList.add("fa-check-square");
-                }else{
-                    icon.classList.remove("fa-check-square");
-                    icon.classList.add("fa-square");
-                }
-            }
-        });
+    function onChange(){
+        if(input.value != cellValue){
+            success(luxon.DateTime.fromFormat(input.value, "yyyy-MM-dd").toFormat("dd/MM/yyyy"));
+        }else{
+            cancel();
+        }
     }
 
-   return menu;
+    //submit new value on blur or change
+    input.addEventListener("blur", onChange);
+
+    //submit new value on enter
+    input.addEventListener("keydown", function(e){
+        if(e.keyCode == 13){
+            onChange();
+        }
+
+        if(e.keyCode == 27){
+            cancel();
+        }
+    });
+
+    return input;
 };
 
-//initialize table
+
+//Build Tabulator
 var table = new Tabulator("#example-table", {
-	height:"300px",
-	layout:"fitColumns",
-	rowContextMenu:rowMenu, //add context menu to rows
-	columns:[
-		{title:"Name", field:"name", headerMenu:headerMenu},
-		{title:"Age", field:"age", hozAlign:"right", sorter:"number", headerMenu:headerMenu},
-		{title:"Gender", field:"gender", headerMenu:headerMenu},
-		{title:"Rating", field:"rating", hozAlign:"center", headerMenu:headerMenu},
-		{title:"Favourite Color", field:"col", headerMenu:headerMenu}, //add menu to this column header
-	],
+    height:"311px",
+		data:tabledata, //assign data to table
+    columns:[
+        {title:"Name", field:"name", width:150, editor:"input"},
+        {title:"Location", field:"location", width:130, editor:"autocomplete", editorParams:{allowEmpty:true, showListOnEmpty:true, values:true}},
+        {title:"Progress", field:"progress", sorter:"number", hozAlign:"left", formatter:"progress", width:140, editor:true},
+        {title:"Gender", field:"gender", editor:"select", editorParams:{values:{"male":"Male", "female":"Female", "unknown":"Unknown"}}},
+        {title:"Rating", field:"rating",  formatter:"star", hozAlign:"center", width:100, editor:true},
+        {title:"Date Of Birth", field:"dob", hozAlign:"center", sorter:"date", width:140, editor:dateEditor},
+        {title:"Driver", field:"car", hozAlign:"center", editor:true, formatter:"tickCross"},
+    ],
 });
 
 
