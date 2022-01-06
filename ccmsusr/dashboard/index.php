@@ -300,8 +300,7 @@ var table = new Tabulator("#example-table", {
 	pagination:"local",
 	paginationSize:4,
 	paginationSizeSelector:[2, 4, 8, 16],
-	//layout:"fitColumns",
-	responsiveLayout:"collapse",
+	layout:"fitDataFill",
 });
 
 
