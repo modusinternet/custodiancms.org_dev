@@ -185,6 +185,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 						loadFirst("/ccmsusr/_js/custodiancms.js", function() {
 							loadFirst("/ccmsusr/_js/jquery-validate-1.19.3.min.js", function() {
 								loadFirst("/ccmsusr/_js/tabulator.5.0.10.min.js", function() {
+									loadFirst("/ccmsusr/_js/luxon.min.js", function() {
 
 
 
@@ -308,6 +309,7 @@ var table = new Tabulator("#example-table", {
 
 
 
+									});
 								});
 							});
 						});
