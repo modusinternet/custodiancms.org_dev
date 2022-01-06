@@ -301,6 +301,7 @@ var table = new Tabulator("#example-table", {
 	paginationSize:4,
 	paginationSizeSelector:[2, 4, 8, 16],
 	layout:"fitColumns",
+	responsiveLayout:"collapse",
 });
 
 
