@@ -285,7 +285,7 @@ var table = new Tabulator("#example-table", {
 
 //Build Tabulator
 var table = new Tabulator("#example-table", {
-	height:"3px",
+	height:"300px",
 	data:tabledata, //assign data to table
 	columns:[
 		{title:"Name", field:"name", width:150, editor:"input"},
