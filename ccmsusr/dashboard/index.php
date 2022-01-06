@@ -222,18 +222,6 @@ var tabledata = [
 	{id:10, name:"James Newman", progress:73, location:"Japan", gender:"male", rating:5, col:"red", dob:"22/03/1998", car:false, lucky_no:9, lorem:"Lorem ipsum dolor sit amet, elit consectetur adipisicing "},
 ];
 
-/*
-var table = new Tabulator("#example-table", {
-	height:"300px",
-	data:tabledata, //assign data to table
-	layout:"fitDataStretch",
-	autoColumns:true,
-	pagination:"local",
-	paginationSize:4,
-	paginationSizeSelector:[2, 4, 8, 16],
-});
-*/
-
 //Create Date Editor
 var dateEditor = function(cell, onRendered, success, cancel){
     //cell - the cell component for the editable cell
@@ -283,20 +271,35 @@ var dateEditor = function(cell, onRendered, success, cancel){
     return input;
 };
 
+/*
+var table = new Tabulator("#example-table", {
+	height:"300px",
+	data:tabledata, //assign data to table
+	layout:"fitDataStretch",
+	autoColumns:true,
+	pagination:"local",
+	paginationSize:4,
+	paginationSizeSelector:[2, 4, 8, 16],
+});
+*/
 
 //Build Tabulator
 var table = new Tabulator("#example-table", {
-    height:"311px",
-		data:tabledata, //assign data to table
-    columns:[
-        {title:"Name", field:"name", width:150, editor:"input"},
-        {title:"Location", field:"location", width:130, editor:"autocomplete", editorParams:{allowEmpty:true, showListOnEmpty:true, values:true}},
-        {title:"Progress", field:"progress", sorter:"number", hozAlign:"left", formatter:"progress", width:140, editor:true},
-        {title:"Gender", field:"gender", editor:"select", editorParams:{values:{"male":"Male", "female":"Female", "unknown":"Unknown"}}},
-        {title:"Rating", field:"rating",  formatter:"star", hozAlign:"center", width:100, editor:true},
-        {title:"Date Of Birth", field:"dob", hozAlign:"center", sorter:"date", width:140, editor:dateEditor},
-        {title:"Driver", field:"car", hozAlign:"center", editor:true, formatter:"tickCross"},
-    ],
+	height:"3px",
+	data:tabledata, //assign data to table
+	columns:[
+		{title:"Name", field:"name", width:150, editor:"input"},
+		{title:"Location", field:"location", width:130, editor:"autocomplete", editorParams:{allowEmpty:true, showListOnEmpty:true, values:true}},
+		{title:"Progress", field:"progress", sorter:"number", hozAlign:"left", formatter:"progress", width:140, editor:true},
+		{title:"Gender", field:"gender", editor:"select", editorParams:{values:{"male":"Male", "female":"Female", "unknown":"Unknown"}}},
+		{title:"Rating", field:"rating",  formatter:"star", hozAlign:"center", width:100, editor:true},
+		{title:"Date Of Birth", field:"dob", hozAlign:"center", sorter:"date", width:140, editor:dateEditor},
+		{title:"Driver", field:"car", hozAlign:"center", editor:true, formatter:"tickCross"},
+	],
+	pagination:"local",
+	paginationSize:4,
+	paginationSizeSelector:[2, 4, 8, 16],
+	responsiveLayout:"hide",
 });
 
 
