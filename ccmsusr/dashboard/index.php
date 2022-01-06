@@ -318,7 +318,7 @@ var headerMenu = function(){
 
 //initialize table
 var table = new Tabulator("#example-table", {
-	height:"311px",
+	height:"300px",
 	layout:"fitColumns",
 	rowContextMenu:rowMenu, //add context menu to rows
 	columns:[
@@ -333,13 +333,6 @@ var table = new Tabulator("#example-table", {
 
 
 
-{name:"Christine Lobowski", age:"42", rating:0, col:"green", dob:"22/05/1982", cheese:"true"},
-{name:"Brendon Philips", age:"125", gender:"male", rating:1, col:"orange", dob:"01/08/1980"},
-{name:"Margret Marmajuke", age:"16", gender:"female", rating:5, col:"yellow", dob:"31/01/1999"},
-{name:"Billy Bob", age:"12", gender:"male", rating:1, col:"red", dob:"", cheese:1},
-{name:"Mary May", age:"1", gender:"female", rating:2, col:"blue", dob:"14/05/1982", cheese:true},
-{name:"Christine Lobowski", age:"42", rating:0, col:"green", dob:"22/05/1982", cheese:"true"},
-{name:"Brendon Philips", age:"125", gender:"male", rating:1, col:"orange", dob:"01/08/1980"},
 
 
 
