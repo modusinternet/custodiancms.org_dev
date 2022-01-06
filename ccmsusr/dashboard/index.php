@@ -210,16 +210,16 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 //define data
 var tabledata = [
-	{id:1, name:"Billy Bob", age:"12", gender:"male", height:1, col:"red", dob:"", cheese:1},
-	{id:2, name:"Mary May", age:"1", gender:"female", height:2, col:"blue", dob:"14/05/1982", cheese:true},
-	{id:3, name:"Christine Lobowski", age:"42", height:0, col:"green", dob:"22/05/1982", cheese:"true"},
-	{id:4, name:"Brendon Philips", age:"125", gender:"male", height:1, col:"orange", dob:"01/08/1980"},
-	{id:5, name:"Margret Marmajuke", age:"16", gender:"female", height:5, col:"yellow", dob:"31/01/1999"},
-	{id:6, name:"Billy Bob", age:"12", gender:"male", height:1, col:"red", dob:"", cheese:1},
-	{id:7, name:"Mary May", age:"1", gender:"female", height:2, col:"blue", dob:"14/05/1982", cheese:true},
-	{id:8, name:"Christine Lobowski", age:"42", height:0, col:"green", dob:"22/05/1982", cheese:"true"},
-	{id:9, name:"Brendon Philips", age:"125", gender:"male", height:1, col:"orange", dob:"01/08/1980"},
-	{id:10, name:"Margret Marmajuke", age:"16", gender:"female", height:5, col:"yellow", dob:"31/01/1999"},
+	{name:"Billy Bob", age:"12", gender:"male", height:1, col:"red", dob:"", cheese:1},
+	{name:"Mary May", age:"1", gender:"female", height:2, col:"blue", dob:"14/05/1982", cheese:true},
+	{name:"Christine Lobowski", age:"42", height:0, col:"green", dob:"22/05/1982", cheese:"true"},
+	{name:"Brendon Philips", age:"125", gender:"male", height:1, col:"orange", dob:"01/08/1980"},
+	{name:"Margret Marmajuke", age:"16", gender:"female", height:5, col:"yellow", dob:"31/01/1999"},
+	{name:"Billy Bob", age:"12", gender:"male", height:1, col:"red", dob:"", cheese:1},
+	{name:"Mary May", age:"1", gender:"female", height:2, col:"blue", dob:"14/05/1982", cheese:true},
+	{name:"Christine Lobowski", age:"42", height:0, col:"green", dob:"22/05/1982", cheese:"true"},
+	{name:"Brendon Philips", age:"125", gender:"male", height:1, col:"orange", dob:"01/08/1980"},
+	{name:"Margret Marmajuke", age:"16", gender:"female", height:5, col:"yellow", dob:"31/01/1999"},
 ];
 
 /*
@@ -318,22 +318,28 @@ var headerMenu = function(){
 
 //initialize table
 var table = new Tabulator("#example-table", {
-    height:"311px",
-    layout:"fitColumns",
-    rowContextMenu: rowMenu, //add context menu to rows
-    columns:[
-        {title:"Name", field:"name", headerMenu:headerMenu},
-        {title:"Progress", field:"progress", hozAlign:"right", sorter:"number", headerMenu:headerMenu},
-        {title:"Gender", field:"gender", headerMenu:headerMenu},
-        {title:"Rating", field:"rating", hozAlign:"center", headerMenu:headerMenu},
-        {title:"Favourite Color", field:"col", headerMenu:headerMenu}, //add menu to this column header
-    ],
+	height:"311px",
+	layout:"fitColumns",
+	rowContextMenu:rowMenu, //add context menu to rows
+	columns:[
+		{title:"Name", field:"name", headerMenu:headerMenu},
+		{title:"Age", field:"age", hozAlign:"right", sorter:"number", headerMenu:headerMenu},
+		{title:"Gender", field:"gender", headerMenu:headerMenu},
+		{title:"Rating", field:"rating", hozAlign:"center", headerMenu:headerMenu},
+		{title:"Favourite Color", field:"col", headerMenu:headerMenu}, //add menu to this column header
+	],
 });
 
 
 
 
-
+{name:"Christine Lobowski", age:"42", rating:0, col:"green", dob:"22/05/1982", cheese:"true"},
+{name:"Brendon Philips", age:"125", gender:"male", rating:1, col:"orange", dob:"01/08/1980"},
+{name:"Margret Marmajuke", age:"16", gender:"female", rating:5, col:"yellow", dob:"31/01/1999"},
+{name:"Billy Bob", age:"12", gender:"male", rating:1, col:"red", dob:"", cheese:1},
+{name:"Mary May", age:"1", gender:"female", rating:2, col:"blue", dob:"14/05/1982", cheese:true},
+{name:"Christine Lobowski", age:"42", rating:0, col:"green", dob:"22/05/1982", cheese:"true"},
+{name:"Brendon Philips", age:"125", gender:"male", rating:1, col:"orange", dob:"01/08/1980"},
 
 
 
