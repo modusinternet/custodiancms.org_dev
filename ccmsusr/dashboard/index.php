@@ -52,6 +52,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			color:var(--cl0)
 		}
 
+		.tabulator-col-title{text-align:center}
+
 		#ccms_news_items{padding-left:30px}
 		#ccms_news_items li{margin-bottom:10px}
 
@@ -289,9 +291,11 @@ var table = new Tabulator("#example-table", {
 	height:"250px",
 	data:tabledata, //assign data to table
 	columns:[
-		{formatter:"rowSelection", titleFormatter:"rowSelection", hozAlign:"center", headerSort:false, cellClick:function(e, cell){
-			cell.getRow().toggleSelect();
-		}},
+		{
+			formatter:"rowSelection", titleFormatter:"rowSelection", hozAlign:"center", headerSort:false, cellClick:function(e, cell) {
+				cell.getRow().toggleSelect();
+			}
+		},
 		{title:"Name", field:"name", width:150, editor:"input"},
 		{title:"Location", field:"location", width:130, editor:"autocomplete", editorParams:{allowEmpty:true, showListOnEmpty:true, values:true}},
 		{title:"Progress", field:"progress", sorter:"number", hozAlign:"left", formatter:"progress", width:140, editor:true},
