@@ -170,6 +170,12 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 
+
+
+			var l=document.createElement("link");l.rel="stylesheet";
+			l.href = "/ccmsusr/_css/footable.core.standalone.min.css";
+			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
+
 			var l=document.createElement("link");l.rel="stylesheet";
 			l.href = "/ccmsusr/_css/footable.editing.min.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
@@ -220,6 +226,9 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 var dateEditor = function(cell, onRendered, success, cancel) {
 	jQuery(function($) {
 		$('.table').footable({
+			"editing": {
+				"enabled": true
+			},
 			"columns":[
 				{"name":"id", "title": "ID", "breakpoints": "xs" },
 				{"name":"firstName", "title": "First Name" },
