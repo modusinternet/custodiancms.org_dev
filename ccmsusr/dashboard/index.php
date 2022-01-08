@@ -81,7 +81,18 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					<p>List of sessions and or form calls, found in the 'ccms_log' table, that failed.</p>
 
 
-					<div id="example-table"></div>
+
+
+
+
+
+					<table class="table"></table>
+
+
+
+
+
+
 
 
 				</div>
@@ -157,17 +168,32 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			l.href = "/ccmsusr/_css/metisMenu-3.0.6.min.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
+
+
 			var l=document.createElement("link");l.rel="stylesheet";
-			l.href = "/ccmsusr/_css/tabulator.5.0.10.min.css";
+			l.href = "/ccmsusr/_css/aaaaaa.min.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
+
+			var l=document.createElement("link");l.rel="stylesheet";
+			l.href = "/ccmsusr/_css/aaaaaa.min.css";
+			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
+
+			var l=document.createElement("link");l.rel="stylesheet";
+			l.href = "/ccmsusr/_css/aaaaaa.min.css";
+			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
+
+			var l=document.createElement("link");l.rel="stylesheet";
+			l.href = "/ccmsusr/_css/aaaaaa.min.css";
+			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
+
+
 
 			function loadJSResources() {
 				loadFirst("/ccmsusr/_js/jquery-3.6.0.min.js", function() {
 					loadFirst("/ccmsusr/_js/metisMenu-3.0.7.min.js", function() {
 						loadFirst("/ccmsusr/_js/custodiancms.js", function() {
 							loadFirst("/ccmsusr/_js/jquery-validate-1.19.3.min.js", function() {
-								loadFirst("/ccmsusr/_js/tabulator.5.0.10.min.js", function() {
-									loadFirst("/ccmsusr/_js/luxon.min.js", function() { /* https://moment.github.io/luxon/#/ */
+								loadFirst("/ccmsusr/_js/footable.core.min.js", function() {
 
 
 
@@ -227,76 +253,32 @@ var tabledata = <?php
 
 
 //Create Date Editor
-var dateEditor = function(cell, onRendered, success, cancel){
-    //cell - the cell component for the editable cell
-    //onRendered - function to call when the editor has been rendered
-    //success - function to call to pass the successfuly updated value to Tabulator
-    //cancel - function to call to abort the edit and return to a normal cell
-
-    //create and style input
-    var cellValue = luxon.DateTime.fromFormat(cell.getValue(), "dd/MM/yyyy").toFormat("yyyy-MM-dd"),
-    input = document.createElement("input");
-
-    input.setAttribute("type", "date");
-
-    input.style.padding = "4px";
-    input.style.width = "100%";
-    input.style.boxSizing = "border-box";
-
-    input.value = cellValue;
-
-    onRendered(function(){
-        input.focus();
-        input.style.height = "100%";
-    });
-
-    function onChange(){
-        if(input.value != cellValue){
-            success(luxon.DateTime.fromFormat(input.value, "yyyy-MM-dd").toFormat("dd/MM/yyyy"));
-        }else{
-            cancel();
-        }
-    }
-
-    //submit new value on blur or change
-    input.addEventListener("blur", onChange);
-
-    //submit new value on enter
-    input.addEventListener("keydown", function(e){
-        if(e.keyCode == 13){
-            onChange();
-        }
-
-        if(e.keyCode == 27){
-            cancel();
-        }
-    });
-
-    return input;
-};
-
-//Build Tabulator
-var table = new Tabulator("#example-table", {
-	height:"250px",
-	data:tabledata, //assign data to table
-	columns:[
-		{
-			formatter:"rowSelection", titleFormatter:"rowSelection", hozAlign:"center", headerSort:false, cellClick:function(e, cell) {
-				cell.getRow().toggleSelect();
-			}
-		},
-		{title:"Name", field:"name", width:150, editor:"input"},
-		{title:"Location", field:"location", width:130, editor:"autocomplete", editorParams:{allowEmpty:true, showListOnEmpty:true, values:true}},
-		{title:"Progress", field:"progress", sorter:"number", hozAlign:"left", formatter:"progress", width:140, editor:true},
-		{title:"Gender", field:"gender", editor:"select", editorParams:{values:{"male":"Male", "female":"Female", "unknown":"Unknown"}}},
-		{title:"Rating", field:"rating",  formatter:"star", hozAlign:"center", width:100, editor:true},
-		{title:"Date Of Birth", field:"dob", hozAlign:"center", sorter:"date", width:140, editor:dateEditor},
-		{title:"Driver", field:"car", hozAlign:"center", editor:true, formatter:"tickCross"},
-	],
-	pagination:"local",
-	paginationSize:4,
-	paginationSizeSelector:[2, 4, 8, 16],
-	layout:"fitColumns",
+var dateEditor = function(cell, onRendered, success, cancel){jQuery(function($){
+	$('.table').footable({
+		"columns":[
+			{"name":"id", "title": "ID", "breakpoints": "xs" },
+			{"name":"firstName", "title": "First Name" },
+			{"name":"lastName", "title": "Last Name" },
+			{"name":"jobTitle", "title": "Job Title", "breakpoints": "xs" },
+			{"name":"started", "title": "Started On", "breakpoints": "xs sm" },
+			{"name":"dob", "title": "DOB", "breakpoints": "xs sm md" }
+		],
+		"rows": [
+			{
+				"options": {
+					"expanded": true
+				},
+				"value": { "id": 1, "firstName": "Dennise", "lastName": "Fuhrman", "jobTitle": "High School History Teacher", "started": "November 8th 2011", "dob": "July 25th 1960" }
+			},
+			{ "id": 2, "firstName": "Elodia", "lastName": "Weisz", "jobTitle": "Wallpaperer Helper", "started": "October 15th 2010", "dob": "March 30th 1982" },
+			{ "id": 3, "firstName": "Raeann", "lastName": "Haner", "jobTitle": "Internal Medicine Nurse Practitioner", "started": "November 28th 2013", "dob": "February 26th 1966" },
+			{ "id": 4, "firstName": "Junie", "lastName": "Landa", "jobTitle": "Offbearer", "started": "October 31st 2010", "dob": "March 29th 1966" },
+			{ "id": 5, "firstName": "Solomon", "lastName": "Bittinger", "jobTitle": "Roller Skater", "started": "December 29th 2011", "dob": "September 22nd 1964" },
+			{ "id": 6, "firstName": "Bar", "lastName": "Lewis", "jobTitle": "Clown", "started": "November 12th 2012", "dob": "August 4th 1991" },
+			{ "id": 7, "firstName": "Usha", "lastName": "Leak", "jobTitle": "Ships Electronic Warfare Officer", "started": "August 14th 2012", "dob": "November 20th 1979" },
+			{ "id": 8, "firstName": "Lorriane", "lastName": "Cooke", "jobTitle": "Technical Services Librarian", "started": "September 21st 2010", "dob": "April 7th 1969" }
+		]
+	});
 });
 
 
@@ -308,8 +290,6 @@ var table = new Tabulator("#example-table", {
 
 
 
-
-									});
 								});
 							});
 						});
