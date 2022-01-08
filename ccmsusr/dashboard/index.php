@@ -244,8 +244,8 @@ var dateEditor = function(cell, onRendered, success, cancel) {
 				{ "id": 8, "firstName": "Lorriane", "lastName": "Cooke", "jobTitle": "Technical Services Librarian", "started": "September 21st 2010", "dob": "April 7th 1969" }
 			]
 		});
-	}
-});
+	});
+}
 
 
 
