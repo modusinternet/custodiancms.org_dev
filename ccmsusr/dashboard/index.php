@@ -189,7 +189,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 									$('#grid_table').jsGrid({
 										width: "100%",
-										height: "600px",
+										height: "500px",
 										filtering: true,
 										inserting:true,
 										editing: true,
