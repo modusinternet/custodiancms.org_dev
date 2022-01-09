@@ -36,6 +36,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			*/
 		}
 
+		.hide{display:none}
+
 		.modal{
 			background-color:var(--cl0);
 			border:1px solid var(--cl2-tran);
@@ -51,8 +53,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			border-radius:6px 6px 0 0;
 			color:var(--cl0)
 		}
-
-		.tabulator-col-title{text-align:center}
 
 		#ccms_news_items{padding-left:30px}
 		#ccms_news_items li{margin-bottom:10px}
@@ -81,18 +81,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					<p>List of sessions and or form calls, found in the 'ccms_log' table, that failed.</p>
 
 
-
-
-
-
-
-					<table class="table"></table>
-
-
-
-
-
-
+					<div id="grid_table"></div>
 
 
 				</div>
@@ -168,40 +157,20 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			l.href = "/ccmsusr/_css/metisMenu-3.0.6.min.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
-
-
-
-
 			var l=document.createElement("link");l.rel="stylesheet";
-			l.href = "/ccmsusr/_css/footable.core.standalone.min.css";
+			l.href = "/ccmsusr/_css/jsgrid.min.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
 			var l=document.createElement("link");l.rel="stylesheet";
-			l.href = "/ccmsusr/_css/footable.editing.min.css";
+			l.href = "/ccmsusr/_css/jsgrid-theme.min.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
-
-			var l=document.createElement("link");l.rel="stylesheet";
-			l.href = "/ccmsusr/_css/footable.filtering.min.css";
-			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
-
-			var l=document.createElement("link");l.rel="stylesheet";
-			l.href = "/ccmsusr/_css/footable.paging.min.css";
-			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
-
-			var l=document.createElement("link");l.rel="stylesheet";
-			l.href = "/ccmsusr/_css/footable.sorting.min.css";
-			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
-
-
 
 			function loadJSResources() {
 				loadFirst("/ccmsusr/_js/jquery-3.6.0.min.js", function() {
 					loadFirst("/ccmsusr/_js/metisMenu-3.0.7.min.js", function() {
 						loadFirst("/ccmsusr/_js/custodiancms.js", function() {
 							loadFirst("/ccmsusr/_js/jquery-validate-1.19.3.min.js", function() {
-								loadFirst("/ccmsusr/_js/footable.core.min.js", function() {
-
-
+								loadFirst("/ccmsusr/_js/jsgrid.min.js", function() {
 
 									/* user_dropdown START */
 									/* When the user clicks on the svg button add the 'show' class to the dropdown box below it. */
@@ -218,51 +187,90 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 									/* user_dropdown END */
 
 
+									$('#grid_table').jsGrid({
+										width: "100%",
+										height: "600px",
+										filtering: true,
+										inserting:true,
+										editing: true,
+										sorting: true,
+										paging: true,
+										autoload: true,
+										pageSize: 10,
+										pageButtonCount: 5,
+										deleteConfirm: "Do you really want to delete data?",
 
+										controller: {
+											loadData: function(filter){
+												return $.ajax({
+													type: "GET",
+													url: "fetch_data.php",
+													data: filter
+												});
+											},
+											insertItem: function(item){
+												return $.ajax({
+													type: "POST",
+													url: "fetch_data.php",
+													data:item
+												});
+											},
+											updateItem: function(item){
+												return $.ajax({
+													type: "PUT",
+													url: "fetch_data.php",
+													data: item
+												});
+											},
+											deleteItem: function(item){
+												return $.ajax({
+													type: "DELETE",
+													url: "fetch_data.php",
+													data: item
+												});
+											},
+										},
 
-
-
-//Create Date Editor
-var dateEditor = function(cell, onRendered, success, cancel) {
-	jQuery(function($) {
-		$('.table').footable({
-			"editing": {
-				"enabled": true
-			},
-			"columns":[
-				{"name":"id", "title": "ID", "breakpoints": "xs" },
-				{"name":"firstName", "title": "First Name" },
-				{"name":"lastName", "title": "Last Name" },
-				{"name":"jobTitle", "title": "Job Title", "breakpoints": "xs" },
-				{"name":"started", "title": "Started On", "breakpoints": "xs sm" },
-				{"name":"dob", "title": "DOB", "breakpoints": "xs sm md" }
-			],
-			"rows": [
-				{
-					"options": {
-						"expanded": true
-					},
-					"value": { "id": 1, "firstName": "Dennise", "lastName": "Fuhrman", "jobTitle": "High School History Teacher", "started": "November 8th 2011", "dob": "July 25th 1960" }
-				},
-				{ "id": 2, "firstName": "Elodia", "lastName": "Weisz", "jobTitle": "Wallpaperer Helper", "started": "October 15th 2010", "dob": "March 30th 1982" },
-				{ "id": 3, "firstName": "Raeann", "lastName": "Haner", "jobTitle": "Internal Medicine Nurse Practitioner", "started": "November 28th 2013", "dob": "February 26th 1966" },
-				{ "id": 4, "firstName": "Junie", "lastName": "Landa", "jobTitle": "Offbearer", "started": "October 31st 2010", "dob": "March 29th 1966" },
-				{ "id": 5, "firstName": "Solomon", "lastName": "Bittinger", "jobTitle": "Roller Skater", "started": "December 29th 2011", "dob": "September 22nd 1964" },
-				{ "id": 6, "firstName": "Bar", "lastName": "Lewis", "jobTitle": "Clown", "started": "November 12th 2012", "dob": "August 4th 1991" },
-				{ "id": 7, "firstName": "Usha", "lastName": "Leak", "jobTitle": "Ships Electronic Warfare Officer", "started": "August 14th 2012", "dob": "November 20th 1979" },
-				{ "id": 8, "firstName": "Lorriane", "lastName": "Cooke", "jobTitle": "Technical Services Librarian", "started": "September 21st 2010", "dob": "April 7th 1969" }
-			]
-		});
-	});
-}
-
-
-
-
-
-
-
-
+										fields: [
+											{
+												name: "id",
+												type: "hidden",
+												css: 'hide'
+											},{
+												name: "first_name",
+												type: "text",
+												width: 150,
+												validate: "required"
+											},{
+												name: "last_name",
+												type: "text",
+												width: 150,
+												validate: "required"
+											},{
+												name: "age",
+												type: "text",
+												width: 50,
+												validate: function(value) {
+													if(value > 0) {
+														return true;
+													}
+												}
+											},{
+												name: "gender",
+												type: "select",
+												items: [
+													{ Name: "", Id: '' },
+													{ Name: "Male", Id: 'male' },
+													{ Name: "Female", Id: 'female' }
+												],
+												valueField: "Id",
+												textField: "Name",
+												validate: "required"
+											},{
+												type: "control"
+											}
+										]
+									});
 
 
 								});
@@ -271,12 +279,6 @@ var dateEditor = function(cell, onRendered, success, cancel) {
 					});
 				});
 			}
-
-
-
-
-
-
 
 			const ccms_news_href = 'https://custodiancms.org/cross-origin-resources/news.php?ccms_token=';
 			const ccms_ttl = 3600; // seconds, ie: 3600 = 1 hour
