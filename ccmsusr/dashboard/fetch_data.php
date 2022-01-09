@@ -1,5 +1,5 @@
 <?php
-	header("Content-Type: text/html; charset=UTF-8");
+	header("Content-Type: application/javascript; charset=utf-8");
 	header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
 	header("Cache-Control: post-check=0, pre-check=0", false);
 	header("Pragma: no-cache");
@@ -10,9 +10,10 @@
 		exit('No direct script access allowed');
 	}
 
-//fetch_data.php
 
-//$connect = new PDO("mysql:host=localhost;dbname=testing", "root", "");
+
+
+
 
 $method = $_SERVER['REQUEST_METHOD'];
 
@@ -86,5 +87,3 @@ if($method == "DELETE")
  $statement = $CFG["DBH"]->prepare($query);
  $statement->execute();
 }
-
-?>
