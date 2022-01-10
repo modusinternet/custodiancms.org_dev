@@ -190,15 +190,29 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 									$('#grid_table').jsGrid({
 										width: "100%",
 										height: "500px",
-										filtering: true,
-										inserting:true,
-										editing: true,
-										sorting: true,
-										paging: true,
+
 										autoload: true,
-										pageSize: 10,
-										pageButtonCount: 5,
 										deleteConfirm: "Do you really want to delete data?",
+										filtering: true,
+										editing: true,
+										inserting:true,
+										sorting: true,
+
+										paging: true,
+										pageSize: 5,
+										pageButtonCount: 5,
+
+pagerContainer: "#externalPager",
+pagerFormat: "Current Page: {pageIndex} &nbsp;&nbsp;&nbsp; {first} {prev} {pages} {next} {last} &nbsp;&nbsp;&nbsp; Total Pages: {pageCount}",
+pagePrevText: "<",
+pageNextText: ">",
+pageFirstText: "<<",
+pageLastText: ">>",
+pageNavigatorNextText: "&#8230;",
+pageNavigatorPrevText: "&#8230;",
+
+
+
 
 										controller: {
 											loadData: function(filter){
