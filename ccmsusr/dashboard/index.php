@@ -193,8 +193,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 										height: "393px",
 										autoload: true,
 										deleteButtonTooltip: "Delete", // tooltip of delete item button
-										editing: false, // make rows editable
-										editButton: false, // show edit button
+										//editing: false, // make rows editable
+										//editButton: false, // show edit button
 										filtering: false, // show clear filter row
 										inserting: false, // disable inserting for column
 										selecting: true,
