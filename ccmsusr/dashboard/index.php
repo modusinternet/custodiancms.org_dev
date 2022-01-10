@@ -190,7 +190,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 									$('#grid_table').jsGrid({
 										width: "100%",
-										height: "500px",
+										height: "460px",
 
 										autoload: true,
 										deleteConfirm: "Do you really want to delete data?",
