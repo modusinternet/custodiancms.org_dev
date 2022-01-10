@@ -199,9 +199,9 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 										filtering: true,
 										editButton: false, // show edit button
 										editing: false,
-										inserting: false,
+										inserting: false, // disable inserting for column
 										selecting: true,
-										sorting: false,
+										sorting: true,
 
 										paging: true,
 										pageSize: 5,
