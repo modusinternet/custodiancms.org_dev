@@ -197,11 +197,11 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 										filtering: true,
 										editing: false,
 										inserting: false,
-										selecting: false,
-										sorting: true,
+										selecting: true,
+										sorting: false,
 
 										paging: true,
-										pageSize: 10,
+										pageSize: 5,
 										pageButtonCount: 5,
 
 /*
@@ -255,16 +255,19 @@ pageNavigatorPrevText: "&#8230;",
 												css: 'hide'
 											},{
 												name: "first_name",
+												text: "First Name",
 												type: "text",
 												width: 150,
 												validate: "required"
 											},{
 												name: "last_name",
+												text: "Last Name",
 												type: "text",
 												width: 150,
 												validate: "required"
 											},{
 												name: "age",
+												text: "Age",
 												type: "text",
 												width: 50,
 												validate: function(value) {
@@ -274,6 +277,7 @@ pageNavigatorPrevText: "&#8230;",
 												}
 											},{
 												name: "gender",
+												text: "Gender",
 												type: "select",
 												items: [
 													{ Name: "", Id: '' },
