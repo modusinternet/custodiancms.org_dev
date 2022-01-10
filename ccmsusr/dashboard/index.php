@@ -192,7 +192,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 										width: "100%",
 										height: "393px",
 										autoload: true,
-										deleteButtonTooltip: "Delete", // tooltip of delete item button
+
 										confirmDeleting: false,
 										//editing: false, // make rows editable
 										filtering: false, // show clear filter row
@@ -277,6 +277,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 												validate: "required"
 											},{
 												type: "control",
+												deleteButton: true,
+												deleteButtonTooltip: "Delete", // tooltip of delete item button
 												editButton: false, // show edit button
 												width: 20,
 											}
