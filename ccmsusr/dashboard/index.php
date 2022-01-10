@@ -190,13 +190,13 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 									$('#grid_table').jsGrid({
 										width: "100%",
-										height: "450px",
+										height: "393px",
 
 										autoload: true,
 
-										deleteButton: true, // show delete button
+										//deleteButton: true, // show delete button
 										//deleteConfirm: "Do you really want to delete data?",
-										filtering: true, // show clear filter row
+										filtering: false, // show clear filter row
 										//editButton: false, // show edit button
 										editing: false, // make rows editable
 										inserting: false, // disable inserting for column
