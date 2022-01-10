@@ -198,7 +198,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 										deleteConfirm: "Do you really want to delete data?",
 										filtering: true,
 										//editButton: false, // show edit button
-										editing: false,
+										editing: true,
 										inserting: false, // disable inserting for column
 										selecting: true,
 										sorting: true,
