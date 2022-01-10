@@ -17,6 +17,10 @@
 
 $method = $_SERVER['REQUEST_METHOD'];
 
+
+header("aaaRequestMethod: ".$_SERVER['REQUEST_METHOD']);
+
+
 if($method == 'GET')
 {
  $data = array(
