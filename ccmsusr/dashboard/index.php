@@ -200,7 +200,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 										sorting: true,
 
 										paging: true,
-										pageSize: 5,
+										pageSize: 10,
 										pageButtonCount: 5,
 
 pagerContainer: "#externalPager",
