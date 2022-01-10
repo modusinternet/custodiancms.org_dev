@@ -190,7 +190,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 									$('#grid_table').jsGrid({
 										width: "100%",
-										height: "460px",
+										height: "440px",
 
 										autoload: true,
 										clearFilterButton: true, // show clear filter button
