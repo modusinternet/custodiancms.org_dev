@@ -191,38 +191,17 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 									$('#grid_table').jsGrid({
 										width: "100%",
 										height: "393px",
-
 										autoload: true,
-
-										//deleteButton: true, // show delete button
-										//deleteConfirm: "Do you really want to delete data?",
-										filtering: false, // show clear filter row
-										//editButton: false, // show edit button
+										deleteButtonTooltip: "Delete", // tooltip of delete item button
 										editing: false, // make rows editable
+										editButton: false, // show edit button
+										filtering: false, // show clear filter row
 										inserting: false, // disable inserting for column
 										selecting: true,
 										sorting: true,
-
 										paging: true,
 										pageSize: 5,
 										pageButtonCount: 5,
-
-										editButtonTooltip: "Edit",                      // tooltip of edit item button
-deleteButtonTooltip: "Delete",                  // tooltip of delete item button
-searchButtonTooltip: "Search",                  // tooltip of search button
-
-/*
-pagerContainer: "#externalPager",
-pagerFormat: "Current Page: {pageIndex} &nbsp;&nbsp;&nbsp; {first} {prev} {pages} {next} {last} &nbsp;&nbsp;&nbsp; Total Pages: {pageCount}",
-pagePrevText: "<",
-pageNextText: ">",
-pageFirstText: "<<",
-pageLastText: ">>",
-pageNavigatorNextText: "&#8230;",
-pageNavigatorPrevText: "&#8230;",
-*/
-
-
 
 										controller: {
 											loadData: function(filter){
@@ -302,7 +281,6 @@ pageNavigatorPrevText: "&#8230;",
 											}
 										]
 									});
-
 
 								});
 							});
