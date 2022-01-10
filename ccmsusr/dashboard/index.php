@@ -193,10 +193,10 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 										height: "440px",
 
 										autoload: true,
-										clearFilterButton: true, // show clear filter button
+										clearFilterButton: false, // show clear filter button
 										deleteButton: true, // show delete button
 										deleteConfirm: "Do you really want to delete data?",
-										filtering: false,
+										filtering: true,
 										editButton: false, // show edit button
 										editing: false,
 										inserting: false,
