@@ -204,28 +204,28 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 											loadData: function(filter){
 												return $.ajax({
 													type: "GET",
-													url: "fetch_data.php",
+													url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/fetch_data.php",
 													data: filter
 												});
 											},
 											insertItem: function(item){
 												return $.ajax({
 													type: "POST",
-													url: "fetch_data.php",
+													url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/fetch_data.php",
 													data:item
 												});
 											},
 											updateItem: function(item){
 												return $.ajax({
 													type: "PUT",
-													url: "fetch_data.php",
+													url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/fetch_data.php",
 													data: item
 												});
 											},
 											deleteItem: function(item){
 												return $.ajax({
 													type: "DELETE",
-													url: "fetch_data.php",
+													url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/fetch_data.php",
 													data: item
 												});
 											},
