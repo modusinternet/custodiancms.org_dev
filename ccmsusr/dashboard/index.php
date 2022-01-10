@@ -193,7 +193,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 										height: "440px",
 
 										autoload: true,
-										clearFilterButton: false, // show clear filter button
+										clearFilterButton: true, // show clear filter button
 										deleteButton: true, // show delete button
 										deleteConfirm: "Do you really want to delete data?",
 										filtering: true,
@@ -206,6 +206,10 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 										paging: true,
 										pageSize: 5,
 										pageButtonCount: 5,
+
+										editButtonTooltip: "Edit",                      // tooltip of edit item button
+deleteButtonTooltip: "Delete",                  // tooltip of delete item button
+searchButtonTooltip: "Search",                  // tooltip of search button
 
 /*
 pagerContainer: "#externalPager",
