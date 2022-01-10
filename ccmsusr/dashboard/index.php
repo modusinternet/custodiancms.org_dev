@@ -82,6 +82,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 					<div id="grid_table"></div>
+					<div id="externalPager"></div>
 
 
 				</div>
