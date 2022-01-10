@@ -260,6 +260,7 @@ pageNavigatorPrevText: "&#8230;",
 												name: "id",
 												title: "ID",
 												type: "text",
+												width: 20,
 												//css: 'hide'
 											},{
 												name: "first_name",
@@ -277,7 +278,7 @@ pageNavigatorPrevText: "&#8230;",
 												name: "age",
 												title: "Age",
 												type: "text",
-												//width: 50,
+												width: 20,
 												validate: function(value) {
 													if(value > 0) {
 														return true;
@@ -296,7 +297,8 @@ pageNavigatorPrevText: "&#8230;",
 												textField: "Name",
 												validate: "required"
 											},{
-												type: "control"
+												type: "control",
+												width: 20,
 											}
 										]
 									});
