@@ -195,14 +195,16 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 										autoload: true,
 										deleteConfirm: "Do you really want to delete data?",
 										filtering: true,
-										editing: true,
-										inserting:true,
+										editing: false,
+										inserting: false,
+										selecting: false,
 										sorting: true,
 
 										paging: true,
 										pageSize: 10,
 										pageButtonCount: 5,
 
+/*
 pagerContainer: "#externalPager",
 pagerFormat: "Current Page: {pageIndex} &nbsp;&nbsp;&nbsp; {first} {prev} {pages} {next} {last} &nbsp;&nbsp;&nbsp; Total Pages: {pageCount}",
 pagePrevText: "<",
@@ -211,7 +213,7 @@ pageFirstText: "<<",
 pageLastText: ">>",
 pageNavigatorNextText: "&#8230;",
 pageNavigatorPrevText: "&#8230;",
-
+*/
 
 
 
