@@ -196,7 +196,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 										clearFilterButton: true, // show clear filter button
 										deleteButton: true, // show delete button
 										deleteConfirm: "Do you really want to delete data?",
-										filtering: true,
+										filtering: false,
 										editButton: false, // show edit button
 										editing: false,
 										inserting: false,
