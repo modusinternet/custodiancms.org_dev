@@ -258,25 +258,26 @@ pageNavigatorPrevText: "&#8230;",
 										fields: [
 											{
 												name: "id",
-												type: "hidden",
-												css: 'hide'
+												title: "ID",
+												type: "text",
+												//css: 'hide'
 											},{
 												name: "first_name",
 												title: "First Name",
 												type: "text",
-												width: 150,
+												//width: 150,
 												validate: "required"
 											},{
 												name: "last_name",
 												title: "Last Name",
 												type: "text",
-												width: 150,
+												//width: 150,
 												validate: "required"
 											},{
 												name: "age",
 												title: "Age",
 												type: "text",
-												width: 50,
+												//width: 50,
 												validate: function(value) {
 													if(value > 0) {
 														return true;
