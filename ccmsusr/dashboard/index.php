@@ -190,7 +190,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 									$('#grid_table').jsGrid({
 										width: "100%",
-										height: "440px",
+										height: "450px",
 
 										autoload: true,
 										clearFilterButton: true, // show clear filter button
@@ -262,19 +262,19 @@ pageNavigatorPrevText: "&#8230;",
 												css: 'hide'
 											},{
 												name: "first_name",
-												text: "First Name",
+												title: "First Name",
 												type: "text",
 												width: 150,
 												validate: "required"
 											},{
 												name: "last_name",
-												text: "Last Name",
+												title: "Last Name",
 												type: "text",
 												width: 150,
 												validate: "required"
 											},{
 												name: "age",
-												text: "Age",
+												title: "Age",
 												type: "text",
 												width: 50,
 												validate: function(value) {
@@ -284,7 +284,7 @@ pageNavigatorPrevText: "&#8230;",
 												}
 											},{
 												name: "gender",
-												text: "Gender",
+												title: "Gender",
 												type: "select",
 												items: [
 													{ Name: "", Id: '' },
