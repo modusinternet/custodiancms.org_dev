@@ -207,28 +207,34 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 											loadData: function(filter){
 												return $.ajax({
 													type: "GET",
-													url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/fetch_data.php",
+													//url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/fetch_data.php",
+													url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/fetch_data.php?jsgrid_ajax=load",
 													data: filter
 												});
 											},
 											insertItem: function(item){
 												return $.ajax({
 													type: "POST",
-													url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/fetch_data.php",
-													data:item
+													//url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/fetch_data.php",
+													url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/fetch_data.php?jsgrid_ajax=insert",
+													data: item
 												});
 											},
 											updateItem: function(item){
 												return $.ajax({
-													type: "PUT",
-													url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/fetch_data.php",
+													//type: "PUT",
+													type: "POST",
+													//url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/fetch_data.php",
+													url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/fetch_data.php?jsgrid_ajax=update",
 													data: item
 												});
 											},
 											deleteItem: function(item){
 												return $.ajax({
-													type: "DELETE",
-													url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/fetch_data.php",
+													//type: "DELETE",
+													type: "POST",
+													//url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/fetch_data.php",
+													url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/fetch_data.php?jsgrid_ajax=delete",
 													data: item
 												});
 											},

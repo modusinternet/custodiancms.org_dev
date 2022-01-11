@@ -12,17 +12,37 @@
 
 
 
+header("aaaRequestMethod: ".$CLEAN["jsgrid_ajax"]);
 
 
 
-$method = $_SERVER['REQUEST_METHOD'];
+
+	if($CLEAN["jsgrid_ajax"] == "") {
+		$error_message = "'jsgrid_ajax' field missing content.";
+	} elseif ($CLEAN["jsgrid_ajax"] == "MINLEN") {
+		$error_message = "'jsgrid_ajax' field is too short, must be 8 or more characters in length.";
+	} elseif ($CLEAN["jsgrid_ajax"] == "INVAL") {
+		$error_message = "'jsgrid_ajax' field error, indeterminate.";
+
+	}
+
+if(!$error_message) {
 
 
-header("aaaRequestMethod: ".$_SERVER['REQUEST_METHOD']);
 
 
-if($method == 'GET')
-{
+
+
+
+
+//$method = $_SERVER['REQUEST_METHOD'];
+
+
+
+
+
+//if($method == 'GET')
+if($CLEAN["jsgrid_ajax"] == 'load'){
  $data = array(
   ':first_name'   => "%" . $_GET['first_name'] . "%",
   ':last_name'   => "%" . $_GET['last_name'] . "%",
@@ -48,8 +68,8 @@ if($method == 'GET')
  echo json_encode($output);
 }
 
-if($method == "POST")
-{
+//if($method == "POST")
+if($CLEAN["jsgrid_ajax"] == 'insert'){
  $data = array(
   ':first_name'  => $_POST['first_name'],
   ':last_name'  => $_POST["last_name"],
@@ -62,15 +82,15 @@ if($method == "POST")
  $statement->execute($data);
 }
 
-if($method == 'PUT')
-{
- parse_str(file_get_contents("php://input"), $_PUT);
+//if($method == 'PUT')
+if($CLEAN["jsgrid_ajax"] == 'update'){
+ parse_str(file_get_contents("php://input"), $_POST);
  $data = array(
-  ':id'   => $_PUT['id'],
-  ':first_name' => $_PUT['first_name'],
-  ':last_name' => $_PUT['last_name'],
-  ':age'   => $_PUT['age'],
-  ':gender'  => $_PUT['gender']
+  ':id'   => $_POST['id'],
+  ':first_name' => $_POST['first_name'],
+  ':last_name' => $_POST['last_name'],
+  ':age'   => $_POST['age'],
+  ':gender'  => $_POST['gender']
  );
  $query = "
  UPDATE sample_data
@@ -84,10 +104,15 @@ if($method == 'PUT')
  $statement->execute($data);
 }
 
-if($method == "DELETE")
-{
- parse_str(file_get_contents("php://input"), $_DELETE);
- $query = "DELETE FROM sample_data WHERE id = '".$_DELETE["id"]."'";
+//if($method == "DELETE")
+if($CLEAN["jsgrid_ajax"] == 'delete'){
+ parse_str(file_get_contents("php://input"), $_POST);
+ $query = "DELETE FROM sample_data WHERE id = '".$_POST["id"]."'";
  $statement = $CFG["DBH"]->prepare($query);
  $statement->execute();
+}
+
+
+
+
 }
