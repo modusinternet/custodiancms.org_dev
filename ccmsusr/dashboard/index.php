@@ -389,7 +389,7 @@ const grid = new tui.Grid({
 	columns: [
 		{
 			header: 'ID',
-			filter: 'number'
+			filter: 'number',
 			name: 'id',
 			width: '50'
 		},{
