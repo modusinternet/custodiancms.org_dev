@@ -394,6 +394,12 @@ const grid = new tui.Grid({
 			width: '50'
 		},{
 			header: 'Date',
+			filter: {
+				type: 'date',
+				options: {
+					format: 'yyyy.MM.dd'
+				}
+			},
 			name: 'date',
 			width: '150'
 		},{
@@ -408,9 +414,13 @@ const grid = new tui.Grid({
 			width: '200'
 		},{
 			header: 'Log',
+			filter: { type: 'text', showApplyBtn: true, showClearBtn: true },
 			name: 'log'
 		}
-	]
+	],
+	columnOptions: {
+		resizable: true
+	}
 });
 
 grid.on('check', ev => {
