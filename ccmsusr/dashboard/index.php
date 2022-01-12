@@ -176,8 +176,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					loadFirst("/ccmsusr/_js/metisMenu-3.0.7.min.js", function() {
 						loadFirst("/ccmsusr/_js/custodiancms.js", function() {
 							loadFirst("/ccmsusr/_js/jquery-validate-1.19.3.min.js", function() {
-								loadFirst("/ccmsusr/_js/tui-grid.4.20.0.min.js", function() {
-									loadFirst("/ccmsusr/_js/tui-pagination.3.4.0.min.js", function() {
+								loadFirst("/ccmsusr/_js/tui-pagination.3.4.0.min.js", function() {
+									loadFirst("/ccmsusr/_js/tui-grid.4.20.0.min.js", function() {
 
 
 
