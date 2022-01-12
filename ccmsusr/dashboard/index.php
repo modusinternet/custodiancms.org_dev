@@ -428,7 +428,7 @@ const grid = new tui.Grid({
 		},{
 			header: 'Log',
 			filter: {
-				operator: 'contain',
+				option: 'Contains',
 				showApplyBtn: true,
 				showClearBtn: true,
 				type: 'text'
