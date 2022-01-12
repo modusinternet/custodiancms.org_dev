@@ -413,7 +413,11 @@ const grid = new tui.Grid({
 
 
 
-tui.Grid.applyTheme('striped');
+tui.Grid.applyTheme('striped', {
+	frozenBorder: {
+		border: '#ff0000'
+	}
+});
 
 grid.on('check', ev => {
 	console.log('check!', ev);
