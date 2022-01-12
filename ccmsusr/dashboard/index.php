@@ -382,16 +382,20 @@ const grid = new tui.Grid({
 	columns: [
 		{
 			header: 'ID',
-			name: 'id'
+			name: 'id',
+			width: '100px'
 		},{
 			header: 'Date',
-			name: 'date'
+			name: 'date',
+			width: '150px'
 		},{
 			header: 'IP',
-			name: 'ip'
+			name: 'ip',
+			width: '150px'
 		},{
 			header: 'URL',
-			name: 'url'
+			name: 'url',
+			width: '150px'
 		},{
 			header: 'Log',
 			name: 'log'
