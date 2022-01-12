@@ -393,7 +393,7 @@ const grid = new tui.Grid({
 			name: 'id',
 			sortingType: 'asc',
 			sortable: true,
-			width: '50'
+			width: '70'
 		},{
 			header: 'Date',
 			filter: {
@@ -423,7 +423,8 @@ const grid = new tui.Grid({
 		},{
 			header: 'Log',
 			filter: { type: 'text', showApplyBtn: true, showClearBtn: true },
-			name: 'log'
+			name: 'log',
+			whiteSpace: 'pre-wrap',
 		}
 	],
 	columnOptions: {
