@@ -188,7 +188,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 
-									var gridData = [
+/*
+var gridData = [
   {
     id: 549731,
     name: 'Beautiful Lies',
@@ -217,300 +218,214 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
     downloadCount: 1000,
     listenCount: 5000,
   },
-  {
-    id: 295651,
-    name: 'Moves Like Jagger',
-    release: '2011.08.08',
-    artist: 'Maroon5',
-    type: 'Single',
-    typeCode: '3',
-    genre: 'Pop,Rock',
-    genreCode: '1,2',
-    grade: '2',
-    price: 7000,
-    downloadCount: 1000,
-    listenCount: 5000,
-  },
-  {
-    id: 541713,
-    name: 'A Head Full Of Dreams',
-    artist: 'Coldplay',
-    release: '2015.12.04',
-    type: 'Deluxe',
-    typeCode: '1',
-    genre: 'Rock',
-    genreCode: '2',
-    grade: '3',
-    price: 25000,
-    downloadCount: 1000,
-    listenCount: 5000,
-  },
-  {
-    id: 265289,
-    name: '21',
-    artist: 'Adele',
-    release: '2011.01.21',
-    type: 'Deluxe',
-    typeCode: '1',
-    genre: 'Pop,R&B',
-    genreCode: '1,3',
-    grade: '3',
-    price: 15000,
-    downloadCount: 1000,
-    listenCount: 5000,
-  },
-  {
-    id: 555871,
-    name: 'Warm On A Cold Night',
-    artist: 'HONNE',
-    release: '2016.07.22',
-    type: 'EP',
-    typeCode: '1',
-    genre: 'R&B,Electronic',
-    genreCode: '3,4',
-    grade: '2',
-    price: 11000,
-    downloadCount: 1000,
-    listenCount: 5000,
-  },
-  {
-    id: 550571,
-    name: 'Take Me To The Alley',
-    artist: 'Gregory Porter',
-    release: '2016.09.02',
-    type: 'Deluxe',
-    typeCode: '1',
-    genre: 'Jazz',
-    genreCode: '5',
-    grade: '3',
-    price: 30000,
-    downloadCount: 1000,
-    listenCount: 5000,
-  },
-  {
-    id: 544128,
-    name: 'Make Out',
-    artist: 'LANY',
-    release: '2015.12.11',
-    type: 'EP',
-    typeCode: '2',
-    genre: 'Electronic',
-    genreCode: '4',
-    grade: '2',
-    price: 12000,
-    downloadCount: 1000,
-    listenCount: 5000,
-  },
-  {
-    id: 366374,
-    name: 'Get Lucky',
-    artist: 'Daft Punk',
-    release: '2013.04.23',
-    type: 'Single',
-    typeCode: '3',
-    genre: 'Pop,Funk',
-    genreCode: '1,5',
-    grade: '3',
-    price: 9000,
-    downloadCount: 1000,
-    listenCount: 5000,
-  },
-  {
-    id: 8012747,
-    name: 'Valtari',
-    artist: 'Sigur Rós',
-    release: '2012.05.31',
-    type: 'EP',
-    typeCode: '3',
-    genre: 'Rock',
-    genreCode: '2',
-    grade: '3',
-    price: 10000,
-    downloadCount: 1000,
-    listenCount: 5000,
-  },
-  {
-    id: 502792,
-    name: 'Bush',
-    artist: 'Snoop Dogg',
-    release: '2015.05.12',
-    type: 'EP',
-    typeCode: '2',
-    genre: 'Hiphop',
-    genreCode: '5',
-    grade: '3',
-    price: 18000,
-    downloadCount: 1000,
-    listenCount: 5000,
-  },
-  {
-    id: 294574,
-    name: '2',
-    artist: 'Beyoncé',
-    release: '2011.07.26',
-    type: 'Deluxe',
-    typeCode: '1',
-    genre: 'Pop',
-    genreCode: '1',
-    grade: '3',
-    price: 12000,
-    downloadCount: 1000,
-    listenCount: 5000,
-  },
-  {
-    id: 317659,
-    name: "I Won't Give Up",
-    artist: 'Jason Mraz',
-    release: '2012.01.03',
-    type: 'Single',
-    typeCode: '3',
-    genre: 'Pop',
-    genreCode: '1',
-    grade: '2',
-    price: 7000,
-    downloadCount: 1000,
-    listenCount: 5000,
-  },
-  {
-    id: 583551,
-    name: 'Following My Intuition',
-    artist: 'Craig David',
-    release: '2016.10.01',
-    type: 'Deluxe',
-    typeCode: '1',
-    genre: 'R&B,Electronic',
-    genreCode: '3,4',
-    grade: '3',
-    price: 15000,
-    downloadCount: 1000,
-    listenCount: 5000,
-  },
-  {
-    id: 490500,
-    name: 'Blue Skies',
-    release: '2015.03.18',
-    artist: 'Lenka',
-    type: 'Single',
-    typeCode: '3',
-    genre: 'Pop,Rock',
-    genreCode: '1,2',
-    grade: '3',
-    price: 6000,
-    downloadCount: 1000,
-    listenCount: 5000,
-  },
-  {
-    id: 587871,
-    name: 'This Is Acting',
-    artist: 'Sia',
-    release: '2016.10.22',
-    type: 'EP',
-    typeCode: '2',
-    genre: 'Pop',
-    genreCode: '1',
-    grade: '3',
-    price: 20000,
-    downloadCount: 1000,
-    listenCount: 5000,
-  },
-  {
-    id: 504288,
-    name: 'Blurryface',
-    artist: 'Twenty One Pilots',
-    release: '2015.05.19',
-    type: 'EP',
-    typeCode: '2',
-    genre: 'Rock',
-    genreCode: '2',
-    grade: '1',
-    price: 13000,
-    downloadCount: 1000,
-    listenCount: 5000,
-  },
-  {
-    id: 450720,
-    name: "I'm Not The Only One",
-    artist: 'Sam Smith',
-    release: '2014.09.15',
-    type: 'Single',
-    typeCode: '3',
-    genre: 'Pop,R&B',
-    genreCode: '1,3',
-    grade: '2',
-    price: 8000,
-    downloadCount: 1000,
-    listenCount: 5000,
-  },
-  {
-    id: 498896,
-    name: 'The Magic Whip',
-    artist: 'Blur',
-    release: '2015.04.27',
-    type: 'EP',
-    typeCode: '2',
-    genre: 'Rock',
-    genreCode: '2',
-    grade: '3',
-    price: 15000,
-    downloadCount: 1000,
-    listenCount: 5000,
-  },
-  {
-    id: 491379,
-    name: 'Chaos And The Calm',
-    artist: 'James Bay',
-    release: '2015.03.23',
-    type: 'EP',
-    typeCode: '2',
-    genre: 'Pop,Rock',
-    genreCode: '1,2',
-    grade: '3',
-    price: 12000,
-    downloadCount: 1000,
-    listenCount: 5000,
-  },
 ];
-									    const grid = new tui.Grid({
-									      el: document.getElementById('grid'),
-									      data: gridData,
-									      rowHeaders: ['checkbox'],
-									      scrollX: false,
-									      scrollY: false,
-									      columns: [
-									        {
-									          header: 'Name',
-									          name: 'name'
-									        },
-									        {
-									          header: 'Artist',
-									          name: 'artist'
-									        },
-									        {
-									          header: 'Type',
-									          name: 'type'
-									        },
-									        {
-									          header: 'Genre',
-									          name: 'genre'
-									        },
-									        {
-									          header: 'Release',
-									          name: 'release'
-									        }
-									      ]
-									    });
+*/
 
-									    grid.on('check', ev => {
-									      console.log('check!', ev);
-									    });
 
-									    grid.on('uncheck', ev => {
-									      console.log('uncheck!', ev);
-									    });
 
-									    grid.on('focusChange', ev => {
-									      console.log('change focused cell!', ev);
-									    });
+
+var gridData =
+[
+{
+    "id": "5",
+    "date": "1641356338",
+    "ip": "70.68.94.199",
+    "url": "\/en\/user\/dashboard\/",
+    "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
+},
+{
+    "id": "2",
+    "date": "1641351161",
+    "ip": "70.68.94.199",
+    "url": "\/en\/user\/",
+    "log": "User ID (1) under possible session highjacking attempt.  Session deleted and user redirected to login page.\n\nMozilla\/5.0 (iPad; CPU OS 14_7_1 like Mac OS X) AppleWebKit\/605.1.15 (KHTML, like Gecko) Version\/14.1.2 Mobile\/15E148 Safari\/604.1\n\n"
+},
+{
+    "id": "3",
+    "date": "1641353598",
+    "ip": "70.68.94.199",
+    "url": "\/serviceworker.php",
+    "log": "User ID (1) under possible session highjacking attempt.  Session deleted and user redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
+},
+{
+    "id": "4",
+    "date": "1641354444",
+    "ip": "70.68.94.199",
+    "url": "\/en\/user\/",
+    "log": "User ID (1) under possible session highjacking attempt.  The Session and Server HTTP_USER_AGENT's do not match.  Therefor, the session has been deleted and the user redirected to the login page.\n\nMozilla\/5.0 (iPad; CPU OS 14_7_1 like Mac OS X) AppleWebKit\/605.1.15 (KHTML, like Gecko) Version\/14.1.2 Mobile\/15E148 Safari\/604.1\n\n"
+},
+{
+    "id": "6",
+    "date": "1641382715",
+    "ip": "70.68.94.199",
+    "url": "\/en\/user\/dashboard\/",
+    "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
+},
+{
+    "id": "7",
+    "date": "1641410276",
+    "ip": "70.68.94.199",
+    "url": "\/en\/user\/",
+    "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
+},
+{
+    "id": "8",
+    "date": "1641424058",
+    "ip": "70.68.94.199",
+    "url": "\/en\/user\/",
+    "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
+},
+{
+    "id": "9",
+    "date": "1641426323",
+    "ip": "70.68.94.199",
+    "url": "\/en\/user\/",
+    "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
+},
+{
+    "id": "10",
+    "date": "1641437400",
+    "ip": "70.68.94.199",
+    "url": "\/en\/user\/",
+    "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
+},
+{
+    "id": "11",
+    "date": "1641451779",
+    "ip": "70.68.94.199",
+    "url": "\/en\/user\/",
+    "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
+},
+{
+    "id": "12",
+    "date": "1641456530",
+    "ip": "70.68.94.199",
+    "url": "\/en\/user\/",
+    "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
+},
+{
+    "id": "13",
+    "date": "1641474337",
+    "ip": "70.68.94.199",
+    "url": "\/en\/user\/dashboard\/",
+    "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
+},
+{
+    "id": "14",
+    "date": "1641756469",
+    "ip": "70.68.94.199",
+    "url": "\/en\/user\/",
+    "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
+},
+{
+    "id": "15",
+    "date": "1641771930",
+    "ip": "70.68.94.199",
+    "url": "\/en\/user\/",
+    "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
+},
+{
+    "id": "16",
+    "date": "1641802527",
+    "ip": "70.68.94.199",
+    "url": "\/en\/user\/",
+    "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
+},
+{
+    "id": "17",
+    "date": "1641828914",
+    "ip": "70.68.94.199",
+    "url": "\/en\/user\/",
+    "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
+},
+{
+    "id": "18",
+    "date": "1641846998",
+    "ip": "70.68.94.199",
+    "url": "\/en\/user\/",
+    "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
+},
+{
+    "id": "19",
+    "date": "1641855852",
+    "ip": "70.68.94.199",
+    "url": "\/en\/user\/",
+    "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
+},
+{
+    "id": "20",
+    "date": "1641858771",
+    "ip": "70.68.94.199",
+    "url": "\/en\/user\/dashboard\/",
+    "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
+},
+{
+    "id": "21",
+    "date": "1641862266",
+    "ip": "70.68.94.199",
+    "url": "\/en\/user\/",
+    "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
+},
+{
+    "id": "22",
+    "date": "1641930983",
+    "ip": "70.68.94.199",
+    "url": "\/en\/user\/dashboard\/",
+    "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
+},
+{
+    "id": "23",
+    "date": "1641951197",
+    "ip": "70.68.94.199",
+    "url": "\/en\/user\/dashboard\/",
+    "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
+}
+]
+
+}
+];
+
+const grid = new tui.Grid({
+el: document.getElementById('grid'),
+data: gridData,
+rowHeaders: ['checkbox'],
+scrollX: false,
+scrollY: false,
+columns: [
+{
+header: 'ID',
+name: 'id'
+},
+{
+header: 'Date',
+name: 'date'
+},
+{
+header: 'IP',
+name: 'ip'
+},
+{
+header: 'URL',
+name: 'url'
+},
+{
+header: 'Log',
+name: 'log'
+}
+]
+});
+
+grid.on('check', ev => {
+console.log('check!', ev);
+});
+
+grid.on('uncheck', ev => {
+console.log('uncheck!', ev);
+});
+
+grid.on('focusChange', ev => {
+console.log('change focused cell!', ev);
+});
 
 
 
