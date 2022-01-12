@@ -380,12 +380,13 @@ const grid = new tui.Grid({
 	el: document.getElementById('grid'),
 	data: gridData,
 	rowHeaders: ['checkbox'],
+	rowHeight: 'auto',
 	scrollX: false,
 	scrollY: false,
-	//pageOptions: {
-		//useClient: true,
-		//perPage: 5
-	//},
+	pageOptions: {
+		useClient: true,
+		perPage: 5
+	},
 	columns: [
 		{
 			header: 'ID',
@@ -424,7 +425,7 @@ const grid = new tui.Grid({
 			header: 'Log',
 			filter: { type: 'text', showApplyBtn: true, showClearBtn: true },
 			name: 'log',
-			whiteSpace: 'normal',
+			whiteSpace: 'pre-line',
 		}
 	],
 	columnOptions: {
