@@ -376,6 +376,7 @@ const grid = new tui.Grid({
 	scrollX: false,
 	scrollY: false,
 	pageOptions: {
+		useClient: true,
 		perPage: 5
 	},
 	columns: [
