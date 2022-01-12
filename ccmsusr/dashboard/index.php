@@ -424,7 +424,7 @@ const grid = new tui.Grid({
 			header: 'Log',
 			filter: { type: 'text', showApplyBtn: true, showClearBtn: true },
 			name: 'log',
-			whiteSpace: 'pre-line',
+			whiteSpace: 'normal',
 		}
 	],
 	columnOptions: {
