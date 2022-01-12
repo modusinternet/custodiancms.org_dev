@@ -441,7 +441,7 @@ const grid = new tui.Grid({
 	}
 });
 
-grid.applyTheme("striped");
+Grid.applyTheme('striped');
 
 grid.on('check', ev => {
 	console.log('check!', ev);
