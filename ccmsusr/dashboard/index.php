@@ -400,16 +400,16 @@ const grid = new tui.Grid({
 			},
 			header: 'Log',
 			name: 'log',
-			whiteSpace: 'normal',
+			whiteSpace: 'pre',
 		}
 	],
-	/*
+	///*
 	columnOptions: {
 		frozenCount: 1,
 		frozenBorderWidth: 2,
 		resizable: true
 	}
-	*/
+	//*/
 });
 
 
