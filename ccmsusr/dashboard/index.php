@@ -224,207 +224,177 @@ var gridData = [
 
 
 
-var gridData =
-[
+var gridData = [
 {
     "id": "5",
     "date": "1641356338",
     "ip": "70.68.94.199",
     "url": "\/en\/user\/dashboard\/",
     "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
-},
-{
+},{
     "id": "2",
     "date": "1641351161",
     "ip": "70.68.94.199",
     "url": "\/en\/user\/",
     "log": "User ID (1) under possible session highjacking attempt.  Session deleted and user redirected to login page.\n\nMozilla\/5.0 (iPad; CPU OS 14_7_1 like Mac OS X) AppleWebKit\/605.1.15 (KHTML, like Gecko) Version\/14.1.2 Mobile\/15E148 Safari\/604.1\n\n"
-},
-{
+},{
     "id": "3",
     "date": "1641353598",
     "ip": "70.68.94.199",
     "url": "\/serviceworker.php",
     "log": "User ID (1) under possible session highjacking attempt.  Session deleted and user redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
-},
-{
+},{
     "id": "4",
     "date": "1641354444",
     "ip": "70.68.94.199",
     "url": "\/en\/user\/",
     "log": "User ID (1) under possible session highjacking attempt.  The Session and Server HTTP_USER_AGENT's do not match.  Therefor, the session has been deleted and the user redirected to the login page.\n\nMozilla\/5.0 (iPad; CPU OS 14_7_1 like Mac OS X) AppleWebKit\/605.1.15 (KHTML, like Gecko) Version\/14.1.2 Mobile\/15E148 Safari\/604.1\n\n"
-},
-{
+},{
     "id": "6",
     "date": "1641382715",
     "ip": "70.68.94.199",
     "url": "\/en\/user\/dashboard\/",
     "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
-},
-{
+},{
     "id": "7",
     "date": "1641410276",
     "ip": "70.68.94.199",
     "url": "\/en\/user\/",
     "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
-},
-{
+},{
     "id": "8",
     "date": "1641424058",
     "ip": "70.68.94.199",
     "url": "\/en\/user\/",
     "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
-},
-{
+},{
     "id": "9",
     "date": "1641426323",
     "ip": "70.68.94.199",
     "url": "\/en\/user\/",
     "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
-},
-{
+},{
     "id": "10",
     "date": "1641437400",
     "ip": "70.68.94.199",
     "url": "\/en\/user\/",
     "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
-},
-{
+},{
     "id": "11",
     "date": "1641451779",
     "ip": "70.68.94.199",
     "url": "\/en\/user\/",
     "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
-},
-{
+},{
     "id": "12",
     "date": "1641456530",
     "ip": "70.68.94.199",
     "url": "\/en\/user\/",
     "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
-},
-{
+},{
     "id": "13",
     "date": "1641474337",
     "ip": "70.68.94.199",
     "url": "\/en\/user\/dashboard\/",
     "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
-},
-{
+},{
     "id": "14",
     "date": "1641756469",
     "ip": "70.68.94.199",
     "url": "\/en\/user\/",
     "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
-},
-{
+},{
     "id": "15",
     "date": "1641771930",
     "ip": "70.68.94.199",
     "url": "\/en\/user\/",
     "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
-},
-{
+},{
     "id": "16",
     "date": "1641802527",
     "ip": "70.68.94.199",
     "url": "\/en\/user\/",
     "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
-},
-{
+},{
     "id": "17",
     "date": "1641828914",
     "ip": "70.68.94.199",
     "url": "\/en\/user\/",
     "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
-},
-{
+},{
     "id": "18",
     "date": "1641846998",
     "ip": "70.68.94.199",
     "url": "\/en\/user\/",
     "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
-},
-{
+},{
     "id": "19",
     "date": "1641855852",
     "ip": "70.68.94.199",
     "url": "\/en\/user\/",
     "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
-},
-{
+},{
     "id": "20",
     "date": "1641858771",
     "ip": "70.68.94.199",
     "url": "\/en\/user\/dashboard\/",
     "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
-},
-{
+},{
     "id": "21",
     "date": "1641862266",
     "ip": "70.68.94.199",
     "url": "\/en\/user\/",
     "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
-},
-{
+},{
     "id": "22",
     "date": "1641930983",
     "ip": "70.68.94.199",
     "url": "\/en\/user\/dashboard\/",
     "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
-},
-{
+},{
     "id": "23",
     "date": "1641951197",
     "ip": "70.68.94.199",
     "url": "\/en\/user\/dashboard\/",
     "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
-}
-]
-
-}
-];
+}];
 
 const grid = new tui.Grid({
-el: document.getElementById('grid'),
-data: gridData,
-rowHeaders: ['checkbox'],
-scrollX: false,
-scrollY: false,
-columns: [
-{
-header: 'ID',
-name: 'id'
-},
-{
-header: 'Date',
-name: 'date'
-},
-{
-header: 'IP',
-name: 'ip'
-},
-{
-header: 'URL',
-name: 'url'
-},
-{
-header: 'Log',
-name: 'log'
-}
-]
+	el: document.getElementById('grid'),
+	data: gridData,
+	rowHeaders: ['checkbox'],
+	scrollX: false,
+	scrollY: false,
+	columns: [
+		{
+			header: 'ID',
+			name: 'id'
+		},{
+			header: 'Date',
+			name: 'date'
+		},{
+			header: 'IP',
+			name: 'ip'
+		},{
+			header: 'URL',
+			name: 'url'
+		},{
+			header: 'Log',
+			name: 'log'
+		}
+	]
 });
 
 grid.on('check', ev => {
-console.log('check!', ev);
+	console.log('check!', ev);
 });
 
 grid.on('uncheck', ev => {
-console.log('uncheck!', ev);
+	console.log('uncheck!', ev);
 });
 
 grid.on('focusChange', ev => {
-console.log('change focused cell!', ev);
+	console.log('change focused cell!', ev);
 });
 
 
