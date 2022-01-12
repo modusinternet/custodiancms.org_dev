@@ -383,7 +383,7 @@ const grid = new tui.Grid({
 		{
 			header: 'ID',
 			name: 'id',
-			width: '100'
+			width: '50'
 		},{
 			header: 'Date',
 			name: 'date',
@@ -391,11 +391,11 @@ const grid = new tui.Grid({
 		},{
 			header: 'IP',
 			name: 'ip',
-			width: '150'
+			width: '100'
 		},{
 			header: 'URL',
 			name: 'url',
-			width: '150'
+			width: '200'
 		},{
 			header: 'Log',
 			name: 'log'
