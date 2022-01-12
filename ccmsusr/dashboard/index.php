@@ -396,43 +396,42 @@ const grid = new tui.Grid({
 			sortable: true,
 			width: '70'
 		},{
-			header: 'Date',
 			filter: {
 				type: 'date',
 				options: {
 					format: 'yyyy.MM.dd'
 				}
 			},
+			header: 'Date',
 			name: 'date',
 			sortingType: 'asc',
 			sortable: true,
 			width: '150'
 		},{
-			header: 'IP',
 			filter: 'select',
+			header: 'IP',
 			name: 'ip',
 			sortingType: 'asc',
 			sortable: true,
-			width: '100'
+			width: '150'
 		},{
-			header: 'URL',
 			filter: {
-				type: 'text',
 				showApplyBtn: true,
-				showClearBtn: true
+				showClearBtn: true,
+				type: 'text',
 			},
+			header: 'URL',
 			name: 'url',
 			sortingType: 'asc',
 			sortable: true,
 			width: '200'
 		},{
-			header: 'Log',
 			filter: {
-				option: 'Contains',
 				showApplyBtn: true,
 				showClearBtn: true,
 				type: 'text'
 			},
+			header: 'Log',
 			name: 'log',
 			whiteSpace: 'pre-line',
 		}
@@ -441,6 +440,8 @@ const grid = new tui.Grid({
 		resizable: true
 	}
 });
+
+grid.applyTheme("striped");
 
 grid.on('check', ev => {
 	console.log('check!', ev);
