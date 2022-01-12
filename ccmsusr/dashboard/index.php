@@ -348,7 +348,7 @@ const grid = new tui.Grid({
 	data: gridData,
 	rowHeaders: ['checkbox'],
 	rowHeight: 'auto',
-	scrollX: false,
+	scrollX: true,
 	scrollY: false,
 	pageOptions: {
 		useClient: true,
@@ -404,7 +404,6 @@ const grid = new tui.Grid({
 		}
 	],
 	columnOptions: {
-		border: '#ff0000',
 		frozenCount: 1,
 		frozenBorderWidth: 2,
 		resizable: true
