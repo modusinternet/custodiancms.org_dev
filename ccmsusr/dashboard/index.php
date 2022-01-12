@@ -391,6 +391,8 @@ const grid = new tui.Grid({
 			header: 'ID',
 			filter: 'number',
 			name: 'id',
+			sortingType: 'asc',
+			sortable: true,
 			width: '50'
 		},{
 			header: 'Date',
@@ -401,16 +403,22 @@ const grid = new tui.Grid({
 				}
 			},
 			name: 'date',
+			sortingType: 'asc',
+			sortable: true,
 			width: '150'
 		},{
 			header: 'IP',
 			filter: 'select',
 			name: 'ip',
+			sortingType: 'asc',
+			sortable: true,
 			width: '100'
 		},{
 			header: 'URL',
 			filter: { type: 'text', showApplyBtn: true, showClearBtn: true },
 			name: 'url',
+			sortingType: 'asc',
+			sortable: true,
 			width: '200'
 		},{
 			header: 'Log',
