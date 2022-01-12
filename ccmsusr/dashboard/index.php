@@ -410,7 +410,7 @@ grid.on('focusChange', ev => {
 	console.log('change focused cell!', ev);
 });
 
-tui.Grid.applyTheme('default', "{
+const options = "{
   selection: {
     background: '#4daaf9',
     border: '#004082'
@@ -456,7 +456,9 @@ tui.Grid.applyTheme('default', "{
       text: '#b0b0b0'
     }
   }
-}");
+}";
+
+tui.Grid.applyTheme('default', options);
 
 
 
