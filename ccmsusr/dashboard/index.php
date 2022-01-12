@@ -389,6 +389,7 @@ const grid = new tui.Grid({
 	columns: [
 		{
 			header: 'ID',
+			filter: 'number'
 			name: 'id',
 			width: '50'
 		},{
@@ -397,10 +398,12 @@ const grid = new tui.Grid({
 			width: '150'
 		},{
 			header: 'IP',
+			filter: 'select',
 			name: 'ip',
 			width: '100'
 		},{
 			header: 'URL',
+			filter: { type: 'text', showApplyBtn: true, showClearBtn: true },
 			name: 'url',
 			width: '200'
 		},{
