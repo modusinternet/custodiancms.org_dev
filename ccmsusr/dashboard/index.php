@@ -446,6 +446,7 @@ grid.on('focusChange', ev => {
 
 
 
+/*
 const options = eval(`({
   selection: {
     background: '#4daaf9',
@@ -495,7 +496,7 @@ const options = eval(`({
 })`);
 
 tui.Grid.applyTheme('default', options);
-
+*/
 
 
 
