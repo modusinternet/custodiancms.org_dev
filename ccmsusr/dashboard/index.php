@@ -416,14 +416,23 @@ const grid = new tui.Grid({
 			width: '100'
 		},{
 			header: 'URL',
-			filter: { type: 'text', showApplyBtn: true, showClearBtn: true },
+			filter: {
+				type: 'text',
+				showApplyBtn: true,
+				showClearBtn: true
+			},
 			name: 'url',
 			sortingType: 'asc',
 			sortable: true,
 			width: '200'
 		},{
 			header: 'Log',
-			filter: { type: 'text', showApplyBtn: true, showClearBtn: true },
+			filter: {
+				code: 'contain',
+				showApplyBtn: true,
+				showClearBtn: true,
+				type: 'text'
+			},
 			name: 'log',
 			whiteSpace: 'pre-line',
 		}
