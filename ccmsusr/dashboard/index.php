@@ -172,7 +172,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
 			var l=document.createElement("link");l.rel="stylesheet";
-			l.href = "/ccmsusr/_css/tui-pagination.4.20.0.min.css";
+			l.href = "/ccmsusr/_css/tui-pagination.3.4.0.min.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
 			function loadJSResources() {
