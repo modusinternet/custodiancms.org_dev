@@ -205,39 +205,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 
-/*
-var gridData = [
-  {
-    id: 549731,
-    name: 'Beautiful Lies',
-    artist: 'Birdy',
-    release: '2016.03.26',
-    type: 'Deluxe',
-    typeCode: '1',
-    genre: 'Pop',
-    genreCode: '1',
-    grade: '2',
-    price: 10000,
-    downloadCount: 1000,
-    listenCount: 5000,
-  },
-  {
-    id: 436461,
-    name: 'X',
-    artist: 'Ed Sheeran',
-    release: '2014.06.24',
-    type: 'Deluxe',
-    typeCode: '1',
-    genre: 'Pop',
-    genreCode: '1',
-    grade: '3',
-    price: 20000,
-    downloadCount: 1000,
-    listenCount: 5000,
-  },
-];
-*/
-
 
 
 
@@ -437,9 +404,15 @@ const grid = new tui.Grid({
 		}
 	],
 	columnOptions: {
+		border: '#ff0000',
+		frozenCount: 1,
+		frozenBorderWidth: 2,
 		resizable: true
 	}
 });
+
+
+
 
 tui.Grid.applyTheme('striped');
 
