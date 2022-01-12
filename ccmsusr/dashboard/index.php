@@ -382,10 +382,10 @@ const grid = new tui.Grid({
 	rowHeaders: ['checkbox'],
 	scrollX: false,
 	scrollY: false,
-	pageOptions: {
-		useClient: true,
-		perPage: 5
-	},
+	//pageOptions: {
+		//useClient: true,
+		//perPage: 5
+	//},
 	columns: [
 		{
 			header: 'ID',
