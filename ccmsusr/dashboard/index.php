@@ -223,12 +223,12 @@ new gridjs.Grid({
 	$result = $statement->fetchAll();
 	foreach($result as $row){
 		$output[] = array(
-			'id'    => $row['id'],
-			'date'  => $row['date'],
-			'ip'   => $row['ip'],
-			'url'    => $row['url'],
-			'log'   => $row['log'],
-			''   => null
+			'id'			=> $row['id'],
+			'date'		=> $row['date'],
+			'ip'			=> $row['ip'],
+			'url'			=> $row['url'],
+			'log'			=> $row['log'],
+			'action'	=> null
 		);
 	}
 	echo json_encode($output);
