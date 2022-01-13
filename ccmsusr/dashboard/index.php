@@ -197,10 +197,10 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 
-
-
-
-const gridData = <?php
+//const grid = new Grid({
+new gridjs.Grid({
+	columns: ["ID", "Date", "IP", "URL", "Log"],
+	data: <?php
 	$query = "SELECT * FROM ccms_log;";
 	$statement = $CFG["DBH"]->prepare($query);
 	$statement->execute($data);
@@ -214,46 +214,8 @@ const gridData = <?php
 			'log'   => $row['log']
 		);
 	}
-	//header("Content-Type: application/json");
 	echo json_encode($output);
-?>;
-
-
-
-//const grid = new Grid({
-new gridjs.Grid({
-  columns: ["ID", "Date", "IP", "URL", "Log"],
-  /*
-	data: [
-    ["John", "john@example.com", "(353) 01 222 3333"],
-    ["Mark", "mark@gmail.com", "(01) 22 888 4444"],
-    ["Eoin", "eoin@gmail.com", "0097 22 654 00033"],
-    ["Sarah", "sarahcdd@gmail.com", "+322 876 1233"],
-    ["Afshin", "afshin@mail.com", "(353) 22 87 8356"]
-  ]
-	*/
-	data: <?php
-		$query = "SELECT * FROM ccms_log;";
-		$statement = $CFG["DBH"]->prepare($query);
-		$statement->execute($data);
-		$result = $statement->fetchAll();
-		//echo "[";
-		foreach($result as $row){
-			///*
-			$output[] = array(
-				'id'    => $row['id'],
-				'date'  => $row['date'],
-				'ip'   => $row['ip'],
-				'url'    => $row['url'],
-				'log'   => $row['log']
-			);
-			//*/
-			//echo "[". $row['id'] . ", " . $row['date'] . ", " . $row['ip'] . ", " . $row['url'] . ", " . $row['log'] . "],\n";
-		}
-		//echo "]";
-		//header("Content-Type: application/json");
-		echo json_encode($output);
-	?>
+?>
 }).render(document.getElementById("grid"));
 
 
