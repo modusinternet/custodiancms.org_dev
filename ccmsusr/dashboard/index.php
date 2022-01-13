@@ -199,7 +199,22 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 //const grid = new Grid({
 new gridjs.Grid({
-	columns: ["ID", "Date", "IP", "URL", "Log"],
+	columns: [
+		"ID",
+		"Date",
+		"IP",
+		"URL",
+		"Log",
+		{
+			name: '',
+			formatter: (cell, row) => {
+				return h('button', {
+					className: 'py-2 mb-4 px-4 border rounded-md text-white bg-blue-600',
+				onClick: () => alert(`Editing "${row.cells[0].data}" "${row.cells[1].data}"`)
+				}, 'Edit');
+			}
+		}
+	],
 	data: <?php
 	$query = "SELECT * FROM ccms_log;";
 	$statement = $CFG["DBH"]->prepare($query);
@@ -211,7 +226,8 @@ new gridjs.Grid({
 			'date'  => $row['date'],
 			'ip'   => $row['ip'],
 			'url'    => $row['url'],
-			'log'   => $row['log']
+			'log'   => $row['log'],
+			null
 		);
 	}
 	echo json_encode($output);
