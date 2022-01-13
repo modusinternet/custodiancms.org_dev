@@ -165,11 +165,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
 			var l=document.createElement("link");l.rel="stylesheet";
-			l.href = "/ccmsusr/_css/tui-grid.4.20.0.min.css";
-			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
-
-			var l=document.createElement("link");l.rel="stylesheet";
-			l.href = "/ccmsusr/_css/tui-pagination.3.4.0.min.css";
+			l.href = "/ccmsusr/_css/gridjs.5.0.2.min.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
 			function loadJSResources() {
@@ -177,8 +173,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					loadFirst("/ccmsusr/_js/metisMenu-3.0.7.min.js", function() {
 						loadFirst("/ccmsusr/_js/custodiancms.js", function() {
 							loadFirst("/ccmsusr/_js/jquery-validate-1.19.3.min.js", function() {
-								loadFirst("/ccmsusr/_js/tui-pagination.3.4.0.min.js", function() {
-									loadFirst("/ccmsusr/_js/tui-grid.4.20.0.min.js", function() {
+								loadFirst("/ccmsusr/_js/gridjs.5.0.2.umd.js", function() {
 
 
 
@@ -243,7 +238,6 @@ const grid = new Grid({
 
 
 
-									});
 								});
 							});
 						});
