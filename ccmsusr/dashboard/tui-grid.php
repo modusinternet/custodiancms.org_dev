@@ -36,8 +36,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			*/
 		}
 
-		.hide{display:none}
-
 		.modal{
 			background-color:var(--cl0);
 			border:1px solid var(--cl2-tran);
@@ -90,7 +88,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					<p>List of sessions and or form calls, found in the 'ccms_log' table, that failed.</p>
 
 
-					<div id="grid_table"></div>
+					<div id="grid"></div>
 
 
 				</div>
@@ -167,11 +165,11 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
 			var l=document.createElement("link");l.rel="stylesheet";
-			l.href = "/ccmsusr/_css/jsgrid.min.css";
+			l.href = "/ccmsusr/_css/tui-grid.4.20.0.min.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
 			var l=document.createElement("link");l.rel="stylesheet";
-			l.href = "/ccmsusr/_css/jsgrid-theme.min.css";
+			l.href = "/ccmsusr/_css/tui-pagination.3.4.0.min.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
 			function loadJSResources() {
@@ -179,7 +177,10 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					loadFirst("/ccmsusr/_js/metisMenu-3.0.7.min.js", function() {
 						loadFirst("/ccmsusr/_js/custodiancms.js", function() {
 							loadFirst("/ccmsusr/_js/jquery-validate-1.19.3.min.js", function() {
-								loadFirst("/ccmsusr/_js/jsgrid.min.js", function() {
+								loadFirst("/ccmsusr/_js/tui-pagination.3.4.0.min.js", function() {
+									loadFirst("/ccmsusr/_js/tui-grid.4.20.0.min.js", function() {
+
+
 
 									/* user_dropdown START */
 									/* When the user clicks on the svg button add the 'show' class to the dropdown box below it. */
@@ -196,109 +197,132 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 									/* user_dropdown END */
 
 
-									$('#grid_table').jsGrid({
-										width: "100%",
-										height: "393px",
-										autoload: true,
 
-										confirmDeleting: false,
-										//editing: false, // make rows editable
-										filtering: false, // show clear filter row
-										inserting: false, // disable inserting for column
-										selecting: true,
-										sorting: true,
-										paging: true,
-										pageSize: 5,
-										pageButtonCount: 5,
 
-										controller: {
-											loadData: function(filter){
-												return $.ajax({
-													type: "GET",
-													//url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/fetch_data.php",
-													url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/jsgrid_fetch_data.php?jsgrid_ajax=load",
-													data: filter
-												});
-											},
-											insertItem: function(item){
-												return $.ajax({
-													type: "POST",
-													//url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/fetch_data.php",
-													url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/jsgrid_fetch_data.php?jsgrid_ajax=insert",
-													data: item
-												});
-											},
-											updateItem: function(item){
-												return $.ajax({
-													//type: "PUT",
-													type: "POST",
-													//url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/fetch_data.php",
-													url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/jsgrid_fetch_data.php?jsgrid_ajax=update",
-													data: item
-												});
-											},
-											deleteItem: function(item){
-												return $.ajax({
-													//type: "DELETE",
-													type: "POST",
-													//url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/fetch_data.php",
-													url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/jsgrid_fetch_data.php?jsgrid_ajax=delete",
-													data: item
-												});
-											},
-										},
 
-										fields: [
-											{
-												name: "id",
-												title: "ID",
-												type: "text",
-												width: 20,
-												//css: 'hide'
-											},{
-												name: "first_name",
-												title: "First Name",
-												type: "text",
-												//width: 150,
-												validate: "required"
-											},{
-												name: "last_name",
-												title: "Last Name",
-												type: "text",
-												//width: 150,
-												validate: "required"
-											},{
-												name: "age",
-												title: "Age",
-												type: "text",
-												width: 20,
-												validate: function(value) {
-													if(value > 0) {
-														return true;
-													}
-												}
-											},{
-												name: "gender",
-												title: "Gender",
-												type: "select",
-												items: [
-													{ Name: "", Id: '' },
-													{ Name: "Male", Id: 'male' },
-													{ Name: "Female", Id: 'female' }
-												],
-												valueField: "Id",
-												textField: "Name",
-												validate: "required"
-											},{
-												type: "control",
-												deleteButton: true,
-												deleteButtonTooltip: "Delete", // tooltip of delete item button
-												editButton: false, // show edit button
-												width: 20,
-											}
-										]
+
+
+
+
+
+const gridData = <?php
+	$query = "SELECT * FROM ccms_log;";
+	$statement = $CFG["DBH"]->prepare($query);
+	$statement->execute($data);
+	$result = $statement->fetchAll();
+	foreach($result as $row){
+		$output[] = array(
+			'id'    => $row['id'],
+			'date'  => $row['date'],
+			'ip'   => $row['ip'],
+			'url'    => $row['url'],
+			'log'   => $row['log']
+		);
+	}
+	//header("Content-Type: application/json");
+	echo json_encode($output);
+?>;
+
+const grid = new tui.Grid({
+	el: document.getElementById('grid'),
+	data: gridData,
+	rowHeaders: ['checkbox'],
+	rowHeight: 'auto',
+	scrollX: true,
+	scrollY: false,
+	pageOptions: {
+		useClient: true,
+		perPage: 5
+	},
+	columns: [
+		{
+			align: 'center',
+			filter: 'number',
+			header: 'ID',
+			name: 'id',
+			sortingType: 'asc',
+			sortable: true,
+			width: '70'
+		},{
+			align: 'center',
+			filter: {
+				type: 'date',
+				options: {
+					format: 'yyyy.MM.dd'
+				}
+			},
+			header: 'Date',
+			name: 'date',
+			sortingType: 'asc',
+			sortable: true,
+			width: '150'
+		},{
+			align: 'center',
+			filter: 'select',
+			header: 'IP',
+			name: 'ip',
+			sortingType: 'asc',
+			sortable: true,
+			width: '150'
+		},{
+			filter: {
+				showApplyBtn: true,
+				showClearBtn: true,
+				type: 'text',
+			},
+			header: 'URL',
+			name: 'url',
+			sortingType: 'asc',
+			sortable: true,
+			width: '200'
+		},{
+			filter: {
+				showApplyBtn: true,
+				showClearBtn: true,
+				type: 'text'
+			},
+			header: 'Log',
+			name: 'log',
+			whiteSpace: 'break-spaces',
+		}
+	],
+	columnOptions: {
+		frozenCount: 1,
+		frozenBorderWidth: 2,
+		resizable: true
+	}
+});
+
+
+
+
+tui.Grid.applyTheme('striped', {
+	frozenBorder: {
+		border: '#ff0000'
+	}
+});
+
+grid.on('check', ev => {
+	console.log('check!', ev);
+});
+
+grid.on('uncheck', ev => {
+	console.log('uncheck!', ev);
+});
+
+grid.on('focusChange', ev => {
+	console.log('change focused cell!', ev);
+});
+
+
+
+
+
+
+
+
+
 									});
-
 								});
 							});
 						});
