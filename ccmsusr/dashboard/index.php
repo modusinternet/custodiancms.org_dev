@@ -206,6 +206,7 @@ $("div#wrapper").Grid({
 		"IP",
 		"URL",
 		"Log",
+		/*
 		{
 			name: 'Actions',
 			formatter: (cell, row) => {
@@ -215,6 +216,18 @@ $("div#wrapper").Grid({
 				}, 'Edit');
 			}
 		}
+		*/
+
+
+		{
+			name: 'Actions',
+			data: null,
+			formatter: (_, row) => `<button class="securityLogDelete" data-id="${row.cells[0].data}">Delete</button>`
+		},
+
+
+
+
 	],
 	data: <?php
 	$query = "SELECT * FROM ccms_log;";
@@ -227,8 +240,7 @@ $("div#wrapper").Grid({
 			'date'  => $row['date'],
 			'ip'   => $row['ip'],
 			'url'    => $row['url'],
-			'log'   => $row['log'],
-			null
+			'log'   => $row['log']
 		);
 	}
 	echo json_encode($output);
