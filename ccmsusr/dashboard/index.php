@@ -225,8 +225,8 @@ const gridData = <?php
 
 
 
-//const grid = new Grid({
-new gridjs.Grid({
+const grid = new Grid({
+//new gridjs.Grid({
   columns: ["Name", "Email", "Phone Number"],
   data: [
     ["John", "john@example.com", "(353) 01 222 3333"],
