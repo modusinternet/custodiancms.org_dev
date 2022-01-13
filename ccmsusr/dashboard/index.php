@@ -198,8 +198,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 //import { Grid, h } from "gridjs";
 
 //new gridjs.Grid({
-//const grid = new Grid({
-$("div#wrapper").Grid({
+const grid = new Grid({
+//$("div#wrapper").Grid({
 	columns: [
 		"ID",
 		"Date",
@@ -255,8 +255,8 @@ $("div#wrapper").Grid({
 	resizable: true,
 	search: true,
 	sort: true,
-//}).render(document.getElementById("grid"));
-});
+}).render(document.getElementById("wrapper"));
+//});
 
 
 
