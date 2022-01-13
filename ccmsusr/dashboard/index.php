@@ -200,6 +200,10 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 //const grid = new Grid({
 new gridjs.Grid({
 	columns: ["ID", "Date", "IP", "URL", "Log"],
+	pagination: {
+		limit: 4
+	},
+	search: true,
 	data: <?php
 	$query = "SELECT * FROM ccms_log;";
 	$statement = $CFG["DBH"]->prepare($query);
