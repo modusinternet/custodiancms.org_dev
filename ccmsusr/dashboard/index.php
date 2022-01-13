@@ -206,7 +206,7 @@ new gridjs.Grid({
 		"URL",
 		"Log",
 		{
-			name: '',
+			name: 'Actions',
 			formatter: (cell, row) => {
 				return h('button', {
 					className: 'py-2 mb-4 px-4 border rounded-md text-white bg-blue-600',
@@ -227,7 +227,7 @@ new gridjs.Grid({
 			'ip'   => $row['ip'],
 			'url'    => $row['url'],
 			'log'   => $row['log'],
-			null
+			'actions' => null
 		);
 	}
 	echo json_encode($output);
