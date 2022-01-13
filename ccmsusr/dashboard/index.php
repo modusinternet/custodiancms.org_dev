@@ -196,7 +196,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 
-
+import { Grid, h } from "gridjs";
 //const grid = new Grid({
 new gridjs.Grid({
 	columns: [
@@ -227,7 +227,7 @@ new gridjs.Grid({
 			'ip'   => $row['ip'],
 			'url'    => $row['url'],
 			'log'   => $row['log'],
-			null => null
+			null
 		);
 	}
 	echo json_encode($output);
