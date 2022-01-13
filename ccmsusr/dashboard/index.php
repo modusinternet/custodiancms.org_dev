@@ -237,7 +237,7 @@ new gridjs.Grid({
 		$statement = $CFG["DBH"]->prepare($query);
 		$statement->execute($data);
 		$result = $statement->fetchAll();
-		echo "[";
+		//echo "[";
 		foreach($result as $row){
 			///*
 			$output[] = array(
@@ -250,7 +250,7 @@ new gridjs.Grid({
 			//*/
 			//echo "[". $row['id'] . ", " . $row['date'] . ", " . $row['ip'] . ", " . $row['url'] . ", " . $row['log'] . "],\n";
 		}
-		echo "]";
+		//echo "]";
 		//header("Content-Type: application/json");
 		echo json_encode($output);
 	?>
