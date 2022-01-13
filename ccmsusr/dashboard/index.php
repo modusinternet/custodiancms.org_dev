@@ -428,7 +428,7 @@ const grid = new tui.Grid({
       {
         name: 'id2',
         label: 'menu2',
-        action: () => {
+        action: {
           console.log('menu2');
         },
         subMenu: [
@@ -443,7 +443,7 @@ const grid = new tui.Grid({
       {
         name: 'id4',
         label: 'menu3',
-        action: () => {
+        action: {
           console.log('menu3');
         }
       },
