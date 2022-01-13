@@ -400,7 +400,7 @@ const grid = new tui.Grid({
 			},
 			header: 'Log',
 			name: 'log',
-			whiteSpace: 'normal',
+			whiteSpace: 'break-spaces',
 		}
 	],
 	/*
