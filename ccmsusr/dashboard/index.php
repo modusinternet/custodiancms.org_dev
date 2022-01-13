@@ -195,8 +195,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 
-new Grid({
-//new gridjs.Grid({
+//new Grid({
+new gridjs.Grid({
 //const grid = new Grid({
 //$("div#wrapper").Grid({
 	columns: [
