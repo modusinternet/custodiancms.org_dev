@@ -195,7 +195,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 
-import { Grid, h } from "gridjs";
+
 
 const grid = new Grid({
 //new gridjs.Grid({
@@ -242,7 +242,7 @@ const grid = new Grid({
 	sort: true,
 }).render(document.getElementById("grid"));
 
-
+import { Grid, h } from "gridjs";
 
 
 
