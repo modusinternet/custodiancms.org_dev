@@ -220,9 +220,11 @@ $("div#wrapper").Grid({
 
 
 		{
-			name: 'Actions',
 			data: null,
-			formatter: (_, row) => `<button class="securityLogDelete" data-id="${row.cells[0].data}">Delete</button>`
+			formatter: (_, row) => `<button class="securityLogDelete" data-id="${row.cells[0].data}">Delete</button>`,
+			name: '',
+			sort: false,
+			width: 100
 		},
 
 
