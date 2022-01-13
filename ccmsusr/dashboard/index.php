@@ -85,6 +85,15 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			<h1 style="border-bottom:1px dashed var(--cl3)">Dashboard</h1>
 			<p>This section is still under development, but if you come across any unresolved issues please let us know at: <a class="oj" href="mailto:info@custodiancms.org?subject=unresolved+issue+report">info@custodiancms.org</a></p>
 
+
+
+
+			<a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/jsgrid.php">jsgrid</a>
+
+
+
+
+
 			<div class="modal">
 				<div>Security Logs</div>
 				<div>
@@ -406,53 +415,11 @@ const grid = new tui.Grid({
 			whiteSpace: 'break-spaces',
 		}
 	],
-	/*
 	columnOptions: {
 		frozenCount: 1,
 		frozenBorderWidth: 2,
 		resizable: true
 	}
-	*/
-
-
-
-
-	contextMenu: [
-    [
-      {
-        name: 'id1',
-        label: 'menu1',
-        action: 'copyRows',
-        classNames: ['my']
-      },
-      {
-        name: 'id2',
-        label: 'menu2',
-        action: {
-          console.log('menu2');
-        },
-        subMenu: [
-          {
-            name: 'id3',
-            label: 'subMenu1',
-          },
-        ],
-      },
-    ],
-    [
-      {
-        name: 'id4',
-        label: 'menu3',
-        action: {
-          console.log('menu3');
-        }
-      },
-    ],
-  ],
-
-
-
-
 });
 
 
@@ -478,57 +445,7 @@ grid.on('focusChange', ev => {
 
 
 
-/*
-const options = eval(`({
-  selection: {
-    background: '#4daaf9',
-    border: '#004082'
-  },
-  scrollbar: {
-    background: '#f5f5f5',
-    thumb: '#d9d9d9',
-    active: '#c1c1c1'
-  },
-  row: {
-    even: {
-      background: '#f4f4f4'
-    },
-    hover: {
-      background: '#ccc'
-    }
-  },
-  cell: {
-    normal: {
-      background: '#fbfbfb',
-      border: '#e0e0e0',
-      showVerticalBorder: true
-    },
-    header: {
-      background: '#eee',
-      border: '#ccc',
-      showVerticalBorder: true
-    },
-    rowHeader: {
-      border: '#ccc',
-      showVerticalBorder: true
-    },
-    editable: {
-      background: '#fbfbfb'
-    },
-    selectedHeader: {
-      background: '#d8d8d8'
-    },
-    focused: {
-      border: '#418ed4'
-    },
-    disabled: {
-      text: '#b0b0b0'
-    }
-  }
-})`);
 
-tui.Grid.applyTheme('default', options);
-*/
 
 
 
