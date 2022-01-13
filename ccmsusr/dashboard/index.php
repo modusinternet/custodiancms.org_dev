@@ -413,6 +413,46 @@ const grid = new tui.Grid({
 		resizable: true
 	}
 	*/
+
+
+
+
+	context<a href="https://www.jqueryscript.net/menu/">Menu</a>:  () => [
+    [
+      {
+        name: 'id1',
+        label: 'menu1',
+        action: 'copyRows',
+        classNames: ['my']
+      },
+      {
+        name: 'id2',
+        label: 'menu2',
+        action: () => {
+          console.log('menu2');
+        },
+        subMenu: [
+          {
+            name: 'id3',
+            label: 'subMenu1',
+          },
+        ],
+      },
+    ],
+    [
+      {
+        name: 'id4',
+        label: 'menu3',
+        action: () => {
+          console.log('menu3');
+        }
+      },
+    ],
+  ],
+
+
+
+
 });
 
 
