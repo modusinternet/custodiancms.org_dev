@@ -156,8 +156,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 		<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 			{CCMS_TPL:/_js/footer-1.php}
 
-import { Grid, h } from "gridjs";
-
 			var l=document.createElement("link");l.rel="stylesheet";
 			l.href = "/ccmsusr/_css/custodiancms.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
@@ -197,10 +195,10 @@ import { Grid, h } from "gridjs";
 
 
 
+import { Grid, h } from "gridjs";
 
-
-//const grid = new Grid({
-new gridjs.Grid({
+const grid = new Grid({
+//new gridjs.Grid({
 	columns: [
 		"ID",
 		"Date",
