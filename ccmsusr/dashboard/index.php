@@ -206,30 +206,12 @@ const grid = new Grid({
 		"IP",
 		"URL",
 		"Log",
-		/*
-		{
-			name: 'Actions',
-			formatter: (cell, row) => {
-				return h('button', {
-					className: 'py-2 mb-4 px-4 border rounded-md text-white bg-blue-600',
-				onClick: () => alert(`Editing "${row.cells[0].data}" "${row.cells[1].data}"`)
-				}, 'Edit');
-			}
-		}
-		*/
-
-
 		{
 			data: null,
 			formatter: (_, row) => html(`<button class="securityLogDelete" data-id="${row.cells[0].data}">Delete</button>`),
 			name: '',
-			sort: false,
-			width: 100
-		},
-
-
-
-
+			sort: false
+		}
 	],
 	data: <?php
 	$query = "SELECT * FROM ccms_log;";
