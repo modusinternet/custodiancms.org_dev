@@ -206,7 +206,7 @@ new gridjs.Grid({
 		"IP",
 		"URL",
 		"Log",
-		/*
+		///*
 		{
 			data: null,
 			formatter: (_, row) => html(`<button class="securityLogDelete" data-id="${row.cells[0].data}">Delete</button>`),
@@ -214,7 +214,7 @@ new gridjs.Grid({
 			sort: false,
 			width: '75px',
 		}
-		*/
+		//*/
 	],
 	data: <?php
 	$query = "SELECT * FROM ccms_log;";
