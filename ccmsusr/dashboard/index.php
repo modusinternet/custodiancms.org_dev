@@ -210,7 +210,7 @@ new gridjs.Grid({
 		{
 			data: null,
 			formatter: (_, row) => html(`<button class="securityLogDelete" data-id="${row.cells[0].data}">Delete</button>`),
-			name: '',
+			name: 'action',
 			sort: false,
 			width: '75px',
 		}
