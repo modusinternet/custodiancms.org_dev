@@ -261,7 +261,7 @@ function CCMS_Set_SESSION() {
 					// Save a log of this event.
 
 					$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_log` (`id`, `date`, `ip`, `url`, `log`) VALUES (NULL, :date, :ip, :url, :log);");
-					$qry->execute(array(':date' => time(), ':ip' => $_SERVER["REMOTE_ADDR"], ':url' => $_SERVER["REQUEST_URI"], ':log' => "User ID (".$_SESSION["USER_ID"].") session expired, redirected to login page.\n\n".$_SERVER["HTTP_USER_AGENT"]));
+					$qry->execute(array(':date' => time(), ':ip' => $_SERVER["REMOTE_ADDR"], ':url' => $_SERVER["REQUEST_URI"], ':log' => "User ID (".$_SESSION["USER_ID"].") session expired, redirected to login page.\n".$_SERVER["HTTP_USER_AGENT"]));
 				}
 				//*/
 
