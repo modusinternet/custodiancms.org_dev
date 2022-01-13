@@ -173,7 +173,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					loadFirst("/ccmsusr/_js/metisMenu-3.0.7.min.js", function() {
 						loadFirst("/ccmsusr/_js/custodiancms.js", function() {
 							loadFirst("/ccmsusr/_js/jquery-validate-1.19.3.min.js", function() {
-								loadFirst("/ccmsusr/_js/gridjs.production.4.0.0.min.js", function() {
+								loadFirst("/ccmsusr/_js/gridjs.umd.5.0.2.min.js", function() {
 
 
 
@@ -221,7 +221,7 @@ $("div#wrapper").Grid({
 
 		{
 			data: null,
-			formatter: (_, row) => `<button class="securityLogDelete" data-id="${row.cells[0].data}">Delete</button>`,
+			formatter: (_, row) => html(`<button class="securityLogDelete" data-id="${row.cells[0].data}">Delete</button>`),
 			name: '',
 			sort: false,
 			width: 100
