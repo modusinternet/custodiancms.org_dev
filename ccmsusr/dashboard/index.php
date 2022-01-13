@@ -216,7 +216,7 @@ new gridjs.Grid({
 	}
 	echo json_encode($output);
 ?>,
-	fixedHeader: true,
+	//fixedHeader: true,
 	pagination: {
 		limit: 4
 	},
