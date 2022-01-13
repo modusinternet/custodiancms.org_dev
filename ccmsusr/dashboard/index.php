@@ -78,6 +78,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 			<a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/jsgrid.php">jsgrid</a><br>
 			<a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/tui-grid.php">tui-grid</a><br>
+			<a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/gridjs.php">gridjs</a><br>
 
 
 
@@ -88,7 +89,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					<p>List of sessions and or form calls, found in the 'ccms_log' table, that failed.</p>
 
 
-					<div id="wrapper"></div>
+					<div id="securityLogsGrid"></div>
 
 
 				</div>
@@ -171,17 +172,11 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			l.href = "/ccmsusr/_css/metisMenu-3.0.6.min.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
-			var l=document.createElement("link");l.rel="stylesheet";
-			l.href = "/ccmsusr/_css/gridjs.5.0.2.min.css";
-			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
-
 			function loadJSResources() {
 				loadFirst("/ccmsusr/_js/jquery-3.6.0.min.js", function() {
 					loadFirst("/ccmsusr/_js/metisMenu-3.0.7.min.js", function() {
 						loadFirst("/ccmsusr/_js/custodiancms.js", function() {
 							loadFirst("/ccmsusr/_js/jquery-validate-1.19.3.min.js", function() {
-								loadFirst("/ccmsusr/_js/gridjs.umd.5.0.2.min.js", function() {
-
 
 
 									/* user_dropdown START */
@@ -202,61 +197,11 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 
-//new Grid({
-new gridjs.Grid({
-//const grid = new Grid({
-//$("div#wrapper").Grid({
-	columns: [
-		"ID",
-		"Date",
-		"IP",
-		"URL",
-		"Log",
-		///*
-		{
-			data: null,
-			formatter: (_, row) => html(`<button class="securityLogDelete" data-id="${row.cells[0].data}">Delete</button>`),
-			name: 'action',
-			sort: false,
-			width: '75px',
-		}
-		//*/
-	],
-	data: <?php
-	$query = "SELECT * FROM ccms_log;";
-	$statement = $CFG["DBH"]->prepare($query);
-	$statement->execute($data);
-	$result = $statement->fetchAll();
-	foreach($result as $row){
-		$output[] = array(
-			'id'			=> $row['id'],
-			'date'		=> $row['date'],
-			'ip'			=> $row['ip'],
-			'url'			=> $row['url'],
-			'log'			=> $row['log'],
-			'action'	=> null
-		);
-	}
-	echo json_encode($output);
-?>,
-	//fixedHeader: true,
-	//height: '400px',
-	pagination: {
-		limit: 4
-	},
-	resizable: true,
-	search: true,
-	sort: true,
-}).render(document.getElementById("wrapper"));
-//});
 
 
 
 
 
-
-
-								});
 							});
 						});
 					});

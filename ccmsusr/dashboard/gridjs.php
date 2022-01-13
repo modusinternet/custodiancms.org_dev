@@ -76,9 +76,9 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 
-						<a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/jsgrid.php">jsgrid</a><br>
-						<a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/tui-grid.php">tui-grid</a><br>
-						<a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/gridjs.php">gridjs</a><br>
+			<a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/jsgrid.php">jsgrid</a><br>
+			<a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/tui-grid.php">tui-grid</a><br>
+			<a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/gridjs.php">gridjs</a><br>
 
 
 
@@ -89,7 +89,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					<p>List of sessions and or form calls, found in the 'ccms_log' table, that failed.</p>
 
 
-					<div id="grid"></div>
+					<div id="wrapper"></div>
 
 
 				</div>
@@ -173,11 +173,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
 			var l=document.createElement("link");l.rel="stylesheet";
-			l.href = "/ccmsusr/_css/tui-grid.4.20.0.min.css";
-			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
-
-			var l=document.createElement("link");l.rel="stylesheet";
-			l.href = "/ccmsusr/_css/tui-pagination.3.4.0.min.css";
+			l.href = "/ccmsusr/_css/gridjs.5.0.2.min.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
 			function loadJSResources() {
@@ -185,8 +181,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					loadFirst("/ccmsusr/_js/metisMenu-3.0.7.min.js", function() {
 						loadFirst("/ccmsusr/_js/custodiancms.js", function() {
 							loadFirst("/ccmsusr/_js/jquery-validate-1.19.3.min.js", function() {
-								loadFirst("/ccmsusr/_js/tui-pagination.3.4.0.min.js", function() {
-									loadFirst("/ccmsusr/_js/tui-grid.4.20.0.min.js", function() {
+								loadFirst("/ccmsusr/_js/gridjs.umd.5.0.2.min.js", function() {
 
 
 
@@ -208,119 +203,53 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 
-
-
-
-
-
-const gridData = <?php
+//new Grid({
+new gridjs.Grid({
+//const grid = new Grid({
+//$("div#wrapper").Grid({
+	columns: [
+		"ID",
+		"Date",
+		"IP",
+		"URL",
+		"Log",
+		///*
+		{
+			data: null,
+			formatter: (_, row) => html(`<button class="securityLogDelete" data-id="${row.cells[0].data}">Delete</button>`),
+			name: 'action',
+			sort: false,
+			width: '75px',
+		}
+		//*/
+	],
+	data: <?php
 	$query = "SELECT * FROM ccms_log;";
 	$statement = $CFG["DBH"]->prepare($query);
 	$statement->execute($data);
 	$result = $statement->fetchAll();
 	foreach($result as $row){
 		$output[] = array(
-			'id'    => $row['id'],
-			'date'  => $row['date'],
-			'ip'   => $row['ip'],
-			'url'    => $row['url'],
-			'log'   => $row['log']
+			'id'			=> $row['id'],
+			'date'		=> $row['date'],
+			'ip'			=> $row['ip'],
+			'url'			=> $row['url'],
+			'log'			=> $row['log'],
+			'action'	=> null
 		);
 	}
-	//header("Content-Type: application/json");
 	echo json_encode($output);
-?>;
-
-const grid = new tui.Grid({
-	el: document.getElementById('grid'),
-	data: gridData,
-	rowHeaders: ['checkbox'],
-	rowHeight: 'auto',
-	scrollX: true,
-	scrollY: false,
-	pageOptions: {
-		useClient: true,
-		perPage: 5
+?>,
+	//fixedHeader: true,
+	//height: '400px',
+	pagination: {
+		limit: 4
 	},
-	columns: [
-		{
-			align: 'center',
-			filter: 'number',
-			header: 'ID',
-			name: 'id',
-			sortingType: 'asc',
-			sortable: true,
-			width: '70'
-		},{
-			align: 'center',
-			filter: {
-				type: 'date',
-				options: {
-					format: 'yyyy.MM.dd'
-				}
-			},
-			header: 'Date',
-			name: 'date',
-			sortingType: 'asc',
-			sortable: true,
-			width: '150'
-		},{
-			align: 'center',
-			filter: 'select',
-			header: 'IP',
-			name: 'ip',
-			sortingType: 'asc',
-			sortable: true,
-			width: '150'
-		},{
-			filter: {
-				showApplyBtn: true,
-				showClearBtn: true,
-				type: 'text',
-			},
-			header: 'URL',
-			name: 'url',
-			sortingType: 'asc',
-			sortable: true,
-			width: '200'
-		},{
-			filter: {
-				showApplyBtn: true,
-				showClearBtn: true,
-				type: 'text'
-			},
-			header: 'Log',
-			name: 'log',
-			whiteSpace: 'break-spaces',
-		}
-	],
-	columnOptions: {
-		frozenCount: 1,
-		frozenBorderWidth: 2,
-		resizable: true
-	}
-});
-
-
-
-
-tui.Grid.applyTheme('striped', {
-	frozenBorder: {
-		border: '#ff0000'
-	}
-});
-
-grid.on('check', ev => {
-	console.log('check!', ev);
-});
-
-grid.on('uncheck', ev => {
-	console.log('uncheck!', ev);
-});
-
-grid.on('focusChange', ev => {
-	console.log('change focused cell!', ev);
-});
+	resizable: true,
+	search: true,
+	sort: true,
+}).render(document.getElementById("wrapper"));
+//});
 
 
 
@@ -328,9 +257,6 @@ grid.on('focusChange', ev => {
 
 
 
-
-
-									});
 								});
 							});
 						});
