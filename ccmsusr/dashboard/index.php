@@ -217,6 +217,7 @@ new gridjs.Grid({
 	echo json_encode($output);
 ?>,
 	//fixedHeader: true,
+	//height: '400px',
 	pagination: {
 		limit: 4
 	},
