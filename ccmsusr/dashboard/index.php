@@ -356,13 +356,15 @@ const grid = new tui.Grid({
 	},
 	columns: [
 		{
-			header: 'ID',
+			align: 'center',
 			filter: 'number',
+			header: 'ID',
 			name: 'id',
 			sortingType: 'asc',
 			sortable: true,
 			width: '70'
 		},{
+			align: 'center',
 			filter: {
 				type: 'date',
 				options: {
@@ -375,6 +377,7 @@ const grid = new tui.Grid({
 			sortable: true,
 			width: '150'
 		},{
+			align: 'center',
 			filter: 'select',
 			header: 'IP',
 			name: 'ip',
