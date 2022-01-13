@@ -417,7 +417,7 @@ const grid = new tui.Grid({
 
 
 
-	context<a href="https://www.jqueryscript.net/menu/">Menu</a>:  () => [
+	context<a href="https://www.jqueryscript.net/menu/">Menu</a>: [
     [
       {
         name: 'id1',
