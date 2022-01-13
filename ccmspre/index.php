@@ -256,14 +256,14 @@ function CCMS_Set_SESSION() {
 			if(isset($_SESSION["USER_ID"])) {
 				// The user was logged in but their session is now expired so send them back to the login page.
 
-				/*
+				///*
 				if($CFG["LOG_EVENTS"] === 1) {
 					// Save a log of this event.
 
 					$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_log` (`id`, `date`, `ip`, `url`, `log`) VALUES (NULL, :date, :ip, :url, :log);");
-					$qry->execute(array(':date' => time(), ':ip' => $_SERVER["REMOTE_ADDR"], ':url' => $_SERVER["REQUEST_URI"], ':log' => "User ID (".$_SESSION["USER_ID"].") session expired, redirected to login page.\n\n".$_SERVER["HTTP_USER_AGENT"]."\n\n".var_dump($argv)));
+					$qry->execute(array(':date' => time(), ':ip' => $_SERVER["REMOTE_ADDR"], ':url' => $_SERVER["REQUEST_URI"], ':log' => "User ID (".$_SESSION["USER_ID"].") session expired, redirected to login page.\n\n".$_SERVER["HTTP_USER_AGENT"]));
 				}
-				*/
+				//*/
 
 				// log out
 				$_SESSION = array();
