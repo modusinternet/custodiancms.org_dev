@@ -239,7 +239,7 @@ new gridjs.Grid({
 		$result = $statement->fetchAll();
 		echo "[";
 		foreach($result as $row){
-			/*
+			///*
 			$output[] = array(
 				'id'    => $row['id'],
 				'date'  => $row['date'],
@@ -247,12 +247,12 @@ new gridjs.Grid({
 				'url'    => $row['url'],
 				'log'   => $row['log']
 			);
-			*/
-			echo "[". $row['id'] . ", " . $row['date'] . ", " . $row['ip'] . ", " . $row['url'] . ", " . $row['log'] . "],\n";
+			//*/
+			//echo "[". $row['id'] . ", " . $row['date'] . ", " . $row['ip'] . ", " . $row['url'] . ", " . $row['log'] . "],\n";
 		}
 		echo "]";
 		//header("Content-Type: application/json");
-		//echo json_encode($output);
+		echo json_encode($output);
 	?>
 }).render(document.getElementById("grid"));
 
