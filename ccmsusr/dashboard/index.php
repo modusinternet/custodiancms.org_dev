@@ -197,8 +197,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 //import { Grid, h } from "gridjs";
 
-new gridjs.Grid({
-//const grid = new Grid({
+//new gridjs.Grid({
+const grid = new Grid({
 //$("div#wrapper").Grid({
 	columns: [
 		"ID",
