@@ -217,8 +217,26 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 
-const gridData = [
-{
+const gridData = <?php
+	$query = "SELECT * FROM ccms_log;";
+	$statement = $CFG["DBH"]->prepare($query);
+	$statement->execute($data);
+	$result = $statement->fetchAll();
+	foreach($result as $row){
+		$output[] = array(
+			'id'    => $row['id'],
+			'date'  => $row['date'],
+			'ip'   => $row['ip'],
+			'url'    => $row['url'],
+			'log'   => $row['log']
+		);
+	}
+	//header("Content-Type: application/json");
+	echo json_encode($output);
+?>;
+
+/*
+[{
     "id": "5",
     "date": "1641356338",
     "ip": "70.68.94.199",
@@ -351,6 +369,7 @@ const gridData = [
     "url": "\/en\/user\/dashboard\/",
     "log": "User ID (1) session expired, redirected to login page.\n\nMozilla\/5.0 (X11; Linux x86_64; rv:95.0) Gecko\/20100101 Firefox\/95.0\n\n"
 }];
+*/
 
 const grid = new tui.Grid({
 	el: document.getElementById('grid'),

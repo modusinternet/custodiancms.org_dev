@@ -12,7 +12,7 @@
 
 
 
-header("aaaRequestMethod: ".$CLEAN["jsgrid_ajax"]);
+//header("aaaRequestMethod: ".$CLEAN["jsgrid_ajax"]);
 
 
 
