@@ -197,8 +197,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 //import { Grid, h } from "gridjs";
 
-//new gridjs.Grid({
-const grid = new Grid({
+new gridjs.Grid({
+//const grid = new Grid({
 //$("div#wrapper").Grid({
 	columns: [
 		"ID",
@@ -210,7 +210,8 @@ const grid = new Grid({
 			data: null,
 			formatter: (_, row) => html(`<button class="securityLogDelete" data-id="${row.cells[0].data}">Delete</button>`),
 			name: '',
-			sort: false
+			sort: false,
+			width: '75px',
 		}
 	],
 	data: <?php
