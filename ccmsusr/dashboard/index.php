@@ -206,6 +206,7 @@ new gridjs.Grid({
 		"IP",
 		"URL",
 		"Log",
+		/*
 		{
 			data: null,
 			formatter: (_, row) => html(`<button class="securityLogDelete" data-id="${row.cells[0].data}">Delete</button>`),
@@ -213,6 +214,7 @@ new gridjs.Grid({
 			sort: false,
 			width: '75px',
 		}
+		*/
 	],
 	data: <?php
 	$query = "SELECT * FROM ccms_log;";
@@ -226,7 +228,7 @@ new gridjs.Grid({
 			'ip'   => $row['ip'],
 			'url'    => $row['url'],
 			'log'   => $row['log'],
-			null
+			//null
 		);
 	}
 	echo json_encode($output);
