@@ -173,7 +173,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					loadFirst("/ccmsusr/_js/metisMenu-3.0.7.min.js", function() {
 						loadFirst("/ccmsusr/_js/custodiancms.js", function() {
 							loadFirst("/ccmsusr/_js/jquery-validate-1.19.3.min.js", function() {
-								loadFirst("/ccmsusr/_js/gridjs.5.0.2.umd.js", function() {
+								loadFirst("/ccmsusr/_js/gridjs.production.4.0.0.min.js", function() {
 
 
 
@@ -195,7 +195,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 
-
+import { Grid, h } from "gridjs";
 
 const grid = new Grid({
 //new gridjs.Grid({
@@ -242,7 +242,7 @@ const grid = new Grid({
 	sort: true,
 }).render(document.getElementById("grid"));
 
-import { Grid, h } from "gridjs";
+
 
 
 
