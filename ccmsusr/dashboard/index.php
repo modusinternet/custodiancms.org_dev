@@ -105,6 +105,13 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 						<p>PHP Version: <?= phpversion();?></p>
 						<p>PHP Memory Limit: <?= ini_get("memory_limit");?></p>
 						<p>MySQL Version: <?= $CFG["DBH"]->getAttribute(PDO::ATTR_SERVER_VERSION);?></p>
+						<p>COOKIE_SESSION_EXPIRE: <?= $CFG["COOKIE_SESSION_EXPIRE"];?></p>
+						<p>HTML_MIN: <?= $CFG["HTML_MIN"];?></p>
+						<p>CACHE: <?= $CFG["CACHE"];?></p>
+						<p>CACHE_EXPIRE: <?= $CFG["CACHE_EXPIRE"];?></p>
+						<p>LOG_EVENTS: <?= $CFG["LOG_EVENTS"];?></p>
+						<p>EMAIL_FROM: <?= $CFG["EMAIL_FROM"];?></p>
+						<p>EMAIL_BOUNCES_RETURNED_TO: <?= $CFG["EMAIL_BOUNCES_RETURNED_TO"];?></p>
 					</div>
 				</div>
 
