@@ -88,7 +88,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					<p>List of sessions and or form calls, found in the 'ccms_log' table, that failed.</p>
 
 
-					<div id="grid"></div>
+					<div id="wrapper"></div>
 
 
 				</div>
@@ -195,10 +195,11 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 
-import { Grid, h } from "gridjs";
+//import { Grid, h } from "gridjs";
 
-const grid = new Grid({
 //new gridjs.Grid({
+//const grid = new Grid({
+$("div#wrapper").Grid({
 	columns: [
 		"ID",
 		"Date",
@@ -240,7 +241,8 @@ const grid = new Grid({
 	resizable: true,
 	search: true,
 	sort: true,
-}).render(document.getElementById("grid"));
+//}).render(document.getElementById("grid"));
+});
 
 
 
