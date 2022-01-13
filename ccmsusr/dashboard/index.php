@@ -227,7 +227,7 @@ new gridjs.Grid({
 			'ip'   => $row['ip'],
 			'url'    => $row['url'],
 			'log'   => $row['log'],
-			'actions' => null
+			'Actions' => null
 		);
 	}
 	echo json_encode($output);
