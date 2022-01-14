@@ -228,7 +228,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					if(xhr.readyState === 4) {
 						ccms_news_inject(xhr.responseText);
 						const temp = {
-							expiry: now.getTime() + ccms_ttl_2,
+							expiry: now.getTime() + ccms_ttl,
 							value: xhr.responseText,
 						}
 						localStorage.setItem("ccms_news", JSON.stringify(temp))
