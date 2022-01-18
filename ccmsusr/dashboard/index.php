@@ -295,7 +295,7 @@ const cachedFetch = (url, options) => {
     }
   }
 
-  return fetch(url, options).then(response => {
+  return fetch(url+"?token="+Math.random(), options).then(response => {
     // let's only store in cache if the content-type is
     // JSON or something non-binary
     if (response.status === 200) {
