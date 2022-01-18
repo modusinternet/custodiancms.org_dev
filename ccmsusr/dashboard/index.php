@@ -84,17 +84,32 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 
+
+
+
+
 			<div class="modal">
-				<div>Security Logs</div>
+				<div>Security Logs
+					<svg id="ccms_security_logs_reload" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width:28px;position:relative;float:right;top:5px;cursor:pointer">
+						<title>Reload</title>
+						<path fill="#fff" d="M19.91,15.51H15.38a1,1,0,0,0,0,2h2.4A8,8,0,0,1,4,12a1,1,0,0,0-2,0,10,10,0,0,0,16.88,7.23V21a1,1,0,0,0,2,0V16.5A1,1,0,0,0,19.91,15.51ZM15,12a3,3,0,1,0-3,3A3,3,0,0,0,15,12Zm-4,0a1,1,0,1,1,1,1A1,1,0,0,1,11,12ZM12,2A10,10,0,0,0,5.12,4.77V3a1,1,0,0,0-2,0V7.5a1,1,0,0,0,1,1h4.5a1,1,0,0,0,0-2H6.22A8,8,0,0,1,20,12a1,1,0,0,0,2,0A10,10,0,0,0,12,2Z"/></svg>
+				</div>
 				<div>
 					<p>List of sessions and or form calls, found in the 'ccms_log' table, that failed.</p>
-
-
-					<div id="securityLogsGrid"></div>
-
-
+					<div id="ccms_security_logs">
+						<p>Nothing to see at the moment.</p>
+					</div>
 				</div>
 			</div>
+
+
+
+
+
+
+
+
+
 
 			<div class="cssGrid-Dashboard-01">
 				<div class="modal">
@@ -180,28 +195,19 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 							loadFirst("/ccmsusr/_js/jquery-validate-1.19.3.min.js", function() {
 
 
-									/* user_dropdown START */
-									/* When the user clicks on the svg button add the 'show' class to the dropdown box below it. */
-									$("#user_dropdown_btn").click(function() {
-										$("#user_dropdown_list").addClass("show");
-									});
+								/* user_dropdown START */
+								/* When the user clicks on the svg button add the 'show' class to the dropdown box below it. */
+								$("#user_dropdown_btn").click(function() {
+									$("#user_dropdown_list").addClass("show");
+								});
 
-									/* Hide dropdown menu on click outside */
-									$(document).on("click", function(e){
-										if(!$(e.target).closest("#user_dropdown_btn").length){
-											$("#user_dropdown_list").removeClass("show");
-										}
-									});
-									/* user_dropdown END */
-
-
-
-
-
-
-
-
-
+								/* Hide dropdown menu on click outside */
+								$(document).on("click", function(e){
+									if(!$(e.target).closest("#user_dropdown_btn").length){
+										$("#user_dropdown_list").removeClass("show");
+									}
+								});
+								/* user_dropdown END */
 
 							});
 						});
@@ -209,78 +215,131 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				});
 			}
 
-			const ccms_news_href = 'https://custodiancms.org/cross-origin-resources/news.php?ccms_token=';
-			let ccms_ttl = 3600; // seconds, ie: 3600 = 1 hour
 
-			function ccms_token() {
-				return Math.floor(1000000000000000 + Math.random() * 9000000000000000).toString(36).substr(0, 10);
-			}
 
-			function ccms_get_news_xhr() {
-				const now = new Date()
-				ccms_ttl = ccms_ttl * 1000;
+			const now = new Date();
 
-				var xhr = new XMLHttpRequest();
-				/* Its necessary to call the custodiancms.org website with a token in your URL because you might be running a serviceworker on your site which want's to try and cache everything.  So to prevent it from pulling a previous call from the cache instead of getting it fresh we change the URL a little each time.  This ofcourse means your cache will eventually fill with outdatted calls to the news feed but we'll have to look into it down the road to see if there is anything more we can do to improve this process later. */
-				var ccms_news_href_2 = ccms_news_href + ccms_token();
-				xhr.open('GET', ccms_news_href_2, true);
-				xhr.onreadystatechange = function() {
-					if(xhr.readyState === 4) {
-						ccms_news_inject(xhr.responseText);
-						const temp = {
-							expiry: now.getTime() + ccms_ttl,
-							value: xhr.responseText,
-						}
-						localStorage.setItem("ccms_news", JSON.stringify(temp))
+			const cachedFetch = (url, exp) => {
+				if(typeof exp !== 'number') {
+					exp = 300 // Default 300 seconds or 5 minutes
+				}
+				let jsonItem = localStorage.getItem(url)
+				if(jsonItem !== null) {
+					const item = JSON.parse(jsonItem);
+					// compare the expiry time of the item with the current time
+					if(now.getTime() < item.expiry) {
+						return Promise.resolve(item.value)
+					} else {
+						// We need to clean up this old key
+						localStorage.removeItem(url)
 					}
 				}
-				xhr.send();
+
+			  return fetch(url, exp).then(response => {
+					if(response.status === 200) {
+						response.text().then(content => {
+							const tmp = {
+								expiry: now.getTime() + exp,
+								value: content
+							}
+							localStorage.setItem(url, JSON.stringify(tmp));
+							return content;
+						}
+					}
+				})
 			}
 
-			function ccms_get_news() {
-				const jsonItem = localStorage.getItem("ccms_news");
-				const item = JSON.parse(jsonItem);
-				const now = new Date();
+			/* 3600 = 1 hour */
+			cachedFetch('https://custodiancms.org/cross-origin-resources/news.php', 3600)
+				.then(content => {
+					document.getElementById("ccms_news_items").innerHTML = content;
+			})
 
-				// compare the expiry time of the item with the current time
-				if(now.getTime() > item.expiry) {
-					// If the item is expired, delete the item from storage and return null
-					localStorage.removeItem("ccms_news");
-					ccms_get_news_xhr();
-					return;
-				}
-				ccms_news_inject(item.value);
+
+
+
+
+
+
+
+
+/*
+const ccms_news_href = 'https://custodiancms.org/cross-origin-resources/news.php?ccms_token=';
+
+// How long do you want the json file to remain cached in local storage?
+// seconds, ie: 3600 = 1 hour
+let ccms_ttl = 3600;
+
+function ccms_token() {
+	return Math.floor(1000000000000000 + Math.random() * 9000000000000000).toString(36).substr(0, 10);
+}
+
+function ccms_get_news_xhr() {
+	const now = new Date()
+	ccms_ttl = ccms_ttl * 1000;
+
+	var xhr = new XMLHttpRequest();
+	// Its necessary to call the custodiancms.org website with a token in your URL because you might be running a serviceworker on your site which want's to try and cache everything.  So to prevent it from pulling a previous call from the cache instead of getting it fresh we change the URL a little each time.  This ofcourse means your cache will eventually fill with outdatted calls to the news feed but we'll have to look into it down the road to see if there is anything more we can do to improve this process later.
+	var ccms_news_href_2 = ccms_news_href + ccms_token();
+	xhr.open('GET', ccms_news_href_2, true);
+	xhr.onreadystatechange = function() {
+		if(xhr.readyState === 4) {
+			ccms_news_inject(xhr.responseText);
+			const temp = {
+				expiry: now.getTime() + ccms_ttl,
+				value: xhr.responseText,
 			}
+			localStorage.setItem("ccms_news", JSON.stringify(temp))
+		}
+	}
+	xhr.send();
+}
 
-			function ccms_news_inject(text) {
-				var content = document.getElementById("ccms_news_items");
-				if(content){
-					content.innerHTML = text;
-				}
-			}
+function ccms_get_news() {
+	const jsonItem = localStorage.getItem("ccms_news");
+	const item = JSON.parse(jsonItem);
+	const now = new Date();
 
-			var localStorageSupport = function() {
-				try {
-					localStorage.setItem('test', 'test');
-					localStorage.removeItem('test');
-					return true;
-				} catch(e) {
-					return false;
-				}
-			}
+	// compare the expiry time of the item with the current time
+	if(now.getTime() > item.expiry) {
+		// If the item is expired, delete the item from storage and return null
+		localStorage.removeItem("ccms_news");
+		ccms_get_news_xhr();
+		return;
+	}
+	ccms_news_inject(item.value);
+}
 
-			if(localStorageSupport()) {
-				if(localStorage.ccms_news) {
-					ccms_get_news();
-				} else {
-					ccms_get_news_xhr();
-				}
-			}
+function ccms_news_inject(text) {
+	var content = document.getElementById("ccms_news_items");
+	if(content){
+		content.innerHTML = text;
+	}
+}
 
-			document.getElementById("ccms_news_reload").addEventListener("click", () => {
-				localStorage.removeItem("ccms_news");
-				ccms_get_news_xhr();
-			});
+var localStorageSupport = function() {
+	try {
+		localStorage.setItem('test', 'test');
+		localStorage.removeItem('test');
+		return true;
+	} catch(e) {
+		return false;
+	}
+}
+
+if(localStorageSupport()) {
+	if(localStorage.ccms_news) {
+		ccms_get_news();
+	} else {
+		ccms_get_news_xhr();
+	}
+}
+
+document.getElementById("ccms_news_reload").addEventListener("click", () => {
+	localStorage.removeItem("ccms_news");
+	ccms_get_news_xhr();
+});
+*/
 		</script>
 	</body>
 </html>
