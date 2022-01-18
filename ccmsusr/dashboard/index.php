@@ -322,7 +322,21 @@ cachedFetch('https://custodiancms.org/cross-origin-resources/news.php', 3600)
 	.then(r => r.text())
 	.then(content => {
 		document.getElementById("ccms_news_items").innerHTML = content;
-})
+});
+
+document.getElementById("ccms_news_reload").addEventListener("click", () => {
+	const url = "https://custodiancms.org/cross-origin-resources/news.php";
+	localStorage.removeItem(url);
+	localStorage.removeItem(url + ":ts");
+	// 3600 = seconds is equivalent to 1 hour
+	cachedFetch('https://custodiancms.org/cross-origin-resources/news.php', 3600)
+		.then(r => r.text())
+		.then(content => {
+			document.getElementById("ccms_news_items").innerHTML = content;
+	});
+});
+
+
 
 // Use a default expiry time, like 5 minutes
 //cachedFetch('https://httpbin.org/get')
