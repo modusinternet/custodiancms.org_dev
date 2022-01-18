@@ -329,7 +329,7 @@ document.getElementById("ccms_news_reload").addEventListener("click", () => {
 	localStorage.removeItem(url);
 	localStorage.removeItem(url + ":ts");
 	// 3600 = seconds is equivalent to 1 hour
-	cachedFetch('https://custodiancms.org/cross-origin-resources/news.php', 3600)
+	cachedFetch(url, 3600)
 		.then(r => r.text())
 		.then(content => {
 			document.getElementById("ccms_news_items").innerHTML = content;
