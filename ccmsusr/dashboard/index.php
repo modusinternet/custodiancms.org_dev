@@ -320,8 +320,8 @@ const cachedFetch = (url, options) => {
 // 3600 = 1 hour
 cachedFetch('https://custodiancms.org/cross-origin-resources/news.php', 3600)
 	.then(r => r.text())
-	.then(document => {
-		document.getElementById("ccms_news_items").innerHTML = document;
+	.then(content => {
+		document.getElementById("ccms_news_items").innerHTML = content;
 })
 
 
