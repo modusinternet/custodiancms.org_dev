@@ -224,17 +224,17 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 			const cachedFetch = (url, expiry) => {
 				if(typeof expiry !== 'number') {
-					expiry = 300 // Default 300 seconds or 5 minutes
+					expiry = 300; // Default 300 seconds or 5 minutes
 				}
-				let jsonItem = localStorage.getItem(url)
+				let jsonItem = localStorage.getItem(url);
 				if(jsonItem !== null) {
 					const item = JSON.parse(jsonItem);
 					// compare the expiry time of the item with the current time
 					if(now.getTime() < item.expiry) {
-						return Promise.resolve(item.value)
+						return Promise.resolve(item.value);
 					} else {
 						// We need to clean up this old key
-						localStorage.removeItem(url)
+						localStorage.removeItem(url);
 					}
 				}
 
@@ -247,9 +247,9 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 							}
 							localStorage.setItem(url, JSON.stringify(tmp));
 							return content;
-						})
+						});
 					}
-				})
+				});
 			}
 
 			/* 3600 = 1 hour */
