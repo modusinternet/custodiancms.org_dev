@@ -209,6 +209,9 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 								});
 								/* user_dropdown END */
 
+
+
+
 							});
 						});
 					});
@@ -219,9 +222,9 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 			const now = new Date();
 
-			const cachedFetch = (url, exp) => {
-				if(typeof exp !== 'number') {
-					exp = 300 // Default 300 seconds or 5 minutes
+			const cachedFetch = (url, expiry) => {
+				if(typeof expiry !== 'number') {
+					expiry = 300 // Default 300 seconds or 5 minutes
 				}
 				let jsonItem = localStorage.getItem(url)
 				if(jsonItem !== null) {
@@ -235,11 +238,11 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					}
 				}
 
-			  return fetch(url, exp).then(response => {
+			  return fetch(url, expiry).then(response => {
 					if(response.status === 200) {
 						response.text().then(content => {
 							const tmp = {
-								expiry: now.getTime() + exp,
+								expiry: now.getTime() + expiry,
 								value: content
 							}
 							localStorage.setItem(url, JSON.stringify(tmp));
