@@ -324,50 +324,40 @@ cachedFetch('https://custodiancms.org/cross-origin-resources/news.php', 3600)
 		document.getElementById("ccms_news_items").innerHTML = content;
 })
 
+// Use a default expiry time, like 5 minutes
+//cachedFetch('https://httpbin.org/get')
+//	.then(r => r.json())
+//	.then(info => {
+//		console.log('1) ********** Your origin is ' + info.origin)
+//	}
+//)
 
+// Instead of passing options to `fetch` we pass an integer which is seconds
+//cachedFetch('https://httpbin.org/get', 2 * 60)  // 2 min
+//	.then(r => r.json())
+//	.then(info => {
+//		console.log('2) ********** Your origin is ' + info.origin)
+//	}
+//)
 
+// Combined with fetch's options object but called with a custom name
+//let init = {
+//	mode: 'same-origin',
+//	seconds: 3 * 60 // 3 minutes
+//}
+//cachedFetch('https://httpbin.org/get', init)
+//	.then(r => r.json())
+//	.then(info => {
+//		console.log('3) ********** Your origin is ' + info.origin)
+//	}
+//)
 
-// cachedFetch('https://httpbin.org/html')
-// .then(r => r.text())
-// .then(document => {
-//   console.log('Document has ' + document.match(/<p>/).length + ' paragraphs')
-// })
-
-// cachedFetch('https://httpbin.org/image/png')
+//cachedFetch('https://httpbin.org/image/png')
 // .then(r => r.blob())
 // .then(image => {
 //   console.log('Image is ' + image.size + ' bytes')
-// })
-
-
-
-
-// Use a default expiry time, like 5 minutes
-cachedFetch('https://httpbin.org/get')
-  .then(r => r.json())
-  .then(info => {
-    console.log('1) ********** Your origin is ' + info.origin)
-  })
-
-// Instead of passing options to `fetch` we pass an integer which is seconds
-cachedFetch('https://httpbin.org/get', 2 * 60)  // 2 min
-  .then(r => r.json())
-  .then(info => {
-    console.log('2) ********** Your origin is ' + info.origin)
-  })
-
-// Combined with fetch's options object but called with a custom name
-let init = {
-  mode: 'same-origin',
-  seconds: 3 * 60 // 3 minutes
-}
-cachedFetch('https://httpbin.org/get', init)
-  .then(r => r.json())
-  .then(info => {
-    console.log('3) ********** Your origin is ' + info.origin)
-  })
-
-
+// }
+//)
 
 
 
