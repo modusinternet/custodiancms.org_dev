@@ -276,9 +276,9 @@ const cachedFetch = (url, options) => {
     expiry = options.seconds || expiry
   }
   // Use the URL as the cache key to sessionStorage
-  let cacheKey = url
-  let cached = localStorage.getItem(cacheKey)
-  let whenCached = localStorage.getItem(cacheKey + ':ts')
+  //let cacheKey = url
+  let cached = localStorage.getItem(url)
+  let whenCached = localStorage.getItem(url + ':ts')
   if (cached !== null && whenCached !== null) {
     // it was in sessionStorage! Yay!
     // Even though 'whenCached' is a string, this operation
@@ -290,8 +290,8 @@ const cachedFetch = (url, options) => {
       return Promise.resolve(response)
     } else {
       // We need to clean up this old key
-      localStorage.removeItem(cacheKey)
-      localStorage.removeItem(cacheKey + ':ts')
+      localStorage.removeItem(url)
+      localStorage.removeItem(url + ':ts')
     }
   }
 
@@ -299,8 +299,8 @@ const cachedFetch = (url, options) => {
     // let's only store in cache if the content-type is
     // JSON or something non-binary
     if (response.status === 200) {
-      let ct = response.headers.get('Content-Type')
-      if (ct && (ct.match(/application\/json/i) || ct.match(/text\//i))) {
+      //let ct = response.headers.get('Content-Type')
+      //if (ct && (ct.match(/application\/json/i) || ct.match(/text\//i))) {
         // There is a .json() instead of .text() but
         // we're going to store it in sessionStorage as
         // string anyway.
@@ -308,10 +308,10 @@ const cachedFetch = (url, options) => {
         // consumed by the time it's returned. This
         // way we're being un-intrusive.
         response.clone().text().then(content => {
-          localStorage.setItem(cacheKey, content)
-          localStorage.setItem(cacheKey+':ts', Date.now())
+          localStorage.setItem(url, content)
+          localStorage.setItem(url+':ts', Date.now())
         })
-      }
+      //}
     }
     return response
   })
