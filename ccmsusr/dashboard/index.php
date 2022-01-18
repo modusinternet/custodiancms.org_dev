@@ -317,7 +317,7 @@ const cachedFetch = (url, options) => {
   })
 }
 
-// 3600 = 1 hour
+// 3600 = seconds is equivalent to 1 hour
 cachedFetch('https://custodiancms.org/cross-origin-resources/news.php', 3600)
 	.then(r => r.text())
 	.then(content => {
