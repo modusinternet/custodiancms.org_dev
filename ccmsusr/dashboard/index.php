@@ -320,8 +320,25 @@ const cachedFetch = (url, options) => {
 // 3600 = 1 hour
 cachedFetch('https://custodiancms.org/cross-origin-resources/news.php', 3600)
 	.then(content => {
-	document.getElementById("ccms_news_items").innerHTML = content.value;
+	document.getElementById("ccms_news_items").innerHTML = content.text;
 })
+
+
+
+
+// cachedFetch('https://httpbin.org/html')
+// .then(r => r.text())
+// .then(document => {
+//   console.log('Document has ' + document.match(/<p>/).length + ' paragraphs')
+// })
+
+// cachedFetch('https://httpbin.org/image/png')
+// .then(r => r.blob())
+// .then(image => {
+//   console.log('Image is ' + image.size + ' bytes')
+// })
+
+
 
 
 // Use a default expiry time, like 5 minutes
