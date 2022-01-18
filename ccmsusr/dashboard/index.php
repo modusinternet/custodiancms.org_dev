@@ -319,13 +319,10 @@ const cachedFetch = (url, options) => {
 
 // 3600 = 1 hour
 cachedFetch('https://custodiancms.org/cross-origin-resources/news.php', 3600)
-	//.then(content => {
-		//document.getElementById("ccms_news_items").innerHTML = content;
-//})
-	.then(r => r.json())
 	.then(content => {
 	document.getElementById("ccms_news_items").innerHTML = content;
 })
+
 
 // Use a default expiry time, like 5 minutes
 cachedFetch('https://httpbin.org/get')
