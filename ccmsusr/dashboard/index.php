@@ -324,7 +324,7 @@ cachedFetch('https://custodiancms.org/cross-origin-resources/news.php', 3600)
 //})
 	.then(r => r.json())
 	.then(value => {
-	document.getElementById("ccms_news_items").innerHTML = value.content)
+	document.getElementById("ccms_news_items").innerHTML = value.content;
 })
 
 // Use a default expiry time, like 5 minutes
