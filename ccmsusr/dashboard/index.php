@@ -244,7 +244,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 							}
 							localStorage.setItem(url, JSON.stringify(tmp));
 							return content;
-						}
+						})
 					}
 				})
 			}
