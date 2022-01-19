@@ -388,6 +388,14 @@ document.getElementById("ccms_news_reload").addEventListener("click", () => {
 	});
 });
 
+function makeTable(data) {
+	var mainContainer = document.getElementById("ccms_security_logs");
+	for (var i = 0; i < data.length; i++) {
+		var div = document.createElement("div");
+		div.innerHTML = 'ID: ' + data[i].id + ' Date:' + data[i].date + ' IP:' + data[i].ip + ' URL:' + data[i].url + ' Log:' + data[i].log;
+		mainContainer.appendChild(div);
+	}
+}
 // (URL to call, Max expire time after saved in localhost) 3600 = seconds is equivalent to 1 hour
 cachedFetch('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/logs.php', 3600)
 	//.then(r => r.text())
@@ -395,15 +403,6 @@ cachedFetch('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/logs.php', 36
 	.then(content => {
 		//document.getElementById("ccms_security_logs").innerHTML = content;
 		makeTable(content);
-	}
-
-	function makeTable(data) {
-		var mainContainer = document.getElementById("ccms_security_logs");
-		for (var i = 0; i < data.length; i++) {
-			var div = document.createElement("div");
-			div.innerHTML = 'ID: ' + data[i].id + ' Date:' + data[i].date + ' IP:' + data[i].ip + ' URL:' + data[i].url + ' Log:' + data[i].log;
-			mainContainer.appendChild(div);
-		}
 	}
 );
 
