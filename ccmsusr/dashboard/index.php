@@ -82,13 +82,11 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 }
 
 .table > .tableHeading > .tableHead:first-child {
-  border-radius: 10px 0 0 10px;
-  -moz-border-radius: 10px 0 0 0;
+  border-radius: 10px 0 0 0;
 }
 
 .table > .tableHeading > .tableHead:last-child {
-  border-radius: 0 10px 10px 0;
-  -moz-border-radius: 0 10px 0 0;
+  border-radius: 0 10px 0 0;
 }
 
 
