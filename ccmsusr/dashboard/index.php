@@ -72,6 +72,28 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 		    	display: table;
 		    	width: 100%;
 		}
+
+
+
+
+
+		.table > div > div {
+  background-color: #ccc;
+}
+
+.table > div > div:first-child {
+  border-radius: 10px 0 0 10px;
+  -moz-border-radius: 10px 0 0 10px;
+}
+
+.table > div > div:last-child {
+  border-radius: 0 10px 10px 0;
+  -moz-border-radius: 0 10px 10px 0;
+}
+
+
+
+
 		.tableRow {
 		    	display: table-row;
 		}
