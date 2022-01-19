@@ -90,7 +90,10 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 }
 
 
-.tableHead{color: black;}
+.tableHead{
+	color: black;
+	text-align: center;
+}
 
 		.tableRow {
 		    	display: table-row;
