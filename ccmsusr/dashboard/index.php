@@ -303,23 +303,53 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 
-function makeTable(data) {
-	var mainContainer = document.getElementById("ccms_security_logs");
-	for (var i = 0; i < data.length; i++) {
-		var div = document.createElement("div");
-		div.innerHTML = 'ID: ' + data[i].id + ' Date:' + data[i].date + ' IP:' + data[i].ip + ' URL:' + data[i].url + ' Log:' + data[i].log;
-		mainContainer.appendChild(div);
-	}
-}
-// (URL to call, Max expire time after saved in localhost) 3600 = seconds is equivalent to 1 hour
-cachedFetch('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/logs.php', 3600)
-	//.then(r => r.text())
-	.then(r => r.json())
-	.then(content => {
-		//document.getElementById("ccms_security_logs").innerHTML = content;
-		makeTable(content);
-	}
-);
+			function makeTable(data) {
+				var mainContainer = document.getElementById("ccms_security_logs");
+				for(var i = 0; i < data.length; i++) {
+					var div = document.createElement("div");
+					div.innerHTML = 'ID: ' + data[i].id + ' Date:' + data[i].date + ' IP:' + data[i].ip + ' URL:' + data[i].url + ' Log:' + data[i].log;
+					mainContainer.appendChild(div);
+				}
+			}
+
+			function makeTable2(data) {
+				var mainContainer = document.getElementById("ccms_security_logs");
+
+				// Get values for the table headers.
+				// ie: {'ID', 'Date', 'IP' , 'URL','Log'}
+				var tablecolumns = [];
+				for(var i = 0; i < data.length; i++) {
+					for(var key in data[i]) {
+						if(tablecolumns.indexOf(key) === -1) {
+							tablecolumns.push(key);
+						}
+					}
+				}
+
+				var div = document.createElement("div");
+				for(var i = 0; i < tablecolumns.length; i++) {
+					//header
+					console.log(tablecolumns[i]);
+				}
+				//mainContainer.appendChild(div);
+
+
+
+
+
+			}
+
+			// (URL to call, Max expire time after saved in localhost) 3600 = seconds is equivalent to 1 hour
+			cachedFetch('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/logs.php', 3600)
+				//.then(r => r.text())
+				.then(r => r.json())
+				.then(content => {
+					//document.getElementById("ccms_security_logs").innerHTML = content;
+					//makeTable(content);
+					makeTable2(content);
+
+				}
+			);
 
 
 
