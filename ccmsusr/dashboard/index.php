@@ -327,15 +327,23 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					}
 				}
 
-				var div = document.createElement("div");
-				div.className = 'table';
+				var divTable = document.createElement("div");
+				divTable.className = 'table';
+				var divTableRow = document.createElement("div");
+				divTableRow.className = 'tableRow';
+				divTable.appendChild(divTableRow);
 				for(var i = 0; i < tablecolumns.length; i++) {
-					//header
 					//console.log(tablecolumns[i]);
-					div.innerHTML += '<div class="tableHead">' + tablecolumns[i] + '</div>';
+					var div = document.createElement("div");
+					div.className = 'tableCell tableHead';
+					div.innerHTML = tablecolumns[i];
+					divTableRow.appendChild(div);
 				}
-				mainContainer.appendChild(div);
+				mainContainer.appendChild(divTable);
 
+
+
+/*
 				for(var i = 0; i < data.length; i++) {
 					var div = document.createElement("div");
 					div.className = 'tableRow';
@@ -347,6 +355,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					+ '</div>';
 					mainContainer.appendChild(div);
 				}
+*/
 			}
 
 			// (URL to call, Max expire time after saved in localhost) 3600 = seconds is equivalent to 1 hour
