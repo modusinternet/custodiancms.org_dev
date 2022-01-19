@@ -68,33 +68,28 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 
-		.rTable {
+		.table {
 		    	display: table;
 		    	width: 100%;
 		}
-		.rTableRow {
+		.tableRow {
 		    	display: table-row;
 		}
-		.rTableHeading {
+		.tableHeading {
 		    	display: table-header-group;
 		    	background-color: #ddd;
 		}
-		.rTableCell, .rTableHead {
+		.tableCell, .tableHead {
 		    	display: table-cell;
 		    	padding: 3px 10px;
 		    	border: 1px solid #999999;
 		}
-		.rTableHeading {
+		.tableHeading {
 		    	display: table-header-group;
 		    	background-color: #ddd;
 		    	font-weight: bold;
 		}
-		.rTableFoot {
-		    	display: table-footer-group;
-		    	font-weight: bold;
-		    	background-color: #ddd;
-		}
-		.rTableBody {
+		.tableBody {
 		    	display: table-row-group;
 		}
 	</style>
@@ -133,67 +128,56 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 
-<div class="rTable">
-	<div class="rTableHeading">
-		<div class="rTableHead">
+<div class="table">
+	<div class="tableHeading">
+		<div class="tableHead">
 			Month
 		</div>
-		<div class="rTableHead">
+		<div class="tableHead">
 			Expenses
 		</div>
-		<div class="rTableHead">
+		<div class="tableHead">
 			Notes
 		</div>
 	</div>
-		<div class="rTableBody">
+	<div class="tableBody">
 
-		<div class="rTableRow">
-			<div class="rTableCell">
+		<div class="tableBody">
+			<div class="tableCell">
 				January
 			</div>
-			<div class="rTableCell">
+			<div class="tableCell">
 				$20
 			</div>
-			<div class="rTableCell">
+			<div class="tableCell">
 				Car repair
 			</div>
 		</div>
 
-		<div class="rTableRow">
-			<div class="rTableCell">
+		<div class="tableBody">
+			<div class="tableCell">
 				February
 			</div>
-			<div class="rTableCell">
+			<div class="tableCell">
 				$130
 			</div>
-			<div class="rTableCell">
+			<div class="tableCell">
 				Furniture
 			</div>
 		</div>
 
-		<div class="rTableRow">
-			<div class="rTableCell">
+		<div class="tableBody">
+			<div class="tableCell">
 				March
 			</div>
-			<div class="rTableCell">
+			<div class="tableCell">
 				$30
 			</div>
-			<div class="rTableCell">
+			<div class="tableCell">
 				Pool cleaning
 			</div>
 		</div>
 
-	</div>
-	<div class="rTableFoot">
-		<div class="rTableHead">
-			Sum
-		</div>
-		<div class="rTableHead">
-			$180
-		</div>
-		<div class="rTableHead">
-			All done
-		</div>
 	</div>
 </div>
 
