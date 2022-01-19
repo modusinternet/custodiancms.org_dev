@@ -83,12 +83,12 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 .table > .tableHeading > .tableHead:first-child {
   border-radius: 10px 0 0 10px;
-  -moz-border-radius: 10px 0 0 10px;
+  -moz-border-radius: 10px 0 0 0;
 }
 
 .table > .tableHeading > .tableHead:last-child {
   border-radius: 0 10px 10px 0;
-  -moz-border-radius: 0 10px 10px 0;
+  -moz-border-radius: 0 10px 0 0;
 }
 
 
@@ -102,8 +102,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 		}
 		.tableCell, .tableHead {
 		    	display: table-cell;
-		    	padding: 3px 10px;
 		    	border: 1px solid #999999;
+					padding: .5em;
 		}
 		.tableHeading {
 		    	display: table-header-group;
