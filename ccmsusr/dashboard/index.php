@@ -90,7 +90,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 }
 
 
-
+.tableHead{font-weight: bold;}
 
 		.tableRow {
 		    	display: table-row;
@@ -100,13 +100,11 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 		}
 		.tableCell, .tableHead {
 		    	display: table-cell;
-		    	border: 1px solid #999999;
+		    	border: 1px solid #f3f3f3;
 					padding: .5em;
 		}
 		.tableHeading {
 		    	display: table-header-group;
-		    	background-color: #ddd;
-		    	font-weight: bold;
 		}
 		.tableBody {
 		    	display: table-row-group;
