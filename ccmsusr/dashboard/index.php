@@ -90,7 +90,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 }
 
 
-.tableHead{font-weight: bold;}
+.tableHead{color: black;}
 
 		.tableRow {
 		    	display: table-row;
