@@ -69,35 +69,34 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 		.rTable {
-			  	display: block;
-			  	width: 100%;
-			}
-			.rTableHeading, .rTableBody, .rTableFoot, .rTableRow{
-			  	clear: both;
-			}
-			.rTableHead, .rTableFoot{
-			  	background-color: #DDD;
-			  	font-weight: bold;
-			}
-			.rTableCell, .rTableHead {
-			  	border: 1px solid #999999;
-			  	float: left;
-			  	height: 17px;
-			  	overflow: hidden;
-			  	padding: 3px 1.8%;
-			  	width: 28%;
-			}
-			.rTable:after {
-			  	 visibility: hidden;
-			  	 display: block;
-			  	 font-size: 0;
-			  	 content: " ";
-			  	 clear: both;
-			  	 height: 0;
-			}
-
-
-			
+		    	display: table;
+		    	width: 100%;
+		}
+		.rTableRow {
+		    	display: table-row;
+		}
+		.rTableHeading {
+		    	display: table-header-group;
+		    	background-color: #ddd;
+		}
+		.rTableCell, .rTableHead {
+		    	display: table-cell;
+		    	padding: 3px 10px;
+		    	border: 1px solid #999999;
+		}
+		.rTableHeading {
+		    	display: table-header-group;
+		    	background-color: #ddd;
+		    	font-weight: bold;
+		}
+		.rTableFoot {
+		    	display: table-footer-group;
+		    	font-weight: bold;
+		    	background-color: #ddd;
+		}
+		.rTableBody {
+		    	display: table-row-group;
+		}
 	</style>
 	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 		let navActiveItem = ["nav-dashboard"];
