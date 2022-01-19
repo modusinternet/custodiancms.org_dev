@@ -69,34 +69,35 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 		.rTable {
-		    	display: table;
-		    	width: 100%;
-		}
-		.rTableRow {
-		    	display: table-row;
-		}
-		.rTableHeading {
-		    	display: table-header-group;
-		    	background-color: #ddd;
-		}
-		.rTableCell, .rTableHead {
-		    	display: table-cell;
-		    	padding: 3px 10px;
-		    	border: 1px solid #999999;
-		}
-		.rTableHeading {
-		    	display: table-header-group;
-		    	background-color: #ddd;
-		    	font-weight: bold;
-		}
-		.rTableFoot {
-		    	display: table-footer-group;
-		    	font-weight: bold;
-		    	background-color: #ddd;
-		}
-		.rTableBody {
-		    	display: table-row-group;
-		}
+			  	display: block;
+			  	width: 100%;
+			}
+			.rTableHeading, .rTableBody, .rTableFoot, .rTableRow{
+			  	clear: both;
+			}
+			.rTableHead, .rTableFoot{
+			  	background-color: #DDD;
+			  	font-weight: bold;
+			}
+			.rTableCell, .rTableHead {
+			  	border: 1px solid #999999;
+			  	float: left;
+			  	height: 17px;
+			  	overflow: hidden;
+			  	padding: 3px 1.8%;
+			  	width: 28%;
+			}
+			.rTable:after {
+			  	 visibility: hidden;
+			  	 display: block;
+			  	 font-size: 0;
+			  	 content: " ";
+			  	 clear: both;
+			  	 height: 0;
+			}
+
+
+			
 	</style>
 	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 		let navActiveItem = ["nav-dashboard"];
@@ -133,65 +134,69 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 
-					<div class="rTable">
-									<div class="rTableHeading">
-										<div class="rTableHead">
-											Month
-										</div>
-										<div class="rTableHead">
-											Expenses
-										</div>
-										<div class="rTableHead">
-											Notes
-										</div>
-									</div>
-									<div class="rTableBody">
-										<div class="rTableRow">
-											<div class="rTableCell">
-												January
-											</div>
-											<div class="rTableCell">
-												$20
-											</div>
-											<div class="rTableCell">
-												Car repair
-											</div>
-										</div>
-										<div class="rTableRow">
-											<div class="rTableCell">
-												February
-											</div>
-											<div class="rTableCell">
-												$130
-											</div>
-											<div class="rTableCell">
-												Furniture
-											</div>
-										</div>
-										<div class="rTableRow">
-											<div class="rTableCell">
-												March
-											</div>
-											<div class="rTableCell">
-												$30
-											</div>
-											<div class="rTableCell">
-												Pool cleaning
-											</div>
-										</div>
-									</div>
-									<div class="rTableFoot">
-										<div class="rTableHead">
-											Sum
-										</div>
-										<div class="rTableHead">
-											$180
-										</div>
-										<div class="rTableHead">
-											All done
-										</div>
-									</div>
-								</div>
+<div class="rTable">
+	<div class="rTableHeading">
+		<div class="rTableHead">
+			Month
+		</div>
+		<div class="rTableHead">
+			Expenses
+		</div>
+		<div class="rTableHead">
+			Notes
+		</div>
+	</div>
+		<div class="rTableBody">
+
+		<div class="rTableRow">
+			<div class="rTableCell">
+				January
+			</div>
+			<div class="rTableCell">
+				$20
+			</div>
+			<div class="rTableCell">
+				Car repair
+			</div>
+		</div>
+
+		<div class="rTableRow">
+			<div class="rTableCell">
+				February
+			</div>
+			<div class="rTableCell">
+				$130
+			</div>
+			<div class="rTableCell">
+				Furniture
+			</div>
+		</div>
+
+		<div class="rTableRow">
+			<div class="rTableCell">
+				March
+			</div>
+			<div class="rTableCell">
+				$30
+			</div>
+			<div class="rTableCell">
+				Pool cleaning
+			</div>
+		</div>
+
+	</div>
+	<div class="rTableFoot">
+		<div class="rTableHead">
+			Sum
+		</div>
+		<div class="rTableHead">
+			$180
+		</div>
+		<div class="rTableHead">
+			All done
+		</div>
+	</div>
+</div>
 
 
 
