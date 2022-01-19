@@ -219,53 +219,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			}
 
 
-
-			/*
-			const now = new Date();
-
-			const cachedFetch = (url, expiry) => {
-				if(typeof expiry !== 'number') {
-					expiry = 300; // Default 300 seconds or 5 minutes
-				}
-				let jsonItem = localStorage.getItem(url);
-				if(jsonItem !== null) {
-					const item = JSON.parse(jsonItem);
-					// compare the expiry time of the item with the current time
-					if(now.getTime() < item.expiry) {
-						return Promise.resolve(item.value);
-					} else {
-						// We need to clean up this old key
-						localStorage.removeItem(url);
-					}
-				}
-
-			  return fetch(url, expiry).then(response => {
-					if(response.status === 200) {
-						response.text().then(content => {
-							const tmp = {
-								expiry: now.getTime() + expiry,
-								value: content
-							}
-							localStorage.setItem(url, JSON.stringify(tmp));
-							return content;
-						});
-					}
-				});
-			}
-
-			// 3600 = 1 hour
-			cachedFetch('https://custodiancms.org/cross-origin-resources/news.php', 3600)
-				.then(content => {
-					document.getElementById("ccms_news_items").innerHTML = content;
-			})
-			*/
-
-
-
-
-
-
-
 const cachedFetch = (url, options) => {
 	let expiry = 5 * 60; // 5 min default
 	if(typeof options === 'number') {
@@ -319,23 +272,17 @@ document.getElementById("ccms_news_reload").addEventListener("click", () => {
 	});
 });
 
+// (URL to call, Max expire time after saved in localhost) 3600 = seconds is equivalent to 1 hour
+cachedFetch('/ccmsusr/dashboard/logs.php', 3600)
+	.then(r => r.json())
+	.then(content => {
+		document.getElementById("ccms_security_logs").innerHTML = content;
+});
 
 
-// Use a default expiry time, like 5 minutes
-//cachedFetch('https://httpbin.org/get')
-//	.then(r => r.json())
-//	.then(info => {
-//		console.log('1) ********** Your origin is ' + info.origin)
-//	}
-//)
 
-// Instead of passing options to `fetch` we pass an integer which is seconds
-//cachedFetch('https://httpbin.org/get', 2 * 60)  // 2 min
-//	.then(r => r.json())
-//	.then(info => {
-//		console.log('2) ********** Your origin is ' + info.origin)
-//	}
-//)
+
+
 
 // Combined with fetch's options object but called with a custom name
 //let init = {
