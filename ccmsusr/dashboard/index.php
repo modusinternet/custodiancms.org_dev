@@ -284,9 +284,11 @@ const cachedFetch = (url, options) => {
     // Even though 'whenCached' is a string, this operation
     // works because the minus sign converts the
     // string to an integer and it will work.
-    let age = (Date.now() - whenCached) / 1000
-    if (age < expiry) {
-      let response = new Response(new Blob([cached]))
+		//let age = (Date.now() - whenCached) / 1000
+    //if (age < (expiry * 1000)) {
+		let age = (Date.now() - whenCached)
+	   if (age < expiry) {
+	    let response = new Response(new Blob([cached]))
       return Promise.resolve(response)
     } else {
       // We need to clean up this old key
@@ -317,7 +319,7 @@ const cachedFetch = (url, options) => {
   })
 }
 
-// 3600 = seconds is equivalent to 1 hour
+// (URL to call, Max expire time after saved in localhost) 3600 = seconds is equivalent to 1 hour
 cachedFetch('https://custodiancms.org/cross-origin-resources/news.php', 3600)
 	.then(r => r.text())
 	.then(content => {
