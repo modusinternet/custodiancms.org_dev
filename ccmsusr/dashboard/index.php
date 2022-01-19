@@ -63,6 +63,40 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					"c1 c2"
 			}
 		}
+
+
+
+
+
+		.rTable {
+		    	display: table;
+		    	width: 100%;
+		}
+		.rTableRow {
+		    	display: table-row;
+		}
+		.rTableHeading {
+		    	display: table-header-group;
+		    	background-color: #ddd;
+		}
+		.rTableCell, .rTableHead {
+		    	display: table-cell;
+		    	padding: 3px 10px;
+		    	border: 1px solid #999999;
+		}
+		.rTableHeading {
+		    	display: table-header-group;
+		    	background-color: #ddd;
+		    	font-weight: bold;
+		}
+		.rTableFoot {
+		    	display: table-footer-group;
+		    	font-weight: bold;
+		    	background-color: #ddd;
+		}
+		.rTableBody {
+		    	display: table-row-group;
+		}
 	</style>
 	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 		let navActiveItem = ["nav-dashboard"];
@@ -96,6 +130,72 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				</div>
 				<div>
 					<p>List of sessions and or form calls, found in the 'ccms_log' table, that failed.</p>
+
+
+
+					<div class="rTable">
+									<div class="rTableHeading">
+										<div class="rTableHead">
+											Month
+										</div>
+										<div class="rTableHead">
+											Expenses
+										</div>
+										<div class="rTableHead">
+											Notes
+										</div>
+									</div>
+									<div class="rTableBody">
+										<div class="rTableRow">
+											<div class="rTableCell">
+												January
+											</div>
+											<div class="rTableCell">
+												$20
+											</div>
+											<div class="rTableCell">
+												Car repair
+											</div>
+										</div>
+										<div class="rTableRow">
+											<div class="rTableCell">
+												February
+											</div>
+											<div class="rTableCell">
+												$130
+											</div>
+											<div class="rTableCell">
+												Furniture
+											</div>
+										</div>
+										<div class="rTableRow">
+											<div class="rTableCell">
+												March
+											</div>
+											<div class="rTableCell">
+												$30
+											</div>
+											<div class="rTableCell">
+												Pool cleaning
+											</div>
+										</div>
+									</div>
+									<div class="rTableFoot">
+										<div class="rTableHead">
+											Sum
+										</div>
+										<div class="rTableHead">
+											$180
+										</div>
+										<div class="rTableHead">
+											All done
+										</div>
+									</div>
+								</div>
+
+
+
+
 					<div id="ccms_security_logs">
 						<p>Nothing to see at the moment.</p>
 					</div>
