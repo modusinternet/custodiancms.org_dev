@@ -273,7 +273,7 @@ document.getElementById("ccms_news_reload").addEventListener("click", () => {
 });
 
 // (URL to call, Max expire time after saved in localhost) 3600 = seconds is equivalent to 1 hour
-cachedFetch('/ccmsusr/dashboard/logs.php', 3600)
+cachedFetch('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/logs.php', 3600)
 	.then(r => r.json())
 	.then(content => {
 		document.getElementById("ccms_security_logs").innerHTML = content;
