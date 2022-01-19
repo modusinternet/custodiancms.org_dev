@@ -68,50 +68,34 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 
-		.table {
-		    	display: table;
-		    	width: 100%;
+		.table{
+			display:table;
+			width:100%
 		}
 
+		.tableBody{display:table-row-group}
 
-
-
-
-		.table > .tableHeading {
-  background-color: #f9f9f9;
-}
-
-.table > .tableHeading > .tableHead:first-child {
-  border-radius: 10px 0 0 0;
-}
-
-.table > .tableHeading > .tableHead:last-child {
-  border-radius: 0 10px 0 0;
-}
-
-
-.tableHead{
-	color: black;
-	text-align: center;
-}
-
-		.tableRow {
-		    	display: table-row;
+		.tableCell,.tableHead{
+			display:table-cell;
+			border:1px solid #f3f3f3;
+			padding:.5em
 		}
-		.tableHeading {
-		    	display: table-header-group;
+
+		.tableHead{
+			color:black;
+			text-align:center
 		}
-		.tableCell, .tableHead {
-		    	display: table-cell;
-		    	border: 1px solid #f3f3f3;
-					padding: .5em;
+
+		.tableHeading{
+			background-color:#f9f9f9;
+			display:table-header-group;
 		}
-		.tableHeading {
-		    	display: table-header-group;
-		}
-		.tableBody {
-		    	display: table-row-group;
-		}
+
+		.tableHeading>.tableHead:first-child{border-radius:10px 0 0 0}
+
+		.tableHeading>.tableHead:last-child{border-radius:0 10px 0 0}
+
+		.tableRow{display:table-row}
 	</style>
 	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 		let navActiveItem = ["nav-dashboard"];
@@ -145,91 +129,11 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				</div>
 				<div>
 					<p>List of sessions and or form calls, found in the 'ccms_log' table, that failed.</p>
-
-
-
-<div class="table">
-	<div class="tableHeading">
-		<div class="tableHead">
-			Month
-		</div>
-		<div class="tableHead">
-			Expenses
-		</div>
-		<div class="tableHead">
-			Notes
-		</div>
-	</div>
-	<div class="tableBody">
-
-		<div class="tableRow">
-			<div class="tableCell">
-				January
-			</div>
-			<div class="tableCell">
-				$20
-			</div>
-			<div class="tableCell">
-				Car repair
-			</div>
-		</div>
-
-		<div class="tableRow">
-			<div class="tableCell">
-				February
-			</div>
-			<div class="tableCell">
-				$130
-			</div>
-			<div class="tableCell">
-				Furniture
-			</div>
-		</div>
-
-		<div class="tableRow">
-			<div class="tableCell">
-				March
-			</div>
-			<div class="tableCell">
-				$30
-			</div>
-			<div class="tableCell">
-				Pool cleaning
-			</div>
-		</div>
-
-	</div>
-</div>
-
-
-
-
-<div style="display: table;">
-	<div style="display: table-row;">
-		<div style="display: table-cell;">Name:</div>
-		<div style="display: table-cell;">test1</div>
-	</div>
-	<div style="display: table-row;">
-		<div style="display: table-cell;">Address:</div>
-		<div style="display: table-cell;">test2</div>
-	</div>
-</div>
-
-
 					<div id="ccms_security_logs">
 						<p>Nothing to see at the moment.</p>
 					</div>
 				</div>
 			</div>
-
-
-
-
-
-
-
-
-
 
 			<div class="cssGrid-Dashboard-01">
 				<div class="modal">
@@ -338,59 +242,66 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				});
 			}
 
+			const cachedFetch = (url, options) => {
+				let expiry = 5 * 60; // 5 min default
+				if(typeof options === 'number') {
+					expiry = options;
+					options = undefined;
+				} else if(typeof options === 'object') {
+					// Don't set it to 0 seconds
+					expiry = options.seconds || expiry;
+				}
+				let cached = localStorage.getItem(url);
+				let whenCached = localStorage.getItem(url + ':ts');
+				if(cached !== null && whenCached !== null) {
+					let age = (Date.now() - whenCached) / 1000;
+					if(age < expiry) {
+						let response = new Response(new Blob([cached]));
+						return Promise.resolve(response);
+					} else {
+						// Clean up the old key
+						localStorage.removeItem(url);
+						localStorage.removeItem(url + ':ts');
+					}
+				}
 
-const cachedFetch = (url, options) => {
-	let expiry = 5 * 60; // 5 min default
-	if(typeof options === 'number') {
-		expiry = options;
-		options = undefined;
-	} else if(typeof options === 'object') {
-		// Don't set it to 0 seconds
-		expiry = options.seconds || expiry;
-	}
-	let cached = localStorage.getItem(url);
-	let whenCached = localStorage.getItem(url + ':ts');
-	if(cached !== null && whenCached !== null) {
-		let age = (Date.now() - whenCached) / 1000;
-		if(age < expiry) {
-			let response = new Response(new Blob([cached]));
-			return Promise.resolve(response);
-		} else {
-			// Clean up the old key
-			localStorage.removeItem(url);
-			localStorage.removeItem(url + ':ts');
-		}
-	}
+				return fetch(url + "?token=" + Math.random(), options).then(response => {
+					if(response.status === 200) {
+						response.clone().text().then(content => {
+							localStorage.setItem(url, content);
+							localStorage.setItem(url+':ts', Date.now());
+						});
+					}
+					return response;
+				});
+			}
 
-	return fetch(url + "?token=" + Math.random(), options).then(response => {
-		if(response.status === 200) {
-			response.clone().text().then(content => {
-				localStorage.setItem(url, content);
-				localStorage.setItem(url+':ts', Date.now());
+			// (URL to call, Max expire time after saved in localhost) 3600 = seconds is equivalent to 1 hour
+			cachedFetch('https://custodiancms.org/cross-origin-resources/news.php', 3600)
+				.then(r => r.text())
+				.then(content => {
+					document.getElementById("ccms_news_items").innerHTML = content;
 			});
-		}
-		return response;
-	});
-}
 
-// (URL to call, Max expire time after saved in localhost) 3600 = seconds is equivalent to 1 hour
-cachedFetch('https://custodiancms.org/cross-origin-resources/news.php', 3600)
-	.then(r => r.text())
-	.then(content => {
-		document.getElementById("ccms_news_items").innerHTML = content;
-});
+			document.getElementById("ccms_news_reload").addEventListener("click", () => {
+				const url = "https://custodiancms.org/cross-origin-resources/news.php";
+				localStorage.removeItem(url);
+				localStorage.removeItem(url + ":ts");
+				// 3600 = seconds is equivalent to 1 hour
+				cachedFetch(url, 3600)
+					.then(r => r.text())
+					.then(content => {
+						document.getElementById("ccms_news_items").innerHTML = content;
+				});
+			});
 
-document.getElementById("ccms_news_reload").addEventListener("click", () => {
-	const url = "https://custodiancms.org/cross-origin-resources/news.php";
-	localStorage.removeItem(url);
-	localStorage.removeItem(url + ":ts");
-	// 3600 = seconds is equivalent to 1 hour
-	cachedFetch(url, 3600)
-		.then(r => r.text())
-		.then(content => {
-			document.getElementById("ccms_news_items").innerHTML = content;
-	});
-});
+
+
+
+
+
+
+
 
 function makeTable(data) {
 	var mainContainer = document.getElementById("ccms_security_logs");
@@ -411,6 +322,66 @@ cachedFetch('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/logs.php', 36
 );
 
 
+
+
+
+
+
+
+/*
+<div class="table">
+	<div class="tableHeading">
+		<div class="tableHead">
+			Month
+		</div>
+		<div class="tableHead">
+			Expenses
+		</div>
+		<div class="tableHead">
+			Notes
+		</div>
+	</div>
+	<div class="tableBody">
+
+		<div class="tableRow">
+			<div class="tableCell">
+				January
+			</div>
+			<div class="tableCell">
+				$20
+			</div>
+			<div class="tableCell">
+				Car repair
+			</div>
+		</div>
+
+		<div class="tableRow">
+			<div class="tableCell">
+				February
+			</div>
+			<div class="tableCell">
+				$130
+			</div>
+			<div class="tableCell">
+				Furniture
+			</div>
+		</div>
+
+		<div class="tableRow">
+			<div class="tableCell">
+				March
+			</div>
+			<div class="tableCell">
+				$30
+			</div>
+			<div class="tableCell">
+				Pool cleaning
+			</div>
+		</div>
+
+	</div>
+</div>
+*/
 
 
 
