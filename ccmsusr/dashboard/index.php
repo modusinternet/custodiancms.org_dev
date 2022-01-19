@@ -142,7 +142,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 	</div>
 	<div class="tableBody">
 
-		<div class="tableBody">
+		<div class="tableRow">
 			<div class="tableCell">
 				January
 			</div>
@@ -154,7 +154,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			</div>
 		</div>
 
-		<div class="tableBody">
+		<div class="tableRow">
 			<div class="tableCell">
 				February
 			</div>
@@ -166,7 +166,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			</div>
 		</div>
 
-		<div class="tableBody">
+		<div class="tableRow">
 			<div class="tableCell">
 				March
 			</div>
