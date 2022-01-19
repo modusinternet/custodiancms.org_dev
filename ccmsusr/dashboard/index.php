@@ -329,9 +329,13 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				var div = document.createElement("div");
 				for(var i = 0; i < tablecolumns.length; i++) {
 					//header
-					console.log(tablecolumns[i]);
+					//console.log(tablecolumns[i]);
+					div.innerHTML += '<div style="text-transform:capitalize">'+tablecolumns[i]+'</div>';
+
+
+
 				}
-				//mainContainer.appendChild(div);
+				mainContainer.appendChild(div);
 
 
 
