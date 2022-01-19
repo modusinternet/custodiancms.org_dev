@@ -200,6 +200,18 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 
+<div style="display: table;">
+	<div style="display: table-row;">
+		<div style="display: table-cell;">Name:</div>
+		<div style="display: table-cell;">test1</div>
+	</div>
+	<div style="display: table-row;">
+		<div style="display: table-cell;">Address:</div>
+		<div style="display: table-cell;">test2</div>
+	</div>
+</div>
+
+
 					<div id="ccms_security_logs">
 						<p>Nothing to see at the moment.</p>
 					</div>
@@ -378,10 +390,22 @@ document.getElementById("ccms_news_reload").addEventListener("click", () => {
 
 // (URL to call, Max expire time after saved in localhost) 3600 = seconds is equivalent to 1 hour
 cachedFetch('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/logs.php', 3600)
-	.then(r => r.text())
+	//.then(r => r.text())
+	.then(r => r.json())
 	.then(content => {
-		document.getElementById("ccms_security_logs").innerHTML = content;
-});
+		//document.getElementById("ccms_security_logs").innerHTML = content;
+		makeTable(content);
+	}
+
+	function makeTable(data) {
+		var mainContainer = document.getElementById("ccms_security_logs");
+		for (var i = 0; i < data.length; i++) {
+			var div = document.createElement("div");
+			div.innerHTML = 'ID: ' + data[i].id + ' Date:' + data[i].date + ' IP:' + data[i].ip + ' URL:' + data[i].url + ' Log:' + data[i].log;
+			mainContainer.appendChild(div);
+		}
+	}
+);
 
 
 
