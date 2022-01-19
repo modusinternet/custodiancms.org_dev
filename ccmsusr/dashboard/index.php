@@ -77,16 +77,16 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 
-		.table > div > div {
-  background-color: #ccc;
+		.table > .tableHeading {
+  background-color: #f9f9f9;
 }
 
-.table > div > div:first-child {
+.table > .tableHeading > .tableHead:first-child {
   border-radius: 10px 0 0 10px;
   -moz-border-radius: 10px 0 0 10px;
 }
 
-.table > div > div:last-child {
+.table > .tableHeading > .tableHead:last-child {
   border-radius: 0 10px 10px 0;
   -moz-border-radius: 0 10px 10px 0;
 }
@@ -99,7 +99,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 		}
 		.tableHeading {
 		    	display: table-header-group;
-		    	background-color: #ddd;
 		}
 		.tableCell, .tableHead {
 		    	display: table-cell;
