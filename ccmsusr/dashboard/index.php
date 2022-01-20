@@ -90,7 +90,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 		.tableRow{display:table-row}
 
-		.tableRow:nth-child(even){background-color:Lightgreen}
+		.tableRow:nth-child(odd){background-color:#f9f9f9}
 	</style>
 	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 		let navActiveItem = ["nav-dashboard"];
