@@ -352,12 +352,28 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					var divTableRow = document.createElement("div");
 					divTableRow.className = 'tableRow';
 
-					const dateObject = new Date(data[i].date*1000);
-					const humanDateFormat = dateObject.toLocaleString(); //2019-12-9 10:30:15
+					const date = new Date(data[i].date*1000);
+					//const humanDateFormat = date.toLocaleString(); //2019-12-9 10:30:15
+
+					// Year
+					var year = date.getFullYear();
+					// Month
+					var month = months_arr[date.getMonth()];
+					// Day
+					var day = date.getDate();
+					// Hours
+					var hours = date.getHours();
+					// Minutes
+					var minutes = "0" + date.getMinutes();
+					// Seconds
+					var seconds = "0" + date.getSeconds();
+					// Display date time in MM-dd-yyyy h:m:s format
+					const convdataTime = year+'-'+month+'-'+day+'<br>'+hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+
 
 
 					divTableRow.innerHTML = '<div class="tableCell">' + data[i].id
-					+ '</div><div class="tableCell">' + humanDateFormat
+					+ '</div><div class="tableCell">' + convdataTime
 					+ '</div><div class="tableCell">' + data[i].ip
 					+ '</div><div class="tableCell">' + data[i].url
 					+ '</div><div class="tableCell">' + data[i].log
