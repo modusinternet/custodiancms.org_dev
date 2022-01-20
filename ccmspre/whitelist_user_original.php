@@ -97,8 +97,9 @@ define('G_RECAPTCHA_RESPONSE', '/^[a-z\pN\-_]*\z/i');
 // /i		Case insensitive
 
 $whitelist = array(
-	"example_given_name"	=> array("type" => "EXAMPLE_EXPRESSION_1",	"minlength" => 1,	"maxlength" => 15),
-	"example_age"					=> array("type" => "EXAMPLE_EXPRESSION_2",	"maxlength" => 3),
+	"example_given_name"	=> array("type" => "EXAMPLE_EXPRESSION_1",	"minlength"	=> 1,	"maxlength" => 15),
+	"example_age"					=> array("type" => "EXAMPLE_EXPRESSION_2",	"maxlength"	=> 3),
+	"example_dropdown"		=> array("type" => "EXAMPLE_EXPRESSION_3",	"options"		=> array("apple", "ball", "car", "tooth")),
 
 	"ccms_logout"										=> array("type" => "WHOLE_NUMBER",	"maxlength" => 1),
 	"ccms_login"										=> array("type" => "WHOLE_NUMBER",	"maxlength" => 1),
@@ -155,6 +156,20 @@ function CCMS_User_Filter($input, $whitelist) {
 						break;
 					case "EXAMPLE_EXPRESSION_2":
 						$buf = (preg_match(EXAMPLE_EXPRESSION_2, $value)) ? $value : "INVAL";
+						break;
+					case "EXAMPLE_EXPRESSION_3":
+						if(is_array($value)) {
+							if($whitelist[$key]['multiselect']) {
+								$buf = array();
+								foreach($value as $option) {
+									if(in_array($option, $whitelist[$key]['options'])) {
+										$buf[] = $option;
+									}
+								}
+							}
+						} else {
+							$buf = in_array($value, $whitelist[$key]['options']) ? $value : "invalid";
+						}
 						break;
 					case "WHOLE_NUMBER":
 						$buf = (preg_match(WHOLE_NUMBER, $value)) ? $value : "INVAL";

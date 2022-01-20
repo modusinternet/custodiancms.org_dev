@@ -97,8 +97,9 @@ define('G_RECAPTCHA_RESPONSE', '/^[a-z\pN\-_]*\z/i');
 // /i		Case insensitive
 
 $whitelist = array(
-	"example_given_name"	=> array("type" => "EXAMPLE_EXPRESSION_1",	"minlength" => 1,	"maxlength" => 15),
-	"example_age"					=> array("type" => "EXAMPLE_EXPRESSION_2",	"maxlength" => 3),
+	"example_given_name"	=> array("type" => "EXAMPLE_EXPRESSION_1",	"minlength"	=> 1,	"maxlength" => 15),
+	"example_age"					=> array("type" => "EXAMPLE_EXPRESSION_2",	"maxlength"	=> 3),
+	"example_dropdown"		=> array("type" => "EXAMPLE_EXPRESSION_3",	"options"		=> array("apple", "ball", "car", "tooth")),
 
 	"ccms_logout"										=> array("type" => "WHOLE_NUMBER",	"maxlength" => 1),
 	"ccms_login"										=> array("type" => "WHOLE_NUMBER",	"maxlength" => 1),
@@ -131,9 +132,7 @@ $whitelist = array(
 	"note"							=> array("type" => "NO_BADCHARS",			"maxlength" => 1024),
 	"ccms_ins_db_id"		=> array("type" => "WHOLE_NUMBER",		"minlength" => 1,	"maxlength" => 11),
 	"ccms_ins_db_text"	=> array("type" => "ANY",							"maxlength" => 16000),
-	"ccms_ins_db_text"	=> array("type" => "ANY",							"maxlength" => 16000),
-
-	"jsgrid_ajax"				=> array("type" => "OPTION", "options"						=> array("delete", "insert", "load", "update")),
+	"ccms_ins_db_text"	=> array("type" => "ANY",							"maxlength" => 16000)
 );
 
 
@@ -159,20 +158,7 @@ function CCMS_User_Filter($input, $whitelist) {
 					case "EXAMPLE_EXPRESSION_2":
 						$buf = (preg_match(EXAMPLE_EXPRESSION_2, $value)) ? $value : "INVAL";
 						break;
-					case "WHOLE_NUMBER":
-						$buf = (preg_match(WHOLE_NUMBER, $value)) ? $value : "INVAL";
-						break;
-					case "EMAIL":
-						//$buf = (preg_match(EMAIL, $value)) ? $value : "INVAL";
-						$buf = (filter_var($value, FILTER_VALIDATE_EMAIL)) ? $value : "INVAL";
-						break;
-					case "PASSWORD":
-						$buf = (preg_match(PASSWORD, $value)) ? $value : "INVAL";
-						break;
-					case "NO_BADCHARS":
-						$buf = (preg_match(NO_BADCHARS, $value)) ? $value : "INVAL";
-						break;
-					case "OPTION":
+					case "EXAMPLE_EXPRESSION_3":
 						if(is_array($value)) {
 							if($whitelist[$key]['multiselect']) {
 								$buf = array();
@@ -185,6 +171,19 @@ function CCMS_User_Filter($input, $whitelist) {
 						} else {
 							$buf = in_array($value, $whitelist[$key]['options']) ? $value : "invalid";
 						}
+						break;
+					case "WHOLE_NUMBER":
+						$buf = (preg_match(WHOLE_NUMBER, $value)) ? $value : "INVAL";
+						break;
+					case "EMAIL":
+						//$buf = (preg_match(EMAIL, $value)) ? $value : "INVAL";
+						$buf = (filter_var($value, FILTER_VALIDATE_EMAIL)) ? $value : "INVAL";
+						break;
+					case "PASSWORD":
+						$buf = (preg_match(PASSWORD, $value)) ? $value : "INVAL";
+						break;
+					case "NO_BADCHARS":
+						$buf = (preg_match(NO_BADCHARS, $value)) ? $value : "INVAL";
 						break;
 					case "ANY":
 						$buf = (preg_match(ANY, $value)) ? $value : "INVAL";

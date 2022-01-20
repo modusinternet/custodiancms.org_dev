@@ -68,7 +68,6 @@ define('WHOLE_NUMBER', '/^[\pN]*\z/');
 // /		End of the Pattern.
 
 $ccms_whitelist = array(
-	"ccms_ajax_flag"	=> array("type" => "WHOLE_NUMBER",				"maxlength" => 1),
 	"ccms_lngSelect"	=> array("type" => "LNG",						"maxlength" => 5),
 	"ccms_parms"		=> array("type" => "PARMS",						"maxlength" => 128),
 	"ccms_tpl"			=> array("type" => "TPL",						"maxlength" => 256),
@@ -268,7 +267,23 @@ function CCMS_Set_SESSION() {
 				// log out
 				$_SESSION = array();
 				$_SESSION['EXPIRED'] = "1";
-				header("Location: /" . $CFG["DEFAULT_SITE_CHAR_SET"] . "/user/");
+				//header("Location: /" . $CFG["DEFAULT_SITE_CHAR_SET"] . "/user/");
+
+				if($CLEAN["ajax_flag"] == 1) {
+					// If this call contains an Ajax flag set to '1' we don't actually want to send them to the login page, we'll just send a session expired message instead.
+
+					header("Content-Type: application/javascript; charset=UTF-8");
+					// NOTE: If the template is later called using a serviceWorker be aware that will not respect the settings of the 'cache-control' header as noted in here: https://web.dev/service-workers-cache-storage/#api-nuts-and-bolts
+
+					header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+					header("Cache-Control: post-check=0, pre-check=0", false);
+					header("Pragma: no-cache");
+					//echo "/* Session Error */";
+					echo '{"errorMsg":"Session Error 1"}';
+				} else {
+					header("Location: /" . $CFG["DEFAULT_SITE_CHAR_SET"] . "/user/");
+				}
+				
 				exit;
 			} else {
 				// This visitor is not logged in.
@@ -303,7 +318,23 @@ function CCMS_Set_SESSION() {
 			// log out
 			$_SESSION = array();
 			$_SESSION['EXPIRED'] = "1";
-			header("Location: /" . $CFG["DEFAULT_SITE_CHAR_SET"] . "/user/");
+			//header("Location: /" . $CFG["DEFAULT_SITE_CHAR_SET"] . "/user/");
+
+			if($CLEAN["ajax_flag"] == 1) {
+				// If this call contains an Ajax flag set to '1' we don't actually want to send them to the login page, we'll just send a session expired message instead.
+
+				header("Content-Type: application/javascript; charset=UTF-8");
+				// NOTE: If the template is later called using a serviceWorker be aware that will not respect the settings of the 'cache-control' header as noted in here: https://web.dev/service-workers-cache-storage/#api-nuts-and-bolts
+
+				header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+				header("Cache-Control: post-check=0, pre-check=0", false);
+				header("Pragma: no-cache");
+				//echo "/* Session Error */";
+				echo '{"errorMsg":"Session Error 1"}';
+			} else {
+				header("Location: /" . $CFG["DEFAULT_SITE_CHAR_SET"] . "/user/");
+			}
+
 			exit;
 		}
 	}
@@ -343,7 +374,7 @@ function CCMS_Set_SESSION() {
 			$_SESSION = array();
 			$_SESSION['EXPIRED'] = "1";
 
-			if($CLEAN["ccms_ajax_flag"] == 1) {
+			if($CLEAN["ajax_flag"] == 1) {
 				// If this call contains an Ajax flag set to '1' we don't actually want to send them to the login page, we'll just send a session expired message instead.
 
 				header("Content-Type: application/javascript; charset=UTF-8");
