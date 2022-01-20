@@ -353,7 +353,7 @@ function CCMS_Set_SESSION() {
 				header("Cache-Control: post-check=0, pre-check=0", false);
 				header("Pragma: no-cache");
 				//echo "/* Session Error */";
-				echo "{"errorMsg":"Session Error"}";
+				echo '{"errorMsg":"Session Error"}';
 			} else {
 				header("Location: /" . $CFG["DEFAULT_SITE_CHAR_SET"] . "/user/");
 			}
