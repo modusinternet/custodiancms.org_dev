@@ -11,7 +11,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 	exit;
 }
 
-$query = "SELECT * FROM `ccms_log` ORDER BY `date` ASC;";
+$query = "SELECT * FROM `ccms_log` ORDER BY `date`  DESC;";
 $statement = $CFG["DBH"]->prepare($query);
 $statement->execute($data);
 $result = $statement->fetchAll();
