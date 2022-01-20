@@ -329,16 +329,32 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 				var divTable = document.createElement("div");
 				divTable.className = 'table';
-				var divTableRow = document.createElement("div");
-				divTableRow.className = 'tableRow';
-				divTable.appendChild(divTableRow);
+
+				var divTableHeaderRow = document.createElement("div");
+				divTableHeaderRow.className = 'tableRow';
+				divTable.appendChild(divTableHeaderRow);
+
 				for(var i = 0; i < tablecolumns.length; i++) {
 					//console.log(tablecolumns[i]);
 					var div = document.createElement("div");
 					div.className = 'tableCell tableHead';
 					div.innerHTML = tablecolumns[i];
-					divTableRow.appendChild(div);
+					divTableHeaderRow.appendChild(div);
 				}
+
+				for(var i = 0; i < data.length; i++) {
+					var divTableRow = document.createElement("div");
+					divTableRow.className = 'tableRow';
+
+					divTableRow.innerHTML = '<div class="tableCell">' + data[i].id
+					+ '</div><div class="tableCell">' + data[i].date
+					+ '</div><div class="tableCell">' + data[i].ip
+					+ '</div><div class="tableCell">' + data[i].url
+					+ '</div><div class="tableCell">' + data[i].log
+					+ '</div>';
+					divTable.appendChild(divTableRow);
+				}
+				
 				mainContainer.appendChild(divTable);
 
 
