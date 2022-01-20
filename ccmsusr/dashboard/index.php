@@ -243,7 +243,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					}
 				}
 
-				return fetch(url + "?token=" + Math.random(), options).then(response => {
+				return fetch(url + "?token=" + Math.random() = "&ccms_ajax_flag=1", options).then(response => {
 					if(response.status === 200) {
 						response.clone().text().then(content => {
 							localStorage.setItem(url, content);
