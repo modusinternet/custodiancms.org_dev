@@ -278,6 +278,10 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					document.getElementById("ccms_security_logs").innerHTML = "";
 				}
 
+
+//{"errorMsg":"Session Error"}
+console.log(data[i]);
+
 				if(typeof data !== 'object') {
 					document.getElementById("ccms_security_logs").innerHTML = "<p>Nothing to see at the moment.</p>";
 					return;
