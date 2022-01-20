@@ -124,9 +124,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				</div>
 				<div>
 					<p>List of sessions and or form calls, found in the 'ccms_log' table, that failed.</p>
-					<div id="ccms_security_logs">
-						<p>Nothing to see at the moment.</p>
-					</div>
+					<div id="ccms_security_logs"></div>
 				</div>
 			</div>
 
@@ -301,6 +299,10 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			function securityLogTable(data) {
 				if(data !== null) {
 					document.getElementById("ccms_security_logs").innerHTML = "";
+				}
+
+				if(typeof data !== 'object') {
+					return document.getElementById("ccms_security_logs").innerHTML = "<p>Nothing to see at the moment.</p>";
 				}
 
 				var mainContainer = document.getElementById("ccms_security_logs");
