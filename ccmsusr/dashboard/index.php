@@ -378,6 +378,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				const url = "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/logs.php";
 				localStorage.removeItem(url);
 				localStorage.removeItem(url + ":ts");
+				document.getElementById("ccms_security_logs").innerHTML = "";
 				// 3600 = seconds is equivalent to 1 hour
 				cachedFetch(url, 3600)
 					.then(r => r.json())
