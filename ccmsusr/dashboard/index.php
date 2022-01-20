@@ -352,8 +352,10 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					var divTableRow = document.createElement("div");
 					divTableRow.className = 'tableRow';
 
+					var date = new Date(data[i].date*1000);
+
 					divTableRow.innerHTML = '<div class="tableCell">' + data[i].id
-					+ '</div><div class="tableCell">' + data[i].date
+					+ '</div><div class="tableCell">' + date
 					+ '</div><div class="tableCell">' + data[i].ip
 					+ '</div><div class="tableCell">' + data[i].url
 					+ '</div><div class="tableCell">' + data[i].log
