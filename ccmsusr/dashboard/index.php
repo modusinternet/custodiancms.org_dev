@@ -342,6 +342,12 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					divTableHeaderRow.appendChild(div);
 				}
 
+				// Add one more empty div at the end of the header to contain stuff like a delete or edit button.
+				var div = document.createElement("div");
+				div.className = 'tableCell tableHead';
+				div.innerHTML = "";
+				divTableHeaderRow.appendChild(div);
+
 				for(var i = 0; i < data.length; i++) {
 					var divTableRow = document.createElement("div");
 					divTableRow.className = 'tableRow';
@@ -351,10 +357,11 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					+ '</div><div class="tableCell">' + data[i].ip
 					+ '</div><div class="tableCell">' + data[i].url
 					+ '</div><div class="tableCell">' + data[i].log
-					+ '</div>';
+					+ '</div><div class="tableCell">[' + data[i].id
+					+ ']</div>';
 					divTable.appendChild(divTableRow);
 				}
-				
+
 				mainContainer.appendChild(divTable);
 
 
