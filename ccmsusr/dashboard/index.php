@@ -383,7 +383,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					.then(r => r.json())
 					.then(content => {
 						securityLogTable(content);
-					}
+					});
 				}
 			);
 
