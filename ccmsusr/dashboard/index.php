@@ -288,14 +288,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				});
 			});
 
-
-
-
-
-
-
-
-
 			function securityLogTable(data) {
 				if(data !== null) {
 					document.getElementById("ccms_security_logs").innerHTML = "";
@@ -393,15 +385,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					});
 				}
 			);
-
-
-
-
-
-
-
-
-
 
 			// Combined with fetch's options object but called with a custom name
 			//let init = {
