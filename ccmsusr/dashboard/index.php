@@ -73,8 +73,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			width:100%
 		}
 
-		.tableBody{display:table-row-group}
-
 		.tableCell,.tableHead{
 			display:table-cell;
 			border:1px solid #f3f3f3;
@@ -82,21 +80,17 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 		}
 
 		.tableHead{
+			background:#e8e8e8;
 			color:black;
+			font-family:"Open Sans",sans-serif;
+			font-size:larger;
 			text-align:center;
 			text-transform:capitalize
 		}
 
-		.tableHeading{
-			background-color:#f9f9f9;
-			display:table-header-group;
-		}
-
-		.tableHeading>.tableHead:first-child{border-radius:10px 0 0 0}
-
-		.tableHeading>.tableHead:last-child{border-radius:0 10px 0 0}
-
 		.tableRow{display:table-row}
+
+		.tableRow:nth-child(even){background-color:Lightgreen}
 	</style>
 	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 		let navActiveItem = ["nav-dashboard"];
@@ -306,15 +300,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 			function makeTable(data) {
 				var mainContainer = document.getElementById("ccms_security_logs");
-				for(var i = 0; i < data.length; i++) {
-					var div = document.createElement("div");
-					div.innerHTML = 'ID: ' + data[i].id + ' Date:' + data[i].date + ' IP:' + data[i].ip + ' URL:' + data[i].url + ' Log:' + data[i].log;
-					mainContainer.appendChild(div);
-				}
-			}
-
-			function makeTable2(data) {
-				var mainContainer = document.getElementById("ccms_security_logs");
 
 				// Get values for the table headers.
 				// ie: {'ID', 'Date', 'IP' , 'URL','Log'}
@@ -353,8 +338,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					divTableRow.className = 'tableRow';
 
 					const date = new Date(data[i].date*1000);
-					//const humanDateFormat = date.toLocaleString(); //2019-12-9 10:30:15
-
 					// Year
 					var year = date.getFullYear();
 					// Month
@@ -368,7 +351,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					// Seconds
 					var seconds = "0" + date.getSeconds();
 					// Display date time in MM-dd-yyyy h:m:s format
-					const convdataTime = year+'-'+month+'-'+day+'<br>'+hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+					const convdataTime = year+'-'+month+'-'+day+'<br>'+hours+':'+minutes.substr(-2)+':'+seconds.substr(-2);
 
 					divTableRow.innerHTML = '<div class="tableCell">' + data[i].id
 					+ '</div><div class="tableCell">' + convdataTime
@@ -381,35 +364,34 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				}
 
 				mainContainer.appendChild(divTable);
-
-
-
-/*
-				for(var i = 0; i < data.length; i++) {
-					var div = document.createElement("div");
-					div.className = 'tableRow';
-					div.innerHTML = '<div class="tableCell">' + data[i].id
-					+ '</div><div class="tableCell">' + data[i].date
-					+ '</div><div class="tableCell">' + data[i].ip
-					+ '</div><div class="tableCell">' + data[i].url
-					+ '</div><div class="tableCell">' + data[i].log
-					+ '</div>';
-					mainContainer.appendChild(div);
-				}
-*/
 			}
 
 			// (URL to call, Max expire time after saved in localhost) 3600 = seconds is equivalent to 1 hour
 			cachedFetch('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/logs.php', 3600)
-				//.then(r => r.text())
 				.then(r => r.json())
 				.then(content => {
-					//document.getElementById("ccms_security_logs").innerHTML = content;
-					//makeTable(content);
-					makeTable2(content);
-
+					makeTable(content);
 				}
 			);
+
+			// Combined with fetch's options object but called with a custom name
+			//let init = {
+			//	mode: 'same-origin',
+			//	seconds: 3 * 60 // 3 minutes
+			//}
+			//cachedFetch('https://httpbin.org/get', init)
+			//	.then(r => r.json())
+			//	.then(info => {
+			//		console.log('3) ********** Your origin is ' + info.origin)
+			//	}
+			//)
+
+			//cachedFetch('https://httpbin.org/image/png')
+			// .then(r => r.blob())
+			// .then(image => {
+			//   console.log('Image is ' + image.size + ' bytes')
+			// }
+			//)
 
 
 
@@ -473,111 +455,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 </div>
 */
 
-
-
-
-// Combined with fetch's options object but called with a custom name
-//let init = {
-//	mode: 'same-origin',
-//	seconds: 3 * 60 // 3 minutes
-//}
-//cachedFetch('https://httpbin.org/get', init)
-//	.then(r => r.json())
-//	.then(info => {
-//		console.log('3) ********** Your origin is ' + info.origin)
-//	}
-//)
-
-//cachedFetch('https://httpbin.org/image/png')
-// .then(r => r.blob())
-// .then(image => {
-//   console.log('Image is ' + image.size + ' bytes')
-// }
-//)
-
-
-
-
-
-
-
-/*
-const ccms_news_href = 'https://custodiancms.org/cross-origin-resources/news.php?ccms_token=';
-
-// How long do you want the json file to remain cached in local storage?
-// seconds, ie: 3600 = 1 hour
-let ccms_ttl = 3600;
-
-function ccms_token() {
-	return Math.floor(1000000000000000 + Math.random() * 9000000000000000).toString(36).substr(0, 10);
-}
-
-function ccms_get_news_xhr() {
-	const now = new Date()
-	ccms_ttl = ccms_ttl * 1000;
-
-	var xhr = new XMLHttpRequest();
-	// Its necessary to call the custodiancms.org website with a token in your URL because you might be running a serviceworker on your site which want's to try and cache everything.  So to prevent it from pulling a previous call from the cache instead of getting it fresh we change the URL a little each time.  This ofcourse means your cache will eventually fill with outdatted calls to the news feed but we'll have to look into it down the road to see if there is anything more we can do to improve this process later.
-	var ccms_news_href_2 = ccms_news_href + ccms_token();
-	xhr.open('GET', ccms_news_href_2, true);
-	xhr.onreadystatechange = function() {
-		if(xhr.readyState === 4) {
-			ccms_news_inject(xhr.responseText);
-			const temp = {
-				expiry: now.getTime() + ccms_ttl,
-				value: xhr.responseText,
-			}
-			localStorage.setItem("ccms_news", JSON.stringify(temp))
-		}
-	}
-	xhr.send();
-}
-
-function ccms_get_news() {
-	const jsonItem = localStorage.getItem("ccms_news");
-	const item = JSON.parse(jsonItem);
-	const now = new Date();
-
-	// compare the expiry time of the item with the current time
-	if(now.getTime() > item.expiry) {
-		// If the item is expired, delete the item from storage and return null
-		localStorage.removeItem("ccms_news");
-		ccms_get_news_xhr();
-		return;
-	}
-	ccms_news_inject(item.value);
-}
-
-function ccms_news_inject(text) {
-	var content = document.getElementById("ccms_news_items");
-	if(content){
-		content.innerHTML = text;
-	}
-}
-
-var localStorageSupport = function() {
-	try {
-		localStorage.setItem('test', 'test');
-		localStorage.removeItem('test');
-		return true;
-	} catch(e) {
-		return false;
-	}
-}
-
-if(localStorageSupport()) {
-	if(localStorage.ccms_news) {
-		ccms_get_news();
-	} else {
-		ccms_get_news_xhr();
-	}
-}
-
-document.getElementById("ccms_news_reload").addEventListener("click", () => {
-	localStorage.removeItem("ccms_news");
-	ccms_get_news_xhr();
-});
-*/
 		</script>
 	</body>
 </html>
