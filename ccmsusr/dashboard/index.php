@@ -299,6 +299,10 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 			function securityLogTable(data) {
+				if(data !== null) {
+					document.getElementById("ccms_security_logs").innerHTML = "";
+				}
+
 				var mainContainer = document.getElementById("ccms_security_logs");
 
 				// Get values for the table headers.
