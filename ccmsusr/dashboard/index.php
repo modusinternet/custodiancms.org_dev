@@ -273,6 +273,20 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				});
 			});
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 			function securityLogTable(data) {
 				if(data !== null) {
 					document.getElementById("ccms_security_logs").innerHTML = "";
@@ -280,7 +294,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 //{"errorMsg":"Session Error"}
-console.log(data[0]);
+console.log(data[1]);
 
 				if(typeof data !== 'object') {
 					document.getElementById("ccms_security_logs").innerHTML = "<p>Nothing to see at the moment.</p>";
@@ -366,15 +380,31 @@ console.log(data[0]);
 				const url = "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/logs.php";
 				localStorage.removeItem(url);
 				localStorage.removeItem(url + ":ts");
-				document.getElementById("ccms_security_logs").innerHTML = "";
+				//document.getElementById("ccms_security_logs").innerHTML = "";
 				// 3600 = seconds is equivalent to 1 hour
 				cachedFetch(url, 240)
 					.then(r => r.json())
 					.then(content => {
 						securityLogTable(content);
-					});
-				}
-			);
+					}
+				);
+			});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 			// Combined with fetch's options object but called with a custom name
 			//let init = {
