@@ -279,7 +279,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				}
 
 				if(typeof data !== 'object') {
-					return document.getElementById("ccms_security_logs").innerHTML = "<p>Nothing to see at the moment.</p>";
+					document.getElementById("ccms_security_logs").innerHTML = "<p>Nothing to see at the moment.</p>";
+					return;
 				}
 
 				var mainContainer = document.getElementById("ccms_security_logs");
