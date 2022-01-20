@@ -101,21 +101,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			<h1 style="border-bottom:1px dashed var(--cl3)">Dashboard</h1>
 			<p>This section is still under development, but if you come across any unresolved issues please let us know at: <a class="oj" href="mailto:info@custodiancms.org?subject=unresolved+issue+report">info@custodiancms.org</a></p>
 
-
-
-
-			<a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/jsgrid.php">jsgrid</a><br>
-			<a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/tui-grid.php">tui-grid</a><br>
-			<a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/gridjs.php">gridjs</a><br>
-			<br>
-
-
-
-
-
-
-
-
 			<div class="modal">
 				<div>Security Logs
 					<svg id="ccms_security_logs_reload" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width:28px;position:relative;float:right;top:5px;cursor:pointer">
