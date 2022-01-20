@@ -298,7 +298,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 
-			function makeTable(data) {
+			function securityLogTable(data) {
 				var mainContainer = document.getElementById("ccms_security_logs");
 
 				// Get values for the table headers.
@@ -370,9 +370,31 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			cachedFetch('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/logs.php', 3600)
 				.then(r => r.json())
 				.then(content => {
-					makeTable(content);
+					securityLogTable(content);
 				}
 			);
+
+			document.getElementById("ccms_security_logs_reload").addEventListener("click", () => {
+				const url = "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/logs.php";
+				localStorage.removeItem(url);
+				localStorage.removeItem(url + ":ts");
+				// 3600 = seconds is equivalent to 1 hour
+				cachedFetch(url, 3600)
+					.then(r => r.json())
+					.then(content => {
+						securityLogTable(content);
+					}
+				}
+			);
+
+
+
+
+
+
+
+
+
 
 			// Combined with fetch's options object but called with a custom name
 			//let init = {
@@ -392,68 +414,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			//   console.log('Image is ' + image.size + ' bytes')
 			// }
 			//)
-
-
-
-
-
-
-
-
-/*
-<div class="table">
-	<div class="tableHeading">
-		<div class="tableHead">
-			Month
-		</div>
-		<div class="tableHead">
-			Expenses
-		</div>
-		<div class="tableHead">
-			Notes
-		</div>
-	</div>
-	<div class="tableBody">
-
-		<div class="tableRow">
-			<div class="tableCell">
-				January
-			</div>
-			<div class="tableCell">
-				$20
-			</div>
-			<div class="tableCell">
-				Car repair
-			</div>
-		</div>
-
-		<div class="tableRow">
-			<div class="tableCell">
-				February
-			</div>
-			<div class="tableCell">
-				$130
-			</div>
-			<div class="tableCell">
-				Furniture
-			</div>
-		</div>
-
-		<div class="tableRow">
-			<div class="tableCell">
-				March
-			</div>
-			<div class="tableCell">
-				$30
-			</div>
-			<div class="tableCell">
-				Pool cleaning
-			</div>
-		</div>
-
-	</div>
-</div>
-*/
 
 		</script>
 	</body>
