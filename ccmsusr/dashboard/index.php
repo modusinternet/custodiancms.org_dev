@@ -238,6 +238,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 						localStorage.removeItem(url);
 						localStorage.removeItem(url + ':ts');
 					} else {
+						console.log(cached[0].errorMsg);
 						let response = new Response(new Blob([cached]));
 						return Promise.resolve(response);
 					}
