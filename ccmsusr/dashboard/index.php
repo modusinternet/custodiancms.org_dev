@@ -233,7 +233,11 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				let whenCached = localStorage.getItem(url + ':ts');
 				if(cached !== null && whenCached !== null) {
 					let age = (Date.now() - whenCached) / 1000;
-					if(age < expiry) {
+
+
+
+					/*
+					if(age < expiry || cached[0].errorMsg) {
 						let response = new Response(new Blob([cached]));
 						return Promise.resolve(response);
 					} else {
@@ -241,6 +245,21 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 						localStorage.removeItem(url);
 						localStorage.removeItem(url + ':ts');
 					}
+					*/
+
+
+
+					if(cached[0].errorMsg || age > expiry) {
+						// Clean up the old key
+						localStorage.removeItem(url);
+						localStorage.removeItem(url + ':ts');
+					} else {
+						let response = new Response(new Blob([cached]));
+						return Promise.resolve(response);
+					}
+
+
+
 				}
 
 				return fetch(url + "?token=" + Math.random() + "&ajax_flag=1", options).then(response => {
