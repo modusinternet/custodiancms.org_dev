@@ -254,6 +254,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				});
 			}
 
+
 			// (URL to call, Max expire time after saved in localhost) 3600 = seconds is equivalent to 1 hour
 			cachedFetch('https://custodiancms.org/cross-origin-resources/news.php', 3600)
 				.then(r => r.text())
@@ -274,19 +275,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			});
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 			function securityLogTable(data) {
 				if(data !== null) {
 					document.getElementById("ccms_security_logs").innerHTML = "";
@@ -295,7 +283,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				if(typeof data !== 'object') {
 					document.getElementById("ccms_security_logs").innerHTML = "<p>Nothing to see at the moment.</p>";
 					return;
-				//} else if(data[0].errorMsg !== null) {
 				} else if(data[0].errorMsg) {
 					document.getElementById("ccms_security_logs").innerHTML = "<p>" + data[0].errorMsg + "</p>";
 					return;
@@ -391,22 +378,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					}
 				);
 			});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 			// Combined with fetch's options object but called with a custom name
 			//let init = {
