@@ -59,7 +59,7 @@ if(!isset($_SESSION["USER_ID"]) || isset($_POST["ccms_login"]) || isset($_REQUES
 			header("Cache-Control: post-check=0, pre-check=0", false);
 			header("Pragma: no-cache");
 
-			echo '{"errorMsg":"Session Error 2"}';
+			echo '[{errorMsg:"Session Error (2)"}]';
 			exit;
 	} else {
 			// Show login template because they are NOT logged in.
