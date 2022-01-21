@@ -233,12 +233,12 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				let whenCached = localStorage.getItem(url + ':ts');
 				if(cached !== null && whenCached !== null) {
 					let age = (Date.now() - whenCached) / 1000;
-					if(cached[0].errorMsg || age > expiry) {
+					if(cached[0].errorMsg !== null || age > expiry) {
 						// Clean up the old key
 						localStorage.removeItem(url);
 						localStorage.removeItem(url + ':ts');
 					} else {
-						console.log(cached[0].errorMsg);
+						//console.log(cached[0].errorMsg);
 						let response = new Response(new Blob([cached]));
 						return Promise.resolve(response);
 					}
