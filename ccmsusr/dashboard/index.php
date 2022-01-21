@@ -299,8 +299,9 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				if(typeof data !== 'object') {
 					document.getElementById("ccms_security_logs").innerHTML = "<p>Nothing to see at the moment.</p>";
 					return;
-				} else if(data[0].errorMsg !== null) {
-					document.getElementById("ccms_security_logs").innerHTML = "<p>[" + data[0].errorMsg + "]</p>";
+				//} else if(data[0].errorMsg !== null) {
+				} else if(data[0].errorMsg) {
+					document.getElementById("ccms_security_logs").innerHTML = "<p>" + data[0].errorMsg + "</p>";
 					return;
 				}
 
