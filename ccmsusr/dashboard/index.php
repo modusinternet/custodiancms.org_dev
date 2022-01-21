@@ -294,10 +294,13 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 //{"errorMsg":"Session Error"}
-console.log(data.errorMsg[0]);
+//console.log(data.errorMsg);
 
 				if(typeof data !== 'object') {
 					document.getElementById("ccms_security_logs").innerHTML = "<p>Nothing to see at the moment.</p>";
+					return;
+				} elseif(data.errorMsg !== null) {
+					document.getElementById("ccms_security_logs").innerHTML = "<p>" + data.errorMsg + "</p>";
 					return;
 				}
 
