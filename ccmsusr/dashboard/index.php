@@ -276,14 +276,18 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 			function securityLogTable(data) {
-				if(data !== null) {
-					document.getElementById("ccms_security_logs").innerHTML = "";
-				}
+				document.getElementById("ccms_security_logs").innerHTML = "";
 
-				if(typeof data !== 'object') {
+				if(data === null) {
 					document.getElementById("ccms_security_logs").innerHTML = "<p>Nothing to see at the moment.</p>";
 					return;
-				} else if(data[0].errorMsg) {
+				}
+
+			//	if(typeof data !== 'object') {
+		//			document.getElementById("ccms_security_logs").innerHTML = "<p>Nothing to see at the moment.</p>";
+	//				return;
+//				} else if(data[0].errorMsg) {
+				if(data[0].errorMsg) {
 					document.getElementById("ccms_security_logs").innerHTML = "<p>" + data[0].errorMsg + "</p>";
 					return;
 				}
