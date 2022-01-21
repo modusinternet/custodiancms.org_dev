@@ -52,22 +52,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			color:var(--cl0)
 		}
 
-		#ccms_news_items{padding-left:30px}
-		#ccms_news_items li{margin-bottom:10px}
-
-		/* 824px or larger. Pixel Xl Landscape resolution is 411 x 823. */
-		/* 875px or larger. Pixel Xl Landscape resolution is 411 x 823. */
-		@media only screen and (min-width: 875px){
-			.cssGrid-Dashboard-01{
-				grid-template-areas:
-					"c1 c2"
-			}
-		}
-
-
-
-
-
 		.table{
 			display:table;
 			width:100%
@@ -91,6 +75,18 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 		.tableRow{display:table-row}
 
 		.tableRow:nth-child(odd){background-color:#f9f9f9}
+
+		#ccms_news_items{padding-left:30px}
+		#ccms_news_items li{margin-bottom:10px}
+
+		/* 824px or larger. Pixel Xl Landscape resolution is 411 x 823. */
+		/* 875px or larger. Pixel Xl Landscape resolution is 411 x 823. */
+		@media only screen and (min-width: 875px){
+			.cssGrid-Dashboard-01{
+				grid-template-areas:
+					"c1 c2"
+			}
+		}
 	</style>
 	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 		let navActiveItem = ["nav-dashboard"];
@@ -108,7 +104,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 						<path fill="#fff" d="M19.91,15.51H15.38a1,1,0,0,0,0,2h2.4A8,8,0,0,1,4,12a1,1,0,0,0-2,0,10,10,0,0,0,16.88,7.23V21a1,1,0,0,0,2,0V16.5A1,1,0,0,0,19.91,15.51ZM15,12a3,3,0,1,0-3,3A3,3,0,0,0,15,12Zm-4,0a1,1,0,1,1,1,1A1,1,0,0,1,11,12ZM12,2A10,10,0,0,0,5.12,4.77V3a1,1,0,0,0-2,0V7.5a1,1,0,0,0,1,1h4.5a1,1,0,0,0,0-2H6.22A8,8,0,0,1,20,12a1,1,0,0,0,2,0A10,10,0,0,0,12,2Z"/></svg>
 				</div>
 				<div>
-					<p>List of sessions and or form calls, found in the 'ccms_log' table, that failed.</p>
+					<p>List of sessions and or form calls, found in the 'ccms_log' table, that failed.<?php if($CFG["LOG_EVENTS"] === 0){echo "<br>(Currently disabled in config.)";}?></p>
 					<div id="ccms_security_logs"></div>
 				</div>
 			</div>
