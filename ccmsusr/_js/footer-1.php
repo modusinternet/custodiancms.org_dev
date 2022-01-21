@@ -3,7 +3,7 @@ function loadFirst(e,t,i,c){var a=document.createElement("script");a.async="true
 /* Reload Screen START */
 window.setTimeout(function(){
 	location.reload(true);
-},({CCMS_LIB:_default.php;FUNC:ccms_cfgCookieSessionExpire}*1000)+5000);
+},({CCMS_LIB:_default.php;FUNC:ccms_cfgCookieSessionExpire}*1000)+10000);
 /* Reload Screen END */
 
 if(window.addEventListener){
