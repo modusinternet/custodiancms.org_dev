@@ -338,6 +338,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					// Display date time in MM-dd-yyyy h:m:s format
 					const convdataTime = year+'-'+month+'-'+day+'<br>'+hours+':'+minutes.substr(-2)+':'+seconds.substr(-2);
 
+					/*
 					divTableRow.innerHTML = '<div class="tableCell">' + data[i].id
 					+ '</div><div class="tableCell">' + convdataTime
 					+ '</div><div class="tableCell">' + data[i].ip
@@ -345,6 +346,15 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					+ '</div><div class="tableCell">' + data[i].log
 					+ '</div><div class="tableCell">[' + data[i].id
 					+ ']</div>';
+					*/
+
+					divTableRow.innerHTML = '<div class="tableCell">' + convdataTime
+					+ '</div><div class="tableCell">' + data[i].ip
+					+ '</div><div class="tableCell">' + data[i].url
+					+ '</div><div class="tableCell">' + data[i].log
+					+ '</div><div class="tableCell">
+					<button class="ccms_security_logs_delete_button" data-id="' + data[i].id + '">Delete</button></div>';
+
 					divTable.appendChild(divTableRow);
 				}
 
