@@ -397,7 +397,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 				var delBut = document.getElementsByClassName('ccms_security_logs_delete_button');
 				for(var i = 0; i < delBut.length; i++){
-					var id = delBut[i].dataset.id
+					const id = delBut[i].getAttribute('data-id');
 					delBut[i].onclick = function(){
 						//document.getElementById('priceLabel').innerText = "$"+this.dataset.price;
 						console.log("delete button pressed for security log id " + id + ".");
