@@ -354,7 +354,14 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 				for(var i = 0; i < data.length; i++) {
 					var divTableRow = document.createElement("div");
-					divTableRow.className = 'tableRow';
+					//divTableRow.className = 'tableRow';
+					divTableRow.setAttribute("class", "tableRow");
+					divTableRow.setAttribute("data-id", data[i].id);
+
+
+
+
+
 
 					const date = new Date(data[i].date*1000);
 					// Year
@@ -382,7 +389,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					+ ']</div>';
 					*/
 
-					divTableRow.innerHTML = '<div class="tableCell" data-id="' + data[i].id + '">' + convdataTime
+					divTableRow.innerHTML = '<div class="tableCell">' + convdataTime
 					+ '</div><div class="tableCell">' + data[i].ip
 					+ '</div><div class="tableCell">' + data[i].url
 					+ '</div><div class="tableCell">' + data[i].log
