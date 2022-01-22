@@ -354,14 +354,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 				for(var i = 0; i < data.length; i++) {
 					var divTableRow = document.createElement("div");
-					//divTableRow.className = 'tableRow';
 					divTableRow.setAttribute("class", "tableRow");
 					divTableRow.setAttribute("data-id", data[i].id);
-
-
-
-
-
 
 					const date = new Date(data[i].date*1000);
 					// Year
@@ -379,20 +373,10 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					// Display date time in MM-dd-yyyy h:m:s format
 					const convdataTime = year+'-'+month+'-'+day+'<br>'+hours+':'+minutes.substr(-2)+':'+seconds.substr(-2);
 
-					/*
-					divTableRow.innerHTML = '<div class="tableCell">' + data[i].id
-					+ '</div><div class="tableCell">' + convdataTime
-					+ '</div><div class="tableCell">' + data[i].ip
-					+ '</div><div class="tableCell">' + data[i].url
-					+ '</div><div class="tableCell">' + data[i].log
-					+ '</div><div class="tableCell">[' + data[i].id
-					+ ']</div>';
-					*/
-
 					divTableRow.innerHTML = '<div class="tableCell">' + convdataTime
 					+ '</div><div class="tableCell">' + data[i].ip
-					+ '</div><div class="tableCell">' + data[i].url
-					+ '</div><div class="tableCell">' + data[i].log
+					+ '</div><div class="tableCell" style="line-break:anywhere">' + data[i].url
+					+ '</div><div class="tableCell" style="width:100%>' + data[i].log
 					+ '</div><div class="tableCell" style="text-align:center"><button class="ccms_security_logs_button ccms_security_logs_delete_button" data-id="' + data[i].id + '" title="Delete"></button></div>';
 
 					divTable.appendChild(divTableRow);
