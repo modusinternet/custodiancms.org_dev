@@ -382,7 +382,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					+ ']</div>';
 					*/
 
-					divTableRow.innerHTML = '<div class="tableCell">' + convdataTime
+					divTableRow.innerHTML = '<div class="tableCell" data-id="' + data[i].id + '">' + convdataTime
 					+ '</div><div class="tableCell">' + data[i].ip
 					+ '</div><div class="tableCell">' + data[i].url
 					+ '</div><div class="tableCell">' + data[i].log
@@ -405,7 +405,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 
-						
+
 					}
 				}
 			}
