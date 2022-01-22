@@ -395,15 +395,15 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 
-				//(function (){
-					document.querySelectorAll('ccms_security_logs_delete_button').forEach((inp) => {
+				var delBut = document.getElementsByClassName('ccms_security_logs_delete_button');
+				for(var i = 0; i < delBut.length; i++){
+					delBut[i].onclick = function(){
+						//document.getElementById('priceLabel').innerText = "$"+this.dataset.price;
 						console.log("delete button pressed for security log id... ");
-						//inp.onclick = function () {
-							//document.getElementById('priceLabel').innerText = "$" + this.dataset.price;
-							console.log("delete button pressed for security log id... ");
-						//};
-					});
-				//})();
+					}
+				}
+
+				
 			}
 
 			// (URL to call, Max expire time after saved in localhost) 3600 = seconds is equivalent to 1 hour
