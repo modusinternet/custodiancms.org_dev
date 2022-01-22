@@ -352,8 +352,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					+ '</div><div class="tableCell">' + data[i].ip
 					+ '</div><div class="tableCell">' + data[i].url
 					+ '</div><div class="tableCell">' + data[i].log
-					+ '</div><div class="tableCell">
-					<button class="ccms_security_logs_delete_button" data-id="' + data[i].id + '">Delete</button></div>';
+					+ '</div><div class="tableCell"><button class="ccms_security_logs_delete_button" data-id="' + data[i].id + '">Delete</button></div>';
 
 					divTable.appendChild(divTableRow);
 				}
