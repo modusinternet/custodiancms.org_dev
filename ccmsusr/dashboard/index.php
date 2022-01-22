@@ -393,18 +393,21 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 				mainContainer.appendChild(divTable);
 
-
-
 				var delBut = document.getElementsByClassName('ccms_security_logs_delete_button');
 				for(var i = 0; i < delBut.length; i++){
 					const id = delBut[i].getAttribute('data-id');
 					delBut[i].onclick = function(){
-						//document.getElementById('priceLabel').innerText = "$"+this.dataset.price;
 						console.log("delete button pressed for security log id " + id + ".");
+
+
+
+
+
+
+
+						
 					}
 				}
-
-
 			}
 
 			// (URL to call, Max expire time after saved in localhost) 3600 = seconds is equivalent to 1 hour
@@ -430,31 +433,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					}
 				);
 			});
-
-			/*
-			document.getElementsByClassName("ccms_security_logs_delete_button").addEventListener("click", () => {
-				console.log("delete button pressed for security log id... ");
-			});
-			*/
-
-
-
-
-			/*
-			(function (){
-				var delBut = document.getElementsByClassName('ccms_security_logs_delete_button');
-				for(var i = 0; i < delBut.length; i++){
-					delBut[i].onclick = function(){
-						//document.getElementById('priceLabel').innerText = "$"+this.dataset.price;
-						console.log("delete button pressed for security log id... ");
-					}
-				}
-			})();
-			*/
-
-
-
-
 
 			// Combined with fetch's options object but called with a custom name
 			//let init = {
