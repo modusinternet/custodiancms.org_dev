@@ -418,6 +418,10 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				);
 			});
 
+			document.getElementsByClassName("ccms_security_logs_delete_button").addEventListener("click", () => {
+				console.log("delete button pressed for security log id... ");
+			});
+
 
 
 
