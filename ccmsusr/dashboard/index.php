@@ -410,6 +410,19 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				);
 			});
 
+
+			(function (){
+				var delBut = document.getElementsByClassName('ccms_security_logs_delete_button');
+				for(var i = 0; i < delBut.length; i++){
+					delBut[i].onclick = function(){
+						//document.getElementById('priceLabel').innerText = "$"+this.dataset.price;
+						console.log("delete button pressed for security log id... ");
+					}
+				}
+			})();
+
+
+
 			// Combined with fetch's options object but called with a custom name
 			//let init = {
 			//	mode: 'same-origin',
