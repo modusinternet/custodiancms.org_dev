@@ -25,7 +25,7 @@ if(!isset($errorMsg['id'])) {
 	// no problems
 	$qry = $CFG["DBH"]->prepare("DELETE FROM `ccms_log` WHERE `id` = :id LIMIT 1;");
 	$qry->execute(array(':id' => $CLEAN["id"]));
-	$count = $del->rowCount();
+	$count = $qry->rowCount();
 	if($count > 0) {
 		echo "0"; // success
 	} else {
