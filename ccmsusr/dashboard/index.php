@@ -394,10 +394,10 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 						fetch(url + "?token=" + Math.random() + "&ajax_flag=1&id=" + id)
 							.then(x => x.text())
 							.then(y => {
-								if(y === 0) { // success
+								if(y === "0") { // success
 									concole.log(id + " deleted");
 									document.getElementById("sec-log-row-id-" + id).outerHTML = "";
-								} else if(y === 1) { // already deleted
+								} else if(y === "1") { // already deleted
 									concole.log(id + " already deleted");
 									document.getElementById("sec-log-row-id-" + id).outerHTML = "";
 								} else {
