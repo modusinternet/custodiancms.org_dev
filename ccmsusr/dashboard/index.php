@@ -391,18 +391,12 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					delBut[i].onclick = function(){
 						let url = "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/logs_delete.php";
 
-						fetch (url + "?token=" + Math.random() + "&ajax_flag=1&id=" + id)
+						fetch(url + "?token=" + Math.random() + "&ajax_flag=1&id=" + id)
 							.then(x => x.text())
-							.then(y =>
-								document.getElementById("sec-log-row-id-" + id).outerHTML = ""
+							.then(y => {
+								document.getElementById("sec-log-row-id-" + id).outerHTML = "";
 
-
-
-
-
-
-
-
+							}
 						);
 					}
 				}
