@@ -389,31 +389,24 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				for(var i = 0; i < delBut.length; i++){
 					const id = delBut[i].getAttribute('data-id');
 					delBut[i].onclick = function(){
-						console.log("delete button pressed for security log id " + id + ".");
-
-
-
-
-
 						let url = "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/logs_delete.php";
 
 						fetch (url + "?token=" + Math.random() + "&ajax_flag=1&id=" + id)
 							.then(x => x.text())
-							.then(y => console.log(y)
+							.then(y =>
+								console.log(y)
+
+
+
+
+
+
+
+
+
+
+								
 						);
-
-
-
-
-
-
-
-
-
-
-
-
-
 					}
 				}
 			}
