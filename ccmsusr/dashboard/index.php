@@ -403,7 +403,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 								} else {
 									alert(y);
 								}
-
 							}
 						);
 					}
