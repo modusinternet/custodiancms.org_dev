@@ -394,7 +394,11 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 						fetch(url + "?token=" + Math.random() + "&ajax_flag=1&id=" + id)
 							.then(x => x.text())
 							.then(y => {
-								document.getElementById("sec-log-row-id-" + id).outerHTML = "";
+								if(y === "success") {
+									document.getElementById("sec-log-row-id-" + id).outerHTML = "";
+								} else {
+									alert(y);
+								}
 
 							}
 						);
