@@ -400,6 +400,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 								} else if(y === "1") { // already deleted
 									console.log(id + " already deleted");
 									document.getElementById("sec-log-row-id-" + id).outerHTML = "";
+								} else if(y[0].errorMsg) {
+									document.getElementById("ccms_security_logs").innerHTML = "<p>" + data[0].errorMsg + "</p>";
 								} else {
 									alert(y);
 								}
