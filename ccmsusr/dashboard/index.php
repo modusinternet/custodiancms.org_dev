@@ -355,7 +355,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				for(var i = 0; i < data.length; i++) {
 					var divTableRow = document.createElement("div");
 					divTableRow.setAttribute("class", "tableRow");
-					divTableRow.setAttribute("data-id", data[i].id);
+					divTableRow.setAttribute("id", "sec-log-row-id-" + data[i].id);
 
 					const date = new Date(data[i].date*1000);
 					// Year
@@ -373,8 +373,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					// Display date time in MM-dd-yyyy h:m:s format
 					const convdataTime = year+'-'+month+'-'+day+'<br>'+hours+':'+minutes.substr(-2)+':'+seconds.substr(-2);
 
-					divTableRow.innerHTML = '<div class="tableCell" id="sec-log-row-id-' + data[i].id
-					+ '">' + data[i].id
+					divTableRow.innerHTML = '<div class="tableCell">' + data[i].id
 					+ '</div><div class="tableCell">' + convdataTime
 					+ '</div><div class="tableCell">' + data[i].ip
 					+ '</div><div class="tableCell" style="line-break:anywhere;min-width:300px">' + data[i].url
