@@ -23,8 +23,8 @@ if($CLEAN["id"] == "") {
 
 if(!isset($errorMsg['id'])) {
 	// no problems
-	//$qry = $CFG["DBH"]->prepare("DELETE FROM `ccms_log` WHERE `id` = :id LIMIT 1;");
-	//$qry->execute(array(':id' => $CLEAN["id"]));
+	$qry = $CFG["DBH"]->prepare("DELETE FROM `ccms_log` WHERE `id` = :id LIMIT 1;");
+	$qry->execute(array(':id' => $CLEAN["id"]));
 	echo "success";
 	exit;
 }
