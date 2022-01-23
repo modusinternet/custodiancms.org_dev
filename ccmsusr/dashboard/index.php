@@ -373,7 +373,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					// Display date time in MM-dd-yyyy h:m:s format
 					const convdataTime = year+'-'+month+'-'+day+'<br>'+hours+':'+minutes.substr(-2)+':'+seconds.substr(-2);
 
-					divTableRow.innerHTML = '<div class="tableCell">' + data[i].id
+					divTableRow.innerHTML = '<div class="tableCell" id="sec-log-row-id-' + data[i].id
+					+ '">' + data[i].id
 					+ '</div><div class="tableCell">' + convdataTime
 					+ '</div><div class="tableCell">' + data[i].ip
 					+ '</div><div class="tableCell" style="line-break:anywhere;min-width:300px">' + data[i].url
@@ -394,10 +395,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 						fetch (url + "?token=" + Math.random() + "&ajax_flag=1&id=" + id)
 							.then(x => x.text())
 							.then(y =>
-								delBut[i].outerHTML = ""
-
-
-
+								document.getElementById("sec-log-row-id-" + id).outerHTML = "";
 
 
 
