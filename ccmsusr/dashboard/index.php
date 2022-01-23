@@ -395,7 +395,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 							.then(x => x.text())
 							.then(y =>
 								console.log(y);
-								document.getElementById(id).outerHTML = "";
+								delBut[i].outerHTML = "";
 
 
 
