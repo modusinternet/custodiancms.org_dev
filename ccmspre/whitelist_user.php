@@ -132,7 +132,8 @@ $whitelist = array(
 	"note"							=> array("type" => "NO_BADCHARS",			"maxlength" => 1024),
 	"ccms_ins_db_id"		=> array("type" => "WHOLE_NUMBER",		"minlength" => 1,	"maxlength" => 11),
 	"ccms_ins_db_text"	=> array("type" => "ANY",							"maxlength" => 16000),
-	"ccms_ins_db_text"	=> array("type" => "ANY",							"maxlength" => 16000)
+	"ccms_ins_db_text"	=> array("type" => "ANY",							"maxlength" => 16000),
+	"id"								=> array("type" => "WHOLE_NUMBER",		"minlength" => 1,	"maxlength" => 8),
 );
 
 
