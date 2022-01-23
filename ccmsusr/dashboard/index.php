@@ -394,7 +394,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 						fetch (url + "?token=" + Math.random() + "&ajax_flag=1&id=" + id)
 							.then(x => x.text())
 							.then(y =>
-								console.log(y)
+								console.log(y);
+								document.getElementById(id).outerHTML = "";
 
 
 
@@ -405,7 +406,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 
-								
+
 						);
 					}
 				}
