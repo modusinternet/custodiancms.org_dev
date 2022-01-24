@@ -376,7 +376,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					divTableRow.innerHTML = '<div class="tableCell">' + data[i].id
 					+ '</div><div class="tableCell">' + convdataTime
 					+ '</div><div class="tableCell ipAddress">' + data[i].ip
-					+ '(Blacklist)</div><div class="tableCell" style="line-break:anywhere;min-width:300px">' + data[i].url
+					+ '<br>(Blacklist)</div><div class="tableCell" style="line-break:anywhere;min-width:300px">' + data[i].url
 					+ '</div><div class="tableCell" style="width:100%">' + data[i].log
 					+ '</div><div class="tableCell" style="text-align:center"><button class="ccms_security_logs_button ccms_security_logs_delete_button" data-id="' + data[i].id + '" title="Delete"></button></div>';
 
