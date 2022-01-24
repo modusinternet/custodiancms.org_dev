@@ -373,12 +373,12 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					// Display date time in MM-dd-yyyy h:m:s format
 					const convdataTime = year+'-'+month+'-'+day+'<br>'+hours+':'+minutes.substr(-2)+':'+seconds.substr(-2);
 
-					divTableRow.innerHTML = '<div class="tableCell">' + data[i].id
-					+ '</div><div class="tableCell">' + convdataTime
-					+ '</div><div class="tableCell ipAddress">' + data[i].ip
-					+ '<br>(Blacklist)</div><div class="tableCell" style="line-break:anywhere;min-width:300px">' + data[i].url
-					+ '</div><div class="tableCell" style="width:100%">' + data[i].log
-					+ '</div><div class="tableCell" style="text-align:center"><button class="ccms_security_logs_button ccms_security_logs_delete_button" data-id="' + data[i].id + '" title="Delete"></button></div>';
+					divTableRow.innerHTML = '<div class="tableCell">' + data[i].id + '</div>
+					<div class="tableCell">' + convdataTime + '</div>
+					<div class="tableCell">' + data[i].ip + '<br><span class="blacklistIpAddress" data-ip="' + data[i].ip + '">(Blacklist)</span></div>
+					<div class="tableCell" style="line-break:anywhere;min-width:300px">' + data[i].url + '</div>
+					<div class="tableCell" style="width:100%">' + data[i].log + '</div>
+					<div class="tableCell" style="text-align:center"><button class="ccms_security_logs_button ccms_security_logs_delete_button" data-id="' + data[i].id + '" title="Delete"></button></div>';
 
 					divTable.appendChild(divTableRow);
 				}
@@ -409,7 +409,35 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 						);
 					}
 				}
-			}
+
+
+				var blacklistBut = document.getElementsByClassName('blacklistIpAddress');
+				for(var i = 0; i < blacklistBut.length; i++){
+					const ip = blacklistBut[i].getAttribute('data-ip');
+					blacklistBut[i].onclick = function(){
+						let url = "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/addIpAddressToBlacklist.php";
+
+
+
+
+						fetch(url + "?token=" + Math.random() + "&ajax_flag=1&ip=" + ip)
+							.then(x => x.text())
+							.then(y => {
+								if(y === "0") { // success
+									console.log(ip + " blocked");
+									alert(y + "");
+								} else if(y === "1") { // already blocked
+									console.log(ip + " already blocked");
+									alert(y + " already blocked");
+								} else if(y === '[{"errorMsg":"Session Error"}]') {
+									document.getElementById("ccms_security_logs").innerHTML = "<p>Session Error</p>";
+								} else {
+									alert(y);
+								}
+							}
+						);
+					}
+				}
 
 			// (URL to call, Max expire time after saved in localhost) 3600 = seconds is equivalent to 1 hour
 			//cachedFetch('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/logs.php', 3600)

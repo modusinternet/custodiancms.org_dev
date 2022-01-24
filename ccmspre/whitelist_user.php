@@ -114,26 +114,27 @@ $whitelist = array(
 	"ccms_auth_token"								=> array("type" => "WHOLE_NUMBER",	"minlength" => 6,	"maxlength" => 6),
 	"g-recaptcha-response"					=> array("type" => "G_RECAPTCHA_RESPONSE",	"maxlength" => 2048),
 
-	"ajax_flag"					=> array("type" => "WHOLE_NUMBER",		"maxlength" => 1),
-	"firstname"					=> array("type" => "NO_BADCHARS",			"maxlength" => 64),
-	"lastname"					=> array("type" => "NO_BADCHARS",			"maxlength" => 64),
-	"alias"							=> array("type" => "NO_BADCHARS",			"maxlength" => 32),
-	"position"					=> array("type" => "NO_BADCHARS",			"maxlength" => 64),
-	"address1"					=> array("type" => "NO_BADCHARS",			"maxlength" => 128),
-	"address2"					=> array("type" => "NO_BADCHARS",			"maxlength" => 128),
-	"prov_state"				=> array("type" => "NO_BADCHARS",			"maxlength" => 32),
-	"country"						=> array("type" => "NO_BADCHARS",			"maxlength" => 64),
-	"post_zip"					=> array("type" => "NO_BADCHARS",			"maxlength" => 32),
-	"email"							=> array("type" => "EMAIL",						"maxlength" => 255),
-	"phone1"						=> array("type" => "NO_BADCHARS",			"maxlength" => 64),
-	"phone2"						=> array("type" => "NO_BADCHARS",			"maxlength" => 64),
-	"skype"							=> array("type" => "NO_BADCHARS",			"maxlength" => 32),
-	"facebook"					=> array("type" => "NO_BADCHARS",			"maxlength" => 128),
-	"note"							=> array("type" => "NO_BADCHARS",			"maxlength" => 1024),
-	"ccms_ins_db_id"		=> array("type" => "WHOLE_NUMBER",		"minlength" => 1,	"maxlength" => 11),
-	"ccms_ins_db_text"	=> array("type" => "ANY",							"maxlength" => 16000),
-	"ccms_ins_db_text"	=> array("type" => "ANY",							"maxlength" => 16000),
-	"id"								=> array("type" => "WHOLE_NUMBER",		"minlength" => 1,	"maxlength" => 8),
+	"ajax_flag"					=> array("type" => "WHOLE_NUMBER",	"maxlength" => 1),
+	"firstname"					=> array("type" => "NO_BADCHARS",		"maxlength" => 64),
+	"lastname"					=> array("type" => "NO_BADCHARS",		"maxlength" => 64),
+	"alias"							=> array("type" => "NO_BADCHARS",		"maxlength" => 32),
+	"position"					=> array("type" => "NO_BADCHARS",		"maxlength" => 64),
+	"address1"					=> array("type" => "NO_BADCHARS",		"maxlength" => 128),
+	"address2"					=> array("type" => "NO_BADCHARS",		"maxlength" => 128),
+	"prov_state"				=> array("type" => "NO_BADCHARS",		"maxlength" => 32),
+	"country"						=> array("type" => "NO_BADCHARS",		"maxlength" => 64),
+	"post_zip"					=> array("type" => "NO_BADCHARS",		"maxlength" => 32),
+	"email"							=> array("type" => "EMAIL",					"maxlength" => 255),
+	"phone1"						=> array("type" => "NO_BADCHARS",		"maxlength" => 64),
+	"phone2"						=> array("type" => "NO_BADCHARS",		"maxlength" => 64),
+	"skype"							=> array("type" => "NO_BADCHARS",		"maxlength" => 32),
+	"facebook"					=> array("type" => "NO_BADCHARS",		"maxlength" => 128),
+	"note"							=> array("type" => "NO_BADCHARS",		"maxlength" => 1024),
+	"ccms_ins_db_id"		=> array("type" => "WHOLE_NUMBER",	"minlength" => 1,	"maxlength" => 11),
+	"ccms_ins_db_text"	=> array("type" => "ANY",						"maxlength" => 16000),
+	"ccms_ins_db_text"	=> array("type" => "ANY",						"maxlength" => 16000),
+	"id"								=> array("type" => "WHOLE_NUMBER",	"minlength" => 1,	"maxlength" => 8),
+	"ip"								=> array("type" => "IP",						"minlength" => 7,	"maxlength" => 15),
 );
 
 
@@ -179,6 +180,10 @@ function CCMS_User_Filter($input, $whitelist) {
 					case "EMAIL":
 						//$buf = (preg_match(EMAIL, $value)) ? $value : "INVAL";
 						$buf = (filter_var($value, FILTER_VALIDATE_EMAIL)) ? $value : "INVAL";
+						break;
+					case "IP":
+						//$buf = (preg_match(IP, $value)) ? $value : "INVAL";
+						$buf = (filter_var($value, FILTER_VALIDATE_IP)) ? $value : "INVAL";
 						break;
 					case "PASSWORD":
 						$buf = (preg_match(PASSWORD, $value)) ? $value : "INVAL";

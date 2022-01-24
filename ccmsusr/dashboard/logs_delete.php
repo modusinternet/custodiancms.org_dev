@@ -34,4 +34,3 @@ if(!isset($errorMsg['id'])) {
 	exit;
 }
 echo $errorMsg['id'];
-exit;
