@@ -427,15 +427,17 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 						fetch(url + "?token=" + Math.random() + "&ajax_flag=1&ip=" + ip)
 							.then(x => x.text())
 							.then(y => {
-								if(y === "0") { // already found
-									console.log(ip + " already found");
-									alert(y + "");
+								if(y === "0") { // already blocked
+									console.log(ip + " already blocked");
+									alert(ip + " already blocked");
 								} else if(y === "1") { // success
 									console.log(ip + " blocked");
-									alert(y + " blocked");
+									alert(ip + " blocked");
 								} else if(y === '[{"errorMsg":"Session Error"}]') {
+									console.log("Session Error");
 									document.getElementById("ccms_security_logs").innerHTML = "<p>Session Error</p>";
 								} else {
+									console.log(y);
 									alert(y);
 								}
 							}
