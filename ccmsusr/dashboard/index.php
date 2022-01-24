@@ -37,9 +37,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			*/
 		}
 
-
-
-
 		.ccms_security_logs_button {
 			width: 16px;
 			height: 16px;
