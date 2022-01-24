@@ -21,10 +21,10 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 		p{margin:0 0 20px}
 
-		/*
-		.cssGrid-Dashboard-01>{grid-area:c1}
-		.cssGrid-Dashboard-01>{grid-area:c2}
-		*/
+		.blacklistIpAddress{
+			font-size:.8em;
+			cursor:pointer
+		}
 
 		.cssGrid-Dashboard-01{
 			display:grid;
@@ -392,7 +392,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					const id = delBut[i].getAttribute('data-id');
 					delBut[i].onclick = function(){
 						let url = "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/logs_delete.php";
-
 						fetch(url + "?token=" + Math.random() + "&ajax_flag=1&id=" + id)
 							.then(x => x.text())
 							.then(y => {
@@ -412,18 +411,11 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					}
 				}
 
-
-
-
 				var blacklistBut = document.getElementsByClassName('blacklistIpAddress');
 				for(var i = 0; i < blacklistBut.length; i++){
 					const ip = blacklistBut[i].getAttribute('data-ip');
 					blacklistBut[i].onclick = function(){
 						let url = "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/addIpAddressToBlacklist.php";
-
-
-
-
 						fetch(url + "?token=" + Math.random() + "&ajax_flag=1&ip=" + ip)
 							.then(x => x.text())
 							.then(y => {
@@ -445,9 +437,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					}
 				}
 			}
-
-
-
 
 			// (URL to call, Max expire time after saved in localhost) 3600 = seconds is equivalent to 1 hour
 			//cachedFetch('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/logs.php', 3600)
