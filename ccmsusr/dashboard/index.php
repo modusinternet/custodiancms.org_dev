@@ -411,35 +411,36 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 						);
 					}
 				}
+			}
 
 
-				var blacklistBut = document.getElementsByClassName('blacklistIpAddress');
-				for(var i = 0; i < blacklistBut.length; i++){
-					const ip = blacklistBut[i].getAttribute('data-ip');
-					blacklistBut[i].onclick = function(){
-						let url = "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/addIpAddressToBlacklist.php";
+			var blacklistBut = document.getElementsByClassName('blacklistIpAddress');
+			for(var i = 0; i < blacklistBut.length; i++){
+				const ip = blacklistBut[i].getAttribute('data-ip');
+				blacklistBut[i].onclick = function(){
+					let url = "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/addIpAddressToBlacklist.php";
 
 
 
 
-						fetch(url + "?token=" + Math.random() + "&ajax_flag=1&ip=" + ip)
-							.then(x => x.text())
-							.then(y => {
-								if(y === "0") { // already found
-									console.log(ip + " already found");
-									alert(y + "");
-								} else if(y === "1") { // success
-									console.log(ip + " blocked");
-									alert(y + " blocked");
-								} else if(y === '[{"errorMsg":"Session Error"}]') {
-									document.getElementById("ccms_security_logs").innerHTML = "<p>Session Error</p>";
-								} else {
-									alert(y);
-								}
+					fetch(url + "?token=" + Math.random() + "&ajax_flag=1&ip=" + ip)
+						.then(x => x.text())
+						.then(y => {
+							if(y === "0") { // already found
+								console.log(ip + " already found");
+								alert(y + "");
+							} else if(y === "1") { // success
+								console.log(ip + " blocked");
+								alert(y + " blocked");
+							} else if(y === '[{"errorMsg":"Session Error"}]') {
+								document.getElementById("ccms_security_logs").innerHTML = "<p>Session Error</p>";
+							} else {
+								alert(y);
 							}
-						);
-					}
+						}
+					);
 				}
+			}
 
 			// (URL to call, Max expire time after saved in localhost) 3600 = seconds is equivalent to 1 hour
 			//cachedFetch('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/logs.php', 3600)
