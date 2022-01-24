@@ -373,12 +373,14 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					// Display date time in MM-dd-yyyy h:m:s format
 					const convdataTime = year+'-'+month+'-'+day+'<br>'+hours+':'+minutes.substr(-2)+':'+seconds.substr(-2);
 
-					divTableRow.innerHTML = '<div class="tableCell">' + data[i].id + '</div>
-					<div class="tableCell">' + convdataTime + '</div>
-					<div class="tableCell">' + data[i].ip + '<br><span class="blacklistIpAddress" data-ip="' + data[i].ip + '">(Blacklist)</span></div>
-					<div class="tableCell" style="line-break:anywhere;min-width:300px">' + data[i].url + '</div>
-					<div class="tableCell" style="width:100%">' + data[i].log + '</div>
-					<div class="tableCell" style="text-align:center"><button class="ccms_security_logs_button ccms_security_logs_delete_button" data-id="' + data[i].id + '" title="Delete"></button></div>';
+					divTableRow.innerHTML = '<div class="tableCell">'+ data[i].id
+					+ '</div><div class="tableCell">' + convdataTime
+					+ '</div><div class="tableCell">' + data[i].ip
+					+ '<br><span class="blacklistIpAddress" data-ip="' + data[i].ip
+					+ '">(Blacklist)</span></div><div class="tableCell" style="line-break:anywhere;min-width:300px">' + data[i].url
+					+ '</div><div class="tableCell" style="width:100%">' + data[i].log
+					+ '</div><div class="tableCell" style="text-align:center"><button class="ccms_security_logs_button ccms_security_logs_delete_button" data-id="' + data[i].id
+					+ '" title="Delete"></button></div>';
 
 					divTable.appendChild(divTableRow);
 				}
