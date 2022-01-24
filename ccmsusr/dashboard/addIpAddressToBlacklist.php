@@ -32,8 +32,8 @@ if(!isset($errorMsg['ip'])) {
 		if(strstr($row["data"], $CLEAN["ip"])) {
 			echo "0"; // already found
 		} else {
-			//$qry = $CFG["DBH"]->prepare("UPDATE `ccms_blacklist` SET `data` = :data WHERE `id` = 1;");
-			//$qry->execute(array(':data' => $row["data"] . "|" . $CLEAN["ip"]));
+			$qry = $CFG["DBH"]->prepare("UPDATE `ccms_blacklist` SET `data` = :data WHERE `id` = 1;");
+			$qry->execute(array(':data' => $row["data"] . "|" . $CLEAN["ip"]));
 			echo "1"; // success
 		}
 	} else {
