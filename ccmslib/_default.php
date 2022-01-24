@@ -326,7 +326,7 @@ if($row["lng"] === $CLEAN["ccms_lng"]){echo ' style="text-decoration:underline d
 							type: "post",
 							data: "ccms_ins_db_id=" + textOrig[0] + "&ccms_ins_db_text=" + encodeURIComponent(textNew)
 						}).done(function(msg) {
-							if(msg == "1") {
+							if(msg === "1") {
 								$(editbtn).removeClass("hidden");
 								$(savebtn).addClass("hidden");
 								$(cancelbtn).addClass("hidden");
@@ -342,6 +342,8 @@ if($row["lng"] === $CLEAN["ccms_lng"]){echo ' style="text-decoration:underline d
 										} catch (e) {}
 									}
 								}
+							} else if(msg === '[{"errorMsg":"Session Error"}]') {
+								alert("Session error, changes not saved.");
 							} else {
 								alert(msg);
 								//console.log(msg);
