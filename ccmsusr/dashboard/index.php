@@ -23,6 +23,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 		.blacklistIpAddress{
 			font-size:.8em;
+			color:var(--cl11);
 			cursor:pointer
 		}
 
