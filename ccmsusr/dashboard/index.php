@@ -307,7 +307,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				document.getElementById("ccms_security_logs").innerHTML = "";
 
 				if(data === null) {
-					document.getElementById("ccms_security_logs").innerHTML = "<p>Nothing to see at the moment.</p>";
+					document.getElementById("ccms_security_logs").innerHTML = '<p class="blacklistIpAddress">Nothing to see at the moment.</p>';
 					return;
 				}
 
