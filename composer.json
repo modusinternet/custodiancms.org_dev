@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": ">=7.0",
-        "modusinternet/Custodian-CMS": ">=0.7.5"
+        "modusinternet/Custodian-CMS": ">=0.7.6"
     },
 
     "minimum-stability": "dev",
