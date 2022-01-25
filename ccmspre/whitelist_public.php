@@ -53,8 +53,8 @@ define('EXAMPLE_EXPRESSION_2', '/^[\pN]+\z/');
 
 
 $whitelist = array(
-	"example_given_name"	 => array("type" => "EXAMPLE_EXPRESSION_1",  "minlength" => 1,	"maxlength" => 15),
-	"example_age"			  => array("type" => "EXAMPLE_EXPRESSION_2",  "maxlength" => 3),
+	"example_given_name"	 => array("type" => "EXAMPLE_EXPRESSION_1",	"minlength" => 1,	"maxlength" => 15),
+	"example_age"			  	=> array("type" => "EXAMPLE_EXPRESSION_2",	"maxlength" => 3),
 	"example_dropdown"		=> array("type" => "EXAMPLE_EXPRESSION_3",	"options"		=> array("apple", "ball", "car", "tooth")),
 );
 
