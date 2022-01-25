@@ -10,7 +10,7 @@ $CFG = array();
 $CLEAN = array();
 
 $CFG["VERSION"] = "0.7.6";
-$CFG["RELEASE_DATE"] = "Jan 26, 2022";
+$CFG["RELEASE_DATE"] = "Jan 25, 2022";
 
 // Necessary to solve a problem on GoDaddy servers when running sites found in sub folders of existing sites.
 if(isset($_SERVER["REAL_DOCUMENT_ROOT"])) {
@@ -67,17 +67,6 @@ if(!isset($_SESSION["USER_ID"]) || isset($_POST["ccms_login"]) || isset($_REQUES
 	}
 }
 
-
-
-
-
-
-
-//if(preg_match("/[\/]\z/", $CLEAN["ccms_tpl"])) {
-//	$CLEAN["ccms_tpl"] .= "index.php";
-//}
-
-
 // If there is no template requested, show $CFG["INDEX"].
 // This code is used when accessing the /user/ templates, before login credentials have between
 // verified and when dealing with URL's that resemble:
@@ -89,8 +78,6 @@ if(!isset($_SESSION["USER_ID"]) || isset($_POST["ccms_login"]) || isset($_REQUES
 if(!isset($CLEAN["ccms_tpl"]) || $CLEAN["ccms_tpl"] === "" || $CLEAN["ccms_tpl"] === "/") {
 	$CLEAN["ccms_tpl"] = "/dashboard/";
 }
-
-
 
 // If the template being requested is inside a dir and no specific template name is
 // part of that request, add index to the end.
@@ -104,11 +91,6 @@ if(!isset($CLEAN["ccms_tpl"]) || $CLEAN["ccms_tpl"] === "" || $CLEAN["ccms_tpl"]
 if(preg_match("/[\/]\z/", $CLEAN["ccms_tpl"])) {
 	$CLEAN["ccms_tpl"] .= "index.php";
 }
-
-
-
-
-
 
 CCMS_Main();
 
