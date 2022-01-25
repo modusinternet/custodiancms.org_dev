@@ -369,7 +369,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					// Seconds
 					var seconds = "0" + date.getSeconds();
 					// Display date time in MM-dd-yyyy h:m:s format
-					const convdataTime = year+'-'+month+'-'+day+'<br>'+hours+':'+minutes.substr(-2)+':'+seconds.substr(-2);
+					const convdataTime = year+'-'+month+1+'-'+day+'<br>'+hours+':'+minutes.substr(-2)+':'+seconds.substr(-2);
 
 					divTableRow.innerHTML = '<div class="tableCell">'+ data[i].id
 					+ '</div><div class="tableCell">' + convdataTime
