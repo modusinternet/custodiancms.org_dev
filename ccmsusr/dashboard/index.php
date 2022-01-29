@@ -54,29 +54,13 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 		}
 
 		.ccms_security_logs_delete_button2 {
-			background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%236563ff" d="M10,18a1,1,0,0,0,1-1V11a1,1,0,0,0-2,0v6A1,1,0,0,0,10,18ZM20,6H16V5a3,3,0,0,0-3-3H11A3,3,0,0,0,8,5V6H4A1,1,0,0,0,4,8H5V19a3,3,0,0,0,3,3h8a3,3,0,0,0,3-3V8h1a1,1,0,0,0,0-2ZM10,5a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1V6H10Zm7,14a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V8H17Zm-3-1a1,1,0,0,0,1-1V11a1,1,0,0,0-2,0v6A1,1,0,0,0,14,18Z"/></svg>');
-			/*
+			background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23d7680f" d="M10,18a1,1,0,0,0,1-1V11a1,1,0,0,0-2,0v6A1,1,0,0,0,10,18ZM20,6H16V5a3,3,0,0,0-3-3H11A3,3,0,0,0,8,5V6H4A1,1,0,0,0,4,8H5V19a3,3,0,0,0,3,3h8a3,3,0,0,0,3-3V8h1a1,1,0,0,0,0-2ZM10,5a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1V6H10Zm7,14a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V8H17Zm-3-1a1,1,0,0,0,1-1V11a1,1,0,0,0-2,0v6A1,1,0,0,0,14,18Z"/></svg>');
 			background-position:center center;
-			background-repeat:no-repeat;
-			bottom:0;
-			height:50%;
-			left:0;
-			margin:auto;
-			opacity:1;
-			position:absolute;
-			right:0;
-			top:0;
-			width:50%;
-			transition:opacity 2s;
-			*/
-			background-position: 0 -80px;
-			background-repeat: no-repeat;
-			background-color: transparent;
-
-			width: 16px;
-			height: 16px;
-			border: none;
-			cursor: pointer;
+			background-color:transparent;
+			border:none;
+			cursor:pointer;
+			height:25px;
+			width:25px
 		}
 
 
