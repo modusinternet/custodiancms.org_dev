@@ -37,7 +37,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			*/
 		}
 
-		.ccms_security_logs_button {
+		.ccms_security_logs_button1 {
 			width: 16px;
 			height: 16px;
 			border: none;
@@ -53,6 +53,21 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			height: 16px;
 		}
 
+		.ccms_security_logs_delete_button2 {
+			background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%236563ff" d="M10,18a1,1,0,0,0,1-1V11a1,1,0,0,0-2,0v6A1,1,0,0,0,10,18ZM20,6H16V5a3,3,0,0,0-3-3H11A3,3,0,0,0,8,5V6H4A1,1,0,0,0,4,8H5V19a3,3,0,0,0,3,3h8a3,3,0,0,0,3-3V8h1a1,1,0,0,0,0-2ZM10,5a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1V6H10Zm7,14a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V8H17Zm-3-1a1,1,0,0,0,1-1V11a1,1,0,0,0-2,0v6A1,1,0,0,0,14,18Z"/></svg>');
+			background-position:center center;
+			background-repeat:no-repeat;
+			bottom:0;
+			height:50%;
+			left:0;
+			margin:auto;
+			opacity:1;
+			position:absolute;
+			right:0;
+			top:0;
+			width:50%;
+			transition:opacity 2s;
+		}
 
 
 
@@ -377,7 +392,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					+ '<br><span class="blacklistIpAddress" data-ip="' + data[i].ip
 					+ '">(Blacklist)</span></div><div class="tableCell" style="line-break:anywhere;min-width:300px">' + data[i].url
 					+ '</div><div class="tableCell" style="width:100%">' + data[i].log
-					+ '</div><div class="tableCell" style="text-align:center"><button class="ccms_security_logs_button ccms_security_logs_delete_button" data-id="' + data[i].id
+					+ '</div><div class="tableCell" style="text-align:center"><button class="ccms_security_logs_button ccms_security_logs_delete_button2" data-id="' + data[i].id
 					+ '" title="Delete"></button></div>';
 
 					divTable.appendChild(divTableRow);
@@ -385,7 +400,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 				mainContainer.appendChild(divTable);
 
-				var delBut = document.getElementsByClassName('ccms_security_logs_delete_button');
+				var delBut = document.getElementsByClassName('ccms_security_logs_delete_button2');
 				for(var i = 0; i < delBut.length; i++){
 					const id = delBut[i].getAttribute('data-id');
 					delBut[i].onclick = function(){
