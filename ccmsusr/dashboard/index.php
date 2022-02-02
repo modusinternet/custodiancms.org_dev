@@ -330,7 +330,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					+ '</div><div class="tableCell">' + data[i].ip
 					+ '<br><span class="blacklistIpAddress" data-ip="' + data[i].ip
 					+ '">(Blacklist)</span></div><div class="tableCell" style="line-break:anywhere;min-width:200px">' + data[i].url
-					+ '</div><div class="tableCell" style="min-width:400px;width:100%">' + data[i].log
+					+ '</div><div class="tableCell" style="min-width:395px;width:100%">' + data[i].log
 					+ '</div><div class="tableCell" style="text-align:center"><button class="svg_icon svg_delete_button" data-id="' + data[i].id
 					+ '" title="Delete"></button></div>';
 
