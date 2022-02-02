@@ -116,6 +116,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			top:5px
 		}
 
+		#ccms_security_logs{display:block}
+
 		/* 875px or larger. Pixel Xl Landscape resolution is 411 x 823. */
 		@media only screen and (min-width: 875px){
 			.cssGrid-Dashboard-01{
@@ -468,6 +470,23 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 						securityLogTable(content);
 					}
 				);
+			});
+
+			document.getElementById("ccms_compress_button").addEventListener("click", () => {
+				let compressed = localStorage.getItem("ccms_compress_button");
+				let a = document.querySelector('#ccms_security_logs');
+				if(compressed == null) {
+					compressed = 1;
+					localStorage.setItem("ccms_compress_button", 1);
+				}
+				if(compressed == 1) {
+					a.style.display = 'block';
+					compressed = 0;
+					localStorage.setItem("ccms_compress_button", 0);
+				} else {
+					a.style.display = 'none';
+					localStorage.setItem("ccms_compress_button", 1);
+				}
 			});
 
 			// Combined with fetch's options object but called with a custom name
