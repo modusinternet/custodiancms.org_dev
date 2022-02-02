@@ -154,20 +154,20 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				<div class="modal">
 					<div>System Info</div>
 					<div>
-						<p style="word-break:break-all">Server Name: <span class="og"><?= $_SERVER["SERVER_NAME"];?></span></p>
-						<p style="word-break:break-all">Document Root: <span class="og"><?=$_SERVER["DOCUMENT_ROOT"];?></span></p>
-						<p>System Address: <span class="og"><?= $_SERVER["SERVER_ADDR"];?></p>
-						<p>Web Server: <span class="og"><?php $a = explode(" ",$_SERVER["SERVER_SOFTWARE"]);echo $a[0];?></span></p>
-						<p>PHP Version: <span class="og"><?= phpversion();?></span></p>
-						<p>PHP Memory Limit: <span class="og"><?= ini_get("memory_limit");?></span></p>
-						<p>MySQL Version: <span class="og"><?= $CFG["DBH"]->getAttribute(PDO::ATTR_SERVER_VERSION);?></span></p>
-						<p>COOKIE_SESSION_EXPIRE: <span class="og"><?= $CFG["COOKIE_SESSION_EXPIRE"];?></span></p>
-						<p>HTML_MIN: <span class="og"><?= $CFG["HTML_MIN"];?></span></p>
-						<p>CACHE: <span class="og"><?= $CFG["CACHE"];?></span></p>
-						<p>CACHE_EXPIRE: <span class="og"><?= $CFG["CACHE_EXPIRE"];?></span></p>
-						<p>LOG_EVENTS: <span class="og"><?= $CFG["LOG_EVENTS"];?></span></p>
-						<p>EMAIL_FROM: <span class="og"><?= $CFG["EMAIL_FROM"];?></span></p>
-						<p style="word-break:break-all">EMAIL_BOUNCES_RETURNED_TO: <span class="og"><?= $CFG["EMAIL_BOUNCES_RETURNED_TO"];?></span></p>
+						<p style="word-break:break-all">Server Name: <span class="oj"><?= $_SERVER["SERVER_NAME"];?></span></p>
+						<p style="word-break:break-all">Document Root: <span class="oj"><?=$_SERVER["DOCUMENT_ROOT"];?></span></p>
+						<p>System Address: <span class="oj"><?= $_SERVER["SERVER_ADDR"];?></p>
+						<p>Web Server: <span class="oj"><?php $a = explode(" ",$_SERVER["SERVER_SOFTWARE"]);echo $a[0];?></span></p>
+						<p>PHP Version: <span class="oj"><?= phpversion();?></span></p>
+						<p>PHP Memory Limit: <span class="oj"><?= ini_get("memory_limit");?></span></p>
+						<p>MySQL Version: <span class="oj"><?= $CFG["DBH"]->getAttribute(PDO::ATTR_SERVER_VERSION);?></span></p>
+						<p>COOKIE_SESSION_EXPIRE: <span class="oj"><?= $CFG["COOKIE_SESSION_EXPIRE"];?></span></p>
+						<p>HTML_MIN: <span class="oj"><?= $CFG["HTML_MIN"];?></span></p>
+						<p>CACHE: <span class="oj"><?= $CFG["CACHE"];?></span></p>
+						<p>CACHE_EXPIRE: <span class="oj"><?= $CFG["CACHE_EXPIRE"];?></span></p>
+						<p>LOG_EVENTS: <span class="oj"><?= $CFG["LOG_EVENTS"];?></span></p>
+						<p>EMAIL_FROM: <span class="oj"><?= $CFG["EMAIL_FROM"];?></span></p>
+						<p style="word-break:break-all">EMAIL_BOUNCES_RETURNED_TO: <span class="oj"><?= $CFG["EMAIL_BOUNCES_RETURNED_TO"];?></span></p>
 					</div>
 				</div>
 
