@@ -56,7 +56,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			width:25px
 		}
 
-		#ccms_news_reload_button #ccms_security_logs_reload_button{
+		#ccms_news_reload_button, #ccms_security_logs_reload_button{
 			float:right;
 			position:relative;
 			right:0;
