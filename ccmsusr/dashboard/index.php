@@ -98,10 +98,12 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			background-color:transparent;
 			border:none;
 			cursor:pointer;
+			float:right;
 			height:25px;
-			position:absolute;
+			position:relative;
 			right:0;
-			width:25px
+			width:25px;
+			top:5px
 		}
 
 		#ccms_security_logs_reload_button{
@@ -109,10 +111,12 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			background-color:transparent;
 			border:none;
 			cursor:pointer;
+			float:right;
 			height:25px;
-			position:absolute;
+			position:relative;
 			right:0;
-			width:25px
+			width:25px;
+			top:5px
 		}
 
 		/* 875px or larger. Pixel Xl Landscape resolution is 411 x 823. */
