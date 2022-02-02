@@ -132,8 +132,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 			<div class="modal">
 				<div>
-					Security Logs
 					<button class="svg_icon svg_compress_button" id="ccms_compress_button" title="Compress Show/Hide"></button>
+					<span style="float:left;position:relative">Security Logs</span>
 					<button class="svg_icon svg_reload_button" id="ccms_security_logs_reload_button" title="Reload"></button>
 				</div>
 				<div>
