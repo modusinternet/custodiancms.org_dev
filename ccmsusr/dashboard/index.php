@@ -37,26 +37,24 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			*/
 		}
 
-		.svg_delete_button {
-			background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23d7680f" d="M10,18a1,1,0,0,0,1-1V11a1,1,0,0,0-2,0v6A1,1,0,0,0,10,18ZM20,6H16V5a3,3,0,0,0-3-3H11A3,3,0,0,0,8,5V6H4A1,1,0,0,0,4,8H5V19a3,3,0,0,0,3,3h8a3,3,0,0,0,3-3V8h1a1,1,0,0,0,0-2ZM10,5a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1V6H10Zm7,14a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V8H17Zm-3-1a1,1,0,0,0,1-1V11a1,1,0,0,0-2,0v6A1,1,0,0,0,14,18Z"/></svg>');
-			background-position:center center;
+		.svg_icon{
 			background-color:transparent;
 			border:none;
 			cursor:pointer;
 			height:25px;
 			width:25px
+		}
+
+		.svg_delete_button {
+			background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23d7680f" d="M10,18a1,1,0,0,0,1-1V11a1,1,0,0,0-2,0v6A1,1,0,0,0,10,18ZM20,6H16V5a3,3,0,0,0-3-3H11A3,3,0,0,0,8,5V6H4A1,1,0,0,0,4,8H5V19a3,3,0,0,0,3,3h8a3,3,0,0,0,3-3V8h1a1,1,0,0,0,0-2ZM10,5a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1V6H10Zm7,14a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V8H17Zm-3-1a1,1,0,0,0,1-1V11a1,1,0,0,0-2,0v6A1,1,0,0,0,14,18Z"/></svg>');
+			background-position:center center
 		}
 
 		.svg_reload_button{
 			background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M19.91,15.51H15.38a1,1,0,0,0,0,2h2.4A8,8,0,0,1,4,12a1,1,0,0,0-2,0,10,10,0,0,0,16.88,7.23V21a1,1,0,0,0,2,0V16.5A1,1,0,0,0,19.91,15.51ZM15,12a3,3,0,1,0-3,3A3,3,0,0,0,15,12Zm-4,0a1,1,0,1,1,1,1A1,1,0,0,1,11,12ZM12,2A10,10,0,0,0,5.12,4.77V3a1,1,0,0,0-2,0V7.5a1,1,0,0,0,1,1h4.5a1,1,0,0,0,0-2H6.22A8,8,0,0,1,20,12a1,1,0,0,0,2,0A10,10,0,0,0,12,2Z"/></svg>');
-			background-color:transparent;
-			border:none;
-			cursor:pointer;
-			height:25px;
-			width:25px
 		}
 
-		#ccms_news_reload_button, #ccms_security_logs_reload_button{
+		#ccms_news_reload_button,#ccms_security_logs_reload_button{
 			float:right;
 			position:relative;
 			right:0;
@@ -130,7 +128,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 			<div class="modal">
 				<div>Security Logs
-					<button class="svg_reload_button" id="ccms_security_logs_reload_button" title="Reload"></button>
+					<button class="svg_icon svg_reload_button" id="ccms_security_logs_reload_button" title="Reload"></button>
 				</div>
 				<div>
 					<p>List of sessions and or form calls, found in the 'ccms_log' table, that failed.<?php if($CFG["LOG_EVENTS"] === 0){echo '<br><span class="blacklistIpAddress">Currently disabled in config. Only old logs displayed below for now, if any.</span>';}?></p>
@@ -161,7 +159,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 				<div class="modal">
 					<div>News From CustodianCMS.org
-						<button class="svg_reload_button" id="ccms_news_reload_button" title="Reload"></button>
+						<button class="svg_icon svg_reload_button" id="ccms_news_reload_button" title="Reload"></button>
 					</div>
 					<div id="ccms_news_items">
 						<p>Nothing to see at the moment.</p>
@@ -380,7 +378,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					+ '<br><span class="blacklistIpAddress" data-ip="' + data[i].ip
 					+ '">(Blacklist)</span></div><div class="tableCell" style="line-break:anywhere;min-width:300px">' + data[i].url
 					+ '</div><div class="tableCell" style="width:100%">' + data[i].log
-					+ '</div><div class="tableCell" style="text-align:center"><button class="svg_delete_button" data-id="' + data[i].id
+					+ '</div><div class="tableCell" style="text-align:center"><button class="svg_icon svg_delete_button" data-id="' + data[i].id
 					+ '" title="Delete"></button></div>';
 
 					divTable.appendChild(divTableRow);
