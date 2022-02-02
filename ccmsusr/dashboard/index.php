@@ -70,7 +70,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 		.modal>div:first-child{
 			background-color:var(--cl4);
 			border-radius:6px 6px 0 0;
-			color:var(--cl0)
+			color:var(--cl0);
+			height:53px
 		}
 
 		.table{
@@ -99,7 +100,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 		#ccms_compress_button{
 			position:relative;
-			top:-5px
+			top:5px
 		}
 
 		#ccms_news_items{padding-left:30px}
@@ -132,8 +133,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 			<div class="modal">
 				<div>
-					<button class="svg_icon svg_compress_button" id="ccms_compress_button" title="Compress Show/Hide"></button>
 					<span style="float:left;position:relative">Security Logs</span>
+					<button class="svg_icon svg_compress_button" id="ccms_compress_button" title="Compress Show/Hide"></button>
 					<button class="svg_icon svg_reload_button" id="ccms_security_logs_reload_button" title="Reload"></button>
 				</div>
 				<div>
