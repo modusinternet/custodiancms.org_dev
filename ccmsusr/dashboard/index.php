@@ -116,7 +116,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			top:5px
 		}
 
-		#ccms_security_logs{display:block}
+		#ccms_security_logs{display:none}
 
 		/* 875px or larger. Pixel Xl Landscape resolution is 411 x 823. */
 		@media only screen and (min-width: 875px){
@@ -472,6 +472,24 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				);
 			});
 
+
+
+
+
+			function ccms_security_logs() {
+				let compressed = localStorage.getItem("ccms_security_logs_compress");
+				let a = document.querySelector('#ccms_security_logs');
+				if(compressed == null || compressed == 0) {
+					a.style.display = 'block';
+					localStorage.setItem("ccms_security_logs_compress", 0);
+				} else {
+					a.style.display = 'none';
+					localStorage.setItem("ccms_security_logs_compress", 1);
+				}
+			}
+
+
+
 			document.getElementById("ccms_compress_button").addEventListener("click", () => {
 				let compressed = localStorage.getItem("ccms_security_logs_compress");
 				let a = document.querySelector('#ccms_security_logs');
@@ -483,6 +501,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					localStorage.setItem("ccms_security_logs_compress", 1);
 				}
 			});
+
+			setTimeout(function() {ccms_security_logs();}, 1000);
 
 			// Combined with fetch's options object but called with a custom name
 			//let init = {
