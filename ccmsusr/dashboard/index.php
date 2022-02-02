@@ -118,6 +118,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 		#ccms_security_logs{display:none}
 
+		#ccms_security_logs_hidden{display:block}
+
 		/* 875px or larger. Pixel Xl Landscape resolution is 411 x 823. */
 		@media only screen and (min-width: 875px){
 			.cssGrid-Dashboard-01{
@@ -144,6 +146,16 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				<div>
 					<p>List of sessions and or form calls, found in the 'ccms_log' table, that failed.<?php if($CFG["LOG_EVENTS"] === 0){echo '<br><span class="blacklistIpAddress">Currently disabled in config. Only old logs displayed below for now, if any.</span>';}?></p>
 					<div id="ccms_security_logs"></div>
+
+
+
+					<div id="ccms_security_logs_hidden">Click the <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23d7680f" d="M17,20H13V16.41l.79.8a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42l-2.5-2.5a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-2.5,2.5a1,1,0,0,0,1.42,1.42l.79-.8V20H7a1,1,0,0,0,0,2H17a1,1,0,0,0,0-2ZM7,4h4V7.59l-.79-.8A1,1,0,1,0,8.79,8.21l2.5,2.5a1,1,0,0,0,.33.21.94.94,0,0,0,.76,0,1,1,0,0,0,.33-.21l2.5-2.5a1,1,0,1,0-1.42-1.42l-.79.8V4h4a1,1,0,0,0,0-2H7A1,1,0,0,0,7,4Z"/></svg> icon above to show or hide log table.</div>
+
+
+
+
+
+
 				</div>
 			</div>
 
@@ -479,11 +491,14 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			function ccms_security_logs() {
 				let compressed = localStorage.getItem("ccms_security_logs_compress");
 				let a = document.querySelector('#ccms_security_logs');
+				let b = document.querySelector('#ccms_security_logs_hidden');
 				if(compressed == null || compressed == 0) {
 					a.style.display = 'block';
+					b.style.display = 'none';
 					localStorage.setItem("ccms_security_logs_compress", 0);
 				} else {
 					a.style.display = 'none';
+					b.style.display = 'block';
 					localStorage.setItem("ccms_security_logs_compress", 1);
 				}
 			}
@@ -493,11 +508,14 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			document.getElementById("ccms_compress_button").addEventListener("click", () => {
 				let compressed = localStorage.getItem("ccms_security_logs_compress");
 				let a = document.querySelector('#ccms_security_logs');
+				let b = document.querySelector('#ccms_security_logs_hidden');
 				if(compressed == null || compressed == 1) {
 					a.style.display = 'block';
+					b.style.display = 'none';
 					localStorage.setItem("ccms_security_logs_compress", 0);
 				} else {
 					a.style.display = 'none';
+					b.style.display = 'block';
 					localStorage.setItem("ccms_security_logs_compress", 1);
 				}
 			});
