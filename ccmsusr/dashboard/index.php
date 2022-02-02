@@ -154,8 +154,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				<div class="modal">
 					<div>System Info</div>
 					<div>
-						<p>Server Name: <?= $_SERVER["SERVER_NAME"];?></p>
-						<p>Document Root: <?=$_SERVER["DOCUMENT_ROOT"];?></p>
+						<p style="word-break:break-all">Server Name: <?= $_SERVER["SERVER_NAME"];?></p>
+						<p style="word-break:break-all">Document Root: <?=$_SERVER["DOCUMENT_ROOT"];?></p>
 						<p>System Address: <?= $_SERVER["SERVER_ADDR"];?></p>
 						<p>Web Server: <?php $a = explode(" ",$_SERVER["SERVER_SOFTWARE"]);echo $a[0];?></p>
 						<p>PHP Version: <?= phpversion();?></p>
@@ -167,7 +167,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 						<p>CACHE_EXPIRE: <?= $CFG["CACHE_EXPIRE"];?></p>
 						<p>LOG_EVENTS: <?= $CFG["LOG_EVENTS"];?></p>
 						<p>EMAIL_FROM: <?= $CFG["EMAIL_FROM"];?></p>
-						<p>EMAIL_BOUNCES_RETURNED_TO: <?= $CFG["EMAIL_BOUNCES_RETURNED_TO"];?></p>
+						<p style="word-break:break-all">EMAIL_BOUNCES_RETURNED_TO: <?= $CFG["EMAIL_BOUNCES_RETURNED_TO"];?></p>
 					</div>
 				</div>
 
