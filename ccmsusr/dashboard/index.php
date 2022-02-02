@@ -131,7 +131,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			<p>This section is still under development, but if you come across any unresolved issues please let us know at: <a class="oj" href="mailto:info@custodiancms.org?subject=unresolved+issue+report">info@custodiancms.org</a></p>
 
 			<div class="modal">
-				<div>Security Logs
+				<div>
+					<span style="float:left">Security Logs</span>
 					<button class="svg_icon svg_compress_button" id="ccms_compress_button" title="Compress Show/Hide"></button>
 					<button class="svg_icon svg_reload_button" id="ccms_security_logs_reload_button" title="Reload"></button>
 				</div>
