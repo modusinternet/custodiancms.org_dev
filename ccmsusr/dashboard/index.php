@@ -172,7 +172,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				</div>
 
 				<div class="modal">
-					<div>News From CustodianCMS.org
+					<div>CustodianCMS.org News
 						<button class="svg_icon svg_reload_button" id="ccms_news_reload_button" title="Reload"></button>
 					</div>
 					<div id="ccms_news_items">
