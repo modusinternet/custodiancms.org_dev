@@ -99,6 +99,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 		.tableRow:nth-child(odd){background-color:#f9f9f9}
 
 		#ccms_compress_button{
+			float:left;
+			left:10px;
 			position:relative;
 			top:5px
 		}
@@ -133,7 +135,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 			<div class="modal">
 				<div>
-					<span style="float:left;position:relative">Security Logs</span>
+					<span style="float:left">Security Logs</span>
 					<button class="svg_icon svg_compress_button" id="ccms_compress_button" title="Compress Show/Hide"></button>
 					<button class="svg_icon svg_reload_button" id="ccms_security_logs_reload_button" title="Reload"></button>
 				</div>
