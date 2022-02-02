@@ -473,19 +473,14 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			});
 
 			document.getElementById("ccms_compress_button").addEventListener("click", () => {
-				let compressed = localStorage.getItem("ccms_compress_button");
+				let compressed = localStorage.getItem("ccms_security_logs_compress");
 				let a = document.querySelector('#ccms_security_logs');
-				if(compressed == null) {
-					compressed = 1;
-					localStorage.setItem("ccms_compress_button", 1);
-				}
-				if(compressed == 1) {
+				if(compressed == null || compressed == 1) {
 					a.style.display = 'block';
-					compressed = 0;
-					localStorage.setItem("ccms_compress_button", 0);
+					localStorage.setItem("ccms_security_logs_compress", 0);
 				} else {
 					a.style.display = 'none';
-					localStorage.setItem("ccms_compress_button", 1);
+					localStorage.setItem("ccms_security_logs_compress", 1);
 				}
 			});
 
