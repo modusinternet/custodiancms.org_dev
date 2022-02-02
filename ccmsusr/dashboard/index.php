@@ -57,22 +57,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M17,20H13V16.41l.79.8a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42l-2.5-2.5a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-2.5,2.5a1,1,0,0,0,1.42,1.42l.79-.8V20H7a1,1,0,0,0,0,2H17a1,1,0,0,0,0-2ZM7,4h4V7.59l-.79-.8A1,1,0,1,0,8.79,8.21l2.5,2.5a1,1,0,0,0,.33.21.94.94,0,0,0,.76,0,1,1,0,0,0,.33-.21l2.5-2.5a1,1,0,1,0-1.42-1.42l-.79.8V4h4a1,1,0,0,0,0-2H7A1,1,0,0,0,7,4Z"/></svg>')
 		}
 
-		.ccms_compress_button{
-			position:relative;
-			top:5px
-		}
-
-		#ccms_news_reload_button,#ccms_security_logs_reload_button{
-			float:right;
-			position:relative;
-			right:0;
-			top:5px
-		}
-
-
-
-
-
 		.modal{
 			background-color:var(--cl0);
 			border:1px solid var(--cl2-tran);
@@ -113,9 +97,21 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 		.tableRow:nth-child(odd){background-color:#f9f9f9}
 
+		#ccms_compress_button{
+			position:relative;
+			top:-5px
+		}
+
 		#ccms_news_items{padding-left:30px}
 
 		#ccms_news_items li{margin-bottom:10px}
+
+		#ccms_news_reload_button,#ccms_security_logs_reload_button{
+			float:right;
+			position:relative;
+			right:0;
+			top:5px
+		}
 
 		/* 875px or larger. Pixel Xl Landscape resolution is 411 x 823. */
 		@media only screen and (min-width: 875px){
@@ -136,11 +132,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 			<div class="modal">
 				<div>Security Logs
-
-
-					<button class="ccms_compress_button svg_icon svg_compress_button" title="Compress Show/Hide"></button>
-
-
+					<button class="svg_icon svg_compress_button" id="ccms_compress_button" title="Compress Show/Hide"></button>
 					<button class="svg_icon svg_reload_button" id="ccms_security_logs_reload_button" title="Reload"></button>
 				</div>
 				<div>
