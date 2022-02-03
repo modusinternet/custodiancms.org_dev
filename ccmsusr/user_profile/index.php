@@ -21,8 +21,8 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		<title>User Profile</title>
 		<meta name="description" content="" />
 		{CCMS_TPL:/head-meta.html}
-		<script>
-			var navActiveArray = ["user_profile"];
+		<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
+			var navActiveItem = ["user_profile"];
 		</script>
 	</head>
 	<body>
@@ -333,31 +333,24 @@ if ($qry->rowCount() > 1) :
 			</div>
 		</div>
 
-		<script>
-			function loadFirst(e,t){var a=document.createElement("script");a.async = true;a.readyState?a.onreadystatechange=function(){("loaded"==a.readyState||"complete"==a.readyState)&&(a.onreadystatechange=null,t())}:a.onload=function(){t()},a.src=e,document.body.appendChild(a)}
+		<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
+			{CCMS_TPL:/_js/footer-1.php}
 
-			var cb = function() {
-				var l = document.createElement('link'); l.rel = 'stylesheet';
-				l.href = "/ccmsusr/_css/bootstrap-3.3.7.min.css";
-				var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
+			var l=document.createElement("link");l.rel="stylesheet";
+			l.href = "/ccmsusr/_css/bootstrap-3.3.7.min.css";
+			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
-				var l = document.createElement('link'); l.rel = 'stylesheet';
-				l.href = "/ccmsusr/_css/metisMenu-2.4.0.min.css";
-				var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
+			var l=document.createElement("link");l.rel="stylesheet";
+			l.href = "/ccmsusr/_css/metisMenu-2.4.0.min.css";
+			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
-				var l = document.createElement('link'); l.rel = 'stylesheet';
-				l.href = "/ccmsusr/_css/custodiancms.css";
-				/*l.href = "/ccmsusr/_css/custodiancms.min.css";*/
-				var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
+			var l=document.createElement("link");l.rel="stylesheet";
+			l.href = "/ccmsusr/_css/custodiancms.css";
+			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
-				var l = document.createElement('link'); l.rel = 'stylesheet';
-				l.href = "/ccmsusr/_css/font-awesome-4.7.0.min.css";
-				var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
-			};
-
-			var raf = requestAnimationFrame || mozRequestAnimationFrame || webkitRequestAnimationFrame || msRequestAnimationFrame;
-			if (raf) raf(cb);
-			else window.addEventListener('load', cb);
+			var l=document.createElement("link");l.rel="stylesheet";
+			l.href = "/ccmsusr/_css/font-awesome-4.7.0.min.css";
+			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
 			function loadJSResources() {
 				/*loadFirst("/ccmsusr/_js/jquery-2.2.0.min.js", function() {*/
@@ -365,8 +358,6 @@ if ($qry->rowCount() > 1) :
 					loadFirst("/ccmsusr/_js/bootstrap-3.3.7.min.js", function() { /* Bootstrap is loaded */
 						loadFirst("/ccmsusr/_js/metisMenu-3.0.7.min.js", function() {
 							loadFirst("/ccmsusr/_js/custodiancms.js", function() {
-
-								navActiveArray.forEach(function(s) {$("#"+s).addClass("active");});
 
 								// Load MetisMenu
 								$('#side-menu').metisMenu();
