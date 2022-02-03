@@ -190,220 +190,232 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 								});
 								/* user_dropdown END */
 
+
+
+
+
+
+
+								// (URL to call, Max expire time after saved in localhost) 3600 = seconds is equivalent to 1 hour
+								cachedFetch('https://custodiancms.org/cross-origin-resources/news.php', 3600)
+									.then(r => r.text())
+									.then(content => {
+										document.getElementById("ccms_news_items").innerHTML = content;
+								});
+
+								document.getElementById("ccms_news_reload_button").addEventListener("click", () => {
+									const url = "https://custodiancms.org/cross-origin-resources/news.php";
+									localStorage.removeItem(url);
+									localStorage.removeItem(url + ":ts");
+									// 3600 = seconds is equivalent to 1 hour
+									cachedFetch(url, 3600)
+										.then(r => r.text())
+										.then(content => {
+											document.getElementById("ccms_news_items").innerHTML = content;
+									});
+								});
+
+
+								function securityLogTable(data) {
+									document.getElementById("ccms_security_logs").innerHTML = "";
+
+									if(data === null) {
+										document.getElementById("ccms_security_logs").innerHTML = '<p class="blacklistIpAddress">Nothing to see at the moment.</p>';
+										return;
+									}
+
+									if(data[0].errorMsg) {
+										document.getElementById("ccms_security_logs").innerHTML = "<p>" + data[0].errorMsg + "</p>";
+										return;
+									}
+
+									var mainContainer = document.getElementById("ccms_security_logs");
+
+									// Get values for the table headers.
+									// ie: {'ID', 'Date', 'IP' , 'URL','Log'}
+									var tablecolumns = [];
+									for(var i = 0; i < data.length; i++) {
+										for(var key in data[i]) {
+											if(tablecolumns.indexOf(key) === -1) {
+												tablecolumns.push(key);
+											}
+										}
+									}
+
+									var divTable = document.createElement("div");
+									divTable.className = 'table';
+
+									var divTableHeaderRow = document.createElement("div");
+									divTableHeaderRow.className = 'tableRow';
+									divTable.appendChild(divTableHeaderRow);
+
+									for(var i = 0; i < tablecolumns.length; i++) {
+										//console.log(tablecolumns[i]);
+										var div = document.createElement("div");
+										div.className = 'tableCell tableHead';
+										div.innerHTML = tablecolumns[i];
+										divTableHeaderRow.appendChild(div);
+									}
+
+									// Add one more empty div at the end of the header to contain stuff like a delete or edit button.
+									var div = document.createElement("div");
+									div.className = 'tableCell tableHead';
+									div.innerHTML = "";
+									divTableHeaderRow.appendChild(div);
+
+									for(var i = 0; i < data.length; i++) {
+										var divTableRow = document.createElement("div");
+										divTableRow.setAttribute("class", "tableRow");
+										divTableRow.setAttribute("id", "sec-log-row-id-" + data[i].id);
+
+										const date = new Date(data[i].date*1000);
+										// Year
+										var year = date.getFullYear();
+										// Month
+										var month = date.getMonth();
+										// Day
+										var day = date.getDate();
+										// Hours
+										var hours = date.getHours();
+										// Minutes
+										var minutes = "0" + date.getMinutes();
+										// Seconds
+										var seconds = "0" + date.getSeconds();
+										// Display date time in MM-dd-yyyy h:m:s format
+										const convdataTime = '<span style="white-space:nowrap">'+year+'-'+month+1+'-'+day+'</span><br>'+hours+':'+minutes.substr(-2)+':'+seconds.substr(-2);
+
+										divTableRow.innerHTML = '<div class="tableCell">'+ data[i].id
+										+ '</div><div class="tableCell">' + convdataTime
+										+ '</div><div class="tableCell">' + data[i].ip
+										+ '<br><span class="blacklistIpAddress" data-ip="' + data[i].ip
+										+ '">(Blacklist)</span></div><div class="tableCell" style="line-break:anywhere;min-width:200px">' + data[i].url
+										+ '</div><div class="tableCell" style="min-width:390px;width:100%">' + data[i].log
+										+ '</div><div class="tableCell" style="text-align:center"><button class="svg_icon svg_delete_button" data-id="' + data[i].id
+										+ '" title="Delete"></button></div>';
+
+										divTable.appendChild(divTableRow);
+									}
+
+									mainContainer.appendChild(divTable);
+
+									var delBut = document.getElementsByClassName('svg_delete_button');
+									for(var i = 0; i < delBut.length; i++){
+										const id = delBut[i].getAttribute('data-id');
+										delBut[i].onclick = function(){
+											let url = "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/logs_delete.php";
+											fetch(url + "?token=" + Math.random() + "&ajax_flag=1&id=" + id)
+												.then(x => x.text())
+												.then(y => {
+													if(y === "0") { // success
+														console.log(id + " deleted");
+														document.getElementById("sec-log-row-id-" + id).outerHTML = "";
+													} else if(y === "1") { // already deleted
+														console.log(id + " already deleted");
+														document.getElementById("sec-log-row-id-" + id).outerHTML = "";
+													} else if(y === '[{"errorMsg":"Session Error"}]') {
+														document.getElementById("ccms_security_logs").innerHTML = "<p>Session Error</p>";
+													} else {
+														alert(y);
+													}
+												}
+											);
+										}
+									}
+
+									var blacklistBut = document.getElementsByClassName('blacklistIpAddress');
+									for(var i = 0; i < blacklistBut.length; i++){
+										const ip = blacklistBut[i].getAttribute('data-ip');
+										blacklistBut[i].onclick = function(){
+											let url = "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/addIpAddressToBlacklist.php";
+											fetch(url + "?token=" + Math.random() + "&ajax_flag=1&ip=" + ip)
+												.then(x => x.text())
+												.then(y => {
+													if(y === "0") { // already blocked
+														console.log(ip + " already blocked");
+														alert(ip + " already blocked");
+													} else if(y === "1") { // success
+														console.log(ip + " blocked");
+														alert(ip + " blocked");
+													} else if(y === '[{"errorMsg":"Session Error"}]') {
+														console.log("Session Error");
+														document.getElementById("ccms_security_logs").innerHTML = "<p>Session Error</p>";
+													} else {
+														console.log(y);
+														alert(y);
+													}
+												}
+											);
+										}
+									}
+								}
+
+								// (URL to call, Max expire time after saved in localhost) 3600 = seconds is equivalent to 1 hour
+								//cachedFetch('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/logs.php', 3600)
+								cachedFetch('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/logs.php')
+									.then(r => r.json())
+									.then(content => {
+										securityLogTable(content);
+									}
+								);
+
+								document.getElementById("ccms_security_logs_reload_button").addEventListener("click", () => {
+									const url = "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/logs.php";
+									localStorage.removeItem(url);
+									localStorage.removeItem(url + ":ts");
+									//document.getElementById("ccms_security_logs").innerHTML = "";
+									// 3600 = seconds is equivalent to 1 hour
+									//cachedFetch(url, 3600)
+									cachedFetch(url)
+										.then(r => r.json())
+										.then(content => {
+											securityLogTable(content);
+										}
+									);
+								});
+
+								function ccms_security_logs() {
+									let compressed = localStorage.getItem("ccms_security_logs_compress");
+									let a = document.querySelector('#ccms_security_logs');
+									let b = document.querySelector('#ccms_security_logs_hidden');
+									if(compressed == null || compressed == 0) {
+										a.style.display = 'block';
+										b.style.display = 'none';
+										localStorage.setItem("ccms_security_logs_compress", 0);
+									} else {
+										a.style.display = 'none';
+										b.style.display = 'block';
+										localStorage.setItem("ccms_security_logs_compress", 1);
+									}
+								}
+
+								document.getElementById("ccms_compress_button").addEventListener("click", () => {
+									let compressed = localStorage.getItem("ccms_security_logs_compress");
+									let a = document.querySelector('#ccms_security_logs');
+									let b = document.querySelector('#ccms_security_logs_hidden');
+									if(compressed == null || compressed == 1) {
+										a.style.display = 'block';
+										b.style.display = 'none';
+										localStorage.setItem("ccms_security_logs_compress", 0);
+									} else {
+										a.style.display = 'none';
+										b.style.display = 'block';
+										localStorage.setItem("ccms_security_logs_compress", 1);
+									}
+								});
+
+								setTimeout(function() {ccms_security_logs();}, 1000);
+
+
+
+
+
+
+
 							});
 						});
 					});
 				});
 			}
-
-			// (URL to call, Max expire time after saved in localhost) 3600 = seconds is equivalent to 1 hour
-			cachedFetch('https://custodiancms.org/cross-origin-resources/news.php', 3600)
-				.then(r => r.text())
-				.then(content => {
-					document.getElementById("ccms_news_items").innerHTML = content;
-			});
-
-			document.getElementById("ccms_news_reload_button").addEventListener("click", () => {
-				const url = "https://custodiancms.org/cross-origin-resources/news.php";
-				localStorage.removeItem(url);
-				localStorage.removeItem(url + ":ts");
-				// 3600 = seconds is equivalent to 1 hour
-				cachedFetch(url, 3600)
-					.then(r => r.text())
-					.then(content => {
-						document.getElementById("ccms_news_items").innerHTML = content;
-				});
-			});
-
-
-			function securityLogTable(data) {
-				document.getElementById("ccms_security_logs").innerHTML = "";
-
-				if(data === null) {
-					document.getElementById("ccms_security_logs").innerHTML = '<p class="blacklistIpAddress">Nothing to see at the moment.</p>';
-					return;
-				}
-
-				if(data[0].errorMsg) {
-					document.getElementById("ccms_security_logs").innerHTML = "<p>" + data[0].errorMsg + "</p>";
-					return;
-				}
-
-				var mainContainer = document.getElementById("ccms_security_logs");
-
-				// Get values for the table headers.
-				// ie: {'ID', 'Date', 'IP' , 'URL','Log'}
-				var tablecolumns = [];
-				for(var i = 0; i < data.length; i++) {
-					for(var key in data[i]) {
-						if(tablecolumns.indexOf(key) === -1) {
-							tablecolumns.push(key);
-						}
-					}
-				}
-
-				var divTable = document.createElement("div");
-				divTable.className = 'table';
-
-				var divTableHeaderRow = document.createElement("div");
-				divTableHeaderRow.className = 'tableRow';
-				divTable.appendChild(divTableHeaderRow);
-
-				for(var i = 0; i < tablecolumns.length; i++) {
-					//console.log(tablecolumns[i]);
-					var div = document.createElement("div");
-					div.className = 'tableCell tableHead';
-					div.innerHTML = tablecolumns[i];
-					divTableHeaderRow.appendChild(div);
-				}
-
-				// Add one more empty div at the end of the header to contain stuff like a delete or edit button.
-				var div = document.createElement("div");
-				div.className = 'tableCell tableHead';
-				div.innerHTML = "";
-				divTableHeaderRow.appendChild(div);
-
-				for(var i = 0; i < data.length; i++) {
-					var divTableRow = document.createElement("div");
-					divTableRow.setAttribute("class", "tableRow");
-					divTableRow.setAttribute("id", "sec-log-row-id-" + data[i].id);
-
-					const date = new Date(data[i].date*1000);
-					// Year
-					var year = date.getFullYear();
-					// Month
-					var month = date.getMonth();
-					// Day
-					var day = date.getDate();
-					// Hours
-					var hours = date.getHours();
-					// Minutes
-					var minutes = "0" + date.getMinutes();
-					// Seconds
-					var seconds = "0" + date.getSeconds();
-					// Display date time in MM-dd-yyyy h:m:s format
-					const convdataTime = '<span style="white-space:nowrap">'+year+'-'+month+1+'-'+day+'</span><br>'+hours+':'+minutes.substr(-2)+':'+seconds.substr(-2);
-
-					divTableRow.innerHTML = '<div class="tableCell">'+ data[i].id
-					+ '</div><div class="tableCell">' + convdataTime
-					+ '</div><div class="tableCell">' + data[i].ip
-					+ '<br><span class="blacklistIpAddress" data-ip="' + data[i].ip
-					+ '">(Blacklist)</span></div><div class="tableCell" style="line-break:anywhere;min-width:200px">' + data[i].url
-					+ '</div><div class="tableCell" style="min-width:390px;width:100%">' + data[i].log
-					+ '</div><div class="tableCell" style="text-align:center"><button class="svg_icon svg_delete_button" data-id="' + data[i].id
-					+ '" title="Delete"></button></div>';
-
-					divTable.appendChild(divTableRow);
-				}
-
-				mainContainer.appendChild(divTable);
-
-				var delBut = document.getElementsByClassName('svg_delete_button');
-				for(var i = 0; i < delBut.length; i++){
-					const id = delBut[i].getAttribute('data-id');
-					delBut[i].onclick = function(){
-						let url = "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/logs_delete.php";
-						fetch(url + "?token=" + Math.random() + "&ajax_flag=1&id=" + id)
-							.then(x => x.text())
-							.then(y => {
-								if(y === "0") { // success
-									console.log(id + " deleted");
-									document.getElementById("sec-log-row-id-" + id).outerHTML = "";
-								} else if(y === "1") { // already deleted
-									console.log(id + " already deleted");
-									document.getElementById("sec-log-row-id-" + id).outerHTML = "";
-								} else if(y === '[{"errorMsg":"Session Error"}]') {
-									document.getElementById("ccms_security_logs").innerHTML = "<p>Session Error</p>";
-								} else {
-									alert(y);
-								}
-							}
-						);
-					}
-				}
-
-				var blacklistBut = document.getElementsByClassName('blacklistIpAddress');
-				for(var i = 0; i < blacklistBut.length; i++){
-					const ip = blacklistBut[i].getAttribute('data-ip');
-					blacklistBut[i].onclick = function(){
-						let url = "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/addIpAddressToBlacklist.php";
-						fetch(url + "?token=" + Math.random() + "&ajax_flag=1&ip=" + ip)
-							.then(x => x.text())
-							.then(y => {
-								if(y === "0") { // already blocked
-									console.log(ip + " already blocked");
-									alert(ip + " already blocked");
-								} else if(y === "1") { // success
-									console.log(ip + " blocked");
-									alert(ip + " blocked");
-								} else if(y === '[{"errorMsg":"Session Error"}]') {
-									console.log("Session Error");
-									document.getElementById("ccms_security_logs").innerHTML = "<p>Session Error</p>";
-								} else {
-									console.log(y);
-									alert(y);
-								}
-							}
-						);
-					}
-				}
-			}
-
-			// (URL to call, Max expire time after saved in localhost) 3600 = seconds is equivalent to 1 hour
-			//cachedFetch('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/logs.php', 3600)
-			cachedFetch('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/logs.php')
-				.then(r => r.json())
-				.then(content => {
-					securityLogTable(content);
-				}
-			);
-
-			document.getElementById("ccms_security_logs_reload_button").addEventListener("click", () => {
-				const url = "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/logs.php";
-				localStorage.removeItem(url);
-				localStorage.removeItem(url + ":ts");
-				//document.getElementById("ccms_security_logs").innerHTML = "";
-				// 3600 = seconds is equivalent to 1 hour
-				//cachedFetch(url, 3600)
-				cachedFetch(url)
-					.then(r => r.json())
-					.then(content => {
-						securityLogTable(content);
-					}
-				);
-			});
-
-			function ccms_security_logs() {
-				let compressed = localStorage.getItem("ccms_security_logs_compress");
-				let a = document.querySelector('#ccms_security_logs');
-				let b = document.querySelector('#ccms_security_logs_hidden');
-				if(compressed == null || compressed == 0) {
-					a.style.display = 'block';
-					b.style.display = 'none';
-					localStorage.setItem("ccms_security_logs_compress", 0);
-				} else {
-					a.style.display = 'none';
-					b.style.display = 'block';
-					localStorage.setItem("ccms_security_logs_compress", 1);
-				}
-			}
-
-			document.getElementById("ccms_compress_button").addEventListener("click", () => {
-				let compressed = localStorage.getItem("ccms_security_logs_compress");
-				let a = document.querySelector('#ccms_security_logs');
-				let b = document.querySelector('#ccms_security_logs_hidden');
-				if(compressed == null || compressed == 1) {
-					a.style.display = 'block';
-					b.style.display = 'none';
-					localStorage.setItem("ccms_security_logs_compress", 0);
-				} else {
-					a.style.display = 'none';
-					b.style.display = 'block';
-					localStorage.setItem("ccms_security_logs_compress", 1);
-				}
-			});
-
-			setTimeout(function() {ccms_security_logs();}, 1000);
 		</script>
 	</body>
 </html>
