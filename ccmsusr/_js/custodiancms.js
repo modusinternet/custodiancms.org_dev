@@ -47,9 +47,61 @@ navActiveItem.forEach(function(nl){$("#"+nl+">a").addClass("active");});
 /* metisMenu END */
 
 
+/* Fetch Cache BEGIN */
+const cachedFetch = (url, options) => {
+	let expiry = 5 * 60; // 5 min default
+	if(typeof options === 'number') {
+		expiry = options;
+		options = undefined;
+	} else if(typeof options === 'object') {
+		// Don't set it to 0 seconds
+		expiry = options.seconds || expiry;
+	}
+	let cached = localStorage.getItem(url);
+	let whenCached = localStorage.getItem(url + ':ts');
+	if(cached !== null && whenCached !== null) {
+		let age = (Date.now() - whenCached) / 1000;
+		if(cached[0].errorMsg !== null || age > expiry) {
+			// Clean up the old key
+			localStorage.removeItem(url);
+			localStorage.removeItem(url + ':ts');
+		} else {
+			let response = new Response(new Blob([cached]));
+			return Promise.resolve(response);
+		}
+	}
 
+	return fetch(url + "?token=" + Math.random() + "&ajax_flag=1", options).then(response => {
+		if(response.status === 200) {
+			response.clone().text().then(content => {
+				localStorage.setItem(url, content);
+				localStorage.setItem(url+':ts', Date.now());
+			});
+		}
+		return response;
+	});
+}
+/*
+Combined with fetch's options object but called with a custom name
+let init = {
+	mode: 'same-origin',
+	seconds: 3 * 60 // 3 minutes
+}
+cachedFetch('https://httpbin.org/get', init)
+	.then(r => r.json())
+	.then(info => {
+		console.log('3) ********** Your origin is ' + info.origin)
+	}
+)
 
-
+cachedFetch('https://httpbin.org/image/png')
+	.then(r => r.blob())
+	.then(image => {
+		console.log('Image is ' + image.size + ' bytes')
+	}
+)
+*/
+/* Fetch Cache END */
 
 
 
