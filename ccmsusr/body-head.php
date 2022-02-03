@@ -13,7 +13,7 @@
 			<svg class="dropbtn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 11h7v2h-7zm1 4h6v2h-6zm-2-8h8v2h-8zM4 19h10v-1c0-2.757-2.243-5-5-5H7c-2.757 0-5 2.243-5 5v1h2zm4-7c1.995 0 3.5-1.505 3.5-3.5S9.995 5 8 5 4.5 6.505 4.5 8.5 6.005 12 8 12z"></path></svg>
 		</button>
 		<div id="user_dropdown_list" class="dropdown-content">
-			<a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/user_profile/">
+			<a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/user_profile/"  id="nav-user_profile">
 				<svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 24 24"><path fill="#6563ff" d="M12,2A10,10,0,0,0,4.65,18.76h0a10,10,0,0,0,14.7,0h0A10,10,0,0,0,12,2Zm0,18a8,8,0,0,1-5.55-2.25,6,6,0,0,1,11.1,0A8,8,0,0,1,12,20ZM10,10a2,2,0,1,1,2,2A2,2,0,0,1,10,10Zm8.91,6A8,8,0,0,0,15,12.62a4,4,0,1,0-6,0A8,8,0,0,0,5.09,16,7.92,7.92,0,0,1,4,12a8,8,0,0,1,16,0A7.92,7.92,0,0,1,18.91,16Z"/></svg>
 				<!-- a href="https://iconscout.com/">Unicons by Iconscout</a -->
 				User Profile</a>

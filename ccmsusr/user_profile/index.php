@@ -22,7 +22,8 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		<meta name="description" content="" />
 		{CCMS_TPL:/head-meta.html}
 		<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
-			var navActiveItem = ["user_profile"];
+			var navActiveItem = ["nav-user_profile"];
+			let navActiveSub = [];
 		</script>
 	</head>
 	<body>
