@@ -75,7 +75,7 @@
 									</a>
 								</li>
 								<li>
-									<a class="line-height-1-4" id="github" href="/en/user/github/">
+									<a class="line-height-1-4" id="github" href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/admin/github/">
 										<i class="fa fa-github fa-fw"></i> GitHub
 									</a>
 								</li>
