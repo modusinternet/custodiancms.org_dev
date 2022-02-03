@@ -139,6 +139,9 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			</div>
 
 
+
+
+
 			<ul>
 				<li>HTML Minify</li>
 				<li>Templates in Database Cache</li>
@@ -146,6 +149,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				<li>Backup/Restore</li>
 				<li>Password Recovery attempts currently in the ccms_password_recovery table</li>
 			</ul>
+
+
 
 
 			{CCMS_TPL:/footer.html}
@@ -185,57 +190,11 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 								});
 								/* user_dropdown END */
 
-
-
-
-
-
-
-
-
-
-
-
 							});
 						});
 					});
 				});
 			}
-
-			const cachedFetch = (url, options) => {
-				let expiry = 5 * 60; // 5 min default
-				if(typeof options === 'number') {
-					expiry = options;
-					options = undefined;
-				} else if(typeof options === 'object') {
-					// Don't set it to 0 seconds
-					expiry = options.seconds || expiry;
-				}
-				let cached = localStorage.getItem(url);
-				let whenCached = localStorage.getItem(url + ':ts');
-				if(cached !== null && whenCached !== null) {
-					let age = (Date.now() - whenCached) / 1000;
-					if(cached[0].errorMsg !== null || age > expiry) {
-						// Clean up the old key
-						localStorage.removeItem(url);
-						localStorage.removeItem(url + ':ts');
-					} else {
-						let response = new Response(new Blob([cached]));
-						return Promise.resolve(response);
-					}
-				}
-
-				return fetch(url + "?token=" + Math.random() + "&ajax_flag=1", options).then(response => {
-					if(response.status === 200) {
-						response.clone().text().then(content => {
-							localStorage.setItem(url, content);
-							localStorage.setItem(url+':ts', Date.now());
-						});
-					}
-					return response;
-				});
-			}
-
 
 			// (URL to call, Max expire time after saved in localhost) 3600 = seconds is equivalent to 1 hour
 			cachedFetch('https://custodiancms.org/cross-origin-resources/news.php', 3600)
@@ -414,10 +373,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				);
 			});
 
-
-
-
-
 			function ccms_security_logs() {
 				let compressed = localStorage.getItem("ccms_security_logs_compress");
 				let a = document.querySelector('#ccms_security_logs');
@@ -432,8 +387,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					localStorage.setItem("ccms_security_logs_compress", 1);
 				}
 			}
-
-
 
 			document.getElementById("ccms_compress_button").addEventListener("click", () => {
 				let compressed = localStorage.getItem("ccms_security_logs_compress");
@@ -451,26 +404,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			});
 
 			setTimeout(function() {ccms_security_logs();}, 1000);
-
-			// Combined with fetch's options object but called with a custom name
-			//let init = {
-			//	mode: 'same-origin',
-			//	seconds: 3 * 60 // 3 minutes
-			//}
-			//cachedFetch('https://httpbin.org/get', init)
-			//	.then(r => r.json())
-			//	.then(info => {
-			//		console.log('3) ********** Your origin is ' + info.origin)
-			//	}
-			//)
-
-			//cachedFetch('https://httpbin.org/image/png')
-			// .then(r => r.blob())
-			// .then(image => {
-			//   console.log('Image is ' + image.size + ' bytes')
-			// }
-			//)
-
 		</script>
 	</body>
 </html>
