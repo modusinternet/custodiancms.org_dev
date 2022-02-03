@@ -58,7 +58,7 @@ if(!is_callable('shell_exec') && true === stripos(ini_get('disable_functions'), 
 	}
 }
 ?><!DOCTYPE html>
-<html id="no-fouc" lang="en" style="opacity: 0;">
+<html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<title>GitHub</title>
@@ -237,9 +237,6 @@ if(!is_callable('shell_exec') && true === stripos(ini_get('disable_functions'), 
 
 								// Load MetisMenu
 								$('#side-menu').metisMenu();
-
-								// Fade in web page.
-								$("#no-fouc").delay(200).animate({"opacity": "1"}, 500);
 
 								$("#menu-toggle").click(function(e) {
 									e.preventDefault();

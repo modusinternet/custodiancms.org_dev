@@ -20,7 +20,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		<meta charset="utf-8">
 		<title>User Profile</title>
 		<meta name="description" content="" />
-		{CCMS_TPL:header-head.html}
+		{CCMS_TPL:head-meta.html}
 		<script>
 			var navActiveArray = ["user_profile"];
 		</script>
@@ -360,11 +360,11 @@ if ($qry->rowCount() > 1) :
 			else window.addEventListener('load', cb);
 
 			function loadJSResources() {
-				loadFirst("/ccmsusr/_js/jquery-2.2.0.min.js", function() { /* JQuery is loaded */
+				/*loadFirst("/ccmsusr/_js/jquery-2.2.0.min.js", function() {*/
+				loadFirst("/ccmsusr/_js/jquery-3.6.0.min.js", function() {
 					loadFirst("/ccmsusr/_js/bootstrap-3.3.7.min.js", function() { /* Bootstrap is loaded */
-						loadFirst("/ccmsusr/_js/metisMenu-2.4.0.min.js", function() { /* MetisMenu JavaScript */
-							/*loadFirst("/ccmsusr/_js/custodiancms.js", function() { /* CustodianCMS JavaScript */
-							loadFirst("/ccmsusr/_js/custodiancms.min.js", function() { /* CustodianCMS JavaScript */
+						loadFirst("/ccmsusr/_js/metisMenu-3.0.7.min.js", function() {
+							loadFirst("/ccmsusr/_js/custodiancms.js", function() {
 
 								navActiveArray.forEach(function(s) {$("#"+s).addClass("active");});
 
