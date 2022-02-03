@@ -15,7 +15,7 @@ $qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_user` WHERE `id` = :id LIMIT 1;
 $qry->execute(array(':id' => $CLEAN["SESSION"]["user_id"]));
 $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 ?><!DOCTYPE html>
-<html id="no-fouc" lang="en" style="opacity: 0;">
+<html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<title>User Profile</title>
@@ -370,9 +370,6 @@ if ($qry->rowCount() > 1) :
 
 								// Load MetisMenu
 								$('#side-menu').metisMenu();
-
-								// Fade in web page.
-								$("#no-fouc").delay(200).animate({"opacity": "1"}, 500);
 
 								$("#menu-toggle").click(function(e) {
 									e.preventDefault();
