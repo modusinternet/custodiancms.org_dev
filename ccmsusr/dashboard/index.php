@@ -191,11 +191,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 								/* user_dropdown END */
 
 
-
-
-
-
-
+								/* Fetch Cache BEGIN */
 								// (URL to call, Max expire time after saved in localhost) 3600 = seconds is equivalent to 1 hour
 								cachedFetch('https://custodiancms.org/cross-origin-resources/news.php', 3600)
 									.then(r => r.text())
@@ -387,6 +383,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 										localStorage.setItem("ccms_security_logs_compress", 1);
 									}
 								}
+								/* Fetch Cache BEGIN */
+
 
 								document.getElementById("ccms_compress_button").addEventListener("click", () => {
 									let compressed = localStorage.getItem("ccms_security_logs_compress");
@@ -404,13 +402,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 								});
 
 								setTimeout(function() {ccms_security_logs();}, 1000);
-
-
-
-
-
-
-
 							});
 						});
 					});
