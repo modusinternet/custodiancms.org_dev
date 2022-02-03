@@ -20,14 +20,14 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		<meta charset="utf-8">
 		<title>User Profile</title>
 		<meta name="description" content="" />
-		{CCMS_TPL:head-meta.html}
+		{CCMS_TPL:/head-meta.html}
 		<script>
 			var navActiveArray = ["user_profile"];
 		</script>
 	</head>
 	<body>
 		<div id="wrapper">
-			{CCMS_TPL:header-body.php}
+			{CCMS_TPL:/header-body.php}
 			<div id="page-wrapper">
 				<div class="row">
 					<div class="col-md-12">

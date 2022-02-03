@@ -63,14 +63,14 @@ if(!is_callable('shell_exec') && true === stripos(ini_get('disable_functions'), 
 		<meta charset="utf-8">
 		<title>GitHub</title>
 		<meta name="description" content="" />
-		{CCMS_TPL:head-meta.html}
+		{CCMS_TPL:/head-meta.html}
 		<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 			var navActiveArray = ["github"];
 		</script>
 	</head>
 	<body>
 		<div id="wrapper">
-			{CCMS_TPL:header-body.php}
+			{CCMS_TPL:/header-body.php}
 			<div id="page-wrapper">
 				<h1 class="page-header">GitHub</h1>
 				<p>GitHub is the premier tool used by website and software engineers to collaborate and synchronize more than 85 million repositories and projects around the world.  Basically, if your work involves distributing anything through the internet or collaborating with anyone other than yourself, you need to consider setting up an account on GitHub.</p>
