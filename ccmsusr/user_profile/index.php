@@ -341,8 +341,13 @@ if ($qry->rowCount() > 1) :
 			l.href = "/ccmsusr/_css/bootstrap-3.3.7.min.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
+			/*
 			var l=document.createElement("link");l.rel="stylesheet";
 			l.href = "/ccmsusr/_css/metisMenu-2.4.0.min.css";
+			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
+			*/
+			var l=document.createElement("link");l.rel="stylesheet";
+			l.href = "/ccmsusr/_css/metisMenu-3.0.6.min.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
 			var l=document.createElement("link");l.rel="stylesheet";
@@ -373,7 +378,7 @@ if ($qry->rowCount() > 1) :
 								$(function(){$(window).bind("load resize",function(){showHideNav();})});
 
 								/*loadFirst("//ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js", function() { /* jquery.validate.js */
-								loadFirst("/ccmsusr/_js/jquery.validate-1.17.0.min.js", function() { /* JQuery Validate */
+								loadFirst("/ccmsusr/_js/jquery-validate-1.19.3.min.js", function() { /* JQuery Validate */
 									/*loadFirst("//ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/additional-methods.min.js", function(){ /* additional-methods.js */
 									loadFirst("/ccmsusr/_js/additional-methods-1.17.0.min.js", function() { /* JQuery Validate Additional Methods */
 
@@ -744,12 +749,6 @@ if ($qry->rowCount() > 1) :
 					});
 				});
 			}
-
-			if (window.addEventListener)
-				window.addEventListener("load", loadJSResources, false);
-			else if (window.attachEvent)
-				window.attachEvent("onload", loadJSResources);
-			else window.onload = loadJSResources;
 		</script>
 	</body>
 </html>
