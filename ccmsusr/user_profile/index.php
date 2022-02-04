@@ -249,37 +249,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 							</div>
 						</div>
 					</div>
-					<div class="tab-pane fade" id="session_tab">
-						<div class="row">
-							<div class="col-md-12" style="padding-bottom: 20px;">
-
-
-
-
-<?php
-
-$sessions = array();
-
-$path = realpath(session_save_path());
-$files = array_diff(scandir($path), array('.', '..'));
-
-foreach ($files as $file){
-	$sessions[$file] = unserialize(file_get_contents($path . '/' . $file));
-}
-
-echo '<pre>';
-print_r($sessions);
-echo '</pre>';
-
-?>
-
-
-
-
-
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -629,70 +598,6 @@ echo '</pre>';
 															$("#password1").val("");
 															$("#password2").val("");
 														}, 5000);
-													});
-													// Prevent default posting of form.
-													return false;
-												}
-											});
-										});
-
-
-										$('#session_tab_logout_all_form').each(function() {
-											$(this).validate({
-												submitHandler: function(form) {
-													var request;
-													// Abort any pending request.
-													if (request) request.abort();
-													var $inputs = $(form).find("input, select, textarea, button");
-													var serializedData = $(form).serialize();
-													// Disable the inputs for the duration of the ajax request.
-													$inputs.prop("disabled", true);
-													request = $.ajax({
-														url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/user_profile/session_logout_all-ajax.html",
-														cache: false,
-														type: "post",
-														data: serializedData
-													});
-													// Called on success.
-													request.done(function(msg) {
-														//console.log(msg);
-														if(msg == "1") {
-															//$(form).find('[name="form-status"]').html("Password form updated.");
-															$("#session_tab_logout_all_fail").css("display", "none");
-															$("#session_tab_logout_all_success").html('<span class="fa fa-check" aria-hidden="true" style="margin-right: 10px;"></span>'+"Success: All other active sessions for this account have been disabled.");
-															$("#session_tab_logout_all_success").css("display", "block");
-															$("#session_tab_logout_all_success").scrollView();
-															setTimeout(function() {
-																//$(form).find('[name="form-status"]').html("");
-																//$(form).find('[name="FromEmail"]').val("");
-																//$(form).find('[name="ToEmail"]').val("");
-																//$(form).find('[name="Message"]').val("");
-																$("#session_tab_logout_all_success").css("display", "none");
-																$("#session_tab_logout_all_div").html("None found.");
-															}, 7000);
-														} else {
-															//$(form).find('[name="form-status"]').html(msg);
-															$("#session_tab_logout_all_success").css("display", "none");
-															$("#session_tab_logout_all_fail").html(msg);
-															$("#session_tab_logout_all_fail").css("display", "block");
-															$("#session_tab_logout_all_fail").scrollView();
-														}
-													});
-													// Called on failure.
-													request.fail(function (jqXHR, textStatus, errorThrown){
-														// log the error to the console
-														//console.error( "The following error occured: " + textStatus, errorThrown );
-														//$(form).find('[name="form-status"]').html("The following error occured: " + textStatus, errorThrown);
-														$("#session_tab_logout_all_success").css("display", "none");
-														$("#session_tab_logout_all_fail").css("display", "block");
-														$("#session_tab_logout_all_fail").html("The following error occured: " + textStatus, errorThrown);
-													});
-													// Called if the request failed or succeeded.
-													request.always(function () {
-														// reenable the inputs
-														//setTimeout(function() {
-														//	$inputs.prop("disabled", false);
-														//}, 2000);
 													});
 													// Prevent default posting of form.
 													return false;
