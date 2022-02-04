@@ -49,9 +49,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 							<li>
 								<a href="#privilege_tab" data-toggle="tab" aria-expanded="true">Privileges</a>
 							</li>
-							<li>
-								<a href="#session_tab" data-toggle="tab">Sessions</a>
-							</li>
 						</ul>
 					</div>
 				</div>
