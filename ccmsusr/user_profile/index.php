@@ -252,87 +252,44 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 					<div class="tab-pane fade" id="session_tab">
 						<div class="row">
 							<div class="col-md-12" style="padding-bottom: 20px;">
-								<form class="form-horizontal" role="form" action="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/login.html">
-									<input type="hidden" name="logout" value="1" />
-									<h3>Your Session</h3>
-									Below is your current session information.<br />
-									<div class="alert alert-success">
-										<strong>Token:</strong><br />
-										<span style="word-wrap: break-word;"><?php echo $CLEAN["SESSION"]["code"]; ?></span><br />
-										<strong>Created:</strong><br />
-										<?php echo date('Y-m-d H:i:s', $CLEAN["SESSION"]["first"]); ?><br />
-										<strong>Last Updated:</strong><br />
-										<?php echo date('Y-m-d H:i:s', $CLEAN["SESSION"]["last"]); ?><br />
-										<strong>Exprires:</strong><br />
-										<?php echo date('Y-m-d H:i:s', $CLEAN["SESSION"]["exp"]); ?><br />
-										<strong>User Agent (Browser):</strong><br />
-										<span style="word-wrap: break-word;"><?php echo $CLEAN["SESSION"]["user_agent"]; ?></span><br />
-										<strong>IP Address:</strong><br />
-										<?php echo $CLEAN["SESSION"]["ip"] . "\n"; ?>
-									</div>
-									<button class="btn-primary btn">Logout</button>
-								</form>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								Other active sessions found on the server related to your account:
-							</div>
-						</div>
+
+
+
+
 <?php
-$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_session` WHERE `user_id` = :user_id;");
-$qry->execute(array(':user_id' => $CLEAN["SESSION"]["user_id"]));
-if ($qry->rowCount() > 1) :
+
+$sessions = array();
+
+$path = realpath(session_save_path());
+$files = array_diff(scandir($path), array('.', '..'));
+
+foreach ($files as $file){
+	$sessions[$file] = unserialize(file_get_contents($path . '/' . $file));
+}
+
+echo '<pre>';
+print_r($sessions);
+echo '</pre>';
+
 ?>
-						<div id="session_tab_logout_all_div">
-							<div class="row">
-<?php while ($row = $qry->fetch(PDO::FETCH_ASSOC)) : ?>
-<?php if ($row["code"] != $CLEAN["SESSION"]["code"]) : ?>
-								<div class="col-md-4 cust-grid-01">
-									<div class="alert alert-warning">
-										<strong>Token:</strong><br />
-										<span style="word-wrap: break-word;"><?php echo $row["code"]; ?></span><br />
-										<strong>Created:</strong><br />
-										<?php echo date('Y-m-d H:i:s', $row["first"]); ?><br />
-										<strong>Last Updated:</strong><br />
-										<?php echo date('Y-m-d H:i:s', $row["last"]); ?><br />
-										<strong>Exprires:</strong><br />
-										<?php echo date('Y-m-d H:i:s', $row["exp"]); ?><br />
-										<strong>User Agent (Browser):</strong><br />
-										<span style="word-wrap: break-word;"><?php echo $row["user_agent"]; ?></span><br />
-										<strong>IP Address:</strong><br />
-										<?php echo $row["ip"] . "\n"; ?>
-									</div>
-								</div>
-<?php endif; ?>
-<?php endwhile; ?>
+
+
+
+
+
 							</div>
 						</div>
-							<div class="row">
-								<div class="col-md-12" style="padding-bottom: 20px;">
-									The sessions found above may or may not be expired, regardless they are sessions that were started and validated against your credentials using an alternate browsers or devices which where not manually logged out.  If you would like to remove them all now simply click the 'Logout All' button below.  Otherwise they will be automatically removed by the system on the next valid login.  (This will not include the session you are currently using here now.)
-									<form class="form-horizontal" id="session_tab_logout_all_form" role="form">
-										<input name="ajax_flag" type="hidden" value="1">
-										<div id="session_tab_logout_all_success" class="alert alert-success" role="alert" style="display: none;"></div>
-										<div id="session_tab_logout_all_fail" class="alert alert-danger" role="alert" style="display: none;"></div>
-										<button class="btn-primary btn">Logout All</button>
-									</form>
-								</div>
-							</div>
-						</div>
-<?php else : ?>
-						<div class="row">
-							<div class="col-md-12">
-								<div class="alert alert-warning">
-									None found.
-								</div>
-							</div>
-						</div>
-<?php endif; ?>
 					</div>
 				</div>
 			</div>
 		</div>
+
+
+
+
+
+
+
 
 		<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 			{CCMS_TPL:/_js/footer-1.php}
