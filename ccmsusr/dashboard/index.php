@@ -13,7 +13,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 ?><!DOCTYPE html>
 <html lang="{CCMS_LIB:_default.php;FUNC:ccms_lng}">
 	<head>
-		<title><?= $CFG["DOMAIN"];?> | User | Dashboard</title>
+		<title><?= $_SERVER["SERVER_NAME"];?> | User | Dashboard</title>
 		{CCMS_TPL:head-meta.html}
 	</head>
 	<style>
