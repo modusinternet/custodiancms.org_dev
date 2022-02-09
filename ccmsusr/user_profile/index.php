@@ -12,21 +12,44 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 }
 
 $qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_user` WHERE `id` = :id LIMIT 1;");
-$qry->execute(array(':id' => $CLEAN["SESSION"]["user_id"]));
+$qry->execute(array(':id' => $_SESSION["USER_ID"]));
 $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
+
+
+
+
 ?><!DOCTYPE html>
-<html lang="en">
+<html lang="{CCMS_LIB:_default.php;FUNC:ccms_lng}">
 	<head>
-		<meta charset="utf-8">
-		<title>User Profile</title>
-		<meta name="description" content="" />
-		{CCMS_TPL:/head-meta.html}
-		<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
-			var navActiveItem = ["nav-user_profile"];
-			let navActiveSub = [];
+		<title><?= $_SERVER["SERVER_NAME"];?> | User | User Profile</title>
+		{CCMS_TPL:head-meta.html}
+	</head>
+	<style>
+		{CCMS_TPL:/_css/head-css.html}
+	</style>
+	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
+		let navActiveItem = ["nav-user_profile"];
+		let navActiveSub = [];
 		</script>
 	</head>
 	<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
 		<div id="wrapper">
 			{CCMS_TPL:/header-body.php}
 			<div id="page-wrapper">
