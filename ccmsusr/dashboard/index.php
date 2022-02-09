@@ -19,8 +19,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 	<style>
 		{CCMS_TPL:/_css/head-css.html}
 
-		p{margin:0 0 20px}
-
 		.blacklistIpAddress{
 			font-size:.8em;
 			color:var(--cl11);
