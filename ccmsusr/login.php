@@ -48,11 +48,72 @@ if(isset($_SESSION['EXPIRED']) == "1") {
 	} elseif($CLEAN["g-recaptcha-response"] == "INVAL") {
 		$ccms_login_message["FAIL"] = "'g-recaptcha-response' field contains invalid characters! Try again.";
 	} elseif(!empty($CLEAN["g-recaptcha-response"]) && $CLEAN["g-recaptcha-response"] != "MAXLEN" && $CLEAN["g-recaptcha-response"] != "INVAL") {
-		$resp = file_get_contents( "https://www.google.com/recaptcha/api/siteverify?secret={$CFG['GOOGLE_RECAPTCHA_PRIVATEKEY']}&response={$CLEAN['g-recaptcha-response']}&remoteip={$_SERVER['REMOTE_ADDR']}" );
+
+
+
+
+
+
+		/*
+		$resp = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$CFG['GOOGLE_RECAPTCHA_PRIVATEKEY']}&response={$CLEAN['g-recaptcha-response']}&remoteip={$_SERVER['REMOTE_ADDR']}");
 		$resp = json_decode($resp);
 		if($resp->success == false) {
 			$ccms_login_message["FAIL"] = 'Google reCAPTCHA failed or expired. Try again.';
 		}
+		*/
+
+
+
+		$url = "https://www.google.com/recaptcha/api/siteverify?secret={$CFG['GOOGLE_RECAPTCHA_PRIVATEKEY']}&response={$CLEAN['g-recaptcha-response']}&remoteip={$_SERVER['REMOTE_ADDR']}";
+
+		$resp = '';
+		$info = parse_url($url);
+		$fp = fsockopen("ssl://" . $info['host'], 443, $errno, $errstr, 10);
+		if(!$fp) {
+			$ccms_login_message["FAIL"] =  $resp;
+		}
+		$head = 'POST ' . $info['path'] . " HTTP/1.1\r\n";
+		$head .= 'Host: ' . $info['host'] . "\r\n";
+		//$head .= "Content-type: application/x-www-form-urlencoded\r\n";
+		$head .= "Content-Type: text/plain\r\n";
+		$head .= 'Content-Length: ' . strlen(trim($info['query'])) . "\r\n";
+		$head .= "Connection: Close\r\n\r\n";
+		$head .= trim($info['query']);
+		$write = fwrite($fp, $head);
+		$header = '';
+		while ($str = trim(fgets($fp, 4096))) {
+			$header .= $str;
+		}
+		while (!feof($fp)) {
+			$resp .= fgets($fp, 4096);
+		}
+		$resp = json_decode($resp);
+		if($resp->success == false) {
+			$ccms_login_message["FAIL"] = 'Google reCAPTCHA failed or expired. Try again.';
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	}
 
 	if(!isset($ccms_login_message["FAIL"])) {
