@@ -89,7 +89,7 @@ if(isset($_SESSION['EXPIRED']) == "1") {
 		}
 		$resp = json_decode($resp);
 		if($resp->success == false) {
-			$ccms_login_message["FAIL"] = 'Google reCAPTCHA failed or expired. Try again.';
+			$ccms_login_message["FAIL"] = 'Google reCAPTCHA failed or expired. Try again. ({$resp->success})';
 		}
 
 
