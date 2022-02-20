@@ -64,6 +64,7 @@ if(isset($_SESSION['EXPIRED']) == "1") {
 
 
 
+		/*
 		$url = "https://www.google.com/recaptcha/api/siteverify?secret={$CFG['GOOGLE_RECAPTCHA_PRIVATEKEY']}&response={$CLEAN['g-recaptcha-response']}&remoteip={$_SERVER['REMOTE_ADDR']}";
 
 		$resp = '';
@@ -91,6 +92,30 @@ if(isset($_SESSION['EXPIRED']) == "1") {
 		if($resp->success == false) {
 			$ccms_login_message["FAIL"] = 'Google reCAPTCHA failed or expired. Try again. (' . $resp->success . ')';
 		}
+		*/
+
+
+
+
+	$resp = '';
+	// query use fsockopen
+	$fp = @fsockopen('ssl://www.google.com', 443, $errno, $errstr, 10);
+	if($fp !== false) {
+		$out = "GET /recaptcha/api/siteverify?secret={$CFG['GOOGLE_RECAPTCHA_PRIVATEKEY']}&response={$CLEAN['g-recaptcha-response']}&remoteip={$_SERVER['REMOTE_ADDR']} HTTP/1.1\r\n";
+		$out .= "Host: www.google.com\r\n";
+		$out .= "Connection: Close\r\n\r\n";
+		@fwrite($fp, $out);
+		while(!feof($fp)) {
+			$resp .= fgets($fp, 4096);
+		}
+		@fclose($fp);
+
+		$resp = json_decode($resp);
+		if($resp->success == false) {
+			$ccms_login_message["FAIL"] = 'Google reCAPTCHA failed or expired. Try again. (' . $resp->success . ')';
+		}
+
+	}
 
 
 
