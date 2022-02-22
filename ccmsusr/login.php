@@ -745,7 +745,8 @@ if(
 	 		function loadJSResources() {
 				loadFirst("/ccmsusr/_js/jquery-3.6.0.min.js", function() {
 					/*loadFirst("/ccmsusr/_js/custodiancms.js", function() {*/
-						loadFirst("https://www.google.com/recaptcha/api.js?hl={CCMS_LIB:_default.php;FUNC:ccms_lng}&render={CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}", function() {
+						/*loadFirst("https://www.google.com/recaptcha/api.js?hl={CCMS_LIB:_default.php;FUNC:ccms_lng}&render={CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}", function() {*/
+						loadFirst("https://www.google.com/recaptcha/api.js?render={CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}", function() {
 							loadFirst("/ccmsusr/_js/jquery-validate-1.19.3.min.js", function() {
 
 								$('#loginHelpLink').click(function(event){
@@ -784,7 +785,8 @@ if(
 									event.preventDefault();
 									grecaptcha.ready(function() {
 										grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', {action: 'ccms_login_form'}).then(function(token) {
-											$('#ccms_login_form').prepend('<input type="hidden" name="token" value="' + token + '">');
+											/*$('#ccms_login_form').prepend('<input type="hidden" name="token" value="' + token + '">');*/
+											$('#ccms_login_form').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
 											/*$('#ccms_login_form').prepend('<input type="hidden" name="action" value="subscribe_newsletter">');*/
 											$('#ccms_login_form').unbind('submit').submit();
 										});;
