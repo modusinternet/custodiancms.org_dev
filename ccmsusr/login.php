@@ -642,7 +642,17 @@ if(
 						<label for="ccms_login_password">Password <span class="rd">*</span></label>
 						<input class="placeholder" id="ccms_login_password" name="ccms_login_password" placeholder="Password" style="margin-bottom:1rem" type="password" autocomplete="off" readonly>
 						<label id="ccms_login_password_error" class="error" for="ccms_login_password" style="display:none"></label>
-						<button type="submit">Submit</button>
+						<!-- button type="submit">Submit</button -->
+						<button class="g-recaptcha" data-sitekey="reCAPTCHA_site_key" data-callback='onSubmit' data-action='submit'>Submit</button>
+
+
+
+
+
+
+
+
+
 					</form>
 				</div>
 			</div>
@@ -726,7 +736,13 @@ if(
 			var h = document.getElementsByTagName("head")[0];
 			h.parentNode.insertBefore(l,h);
 
-			function loadJSResources() {
+			/*
+			function onSubmit(token) {
+				document.getElementById("ccms_login_form").submit();
+			}
+			*/
+
+	 		function loadJSResources() {
 				loadFirst("/ccmsusr/_js/jquery-3.6.0.min.js", function() {
 					/*loadFirst("/ccmsusr/_js/custodiancms.js", function() {*/
 						loadFirst("https://www.google.com/recaptcha/api.js?hl={CCMS_LIB:_default.php;FUNC:ccms_lng}&render={CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}", function() {
@@ -754,11 +770,24 @@ if(
 									this.removeAttribute('readonly');
 								});
 
+								/*
 								grecaptcha.ready(function() {
 									grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}',{action:'ccms_login_form'}).then(function(token) {
 										$('#ccms_login_form').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
 										$('#ccms_pass_reset_part_1').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
 										$('#ccms_pass_reset_part_2').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
+									});
+								});
+								*/
+
+								$('#ccms_login_form').submit(function(event) {
+									event.preventDefault();
+									grecaptcha.ready(function() {
+										grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', {action: 'ccms_login_form'}).then(function(token) {
+											$('#ccms_login_form').prepend('<input type="hidden" name="token" value="' + token + '">');
+											/*$('#ccms_login_form').prepend('<input type="hidden" name="action" value="subscribe_newsletter">');*/
+											$('#ccms_login_form').unbind('submit').submit();
+										});;
 									});
 								});
 
