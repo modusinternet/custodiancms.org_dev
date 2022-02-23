@@ -88,11 +88,11 @@ $content = substr($content, $position);
 
 
 //$resp = json_decode($resp);
-echo "<pre>".$content."</pre>";
-exit;
-	//		var_dump(json_decode($resp));
+//echo "<pre>".$content."</pre>";
+var_dump(json_decode($content));
 
 
+	exit;
 
 
 
