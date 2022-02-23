@@ -74,6 +74,18 @@ if(isset($_SESSION['EXPIRED']) == "1") {
 			}
 			@fclose($fp);
 
+
+
+
+
+
+			var_dump(json_decode($resp));
+
+
+
+
+
+
 			$resp = json_decode($resp, true);
 
 			$ccms_login_message["FAIL"] = $resp;
