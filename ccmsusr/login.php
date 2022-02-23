@@ -78,7 +78,8 @@ if(isset($_SESSION['EXPIRED']) == "1") {
 
 
 
-
+echo $resp;
+exit;
 			var_dump(json_decode($resp));
 
 
