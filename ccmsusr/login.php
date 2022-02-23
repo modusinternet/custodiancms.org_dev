@@ -759,10 +759,10 @@ if(
 									event.preventDefault();
 									grecaptcha.ready(function() {
 										grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', {action: 'ccms_login_form'}).then(function(token) {
-											/*$('#ccms_login_form').prepend('<input type="hidden" name="token" value="' + token + '">');*/
 											$('#ccms_login_form').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
 											$('#ccms_login_form').prepend('<input type="hidden" name="g-recaptcha-action" value="ccms_login_form">');
-											$('#ccms_login_form').unbind('submit').submit();
+											//$('#ccms_login_form').unbind('submit').submit();
+											$(this).parent("form").unbind('submit').submit();
 										});;
 									});
 								});
