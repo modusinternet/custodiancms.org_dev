@@ -580,7 +580,7 @@ if(
 			<div class="formDiv">
 				<div>Login</div>
 				<div>
-					<form action="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/" id="ccms_login_form" class="aGrid" method="post" novalidate="novalidate">
+					<form action="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/" id="ccms_login_form" class="aGrid ccms_login_forms" method="post" novalidate="novalidate">
 						<input type="hidden" name="ccms_login" value="1">
 						<label for="ccms_login_email">Email Address <span class="rd">*</span></label>
 						<input class="placeholder" id="ccms_login_email" name="ccms_login_email" placeholder="Email" type="email">
@@ -627,13 +627,23 @@ if(
 					<div>Password Reset</div>
 					<div>
 						<p style="margin-bottom:10px">Please enter the email address associated with your account below. We will send you a link via email you can use to reset your password.</p>
-						<form action="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/" id="ccms_pass_reset_part_1" class="aGrid" method="post" novalidate="novalidate">
+						<form action="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/" id="ccms_pass_reset_part_1" class="aGrid ccms_login_forms" method="post" novalidate="novalidate">
 							<input type="hidden" name="ccms_pass_reset_part_1" value="1">
 							<label for="ccms_pass_reset_part_1_email">Email Address <span class="rd">*</span></label>
 							<input id="ccms_pass_reset_part_1_email" name="ccms_pass_reset_part_1_email" placeholder="Email" type="email">
 							<label id="ccms_pass_reset_part_1_email_error" class="error" for="ccms_pass_reset_part_1_email" style="display:none"></label>
 							<button type="submit">Submit</button>
 						</form>
+
+
+
+
+
+
+
+
+
+
 						<p>NOTE: The link contained in the email will only work once and only within one hour of its request.  Please contact the website administrator directly if you have forgotten or lost access to your email for more information.</p>
 					</div>
 				</div>
@@ -654,7 +664,7 @@ if(
 					<p style="margin-bottom:10px">
 						Use the form below to reset your password. Remember, this form will only work one time.  Once you press submit it will not work again unless you request a new Password Reset link.
 					</p>
-					<form action="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/" id="ccms_pass_reset_part_2" class="aGrid" method="post" novalidate="novalidate">
+					<form action="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/" id="ccms_pass_reset_part_2" class="aGrid ccms_login_forms" method="post" novalidate="novalidate">
 						<input type="hidden" name="ccms_pass_reset_part_2" value="2">
 						<input type="hidden" name="ccms_pass_reset_form_code" value="<?php echo $CLEAN["ccms_pass_reset_form_code"]; ?>">
 						<label for="ccms_pass_reset_part_2_pass_1">Password <span class="rd">*</span></label>
@@ -665,6 +675,16 @@ if(
 						<label id="ccms_pass_reset_part_2_pass_2_error" class="error" for="ccms_pass_reset_part_2_pass_2" style="display:none"></label>
 						<button type="submit"<?php if(!empty($ccms_pass_reset_message["SUCCESS"])) { echo " disabled";} ?>>Submit</button>
 					</form>
+
+
+
+
+
+
+
+
+
+
 				</div>
 			</div>
 <?php endif ?>
@@ -735,7 +755,7 @@ if(
 								});
 								*/
 
-								$('#ccms_login_form').submit(function(event) {
+								$('.ccms_login_forms').submit(function(event) {
 									event.preventDefault();
 									grecaptcha.ready(function() {
 										grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', {action: 'ccms_login_form'}).then(function(token) {
