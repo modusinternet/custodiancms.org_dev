@@ -580,7 +580,7 @@ if(
 			<div class="formDiv">
 				<div>Login</div>
 				<div>
-					<form action="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/" id="ccms_login_form" class="aGrid ccms_login_forms" method="post" novalidate="novalidate">
+					<form action="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/" id="ccms_login_form" class="aGrid" method="post" novalidate="novalidate">
 						<input type="hidden" name="ccms_login" value="1">
 						<label for="ccms_login_email">Email Address <span class="rd">*</span></label>
 						<input class="placeholder" id="ccms_login_email" name="ccms_login_email" placeholder="Email" type="email">
@@ -627,7 +627,7 @@ if(
 					<div>Password Reset</div>
 					<div>
 						<p style="margin-bottom:10px">Please enter the email address associated with your account below. We will send you a link via email you can use to reset your password.</p>
-						<form action="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/" id="ccms_pass_reset_part_1" class="aGrid ccms_login_forms" method="post" novalidate="novalidate">
+						<form action="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/" id="ccms_pass_reset_part_1" class="aGrid" method="post" novalidate="novalidate">
 							<input type="hidden" name="ccms_pass_reset_part_1" value="1">
 							<label for="ccms_pass_reset_part_1_email">Email Address <span class="rd">*</span></label>
 							<input id="ccms_pass_reset_part_1_email" name="ccms_pass_reset_part_1_email" placeholder="Email" type="email">
@@ -755,14 +755,37 @@ if(
 								});
 								*/
 
-								$('.ccms_login_forms').submit(function(event) {
+								$('#ccms_login_form').submit(function(event) {
 									event.preventDefault();
 									grecaptcha.ready(function() {
 										grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', {action: 'ccms_login_form'}).then(function(token) {
 											$('#ccms_login_form').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
 											$('#ccms_login_form').prepend('<input type="hidden" name="g-recaptcha-action" value="ccms_login_form">');
-											//$('#ccms_login_form').unbind('submit').submit();
-											$(this).parent("form").unbind('submit').submit();
+											$('#ccms_login_form').unbind('submit').submit();
+										});;
+									});
+								});
+
+
+								$('#ccms_pass_reset_part_1').submit(function(event) {
+									event.preventDefault();
+									grecaptcha.ready(function() {
+										grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', {action: 'ccms_pass_reset_part_1'}).then(function(token) {
+											$('#ccms_pass_reset_part_1').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
+											$('#ccms_pass_reset_part_1').prepend('<input type="hidden" name="g-recaptcha-action" value="ccms_pass_reset_part_1">');
+											$('#ccms_pass_reset_part_1').unbind('submit').submit();
+										});;
+									});
+								});
+
+
+								$('#ccms_pass_reset_part_2').submit(function(event) {
+									event.preventDefault();
+									grecaptcha.ready(function() {
+										grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', {action: 'ccms_pass_reset_part_2'}).then(function(token) {
+											$('#ccms_pass_reset_part_2').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
+											$('#ccms_pass_reset_part_2').prepend('<input type="hidden" name="g-recaptcha-action" value="ccms_pass_reset_part_2">');
+											$('#ccms_pass_reset_part_2').unbind('submit').submit();
 										});;
 									});
 								});
