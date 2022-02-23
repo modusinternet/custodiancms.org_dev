@@ -79,7 +79,7 @@ if(isset($_SESSION['EXPIRED']) == "1") {
 
 
 
-$resp = json_decode($resp);
+//$resp = json_decode($resp);
 echo $resp;
 exit;
 	//		var_dump(json_decode($resp));
