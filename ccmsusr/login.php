@@ -83,9 +83,10 @@ if(isset($_SESSION['EXPIRED']) == "1") {
 $crlf = "\r\n";
 $position = strpos($resp, $crlf.$crlf);
 $content = substr($resp, $position);
-$position = strpos($content, "}");
-$content = trim($content, "\r\n0");
-$content = substr($content, $position);
+
+//$position = strpos($content, "}");
+//$content = substr($content, $position);
+//$content = trim($content, "\r\n0");
 
 
 //$resp = json_decode($resp);
