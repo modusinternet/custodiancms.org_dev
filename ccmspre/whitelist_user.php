@@ -113,6 +113,7 @@ $whitelist = array(
 	"ccms_pass_reset_part_2_pass_2"	=> array("type" => "PASSWORD",			"minlength" => 8),
 	"ccms_auth_token"								=> array("type" => "WHOLE_NUMBER",	"minlength" => 6,	"maxlength" => 6),
 	"g-recaptcha-response"					=> array("type" => "G_RECAPTCHA_RESPONSE",	"maxlength" => 2048),
+	"g-recaptcha-action"						=> array("type" => "NO_BADCHARS",		"maxlength" => 32),
 
 	"ajax_flag"					=> array("type" => "WHOLE_NUMBER",	"maxlength" => 1),
 	"firstname"					=> array("type" => "NO_BADCHARS",		"maxlength" => 64),

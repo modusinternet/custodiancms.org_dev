@@ -41,86 +41,60 @@ if(isset($_SESSION['EXPIRED']) == "1") {
 	} elseif($CLEAN["ccms_login_password"] == "INVAL") {
 		$ccms_login_message["FAIL"] = "Something is wrong with your password, it came up as INVALID when testing is with with an open (.+) expression.";
 
+	} elseif(empty($CLEAN["g-recaptcha-action"])) {
+		$ccms_login_message["FAIL"] = "'g-recaptcha-action' field missing content. Try again.";
+	} elseif($CLEAN["g-recaptcha-action"] == "MAXLEN") {
+		$ccms_login_message["FAIL"] = "'g-recaptcha-action' field exceeded its maximum number of 2048 character. Try again.";
+	} elseif($CLEAN["g-recaptcha-action"] == "INVAL") {
+		$ccms_login_message["FAIL"] = "'g-recaptcha-action' field contains invalid characters! Try again.";
+
 	} elseif(empty($CLEAN["g-recaptcha-response"])) {
 		$ccms_login_message["FAIL"] = "'g-recaptcha-response' field missing content. Try again.";
 	} elseif($CLEAN["g-recaptcha-response"] == "MAXLEN") {
 		$ccms_login_message["FAIL"] = "'g-recaptcha-response' field exceeded its maximum number of 2048 character. Try again.";
 	} elseif($CLEAN["g-recaptcha-response"] == "INVAL") {
 		$ccms_login_message["FAIL"] = "'g-recaptcha-response' field contains invalid characters! Try again.";
+
+	/*
 	} elseif(!empty($CLEAN["g-recaptcha-response"]) && $CLEAN["g-recaptcha-response"] != "MAXLEN" && $CLEAN["g-recaptcha-response"] != "INVAL") {
+	*/
 
-
-
-
-
-
-		/*
-		$resp = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$CFG['GOOGLE_RECAPTCHA_PRIVATEKEY']}&response={$CLEAN['g-recaptcha-response']}&remoteip={$_SERVER['REMOTE_ADDR']}");
-		$resp = json_decode($resp);
-		if($resp->success == false) {
-			$ccms_login_message["FAIL"] = 'Google reCAPTCHA failed or expired. Try again.';
-		}
-		*/
-
-
-
-		/*
-		$url = "https://www.google.com/recaptcha/api/siteverify?secret={$CFG['GOOGLE_RECAPTCHA_PRIVATEKEY']}&response={$CLEAN['g-recaptcha-response']}&remoteip={$_SERVER['REMOTE_ADDR']}";
+} elseif(!isset($ccms_login_message["FAIL"])) {
 
 		$resp = '';
-		$info = parse_url($url);
-		$fp = fsockopen("ssl://" . $info['host'], 443, $errno, $errstr, 10);
-		if(!$fp) {
-			$ccms_login_message["FAIL"] =  $resp;
+		// query use fsockopen
+		$fp = @fsockopen('ssl://www.google.com', 443, $errno, $errstr, 10);
+		if($fp !== false) {
+			$out = "GET /recaptcha/api/siteverify?secret={$CFG['GOOGLE_RECAPTCHA_PRIVATEKEY']}&response={$CLEAN['g-recaptcha-response']}&remoteip={$_SERVER['REMOTE_ADDR']} HTTP/1.1\r\n";
+			$out .= "Host: www.google.com\r\n";
+			$out .= "Connection: Close\r\n\r\n";
+			@fwrite($fp, $out);
+			while(!feof($fp)) {
+				$resp .= fgets($fp, 4096);
+			}
+			@fclose($fp);
+
+			$resp = json_decode($resp, true);
+
+			//if($resp["success"] == false) {
+			if($resp["success"] == false || $resp["action"] !== $CLEAN["g-recaptcha-action"] || $resp["score"] <= 0.4) {
+				$ccms_login_message["FAIL"] = 'Google reCAPTCHA failed or expired. Try again. (success=['.$resp["success"].'], score=['.$resp["score"].'], action=['.$resp["action"].'])';
+			}
+
+		} else {
+			$ccms_login_message["FAIL"] = 'Unable to connect to Google reCAPTCHA.)';
 		}
-		$head = 'POST ' . $info['path'] . " HTTP/1.1\r\n";
-		$head .= 'Host: ' . $info['host'] . "\r\n";
-		//$head .= "Content-type: application/x-www-form-urlencoded\r\n";
-		$head .= "Content-Type: text/plain\r\n";
-		$head .= 'Content-Length: ' . strlen(trim($info['query'])) . "\r\n";
-		$head .= "Connection: Close\r\n\r\n";
-		$head .= trim($info['query']);
-		$write = fwrite($fp, $head);
-		$header = '';
-		while ($str = trim(fgets($fp, 4096))) {
-			$header .= $str;
-		}
-		while (!feof($fp)) {
-			$resp .= fgets($fp, 4096);
-		}
-		$resp = json_decode($resp);
-		if($resp->success == false) {
-			$ccms_login_message["FAIL"] = 'Google reCAPTCHA failed or expired. Try again. (' . $resp->success . ')';
-		}
-		*/
 
 
 
 
-	$resp = '';
-	// query use fsockopen
-	$fp = @fsockopen('ssl://www.google.com', 443, $errno, $errstr, 10);
-	if($fp !== false) {
-		$out = "GET /recaptcha/api/siteverify?secret={$CFG['GOOGLE_RECAPTCHA_PRIVATEKEY']}&response={$CLEAN['g-recaptcha-response']}&remoteip={$_SERVER['REMOTE_ADDR']} HTTP/1.1\r\n";
-		$out .= "Host: www.google.com\r\n";
-		$out .= "Connection: Close\r\n\r\n";
-		@fwrite($fp, $out);
-		while(!feof($fp)) {
-			$resp .= fgets($fp, 4096);
-		}
-		@fclose($fp);
 
-$ccms_login_message["FAIL"] = $resp;
 
-		/*
-		$resp = json_decode($resp);
 
-		if($resp->success == false) {
-			$ccms_login_message["FAIL"] = 'Google reCAPTCHA failed or expired. Try again. (' . $resp->success . ')';
-		}
-		*/
 
-	}
+
+
+
 
 
 
@@ -658,6 +632,14 @@ if(
 
 
 
+
+
+
+
+
+
+
+
 					</form>
 				</div>
 			</div>
@@ -792,11 +774,28 @@ if(
 										grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', {action: 'ccms_login_form'}).then(function(token) {
 											/*$('#ccms_login_form').prepend('<input type="hidden" name="token" value="' + token + '">');*/
 											$('#ccms_login_form').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
-											/*$('#ccms_login_form').prepend('<input type="hidden" name="action" value="subscribe_newsletter">');*/
+											$('#ccms_login_form').prepend('<input type="hidden" name="g-recaptcha-action" value="ccms_login_form">');
 											$('#ccms_login_form').unbind('submit').submit();
 										});;
 									});
 								});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 								$("#ccms_login_form").validate({
 									rules:{
