@@ -84,7 +84,7 @@ $crlf = "\r\n";
 $position = strpos($resp, $crlf.$crlf);
 $content = substr($resp, $position);
 $position = strpos($content, "{");
-$content = substr($content, $position);
+$content = substr($content, $position, length($content-1));
 
 
 //$resp = json_decode($resp);
