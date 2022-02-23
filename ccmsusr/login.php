@@ -85,16 +85,16 @@ $position = strpos($resp, $crlf.$crlf);
 $content = substr($resp, $position);
 $position = strpos($content, "{");
 $content = substr($content, $position);
-$content = trim($content, "\r\n0");
+$resp = trim($content, "\r\n0");
 
 
 //$resp = json_decode($resp);
 //echo "<pre>".$content."</pre>";
 //$content = json_decode($content);
-var_dump(json_decode($content));
+//var_dump(json_decode($resp));
 
 
-	exit;
+	//exit;
 
 
 
