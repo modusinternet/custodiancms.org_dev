@@ -76,6 +76,9 @@ if(isset($_SESSION['EXPIRED']) == "1") {
 
 			$resp = json_decode($resp, true);
 
+			$ccms_login_message["FAIL"] = $resp;
+			exit;
+
 			//if($resp["success"] == false) {
 			if($resp["success"] == false || $resp["action"] !== $CLEAN["g-recaptcha-action"] || $resp["score"] <= 0.4) {
 				/*
