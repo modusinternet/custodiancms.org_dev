@@ -84,8 +84,8 @@ $crlf = "\r\n";
 $position = strpos($resp, $crlf.$crlf);
 $content = substr($resp, $position);
 
-//$position = strpos($content, "}");
-//$content = substr($content, $position);
+$position = strpos($content, "{");
+$content = substr($content, $position);
 //$content = trim($content, "\r\n0");
 
 
