@@ -78,7 +78,10 @@ if(isset($_SESSION['EXPIRED']) == "1") {
 
 			//if($resp["success"] == false) {
 			if($resp["success"] == false || $resp["action"] !== $CLEAN["g-recaptcha-action"] || $resp["score"] <= 0.4) {
+				/*
 				$ccms_login_message["FAIL"] = 'Google reCAPTCHA failed or expired. Try again. (success=['.$resp["success"].'], score=['.$resp["score"].'], action=['.$resp["action"].'])';
+				*/
+				$ccms_login_message["FAIL"] = $resp;
 			}
 
 		} else {
