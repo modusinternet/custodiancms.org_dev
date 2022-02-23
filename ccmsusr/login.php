@@ -590,23 +590,6 @@ if(
 						<label id="ccms_login_password_error" class="error" for="ccms_login_password" style="display:none"></label>
 						<!-- button type="submit">Submit</button -->
 						<button class="g-recaptcha" data-sitekey="reCAPTCHA_site_key" data-callback='onSubmit' data-action='submit'>Submit</button>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 					</form>
 				</div>
 			</div>
@@ -634,16 +617,6 @@ if(
 							<label id="ccms_pass_reset_part_1_email_error" class="error" for="ccms_pass_reset_part_1_email" style="display:none"></label>
 							<button type="submit">Submit</button>
 						</form>
-
-
-
-
-
-
-
-
-
-
 						<p>NOTE: The link contained in the email will only work once and only within one hour of its request.  Please contact the website administrator directly if you have forgotten or lost access to your email for more information.</p>
 					</div>
 				</div>
@@ -675,16 +648,6 @@ if(
 						<label id="ccms_pass_reset_part_2_pass_2_error" class="error" for="ccms_pass_reset_part_2_pass_2" style="display:none"></label>
 						<button type="submit"<?php if(!empty($ccms_pass_reset_message["SUCCESS"])) { echo " disabled";} ?>>Submit</button>
 					</form>
-
-
-
-
-
-
-
-
-
-
 				</div>
 			</div>
 <?php endif ?>
@@ -710,17 +673,11 @@ if(
 			var h = document.getElementsByTagName("head")[0];
 			h.parentNode.insertBefore(l,h);
 
-			/*
-			function onSubmit(token) {
-				document.getElementById("ccms_login_form").submit();
-			}
-			*/
-
-	 		function loadJSResources() {
+			function loadJSResources() {
 				loadFirst("/ccmsusr/_js/jquery-3.6.0.min.js", function() {
 					/*loadFirst("/ccmsusr/_js/custodiancms.js", function() {*/
 						/*loadFirst("https://www.google.com/recaptcha/api.js?hl={CCMS_LIB:_default.php;FUNC:ccms_lng}&render={CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}", function() {*/
-						loadFirst("https://www.google.com/recaptcha/api.js?render={CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}", function() {
+						loadFirst("https://www.google.com/recaptcha/api.js?render={CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}&hl={CCMS_LIB:_default.php;FUNC:ccms_lng}", function() {
 							loadFirst("/ccmsusr/_js/jquery-validate-1.19.3.min.js", function() {
 
 								$('#loginHelpLink').click(function(event){
@@ -745,16 +702,6 @@ if(
 									this.removeAttribute('readonly');
 								});
 
-								/*
-								grecaptcha.ready(function() {
-									grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}',{action:'ccms_login_form'}).then(function(token) {
-										$('#ccms_login_form').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
-										$('#ccms_pass_reset_part_1').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
-										$('#ccms_pass_reset_part_2').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
-									});
-								});
-								*/
-
 								$('#ccms_login_form').submit(function(event) {
 									event.preventDefault();
 									grecaptcha.ready(function() {
@@ -762,10 +709,9 @@ if(
 											$('#ccms_login_form').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
 											$('#ccms_login_form').prepend('<input type="hidden" name="g-recaptcha-action" value="ccms_login_form">');
 											$('#ccms_login_form').unbind('submit').submit();
-										});;
+										});
 									});
 								});
-
 
 								$('#ccms_pass_reset_part_1').submit(function(event) {
 									event.preventDefault();
@@ -774,10 +720,9 @@ if(
 											$('#ccms_pass_reset_part_1').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
 											$('#ccms_pass_reset_part_1').prepend('<input type="hidden" name="g-recaptcha-action" value="ccms_pass_reset_part_1">');
 											$('#ccms_pass_reset_part_1').unbind('submit').submit();
-										});;
+										});
 									});
 								});
-
 
 								$('#ccms_pass_reset_part_2').submit(function(event) {
 									event.preventDefault();
@@ -786,26 +731,9 @@ if(
 											$('#ccms_pass_reset_part_2').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
 											$('#ccms_pass_reset_part_2').prepend('<input type="hidden" name="g-recaptcha-action" value="ccms_pass_reset_part_2">');
 											$('#ccms_pass_reset_part_2').unbind('submit').submit();
-										});;
+										});
 									});
 								});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 								$("#ccms_login_form").validate({
 									rules:{
