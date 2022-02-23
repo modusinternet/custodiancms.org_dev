@@ -70,7 +70,8 @@ if(isset($_SESSION['EXPIRED']) == "1") {
 			$out .= "Connection: Close\r\n\r\n";
 			@fwrite($fp, $out);
 			while(!feof($fp)) {
-				$resp .= fgets($fp, 4096);
+				//$resp .= fgets($fp, 4096);
+				$resp .= fread($fp, 4096);
 			}
 			@fclose($fp);
 
