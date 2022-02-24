@@ -42,13 +42,13 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 			<div class="tabs">
-				<button class="tab" id="tab01Title">Info</button>
+				<button class="tab active" id="tab01Title">Info</button>
 				<button class="tab" id="tab02Title">Passwords</button>
 				<button class="tab" id="tab03Title">Privileges</button>
 			</div>
 
 			<!-- Welcome  -->
-			<div id="tab01Content" class="tabContent">
+			<div id="tab01Content" class="tabContent" style="display:block">
 				<p>tab content #1</p>
 			</div>
 
