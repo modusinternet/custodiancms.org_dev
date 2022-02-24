@@ -87,6 +87,12 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 
+
+
+
+
+
+
 			<div class="tabs">
 				<button class="tab active" id="tab01Title">Info</button>
 				<button class="tab" id="tab02Title">Passwords</button>
@@ -105,6 +111,14 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			<div id="tab03Content" class="tabContent">
 				<p>tab content #3</p>
 			</div>
+
+
+
+
+
+
+
+
 
 
 
@@ -136,7 +150,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 		<div id="wrapper" style="position: relative;top: 500px;">
-			{CCMS_TPL:/header-body.php}
+			<!-- {  CCMS_TPL:/header-body.php} -->
 			<div id="page-wrapper">
 				<div class="row">
 					<div class="col-md-12">
