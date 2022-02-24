@@ -386,6 +386,10 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			l.href = "/ccmsusr/_css/bootstrap-3.3.7.min.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
+			var l=document.createElement("link");l.rel="stylesheet";
+			l.href = "/ccmsusr/_css/custodiancms.css";
+			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
+
 			/*
 			var l=document.createElement("link");l.rel="stylesheet";
 			l.href = "/ccmsusr/_css/metisMenu-2.4.0.min.css";
@@ -393,10 +397,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			*/
 			var l=document.createElement("link");l.rel="stylesheet";
 			l.href = "/ccmsusr/_css/metisMenu-3.0.6.min.css";
-			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
-
-			var l=document.createElement("link");l.rel="stylesheet";
-			l.href = "/ccmsusr/_css/custodiancms.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
 			var l=document.createElement("link");l.rel="stylesheet";
@@ -409,6 +409,20 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 					loadFirst("/ccmsusr/_js/bootstrap-3.3.7.min.js", function() { /* Bootstrap is loaded */
 						loadFirst("/ccmsusr/_js/metisMenu-3.0.7.min.js", function() {
 							loadFirst("/ccmsusr/_js/custodiancms.js", function() {
+
+								/* user_dropdown START */
+								/* When the user clicks on the svg button add the 'show' class to the dropdown box below it. */
+								$("#user_dropdown_btn").click(function() {
+									$("#user_dropdown_list").addClass("show");
+								});
+
+								/* Hide dropdown menu on click outside */
+								$(document).on("click", function(e){
+									if(!$(e.target).closest("#user_dropdown_btn").length){
+										$("#user_dropdown_list").removeClass("show");
+									}
+								});
+								/* user_dropdown END */
 
 								// Load MetisMenu
 								//$('#side-menu').metisMenu();
