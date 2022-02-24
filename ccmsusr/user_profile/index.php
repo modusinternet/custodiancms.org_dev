@@ -33,6 +33,119 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		</script>
 	</head>
 	<body>
+		<main style="padding:20px 20px 20px 0">
+			<h1 style="border-bottom:1px dashed var(--cl3)">User Profile</h1>
+			<p>This section is still under development, but if you come across any unresolved issues please let us know at: <a class="oj" href="mailto:info@custodiancms.org?subject=unresolved+issue+report">info@custodiancms.org</a></p>
+
+
+
+
+
+			<div class="tabs">
+				<button class="tab" id="tab01Title"></button>
+				<button class="tab" id="tab02Title"></button>
+				<button class="tab" id="tab03Title"></button>
+			</div>
+
+			<!-- Welcome  -->
+			<div id="tab01Content" class="tabContent">
+				<p>tab content #1</p>
+			</div>
+
+			<div id="tab02Content" class="tabContent">
+				<p>tab content #2</p>
+			</div>
+
+			<div id="tab03Content" class="tabContent">
+				<p>tab content #3</p>
+			</div>
+
+
+
+
+
+
+			<div class="modal">
+				<div>
+					<span style="float:left">Security Logs</span>
+					<button class="svg_icon svg_compress_button" id="ccms_compress_button" title="Compress Show/Hide"></button>
+					<button class="svg_icon svg_reload_button" id="ccms_security_logs_reload_button" title="Reload"></button>
+				</div>
+				<div>
+					<p>List of sessions and or form calls, found in the 'ccms_log' table, that failed.<?php if($CFG["LOG_EVENTS"] === 0){echo '<br><span class="blacklistIpAddress">Currently disabled in config. Only old logs displayed below for now, if any.</span>';}?></p>
+					<div id="ccms_security_logs"></div>
+					<div id="ccms_security_logs_hidden">Click the <svg class="svg_icon" style="bottom:-5px;cursor:text;fill:var(--cl4);position:relative" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17,20H13V16.41l.79.8a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42l-2.5-2.5a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-2.5,2.5a1,1,0,0,0,1.42,1.42l.79-.8V20H7a1,1,0,0,0,0,2H17a1,1,0,0,0,0-2ZM7,4h4V7.59l-.79-.8A1,1,0,1,0,8.79,8.21l2.5,2.5a1,1,0,0,0,.33.21.94.94,0,0,0,.76,0,1,1,0,0,0,.33-.21l2.5-2.5a1,1,0,1,0-1.42-1.42l-.79.8V4h4a1,1,0,0,0,0-2H7A1,1,0,0,0,7,4Z"/></svg> icon above to show/hide the Security Logs table.</div>
+				</div>
+			</div>
+
+			<div class="cssGrid-Dashboard-01">
+				<div class="modal">
+					<div>System Info</div>
+					<div>
+						<p style="word-break:break-all">Server Name: <span class="oj"><?= $_SERVER["SERVER_NAME"];?></span></p>
+						<p style="word-break:break-all">Document Root: <span class="oj"><?=$_SERVER["DOCUMENT_ROOT"];?></span></p>
+						<p>System Address: <span class="oj"><?= $_SERVER["SERVER_ADDR"];?></p>
+						<p>Web Server: <span class="oj"><?php $a = explode(" ",$_SERVER["SERVER_SOFTWARE"]);echo $a[0];?></span></p>
+						<p>PHP Version: <span class="oj"><?= phpversion();?></span></p>
+						<p>PHP Memory Limit: <span class="oj"><?= ini_get("memory_limit");?></span></p>
+						<p>MySQL Version: <span class="oj"><?= $CFG["DBH"]->getAttribute(PDO::ATTR_SERVER_VERSION);?></span></p>
+						<p>COOKIE_SESSION_EXPIRE: <span class="oj"><?= $CFG["COOKIE_SESSION_EXPIRE"];?></span></p>
+						<p>HTML_MIN: <span class="oj"><?= $CFG["HTML_MIN"];?></span></p>
+						<p>CACHE: <span class="oj"><?= $CFG["CACHE"];?></span></p>
+						<p>CACHE_EXPIRE: <span class="oj"><?= $CFG["CACHE_EXPIRE"];?></span></p>
+						<p>LOG_EVENTS: <span class="oj"><?= $CFG["LOG_EVENTS"];?></span></p>
+						<p>EMAIL_FROM: <span class="oj"><?= $CFG["EMAIL_FROM"];?></span></p>
+						<p style="word-break:break-all">EMAIL_BOUNCES_RETURNED_TO: <span class="oj"><?= $CFG["EMAIL_BOUNCES_RETURNED_TO"];?></span></p>
+					</div>
+				</div>
+
+				<div class="modal">
+					<div>CustodianCMS.org News
+						<button class="svg_icon svg_reload_button" id="ccms_news_reload_button" title="Reload"></button>
+					</div>
+					<div id="ccms_news_items">
+						<p>Nothing to see at the moment.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal">
+				<div>License Info</div>
+				<div>
+					@Version
+					<p style="margin-left:20px;">
+						{CCMS_LIB:_default.php;FUNC:ccms_version} (Release Date: {CCMS_LIB:_default.php;FUNC:ccms_release_date})
+					</p>
+					@Copyright
+					<p style="margin-left:20px;">
+						&copy; {CCMS_LIB:_default.php;FUNC:ccms_dateYear} assigned by Vincent Hallberg of <a class='oj' href="https://custodiancms.org" rel="noopener" target="_blank">custodiancms.org</a> and <a class='oj' href="https://modusinternet.com" rel="noopener" target="_blank">modusinternet.com</a>
+					</p>
+					<span style="margin:0 20px">License (MIT)</span>
+					<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+					<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+					<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+				</div>
+			</div>
+
+
+
+
+
+			<ul>
+				<li>HTML Minify</li>
+				<li>Templates in Database Cache</li>
+				<li>Clear Cache</li>
+				<li>Backup/Restore</li>
+				<li>Password Recovery attempts currently in the ccms_password_recovery table</li>
+			</ul>
+
+
+
+
+			{CCMS_TPL:/footer.html}
+		</main>
+
+		{CCMS_TPL:/body-head.php}
 
 
 
@@ -49,7 +162,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 
-		
+
 		<div id="wrapper">
 			{CCMS_TPL:/header-body.php}
 			<div id="page-wrapper">
@@ -312,8 +425,9 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 							loadFirst("/ccmsusr/_js/custodiancms.js", function() {
 
 								// Load MetisMenu
-								$('#side-menu').metisMenu();
+								//$('#side-menu').metisMenu();
 
+								/*
 								$("#menu-toggle").click(function(e) {
 									e.preventDefault();
 									$("#wrapper").toggleClass("toggled");
@@ -322,11 +436,102 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 								});
 
 								$(function(){$(window).bind("load resize",function(){showHideNav();})});
+								*/
 
 								/*loadFirst("//ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js", function() { /* jquery.validate.js */
 								loadFirst("/ccmsusr/_js/jquery-validate-1.19.3.min.js", function() { /* JQuery Validate */
 									/*loadFirst("//ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/additional-methods.min.js", function(){ /* additional-methods.js */
 									loadFirst("/ccmsusr/_js/additional-methods-1.17.0.min.js", function() { /* JQuery Validate Additional Methods */
+
+
+
+
+
+
+
+
+
+										document.getElementById("tab01Title").addEventListener("click", () => {
+											let i, tabContent, tab;
+
+											/* De-activate all tabs. */
+											tab = document.getElementsByClassName("tab");
+											for(i=0; i<tab.length; i++){
+												tab[i].className = tab[i].className.replace(" active","");
+											}
+
+											/* Hide all tab content areas. */
+											tabContent = document.getElementsByClassName("tabContent");
+											for(i=0; i<tabContent.length; i++){
+												tabContent[i].style.display = "none";
+											}
+
+											//evt.currentTarget.className += " active";
+											/* Activate the tab. */
+											document.getElementById("tab01Title").className += " active";
+											/* Display the content area for the above tab. */
+											document.getElementById("tab01Content").style.display = "block";
+										});
+
+										document.getElementById("tab02Title").addEventListener("click", () => {
+											let i, tabContent, tab;
+
+											/* De-activate all tabs. */
+											tab = document.getElementsByClassName("tab");
+											for(i=0; i<tab.length; i++){
+												tab[i].className = tab[i].className.replace(" active","");
+											}
+
+											/* Hide all tab content areas. */
+											tabContent = document.getElementsByClassName("tabContent");
+											for(i=0; i<tabContent.length; i++){
+												tabContent[i].style.display = "none";
+											}
+
+											/* Activate the tab. */
+											document.getElementById("tab02Title").className += " active";
+											/* Display the content area for the above tab. */
+											document.getElementById("tab02Content").style.display = "block";
+										});
+
+										document.getElementById("tab03Title").addEventListener("click", () => {
+											let i, tabContent, tab;
+
+											/* De-activate all tabs. */
+											tab = document.getElementsByClassName("tab");
+											for(i=0; i<tab.length; i++){
+												tab[i].className = tab[i].className.replace(" active","");
+											}
+
+											/* Hide all tab content areas. */
+											tabContent = document.getElementsByClassName("tabContent");
+											for(i=0; i<tabContent.length; i++){
+												tabContent[i].style.display = "none";
+											}
+
+											/* Activate the tab. */
+											document.getElementById("tab03Title").className += " active";
+											/* Display the content area for the above tab. */
+											document.getElementById("tab03Content").style.display = "block";
+										});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 										$.validator.addMethod(
 											"badCharRegex",
