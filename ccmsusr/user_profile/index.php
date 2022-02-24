@@ -26,6 +26,52 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 	</head>
 	<style>
 		{CCMS_TPL:/_css/head-css.html}
+
+		.tabs{
+			border-bottom:1px solid var(--cl4);
+			overflow:hidden
+		}
+
+		.tabs button{
+			background-color:var(--cl8);
+			border:1px solid var(--cl4);
+			border-bottom:none;
+			border-radius:4px 4px 0 0;
+			color:var(--cl5);
+			cursor:pointer;
+			float:left;
+			margin-right:2px;
+			outline:none;
+			padding:14px 16px;
+			transition:0.3s
+		}
+
+		.tabs button:hover, .tabs button:hover svg path{
+			background-color:var(--cl4);
+			color:var(--cl0)
+		}
+
+		.tabs button.active, .tabs button.active svg path{
+			background-color:var(--cl4);
+			color:var(--cl0)
+		}
+
+		.tabs button:hover svg path{
+			background-color:var(--cl4);
+			fill:var(--cl0)
+		}
+
+		.tabs button.active svg path{
+			background-color:var(--cl4);
+			fill:var(--cl0)
+		}
+
+		.tabs button svg path{fill:var(--cl5)}
+
+		.tabContent{
+			display:none;
+			padding:20px 0px
+		}
 	</style>
 	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 		let navActiveItem = ["nav-user_profile"];
