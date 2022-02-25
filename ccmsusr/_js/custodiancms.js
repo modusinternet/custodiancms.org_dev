@@ -11,6 +11,10 @@ window.setTimeout(function(){
 /* Loading Screen END */
 
 
+// Fade in web page.
+$("header").delay(250).animate({"opacity": "1"}, 250);
+
+
 /* metisMenu START */
 $(() => {
 	const menu = $('#menu-ctn'),
