@@ -258,24 +258,26 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 									div.innerHTML = "";
 									divTableHeaderRow.appendChild(div);
 
-									for(var i = 0; i < data.length; i++) {
-										var divTableRow = document.createElement("div");
+									for(let i = 0; i < data.length; i++) {
+										let divTableRow = document.createElement("div");
 										divTableRow.setAttribute("class", "tableRow");
 										divTableRow.setAttribute("id", "sec-log-row-id-" + data[i].id);
 
 										const date = new Date(data[i].date*1000);
 										// Year
-										var year = date.getFullYear();
+										let year = date.getFullYear();
 										// Month
-										var month = date.getMonth()+1;
+										//let month = date.getMonth()+1;
+										let month = ("0" + (date.getMonth() + 1)).slice(-2);
 										// Day
-										var day = date.getDate();
+										//let day = date.getDate();
+										let day = ("0" + date.getDate()).slice(-2);
 										// Hours
-										var hours = date.getHours();
+										let hours = date.getHours();
 										// Minutes
-										var minutes = "0" + date.getMinutes();
+										let minutes = "0" + date.getMinutes();
 										// Seconds
-										var seconds = "0" + date.getSeconds();
+										let seconds = "0" + date.getSeconds();
 										// Display date time in MM-dd-yyyy h:m:s format
 										//const convdataTime = '<span style="white-space:nowrap">'+year+'-'+month+1+'-'+day+'</span><br>'+hours+':'+minutes.substr(-2)+':'+seconds.substr(-2);
 
