@@ -257,6 +257,8 @@ p{margin:0 0 20px}
   display: block;
 }
 
+.dropdown-content a.active{background-color:var(--cl3)}
+
 .dropdown-content a:hover{background-color:var(--cl3)}
 
 .show {display: block;}

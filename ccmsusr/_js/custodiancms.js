@@ -47,6 +47,11 @@ navActiveItem.forEach(function(nl){$("#"+nl+">a").addClass("active");});
 /* metisMenu END */
 
 
+/* w3schoolMenu START */
+navActiveW3schoolsItem.forEach(function(s) {$("#"+s).addClass("active");});
+/* w3schoolMenu END */
+
+
 /* Fetch Cache BEGIN */
 const cachedFetch = (url, options) => {
 	let expiry = 5 * 60; // 5 min default
@@ -109,7 +114,7 @@ cachedFetch('https://httpbin.org/image/png')
 
 /* ===== metisMenu load ===== */
 /* Loads the correct sidebar on window load, collapses the sidebar on window resize. Sets the min-height of #page-wrapper to window size. */
-///*
+/*
 function showHideNav() {
 	topOffset = 50;
 	width = (this.window.innerWidth > 0) ? this.window.innerWidth : this.screen.width;
@@ -130,7 +135,7 @@ function showHideNav() {
 
 $(function(){$(window).bind("load resize",function(){showHideNav();})});
 showHideNav();
-//*/
+*/
 /* ===== metisMenu load Close ===== */
 
 
