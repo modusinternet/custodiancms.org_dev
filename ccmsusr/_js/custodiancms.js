@@ -11,7 +11,7 @@ window.setTimeout(function(){
 /* Loading Screen END */
 
 
-// Fade in web page.
+// Fade in navigation.
 $("header").delay(250).animate({"opacity": "1"}, 250);
 
 

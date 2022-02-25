@@ -150,17 +150,9 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 		<div id="wrapper" style="position: relative;top: 500px;">
-			<!-- {  CCMS_TPL:/header-body.php} -->
 			<div id="page-wrapper">
 				<div class="row">
 					<div class="col-md-12">
-						<h1 class="page-header">User Profile</h1>
-						<div class="img-circle" style="background-color: #337AB7; height: 100px; width: 100px;">
-							<i class="fa fa-user" style="color: #ffffff; font-size: 6em;"></i>
-						</div>
-						<h2><?php echo $ccms_user["firstname"] . " " . $ccms_user["lastname"] . " (" . $ccms_user["alias"] . ")"; ?></h2>
-						<?php echo $ccms_user["position"]; ?><br />
-						<br />
 						<ul class="nav nav-tabs">
 							<li class="active">
 								<a href="#info_tab" data-toggle="tab" aria-expanded="false">Info</a>
