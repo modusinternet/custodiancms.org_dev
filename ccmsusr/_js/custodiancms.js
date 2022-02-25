@@ -48,7 +48,7 @@ navActiveItem.forEach(function(nl){$("#"+nl+">a").addClass("active");});
 
 
 /* w3schoolMenu START */
-navActiveW3schoolsItem.forEach(function(s) {$("#"+s).addClass("active");});
+navActiveW3schoolsItem.forEach(function(nl){$("#"+nl).addClass("active");});
 /* w3schoolMenu END */
 
 
