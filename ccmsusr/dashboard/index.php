@@ -248,6 +248,19 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 										//console.log(tablecolumns[i]);
 										var div = document.createElement("div");
 										div.className = 'tableCell tableHead';
+
+										if(tablecolumns[i] == "id"){
+											tablecolumns[i] = tablecolumns[i].toUpperCase();
+										}
+										if(tablecolumns[i] == "Date"){
+											div.setAttribute("title", "YYYY-MM-DD HH-MM-SS");
+										}
+										if(tablecolumns[i] == "ip"){
+											tablecolumns[i] = tablecolumns[i].toUpperCase();
+										}
+										if(tablecolumns[i] == "url"){
+											tablecolumns[i] = tablecolumns[i].toUpperCase();
+										}
 										div.innerHTML = tablecolumns[i];
 										divTableHeaderRow.appendChild(div);
 									}
@@ -264,13 +277,12 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 										divTableRow.setAttribute("id", "sec-log-row-id-" + data[i].id);
 
 										const date = new Date(data[i].date*1000);
+
 										// Year
 										let year = date.getFullYear();
 										// Month
-										//let month = date.getMonth()+1;
 										let month = ("0" + (date.getMonth() + 1)).slice(-2);
 										// Day
-										//let day = date.getDate();
 										let day = ("0" + date.getDate()).slice(-2);
 										// Hours
 										let hours = date.getHours();
@@ -278,8 +290,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 										let minutes = "0" + date.getMinutes();
 										// Seconds
 										let seconds = "0" + date.getSeconds();
-										// Display date time in MM-dd-yyyy h:m:s format
-										//const convdataTime = '<span style="white-space:nowrap">'+year+'-'+month+1+'-'+day+'</span><br>'+hours+':'+minutes.substr(-2)+':'+seconds.substr(-2);
 
 										const convdataTime = '<span style="white-space:nowrap">'+year+'-'+month+'-'+day+'</span><br>'+hours+':'+minutes.substr(-2)+':'+seconds.substr(-2);
 
