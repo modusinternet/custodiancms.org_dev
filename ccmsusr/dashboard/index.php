@@ -252,7 +252,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 										if(tablecolumns[i] == "id"){
 											tablecolumns[i] = tablecolumns[i].toUpperCase();
 										}
-										if(tablecolumns[i] == "Date"){
+										if(tablecolumns[i] == "date"){
 											div.setAttribute("title", "YYYY-MM-DD HH-MM-SS");
 										}
 										if(tablecolumns[i] == "ip"){
@@ -261,6 +261,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 										if(tablecolumns[i] == "url"){
 											tablecolumns[i] = tablecolumns[i].toUpperCase();
 										}
+										
 										div.innerHTML = tablecolumns[i];
 										divTableHeaderRow.appendChild(div);
 									}
