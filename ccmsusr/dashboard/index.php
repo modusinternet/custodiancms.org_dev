@@ -267,7 +267,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 										// Year
 										var year = date.getFullYear();
 										// Month
-										var month = date.getMonth();
+										var month = date.getMonth()+1;
 										// Day
 										var day = date.getDate();
 										// Hours
