@@ -74,9 +74,10 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		}
 	</style>
 	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
+		let navActiveItem = [];
+		let navActiveSub = [];
 		let navActiveW3schoolsItem = ["nav-user_profile"];
-		</script>
-	</head>
+	</script>
 	<body>
 		<main style="padding:20px 20px 20px 0">
 			<h1 style="border-bottom:1px dashed var(--cl3)">User Profile</h1>
