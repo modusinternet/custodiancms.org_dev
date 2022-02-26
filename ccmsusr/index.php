@@ -92,6 +92,17 @@ if(preg_match("/[\/]\z/", $CLEAN["ccms_tpl"])) {
 	$CLEAN["ccms_tpl"] .= "index.php";
 }
 
+
+// Last ditch security check, is the user on the blacklist?
+if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
+	// log out
+	$_SESSION = array();
+	$_SESSION['EXPIRED'] = "1";
+	header("Location: /" . $CFG["DEFAULT_SITE_CHAR_SET"] . "/user/");
+	exit;
+}
+
+
 CCMS_Main();
 
 // benchmark end
