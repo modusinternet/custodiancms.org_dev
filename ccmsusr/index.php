@@ -59,10 +59,9 @@ if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
 		//echo "/* Session Error */";
 		echo '[{"errorMsg":"Session Error"}]';
 	} else {
-		header("Location: /" . $CFG["DEFAULT_SITE_CHAR_SET"] . "/user/");
+		// Show login template because they are NOT logged in.
+		$CLEAN["ccms_tpl"] = "/login.php";
 	}
-	
-	exit;
 }
 
 
