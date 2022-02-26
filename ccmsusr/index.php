@@ -44,7 +44,6 @@ CCMS_User_Filter($_SERVER + $_REQUEST, $whitelist);
 if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
 	// log out
 	$_SESSION = array();
-	$CLEAN["ccms_tpl"] = "/login.php";
 }
 
 
