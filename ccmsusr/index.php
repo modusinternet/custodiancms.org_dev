@@ -39,6 +39,15 @@ CCMS_Filter($_SERVER + $_REQUEST, $ccms_whitelist);
 
 CCMS_User_Filter($_SERVER + $_REQUEST, $whitelist);
 
+
+// Security check, is the user on the blacklist?
+if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
+	// log out
+	$_SESSION = array();
+	$CLEAN["ccms_tpl"] = "/login.php";
+}
+
+
 CCMS_Set_SESSION();
 
 //if(isset($_SESSION["FAIL"]) >= 5) {
@@ -91,15 +100,6 @@ if(!isset($CLEAN["ccms_tpl"]) || $CLEAN["ccms_tpl"] === "" || $CLEAN["ccms_tpl"]
 if(preg_match("/[\/]\z/", $CLEAN["ccms_tpl"])) {
 	$CLEAN["ccms_tpl"] .= "index.php";
 }
-
-
-// Last ditch security check, is the user on the blacklist?
-if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
-	// log out
-	$_SESSION = array();
-	$CLEAN["ccms_tpl"] = "/login.php";
-}
-
 
 CCMS_Main();
 
