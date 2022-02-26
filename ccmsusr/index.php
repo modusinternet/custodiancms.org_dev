@@ -58,6 +58,7 @@ if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
 		header("Pragma: no-cache");
 		//echo "/* Session Error */";
 		echo '[{"errorMsg":"Session Error"}]';
+		exit;
 	} else {
 		// Show login template because they are NOT logged in.
 		$CLEAN["ccms_tpl"] = "/login.php";
