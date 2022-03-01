@@ -177,7 +177,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 			<!-- Welcome  -->
 			<div id="tab01Content" class="tabContent" style="display:block">
-				<h3<General</h3>
+
 				<div class="alert alert-success" id="info_tab_form_success" role="alert" style="display:none"></div>
 				<div class="alert alert-danger" id="info_tab_form_fail" role="alert" style="display:none"></div>
 
@@ -185,47 +185,52 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 					<div class="outer-grid">
 						<div class="inner-grid">
 							<input name="ajax_flag" type="hidden" value="1">
-							<label for="firstname">Firstname <span class="rd">*</span></label>
-							<input id="firstname" name="firstname" placeholder="Type your Firstname here." type="text" value="<?php echo $ccms_user["firstname"]; ?>">
+							<h3<General</h3>
+							<label for="firstname">Firstname</label>
+							<input id="firstname" name="firstname" placeholder="Type your firstname here." type="text" value="<?php echo $ccms_user["firstname"]; ?>">
 							<label id="firstname_error" class="error" for="firstname" style="display:none"></label>
 
-							<label for="asdf">asdf <span class="rd">*</span></label>
-							<input id="asdf" name="asdf" placeholder="asdf" type="text" value="<?php echo $ccms_user["asdf"]; ?>">
-							<label id="asdf_error" class="error" for="asdf" style="display:none"></label>
+							<label for="lastname">Lastname</label>
+							<input id="lastname" name="lastname" placeholder="Type your lastname here." type="text" value="<?php echo $ccms_user["lastname"]; ?>">
+							<label id="lastname_error" class="error" for="lastname" style="display:none"></label>
 
-							<label for="asdf">asdf <span class="rd">*</span></label>
-							<input id="asdf" name="asdf" placeholder="asdf" type="text" value="<?php echo $ccms_user["asdf"]; ?>">
-							<label id="asdf_error" class="error" for="asdf" style="display:none"></label>
+							<label for="alias">Alias <span class="rd">*</span></label>
+							<input id="alias" name="alias" placeholder="Type your alias here." type="text" value="<?php echo $ccms_user["alias"]; ?>">
+							<label id="alias_error" class="error" for="alias" style="display:none"></label>
 
-							<label for="asdf">asdf <span class="rd">*</span></label>
-							<input id="asdf" name="asdf" placeholder="asdf" type="text" value="<?php echo $ccms_user["asdf"]; ?>">
-							<label id="asdf_error" class="error" for="asdf" style="display:none"></label>
+							<label for="position">Position</label>
+							<input id="position" name="position" placeholder="Type your work Position or Title here." type="text" value="<?php echo $ccms_user["position"]; ?>">
+							<label id="position_error" class="error" for="position" style="display:none"></label>
 						</div>
+
 						<div class="inner-grid">
-							<label for="asdf">asdf <span class="rd">*</span></label>
-							<input id="asdf" name="asdf" placeholder="asdf" type="text" value="<?php echo $ccms_user["asdf"]; ?>">
-							<label id="asdf_error" class="error" for="asdf" style="display:none"></label>
+							<h3<Address</h3>
+							<label for="address1">Address Line 1</label>
+							<input id="address1" name="address1" placeholder="Type your Address here." type="text" value="<?php echo $ccms_user["address1"]; ?>">
+							<label id="address1_error" class="error" for="address1" style="display:none"></label>
 
-							<label for="asdf">asdf <span class="rd">*</span></label>
-							<input id="asdf" name="asdf" placeholder="asdf" type="text" value="<?php echo $ccms_user["asdf"]; ?>">
-							<label id="asdf_error" class="error" for="asdf" style="display:none"></label>
+							<label for="address2">Address Line 2</label>
+							<input id="address2" name="address2" placeholder="Type your Address here." type="text" value="<?php echo $ccms_user["address2"]; ?>">
+							<label id="address2_error" class="error" for="address2" style="display:none"></label>
 
-							<label for="asdf">asdf <span class="rd">*</span></label>
-							<input id="asdf" name="asdf" placeholder="asdf" type="text" value="<?php echo $ccms_user["asdf"]; ?>">
-							<label id="asdf_error" class="error" for="asdf" style="display:none"></label>
+							<label for="prov_state">Prov/State</label>
+							<input id="prov_state" name="prov_state" placeholder="Type your Province or State here." type="text" value="<?php echo $ccms_user["prov_state"]; ?>">
+							<label id="prov_state_error" class="error" for="prov_state" style="display:none"></label>
 						</div>
+
 						<div class="inner-grid">
-							<label for="asdf">asdf <span class="rd">*</span></label>
-							<input id="asdf" name="asdf" placeholder="asdf" type="text" value="<?php echo $ccms_user["asdf"]; ?>">
-							<label id="asdf_error" class="error" for="asdf" style="display:none"></label>
+							<h3<Contact</h3>
+							<label for="address1">Address Line 1</label>
+							<input id="address1" name="address1" placeholder="Type your Address here." type="text" value="<?php echo $ccms_user["address1"]; ?>">
+							<label id="address1_error" class="error" for="address1" style="display:none"></label>
 
-							<label for="asdf">asdf <span class="rd">*</span></label>
-							<input id="asdf" name="asdf" placeholder="asdf" type="text" value="<?php echo $ccms_user["asdf"]; ?>">
-							<label id="asdf_error" class="error" for="asdf" style="display:none"></label>
+							<label for="address2">Address Line 2</label>
+							<input id="address2" name="address2" placeholder="Type your Address here." type="text" value="<?php echo $ccms_user["address2"]; ?>">
+							<label id="address2_error" class="error" for="address2" style="display:none"></label>
 
-							<label for="asdf">asdf <span class="rd">*</span></label>
-							<input id="asdf" name="asdf" placeholder="asdf" type="text" value="<?php echo $ccms_user["asdf"]; ?>">
-							<label id="asdf_error" class="error" for="asdf" style="display:none"></label>
+							<label for="prov_state">Prov/State</label>
+							<input id="prov_state" name="prov_state" placeholder="Type your Province or State here." type="text" value="<?php echo $ccms_user["prov_state"]; ?>">
+							<label id="prov_state_error" class="error" for="prov_state" style="display:none"></label>
 
 							<button>Update</button>
 							<button>Cancel</button>
