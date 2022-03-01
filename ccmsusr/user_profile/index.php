@@ -67,13 +67,13 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 
-		#outer-grid {
+		.outer-grid {
 			display: grid;
 			grid-template-rows: 1fr 1fr;
 			grid-template-columns: 1fr 1fr;
 			grid-gap: 8px;
 		}
-		#outer-grid > div {
+		.outer-grid > div {
 			background-color: limegreen;
 			color: white;
 			font-size: 4vw;
@@ -151,6 +151,19 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			}
 
 			.inner-grid>label.error{grid-column:1 / span 2}
+
+			.outer-grid {
+				display: grid;
+				grid-template-rows: 1fr 1fr;
+				grid-template-columns: 1fr 1fr;
+				grid-gap: 8px;
+			}
+			.outer-grid > div {
+				background-color: limegreen;
+				color: white;
+				font-size: 4vw;
+				padding: 8px;
+			}
 		}
 	</style>
 	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
