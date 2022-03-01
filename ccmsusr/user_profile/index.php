@@ -100,6 +100,26 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			display:none;
 			padding:20px 0px
 		}
+
+
+		/* 500px or wider. */
+		@media only screen and (min-width:500px){
+			.aGrid{
+				grid-template-columns:1fr 1fr;
+				grid-gap:15px
+			}
+
+			.aGrid>button{grid-column:1 / span 2}
+
+			.aGrid>label.error{grid-column:1 / span 2}
+
+			.aGrid>input{grid-column:2 / 3}
+
+			.aGrid>label{
+				text-align:right;
+				grid-column:1 / 2
+			}
+		}
 	</style>
 	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 		let navActiveItem = [];
