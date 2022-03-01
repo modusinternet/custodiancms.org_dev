@@ -43,6 +43,8 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 		.inner-grid>button:hover{background:var(--cl3-tran)}
 
+		.inner-grid>h3{grid-column:1 / span 2}
+
 		.inner-grid>input{
 			background:var(--cl0);
 			border:1px solid var(--cl10);
@@ -139,14 +141,14 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 			.inner-grid>button{grid-column:1 / span 2}
 
-			.inner-grid>label.error{grid-column:1 / span 2}
-
 			.inner-grid>input{grid-column:2 / 3}
 
 			.inner-grid>label{
 				text-align:right;
 				grid-column:1 / 2
 			}
+
+			.inner-grid>label.error{grid-column:1 / span 2}
 		}
 	</style>
 	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
