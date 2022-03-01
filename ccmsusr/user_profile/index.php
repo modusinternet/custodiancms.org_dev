@@ -149,20 +149,15 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 			<!-- Welcome  -->
 			<div id="tab01Content" class="tabContent" style="display:block">
-
-
+				<h3<General</h3>
+				<div class="alert alert-success" id="info_tab_form_success" role="alert" style="display:none"></div>
+				<div class="alert alert-danger" id="info_tab_form_fail" role="alert" style="display:none"></div>
 
 				<form class="aGrid" id="info_tab_form" role="form">
-					<h3<General</h3>
-					<div class="alert alert-success" id="info_tab_form_success" role="alert" style="display:none"></div>
-					<div class="alert alert-danger" id="info_tab_form_fail" role="alert" style="display:none"></div>
-
 					<input name="ajax_flag" type="hidden" value="1">
-
 					<label for="firstname">Firstname <span class="rd">*</span></label>
 					<input id="firstname" name="firstname" placeholder="Type your Firstname here." type="text" value="<?php echo $ccms_user["firstname"]; ?>">
 					<label id="firstname_error" class="error" for="firstname" style="display:none"></label>
-
 
 					<label for="asdf">asdf <span class="rd">*</span></label>
 					<input id="asdf" name="asdf" placeholder="asdf" type="text" value="<?php echo $ccms_user["asdf"]; ?>">
