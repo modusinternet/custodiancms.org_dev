@@ -24,9 +24,16 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 	<style>
 		{CCMS_TPL:/_css/head-css.html}
 
-		.aGrid{display:grid}
 
-		.aGrid>button{
+
+
+
+
+
+
+		.inner-grid{display:grid}
+
+		.inner-grid>button{
 			background:var(--cl3);
 			border:0;
 			color:var(--cl0);
@@ -34,9 +41,9 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			width:100%
 		}
 
-		.aGrid>button:hover{background:var(--cl3-tran)}
+		.inner-grid>button:hover{background:var(--cl3-tran)}
 
-		.aGrid>input{
+		.inner-grid>input{
 			background:var(--cl0);
 			border:1px solid var(--cl10);
 			border-radius:4px;
@@ -44,16 +51,37 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			margin-bottom:0.5rem
 		}
 
-		.aGrid>input:focus{outline:3px solid gold}
+		.inner-grid>input:focus{outline:3px solid gold}
 
-		.aGrid>label{white-space:nowrap}
+		.inner-grid>label{white-space:nowrap}
 
-		.aGrid>label.error{
+		.inner-grid>label.error{
 			color:var(--cl11);
 			margin-bottom:1rem;
 			text-align:unset;
 			white-space:unset
 		}
+
+
+
+
+		#outer-grid {
+			display: grid;
+			grid-template-rows: 1fr 1fr;
+			grid-template-columns: 1fr 1fr;
+			grid-gap: 8px;
+		}
+		#outer-grid > div {
+			background-color: limegreen;
+			color: white;
+			font-size: 4vw;
+			padding: 8px;
+		}
+
+
+
+
+
 
 		.tabs{
 			border-bottom:1px solid var(--cl4);
@@ -104,18 +132,18 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 		/* 500px or wider. */
 		@media only screen and (min-width:500px){
-			.aGrid{
+			.inner-grid{
 				grid-template-columns:1fr 1fr;
 				grid-gap:15px
 			}
 
-			.aGrid>button{grid-column:1 / span 2}
+			.inner-grid>button{grid-column:1 / span 2}
 
-			.aGrid>label.error{grid-column:1 / span 2}
+			.inner-grid>label.error{grid-column:1 / span 2}
 
-			.aGrid>input{grid-column:2 / 3}
+			.inner-grid>input{grid-column:2 / 3}
 
-			.aGrid>label{
+			.inner-grid>label{
 				text-align:right;
 				grid-column:1 / 2
 			}
@@ -153,50 +181,57 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 				<div class="alert alert-success" id="info_tab_form_success" role="alert" style="display:none"></div>
 				<div class="alert alert-danger" id="info_tab_form_fail" role="alert" style="display:none"></div>
 
-				<form class="aGrid" id="info_tab_form" role="form">
-					<input name="ajax_flag" type="hidden" value="1">
-					<label for="firstname">Firstname <span class="rd">*</span></label>
-					<input id="firstname" name="firstname" placeholder="Type your Firstname here." type="text" value="<?php echo $ccms_user["firstname"]; ?>">
-					<label id="firstname_error" class="error" for="firstname" style="display:none"></label>
+				<form id="info_tab_form" role="form">
+					<div class="outer-grid">
+						<div class="inner-grid">
+							<input name="ajax_flag" type="hidden" value="1">
+							<label for="firstname">Firstname <span class="rd">*</span></label>
+							<input id="firstname" name="firstname" placeholder="Type your Firstname here." type="text" value="<?php echo $ccms_user["firstname"]; ?>">
+							<label id="firstname_error" class="error" for="firstname" style="display:none"></label>
 
-					<label for="asdf">asdf <span class="rd">*</span></label>
-					<input id="asdf" name="asdf" placeholder="asdf" type="text" value="<?php echo $ccms_user["asdf"]; ?>">
-					<label id="asdf_error" class="error" for="asdf" style="display:none"></label>
+							<label for="asdf">asdf <span class="rd">*</span></label>
+							<input id="asdf" name="asdf" placeholder="asdf" type="text" value="<?php echo $ccms_user["asdf"]; ?>">
+							<label id="asdf_error" class="error" for="asdf" style="display:none"></label>
 
+							<label for="asdf">asdf <span class="rd">*</span></label>
+							<input id="asdf" name="asdf" placeholder="asdf" type="text" value="<?php echo $ccms_user["asdf"]; ?>">
+							<label id="asdf_error" class="error" for="asdf" style="display:none"></label>
 
-					<label for="asdf">asdf <span class="rd">*</span></label>
-					<input id="asdf" name="asdf" placeholder="asdf" type="text" value="<?php echo $ccms_user["asdf"]; ?>">
-					<label id="asdf_error" class="error" for="asdf" style="display:none"></label>
+							<label for="asdf">asdf <span class="rd">*</span></label>
+							<input id="asdf" name="asdf" placeholder="asdf" type="text" value="<?php echo $ccms_user["asdf"]; ?>">
+							<label id="asdf_error" class="error" for="asdf" style="display:none"></label>
+						</div>
+						<div class="inner-grid">
+							<label for="asdf">asdf <span class="rd">*</span></label>
+							<input id="asdf" name="asdf" placeholder="asdf" type="text" value="<?php echo $ccms_user["asdf"]; ?>">
+							<label id="asdf_error" class="error" for="asdf" style="display:none"></label>
 
+							<label for="asdf">asdf <span class="rd">*</span></label>
+							<input id="asdf" name="asdf" placeholder="asdf" type="text" value="<?php echo $ccms_user["asdf"]; ?>">
+							<label id="asdf_error" class="error" for="asdf" style="display:none"></label>
 
-					<label for="asdf">asdf <span class="rd">*</span></label>
-					<input id="asdf" name="asdf" placeholder="asdf" type="text" value="<?php echo $ccms_user["asdf"]; ?>">
-					<label id="asdf_error" class="error" for="asdf" style="display:none"></label>
+							<label for="asdf">asdf <span class="rd">*</span></label>
+							<input id="asdf" name="asdf" placeholder="asdf" type="text" value="<?php echo $ccms_user["asdf"]; ?>">
+							<label id="asdf_error" class="error" for="asdf" style="display:none"></label>
+						</div>
+						<div class="inner-grid">
+							<label for="asdf">asdf <span class="rd">*</span></label>
+							<input id="asdf" name="asdf" placeholder="asdf" type="text" value="<?php echo $ccms_user["asdf"]; ?>">
+							<label id="asdf_error" class="error" for="asdf" style="display:none"></label>
 
+							<label for="asdf">asdf <span class="rd">*</span></label>
+							<input id="asdf" name="asdf" placeholder="asdf" type="text" value="<?php echo $ccms_user["asdf"]; ?>">
+							<label id="asdf_error" class="error" for="asdf" style="display:none"></label>
 
-					<label for="asdf">asdf <span class="rd">*</span></label>
-					<input id="asdf" name="asdf" placeholder="asdf" type="text" value="<?php echo $ccms_user["asdf"]; ?>">
-					<label id="asdf_error" class="error" for="asdf" style="display:none"></label>
+							<label for="asdf">asdf <span class="rd">*</span></label>
+							<input id="asdf" name="asdf" placeholder="asdf" type="text" value="<?php echo $ccms_user["asdf"]; ?>">
+							<label id="asdf_error" class="error" for="asdf" style="display:none"></label>
 
-
-					<label for="asdf">asdf <span class="rd">*</span></label>
-					<input id="asdf" name="asdf" placeholder="asdf" type="text" value="<?php echo $ccms_user["asdf"]; ?>">
-					<label id="asdf_error" class="error" for="asdf" style="display:none"></label>
-
-
-					<label for="asdf">asdf <span class="rd">*</span></label>
-					<input id="asdf" name="asdf" placeholder="asdf" type="text" value="<?php echo $ccms_user["asdf"]; ?>">
-					<label id="asdf_error" class="error" for="asdf" style="display:none"></label>
-
-
-
-
-					<button>Update</button>
-					<button>Cancel</button>
+							<button>Update</button>
+							<button>Cancel</button>
+						</div>
+					</div>
 				</form>
-
-
-
 			</div>
 
 			<div id="tab02Content" class="tabContent">
