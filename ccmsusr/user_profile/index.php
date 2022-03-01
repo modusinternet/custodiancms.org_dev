@@ -15,9 +15,6 @@ $qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_user` WHERE `id` = :id LIMIT 1;
 $qry->execute(array(':id' => $_SESSION["USER_ID"]));
 $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
-
-
-
 ?><!DOCTYPE html>
 <html lang="{CCMS_LIB:_default.php;FUNC:ccms_lng}">
 	<head>
@@ -26,6 +23,37 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 	</head>
 	<style>
 		{CCMS_TPL:/_css/head-css.html}
+
+		.aGrid{display:grid}
+
+		.aGrid>button{
+			background:var(--cl3);
+			border:0;
+			color:var(--cl0);
+			padding:0.5em;
+			width:100%
+		}
+
+		.aGrid>button:hover{background:var(--cl3-tran)}
+
+		.aGrid>input{
+			background:var(--cl0);
+			border:1px solid var(--cl10);
+			border-radius:4px;
+			padding:0.7em;
+			margin-bottom:0.5rem
+		}
+
+		.aGrid>input:focus{outline:3px solid gold}
+
+		.aGrid>label{white-space:nowrap}
+
+		.aGrid>label.error{
+			color:var(--cl11);
+			margin-bottom:1rem;
+			text-align:unset;
+			white-space:unset
+		}
 
 		.tabs{
 			border-bottom:1px solid var(--cl4);
@@ -101,7 +129,59 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 			<!-- Welcome  -->
 			<div id="tab01Content" class="tabContent" style="display:block">
-				<p>tab content #1</p>
+
+
+
+				<form class="aGrid" id="info_tab_form" role="form">
+					<h3<General</h3>
+					<div class="alert alert-success" id="info_tab_form_success" role="alert" style="display:none"></div>
+					<div class="alert alert-danger" id="info_tab_form_fail" role="alert" style="display:none"></div>
+
+					<input name="ajax_flag" type="hidden" value="1">
+
+					<label for="firstname">Firstname <span class="rd">*</span></label>
+					<input id="firstname" name="firstname" placeholder="Type your Firstname here." type="text" value="<?php echo $ccms_user["firstname"]; ?>">
+					<label id="firstname_error" class="error" for="firstname" style="display:none"></label>
+
+
+					<label for="asdf">asdf <span class="rd">*</span></label>
+					<input id="asdf" name="asdf" placeholder="asdf" type="text" value="<?php echo $ccms_user["asdf"]; ?>">
+					<label id="asdf_error" class="error" for="asdf" style="display:none"></label>
+
+
+					<label for="asdf">asdf <span class="rd">*</span></label>
+					<input id="asdf" name="asdf" placeholder="asdf" type="text" value="<?php echo $ccms_user["asdf"]; ?>">
+					<label id="asdf_error" class="error" for="asdf" style="display:none"></label>
+
+
+					<label for="asdf">asdf <span class="rd">*</span></label>
+					<input id="asdf" name="asdf" placeholder="asdf" type="text" value="<?php echo $ccms_user["asdf"]; ?>">
+					<label id="asdf_error" class="error" for="asdf" style="display:none"></label>
+
+
+					<label for="asdf">asdf <span class="rd">*</span></label>
+					<input id="asdf" name="asdf" placeholder="asdf" type="text" value="<?php echo $ccms_user["asdf"]; ?>">
+					<label id="asdf_error" class="error" for="asdf" style="display:none"></label>
+
+
+					<label for="asdf">asdf <span class="rd">*</span></label>
+					<input id="asdf" name="asdf" placeholder="asdf" type="text" value="<?php echo $ccms_user["asdf"]; ?>">
+					<label id="asdf_error" class="error" for="asdf" style="display:none"></label>
+
+
+					<label for="asdf">asdf <span class="rd">*</span></label>
+					<input id="asdf" name="asdf" placeholder="asdf" type="text" value="<?php echo $ccms_user["asdf"]; ?>">
+					<label id="asdf_error" class="error" for="asdf" style="display:none"></label>
+
+
+
+
+					<button>Update</button>
+					<button>Cancel</button>
+				</form>
+
+
+
 			</div>
 
 			<div id="tab02Content" class="tabContent">
@@ -111,22 +191,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			<div id="tab03Content" class="tabContent">
 				<p>tab content #3</p>
 			</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 			{CCMS_TPL:/footer.html}
 		</main>

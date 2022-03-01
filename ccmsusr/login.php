@@ -583,10 +583,10 @@ if(
 					<form action="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/" id="ccms_login_form" class="aGrid" method="post" novalidate="novalidate">
 						<input type="hidden" name="ccms_login" value="1">
 						<label for="ccms_login_email">Email Address <span class="rd">*</span></label>
-						<input class="placeholder" id="ccms_login_email" name="ccms_login_email" placeholder="Email" type="email">
+						<input id="ccms_login_email" name="ccms_login_email" placeholder="Email" type="email">
 						<label id="ccms_login_email_error" class="error" for="ccms_login_email" style="display:none"></label>
 						<label for="ccms_login_password">Password <span class="rd">*</span></label>
-						<input class="placeholder" id="ccms_login_password" name="ccms_login_password" placeholder="Password" style="margin-bottom:1rem" type="password" autocomplete="off" readonly>
+						<input id="ccms_login_password" name="ccms_login_password" placeholder="Password" style="margin-bottom:1rem" type="password" autocomplete="off" readonly>
 						<label id="ccms_login_password_error" class="error" for="ccms_login_password" style="display:none"></label>
 						<!-- button type="submit">Submit</button -->
 						<button class="g-recaptcha" data-sitekey="reCAPTCHA_site_key" data-callback='onSubmit' data-action='submit'>Submit</button>
