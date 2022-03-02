@@ -36,6 +36,16 @@
 
 a{text-decoration-style:dotted}
 
+button{
+	background:var(--cl3);
+	border:0;
+	color:var(--cl0);
+	padding:0.5em;
+	width:100%
+}
+
+button:hover{background:var(--cl3-tran)}
+
 form{padding-bottom:10px}
 
 h1,h2,h3,h4,h5,h6{
@@ -81,14 +91,25 @@ input{
 	border-radius:4px;
 	font-family:inherit;
 	font-size:inherit;
-	padding:0.4em
+	padding:0.4em;
+	margin-bottom:0.5rem
 }
+
+input:focus{outline:3px solid gold}
 
 input::placeholder{color:var(--cl4-tran)}
 
 label{
 	margin-top:10px;
-	text-align:right
+	text-align:right;
+	white-space:nowrap
+}
+
+label.error{
+	color:var(--cl11);
+	margin-bottom:1rem;
+	text-align:unset;
+	white-space:unset
 }
 
 p{margin:0 0 20px}

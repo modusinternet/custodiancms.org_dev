@@ -479,35 +479,6 @@ if(
 
 		.aGrid{display:grid}
 
-		.aGrid>button{
-			background:var(--cl3);
-			border:0;
-			color:var(--cl0);
-			padding:0.5em;
-			width:100%
-		}
-
-		.aGrid>button:hover{background:var(--cl3-tran)}
-
-		.aGrid>input{
-			background:var(--cl0);
-			border:1px solid var(--cl10);
-			border-radius:4px;
-			padding:0.7em;
-			margin-bottom:0.5rem
-		}
-
-		.aGrid>input:focus{outline:3px solid gold}
-
-		.aGrid>label{white-space:nowrap}
-
-		.aGrid>label.error{
-			color:var(--cl11);
-			margin-bottom:1rem;
-			text-align:unset;
-			white-space:unset
-		}
-
 		.formDiv{
 			background-color:var(--cl0);
 			border:1px solid var(--cl2-tran);

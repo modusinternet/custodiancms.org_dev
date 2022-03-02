@@ -38,34 +38,11 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 		.inner-grid{display:grid}
 
-		.inner-grid>button{
-			background:var(--cl3);
-			border:0;
-			color:var(--cl0);
-			padding:0.5em;
-			width:100%
-		}
-
-		.inner-grid>button:hover{background:var(--cl3-tran)}
-
 		.inner-grid>input{
 			height:fit-content;
-			margin-bottom:0.5rem
 		}
-
-		.inner-grid>input:focus{outline:3px solid gold}
 
 		.inner-grid>label{white-space:nowrap}
-
-		.inner-grid>label.error{
-			color:var(--cl11);
-			margin-bottom:1rem;
-			text-align:unset;
-			white-space:unset
-		}
-
-
-
 
 		.outer-grid {
 			display: grid;
@@ -74,11 +51,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		.outer-grid > div {
 			padding: 8px;
 		}
-
-
-
-
-
 
 		.tabs{
 			border-bottom:1px solid var(--cl4);
