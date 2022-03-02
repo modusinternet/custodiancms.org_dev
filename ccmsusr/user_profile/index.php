@@ -222,21 +222,37 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 							<label for="prov_state">Prov/State</label>
 							<input id="prov_state" name="prov_state" placeholder="Type your Province or State here." type="text" value="<?php echo $ccms_user["prov_state"]; ?>">
 							<label id="prov_state_error" class="error" for="prov_state" style="display:none"></label>
+
+							<label for="country">Country</label>
+							<input id="country" name="country" placeholder="Type your Country name here." type="text" value="<?php echo $ccms_user["country"]; ?>">
+							<label id="country_error" class="error" for="country" style="display:none"></label>
+
+							<label for="post_zip">Postal/Zipcode</label>
+							<input id="post_zip" name="post_zip" placeholder="Type your Postal/Zipcode here." type="text" value="<?php echo $ccms_user["post_zip"]; ?>">
+							<label id="post_zip_error" class="error" for="post_zip" style="display:none"></label>
 						</div>
 
 						<div class="inner-grid">
 							<h3<Contact</h3>
-							<label for="address1">Address Line 1</label>
-							<input id="address1" name="address1" placeholder="Type your Address here." type="text" value="<?php echo $ccms_user["address1"]; ?>">
-							<label id="address1_error" class="error" for="address1" style="display:none"></label>
+							<label for="email">Email</label>
+							<input id="email" name="email" placeholder="Type your email address here." type="text" value="<?php echo $ccms_user["email"]; ?>">
+							<label id="email_error" class="error" for="email" style="display:none"></label>
 
-							<label for="address2">Address Line 2</label>
-							<input id="address2" name="address2" placeholder="Type your Address here." type="text" value="<?php echo $ccms_user["address2"]; ?>">
-							<label id="address2_error" class="error" for="address2" style="display:none"></label>
+							<label for="phone1">Phone #1</label>
+							<input id="phone1" name="phone1" placeholder="Type your main phone number here." type="text" value="<?php echo $ccms_user["phone1"]; ?>">
+							<label id="phone1_error" class="error" for="phone1" style="display:none"></label>
 
-							<label for="prov_state">Prov/State</label>
-							<input id="prov_state" name="prov_state" placeholder="Type your Province or State here." type="text" value="<?php echo $ccms_user["prov_state"]; ?>">
-							<label id="prov_state_error" class="error" for="prov_state" style="display:none"></label>
+							<label for="phone2">Phone #2</label>
+							<input id="phone2" name="phone2" placeholder="Type your secondary phone number here." type="text" value="<?php echo $ccms_user["phone2"]; ?>">
+							<label id="phone2_error" class="error" for="phone2" style="display:none"></label>
+
+							<label for="facebook">Facebook</label>
+							<input id="facebook" name="facebook" placeholder="Type your facebook URI here." type="text" value="<?php echo $ccms_user["facebook"]; ?>">
+							<label id="facebook_error" class="error" for="facebook" style="display:none"></label>
+
+							<label for="skype">skype</label>
+							<input id="skype" name="skype" placeholder="Type your skype account name here." type="text" value="<?php echo $ccms_user["skype"]; ?>">
+							<label id="skype_error" class="error" for="skype" style="display:none"></label>
 
 							<button>Update</button>
 							<button>Cancel</button>
@@ -361,6 +377,8 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 											<input class="form-control" id="country" name="country" placeholder="Type your Country Name here." type="text" value="<?php echo $ccms_user["country"]; ?>">
 										</div>
 									</div>
+
+
 									<div class="form-group">
 										<label for="post_zip" class="control-label">Post/Zip Code</label>
 										<div class="input-group">
