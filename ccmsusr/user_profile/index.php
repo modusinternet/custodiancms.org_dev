@@ -314,10 +314,9 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 					</div>
 				</div>
 
-				<!-- Tab panes -->
 				<div class="tab-content" style="margin: 10px;">
 					<div class="tab-pane fade active in" id="info_tab">
-						<form class="form-horizontal" id="info_tab_form" role="form">
+						<!-- form class="form-horizontal" id="info_tab_form" role="form">
 							<input name="ajax_flag" type="hidden" value="1">
 							<div class="row">
 								<div class="col-md-4">
@@ -452,7 +451,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 									<button class="btn-default btn">Cancel</button>
 								</div>
 							</div>
-						</form>
+						</form -->
 					</div>
 					<div class="tab-pane fade" id="password_tab">
 						<form class="form-horizontal" id="password_tab_form" role="form">
