@@ -101,7 +101,7 @@ input::placeholder{color:var(--cl4)}
 
 label{
 	margin-top:10px;
-	text-align:right;
+	text-align:left;
 	white-space:nowrap
 }
 

@@ -99,8 +99,8 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		}
 
 
-		/* 500px or wider. */
-		@media only screen and (min-width:500px){
+		/* 600px or wider. */
+		@media only screen and (min-width:600px){
 			.inner-grid{
 				grid-template-columns:1fr 1fr;
 				grid-gap:15px
@@ -123,27 +123,19 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			}
 		}
 
+		/* 800px or wider. */
+		@media only screen and (min-width:800px){
+			.outer-grid {
+				grid-template-columns:
+				'1fr 1fr'
+				'1fr';
+			}
+		}
+
 		/* 1300px or wider. */
 		@media only screen and (min-width:1300px){
-			.inner-grid{
-				grid-template-columns:1fr 1fr;
-				grid-gap:15px
-			}
-
-			.inner-grid>button{grid-column:1 / span 2}
-
-			.inner-grid>h3{
-				grid-column:1 / span 2
-			}
-
-			.inner-grid>input{grid-column:2 / 3}
-
-			.inner-grid>label{grid-column:1 / 2}
-
-			.inner-grid>label.error{grid-column:1 / span 2}
-
 			.outer-grid {
-				grid-template-columns: 1fr 1fr 1fr;
+				grid-template-columns: '1fr 1fr 1fr';
 			}
 		}
 	</style>
