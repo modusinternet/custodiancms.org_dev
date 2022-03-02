@@ -75,6 +75,8 @@ h6{
 	line-height:2.8rem
 }
 
+input::placeholder{color:var(--cl11)}
+
 p{margin:0 0 20px}
 
 .alertDiv{
