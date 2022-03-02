@@ -211,12 +211,12 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 						<div class="inner-grid">
 							<h3>Address</h3>
-							<label for="address1">Address Line 1</label>
+							<label for="address1">Address Line #1</label>
 							<input id="address1" name="address1" placeholder="Type your Address here." type="text" value="<?php echo $ccms_user["address1"]; ?>">
 							<label id="address1_error" class="error" for="address1" style="display:none"></label>
 
-							<label for="address2">Address Line 2</label>
-							<input id="address2" name="address2" placeholder="Type your Address here." type="text" value="<?php echo $ccms_user["address2"]; ?>">
+							<label for="address2">Address Line #2</label>
+							<input id="address2" name="address2" placeholder="Type other Address info here." type="text" value="<?php echo $ccms_user["address2"]; ?>">
 							<label id="address2_error" class="error" for="address2" style="display:none"></label>
 
 							<label for="prov_state">Prov/State</label>
@@ -234,7 +234,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 						<div class="inner-grid">
 							<h3>Contact</h3>
-							<label for="email">Email</label>
+							<label for="email">Email <span class="rd">*</span></label>
 							<input id="email" name="email" placeholder="Type your email address here." type="text" value="<?php echo $ccms_user["email"]; ?>">
 							<label id="email_error" class="error" for="email" style="display:none"></label>
 
@@ -250,7 +250,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 							<input id="facebook" name="facebook" placeholder="Type your facebook URI here." type="text" value="<?php echo $ccms_user["facebook"]; ?>">
 							<label id="facebook_error" class="error" for="facebook" style="display:none"></label>
 
-							<label for="skype">skype</label>
+							<label for="skype">Skype</label>
 							<input id="skype" name="skype" placeholder="Type your skype account name here." type="text" value="<?php echo $ccms_user["skype"]; ?>">
 							<label id="skype_error" class="error" for="skype" style="display:none"></label>
 
