@@ -56,7 +56,12 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			margin-bottom:0.5rem
 		}
 
-		.inner-grid>input:focus{outline:3px solid gold}
+		.inner-grid>input:focus{
+			font-family:inherit;
+			font-size:inherit;
+			height:fit-content;
+			outline:3px solid gold
+		}
 
 		.inner-grid>label{white-space:nowrap}
 
@@ -148,10 +153,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 				text-align:center
 			}
 
-			.inner-grid>input{
-				grid-column:2 / 3;
-				height:fit-content
-		}
+			.inner-grid>input{grid-column:2 / 3}
 
 			.inner-grid>label{grid-column:1 / 2}
 
