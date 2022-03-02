@@ -98,6 +98,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			float:left;
 			font-family:inherit;
 			font-size:inherit;
+			font-weight:inherit;
 			margin-right:2px;
 			outline:none;
 			padding:14px 16px;
