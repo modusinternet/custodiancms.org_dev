@@ -117,10 +117,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			.inner-grid>label{grid-column:1 / 2}
 
 			.inner-grid>label.error{grid-column:1 / span 2}
-
-			.outer-grid {
-				grid-template-columns: 1fr 1fr 1fr;
-			}
 		}
 
 		/* 800px or wider. */
