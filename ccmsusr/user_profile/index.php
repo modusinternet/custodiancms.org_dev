@@ -522,9 +522,11 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 			{CCMS_TPL:/_js/footer-1.php}
 
+			/*
 			var l=document.createElement("link");l.rel="stylesheet";
 			l.href = "/ccmsusr/_css/bootstrap-3.3.7.min.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
+			*/
 
 			var l=document.createElement("link");l.rel="stylesheet";
 			l.href = "/ccmsusr/_css/custodiancms.css";
@@ -539,14 +541,16 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			l.href = "/ccmsusr/_css/metisMenu-3.0.6.min.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
+			/*
 			var l=document.createElement("link");l.rel="stylesheet";
 			l.href = "/ccmsusr/_css/font-awesome-4.7.0.min.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
+			*/
 
 			function loadJSResources() {
 				/*loadFirst("/ccmsusr/_js/jquery-2.2.0.min.js", function() {*/
 				loadFirst("/ccmsusr/_js/jquery-3.6.0.min.js", function() {
-					loadFirst("/ccmsusr/_js/bootstrap-3.3.7.min.js", function() { /* Bootstrap is loaded */
+					/*loadFirst("/ccmsusr/_js/bootstrap-3.3.7.min.js", function() { */
 						loadFirst("/ccmsusr/_js/metisMenu-3.0.7.min.js", function() {
 							loadFirst("/ccmsusr/_js/custodiancms.js", function() {
 
