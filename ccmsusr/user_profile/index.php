@@ -31,6 +31,11 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 
+		form:focus{
+			border-color:#66afe9;
+			outline:3px solid gold;
+		}
+
 		.inner-grid{display:grid}
 
 		.inner-grid>button{
