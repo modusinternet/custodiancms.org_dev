@@ -75,7 +75,7 @@ h6{
 	line-height:2.8rem
 }
 
-input::placeholder{color:var(--cl11-tran)}
+input::placeholder{color:var(--cl4-tran)}
 
 label{
 	margin-top:5px;
