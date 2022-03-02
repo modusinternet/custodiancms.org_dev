@@ -119,6 +119,32 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 				grid-template-columns: 1fr 1fr 1fr;
 			}
 		}
+
+		/* 1300px or wider. */
+		@media only screen and (min-width:1300px){
+			.inner-grid{
+				grid-template-columns:1fr 1fr;
+				grid-gap:15px
+			}
+
+			.inner-grid>button{grid-column:1 / span 2}
+
+			.inner-grid>h3{
+				grid-column:1 / span 2;
+				margin:10px;
+				text-align:center
+			}
+
+			.inner-grid>input{grid-column:2 / 3}
+
+			.inner-grid>label{grid-column:1 / 2}
+
+			.inner-grid>label.error{grid-column:1 / span 2}
+
+			.outer-grid {
+				grid-template-columns: 1fr 1fr 1fr;
+			}
+		}
 	</style>
 	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 		let navActiveItem = [];
