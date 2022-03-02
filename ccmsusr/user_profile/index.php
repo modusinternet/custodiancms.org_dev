@@ -253,6 +253,12 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 							<label for="skype">Skype</label>
 							<input id="skype" name="skype" placeholder="Type your skype account name here." type="text" value="<?php echo $ccms_user["skype"]; ?>">
 							<label id="skype_error" class="error" for="skype" style="display:none"></label>
+						</div>
+
+						<div class="inner-grid">
+							<h3>Other</h3>
+							<label for="note" class="control-label">Notes</label>
+							<textarea name="note" id="note" cols="30" rows="4" placeholder="Type any other notes you wish to attach to your account here."><?php echo $ccms_user["note"]; ?></textarea>
 
 							<button>Update</button>
 							<button>Cancel</button>
