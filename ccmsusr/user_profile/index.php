@@ -29,7 +29,10 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			outline:3px solid gold;
 		}
 
-		.inner-grid{display:grid}
+		.inner-grid{
+			display:grid;
+			grid-gap:8px
+		}
 
 		.inner-grid>h3{
 			margin:10px 0 0;
@@ -40,12 +43,9 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 		.inner-grid>label{white-space:nowrap}
 
-		.outer-grid {
-			display: grid;
-			grid-gap: 8px;
-		}
-		.outer-grid > div {
-			padding: 8px;
+		.outer-grid{
+			display:grid;
+			grid-gap:8px
 		}
 
 		.tabs{
@@ -102,8 +102,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		/* 600px or wider. */
 		@media only screen and (min-width:600px){
 			.inner-grid{
-				grid-template-columns:1fr 1fr;
-				grid-gap:15px
+				grid-template-columns:30%
 			}
 
 			.inner-grid>button{grid-column:1 / span 2}
