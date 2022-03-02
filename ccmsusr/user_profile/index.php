@@ -31,6 +31,11 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 		.inner-grid{display:grid}
 
+		.inner-grid>h3{
+			margin:10px 0 0;
+			text-align:center
+		}
+
 		.inner-grid>input{height:fit-content}
 
 		.inner-grid>label{white-space:nowrap}
@@ -104,9 +109,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			.inner-grid>button{grid-column:1 / span 2}
 
 			.inner-grid>h3{
-				grid-column:1 / span 2;
-				margin:10px;
-				text-align:center
+				grid-column:1 / span 2
 			}
 
 			.inner-grid>input{grid-column:2 / 3}
@@ -130,9 +133,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			.inner-grid>button{grid-column:1 / span 2}
 
 			.inner-grid>h3{
-				grid-column:1 / span 2;
-				margin:10px;
-				text-align:center
+				grid-column:1 / span 2
 			}
 
 			.inner-grid>input{grid-column:2 / 3}
@@ -172,7 +173,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 				<button class="tab" id="tab03Title">Privileges</button>
 			</div>
 
-			<!-- Welcome  -->
 			<div id="tab01Content" class="tabContent" style="display:block">
 
 				<div class="alert alert-success" id="info_tab_form_success" role="alert" style="display:none"></div>

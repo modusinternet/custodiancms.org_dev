@@ -97,7 +97,7 @@ input{
 
 input:focus{outline:3px solid gold}
 
-input::placeholder{color:var(--cl4-tran)}
+input::placeholder{color:var(--cl4)}
 
 label{
 	margin-top:10px;
