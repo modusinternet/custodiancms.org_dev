@@ -191,7 +191,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 					<div class="outer-grid">
 						<div class="inner-grid">
 							<input name="ajax_flag" type="hidden" value="1">
-							<h3<General</h3>
+							<h3><General</h3>
 							<label for="firstname">Firstname</label>
 							<input id="firstname" name="firstname" placeholder="Type your firstname here." type="text" value="<?php echo $ccms_user["firstname"]; ?>">
 							<label id="firstname_error" class="error" for="firstname" style="display:none"></label>
@@ -210,7 +210,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 						</div>
 
 						<div class="inner-grid">
-							<h3<Address</h3>
+							<h3><Address</h3>
 							<label for="address1">Address Line 1</label>
 							<input id="address1" name="address1" placeholder="Type your Address here." type="text" value="<?php echo $ccms_user["address1"]; ?>">
 							<label id="address1_error" class="error" for="address1" style="display:none"></label>
@@ -233,7 +233,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 						</div>
 
 						<div class="inner-grid">
-							<h3<Contact</h3>
+							<h3><Contact</h3>
 							<label for="email">Email</label>
 							<input id="email" name="email" placeholder="Type your email address here." type="text" value="<?php echo $ccms_user["email"]; ?>">
 							<label id="email_error" class="error" for="email" style="display:none"></label>
