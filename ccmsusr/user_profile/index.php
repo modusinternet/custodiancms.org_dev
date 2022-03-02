@@ -89,7 +89,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		}
 
 		.tabs button{
-			background-color:var(--cl3-tran);
+			background-color:var(--cl3);
 			border:1px solid var(--cl3);
 			border-bottom:none;
 			border-radius:4px 4px 0 0;
