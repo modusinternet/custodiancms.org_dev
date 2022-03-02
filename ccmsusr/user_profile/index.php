@@ -49,13 +49,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		.inner-grid>button:hover{background:var(--cl3-tran)}
 
 		.inner-grid>input{
-			background:var(--cl0);
-			border:1px solid var(--cl10);
-			border-radius:4px;
-			font-family:inherit;
-			font-size:inherit;
 			height:fit-content;
-			padding:0.7em;
 			margin-bottom:0.5rem
 		}
 
