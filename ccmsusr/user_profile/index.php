@@ -143,10 +143,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 			.inner-grid>input{grid-column:2 / 3}
 
-			.inner-grid>label{
-				text-align:right;
-				grid-column:1 / 2
-			}
+			.inner-grid>label{grid-column:1 / 2}
 
 			.inner-grid>label.error{grid-column:1 / span 2}
 
