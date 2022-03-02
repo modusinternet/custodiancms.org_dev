@@ -142,7 +142,11 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 			.inner-grid>button{grid-column:1 / span 2}
 
-			.inner-grid>h3{grid-column:1 / span 2}
+			.inner-grid>h3{
+				grid-column:1 / span 2;
+				margin:10px;
+				text-align:center
+			}
 
 			.inner-grid>input{grid-column:2 / 3}
 
