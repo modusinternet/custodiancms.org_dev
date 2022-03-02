@@ -24,13 +24,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 	<style>
 		{CCMS_TPL:/_css/head-css.html}
 
-
-
-
-
-
-
-
 		form:focus{
 			border-color:#66afe9;
 			outline:3px solid gold;
@@ -38,9 +31,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 		.inner-grid{display:grid}
 
-		.inner-grid>input{
-			height:fit-content;
-		}
+		.inner-grid>input{height:fit-content}
 
 		.inner-grid>label{white-space:nowrap}
 
@@ -71,7 +62,8 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			margin-right:2px;
 			outline:none;
 			padding:14px 16px;
-			transition:0.3s
+			transition:0.3s;
+			width: unset
 		}
 
 		.tabs button:hover, .tabs button:hover svg path{
