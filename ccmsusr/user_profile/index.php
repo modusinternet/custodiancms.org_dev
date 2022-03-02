@@ -52,16 +52,14 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			background:var(--cl0);
 			border:1px solid var(--cl10);
 			border-radius:4px;
+			font-family:inherit;
+			font-size:inherit;
+			height:fit-content;
 			padding:0.7em;
 			margin-bottom:0.5rem
 		}
 
-		.inner-grid>input:focus{
-			font-family:inherit;
-			font-size:inherit;
-			height:fit-content;
-			outline:3px solid gold
-		}
+		.inner-grid>input:focus{outline:3px solid gold}
 
 		.inner-grid>label{white-space:nowrap}
 
