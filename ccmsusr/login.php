@@ -469,14 +469,6 @@ if(
 	<style nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 		{CCMS_TPL:/_css/head-css.html}
 
-		button{
-			border:unset;
-			border-radius:5px;
-			border-width:1px;
-			font:unset;
-			padding:3px 10px
-		}
-
 		.aGrid{display:grid}
 
 		.formDiv{
