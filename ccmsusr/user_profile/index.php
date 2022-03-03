@@ -122,8 +122,8 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			.outer-grid{grid-template-columns:1fr 1fr}
 		}
 
-		/* 1300px or wider. */
-		@media only screen and (min-width:1300px){
+		/* 1400px or wider. */
+		@media only screen and (min-width:1400px){
 			.outer-grid{grid-template-columns:1fr 1fr 1fr}
 		}
 	</style>
