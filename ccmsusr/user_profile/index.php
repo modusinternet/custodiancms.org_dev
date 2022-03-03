@@ -119,12 +119,12 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 		/* 950px or wider. */
 		@media only screen and (min-width:950px){
-			.outer-grid{grid-template-columns:'1fr 1fr'}
+			.outer-grid{grid-template-columns:1fr 1fr}
 		}
 
 		/* 1300px or wider. */
 		@media only screen and (min-width:1300px){
-			.outer-grid{grid-template-columns:'1fr 1fr 1fr'}
+			.outer-grid{grid-template-columns:1fr 1fr 1fr}
 		}
 	</style>
 	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
