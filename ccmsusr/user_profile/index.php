@@ -231,7 +231,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 						<div class="inner-grid">
 							<h3>Other</h3>
 							<label for="note" class="control-label">Notes</label>
-							<textarea name="note" id="note" cols="30" rows="4" placeholder="Type any other notes you wish to attach to your account here."><?php echo $ccms_user["note"]; ?></textarea>
+							<textarea cols="30" id="note" rows="4" name="note" placeholder="Type any notes you want to save within your account here." style="grid-template-columns: minmax(100px, 200px) 100%;"><?php echo $ccms_user["note"]; ?></textarea>
 
 							<button>Update</button>
 							<button>Cancel</button>
