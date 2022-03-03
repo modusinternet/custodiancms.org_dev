@@ -29,6 +29,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			outline:3px solid gold;
 		}
 
+		/*
 		.inner-grid{
 			display:grid;
 			grid-gap:8px
@@ -47,6 +48,57 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			display:grid;
 			grid-gap:8px
 		}
+		*/
+
+		.inner_grid_general{grid-area:inner_grid_general}
+
+		.inner_grid_address{grid-area:inner_grid_address}
+
+		.inner_grid_contact{grid-area:inner_grid_contact}
+
+		.inner_grid_other{grid-area:inner_grid_other}
+
+		.inner_grid_general,
+		.inner_grid_address,
+		.inner_grid_contact,
+		.inner_grid_other{
+			display:grid;
+			grid-gap:8px
+		}
+
+		.inner_grid_general>h3,
+		.inner_grid_address>h3,
+		.inner_grid_contact>h3,
+		.inner_grid_other>h3{
+			margin:10px 0 0;
+			text-align:center
+		}
+
+		.inner_grid_general>input,
+		.inner_grid_address>input,
+		.inner_grid_contact>input,
+		.inner_grid_other>input{height:fit-content}
+
+		.inner_grid_general>label,
+		.inner_grid_address>label,
+		.inner_grid_contact>label,
+		.inner_grid_other>label{white-space:nowrap}
+
+		.outer_grid{
+			display:grid;
+			grid-gap:8px;
+			grid-template-areas:
+				"inner_grid_general"
+				"inner_grid_address"
+				"inner_grid_contact"
+				"inner_grid_other"
+		}
+
+
+
+
+
+
 
 		.tabs{
 			border-bottom:1px solid var(--cl4);
@@ -101,34 +153,69 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 		/* 600px or wider. */
 		@media only screen and (min-width:600px){
-			.inner-grid{grid-template-columns:minmax(100px, 200px) 1fr}
+			.inner_grid_general,
+			.inner_grid_address,
+			.inner_grid_contact,
+			.inner_grid_other{grid-template-columns:minmax(100px, 200px) 1fr}
 
-			.inner-grid>button{grid-column:1 / span 2}
+			.inner_grid_other>button{grid-column:1 / span 2}
 
-			.inner-grid>h3{grid-column:1 / span 2}
+			.inner_grid_general>h3,
+			.inner_grid_address>h3,
+			.inner_grid_contact>h3,
+			.inner_grid_other>h3{grid-column:1 / span 2}
 
-			.inner-grid>input{grid-column:2 / 3}
+			.inner_grid_general>input,
+			.inner_grid_address>input,
+			.inner_grid_contact>input,
+			.inner_grid_other>input{grid-column:2 / 3}
 
-			.inner-grid>label{
+			.inner_grid_general>label,
+			.inner_grid_address>label,
+			.inner_grid_contact>label,
+			.inner_grid_other>label{
 				grid-column:1 / 2;
 				text-align:right
 			}
 
-			.inner-grid>label.error{grid-column:1 / span 2}
+			.inner_grid_general>label.error,
+			.inner_grid_address>label.error,
+			.inner_grid_contact>label.error,
+			.inner_grid_other>label.error{grid-column:1 / span 2}
 		}
 
 		/* 950px or wider. */
 		@media only screen and (min-width:950px){
+			/*
 			.outer-grid{grid-template-columns:1fr 1fr}
+			*/
+
+			.outer_grid{
+				display:grid;
+				grid-gap:8px;
+				grid-template-areas:
+					"inner_grid_general inner_grid_address"
+					"inner_grid_contact inner_grid_other"
+			}
 		}
 
 		/* 1400px or wider. */
 		@media only screen and (min-width:1400px){
+			/*
 			.outer-grid{grid-template-columns:'1fr 1fr 1fr'
-			'1fr'
-		}
+				'1fr'
+			}
 
 			.inner-grid>textarea{grid-column:2 / 3}
+			*/
+
+			.outer_grid{
+				display:grid;
+				grid-gap:8px;
+				grid-template-areas:
+					"inner_grid_general inner_grid_address inner_grid_contact"
+					"inner_grid_other inner_grid_other inner_grid_other"
+			}
 		}
 	</style>
 	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
