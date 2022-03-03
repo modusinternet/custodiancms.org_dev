@@ -101,9 +101,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 		/* 600px or wider. */
 		@media only screen and (min-width:600px){
-			.inner-grid{
-				grid-template-columns:30%
-			}
+			.inner-grid{grid-template-columns:minmax(100px, 200px) 1fr}
 
 			.inner-grid>button{grid-column:1 / span 2}
 
@@ -121,17 +119,16 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 		/* 800px or wider. */
 		@media only screen and (min-width:800px){
-			.outer-grid {
-				grid-template-columns:
-				'1fr 1fr'
-				'1fr';
+			.outer-grid{
+				/*grid-template-columns:minmax(100px, 200px) 1fr;*/
+				grid-template-columns:1fr;
 			}
 		}
 
 		/* 1300px or wider. */
 		@media only screen and (min-width:1300px){
-			.outer-grid {
-				grid-template-columns: '1fr 1fr 1fr';
+			.outer-grid{
+				grid-template-columns:'1fr 1fr 1fr';
 			}
 		}
 	</style>
