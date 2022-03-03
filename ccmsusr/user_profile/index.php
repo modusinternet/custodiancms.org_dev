@@ -250,8 +250,8 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 				<div class="alert alert-danger" id="info_tab_form_fail" role="alert" style="display:none"></div>
 
 				<form id="info_tab_form" role="form">
-					<div class="outer-grid">
-						<div class="inner-grid">
+					<div class="outer_grid">
+						<div class="inner_grid_general">
 							<input name="ajax_flag" type="hidden" value="1">
 							<h3>General</h3>
 							<label for="firstname">Firstname</label>
@@ -271,7 +271,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 							<label id="position_error" class="error" for="position" style="display:none"></label>
 						</div>
 
-						<div class="inner-grid">
+						<div class="inner_grid_address">
 							<h3>Address</h3>
 							<label for="address1">Address Line #1</label>
 							<input id="address1" name="address1" placeholder="Type your Address here." type="text" value="<?php echo $ccms_user["address1"]; ?>">
@@ -294,7 +294,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 							<label id="post_zip_error" class="error" for="post_zip" style="display:none"></label>
 						</div>
 
-						<div class="inner-grid">
+						<div class="inner_grid_contact">
 							<h3>Contact</h3>
 							<label for="email">Email <span class="rd">*</span></label>
 							<input id="email" name="email" placeholder="Type your email address here." type="text" value="<?php echo $ccms_user["email"]; ?>">
@@ -317,7 +317,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 							<label id="skype_error" class="error" for="skype" style="display:none"></label>
 						</div>
 
-						<div class="inner-grid">
+						<div class="inner_grid_other">
 							<h3>Other</h3>
 							<label for="note" class="control-label">Notes</label>
 							<textarea cols="30" id="note" rows="4" name="note" placeholder="Type any notes you want to save within your account here."><?php echo $ccms_user["note"]; ?></textarea>
