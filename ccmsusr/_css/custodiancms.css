@@ -46,7 +46,7 @@ button{
 	width:100%
 }
 
-/*button:hover{background:var(--cl3-tran)}*/
+button:hover{background:var(--cl3-tran)}
 
 form{padding-bottom:10px}
 
