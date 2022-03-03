@@ -124,7 +124,9 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 		/* 1400px or wider. */
 		@media only screen and (min-width:1400px){
-			.outer-grid{grid-template-columns:1fr 1fr 1fr}
+			.outer-grid{grid-template-columns:'1fr 1fr 1fr'
+			'1fr'
+		}
 
 			.inner-grid>textarea{grid-column:2 / 3}
 		}
@@ -231,7 +233,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 						<div class="inner-grid">
 							<h3>Other</h3>
 							<label for="note" class="control-label">Notes</label>
-							<textarea cols="30" id="note" rows="4" name="note" placeholder="Type any notes you want to save within your account here." style="grid-template-columns: minmax(100px, 200px) 100%;"><?php echo $ccms_user["note"]; ?></textarea>
+							<textarea cols="30" id="note" rows="4" name="note" placeholder="Type any notes you want to save within your account here."><?php echo $ccms_user["note"]; ?></textarea>
 
 							<button>Update</button>
 							<button>Cancel</button>
