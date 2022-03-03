@@ -19,6 +19,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 	<style>
 		{CCMS_TPL:/_css/head-css.html}
 
+		button:hover{background-color:transparent}
+
 		.blacklistIpAddress{
 			font-size:.8em;
 			color:var(--cl11);
@@ -28,11 +30,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 		.cssGrid-Dashboard-01{
 			display:grid;
 			grid-gap:1em;
-			/*
-			grid-template-areas:
-				"c1"
-				"c2"
-			*/
 		}
 
 		#ccms_compress_button{
