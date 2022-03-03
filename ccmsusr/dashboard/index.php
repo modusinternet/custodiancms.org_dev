@@ -42,7 +42,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			top:5px
 		}
 
-		#ccms_compress_button:hover{background:unset}
+		/*#ccms_compress_button:hover{background:unset}*/
 
 		#ccms_news_items{padding-left:30px}
 
