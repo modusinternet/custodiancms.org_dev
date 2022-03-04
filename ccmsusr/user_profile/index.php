@@ -63,7 +63,8 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		.inner_grid_contact,
 		.inner_grid_other{
 			display:grid;
-			grid-gap:8px
+			grid-gap:8px;
+			grid-template-columns:90%
 		}
 
 		.inner_grid_general>h3,
@@ -148,6 +149,14 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		.tabContent{
 			display:none;
 			padding:20px 0px
+		}
+
+		/* 435px or wider. */
+		@media only screen and (min-width:435px){
+			.inner_grid_general,
+			.inner_grid_address,
+			.inner_grid_contact,
+			.inner_grid_other{grid-template-columns:90%}
 		}
 
 
