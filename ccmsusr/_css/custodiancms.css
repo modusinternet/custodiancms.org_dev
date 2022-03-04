@@ -37,7 +37,7 @@
 a{text-decoration-style:dotted}
 
 button{
-	background:var(--cl3);
+	background:var(--cl3-tran);
 	border:unset;
 	border-radius:5px;
 	color:var(--cl0);
@@ -46,7 +46,7 @@ button{
 	width:100%
 }
 
-button:hover{background-color:var(--cl3-tran)}
+button:hover{background-color:var(--cl3)}
 
 form{padding-bottom:10px}
 
