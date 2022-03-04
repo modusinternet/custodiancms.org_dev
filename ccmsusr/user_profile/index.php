@@ -109,12 +109,12 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		}
 
 		.tabs button:hover, .tabs button:hover svg path{
-			background-color:var(--cl3);
+			background-color:var(--cl4);
 			color:var(--cl0)
 		}
 
 		.tabs button.active, .tabs button.active svg path{
-			background-color:var(--cl4);
+			background-color:var(--cl3);
 			color:var(--cl0)
 		}
 
