@@ -24,29 +24,10 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 	<style>
 		{CCMS_TPL:/_css/head-css.html}
 
+		/*
 		form:focus{
 			border-color:#66afe9;
 			outline:3px solid gold;
-		}
-
-		/*
-		.inner-grid{
-			display:grid;
-			grid-gap:8px
-		}
-
-		.inner-grid>h3{
-			margin:10px 0 0;
-			text-align:center
-		}
-
-		.inner-grid>input{height:fit-content}
-
-		.inner-grid>label{white-space:nowrap}
-
-		.outer-grid{
-			display:grid;
-			grid-gap:8px
 		}
 		*/
 
