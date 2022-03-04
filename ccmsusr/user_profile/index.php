@@ -24,13 +24,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 	<style>
 		{CCMS_TPL:/_css/head-css.html}
 
-		/*
-		form:focus{
-			border-color:#66afe9;
-			outline:3px solid gold;
-		}
-		*/
-
 		.inner_grid_general{grid-area:inner_grid_general}
 
 		.inner_grid_address{grid-area:inner_grid_address}
@@ -76,24 +69,13 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 				"inner_grid_other"
 		}
 
-
-
-
-
-
-
 		.tabs{
 			border-bottom:1px solid var(--cl3);
 			overflow:hidden
 		}
 
 		.tabs button{
-			/*background-color:var(--cl3);*/
 			background-color:var(--cl4);
-			/*
-			border:1px solid var(--cl3);
-			border-bottom:none;
-			*/
 			border-radius:4px 4px 0 0;
 			color:var(--cl8);
 			cursor:pointer;
@@ -134,6 +116,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			display:none;
 			padding:20px 0px
 		}
+
 
 		/* 435px or wider. */
 		@media only screen and (min-width:435px){
@@ -179,10 +162,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 		/* 950px or wider. */
 		@media only screen and (min-width:950px){
-			/*
-			.outer-grid{grid-template-columns:1fr 1fr}
-			*/
-
 			.outer_grid{
 				display:grid;
 				grid-gap:8px;
@@ -194,14 +173,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 		/* 1400px or wider. */
 		@media only screen and (min-width:1400px){
-			/*
-			.outer-grid{grid-template-columns:'1fr 1fr 1fr'
-				'1fr'
-			}
-
-			.inner-grid>textarea{grid-column:2 / 3}
-			*/
-
 			.outer_grid{
 				display:grid;
 				grid-gap:8px;
@@ -220,16 +191,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		<main style="padding:20px 20px 20px 0">
 			<h1 style="border-bottom:1px dashed var(--cl3)">User Profile</h1>
 			<p>This section is still under development, but if you come across any unresolved issues please let us know at: <a class="oj" href="mailto:info@custodiancms.org?subject=unresolved+issue+report">info@custodiancms.org</a></p>
-
-
-
-
-
-
-
-
-
-
 
 			<div class="tabs">
 				<button class="tab active" id="tab01Title">Info</button>
@@ -567,40 +528,16 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			</div>
 		</div -->
 
-
-
-
-
-
-
-
 		<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 			{CCMS_TPL:/_js/footer-1.php}
-
-			/*
-			var l=document.createElement("link");l.rel="stylesheet";
-			l.href = "/ccmsusr/_css/bootstrap-3.3.7.min.css";
-			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
-			*/
 
 			var l=document.createElement("link");l.rel="stylesheet";
 			l.href = "/ccmsusr/_css/custodiancms.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
-			/*
-			var l=document.createElement("link");l.rel="stylesheet";
-			l.href = "/ccmsusr/_css/metisMenu-2.4.0.min.css";
-			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
-			*/
 			var l=document.createElement("link");l.rel="stylesheet";
 			l.href = "/ccmsusr/_css/metisMenu-3.0.6.min.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
-
-			/*
-			var l=document.createElement("link");l.rel="stylesheet";
-			l.href = "/ccmsusr/_css/font-awesome-4.7.0.min.css";
-			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
-			*/
 
 			function loadJSResources() {
 				/*loadFirst("/ccmsusr/_js/jquery-2.2.0.min.js", function() {*/
@@ -623,32 +560,8 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 								});
 								/* user_dropdown END */
 
-								// Load MetisMenu
-								//$('#side-menu').metisMenu();
-
-								/*
-								$("#menu-toggle").click(function(e) {
-									e.preventDefault();
-									$("#wrapper").toggleClass("toggled");
-									$("#wrapper.toggled").find("#sidebar-wrapper").find(".collapse").collapse("hide");
-									$("#sidebar-wrapper").toggle();
-								});
-
-								$(function(){$(window).bind("load resize",function(){showHideNav();})});
-								*/
-
-								/*loadFirst("//ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js", function() { /* jquery.validate.js */
 								loadFirst("/ccmsusr/_js/jquery-validate-1.19.3.min.js", function() { /* JQuery Validate */
-									/*loadFirst("//ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/additional-methods.min.js", function(){ /* additional-methods.js */
 									loadFirst("/ccmsusr/_js/additional-methods-1.17.0.min.js", function() { /* JQuery Validate Additional Methods */
-
-
-
-
-
-
-
-
 
 										document.getElementById("tab01Title").addEventListener("click", () => {
 											let i, tabContent, tab;
@@ -665,7 +578,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 												tabContent[i].style.display = "none";
 											}
 
-											//evt.currentTarget.className += " active";
 											/* Activate the tab. */
 											document.getElementById("tab01Title").className += " active";
 											/* Display the content area for the above tab. */
@@ -932,6 +844,19 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 										});
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 										$('#password_tab_form').each(function() {
 											$(this).validate({
 												rules: {
@@ -1028,6 +953,29 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 												}
 											});
 										});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 									});
 								});
 							});
