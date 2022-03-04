@@ -277,7 +277,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 							<textarea cols="30" id="note" rows="4" name="note" placeholder="Type any notes you want to save within your account here."><?php echo $ccms_user["note"]; ?></textarea>
 
 							<button>Update</button>
-							<button>Cancel</button>
 						</div>
 					</div>
 				</form>
