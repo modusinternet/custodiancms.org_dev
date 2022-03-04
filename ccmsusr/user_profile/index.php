@@ -83,14 +83,17 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 		.tabs{
-			border-bottom:1px solid var(--cl4);
+			border-bottom:1px solid var(--cl3);
 			overflow:hidden
 		}
 
 		.tabs button{
-			background-color:var(--cl3);
+			/*background-color:var(--cl3);*/
+			background-color:var(--cl4);
+			/*
 			border:1px solid var(--cl3);
 			border-bottom:none;
+			*/
 			border-radius:4px 4px 0 0;
 			color:var(--cl8);
 			cursor:pointer;
@@ -106,7 +109,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		}
 
 		.tabs button:hover, .tabs button:hover svg path{
-			background-color:var(--cl4);
+			background-color:var(--cl3);
 			color:var(--cl0)
 		}
 
