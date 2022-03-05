@@ -103,11 +103,6 @@ if($CLEAN["firstname"] == "MAXLEN") {
 	$error_message = "'Note' field contains invalid characters.  The following characters are not permitted in this field. ( > < & # )";
 }
 
-
-echo $error_message;
-exit;
-
-
 if(!$error_message) {
 	$qry = $CFG["DBH"]->prepare("UPDATE `ccms_user` SET `firstname` = :firstname, `lastname` = :lastname, `alias` = :alias, `position` = :position, `address1` = :address1, `address2` = :address2, `prov_state` = :prov_state, `country` = :country, `post_zip` = :post_zip, `email` = :email, `phone1` = :phone1, `phone2` = :phone2, `skype` = :skype, `facebook` = :facebook, `note` = :note WHERE `id` = :id LIMIT 1;");
 
