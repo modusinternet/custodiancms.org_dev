@@ -824,6 +824,8 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 													request.fail(function (jqXHR, textStatus, errorThrown){
 														// log the error to the console
 														//console.error( "The following error occured: " + textStatus, errorThrown );
+														console.error( "textStatus: " + textStatus );
+														console.error( "errorThrown: " + errorThrown );
 														//$(form).find('[name="form-status"]').html("The following error occured: " + textStatus, errorThrown);
 														$("#info_tab_form_success").css("display", "none");
 														$("#info_tab_form_fail").css("display", "block");
