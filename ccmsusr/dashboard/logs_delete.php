@@ -11,17 +11,19 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 	exit;
 }
 
+$msgArry = array();
+
 if($CLEAN["id"] == "") {
-	$msg['error'] = "No ID provided.";
+	$msgArry = array("error","No ID provided.");
 } elseif($CLEAN["id"] == "MINLEN") {
-	$msg['error'] = "This field must be between 1 to 8 characters";
+	$msgArry = array("error","This field must be between 1 to 8 characters");
 } elseif($CLEAN["id"] == "MAXLEN") {
-	$msg['error'] = "This field must be between 1 to 8 characters";
+	$msgArry = array("error","This field must be between 1 to 8 characters");
 } elseif($CLEAN["id"] == "INVAL") {
-	$msg['error'] = "'Name' field contains invalid characters.  ( > < & # )  You have used characters in this field which are either not supported by this field or we do not permitted on this system.";
+	$msgArry = array("error","'Name' field contains invalid characters.  ( > < & # )  You have used characters in this field which are either not supported by this field or we do not permitted on this system.");
 }
 
-if(!isset($msg['error'])) {
+if(!isset($msgArry["error"])) {
 	// no problems
 	/*
 	$qry = $CFG["DBH"]->prepare("DELETE FROM `ccms_log` WHERE `id` = :id LIMIT 1;");
@@ -34,7 +36,7 @@ if(!isset($msg['error'])) {
 	}
 	exit;
 	*/
-	$msg['error'] = "0";
+	$msgArry = "0";
 
 }
-echo json_encode($msg['error']);
+echo json_encode($msgArry);
