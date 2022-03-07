@@ -25,19 +25,13 @@ if($CLEAN["id"] == "") {
 
 if(!isset($msgArry["error"])) {
 	// no problems
-	/*
 	$qry = $CFG["DBH"]->prepare("DELETE FROM `ccms_log` WHERE `id` = :id LIMIT 1;");
 	$qry->execute(array(':id' => $CLEAN["id"]));
 	$count = $qry->rowCount();
 	if($count > 0) {
-		echo "0"; // success
+		$msgArry["success"] = "0"; // success
 	} else {
-		echo "1"; // already deleted
+		$msgArry["success"] = "1"; // already deleted
 	}
-	exit;
-	*/
-	//$msgArry["success"] = "0";
-	$msgArry["error"] = "'Name' field contains invalid characters.  ( > < & # )  You have used characters in this field which are either not supported by this field or we do not permitted on this system.";
-
 }
 echo json_encode($msgArry);
