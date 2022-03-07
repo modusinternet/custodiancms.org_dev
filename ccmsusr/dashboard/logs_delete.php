@@ -36,7 +36,7 @@ if(!isset($msgArry["error"])) {
 	}
 	exit;
 	*/
-	$msgArry = array("success","0");
+	$msgArry["success"] = "0";
 
 }
 echo json_encode($msgArry);
