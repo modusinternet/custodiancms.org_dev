@@ -316,21 +316,26 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 										delBut[i].onclick = function(){
 											let url = "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/logs_delete.php";
 											fetch(url + "?token=" + Math.random() + "&ajax_flag=1&id=" + id)
-												.then(x => x.text())
-												.then(y => {
-													if(y === "0") { // success
+												/*.then(response => response.text())*/
+												.then(response => response.json())
+												.then(data => {
+													/*
+													if(data === "0") { // success
 														console.log(id + " deleted");
 														document.getElementById("sec-log-row-id-" + id).outerHTML = "";
-													} else if(y === "1") { // already deleted
+													} else if(data === "1") { // already deleted
 														console.log(id + " already deleted");
 														document.getElementById("sec-log-row-id-" + id).outerHTML = "";
-													} else if(y === '{"errorMsg":"Session Error"}') {
+													} else if(data === '{"errorMsg":"Session Error"}') {
 														document.getElementById("ccms_security_logs").innerHTML = "<p>Session Error</p>";
 													} else {
-														alert(y);
+														alert(data);
 													}
+													*/
+
+													console.log(data);
 												}
-											);
+											).catch(console.error);
 										}
 									}
 
