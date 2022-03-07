@@ -334,6 +334,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 													*/
 
 													console.log(data);
+													console.log(data.error);
+													console.log(data.success);
 												}
 											).catch(console.error);
 										}
