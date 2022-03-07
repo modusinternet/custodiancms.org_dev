@@ -530,13 +530,13 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 			{CCMS_TPL:/_js/footer-1.php}
 
-			var l=document.createElement("link");l.rel="stylesheet";
+			let l=document.createElement("link");l.rel="stylesheet";
 			l.href = "/ccmsusr/_css/custodiancms.css";
-			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
+			let h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
-			var l=document.createElement("link");l.rel="stylesheet";
+			let l=document.createElement("link");l.rel="stylesheet";
 			l.href = "/ccmsusr/_css/metisMenu-3.0.6.min.css";
-			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
+			let h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
 			function loadJSResources() {
 				/*loadFirst("/ccmsusr/_js/jquery-2.2.0.min.js", function() {*/
@@ -646,7 +646,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 										$.validator.addMethod(
 											"badCharRegex",
 											function(value, element, regexp) {
-												var re = new RegExp(regexp);
+												let re = new RegExp(regexp);
 												return this.optional(element) || re.test(value);
 											}, "Please check your input."
 										);
@@ -783,19 +783,14 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 													}
 												},
 												submitHandler: function(form) {
-													var request;
+													let request;
 													// Abort any pending request.
 													if (request) request.abort();
-													var $inputs = $(form).find("input, select, textarea, button");
-													var serializedData = $(form).serialize();
+													let $inputs = $(form).find("input, select, textarea, button");
+													let serializedData = $(form).serialize();
 													// Disable the inputs for the duration of the ajax request.
 													$inputs.prop("disabled", true);
 													request = $.ajax({
-
-														//let url = "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/logs_delete.php";
-														//fetch(url + "?token=" + Math.random() + "&ajax_flag=1&id=" + id)
-
-
 														url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/user_profile/info-ajax.php",
 														cache: false,
 														type: "post",
@@ -898,11 +893,11 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 													}
 												},
 												submitHandler: function(form) {
-													var request;
+													let request;
 													// Abort any pending request.
 													if (request) request.abort();
-													var $inputs = $(form).find("input, select, textarea, button");
-													var serializedData = $(form).serialize();
+													let $inputs = $(form).find("input, select, textarea, button");
+													let serializedData = $(form).serialize();
 													// Disable the inputs for the duration of the ajax request.
 													$inputs.prop("disabled", true);
 													request = $.ajax({

@@ -324,7 +324,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 													} else if(y === "1") { // already deleted
 														console.log(id + " already deleted");
 														document.getElementById("sec-log-row-id-" + id).outerHTML = "";
-													} else if(y === '[{"errorMsg":"Session Error"}]') {
+													} else if(y === '{"errorMsg":"Session Error"}') {
 														document.getElementById("ccms_security_logs").innerHTML = "<p>Session Error</p>";
 													} else {
 														alert(y);
@@ -340,7 +340,21 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 										blacklistBut[i].onclick = function(){
 											let url = "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/addIpAddressToBlacklist.php";
 											fetch(url + "?token=" + Math.random() + "&ajax_flag=1&ip=" + ip)
-												.then(x => x.text())
+
+												/*.then(x => x.text())*/
+												.then(x => x.json())
+
+
+
+
+
+
+
+
+
+
+
+
 												.then(y => {
 													if(y === "0") { // already blocked
 														console.log(ip + " already blocked");
@@ -348,7 +362,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 													} else if(y === "1") { // success
 														console.log(ip + " blocked");
 														alert(ip + " blocked");
-													} else if(y === '[{"errorMsg":"Session Error"}]') {
+													} else if(y === '{"errorMsg":"Session Error"}') {
 														console.log("Session Error");
 														document.getElementById("ccms_security_logs").innerHTML = "<p>Session Error</p>";
 													} else {

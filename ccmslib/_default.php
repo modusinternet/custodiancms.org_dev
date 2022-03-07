@@ -280,7 +280,7 @@ if($row["lng"] === $CLEAN["ccms_lng"]){echo ' style="text-decoration:underline d
 						type: "post",
 						data: "ccms_ins_db_id=" + textOrig[0]
 					}).done(function(msg) {
-						if(msg === '[{"errorMsg":"Session Error"}]') {
+						if(msg === '{"errorMsg":"Session Error"}') {
 							alert("Session error, can not be edited right now.");
 							$(editbtn).removeClass("hidden");
 							$(savebtn).addClass("hidden");
@@ -349,7 +349,7 @@ if($row["lng"] === $CLEAN["ccms_lng"]){echo ' style="text-decoration:underline d
 										} catch (e) {}
 									}
 								}
-							} else if(msg === '[{"errorMsg":"Session Error"}]') {
+							} else if(msg === '{"errorMsg":"Session Error"}') {
 								alert("Session error, changes not saved.");
 							} else {
 								alert(msg);

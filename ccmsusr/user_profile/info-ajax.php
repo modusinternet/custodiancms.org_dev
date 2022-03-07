@@ -25,6 +25,16 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 if($CLEAN["firstname"] == "MAXLEN") {
 	$error_message = "'Firstname' field exceeded its maximum number of 64 character.";
+
+	//$msg['error']['id']
+
+
+
+
+
+
+
+	
 } elseif($CLEAN["firstname"] == "INVAL") {
 	$error_message = "'Firstname' field contains invalid characters.  The following characters are not permitted in this field. ( > < & # )";
 

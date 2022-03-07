@@ -57,7 +57,7 @@ if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
 		header("Cache-Control: post-check=0, pre-check=0", false);
 		header("Pragma: no-cache");
 		//echo "/* Session Error */";
-		echo '[{"errorMsg":"Session Error"}]';
+		echo '{"errorMsg":"Session Error"}';
 		exit;
 	} else {
 		// Show login template because they are NOT logged in.
@@ -86,7 +86,7 @@ if(!isset($_SESSION["USER_ID"]) || isset($_POST["ccms_login"]) || isset($_REQUES
 			header("Cache-Control: post-check=0, pre-check=0", false);
 			header("Pragma: no-cache");
 
-			echo '[{"errorMsg":"Session Error"}]';
+			echo '{"errorMsg":"Session Error"}';
 			exit;
 	} else {
 			// Show login template because they are NOT logged in.
