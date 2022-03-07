@@ -319,23 +319,19 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 												/*.then(response => response.text())*/
 												.then(response => response.json())
 												.then(data => {
-													/*
-													if(data === "0") { // success
+													if(data.success === "0") { // success
 														console.log(id + " deleted");
 														document.getElementById("sec-log-row-id-" + id).outerHTML = "";
-													} else if(data === "1") { // already deleted
+													} else if(data.success === "1") { // already deleted
 														console.log(id + " already deleted");
 														document.getElementById("sec-log-row-id-" + id).outerHTML = "";
-													} else if(data === '{"errorMsg":"Session Error"}') {
+													//} else if(data.error === '{"errorMsg":"Session Error"}') {
+													} else if(data.error === "Session Error") {
 														document.getElementById("ccms_security_logs").innerHTML = "<p>Session Error</p>";
 													} else {
-														alert(data);
+														document.getElementById("ccms_security_logs").innerHTML = "<p>Session Error</p>";
+														console.log(data);
 													}
-													*/
-
-													console.log(data);
-													console.log(data.error);
-													console.log(data.success);
 												}
 											).catch(console.error);
 										}
