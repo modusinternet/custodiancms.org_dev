@@ -14,13 +14,13 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 $msgArry = array();
 
 if($CLEAN["id"] == "") {
-	$msgArry = array("error","No ID provided.");
+	$msgArry["error"] = "No ID provided.";
 } elseif($CLEAN["id"] == "MINLEN") {
-	$msgArry = array("error","This field must be between 1 to 8 characters");
+	$msgArry["error"] = "This field must be between 1 to 8 characters";
 } elseif($CLEAN["id"] == "MAXLEN") {
-	$msgArry = array("error","This field must be between 1 to 8 characters");
+	$msgArry["error"] = "This field must be between 1 to 8 characters";
 } elseif($CLEAN["id"] == "INVAL") {
-	$msgArry = array("error","'Name' field contains invalid characters.  ( > < & # )  You have used characters in this field which are either not supported by this field or we do not permitted on this system.");
+	$msgArry["error"] = "'Name' field contains invalid characters.  ( > < & # )  You have used characters in this field which are either not supported by this field or we do not permitted on this system.";
 }
 
 if(!isset($msgArry["error"])) {
@@ -36,7 +36,8 @@ if(!isset($msgArry["error"])) {
 	}
 	exit;
 	*/
-	$msgArry["success"] = "0";
+	//$msgArry["success"] = "0";
+	$msgArry["error"] = "'Name' field contains invalid characters.  ( > < & # )  You have used characters in this field which are either not supported by this field or we do not permitted on this system.";
 
 }
 echo json_encode($msgArry);
