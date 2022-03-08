@@ -140,7 +140,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			.inner_grid_other>label.error{
 				text-align:center;
 				white-space:unset;
-				grid-column:1 / span 2
+				grid-column:1 / 2;
 			}
 		}
 
