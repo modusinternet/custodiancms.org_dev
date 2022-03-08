@@ -802,7 +802,11 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 													});
 													// Called on success.
 													request.done(function(msg) {
-														//console.log(msg);
+
+
+														console.log(msg.json());
+
+														
 														if(msg == "1") {
 															//$(form).find('[name="form-status"]').html("Info form updated.");
 															$("#info_tab_form_fail").css("display", "none");
