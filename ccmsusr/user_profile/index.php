@@ -805,10 +805,11 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 														var obj = JSON.parse(msg);
-														console.log(obj);
+														//console.log(obj);
 
 
-														if(msg == "1") {
+														//if(msg == "1") {
+														if(obj.success === "1") {
 															//$(form).find('[name="form-status"]').html("Info form updated.");
 															$("#info_tab_form_fail").css("display", "none");
 															$("#info_tab_form_success").html("Success: Updates saved.");
@@ -824,7 +825,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 														} else {
 															//$(form).find('[name="form-status"]').html(msg);
 															$("#info_tab_form_success").css("display", "none");
-															$("#info_tab_form_fail").html(msg);
+															$("#info_tab_form_fail").html(obj.error);
 															$("#info_tab_form_fail").css("display", "block");
 															$("#info_tab_form_fail").scrollView();
 														}
