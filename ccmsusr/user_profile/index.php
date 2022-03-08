@@ -37,8 +37,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		.inner_grid_contact,
 		.inner_grid_other{
 			display:grid;
-			grid-gap:8px;
-			grid-template-columns:88%
+			grid-gap:8px
 		}
 
 		.inner_grid_general>h3,
