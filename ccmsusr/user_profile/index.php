@@ -545,11 +545,13 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 						loadFirst("/ccmsusr/_js/metisMenu-3.0.7.min.js", function() {
 							loadFirst("/ccmsusr/_js/custodiancms.js", function() {
 
+
 								/* user_dropdown START */
 								/* When the user clicks on the svg button add the 'show' class to the dropdown box below it. */
 								$("#user_dropdown_btn").click(function() {
 									$("#user_dropdown_list").addClass("show");
 								});
+
 
 								/* Hide dropdown menu on click outside */
 								$(document).on("click", function(e){
@@ -561,6 +563,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 								loadFirst("/ccmsusr/_js/jquery-validate-1.19.3.min.js", function() { /* JQuery Validate */
 									loadFirst("/ccmsusr/_js/additional-methods-1.17.0.min.js", function() { /* JQuery Validate Additional Methods */
+
 
 										document.getElementById("tab01Title").addEventListener("click", () => {
 											let i, tabContent, tab;
@@ -582,6 +585,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 											/* Display the content area for the above tab. */
 											document.getElementById("tab01Content").style.display = "block";
 										});
+
 
 										document.getElementById("tab02Title").addEventListener("click", () => {
 											let i, tabContent, tab;
@@ -785,7 +789,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 												submitHandler: function(form) {
 													let request;
 													// Abort any pending request.
-													if (request) request.abort();
+													if(request) request.abort();
 													let $inputs = $(form).find("input, select, textarea, button");
 													let serializedData = $(form).serialize();
 													// Disable the inputs for the duration of the ajax request.
