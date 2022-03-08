@@ -316,7 +316,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 										delBut[i].onclick = function(){
 											let url = "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/logs_delete.php";
 											fetch(url + "?token=" + Math.random() + "&ajax_flag=1&id=" + id)
-												/*.then(response => response.text())*/
 												.then(response => response.json())
 												.then(data => {
 													if(data.success === "0") { // success
@@ -325,11 +324,10 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 													} else if(data.success === "1") { // already deleted
 														console.log(id + " already deleted");
 														document.getElementById("sec-log-row-id-" + id).outerHTML = "";
-													//} else if(data.error === '{"errorMsg":"Session Error"}') {
 													} else if(data.error === "Session Error") {
 														document.getElementById("ccms_security_logs").innerHTML = "<p>Session Error</p>";
 													} else {
-														document.getElementById("ccms_security_logs").innerHTML = "<p>Session Error</p>";
+														document.getElementById("ccms_security_logs").innerHTML = "<p>Error: See console for more detail.</p>";
 														console.log(data);
 													}
 												}
@@ -343,37 +341,22 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 										blacklistBut[i].onclick = function(){
 											let url = "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/addIpAddressToBlacklist.php";
 											fetch(url + "?token=" + Math.random() + "&ajax_flag=1&ip=" + ip)
-
-												/*.then(x => x.text())*/
-												.then(x => x.json())
-
-
-
-
-
-
-
-
-
-
-
-
-												.then(y => {
-													if(y === "0") { // already blocked
+												.then(response => response.json())
+												.then(data => {
+													if(data.success === "0") { // already blocked
 														console.log(ip + " already blocked");
 														alert(ip + " already blocked");
-													} else if(y === "1") { // success
+													} else if(data.success === "1") { // blocked
 														console.log(ip + " blocked");
 														alert(ip + " blocked");
-													} else if(y === '{"errorMsg":"Session Error"}') {
-														console.log("Session Error");
+													} else if(data.error === "Session Error") {
 														document.getElementById("ccms_security_logs").innerHTML = "<p>Session Error</p>";
 													} else {
-														console.log(y);
-														alert(y);
+														document.getElementById("ccms_security_logs").innerHTML = "<p>Error: See console for more detail.</p>";
+														console.log(data);
 													}
 												}
-											);
+											).catch(console.error);
 										}
 									}
 								}
