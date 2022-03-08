@@ -32,13 +32,13 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 		.inner_grid_other{grid-area:inner_grid_other}
 
-		.inner_grid_password{grid-area:inner_grid_password}
+		.inner_grid_login{grid-area:inner_grid_login}
 
 		.inner_grid_general,
 		.inner_grid_address,
 		.inner_grid_contact,
 		.inner_grid_other,
-		.inner_grid_password{
+		.inner_grid_login{
 			display:grid;
 			grid-gap:8px
 		}
@@ -47,7 +47,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		.inner_grid_address>h3,
 		.inner_grid_contact>h3,
 		.inner_grid_other>h3,
-		.inner_grid_password>h3{
+		.inner_grid_login>h3{
 			margin:10px 0 0;
 			text-align:center
 		}
@@ -56,19 +56,19 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		.inner_grid_address>input,
 		.inner_grid_contact>input,
 		.inner_grid_other>input,
-		.inner_grid_password>input{height:fit-content}
+		.inner_grid_login>input{height:fit-content}
 
 		.inner_grid_general>label,
 		.inner_grid_address>label,
 		.inner_grid_contact>label,
 		.inner_grid_other>label,
-		.inner_grid_password>label{white-space:nowrap}
+		.inner_grid_login>label{white-space:nowrap}
 
 		.inner_grid_general>label.error,
 		.inner_grid_address>label.error,
 		.inner_grid_contact>label.error,
 		.inner_grid_other>label.error,
-		.inner_grid_password>label.error{
+		.inner_grid_login>label.error{
 			text-align:center;
 			white-space:unset;
 			grid-column:unset
@@ -139,13 +139,13 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			.inner_grid_address,
 			.inner_grid_contact,
 			.inner_grid_other,
-			.inner_grid_password{grid-template-columns:100%}
+			.inner_grid_login{grid-template-columns:100%}
 
 			.inner_grid_general>label.error,
 			.inner_grid_address>label.error,
 			.inner_grid_contact>label.error,
 			.inner_grid_other>label.error,
-			.inner_grid_password>label.error{
+			.inner_grid_login>label.error{
 				text-align:center;
 				white-space:unset;
 				grid-column:1 / 2;
@@ -159,28 +159,28 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			.inner_grid_address,
 			.inner_grid_contact,
 			.inner_grid_other,
-			.inner_grid_password{grid-template-columns:minmax(100px, 200px) 1fr}
+			.inner_grid_login{grid-template-columns:minmax(100px, 200px) 1fr}
 
 			.inner_grid_other>button,
-			.inner_grid_password>button{grid-column:1 / span 2}
+			.inner_grid_login>button{grid-column:1 / span 2}
 
 			.inner_grid_general>h3,
 			.inner_grid_address>h3,
 			.inner_grid_contact>h3,
 			.inner_grid_other>h3,
-			.inner_grid_password>h3{grid-column:1 / span 2}
+			.inner_grid_login>h3{grid-column:1 / span 2}
 
 			.inner_grid_general>input,
 			.inner_grid_address>input,
 			.inner_grid_contact>input,
 			.inner_grid_other>input,
-			.inner_grid_password>input{grid-column:2 / 3}
+			.inner_grid_login>input{grid-column:2 / 3}
 
 			.inner_grid_general>label,
 			.inner_grid_address>label,
 			.inner_grid_contact>label,
 			.inner_grid_other>label,
-			.inner_grid_password>label{
+			.inner_grid_login>label{
 				grid-column:1 / 2;
 				text-align:right
 			}
@@ -189,7 +189,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			.inner_grid_address>label.error,
 			.inner_grid_contact>label.error,
 			.inner_grid_other>label.error,
-			.inner_grid_password>label.error{grid-column:1 / span 2}
+			.inner_grid_login>label.error{grid-column:1 / span 2}
 		}
 
 		/* 950px or wider. */
@@ -226,7 +226,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 			<div class="tabs">
 				<button class="tab active" id="tab01Title">Info</button>
-				<button class="tab" id="tab02Title">Passwords</button>
+				<button class="tab" id="tab02Title">Login</button>
 				<button class="tab" id="tab03Title">Privileges</button>
 			</div>
 
@@ -321,9 +321,9 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 				<div id="password_tab_form_fail" role="alert" style="display:none;text-align:center"></div>
 
 				<form id="password_tab_form" role="form">
-					<div class="inner_grid_password">
+					<div class="inner_grid_login">
 						<input name="ajax_flag" type="hidden" value="1">
-						<h3>Manage Your Password</h3>
+						<h3>Password</h3>
 						<label for="password">Old Password <span class="rd">*</span></label>
 						<input id="password" name="password" placeholder="Type your current password here." type="password" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
 						<label id="password_error" class="error" for="password" style="display:none"></label>
