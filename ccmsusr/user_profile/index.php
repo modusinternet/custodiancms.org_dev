@@ -654,7 +654,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 													// Disable the inputs for the duration of the ajax request.
 													$inputs.prop("disabled", true);
 													request = $.ajax({
-														url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/user_profile/info-ajax.php",
+														url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/user_profile/info_ajax.php",
 														cache: false,
 														type: "post",
 														data: serializedData
