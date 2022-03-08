@@ -323,7 +323,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 				<form id="password_tab_form" role="form">
 					<div class="inner_grid_password">
 						<input name="ajax_flag" type="hidden" value="1">
-						<h3>Manage Your Password Here</h3>
+						<h3>Manage Your Password</h3>
 						<label for="password">Old Password <span class="rd">*</span></label>
 						<input id="password" name="password" placeholder="Type your current password here." type="password" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
 						<label id="password_error" class="error" for="password" style="display:none"></label>
@@ -332,8 +332,8 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 						<input id="password1" name="password1" placeholder="Type your new password here." type="password" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
 						<label id="password1_error" class="error" for="password1" style="display:none"></label>
 
-						<label for="password2">New Password <span class="rd">*</span></label>
-						<input id="password2" name="password2" placeholder="Type your new password here again." type="password" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
+						<label for="password2">Retype <span class="rd">*</span></label>
+						<input id="password2" name="password2" placeholder="Re-type your new password here." type="password" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
 						<label id="password2_error" class="error" for="password2" style="display:none"></label>
 
 						<button>Update</button>
