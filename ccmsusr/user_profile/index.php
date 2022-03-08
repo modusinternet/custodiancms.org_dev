@@ -301,8 +301,43 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			</div>
 
 			<div id="tab02Content" class="tabContent">
-				<p>tab content #2</p>
+
+				<div id="password_tab_form_success" role="alert" style="display:none;text-align:center"></div>
+				<div id="password_tab_form_fail" role="alert" style="display:none;text-align:center"></div>
+
+				<form id="password_tab_form" role="form">
+					<div class="inner_grid_general">
+						<input name="ajax_flag" type="hidden" value="1">
+						<h3>Manage Your Password Here</h3>
+						<label for="password">Password <span class="rd">*</span></label>
+						<input id="password" name="password" placeholder="Type your current password here." type="password" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
+						<label id="password_error" class="error" for="password" style="display:none"></label>
+
+						<label for="password1">New Password <span class="rd">*</span></label>
+						<input id="password1" name="password1" placeholder="Type your new password here." type="password" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
+						<label id="password1_error" class="error" for="password1" style="display:none"></label>
+
+						<label for="password2">Repeat New Password <span class="rd">*</span></label>
+						<input id="password2" name="password2" placeholder="Type your new password here again." type="password" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
+						<label id="password2_error" class="error" for="password2" style="display:none"></label>
+
+						<button>Update</button>
+					</div>
+				</form>
 			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 			<div id="tab03Content" class="tabContent">
 				<p>tab content #3</p>
@@ -314,218 +349,9 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		{CCMS_TPL:/body-head.php}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		<!-- div id="wrapper" style="position: relative;top: 1500px;">
 			<div id="page-wrapper">
-				<div class="row">
-					<div class="col-md-12">
-						<ul class="nav nav-tabs">
-							<li class="active">
-								<a href="#info_tab" data-toggle="tab" aria-expanded="false">Info</a>
-							</li>
-							<li>
-								<a href="#password_tab" data-toggle="tab">Password</a>
-							</li>
-							<li>
-								<a href="#privilege_tab" data-toggle="tab" aria-expanded="true">Privileges</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-
 				<div class="tab-content" style="margin: 10px;">
-					<div class="tab-pane fade active in" id="info_tab">
-						<form class="form-horizontal" id="info_tab_form" role="form">
-							<input name="ajax_flag" type="hidden" value="1">
-							<div class="row">
-								<div class="col-md-4">
-									<h3>General</h3>
-									<div id="info_tab_form_success" class="alert alert-success" role="alert" style="display: none;"></div>
-									<div id="info_tab_form_fail" class="alert alert-danger" role="alert" style="display: none;"></div>
-									<div class="form-group">
-										<label for="firstname" class="control-label">Firstname</label>
-										<div class="input-group">
-											<div class="input-group-addon"><span class="fa fa-user"></span></div>
-											<input class="form-control" id="firstname" name="firstname" placeholder="Type your Firstname here." type="text" value="<?php echo $ccms_user["firstname"]; ?>">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="lastname" class="control-label">Lastname</label>
-										<div class="input-group">
-											<div class="input-group-addon"><span class="fa fa-user"></span></div>
-											<input class="form-control" id="lastname" name="lastname" placeholder="Type your Lastname here." type="text" value="<?php echo $ccms_user["lastname"]; ?>">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="alias" class="control-label">Alias *</label>
-										<div class="input-group">
-											<div class="input-group-addon"><span class="fa fa-user"></span></div>
-											<input class="form-control" id="alias" name="alias" placeholder="Type your Alias here." type="text" value="<?php echo $ccms_user["alias"]; ?>">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="position" class="control-label">Position</label>
-										<div class="input-group">
-											<div class="input-group-addon"><span class="fa fa-cog"></span></div>
-											<input class="form-control" id="position" name="position" placeholder="Type your work Position or Title here." type="text" value="<?php echo $ccms_user["position"]; ?>">
-										</div>
-									</div>
-								</div>
-								<div class="col-md-4">
-									<h3>Address</h3>
-									<div class="form-group">
-										<label for="address1" class="control-label">Address Line 1</label>
-										<div class="input-group">
-											<div class="input-group-addon"><span class="fa fa-map-marker"></span></div>
-											<input class="form-control" id="address1" name="address1" placeholder="Type your Address here." type="text" value="<?php echo $ccms_user["address1"]; ?>">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="address2" class="control-label">Address Line 2</label>
-										<div class="input-group">
-											<div class="input-group-addon"><span class="fa fa-map-marker"></span></div>
-											<input class="form-control" id="address2" name="address2" placeholder="Type your Address here." type="text" value="<?php echo $ccms_user["address2"]; ?>">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="prov_state" class="control-label">Prov/State</label>
-										<div class="input-group">
-											<div class="input-group-addon"><span class="fa fa-map-marker"></span></div>
-											<input class="form-control" id="prov_state" name="prov_state" placeholder="Type your Province or State here." type="text" value="<?php echo $ccms_user["prov_state"]; ?>">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="country" class="control-label">Country</label>
-										<div class="input-group">
-											<div class="input-group-addon"><span class="fa fa-map-marker"></span></div>
-											<input class="form-control" id="country" name="country" placeholder="Type your Country Name here." type="text" value="<?php echo $ccms_user["country"]; ?>">
-										</div>
-									</div>
-
-
-									<div class="form-group">
-										<label for="post_zip" class="control-label">Post/Zip Code</label>
-										<div class="input-group">
-											<div class="input-group-addon"><span class="fa fa-map-marker"></span></div>
-											<input class="form-control" id="post_zip" name="post_zip" placeholder="Type your Postal or Zip Code here." type="text" value="<?php echo $ccms_user["post_zip"]; ?>">
-										</div>
-									</div>
-								</div>
-								<div class="col-md-4">
-									<h3>Contact</h3>
-									<div class="form-group">
-										<label for="email" class="control-label">Email *</label>
-										<div class="input-group">
-											<div class="input-group-addon"><span class="fa fa-envelope"></span></div>
-											<input class="form-control" id="email" name="email" placeholder="Type your Email Address here." type="text" value="<?php echo $ccms_user["email"]; ?>">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="phone1" class="control-label">Phone #1</label>
-										<div class="input-group">
-											<div class="input-group-addon"><span class="fa fa-phone"></span></div>
-											<input class="form-control" id="phone1" name="phone1" placeholder="Type your main Phone Number here." type="text" value="<?php echo $ccms_user["phone1"]; ?>">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="phone2" class="control-label">Phone #2</label>
-										<div class="input-group">
-											<div class="input-group-addon"><span class="fa fa-phone"></span></div>
-											<input class="form-control" id="phone2" name="phone2" placeholder="Type your secondary Phone Number here." type="text" value="<?php echo $ccms_user["phone2"]; ?>">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="facebook" class="control-label">Facebook</label>
-										<div class="input-group">
-											<div class="input-group-addon"><span class="fa fa-facebook-official"></span></div>
-											<input class="form-control" id="facebook" name="facebook" placeholder="Type your Facebook URI here." type="text" value="<?php echo $ccms_user["facebook"]; ?>">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="skype" class="control-label">Skype</label>
-										<div class="input-group">
-											<div class="input-group-addon"><span class="fa fa-skype"></span></div>
-											<input class="form-control" id="skype" name="skype" placeholder="Type your Skype Account Name here." type="text" value="<?php echo $ccms_user["skype"]; ?>">
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-12">
-									<h3>Other</h3>
-
-									<div class="form-group">
-										<label for="note" class="control-label">Notes</label>
-										<div class="input-group">
-											<div class="input-group-addon"><i class="fa fa-file-text-o"></i></div>
-											<textarea name="note" id="note" cols="30" rows="4" class="form-control" placeholder="Type any other notes you wish to attach to your account here."><?php echo $ccms_user["note"]; ?></textarea>
-										</div>
-									</div>
-								</div>
-							</div>
-							<hr>
-							<div class="row">
-								<div class="col-md-12">
-									<button class="btn-primary btn">Update</button>
-									<button class="btn-default btn">Cancel</button>
-								</div>
-							</div>
-						</form>
-					</div>
-					<div class="tab-pane fade" id="password_tab">
-						<form class="form-horizontal" id="password_tab_form" role="form">
-							<input name="ajax_flag" type="hidden" value="1">
-							<div class="row">
-								<div class="col-md-12">
-									<h3>Manage Your Password Here</h3>
-									<div id="password_tab_form_success" class="alert alert-success" role="alert" style="display: none;"></div>
-									<div id="password_tab_form_fail" class="alert alert-danger" role="alert" style="display: none;"></div>
-									<div class="form-group">
-										<label for="password" class="control-label">Password *</label>
-										<div class="input-group">
-											<div class="input-group-addon"><i class="fa fa-key"></i></div>
-											<input class="form-control" id="password" name="password" placeholder="Type your current password here." type="password" value="" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="password1" class="control-label">New Password *</label>
-										<div class="input-group">
-											<div class="input-group-addon"><i class="fa fa-key"></i></div>
-											<input class="form-control" id="password1" name="password1" placeholder="Type your new password here." type="password" value="" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="password2" class="control-label">Repeat New Password *</label>
-										<div class="input-group">
-											<div class="input-group-addon"><i class="fa fa-key"></i></div>
-											<input class="form-control" id="password2" name="password2" placeholder="Type your new password here again." type="password" value="" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
-										</div>
-									</div>
-								</div>
-							</div>
-							<hr>
-							<div class="row">
-								<div class="col-md-12">
-									<button class="btn-primary btn">Update</button>
-									<button class="btn-default btn">Cancel</button>
-								</div>
-							</div>
-						</form>
-					</div>
 					<div class="tab-pane fade" id="privilege_tab">
 						<div class="row">
 							<div class="col-md-12">
