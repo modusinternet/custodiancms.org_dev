@@ -666,7 +666,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 										$.validator.addMethod(
-											"badCharRegex",
+											"matchRegex",
 											function(value, element, regexp) {
 												let re = new RegExp(regexp);
 												return this.optional(element) || re.test(value);
@@ -678,130 +678,130 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 												rules: {
 													firstname: {
 														maxlength: 64,
-														badCharRegex: /^[^\<\>&#]+$/i
+														matchRegex: /^[^\<\>&#]+$/i
 													},
 													lastname: {
 														maxlength: 64,
-														badCharRegex: /^[^\<\>&#]+$/i
+														matchRegex: /^[^\<\>&#]+$/i
 													},
 													alias: {
 														required: true,
 														minlength: 4,
 														maxlength: 32,
-														badCharRegex: /^[^\<\>&#]+$/i
+														matchRegex: /^[^\<\>&#]+$/i
 													},
 													position: {
 														maxlength: 128,
-														badCharRegex: /^[^\<\>&#]+$/i
+														matchRegex: /^[^\<\>&#]+$/i
 													},
 													address1: {
 														maxlength: 128,
-														badCharRegex: /^[^\<\>&#]+$/i
+														matchRegex: /^[^\<\>&#]+$/i
 													},
 													address2: {
 														maxlength: 128,
-														badCharRegex: /^[^\<\>&#]+$/i
+														matchRegex: /^[^\<\>&#]+$/i
 													},
 													prov_state: {
 														maxlength: 32,
-														badCharRegex: /^[^\<\>&#]+$/i
+														matchRegex: /^[^\<\>&#]+$/i
 													},
 													country: {
 														maxlength: 64,
-														badCharRegex: /^[^\<\>&#]+$/i
+														matchRegex: /^[^\<\>&#]+$/i
 													},
 													post_zip: {
 														maxlength: 32,
-														badCharRegex: /^[^\<\>&#]+$/i
+														matchRegex: /^[^\<\>&#]+$/i
 													},
 													email: {
 														required: true,
 														/*email: true,*/
-														badCharRegex: /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+([A-Z0-9]{2,4})$/i
+														matchRegex: /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+([A-Z0-9]{2,4})$/i
 													},
 													phone1: {
 														maxlength: 64,
-														badCharRegex: /^[^\<\>&#]+$/i
+														matchRegex: /^[^\<\>&#]+$/i
 													},
 													phone2: {
 														maxlength: 64,
-														badCharRegex: /^[^\<\>&#]+$/i
+														matchRegex: /^[^\<\>&#]+$/i
 													},
 													skype: {
 														maxlength: 32,
-														badCharRegex: /^[^\<\>&#]+$/i
+														matchRegex: /^[^\<\>&#]+$/i
 													},
 													facebook: {
 														maxlength: 128,
-														badCharRegex: /^[^\<\>&#]+$/i
+														matchRegex: /^[^\<\>&#]+$/i
 													},
 													note: {
 														maxlength: 1024,
-														badCharRegex: /^[^\<\>&#]+$/i
+														matchRegex: /^[^\<\>&#]+$/i
 													}
 												},
 												messages: {
 													firstname: {
 														maxlength: "This field has a maximum length of 64 characters or less.",
-														badCharRegex: "The following characters are not permitted in this field.  ( > < & # )"
+														matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
 													},
 													lastname: {
 														maxlength: "This field has a maximum length of 64 characters or less.",
-														badCharRegex: "The following characters are not permitted in this field.  ( > < & # )"
+														matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
 													},
 													alias: {
 														required: "This field is required.",
 														minlength: "This field has a minimum length of 4 characters or more.",
 														maxlength: "This field has a maximum length of 32 characters or less.",
-														badCharRegex: "The following characters are not permitted in this field.  ( > < & # )"
+														matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
 													},
 													position: {
 														maxlength: "This field has a maximum length of 32 characters or less.",
-														badCharRegex: "The following characters are not permitted in this field.  ( > < & # )"
+														matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
 													},
 													address1: {
 														maxlength: "This field has a maximum length of 128 characters or less.",
-														badCharRegex: "The following characters are not permitted in this field.  ( > < & # )"
+														matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
 													},
 													address2: {
 														maxlength: "This field has a maximum length of 128 characters or less.",
-														badCharRegex: "The following characters are not permitted in this field.  ( > < & # )"
+														matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
 													},
 													prov_state: {
 														maxlength: "This field has a maximum length of 32 characters or less.",
-														badCharRegex: "The following characters are not permitted in this field.  ( > < & # )"
+														matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
 													},
 													country: {
 														maxlength: "This field has a maximum length of 64 characters or less.",
-														badCharRegex: "The following characters are not permitted in this field.  ( > < & # )"
+														matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
 													},
 													post_zip: {
 														maxlength: "This field has a maximum length of 32 characters or less.",
-														badCharRegex: "The following characters are not permitted in this field.  ( > < & # )"
+														matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
 													},
 													email: {
 														required: "Please enter a valid email address.",
-														badCharRegex: "Please enter a valid email address. FYI: The following characters are not permitted in this field.  ( > < & # )"
+														matchRegex: "Please enter a valid email address. FYI: The following characters are not permitted in this field.  ( > < & # )"
 													},
 													phone1: {
 														maxlength: "This field has a maximum length of 64 characters or less.",
-														badCharRegex: "The following characters are not permitted in this field.  ( > < & # )"
+														matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
 													},
 													phone2: {
 														maxlength: "This field has a maximum length of 64 characters or less.",
-														badCharRegex: "The following characters are not permitted in this field.  ( > < & # )"
+														matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
 													},
 													skype: {
 														maxlength: "This field has a maximum length of 32 characters or less.",
-														badCharRegex: "The following characters are not permitted in this field.  ( > < & # )"
+														matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
 													},
 													facebook: {
 														maxlength: "This field has a maximum length of 128 characters or less.",
-														badCharRegex: "The following characters are not permitted in this field.  ( > < & # )"
+														matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
 													},
 													note: {
 														maxlength: "This field has a maximum length of 1024 characters or less.",
-														badCharRegex: "The following characters are not permitted in this field.  ( > < & # )"
+														matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
 													}
 												},
 												submitHandler: function(form) {
@@ -820,13 +820,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 													});
 													// Called on success.
 													request.done(function(msg) {
-
-
 														var obj = JSON.parse(msg);
-														//console.log(obj);
-
-
-														//if(msg == "1") {
 														if(obj.success === "1") {
 															//$(form).find('[name="form-status"]').html("Info form updated.");
 															$("#info_tab_form_fail").css("display", "none");
