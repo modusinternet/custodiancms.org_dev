@@ -698,7 +698,8 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 													},
 													email: {
 														required: true,
-														email: true
+														email: true,
+														badCharRegex: /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+([A-Z0-9]{2,4})$/i
 													},
 													phone1: {
 														maxlength: 64,
@@ -762,7 +763,8 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 													},
 													email: {
 														required: "Please enter a valid email address.",
-														maxlength: "This field has a maximum length of 255 characters or less."
+														maxlength: "This field has a maximum length of 255 characters or less.",
+														badCharRegex: "The following characters are not permitted in this field.  ( > < & # )"
 													},
 													phone1: {
 														maxlength: "This field has a maximum length of 64 characters or less.",
