@@ -59,6 +59,15 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		.inner_grid_contact>label,
 		.inner_grid_other>label{white-space:nowrap}
 
+		.inner_grid_general>label.error,
+		.inner_grid_address>label.error,
+		.inner_grid_contact>label.error,
+		.inner_grid_other>label.error{
+			text-align:center;
+			white-space:unset;
+			grid-column:unset
+		}
+
 		.outer_grid{
 			display:grid;
 			grid-gap:8px;
@@ -124,6 +133,15 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			.inner_grid_address,
 			.inner_grid_contact,
 			.inner_grid_other{grid-template-columns:100%}
+
+			.inner_grid_general>label.error,
+			.inner_grid_address>label.error,
+			.inner_grid_contact>label.error,
+			.inner_grid_other>label.error{
+				text-align:center;
+				white-space:unset;
+				grid-column:1 / span 2
+			}
 		}
 
 
