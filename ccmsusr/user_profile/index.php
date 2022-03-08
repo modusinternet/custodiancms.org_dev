@@ -200,8 +200,8 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 			<div id="tab01Content" class="tabContent" style="display:block">
 
-				<div class="alert alert-success" id="info_tab_form_success" role="alert" style="display:none"></div>
-				<div class="alert alert-danger" id="info_tab_form_fail" role="alert" style="display:none"></div>
+				<div class="alert alert-success" id="info_tab_form_success" role="alert" style="display:none;text-align:center;"></div>
+				<div id="info_tab_form_fail" role="alert" style="display:none"></div>
 
 				<form id="info_tab_form" role="form">
 					<div class="outer_grid">
@@ -806,7 +806,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 														if(msg == "1") {
 															//$(form).find('[name="form-status"]').html("Info form updated.");
 															$("#info_tab_form_fail").css("display", "none");
-															$("#info_tab_form_success").html('<span class="fa fa-check" aria-hidden="true" style="margin-right: 10px;"></span>'+"Success: Updates saved.");
+															$("#info_tab_form_success").html("Success: Updates saved.");
 															$("#info_tab_form_success").css("display", "block");
 															$("#info_tab_form_success").scrollView();
 															setTimeout(function() {
@@ -815,7 +815,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 																//$(form).find('[name="ToEmail"]').val("");
 																//$(form).find('[name="Message"]').val("");
 																$("#info_tab_form_success").css("display", "none");
-															}, 10000);
+															}, 15000);
 														} else {
 															//$(form).find('[name="form-status"]').html(msg);
 															$("#info_tab_form_success").css("display", "none");
