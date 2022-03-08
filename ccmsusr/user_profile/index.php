@@ -200,8 +200,8 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 			<div id="tab01Content" class="tabContent" style="display:block">
 
-				<div class="alert alert-success" id="info_tab_form_success" role="alert" style="display:none;text-align:center;"></div>
-				<div id="info_tab_form_fail" role="alert" style="display:none"></div>
+				<div id="info_tab_form_success" role="alert" style="display:none;text-align:center"></div>
+				<div id="info_tab_form_fail" role="alert" style="display:none;text-align:center"></div>
 
 				<form id="info_tab_form" role="form">
 					<div class="outer_grid">
@@ -812,7 +812,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 														if(obj.success === "1") {
 															//$(form).find('[name="form-status"]').html("Info form updated.");
 															$("#info_tab_form_fail").css("display", "none");
-															$("#info_tab_form_success").html("Success: Updates saved.");
+															$("#info_tab_form_success").html("Changes saved.");
 															$("#info_tab_form_success").css("display", "block");
 															$("#info_tab_form_success").scrollView();
 															setTimeout(function() {
