@@ -251,7 +251,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 						<div class="inner_grid_contact">
 							<h3>Contact</h3>
 							<label for="email">Email <span class="rd">*</span></label>
-							<input id="email" name="email" placeholder="Type your email address here." type="text" value="<?php echo $ccms_user["email"]; ?>">
+							<input id="email" name="email" data-rule-required="true" data-rule-email="true" placeholder="Type your email address here." type="text" value="<?php echo $ccms_user["email"]; ?>">
 							<label id="email_error" class="error" for="email" style="display:none"></label>
 
 							<label for="phone1">Phone #1</label>
@@ -698,8 +698,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 													},
 													email: {
 														required: true,
-														email: true,
-														maxlength: 255
+														email: true
 													},
 													phone1: {
 														maxlength: 64,
