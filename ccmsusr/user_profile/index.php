@@ -530,13 +530,13 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 			{CCMS_TPL:/_js/footer-1.php}
 
-			let l=document.createElement("link");l.rel="stylesheet";
+			var l=document.createElement("link");l.rel="stylesheet";
 			l.href = "/ccmsusr/_css/custodiancms.css";
-			let h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
+			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
-			let l=document.createElement("link");l.rel="stylesheet";
+			var l=document.createElement("link");l.rel="stylesheet";
 			l.href = "/ccmsusr/_css/metisMenu-3.0.6.min.css";
-			let h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
+			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
 			function loadJSResources() {
 				/*loadFirst("/ccmsusr/_js/jquery-2.2.0.min.js", function() {*/
