@@ -147,8 +147,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			.inner_grid_other>label.error,
 			.inner_grid_login>label.error{
 				text-align:center;
-				white-space:unset;
-				grid-column:1 / 2;
+				white-space:unset
 			}
 		}
 
@@ -163,6 +162,8 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 			.inner_grid_other>button,
 			.inner_grid_login>button{grid-column:1 / span 2}
+
+			.inner_grid_login>div{grid-column:2 / 3}
 
 			.inner_grid_general>h3,
 			.inner_grid_address>h3,
@@ -325,15 +326,15 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 						<input name="ajax_flag" type="hidden" value="1">
 						<h3>Password</h3>
 						<label for="password">Old Password <span class="rd">*</span></label>
-						<input class="readonly" id="password" name="password" placeholder="Type your current password here." type="password" autocomplete="off" readonly>
+						<input id="password" name="password" placeholder="Type your current password here." type="password">
 						<label id="password_error" class="error" for="password" style="display:none"></label>
 
 						<label for="password1">New Password <span class="rd">*</span></label>
-						<input class="readonly" id="password1" name="password1" placeholder="Type your new password here." type="password" autocomplete="off" readonly>
+						<input id="password1" name="password1" placeholder="Type your new password here." type="password">
 						<label id="password1_error" class="error" for="password1" style="display:none"></label>
 
 						<label for="password2">Retype <span class="rd">*</span></label>
-						<input class="readonly" id="password2" name="password2" placeholder="Re-type your new password here." type="password" autocomplete="off" readonly>
+						<input id="password2" name="password2" placeholder="Re-type your new password here." type="password">
 						<label id="password2_error" class="error" for="password2" style="display:none"></label>
 
 
@@ -349,7 +350,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 						<label for="2fa_checkbox" title="2-Factor Authentication">
 							2FA?
-							 <a href="https://authy.com/what-is-2fa/" target="_blank" title="What is 2FA">
+							<a href="https://authy.com/what-is-2fa/" target="_blank" title="What is 2FA">
 								<svg style="width:20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#d7680f" d="M18,10.82a1,1,0,0,0-1,1V19a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V8A1,1,0,0,1,5,7h7.18a1,1,0,0,0,0-2H5A3,3,0,0,0,2,8V19a3,3,0,0,0,3,3H16a3,3,0,0,0,3-3V11.82A1,1,0,0,0,18,10.82Zm3.92-8.2a1,1,0,0,0-.54-.54A1,1,0,0,0,21,2H15a1,1,0,0,0,0,2h3.59L8.29,14.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L20,5.41V9a1,1,0,0,0,2,0V3A1,1,0,0,0,21.92,2.62Z"/></svg>
 							</a>
 						</label>
@@ -529,15 +530,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 										});
 
 
-										var twofa_opts = document.getElementsByClassName('readonly');
-
-										var removeReadonlyFunc = function(){
-											this.removeAttribute('readonly');
-										}
-
-										for(let i = 0;i < twofa_opts.length;i++){
-											twofa_opts[i].addEventListener('click', removeReadonlyFunc.bind(twofa_opts[i]));
-										}
+										/* https://stackoverflow.com/questions/29781848/how-to-disable-browser-save-password-functionality */
 
 
 
