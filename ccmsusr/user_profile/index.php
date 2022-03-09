@@ -798,7 +798,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 															window.setTimeout(function() {
 																document.getElementById("ga_qr_img").style.display = "block";
 																document.getElementById("ga_qr_svg").style.display = "none";
-																document.getElementById("adminDiv").style.maxHeight = adminDiv.scrollHeight + "px";
+																//document.getElementById("adminDiv").style.maxHeight = adminDiv.scrollHeight + "px";
 															},3000);
 														} else {
 															//console.log("xhr failed");
