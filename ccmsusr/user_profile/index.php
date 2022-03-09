@@ -336,6 +336,36 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 						<input id="password2" name="password2" placeholder="Re-type your new password here." type="password" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
 						<label id="password2_error" class="error" for="password2" style="display:none"></label>
 
+
+
+
+
+
+
+
+
+
+
+
+						<label for="2fa_checkbox" title="2-Factor Authentication">
+							2FA?
+							 <a href="https://authy.com/what-is-2fa/" target="_blank" title="What is 2FA">
+								<svg style="width:20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#d7680f" d="M18,10.82a1,1,0,0,0-1,1V19a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V8A1,1,0,0,1,5,7h7.18a1,1,0,0,0,0-2H5A3,3,0,0,0,2,8V19a3,3,0,0,0,3,3H16a3,3,0,0,0,3-3V11.82A1,1,0,0,0,18,10.82Zm3.92-8.2a1,1,0,0,0-.54-.54A1,1,0,0,0,21,2H15a1,1,0,0,0,0,2h3.59L8.29,14.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L20,5.41V9a1,1,0,0,0,2,0V3A1,1,0,0,0,21.92,2.62Z"/></svg>
+							</a>
+						</label>
+						<input id="2fa_secret" type="hidden" name="2fa_secret">
+						<input id="2fa_checkbox" name="2fa_checkbox" onclick="qr_code();" style="cursor:pointer" type="checkbox">
+						<div id="ga_qr_div" style="display:none;margin:0 auto;max-width:200px">
+							<svg id="ga_qr_svg" style="display:none;margin:0px auto;width:75px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+								<path fill="#d7680f" d="M25,5A20.14,20.14,0,0,1,45,22.88a2.51,2.51,0,0,0,2.49,2.26h0A2.52,2.52,0,0,0,50,22.33a25.14,25.14,0,0,0-50,0,2.52,2.52,0,0,0,2.5,2.81h0A2.51,2.51,0,0,0,5,22.88,20.14,20.14,0,0,1,25,5Z">
+									<animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="2s" repeatCount="indefinite"/>
+								</path>
+							</svg>
+							<img id="ga_qr_img" style="display:none;margin:0 auto;max-width:200px" />
+						</div>
+
+
+
 						<button>Update</button>
 					</div>
 				</form>
@@ -706,6 +736,69 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 												}
 											});
 										});
+
+
+
+
+
+
+
+
+
+
+
+
+										/* Administrator QR Generator START */
+										function qr_code(){
+											var twofa_checkbox = document.getElementById('2fa_checkbox');
+											if(twofa_checkbox.checked){
+												//alert("checked");
+
+												document.getElementById("ga_qr_div").style.display = "block";
+												document.getElementById("ga_qr_svg").style.display = "block";
+
+												var xhr = new XMLHttpRequest();
+												xhr.open("POST", "https://custodiancms.org/cross-origin-resources/ga-qr-generater.php<?php if(isset($CFG["DOMAIN"])){echo "?domain=" . $CFG["DOMAIN"];}?>", true);
+												xhr.send();
+												xhr.onreadystatechange = function(){
+													if(xhr.readyState === 4){
+														if(xhr.status === 200){
+															//console.log("xhr done successfully");
+															//sessionStorage.setItem(url,xhr.responseText);
+															var resp = xhr.responseText;
+															var respJson = JSON.parse(resp);
+															/*
+															console.log(respJson["ga_qr_secret"]);
+															console.log(respJson["ga_qr_url"]);
+															*/
+															document.getElementById("2fa_secret").value = respJson["ga_qr_secret"];
+															document.getElementById("ga_qr_img").src = respJson["ga_qr_url"];
+															window.setTimeout(function() {
+																document.getElementById("ga_qr_img").style.display = "block";
+																document.getElementById("ga_qr_svg").style.display = "none";
+																document.getElementById("adminDiv").style.maxHeight = adminDiv.scrollHeight + "px";
+															},3000);
+														} else {
+															//console.log("xhr failed");
+														}
+													} else {
+														//console.log("xhr processing going on");
+													}
+												}
+												//console.log("request sent succesfully");
+											}else{
+												//alert("unchecked");
+
+												document.getElementById("2fa_secret").value = "";
+												document.getElementById("ga_qr_div").style.display = "none";
+												document.getElementById("ga_qr_svg").style.display = "none";
+												document.getElementById("ga_qr_img").style.display = "none";
+												document.getElementById("ga_qr_img").src = "";
+											}
+										}
+										/* Administrator QR Generator END */
+
+
 
 
 
