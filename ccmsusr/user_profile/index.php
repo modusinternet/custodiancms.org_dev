@@ -743,8 +743,8 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 										/* If '2FA Disabled' selected, remove posible generated QR code from view. */
 										document.getElementById("2fa_radio_1").addEventListener("click", () => {
 											document.getElementById("ga_qr_img").style.display = "none";
-											document.getElementById("ga_qr_div").style.display = "block";
-											document.getElementById("ga_qr_svg").style.display = "block";
+											document.getElementById("ga_qr_div").style.display = "none";
+											document.getElementById("ga_qr_svg").style.display = "none";
 										});
 
 										/* Administrator QR Generator START */
