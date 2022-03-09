@@ -363,7 +363,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 							<input type="radio" id="2fa_radio_1" name="2fa_radio" value="1">
 							<label for="2fa_radio_1">2FA Disabled</label><br>
 							<input type="radio" id="2fa_radio_2" name="2fa_radio" value="2">
-							<label for="2fa_radio_2">Generate a New 2FA QR Code</label>
+							<label for="2fa_radio_2">Generate new 2FA QR code</label>
 						</div>
 
 						<div id="ga_qr_div" style="display:none;max-width:200px">
@@ -750,11 +750,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 												document.getElementById("ga_qr_div").style.display = "block";
 												document.getElementById("ga_qr_svg").style.display = "block";
 
-
-
-
-												//document.getElementById("ga_qr_img").src = "";
-
 												var xhr = new XMLHttpRequest();
 												xhr.open("POST", "https://custodiancms.org/cross-origin-resources/ga-qr-generater.php<?php if(isset($CFG["DOMAIN"])){echo "?domain=" . $CFG["DOMAIN"];}?>", true);
 												xhr.send();
@@ -790,7 +785,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 												document.getElementById("ga_qr_div").style.display = "none";
 												document.getElementById("ga_qr_svg").style.display = "none";
 												document.getElementById("ga_qr_img").style.display = "none";
-												document.getElementById("ga_qr_img").src = "";
+												//document.getElementById("ga_qr_img").src = "";
 											}
 										});
 										/* Administrator QR Generator END */
