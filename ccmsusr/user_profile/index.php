@@ -325,15 +325,15 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 						<input name="ajax_flag" type="hidden" value="1">
 						<h3>Password</h3>
 						<label for="password">Old Password <span class="rd">*</span></label>
-						<input id="password" name="password" placeholder="Type your current password here." type="password" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
+						<input class="readonly" id="password" name="password" placeholder="Type your current password here." type="password" autocomplete="off" readonly>
 						<label id="password_error" class="error" for="password" style="display:none"></label>
 
 						<label for="password1">New Password <span class="rd">*</span></label>
-						<input id="password1" name="password1" placeholder="Type your new password here." type="password" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
+						<input class="readonly" id="password1" name="password1" placeholder="Type your new password here." type="password" autocomplete="off" readonly>
 						<label id="password1_error" class="error" for="password1" style="display:none"></label>
 
 						<label for="password2">Retype <span class="rd">*</span></label>
-						<input id="password2" name="password2" placeholder="Re-type your new password here." type="password" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
+						<input class="readonly" id="password2" name="password2" placeholder="Re-type your new password here." type="password" autocomplete="off" readonly>
 						<label id="password2_error" class="error" for="password2" style="display:none"></label>
 
 
@@ -529,7 +529,15 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 										});
 
 
+										var 2fa_opts = document.getElementsByClassName('readonly');
 
+										var removeReadonlyFunc = function(){
+											this.removeAttribute('readonly');
+										}
+
+										for(let i = 0;i < 2fa_opts.length;i++){
+											2fa_opts[i].addEventListener('click', removeReadonlyFunc.bind(2fa_opts[i]));
+										}
 
 
 
