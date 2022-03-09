@@ -355,7 +355,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 							</a>
 						</label>
 						<input id="2fa_secret" type="hidden" name="2fa_secret">
-						<!-- input id="2fa_checkbox" name="2fa_checkbox" style="cursor:pointer" type="checkbox" -->
 
 						<div>
 							<input type="radio" id="2fa_radio_0" name="2fa_radio" value="0">
@@ -737,6 +736,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 										document.getElementById("2fa_radio_0").checked = true;
 <? else: ?>
 										document.getElementById("2fa_radio_0").disabled = true;
+										document.getElementById("2fa_radio_0").style.display = "none";
 										document.getElementById("2fa_radio_1").checked = true;
 <? endif ?>
 
