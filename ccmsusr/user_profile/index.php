@@ -357,14 +357,14 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 						<input id="2fa_secret" type="hidden" name="2fa_secret">
 						<input id="2fa_checkbox" name="2fa_checkbox" style="cursor:pointer" type="checkbox">
 
-<div>
-<input type="radio" id="2fa_radio_0" name="2fa_radio" value="0">
-<label for="2fa_radio_0">2FA Enabled</label><br>
-<input type="radio" id="2fa_radio_1" name="2fa_radio" value="1">
-<label for="2fa_radio_1">2FA Disabled</label><br>
-<input type="radio" id="2fa_radio_2" name="2fa_radio" value="2">
-<label for="2fa_radio_2">New 2FA QR Code</label>
-</div>
+						<div>
+							<input type="radio" id="2fa_radio_0" name="2fa_radio" value="0">
+							<label for="2fa_radio_0">2FA Enabled</label><br>
+							<input type="radio" id="2fa_radio_1" name="2fa_radio" value="1">
+							<label for="2fa_radio_1">2FA Disabled</label><br>
+							<input type="radio" id="2fa_radio_2" name="2fa_radio" value="2">
+							<label for="2fa_radio_2">Generate a New 2FA QR Code</label>
+						</div>
 
 						<div id="ga_qr_div" style="display:none;margin:0 auto;max-width:200px">
 							<svg id="ga_qr_svg" style="display:none;margin:0px auto;width:75px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
