@@ -529,14 +529,14 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 										});
 
 
-										var 2fa_opts = document.getElementsByClassName('readonly');
+										var twofa_opts = document.getElementsByClassName('readonly');
 
 										var removeReadonlyFunc = function(){
 											this.removeAttribute('readonly');
 										}
 
-										for(let i = 0;i < 2fa_opts.length;i++){
-											2fa_opts[i].addEventListener('click', removeReadonlyFunc.bind(2fa_opts[i]));
+										for(let i = 0;i < twofa_opts.length;i++){
+											twofa_opts[i].addEventListener('click', removeReadonlyFunc.bind(twofa_opts[i]));
 										}
 
 
