@@ -740,6 +740,13 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 										document.getElementById("2fa_radio_1").checked = true;
 <? endif ?>
 
+										/* If '2FA Disabled' selected, remove posible generated QR code from view. */
+										document.getElementById("2fa_radio_1").addEventListener("click", () => {
+											document.getElementById("ga_qr_img").style.display = "none";
+											document.getElementById("ga_qr_div").style.display = "block";
+											document.getElementById("ga_qr_svg").style.display = "block";
+										});
+
 										/* Administrator QR Generator START */
 										document.getElementById("2fa_radio_2").addEventListener("click", () => {
 											var twofa_checkbox = document.getElementById('2fa_radio_2');
