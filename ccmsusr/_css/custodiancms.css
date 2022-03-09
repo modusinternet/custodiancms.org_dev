@@ -102,6 +102,7 @@ input:focus,textarea:focus{outline:3px solid gold}
 input::placeholder,textarea::placeholder{color:var(--cl4)}
 
 label{
+	cursor:pointer;
 	margin-top:10px;
 	text-align:left;
 	white-space:nowrap
