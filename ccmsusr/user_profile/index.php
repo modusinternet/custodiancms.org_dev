@@ -533,9 +533,13 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 										/* https://stackoverflow.com/questions/29781848/how-to-disable-browser-save-password-functionality */
 
 
-										radiobtn = document.getElementById("2fa_radio_1");
+<?php if(!empty($ccms_user["2fa_secret"])): ?>
+										if(radiobtn = document.getElementById("2fa_radio_0");
 										radiobtn.checked = true;
-
+<? else: ?>
+										if(radiobtn = document.getElementById("2fa_radio_1");
+										radiobtn.checked = true;
+<? endif ?>
 
 
 
