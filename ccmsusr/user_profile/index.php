@@ -358,12 +358,12 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 						<input id="2fa_checkbox" name="2fa_checkbox" style="cursor:pointer" type="checkbox">
 
 <div>
-<input type="radio" id="child" name="age" value="child">
-<label for="child">17 years or younger</label><br>
-<input type="radio" id="adult" name="age" value="adult">
-<label for="adult">18 - 64 years</label><br>
-<input type="radio" id="senior" name="age" value="senior">
-<label for="senior">65 years or older</label>
+<input type="radio" id="2fa_radio_0" name="2fa_radio" value="0">
+<label for="child">2FA Enabled</label><br>
+<input type="radio" id="2fa_radio_1" name="2fa_radio" value="1">
+<label for="adult">2FA Disabled</label><br>
+<input type="radio" id="2fa_radio_2" name="2fa_radio" value="2">
+<label for="senior">New 2FA QR Code</label>
 </div>
 
 						<div id="ga_qr_div" style="display:none;margin:0 auto;max-width:200px">
