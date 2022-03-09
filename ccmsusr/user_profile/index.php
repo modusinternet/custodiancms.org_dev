@@ -325,7 +325,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 						<input name="ajax_flag" type="hidden" value="1">
 						<h3>Password</h3>
 						<label for="password">Old Password <span class="rd">*</span></label>
-						<input id="password" name="password" placeholder="Type your current password here." type="password" autocomplete="off">
+						<input id="password" name="password" placeholder="Type your current password here." type="password" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
 						<label id="password_error" class="error" for="password" style="display:none"></label>
 
 						<label for="password1">New Password <span class="rd">*</span></label>
