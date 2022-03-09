@@ -355,7 +355,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 							</a>
 						</label>
 						<input id="2fa_secret" type="hidden" name="2fa_secret">
-						<input id="2fa_checkbox" name="2fa_checkbox" style="cursor:pointer" type="checkbox">
+						<!-- input id="2fa_checkbox" name="2fa_checkbox" style="cursor:pointer" type="checkbox" -->
 
 						<div>
 							<input type="radio" id="2fa_radio_0" name="2fa_radio" value="0">
@@ -769,8 +769,10 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 										/* Administrator QR Generator START */
 										//function qr_code(){
-										document.getElementById("2fa_checkbox").addEventListener("click", () => {
-											var twofa_checkbox = document.getElementById('2fa_checkbox');
+										//document.getElementById("2fa_checkbox").addEventListener("click", () => {
+										document.getElementById("2fa_radio_2").addEventListener("click", () => {
+											//var twofa_checkbox = document.getElementById('2fa_checkbox');
+											var twofa_checkbox = document.getElementById('2fa_radio_2');
 											if(twofa_checkbox.checked){
 												//alert("checked");
 
