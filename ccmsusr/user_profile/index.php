@@ -325,7 +325,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 						<input name="ajax_flag" type="hidden" value="1">
 						<h3>Password</h3>
 						<label for="password">Old Password <span class="rd">*</span></label>
-						<input id="password" name="password" placeholder="Type your current password here." type="password" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
+						<input id="password" name="password" placeholder="Type your current password here." type="password" autocomplete="off">
 						<label id="password_error" class="error" for="password" style="display:none"></label>
 
 						<label for="password1">New Password <span class="rd">*</span></label>
@@ -356,14 +356,14 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 						<input id="2fa_secret" type="hidden" name="2fa_secret">
 						<input id="2fa_checkbox" name="2fa_checkbox" style="cursor:pointer" type="checkbox">
 
-
+<div>
 <input type="radio" id="child" name="age" value="child">
 <label for="child">17 years or younger</label><br>
 <input type="radio" id="adult" name="age" value="adult">
 <label for="adult">18 - 64 years</label><br>
 <input type="radio" id="senior" name="age" value="senior">
 <label for="senior">65 years or older</label>
-
+</div>
 
 						<div id="ga_qr_div" style="display:none;margin:0 auto;max-width:200px">
 							<svg id="ga_qr_svg" style="display:none;margin:0px auto;width:75px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
