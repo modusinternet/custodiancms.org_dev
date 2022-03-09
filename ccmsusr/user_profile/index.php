@@ -742,6 +742,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 										/* If '2FA Disabled' selected, remove posible generated QR code from view. */
 										document.getElementById("2fa_radio_1").addEventListener("click", () => {
+											document.getElementById("2fa_secret").value = "";
 											document.getElementById("ga_qr_img").style.display = "none";
 											document.getElementById("ga_qr_div").style.display = "none";
 											document.getElementById("ga_qr_svg").style.display = "none";
