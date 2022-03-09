@@ -838,8 +838,8 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 													});
 													// Called on success.
 													request.done(function(msg) {
-														//console.log(msg);
-														if(msg == "1") {
+														var obj = JSON.parse(msg);
+														if(obj.success === "1") {
 															//$(form).find('[name="form-status"]').html("Password form updated.");
 															$("#password_tab_form_fail").css("display", "none");
 															$("#password_tab_form_success").html('<span class="fa fa-check" aria-hidden="true" style="margin-right: 10px;"></span>'+"Success: Updates saved.");
@@ -855,7 +855,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 														} else {
 															//$(form).find('[name="form-status"]').html(msg);
 															$("#password_tab_form_success").css("display", "none");
-															$("#password_tab_form_fail").html(msg);
+															$("#password_tab_form_fail").html(obj.error);
 															$("#password_tab_form_fail").css("display", "block");
 															$("#password_tab_form_fail").scrollView();
 														}
