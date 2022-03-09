@@ -336,18 +336,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 						<label for="password2">Retype <span class="rd">*</span></label>
 						<input id="password2" name="password2" placeholder="Re-type your new password here." type="password">
 						<label id="password2_error" class="error" for="password2" style="display:none"></label>
-
-
-
-
-
-
-
-
-
-
-
-
 						<label for="2fa_checkbox" title="2-Factor Authentication">
 							2FA?
 							<a href="https://authy.com/what-is-2fa/" target="_blank" title="What is 2FA">
@@ -355,7 +343,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 							</a>
 						</label>
 						<input id="2fa_secret" type="hidden" name="2fa_secret">
-
 						<div>
 							<input type="radio" id="2fa_radio_0" name="2fa_radio" value="0">
 							<label id="2fa_radio_0_label" for="2fa_radio_0">2FA Enabled</label><br>
@@ -364,7 +351,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 							<input type="radio" id="2fa_radio_2" name="2fa_radio" value="2">
 							<label for="2fa_radio_2">Generate new 2FA QR code</label>
 						</div>
-
 						<div id="ga_qr_div" style="display:none;max-width:200px">
 							<svg id="ga_qr_svg" style="display:none;margin:0px auto;width:75px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
 								<path fill="#d7680f" d="M25,5A20.14,20.14,0,0,1,45,22.88a2.51,2.51,0,0,0,2.49,2.26h0A2.52,2.52,0,0,0,50,22.33a25.14,25.14,0,0,0-50,0,2.52,2.52,0,0,0,2.5,2.81h0A2.51,2.51,0,0,0,5,22.88,20.14,20.14,0,0,1,25,5Z">
@@ -373,13 +359,15 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 							</svg>
 							<img id="ga_qr_img" style="display:none;margin:0 auto;max-width:200px" />
 						</div>
-
-
-
 						<button>Update</button>
 					</div>
 				</form>
 			</div>
+
+
+
+
+
 
 
 
@@ -402,7 +390,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		</main>
 
 		{CCMS_TPL:/body-head.php}
-
 
 		<!-- div id="wrapper" style="position: relative;top: 1500px;">
 			<div id="page-wrapper">
@@ -429,6 +416,15 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 			{CCMS_TPL:/_js/footer-1.php}
 
+<?php if(!empty($ccms_user["2fa_secret"])): ?>
+			document.getElementById("2fa_radio_0").checked = true;
+<? else: ?>
+			document.getElementById("2fa_radio_0").disabled = true;
+			document.getElementById("2fa_radio_0").style.display = "none";
+			document.getElementById("2fa_radio_0_label").style.display = "none";
+			document.getElementById("2fa_radio_1").checked = true;
+<? endif ?>
+
 			var l=document.createElement("link");l.rel="stylesheet";
 			l.href = "/ccmsusr/_css/custodiancms.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
@@ -444,13 +440,11 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 						loadFirst("/ccmsusr/_js/metisMenu-3.0.7.min.js", function() {
 							loadFirst("/ccmsusr/_js/custodiancms.js", function() {
 
-
 								/* user_dropdown START */
 								/* When the user clicks on the svg button add the 'show' class to the dropdown box below it. */
 								$("#user_dropdown_btn").click(function() {
 									$("#user_dropdown_list").addClass("show");
 								});
-
 
 								/* Hide dropdown menu on click outside */
 								$(document).on("click", function(e){
@@ -463,44 +457,36 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 								loadFirst("/ccmsusr/_js/jquery-validate-1.19.3.min.js", function() { /* JQuery Validate */
 									loadFirst("/ccmsusr/_js/additional-methods-1.17.0.min.js", function() { /* JQuery Validate Additional Methods */
 
-
 										document.getElementById("tab01Title").addEventListener("click", () => {
 											let i, tabContent, tab;
-
 											/* De-activate all tabs. */
 											tab = document.getElementsByClassName("tab");
 											for(i=0; i<tab.length; i++){
 												tab[i].className = tab[i].className.replace(" active","");
 											}
-
 											/* Hide all tab content areas. */
 											tabContent = document.getElementsByClassName("tabContent");
 											for(i=0; i<tabContent.length; i++){
 												tabContent[i].style.display = "none";
 											}
-
 											/* Activate the tab. */
 											document.getElementById("tab01Title").className += " active";
 											/* Display the content area for the above tab. */
 											document.getElementById("tab01Content").style.display = "block";
 										});
 
-
 										document.getElementById("tab02Title").addEventListener("click", () => {
 											let i, tabContent, tab;
-
 											/* De-activate all tabs. */
 											tab = document.getElementsByClassName("tab");
 											for(i=0; i<tab.length; i++){
 												tab[i].className = tab[i].className.replace(" active","");
 											}
-
 											/* Hide all tab content areas. */
 											tabContent = document.getElementsByClassName("tabContent");
 											for(i=0; i<tabContent.length; i++){
 												tabContent[i].style.display = "none";
 											}
-
 											/* Activate the tab. */
 											document.getElementById("tab02Title").className += " active";
 											/* Display the content area for the above tab. */
@@ -509,25 +495,21 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 										document.getElementById("tab03Title").addEventListener("click", () => {
 											let i, tabContent, tab;
-
 											/* De-activate all tabs. */
 											tab = document.getElementsByClassName("tab");
 											for(i=0; i<tab.length; i++){
 												tab[i].className = tab[i].className.replace(" active","");
 											}
-
 											/* Hide all tab content areas. */
 											tabContent = document.getElementsByClassName("tabContent");
 											for(i=0; i<tabContent.length; i++){
 												tabContent[i].style.display = "none";
 											}
-
 											/* Activate the tab. */
 											document.getElementById("tab03Title").className += " active";
 											/* Display the content area for the above tab. */
 											document.getElementById("tab03Content").style.display = "block";
 										});
-
 
 										/* https://stackoverflow.com/questions/29781848/how-to-disable-browser-save-password-functionality */
 
@@ -732,15 +714,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 											});
 										});
 
-<?php if(!empty($ccms_user["2fa_secret"])): ?>
-										document.getElementById("2fa_radio_0").checked = true;
-<? else: ?>
-										document.getElementById("2fa_radio_0").disabled = true;
-										document.getElementById("2fa_radio_0").style.display = "none";
-										document.getElementById("2fa_radio_0_label").style.display = "none";
-										document.getElementById("2fa_radio_1").checked = true;
-<? endif ?>
-
 										/* If '2FA Disabled' selected, remove posible generated QR code from view. */
 										document.getElementById("2fa_radio_1").addEventListener("click", () => {
 											document.getElementById("2fa_secret").value = "";
@@ -858,7 +831,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 													// Disable the inputs for the duration of the ajax request.
 													$inputs.prop("disabled", true);
 													request = $.ajax({
-														url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/user_profile/password-ajax.html",
+														url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/user_profile/password_ajax.php",
 														cache: false,
 														type: "post",
 														data: serializedData
