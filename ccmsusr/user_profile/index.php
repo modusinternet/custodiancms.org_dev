@@ -746,8 +746,14 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 											if(twofa_checkbox.checked){
 												//alert("checked");
 
+												document.getElementById("ga_qr_img").style.display = "none";
 												document.getElementById("ga_qr_div").style.display = "block";
 												document.getElementById("ga_qr_svg").style.display = "block";
+
+
+
+
+												//document.getElementById("ga_qr_img").src = "";
 
 												var xhr = new XMLHttpRequest();
 												xhr.open("POST", "https://custodiancms.org/cross-origin-resources/ga-qr-generater.php<?php if(isset($CFG["DOMAIN"])){echo "?domain=" . $CFG["DOMAIN"];}?>", true);
