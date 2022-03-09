@@ -366,7 +366,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 							<label for="2fa_radio_2">Generate a New 2FA QR Code</label>
 						</div>
 
-						<div id="ga_qr_div" style="display:none;margin:0 auto;max-width:200px">
+						<div id="ga_qr_div" style="display:none;max-width:200px">
 							<svg id="ga_qr_svg" style="display:none;margin:0px auto;width:75px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
 								<path fill="#d7680f" d="M25,5A20.14,20.14,0,0,1,45,22.88a2.51,2.51,0,0,0,2.49,2.26h0A2.52,2.52,0,0,0,50,22.33a25.14,25.14,0,0,0-50,0,2.52,2.52,0,0,0,2.5,2.81h0A2.51,2.51,0,0,0,5,22.88,20.14,20.14,0,0,1,25,5Z">
 									<animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="2s" repeatCount="indefinite"/>
@@ -531,29 +531,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 										/* https://stackoverflow.com/questions/29781848/how-to-disable-browser-save-password-functionality */
-
-
-<?php if(!empty($ccms_user["2fa_secret"])): ?>
-										radiobtn = document.getElementById("2fa_radio_0");
-										radiobtn.checked = true;
-<? else: ?>
-										radiobtn = document.getElementById("2fa_radio_1");
-										radiobtn.checked = true;
-<? endif ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 										$.validator.addMethod(
 											"matchRegex",
@@ -756,22 +733,15 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 											});
 										});
 
-
-
-
-
-
-
-
-
-
-
+<?php if(!empty($ccms_user["2fa_secret"])): ?>
+										document.getElementById("2fa_radio_0").checked = true;
+<? else: ?>
+										document.getElementById("2fa_radio_0").disabled = true;
+										document.getElementById("2fa_radio_1").checked = true;
+<? endif ?>
 
 										/* Administrator QR Generator START */
-										//function qr_code(){
-										//document.getElementById("2fa_checkbox").addEventListener("click", () => {
 										document.getElementById("2fa_radio_2").addEventListener("click", () => {
-											//var twofa_checkbox = document.getElementById('2fa_checkbox');
 											var twofa_checkbox = document.getElementById('2fa_radio_2');
 											if(twofa_checkbox.checked){
 												//alert("checked");
@@ -798,7 +768,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 															window.setTimeout(function() {
 																document.getElementById("ga_qr_img").style.display = "block";
 																document.getElementById("ga_qr_svg").style.display = "none";
-																//document.getElementById("adminDiv").style.maxHeight = adminDiv.scrollHeight + "px";
 															},3000);
 														} else {
 															//console.log("xhr failed");
