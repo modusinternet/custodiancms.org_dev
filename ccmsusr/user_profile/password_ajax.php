@@ -59,12 +59,14 @@ if(!isset($msg["error"])) {
 			echo $CLEAN["ccms_pass_reset_part_2_pass_1"];
 			exit;
 
-			if($CLEAN["ccms_pass_reset_part_2_pass_1"] !== ""){
-				// The submitted password matches the hashed password stored on the server.
-				// Rehash the password and replace original password hash on the server to make even more secure.
-				// See https://alias.io/2010/01/store-passwords-safely-with-php-and-mysql/ for more details.
-				$options = ['cost' => 10];
-				$hash = password_hash($CLEAN["ccms_pass_reset_part_2_pass_1"], PASSWORD_BCRYPT, $options);
+			if($_REQUEST["ccms_pass_reset_part_2_pass_1"] !== "" || $_REQUEST["ccms_pass_reset_part_2_pass_2"] !== "") {
+				if($CLEAN["ccms_pass_reset_part_2_pass_1"] !== ""){
+					// The submitted password matches the hashed password stored on the server.
+					// Rehash the password and replace original password hash on the server to make even more secure.
+					// See https://alias.io/2010/01/store-passwords-safely-with-php-and-mysql/ for more details.
+					$options = ['cost' => 10];
+					$hash = password_hash($CLEAN["ccms_pass_reset_part_2_pass_1"], PASSWORD_BCRYPT, $options);
+				}
 			}
 
 			if(isset($hash)){
