@@ -821,12 +821,10 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 														minlength: 8
 													},
 													ccms_pass_reset_part_2_pass_1: {
-														required: true,
 														minlength: 8,
 														equalTo: "#ccms_pass_reset_part_2_pass_2"
 													},
 													ccms_pass_reset_part_2_pass_2: {
-														required: true,
 														minlength: 8,
 														equalTo: "#ccms_pass_reset_part_2_pass_1"
 													}
@@ -837,12 +835,10 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 														maxlength: "This field has a minimum length of 8 characters or more."
 													},
 													ccms_pass_reset_part_2_pass_1: {
-														required: "This field is required.",
 														maxlength: "This field has a minimum length of 8 characters or more.",
 														equalTo: "'New Password' and 'Repeat New Password' are not the same."
 													},
 													ccms_pass_reset_part_2_pass_2: {
-														required: "This field is required.",
 														maxlength: "This field has a minimum length of 8 characters or more.",
 														equalTo: "'New Password' and 'Repeat New Password' are not the same."
 													}
@@ -867,7 +863,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 														if(obj.success === "1") {
 															//$(form).find('[name="form-status"]').html("Password form updated.");
 															$("#password_tab_form_fail").css("display", "none");
-															$("#password_tab_form_success").html('<span class="fa fa-check" aria-hidden="true" style="margin-right: 10px;"></span>'+"Success: Updates saved.");
+															$("#password_tab_form_success").html("Success: Updates saved.");
 															$("#password_tab_form_success").css("display", "block");
 															$("#password_tab_form_success").scrollView();
 															setTimeout(function() {
