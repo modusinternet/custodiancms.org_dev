@@ -65,20 +65,20 @@ if(!isset($msg["error"])) {
 			$options = ['cost' => 10];
 			$hash = password_hash($CLEAN["ccms_pass_reset_part_2_pass_1"], PASSWORD_BCRYPT, $options);
 
-			$tmp = "UPDATE `ccms_user` SET `hash` = :hash";
-			if($CLEAN["2fa_radio"] === "1") {
-				// Delete 2fa_secret field in database
-				$tmp .= ",`2fa_secret` = ''";
+			if($CLEAN["2fa_radio"] === "0") {
+				// 2fa is set to 'enabled' on the form so don't change what's already in the database.
+				$qry = $CFG["DBH"]->prepare("UPDATE `ccms_user` SET `hash` = :hash WHERE `id` = :id;");
+				$qry->execute(array(':hash' => $hash, ':id' => $_SESSION["USER_ID"]));
+			} elseif($CLEAN["2fa_radio"] === "1") {
+				// 2fa is set to 'disabled' on the form so remove it from the database.
+				$qry = $CFG["DBH"]->prepare("UPDATE `ccms_user` SET `hash` = :hash, `2fa_secret` = '' WHERE `id` = :id;");
+				$qry->execute(array(':hash' => $hash, ':id' => $_SESSION["USER_ID"]));
 			} elseif($CLEAN["2fa_radio"] === "2"){
-				// Add/Update 2fa_secret field in database
-				$tmp .= ",`2fa_secret` = :2fa_secret";
+				// 2fa is set to 'disabled' on the form so remove it from the database.
+				$qry = $CFG["DBH"]->prepare("UPDATE `ccms_user` SET `hash` = :hash, `2fa_secret` = :2fa_secret WHERE `id` = :id;");
+				$qry->execute(array(':hash' => $hash, ':2fa_secret' => $CLEAN["2fa_secret"], ':id' => $_SESSION["USER_ID"]));
 			}
-			$tmp .= " WHERE `id` = :id;";
 
-			//$qry = $CFG["DBH"]->prepare("UPDATE `ccms_user` SET `hash` = :hash WHERE `id` = :user_id;");
-			$qry = $CFG["DBH"]->prepare($tmp);
-			$qry->execute(array(':hash' => $hash, ':2fa_secret' => $CLEAN["2fa_secret"], ':id' => $_SESSION["USER_ID"]));
-			//echo "1";
 			$msg["success"] = "1"; // update successful
 		} else {
 			//echo '<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="margin-right: 10px;"></span>'."Password failed, please try again.";
