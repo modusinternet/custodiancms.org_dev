@@ -20,22 +20,20 @@ if($CLEAN["ccms_login_password"] == "") {
 } elseif($CLEAN["ccms_login_password"] == "INVAL") {
 	$msg["error"] = "'Password' field error, indeterminate.";
 
-} elseif($CLEAN["ccms_pass_reset_part_2_pass_1"] == "") {
-	$msg["error"] = "'New Password' field missing content.";
 } elseif($CLEAN["ccms_pass_reset_part_2_pass_1"] == "MINLEN") {
 	$msg["error"] = "'New Password' field is too short, must be 8 or more characters in length.";
 } elseif($CLEAN["ccms_pass_reset_part_2_pass_1"] == "INVAL") {
 	$msg["error"] = "Something is wrong with your 'New Password', it came up as INVALID when testing is with with an open (.+) expression.";
 
-} elseif($CLEAN["ccms_pass_reset_part_2_pass_2"] == "") {
-	$msg["error"] = "'Repeat New Password' field missing content.";
 } elseif($CLEAN["ccms_pass_reset_part_2_pass_2"] == "MINLEN") {
-	$msg["error"] = "'Repeat New Password' field is too short, must be 8 or more characters in length.";
+	$msg["error"] = "The 'Retype' Password field is too short, must be 8 or more characters in length.";
 } elseif($CLEAN["ccms_pass_reset_part_2_pass_2"] == "INVAL") {
-	$msg["error"] = "Something is wrong with your 'Repeat New Password', it came up as INVALID when testing is with with an open (.+) expression.";
+	$msg["error"] = "Something is wrong with the 'Retype' Password, it came up as INVALID when testing is with with an open (.+) expression.";
 
-} elseif($CLEAN["ccms_pass_reset_part_2_pass_1"] != $CLEAN["ccms_pass_reset_part_2_pass_2"]) {
-	$msg["error"] = "'New Password' and 'Repeat New Password' fields are not the same.";
+} elseif($CLEAN["ccms_pass_reset_part_2_pass_1"] !== "" || $CLEAN["ccms_pass_reset_part_2_pass_2"] !== "") {
+	if($CLEAN["ccms_pass_reset_part_2_pass_1"] !== $CLEAN["ccms_pass_reset_part_2_pass_2"]) {
+		$msg["error"] = "'New Password' and the 'Retype' Password fields are not the same.";
+	}
 
 } elseif($CLEAN["2fa_radio"] == "") {
 	$msg["error"] = "No 2FA option selected.";
@@ -59,24 +57,40 @@ if(!isset($msg["error"])) {
 
 	if($row) {
 		if(password_verify($CLEAN["ccms_login_password"], $row["hash"])) {
-			// The submitted password matches the hashed password stored on the server.
-			// Rehash the password and replace original password hash on the server to make even more secure.
-			// See https://alias.io/2010/01/store-passwords-safely-with-php-and-mysql/ for more details.
-			$options = ['cost' => 10];
-			$hash = password_hash($CLEAN["ccms_pass_reset_part_2_pass_1"], PASSWORD_BCRYPT, $options);
+			if($CLEAN["ccms_pass_reset_part_2_pass_1"] !== ""){
+				// The submitted password matches the hashed password stored on the server.
+				// Rehash the password and replace original password hash on the server to make even more secure.
+				// See https://alias.io/2010/01/store-passwords-safely-with-php-and-mysql/ for more details.
+				$options = ['cost' => 10];
+				$hash = password_hash($CLEAN["ccms_pass_reset_part_2_pass_1"], PASSWORD_BCRYPT, $options);
+			}
 
-			if($CLEAN["2fa_radio"] === "0") {
-				// 2fa is set to 'enabled' on the form so don't change what's already in the database.
-				$qry = $CFG["DBH"]->prepare("UPDATE `ccms_user` SET `hash` = :hash WHERE `id` = :id;");
-				$qry->execute(array(':hash' => $hash, ':id' => $_SESSION["USER_ID"]));
-			} elseif($CLEAN["2fa_radio"] === "1") {
-				// 2fa is set to 'disabled' on the form so remove it from the database.
-				$qry = $CFG["DBH"]->prepare("UPDATE `ccms_user` SET `hash` = :hash, `2fa_secret` = '' WHERE `id` = :id;");
-				$qry->execute(array(':hash' => $hash, ':id' => $_SESSION["USER_ID"]));
-			} elseif($CLEAN["2fa_radio"] === "2"){
-				// 2fa is set to 'disabled' on the form so remove it from the database.
-				$qry = $CFG["DBH"]->prepare("UPDATE `ccms_user` SET `hash` = :hash, `2fa_secret` = :2fa_secret WHERE `id` = :id;");
-				$qry->execute(array(':hash' => $hash, ':2fa_secret' => $CLEAN["2fa_secret"], ':id' => $_SESSION["USER_ID"]));
+			if(isset($hash)){
+				// Password is being changed
+				if($CLEAN["2fa_radio"] === "0") {
+					// 2fa is set to 'enabled' on the form so don't change what's already in the database.
+					$qry = $CFG["DBH"]->prepare("UPDATE `ccms_user` SET `hash` = :hash WHERE `id` = :id;");
+					$qry->execute(array(':hash' => $hash, ':id' => $_SESSION["USER_ID"]));
+				} elseif($CLEAN["2fa_radio"] === "1") {
+					// 2fa is set to 'disabled' on the form so remove it from the database.
+					$qry = $CFG["DBH"]->prepare("UPDATE `ccms_user` SET `hash` = :hash, `2fa_secret` = '' WHERE `id` = :id;");
+					$qry->execute(array(':hash' => $hash, ':id' => $_SESSION["USER_ID"]));
+				} elseif($CLEAN["2fa_radio"] === "2"){
+					// 2fa is set to 'Generate new' on the form so update it in the database.
+					$qry = $CFG["DBH"]->prepare("UPDATE `ccms_user` SET `hash` = :hash, `2fa_secret` = :2fa_secret WHERE `id` = :id;");
+					$qry->execute(array(':hash' => $hash, ':2fa_secret' => $CLEAN["2fa_secret"], ':id' => $_SESSION["USER_ID"]));
+				}
+			} else {
+				// Password is NOT being changed
+				if($CLEAN["2fa_radio"] === "1") {
+					// 2fa is set to 'disabled' on the form so remove it from the database.
+					$qry = $CFG["DBH"]->prepare("UPDATE `ccms_user` SET `2fa_secret` = '' WHERE `id` = :id;");
+					$qry->execute(array(':id' => $_SESSION["USER_ID"]));
+				} elseif($CLEAN["2fa_radio"] === "2"){
+					// 2fa is set to 'Generate new' on the form so update it in the database.
+					$qry = $CFG["DBH"]->prepare("UPDATE `ccms_user` SET `2fa_secret` = :2fa_secret WHERE `id` = :id;");
+					$qry->execute(array(':2fa_secret' => $CLEAN["2fa_secret"], ':id' => $_SESSION["USER_ID"]));
+				}
 			}
 
 			$msg["success"] = "1"; // update successful
