@@ -55,6 +55,10 @@ if(!isset($msg["error"])) {
 
 	if($row) {
 		if(password_verify($CLEAN["ccms_login_password"], $row["hash"])) {
+
+			echo $CLEAN["ccms_pass_reset_part_2_pass_1"]
+			exit;
+
 			if($CLEAN["ccms_pass_reset_part_2_pass_1"] !== ""){
 				// The submitted password matches the hashed password stored on the server.
 				// Rehash the password and replace original password hash on the server to make even more secure.
@@ -93,11 +97,9 @@ if(!isset($msg["error"])) {
 
 			$msg["success"] = "1"; // update successful
 		} else {
-			//echo '<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="margin-right: 10px;"></span>'."Password failed, please try again.";
 			$msg["error"] = "Password failed, please try again.";
 		}
 	} else {
-		//echo '<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="margin-right: 10px;"></span>'."Password update failed, your account is not found on the server anymore.";
 		$msg["error"] = "Password update failed, account not found on the server.";
 	}
 }
