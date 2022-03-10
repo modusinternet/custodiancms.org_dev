@@ -341,22 +341,21 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 										blacklistBut[i].onclick = function(){
 											let url = "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/addIpAddressToBlacklist.php";
 											fetch(url + "?token=" + Math.random() + "&ajax_flag=1&ip=" + ip)
-												.then(response => response.json())
-												.then(data => {
-													if(data.success === "0") { // already blocked
-														console.log(ip + " already blocked");
-														alert(ip + " already blocked");
-													} else if(data.success === "1") { // blocked
-														console.log(ip + " blocked");
-														alert(ip + " blocked");
-													} else if(data.error === "Session Error") {
-														document.getElementById("ccms_security_logs").innerHTML = "<p>Session Error</p>";
-													} else {
-														document.getElementById("ccms_security_logs").innerHTML = "<p>Error: See console for more detail.</p>";
-														console.log(data);
-													}
+											.then(response => response.json())
+											.then(data => {
+												if(data.success === "0") { // already blocked
+													console.log(ip + " already blocked");
+													alert(ip + " already blocked");
+												} else if(data.success === "1") { // blocked
+													console.log(ip + " blocked");
+													alert(ip + " blocked");
+												} else if(data.error === "Session Error") {
+													document.getElementById("ccms_security_logs").innerHTML = "Session Error";
+												} else {
+													document.getElementById("ccms_security_logs").innerHTML = "Error: See console for more detail.";
+													console.log(data);
 												}
-											).catch(console.error);
+											}).catch(console.error);
 										}
 									}
 								}
