@@ -56,7 +56,7 @@ if(!isset($msg["error"])) {
 	if($row) {
 		if(password_verify($CLEAN["ccms_login_password"], $row["hash"])) {
 
-			echo $CLEAN["ccms_pass_reset_part_2_pass_1"]
+			echo $CLEAN["ccms_pass_reset_part_2_pass_1"];
 			exit;
 
 			if($CLEAN["ccms_pass_reset_part_2_pass_1"] !== ""){
