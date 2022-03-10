@@ -20,7 +20,7 @@ if($CLEAN["ccms_login_password"] == "") {
 } elseif($CLEAN["ccms_login_password"] == "INVAL") {
 	$msg["error"] = "'Password' field error, indeterminate.";
 
-} elseif($CLEAN["ccms_pass_reset_part_2_pass_1"] !== "" || $CLEAN["ccms_pass_reset_part_2_pass_2"] !== "") {
+} elseif($_REQUEST["ccms_pass_reset_part_2_pass_1"] !== "" || $_REQUEST["ccms_pass_reset_part_2_pass_2"] !== "") {
 	if($CLEAN["ccms_pass_reset_part_2_pass_1"] == "MINLEN") {
 		$msg["error"] = "'New Password' field is too short, must be 8 or more characters in length.";
 	} elseif($CLEAN["ccms_pass_reset_part_2_pass_1"] == "INVAL") {
