@@ -136,6 +136,7 @@ $whitelist = array(
 	"ccms_ins_db_text"	=> array("type" => "ANY",						"maxlength" => 16000),
 	"id"								=> array("type" => "WHOLE_NUMBER",	"minlength" => 1,	"maxlength" => 8),
 	"ip"								=> array("type" => "IP",						"minlength" => 7,	"maxlength" => 15),
+	"2fa_radio"					=> array("type" => "WHOLE_NUMBER",	"maxlength" => 1),
 );
 
 

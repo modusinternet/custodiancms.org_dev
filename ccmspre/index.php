@@ -61,7 +61,7 @@ define('UTF8_STRING_DIGIT_PUNC_WHITE', '/^[\pL\pM*+\pN\pP\s]*\z/u');
 define('WHOLE_NUMBER', '/^[\pN]*\z/');
 // ^		Start of line
 // [		Starts the character class.
-// \pN		Any number.
+// \pN	Any number.
 // ]		Ends the character class.
 // *		Zero or more
 // \z		End of subject or newline at end. (Better then $ because $ does not include /n characters at the end of a line.)
