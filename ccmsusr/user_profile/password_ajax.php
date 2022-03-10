@@ -13,28 +13,28 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 $msg = array();
 
-if($CLEAN["password"] == "") {
+if($CLEAN["ccms_login_password"] == "") {
 	$msg["error"] = "'Password' field missing content.";
-} elseif($CLEAN["password"] == "MINLEN") {
+} elseif($CLEAN["ccms_login_password"] == "MINLEN") {
 	$msg["error"] = "'Password' field is too short, must be 8 or more characters in length.";
-} elseif($CLEAN["password"] == "INVAL") {
+} elseif($CLEAN["ccms_login_password"] == "INVAL") {
 	$msg["error"] = "'Password' field error, indeterminate.";
 
-} elseif($CLEAN["password1"] == "") {
+} elseif($CLEAN["ccms_pass_reset_part_2_pass_1"] == "") {
 	$msg["error"] = "'New Password' field missing content.";
-} elseif($CLEAN["password1"] == "MINLEN") {
+} elseif($CLEAN["ccms_pass_reset_part_2_pass_1"] == "MINLEN") {
 	$msg["error"] = "'New Password' field is too short, must be 8 or more characters in length.";
-} elseif($CLEAN["password1"] == "INVAL") {
+} elseif($CLEAN["ccms_pass_reset_part_2_pass_1"] == "INVAL") {
 	$msg["error"] = "Something is wrong with your 'New Password', it came up as INVALID when testing is with with an open (.+) expression.";
 
-} elseif($CLEAN["password2"] == "") {
+} elseif($CLEAN["ccms_pass_reset_part_2_pass_2"] == "") {
 	$msg["error"] = "'Repeat New Password' field missing content.";
-} elseif($CLEAN["password2"] == "MINLEN") {
+} elseif($CLEAN["ccms_pass_reset_part_2_pass_2"] == "MINLEN") {
 	$msg["error"] = "'Repeat New Password' field is too short, must be 8 or more characters in length.";
-} elseif($CLEAN["password2"] == "INVAL") {
+} elseif($CLEAN["ccms_pass_reset_part_2_pass_2"] == "INVAL") {
 	$msg["error"] = "Something is wrong with your 'Repeat New Password', it came up as INVALID when testing is with with an open (.+) expression.";
 
-} elseif($CLEAN["password1"] != $CLEAN["password2"]) {
+} elseif($CLEAN["ccms_pass_reset_part_2_pass_1"] != $CLEAN["ccms_pass_reset_part_2_pass_2"]) {
 	$msg["error"] = "'New Password' and 'Repeat New Password' fields are not the same.";
 
 } elseif($CLEAN["2fa_radio"] == "") {
@@ -58,12 +58,12 @@ if(!isset($msg["error"])) {
 	$row = $qry->fetch(PDO::FETCH_ASSOC);
 
 	if($row) {
-		if(password_verify($CLEAN["password"], $row["hash"])) {
+		if(password_verify($CLEAN["ccms_login_password"], $row["hash"])) {
 			// The submitted password matches the hashed password stored on the server.
 			// Rehash the password and replace original password hash on the server to make even more secure.
 			// See https://alias.io/2010/01/store-passwords-safely-with-php-and-mysql/ for more details.
 			$options = ['cost' => 10];
-			$hash = password_hash($CLEAN["password1"], PASSWORD_BCRYPT, $options);
+			$hash = password_hash($CLEAN["ccms_pass_reset_part_2_pass_1"], PASSWORD_BCRYPT, $options);
 
 			$tmp = "UPDATE `ccms_user` SET `hash` = :hash";
 			if($CLEAN["2fa_radio"] === "1") {

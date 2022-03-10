@@ -325,17 +325,17 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 					<div class="inner_grid_login">
 						<input name="ajax_flag" type="hidden" value="1">
 						<h3>Password</h3>
-						<label for="password">Old Password <span class="rd">*</span></label>
-						<input id="password" name="password" placeholder="Type your current password here." type="password">
-						<label id="password_error" class="error" for="password" style="display:none"></label>
+						<label for="ccms_login_password">Old Password <span class="rd">*</span></label>
+						<input id="ccms_login_password" name="ccms_login_password" placeholder="Type your current password here." type="password">
+						<label id="ccms_login_password_error" class="error" for="ccms_login_password" style="display:none"></label>
 
-						<label for="password1">New Password <span class="rd">*</span></label>
-						<input id="password1" name="password1" placeholder="Type your new password here." type="password">
-						<label id="password1_error" class="error" for="password1" style="display:none"></label>
+						<label for="ccms_pass_reset_part_2_pass_1">New Password <span class="rd">*</span></label>
+						<input id="ccms_pass_reset_part_2_pass_1" name="ccms_pass_reset_part_2_pass_1" placeholder="Type your new password here." type="password">
+						<label id="ccms_pass_reset_part_2_pass_1_error" class="error" for="ccms_pass_reset_part_2_pass_1" style="display:none"></label>
 
-						<label for="password2">Retype <span class="rd">*</span></label>
-						<input id="password2" name="password2" placeholder="Re-type your new password here." type="password">
-						<label id="password2_error" class="error" for="password2" style="display:none"></label>
+						<label for="ccms_pass_reset_part_2_pass_2">Retype <span class="rd">*</span></label>
+						<input id="ccms_pass_reset_part_2_pass_2" name="ccms_pass_reset_part_2_pass_2" placeholder="Re-type your new password here." type="password">
+						<label id="ccms_pass_reset_part_2_pass_2_error" class="error" for="ccms_pass_reset_part_2_pass_2" style="display:none"></label>
 						<label for="2fa_checkbox" title="2-Factor Authentication">
 							2FA?
 							<a href="https://authy.com/what-is-2fa/" target="_blank" title="What is 2FA">
@@ -791,32 +791,32 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 										$('#password_tab_form').each(function() {
 											$(this).validate({
 												rules: {
-													password: {
+													ccms_login_password: {
 														required: true,
 														minlength: 8
 													},
-													password1: {
+													ccms_pass_reset_part_2_pass_1: {
 														required: true,
 														minlength: 8,
-														equalTo: "#password2"
+														equalTo: "#ccms_pass_reset_part_2_pass_2"
 													},
-													password2: {
+													ccms_pass_reset_part_2_pass_2: {
 														required: true,
 														minlength: 8,
-														equalTo: "#password1"
+														equalTo: "#ccms_pass_reset_part_2_pass_1"
 													}
 												},
 												messages: {
-													password: {
+													ccms_login_password: {
 														required: "This field is required.",
 														maxlength: "This field has a minimum length of 8 characters or more."
 													},
-													password1: {
+													ccms_pass_reset_part_2_pass_1: {
 														required: "This field is required.",
 														maxlength: "This field has a minimum length of 8 characters or more.",
 														equalTo: "'New Password' and 'Repeat New Password' are not the same."
 													},
-													password2: {
+													ccms_pass_reset_part_2_pass_2: {
 														required: "This field is required.",
 														maxlength: "This field has a minimum length of 8 characters or more.",
 														equalTo: "'New Password' and 'Repeat New Password' are not the same."
@@ -874,9 +874,9 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 														// reenable the inputs
 														setTimeout(function() {
 															$inputs.prop("disabled", false);
-															$("#password").val("");
-															$("#password1").val("");
-															$("#password2").val("");
+															$("#ccms_login_password").val("");
+															$("#ccms_pass_reset_part_2_pass_1").val("");
+															$("#ccms_pass_reset_part_2_pass_2").val("");
 														}, 5000);
 													});
 													// Prevent default posting of form.
