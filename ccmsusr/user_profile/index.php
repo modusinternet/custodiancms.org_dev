@@ -329,11 +329,11 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 						<input id="ccms_login_password" name="ccms_login_password" placeholder="Type your current password here." type="password">
 						<label id="ccms_login_password_error" class="error" for="ccms_login_password" style="display:none"></label>
 
-						<label for="ccms_pass_reset_part_2_pass_1">New Password <span class="rd">*</span></label>
+						<label for="ccms_pass_reset_part_2_pass_1">New Password</label>
 						<input id="ccms_pass_reset_part_2_pass_1" name="ccms_pass_reset_part_2_pass_1" placeholder="Type your new password here." type="password">
 						<label id="ccms_pass_reset_part_2_pass_1_error" class="error" for="ccms_pass_reset_part_2_pass_1" style="display:none"></label>
 
-						<label for="ccms_pass_reset_part_2_pass_2">Retype <span class="rd">*</span></label>
+						<label for="ccms_pass_reset_part_2_pass_2">Retype</label>
 						<input id="ccms_pass_reset_part_2_pass_2" name="ccms_pass_reset_part_2_pass_2" placeholder="Re-type your new password here." type="password">
 						<label id="ccms_pass_reset_part_2_pass_2_error" class="error" for="ccms_pass_reset_part_2_pass_2" style="display:none"></label>
 						<label for="2fa_checkbox" title="2-Factor Authentication">
