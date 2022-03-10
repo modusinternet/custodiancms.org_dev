@@ -137,6 +137,7 @@ $whitelist = array(
 	"id"								=> array("type" => "WHOLE_NUMBER",	"minlength" => 1,	"maxlength" => 8),
 	"ip"								=> array("type" => "IP",						"minlength" => 7,	"maxlength" => 15),
 	"2fa_radio"					=> array("type" => "WHOLE_NUMBER",	"maxlength" => 1),
+	"2fa_secret"					=> array("type" => "NO_BADCHARS",	"maxlength" => 32),
 );
 
 
