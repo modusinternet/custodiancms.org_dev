@@ -20,18 +20,16 @@ if($CLEAN["ccms_login_password"] == "") {
 } elseif($CLEAN["ccms_login_password"] == "INVAL") {
 	$msg["error"] = "'Password' field error, indeterminate.";
 
-} elseif($CLEAN["ccms_pass_reset_part_2_pass_1"] == "MINLEN") {
-	$msg["error"] = "'New Password' field is too short, must be 8 or more characters in length.";
-} elseif($CLEAN["ccms_pass_reset_part_2_pass_1"] == "INVAL") {
-	$msg["error"] = "Something is wrong with your 'New Password', it came up as INVALID when testing is with with an open (.+) expression.";
-
-} elseif($CLEAN["ccms_pass_reset_part_2_pass_2"] == "MINLEN") {
-	$msg["error"] = "The 'Retype' Password field is too short, must be 8 or more characters in length.";
-} elseif($CLEAN["ccms_pass_reset_part_2_pass_2"] == "INVAL") {
-	$msg["error"] = "Something is wrong with the 'Retype' Password, it came up as INVALID when testing is with with an open (.+) expression.";
-
 } elseif($CLEAN["ccms_pass_reset_part_2_pass_1"] !== "" || $CLEAN["ccms_pass_reset_part_2_pass_2"] !== "") {
-	if($CLEAN["ccms_pass_reset_part_2_pass_1"] !== $CLEAN["ccms_pass_reset_part_2_pass_2"]) {
+	if($CLEAN["ccms_pass_reset_part_2_pass_1"] == "MINLEN") {
+		$msg["error"] = "'New Password' field is too short, must be 8 or more characters in length.";
+	} elseif($CLEAN["ccms_pass_reset_part_2_pass_1"] == "INVAL") {
+		$msg["error"] = "Something is wrong with your 'New Password', it came up as INVALID when testing is with with an open (.+) expression.";
+	} elseif($CLEAN["ccms_pass_reset_part_2_pass_2"] == "MINLEN") {
+		$msg["error"] = "The 'Retype' Password field is too short, must be 8 or more characters in length.";
+	} elseif($CLEAN["ccms_pass_reset_part_2_pass_2"] == "INVAL") {
+		$msg["error"] = "Something is wrong with the 'Retype' Password, it came up as INVALID when testing is with with an open (.+) expression.";
+	}	elseif($CLEAN["ccms_pass_reset_part_2_pass_1"] !== $CLEAN["ccms_pass_reset_part_2_pass_2"]) {
 		$msg["error"] = "'New Password' and the 'Retype' Password fields are not the same.";
 	}
 
