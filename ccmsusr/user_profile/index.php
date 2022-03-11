@@ -841,6 +841,38 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 
+															
+
+															var 2Fabut = document.querySelector(`input[type="radio"][name=2fa_radio]:checked`).value;
+															if(2Fabut == "1"){
+																document.getElementById("2fa_radio_0").disabled = true;
+																document.getElementById("2fa_radio_0").style.display = "none";
+																document.getElementById("2fa_radio_0_label").style.display = "none";
+																document.getElementById("2fa_radio_1").checked = true;
+															} else if (2Fabut == "2") {
+																document.getElementById("2fa_radio_0").disabled = false;
+																document.getElementById("2fa_radio_0").style.display = "initial";
+																document.getElementById("2fa_radio_0_label").style.display = "initial";
+																document.getElementById("2fa_radio_0").checked = true;
+															}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 															setTimeout(function() {
 																//$(form).find('[name="form-status"]').html("");
 																//$(form).find('[name="FromEmail"]').val("");
