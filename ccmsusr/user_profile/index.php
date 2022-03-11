@@ -714,55 +714,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 											});
 										});
 
-										/* If '2FA Disabled' selected, remove posible generated QR code from view. */
-										document.getElementById("2fa_radio_1").addEventListener("click", () => {
-											document.getElementById("2fa_secret").value = "";
-											document.getElementById("ga_qr_img").style.display = "none";
-											document.getElementById("ga_qr_div").style.display = "none";
-											document.getElementById("ga_qr_svg").style.display = "none";
-										});
-
-										/* Administrator QR Generator START
-										document.getElementById("2fa_radio_2").addEventListener("click", () => {
-											var twofa_checkbox = document.getElementById('2fa_radio_2');
-											if(twofa_checkbox.checked){
-												document.getElementById("ga_qr_img").style.display = "none";
-												document.getElementById("ga_qr_div").style.display = "block";
-												document.getElementById("ga_qr_svg").style.display = "block";
-
-												var xhr = new XMLHttpRequest();
-												xhr.open("POST", "https://custodiancms.org/cross-origin-resources/ga-qr-generater.php<?php if(isset($CFG["DOMAIN"])){echo "?domain=" . $CFG["DOMAIN"];}?>", true);
-												xhr.send();
-												xhr.onreadystatechange = function(){
-													if(xhr.readyState === 4){
-														if(xhr.status === 200){
-															var resp = xhr.responseText;
-															var respJson = JSON.parse(resp);
-															document.getElementById("2fa_secret").value = respJson["ga_qr_secret"];
-															document.getElementById("ga_qr_img").src = respJson["ga_qr_url"];
-															window.setTimeout(function() {
-																document.getElementById("ga_qr_img").style.display = "block";
-																document.getElementById("ga_qr_svg").style.display = "none";
-															},3000);
-														} else {
-															//console.log("xhr failed");
-														}
-													} else {
-														//console.log("xhr processing going on");
-													}
-												}
-												//console.log("request sent succesfully");
-											} else {
-												//alert("unchecked");
-												document.getElementById("2fa_secret").value = "";
-												document.getElementById("ga_qr_div").style.display = "none";
-												document.getElementById("ga_qr_svg").style.display = "none";
-												document.getElementById("ga_qr_img").style.display = "none";
-												//document.getElementById("ga_qr_img").src = "";
-											}
-										});
-										 Administrator QR Generator END */
-
 										/* Administrator QR Generator START */
  										document.getElementById("2fa_radio_2").addEventListener("click", () => {
  											var twofa_checkbox = document.getElementById('2fa_radio_2');
@@ -773,20 +724,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 												fetch("https://custodiancms.org/cross-origin-resources/ga-qr-generater.php<?php if(isset($CFG["DOMAIN"])){echo "?domain=" . $CFG["DOMAIN"];}?>")
 		 										.then(response => response.json())
 		 										.then(data => {
-													/*
-													if(data.success === "0") { // already blocked
-		 												console.log(ip + " already blocked");
-		 												alert(ip + " already blocked");
-		 											} else if(data.success === "1") { // blocked
-		 												console.log(ip + " blocked");
-		 												alert(ip + " blocked");
-		 											} else if(data.error === "Session Error") {
-		 												document.getElementById("ccms_security_logs").innerHTML = "Session Error";
-		 											} else {
-		 												document.getElementById("ccms_security_logs").innerHTML = "Error: See console for more detail.";
-		 												console.log(data);
-		 											}
-													*/
 													document.getElementById("2fa_secret").value = data.ga_qr_secret;
 													document.getElementById("ga_qr_img").src = data.ga_qr_url;
 													window.setTimeout(function() {
@@ -796,6 +733,16 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		 										}).catch(console.error);
 											}
 										});
+										/* Administrator QR Generator END */
+
+										/* If '2FA Disabled' selected, remove posible generated QR code from view. */
+										document.getElementById("2fa_radio_1").addEventListener("click", () => {
+											document.getElementById("2fa_secret").value = "";
+											document.getElementById("ga_qr_img").style.display = "none";
+											document.getElementById("ga_qr_div").style.display = "none";
+											document.getElementById("ga_qr_svg").style.display = "none";
+										});
+
 
 
 
@@ -860,6 +807,24 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 													// Called on success.
 													request.done(function(msg) {
 														var obj = JSON.parse(msg);
+														/*
+														if(data.success === "0") { // already blocked
+			 												console.log(ip + " already blocked");
+			 												alert(ip + " already blocked");
+			 											} else if(data.success === "1") { // blocked
+			 												console.log(ip + " blocked");
+			 												alert(ip + " blocked");
+			 											} else if(data.error === "Session Error") {
+			 												document.getElementById("ccms_security_logs").innerHTML = "Session Error";
+			 											} else {
+			 												document.getElementById("ccms_security_logs").innerHTML = "Error: See console for more detail.";
+			 												console.log(data);
+			 											}
+														*/
+
+
+
+
 														if(obj.success === "1") {
 															//$(form).find('[name="form-status"]').html("Password form updated.");
 															$("#password_tab_form_fail").css("display", "none");
