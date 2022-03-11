@@ -854,6 +854,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 																document.getElementById("2fa_radio_0").style.display = "initial";
 																document.getElementById("2fa_radio_0_label").style.display = "initial";
 																document.getElementById("2fa_radio_0").checked = true;
+																location.reload(true);
 															}
 
 
