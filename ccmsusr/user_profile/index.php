@@ -360,7 +360,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 									<animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="2s" repeatCount="indefinite"/>
 								</path>
 							</svg>
-							<img id="ga_qr_img" style="display:none;margin:0 auto" />
+							<img id="ga_qr_img" style="display:none" />
 						</div>
 						<button>Update</button>
 					</div>
