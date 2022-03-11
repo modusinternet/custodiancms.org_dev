@@ -353,8 +353,9 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 						</div>
 						<div id="ga_qr_div" style="display:none">
 							<p>
-								Scan QR code before hitting Update button.  You will be forced to relogin.
+								Scan or copy QR code into authentication tool (ie: Google Authenticator) before pressing the Update button.  You will be forced to relogin.
 							</p>
+							<p id="2fa_secret_text"></p>
 							<svg id="ga_qr_svg" style="display:none;width:75px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
 								<path fill="#d7680f" d="M25,5A20.14,20.14,0,0,1,45,22.88a2.51,2.51,0,0,0,2.49,2.26h0A2.52,2.52,0,0,0,50,22.33a25.14,25.14,0,0,0-50,0,2.52,2.52,0,0,0,2.5,2.81h0A2.51,2.51,0,0,0,5,22.88,20.14,20.14,0,0,1,25,5Z">
 									<animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="2s" repeatCount="indefinite"/>
@@ -389,6 +390,22 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 				<p>tab content #3</p>
 			</div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 			{CCMS_TPL:/footer.html}
 		</main>
 
@@ -415,6 +432,17 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 				</div>
 			</div>
 		</div -->
+
+
+
+
+
+
+
+
+
+
+
 
 		<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 			{CCMS_TPL:/_js/footer-1.php}
@@ -728,6 +756,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		 										.then(response => response.json())
 		 										.then(data => {
 													document.getElementById("2fa_secret").value = data.ga_qr_secret;
+													document.getElementById("2fa_secret_text").innerHTML = data.ga_qr_secret;
 													document.getElementById("ga_qr_img").src = data.ga_qr_url;
 													window.setTimeout(function() {
 														document.getElementById("ga_qr_img").style.display = "block";
@@ -741,27 +770,11 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 										/* If '2FA Disabled' selected, remove posible generated QR code from view. */
 										document.getElementById("2fa_radio_1").addEventListener("click", () => {
 											document.getElementById("2fa_secret").value = "";
+											document.getElementById("2fa_secret_text").innerHTML = "";
 											document.getElementById("ga_qr_img").style.display = "none";
 											document.getElementById("ga_qr_div").style.display = "none";
 											document.getElementById("ga_qr_svg").style.display = "none";
 										});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 										$('#password_tab_form').each(function() {
 											$(this).validate({
@@ -825,27 +838,17 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			 											}
 														*/
 
-
-
-
 														if(obj.success === "1") {
 															//$(form).find('[name="form-status"]').html("Password form updated.");
 															$("#password_tab_form_fail").css("display", "none");
 															$("#password_tab_form_success").html("Success: Updates saved.");
 															$("#password_tab_form_success").css("display", "block");
 															$("#password_tab_form_success").scrollView();
-
-
-
 															document.getElementById("2fa_secret").value = "";
+															document.getElementById("2fa_secret_text").innerHTML = "";
 															document.getElementById("ga_qr_img").style.display = "none";
 															document.getElementById("ga_qr_div").style.display = "none";
 															document.getElementById("ga_qr_svg").style.display = "none";
-
-
-
-
-
 															var twoFa_but = document.querySelector("input[type='radio'][name='2fa_radio']:checked");
 															if(twoFa_but.value == "1"){
 																document.getElementById("2fa_radio_0").disabled = true;
@@ -859,13 +862,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 																document.getElementById("2fa_radio_0").checked = true;
 																location.reload(true);
 															}
-
-
-
-
-
-
-
 															setTimeout(function() {
 																//$(form).find('[name="form-status"]').html("");
 																//$(form).find('[name="FromEmail"]').val("");
@@ -880,18 +876,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 															$("#password_tab_form_fail").css("display", "block");
 															$("#password_tab_form_fail").scrollView();
 														}
-
-
-
-
-
-
-
-
-
-
-
-
 													});
 													// Called on failure.
 													request.fail(function (jqXHR, textStatus, errorThrown){
@@ -917,25 +901,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 												}
 											});
 										});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
