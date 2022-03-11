@@ -843,7 +843,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 
-															var 2Fabut = document.querySelector("input[type='radio'][name='2fa_radio']:checked");
+															var 2Fabut = document.querySelector("input[name='2fa_radio']:checked");
 															if(2Fabut.value == "1"){
 																document.getElementById("2fa_radio_0").disabled = true;
 																document.getElementById("2fa_radio_0").style.display = "none";
