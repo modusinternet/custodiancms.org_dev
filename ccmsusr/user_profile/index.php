@@ -831,6 +831,16 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 															$("#password_tab_form_success").html("Success: Updates saved.");
 															$("#password_tab_form_success").css("display", "block");
 															$("#password_tab_form_success").scrollView();
+
+
+
+															document.getElementById("2fa_secret").value = "";
+															document.getElementById("ga_qr_img").style.display = "none";
+															document.getElementById("ga_qr_div").style.display = "none";
+															document.getElementById("ga_qr_svg").style.display = "none";
+
+
+
 															setTimeout(function() {
 																//$(form).find('[name="form-status"]').html("");
 																//$(form).find('[name="FromEmail"]').val("");
@@ -845,6 +855,18 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 															$("#password_tab_form_fail").css("display", "block");
 															$("#password_tab_form_fail").scrollView();
 														}
+
+
+
+
+
+
+
+
+
+
+
+
 													});
 													// Called on failure.
 													request.fail(function (jqXHR, textStatus, errorThrown){
