@@ -353,7 +353,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 						</div>
 						<div id="ga_qr_div" style="display:none">
 							<p>
-								Scan or copy QR code into authentication tool (ie: Google Authenticator) before pressing the Update button.  You will be forced to relogin.
+								Scan or copy QR code into authentication tool (ie: Google Authenticator) before pressing the Update button.  You are going to be forced to relogin.
 							</p>
 							<h1 id="2fa_secret_text"></h1>
 							<svg id="ga_qr_svg" style="display:none;width:75px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
