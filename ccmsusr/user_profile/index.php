@@ -843,13 +843,13 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 
-															var 2Fabut = document.querySelector("input[name='2fa_radio']:checked");
-															if(2Fabut.value == "1"){
+															var twoFa_but = document.querySelector("input[type='radio'][name='2fa_radio']:checked");
+															if(twoFa_but.value == "1"){
 																document.getElementById("2fa_radio_0").disabled = true;
 																document.getElementById("2fa_radio_0").style.display = "none";
 																document.getElementById("2fa_radio_0_label").style.display = "none";
 																document.getElementById("2fa_radio_1").checked = true;
-															} else if(2Fabut.value == "2"){
+															} else if(twoFa_but.value == "2"){
 																document.getElementById("2fa_radio_0").disabled = false;
 																document.getElementById("2fa_radio_0").style.display = "initial";
 																document.getElementById("2fa_radio_0_label").style.display = "initial";
