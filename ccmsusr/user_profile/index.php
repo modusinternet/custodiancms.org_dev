@@ -447,6 +447,11 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			document.getElementById("2fa_radio_1").checked = true;
 <? endif ?>
 
+			function demo() {
+				let data = '<?= $ccms_user["priv"];?>';
+				return Promise.resolve(data);
+			}
+
 			var l=document.createElement("link");l.rel="stylesheet";
 			l.href = "/ccmsusr/_css/custodiancms.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
@@ -503,15 +508,12 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 
-										function demo() {
-											let data = '<?= $ccms_user["priv"];?>';
-											return Promise.resolve(data);
-										}
+
 										demo().then(
 											(asdf) => {
-												const tree = jsonView.create(asdf);
-												jsonView.render(tree, document.querySelector('.root'));
-												jsonView.expand(tree);
+												const tree = jsonview.create(asdf);
+												jsonview.render(tree, document.querySelector('.root'));
+												jsonview.expand(tree);
 											}
 										)
 										.catch((err) => {
