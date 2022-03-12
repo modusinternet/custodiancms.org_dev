@@ -447,11 +447,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			document.getElementById("2fa_radio_1").checked = true;
 <? endif ?>
 
-			function demo() {
-				let data = '<?= $ccms_user["priv"];?>';
-				return Promise.resolve(data);
-			}
-
 			var l=document.createElement("link");l.rel="stylesheet";
 			l.href = "/ccmsusr/_css/custodiancms.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
