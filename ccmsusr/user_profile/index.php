@@ -507,7 +507,7 @@ const tree = jsonview.create(data);
 jsonview.render(tree, document.querySelector('.root'));
 
 // you can render json data without creating tree
-const tree = jsonview.renderJSON(data, document.querySelector('.root'));
+//const tree = jsonview.renderJSON(data, document.querySelector('.root'));
 
 
 
