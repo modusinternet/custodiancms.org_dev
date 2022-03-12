@@ -495,7 +495,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 										jsonView.format(data, target);
 										*/
 
-										
+
 
 
 
@@ -509,9 +509,9 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 										}
 										demo().then(
 											(asdf) => {
-												const tree = jsonview.create(asdf);
-												jsonview.render(tree, document.querySelector('.root'));
-												jsonview.expand(tree);
+												const tree = jsonView.create(asdf);
+												jsonView.render(tree, document.querySelector('.root'));
+												jsonView.expand(tree);
 											}
 										)
 										.catch((err) => {
