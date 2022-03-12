@@ -456,7 +456,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
 			var l=document.createElement("link");l.rel="stylesheet";
-			l.href = "/ccmsusr/_css/jsonView.css";
+			l.href = "/ccmsusr/_css/jsonview.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
 			function loadJSResources() {
@@ -483,7 +483,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 								loadFirst("/ccmsusr/_js/jquery-validate-1.19.3.min.js", function() { /* JQuery Validate */
 									loadFirst("/ccmsusr/_js/additional-methods-1.17.0.min.js", function() { /* JQuery Validate Additional Methods */
 
-										loadFirst("/ccmsusr/_js/jsonView.js", function() {
+										loadFirst("/ccmsusr/_js/jsonview.js", function() {
 
 
 
