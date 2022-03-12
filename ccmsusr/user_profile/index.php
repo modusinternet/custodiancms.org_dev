@@ -455,9 +455,11 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			l.href = "/ccmsusr/_css/metisMenu-3.0.6.min.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
+			/*
 			var l=document.createElement("link");l.rel="stylesheet";
 			l.href = "/ccmsusr/_css/jsonview.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
+			*/
 
 			function loadJSResources() {
 				/*loadFirst("/ccmsusr/_js/jquery-2.2.0.min.js", function() {*/
@@ -488,58 +490,26 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 
-										///*
+										/*
 										//let data = '{}';
 										let data = '<?= $ccms_user["priv"];?>';
 										let target = '.root';
 										jsonView.format(data, target);
-										//*/
-
-
-/*
-// get json data
-const data = '<?= $ccms_user["priv"];?>';
-
-// create json tree object
-const tree = jsonView.create(data);
-
-// render tree into dom element
-jsonView.render(tree, document.querySelector('.root'));
-
-jsonView.expand(tree);
-*/
-
-
-
-
-
-
-
-
-
-										/*
-										demo().then(
-											(asdf) => {
-												const tree = jsonview.create(asdf);
-												jsonview.render(tree, document.querySelector('.root'));
-												jsonview.expand(tree);
-											}
-										)
-										.catch((err) => {
-										console.log(err);
-										})
 										*/
 
 
 
 
 
-// expand tree
-//jsonView.expandChildren(tree);
-// collapse tree
-//jsonView.collapseChildren(tree);
-// treverse tree object
-//jsonView.traverseTree(tree, function(node) {console.log(node);});
+fetch('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/user_profile/priv_json.php').then((res)=> {
+	return res.text();
+}).then((data) => {
+	const tree = jsonview.create(data);
+	jsonview.render(tree, document.querySelector('.root'));
+	jsonview.expand(tree);
+}).catch((err) => {
+	console.log(err);
+})
 
 
 
