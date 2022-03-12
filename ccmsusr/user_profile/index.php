@@ -483,7 +483,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 								loadFirst("/ccmsusr/_js/jquery-validate-1.19.3.min.js", function() { /* JQuery Validate */
 									loadFirst("/ccmsusr/_js/additional-methods-1.17.0.min.js", function() { /* JQuery Validate Additional Methods */
 
-										loadFirst("/ccmsusr/_js/jsonview.js", function() {
+										loadFirst("/ccmsusr/_js/jsonview.js", function() { /* https://www.cssscript.com/json-data-tree-view/ */
 
 
 
@@ -492,6 +492,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 
+										/*
 										fetch('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/example.json')
 										.then((res)=> {
 											return res.text();
@@ -502,6 +503,12 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 										.catch((err) => {
 											console.log(err);
 										})
+										*/
+
+										//let data = '{}';
+										let data = '<?= $ccms_user["priv"];?>';
+										let target = '.root';
+										jsonView.format(data, target);
 
 
 
