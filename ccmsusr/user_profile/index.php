@@ -502,6 +502,17 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 
+										// get json data
+const data = '<?= $ccms_user["priv"];?>';
+
+// create json tree object
+const tree = jsonview.create(data);
+
+// render tree into dom element
+jsonview.render(tree, document.querySelector('.root'));
+
+// you can render json data without creating tree
+const tree = jsonview.renderJSON(data, document.querySelector('.root'));
 
 
 
@@ -509,6 +520,10 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 
+
+
+
+										/*
 										demo().then(
 											(asdf) => {
 												const tree = jsonview.create(asdf);
@@ -519,6 +534,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 										.catch((err) => {
 										console.log(err);
 										})
+										*/
 
 
 
