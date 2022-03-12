@@ -374,29 +374,14 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 			<div id="tab03Content" class="tabContent">
-				<p>tab content #3</p>
+				<p>
+					<pre><?php
+	$json = json_decode($ccms_user["priv"]);
+	echo json_encode($json, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+?></pre>
+				</p>
 			</div>
-
-
-
-
-
-
-
-
 
 
 
