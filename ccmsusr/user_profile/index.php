@@ -455,10 +455,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			l.href = "/ccmsusr/_css/metisMenu-3.0.6.min.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
-			var l=document.createElement("link");l.rel="stylesheet";
-			l.href = "/ccmsusr/_css/jsonview.css";
-			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
-
 			function loadJSResources() {
 				/*loadFirst("/ccmsusr/_js/jquery-2.2.0.min.js", function() {*/
 				loadFirst("/ccmsusr/_js/jquery-3.6.0.min.js", function() {
@@ -506,8 +502,7 @@ const tree = jsonview.create(data);
 // render tree into dom element
 jsonview.render(tree, document.querySelector('.root'));
 
-// you can render json data without creating tree
-//const tree = jsonview.renderJSON(data, document.querySelector('.root'));
+jsonview.expand(tree);
 
 
 
