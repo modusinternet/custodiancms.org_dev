@@ -380,6 +380,12 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 	$json = json_decode($ccms_user["priv"]);
 	echo json_encode($json, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
 ?></pre>
+
+
+
+<div class="root"></div>
+
+
 				</p>
 			</div>
 
@@ -449,6 +455,10 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			l.href = "/ccmsusr/_css/metisMenu-3.0.6.min.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
+			var l=document.createElement("link");l.rel="stylesheet";
+			l.href = "/ccmsusr/_css/jsonView.css";
+			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
+
 			function loadJSResources() {
 				/*loadFirst("/ccmsusr/_js/jquery-2.2.0.min.js", function() {*/
 				loadFirst("/ccmsusr/_js/jquery-3.6.0.min.js", function() {
@@ -472,6 +482,33 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 								loadFirst("/ccmsusr/_js/jquery-validate-1.19.3.min.js", function() { /* JQuery Validate */
 									loadFirst("/ccmsusr/_js/additional-methods-1.17.0.min.js", function() { /* JQuery Validate Additional Methods */
+
+										loadFirst("/ccmsusr/_js/jsonView.js", function() {
+
+
+
+
+
+
+
+
+										fetch('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/example.json')
+										.then((res)=> {
+											return res.text();
+										})
+										.then((data) => {
+											jsonView.format(data, '.root');
+										})
+										.catch((err) => {
+											console.log(err);
+										})
+
+
+
+
+
+
+
 
 										document.getElementById("tab01Title").addEventListener("click", () => {
 											let i, tabContent, tab;
@@ -890,6 +927,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 
+										});
 									});
 								});
 							});
