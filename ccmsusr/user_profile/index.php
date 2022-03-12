@@ -512,6 +512,15 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 
+										// expand tree
+jsonView.expandChildren(tree);
+// collapse tree
+//jsonView.collapseChildren(tree);
+// treverse tree object
+//jsonView.traverseTree(tree, function(node) {console.log(node);});
+
+
+
 
 
 
