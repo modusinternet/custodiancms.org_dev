@@ -495,12 +495,30 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 										jsonView.format(data, target);
 										*/
 
+										
 
 
-										let data = text('<?= $ccms_user["priv"];?>');
-										const tree = jsonview.create(data);
-										jsonview.render(tree, document.querySelector('.root'));
-										jsonview.expand(tree);
+
+
+
+
+
+										function demo() {
+											let data = '<?= $ccms_user["priv"];?>';
+											return Promise.resolve(data);
+										}
+										demo().then(
+											(asdf) => {
+												const tree = jsonview.create(asdf);
+												jsonview.render(tree, document.querySelector('.root'));
+												jsonview.expand(tree);
+											}
+										)
+										.catch((err) => {
+										console.log(err);
+										})
+
+
 
 
 
