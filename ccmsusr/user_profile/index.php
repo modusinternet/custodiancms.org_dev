@@ -484,16 +484,16 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 
-										/*
+										///*
 										//let data = '{}';
 										let data = '<?= $ccms_user["priv"];?>';
 										let target = '.root';
 										jsonView.format(data, target);
-										*/
+										//*/
 
 
-
-										// get json data
+/*
+// get json data
 const data = '<?= $ccms_user["priv"];?>';
 
 // create json tree object
@@ -503,7 +503,7 @@ const tree = jsonView.create(data);
 jsonView.render(tree, document.querySelector('.root'));
 
 jsonView.expand(tree);
-
+*/
 
 
 
