@@ -551,7 +551,30 @@ const myData = [{
 const tree = new PickleTree({
       c_target: 'div_tree',
       c_config: {
-        // options here
+        // logs open/close
+        logMode: false,
+
+        // enables switches
+        switchMode: false,
+
+        // auto selects parent & child nodes
+        autoChild: true,
+        autoParent: true,
+
+        // custom fold icon
+        foldedIcon: 'fa fa-plus',
+
+        //unfold icon
+        unFoldedIcon: 'fa fa-minus',
+
+        // menu icon
+        menuIcon: ['fa', 'fa-list-ul'],
+
+        // collapse all nodes on page load
+        foldedStatus: false,
+
+        // enables sortable via drag and drop
+        drag: false
       },
       c_data: myData
 });
