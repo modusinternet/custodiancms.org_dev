@@ -550,6 +550,21 @@ const myData = [{
 
 const tree = new PickleTree({
       c_target: 'div_tree',
+			rowCreateCallback: (node) => {
+	//console.log(node)
+},
+switchCallback: (node) => {
+	//console.log(node)
+},
+drawCallback: () => {
+	//console.log('tree drawed ..');
+},
+dragCallback: (node) => {
+	console.log(node);
+},
+dropCallback: (node) => {
+	console.log(node);
+},
       c_config: {
         // logs open/close
         logMode: false,
