@@ -441,7 +441,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 
-<script type="module">
+<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}" type="module">
 import {Page} from '/ccmsusr/_js/page.js';
 const page = new Page();
 /* JavaScript module code here */
