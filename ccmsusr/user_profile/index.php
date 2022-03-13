@@ -428,9 +428,16 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 			///*
 			var l=document.createElement("link");l.rel="stylesheet";
+			l.href = "https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
+			//*/
+
+			///*
+			var l=document.createElement("link");l.rel="stylesheet";
 			l.href = "/ccmsusr/_css/pickletree.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 			//*/
+
 
 			function loadJSResources() {
 				/*loadFirst("/ccmsusr/_js/jquery-2.2.0.min.js", function() {*/
@@ -481,117 +488,73 @@ fetch('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/user_profile/priv_json.php').
 
 
 
+const myData = [{
+      n_id: 1,
+      n_title: 'Item 1',
+      n_parentid: 0,
+      n_checked: true,
+      n_elements: [{
+        icon: 'fa fa-edit', // icon class
+        title: 'Edit',
+        onClick: (node) => {
+          console.log('edit - ' + node.id);
+        }
+      }, {
+        icon: 'fa fa-trash',
+        title: 'Delete',
+        onClick: (node) => {
+          console.log('delete - ' + node.id);
+        }
+      }],
+      }, {
+      n_id: 2,
+      n_title: 'Item 2',
+      n_parentid: 0
+      }, {
+      n_id: 3,
+      n_title: 'Item 3',
+      n_parentid: 0
+      }, {
+      n_id: 4,
+      n_title: 'Item 1-1',
+      n_parentid: 1
+      }, {
+      n_id: 5,
+      n_title: 'Item 1-2',
+      n_parentid: 1
+      }, {
+      n_id: 10,
+      n_title: 'Item 1-2-1',
+      n_parentid: 5
+      }, {
+      n_id: 11,
+      n_title: 'Item 1-2-1-1',
+      n_parentid: 10
+      }, {
+      n_id: 6,
+      n_title: 'Item 2-1',
+      n_parentid: 2
+      }, {
+      n_id: 7,
+      n_title: 'Item 2-2',
+      n_parentid: 2
+      }, {
+      n_id: 8,
+      n_title: 'Item 2-3',
+      n_parentid: 2
+      }, {
+      n_id: 9,
+      n_title: 'Item 1-2-2',
+      n_parentid: 5
+}]
 
 const tree = new PickleTree({
-		c_target: 'div_tree',
-		rowCreateCallback: (node) => {
-				//console.log(node)
-		},
-		switchCallback: (node) => {
-				//console.log(node)
-		},
-		drawCallback: () => {
-				//console.log('tree drawed ..');
-		},
-		dragCallback: (node) => {
-				console.log(node);
-		},
-		dropCallback: (node) => {
-				//retuns node with new parent and old parent in 'old_parent' key!!
-				console.log(node);
-		},
-		c_config: {
-				//start as folded or unfolded
-				foldedStatus: false,
-				//for logging
-				logMode: false,
-				//for switch element
-				switchMode: true,
-				//for automaticly select childs
-				autoChild: true,
-				//for automaticly select parents
-				autoParent: true,
-				//for drag / drop
-				drag: true,
-				//for ordering
-				order: true
-		},
-		c_data: [{
-				n_id: 1,
-				n_title: 'falan1',
-				n_parentid: 0,
-				n_order_num : 0,
-				n_checked: true,
-				n_elements: [{
-						icon: 'fa fa-edit',
-						title: 'Edit',
-						//context button click event
-						onClick: (node) => {
-								console.log('edit - ' + node.id);
-						}
-				}, {
-						icon: 'fa fa-trash',
-						title: 'Delete',
-						onClick: (node) => {
-								console.log('delete - ' + node.id);
-						}
-				}],
-		}, {
-				n_id: 2,
-				n_title: 'falan2',
-				n_order_num : 0,
-				n_parentid: 0
-		}, {
-				n_id: 3,
-				n_title: 'falan3',
-				n_parentid: 0,
-				n_order_num : 0,
-		}, {
-				n_id: 4,
-				n_order_num : 0,
-				n_title: 'falan1-1',
-				n_parentid: 1
-		}, {
-				n_id: 5,
-				n_order_num : 0,
-				n_title: 'falan1-2',
-				n_parentid: 1
-		}, {
-				n_id: 10,
-				n_order_num : 0,
-				n_title: 'falan1-2-1',
-				n_parentid: 5
-		}, {
-				n_id: 11,
-				n_order_num : 0,
-				n_title: 'falan1-2-1-1',
-				n_parentid: 10
-		}, {
-				n_id: 6,
-				n_order_num : 0,
-				n_title: 'falan2-1',
-				n_parentid: 2
-		}, {
-				n_id: 7,
-				n_order_num : 0,
-				n_title: 'falan2-2',
-				n_parentid: 2
-		}, {
-				n_id: 8,
-				n_order_num : 0,
-				n_title: 'falan2-3',
-				n_parentid: 2
-		}, {
-				n_id: 9,
-				n_order_num : 0,
-				n_title: 'falan1-2-2',
-				n_parentid: 5
-		}]
+      c_target: 'div_tree',
+      c_config: {
+        // options here
+      },
+      c_data: myData
 });
-
-
-
-
 
 
 
