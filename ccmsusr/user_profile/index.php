@@ -428,7 +428,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 			///*
 			var l=document.createElement("link");l.rel="stylesheet";
-			l.href = "https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+			l.href = "/ccmsusr/_css/font-awesome.min.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 			//*/
 
