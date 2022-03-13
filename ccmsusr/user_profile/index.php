@@ -214,264 +214,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 					"inner_grid_other inner_grid_other inner_grid_other"
 			}
 		}
-
-
-
-
-
-
-
-
-
-
-
-
-
-		/** switch styles **/
-@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css';
-.ptree .switch {
-  position: relative;
-  display: inline-block;
-  width: 30px;
-  height: 18px;
-  margin: 0;
-}
-
-.ptree .switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.ptree .slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-
-.ptree .slider:before {
-  position: absolute;
-  content: "";
-  height: 12px;
-  width: 12px;
-  left: 4px;
-  bottom: 3px;
-  background-color: white;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-
-.ptree input:checked + .slider {
-  background-color: #66bb6a;
-}
-
-.ptree input:focus + .slider {
-  box-shadow: 0 0 1px #2196f3;
-}
-
-.ptree input:checked + .slider:before {
-  -webkit-transform: translateX(12px);
-  -ms-transform: translateX(12px);
-  transform: translateX(12px);
-}
-.ptree a:hover > i,
-.ptree i:hover {
-  color: tomato !important;
-  cursor: pointer;
-}
-
-/* Rounded sliders */
-
-.ptree .slider.round {
-  border-radius: 34px;
-}
-
-.ptree .slider.round:before {
-  border-radius: 50%;
-}
-
-/* Switch styles end */
-
-/** border styles **/
-
-.ptree li {
-  list-style-type: none;
-  border: 2px solid #fff;
-  border-right: 0px !important;
-}
-
-.ptree li div {
-  display: flex;
-  list-style-type: none;
-  margin: 1px;
-  border-radius: 5px;
-  border: 2px solid #dcdcdc;
-  padding: 2px;
-  align-items: center;
-  height: 30px;
-}
-
-.ptree li a {
-  margin-right: 10px;
-  margin-left: 10px;
-  color: black;
-  font-size: 14px;
-  font-family: monospace, "Open Sans";
-  text-decoration: none;
-}
-.ptree ul {
-  padding-left: 15px;
-
-}
-.ptree_order_div {
-  height: 20px !important;
-  border: 0 !important;
-}
-.ptree_order_div i {
-  margin: 5px !important;
-}
-
-/* Border styles end */
-
-/* menu icon */
-
-.ptree .menuIcon {
-  margin-left: auto;
-  color: black;
-}
-
-/* menu container */
-
-.ptreemenuCont {
-  display: flex;
-  flex-direction: column;
-  background-color: #ffff;
-  border: 2px solid #ccc;
-  border-radius: 5px;
-  color: #444;
-  position: fixed;
-  font-size: 12px;
-  font-family: monospace, "Open Sans";
-}
-
-.ptreemenuCont span {
-  padding: 10px 10px 10px 10px;
-  border-bottom: 2px solid #9e9e9e;
-  display: flex;
-  align-items: baseline;
-  cursor: pointer;
-}
-
-.ptreemenuCont span i {
-  color: #ef5350;
-  padding-right: 3px;
-}
-
-.ptreemenuCont span:last-child {
-  border-bottom: 0px solid;
-}
-
-.ptreemenuCont span:first-child:hover {
-  border-radius: 5px;
-}
-.ptreemenuCont span:only-child {
-  border-radius: 5px;
-}
-.ptreemenuCont span:hover {
-  background: #dcdcdc;
-}
-
-.ptree .menuIcon i {
-  pointer-events: none;
-}
-
-/** drag styles **/
-
-.ptree .drag-handler {
-  color: #ef5350;
-}
-
-.ptree .drag-handler i {
-  pointer-events: none;
-}
-
-.ptree .drag_triggered {
-  border: 2px solid red;
-}
-
-.ptree #div_ddetail {
-  width: 120px;
-  background-color: #555;
-  color: #fff;
-  text-align: center;
-  padding: 5px 0;
-  border-radius: 10px;
-  z-index: 1;
-}
-
-.ptree #div_ddetail span {
-  font-size: larger;
-  margin: 3px 5px 3px 5px;
-}
-
-.ptree {
-  border: 2px solid darkgrey;
-  border-radius: 5px;
-  height: 100%;
-  overflow-y: auto;
-  padding-right: 15px;
-}
-
-.ptree .valid {
-  border: 2px solid green;
-  border-radius: 5px;
-}
-
-.ptree .invalid {
-  border: 2px solid #ef5350;
-  border-radius: 5px;
-}
-.disabled > * {
-  pointer-events: none;
-}
-.ptreemenuCont i {
-  pointer-events: none;
-}
-
-.ptree ul.not-active {
-  max-height: 0;
-  transition: max-height 0.25s ease-out;
-  overflow: hidden;
-}
-
-.ptree ul.active {
-  max-height: 500px;
-  transition: max-height 0.15s ease-in;
-}
-.dragging-element li{ border: 0px !important;}
-.ptree::-webkit-scrollbar { width: 2px !important;}
-.ptree::-webkit-scrollbar-track { background: whitesmoke !important;}
-.ptree::-webkit-scrollbar-thumb { background: grey !important; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	</style>
 	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 		let navActiveItem = [];
@@ -684,11 +426,11 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			l.href = "/ccmsusr/_css/metisMenu-3.0.6.min.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
-			/*
+			///*
 			var l=document.createElement("link");l.rel="stylesheet";
-			l.href = "/ccmsusr/_css/jsonview.css";
+			l.href = "/ccmsusr/_css/pickletree.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
-			*/
+			//*/
 
 			function loadJSResources() {
 				/*loadFirst("/ccmsusr/_js/jquery-2.2.0.min.js", function() {*/
@@ -740,84 +482,119 @@ fetch('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/user_profile/priv_json.php').
 
 
 
-
 const tree = new PickleTree({
-        c_target: 'div_tree',
-        rowCreateCallback: (node) => {
-            //console.log(node)
-        },
-        switchCallback: (node) => {
-            //console.log(node)
-        },
-        drawCallback: () => {
-            //console.log('tree drawed ..');
-        },
-        dragCallback: (node) => {
-            console.log(node);
-        },
-        dropCallback: (node) => {
-            //retuns node with new parent and old parent in 'old_parent' key!!
-            console.log(node);
-        },
-        nodeRemoveCallback:(node)=>{
-            //returns removed node
-            console.log(node);
-        },
-        c_config: {
-            //start as folded or unfolded
-            foldedStatus: false,
-            //for logging
-            logMode: false,
-            //for switch element
-            switchMode: true,
-            //for automaticly select childs
-            autoChild :true,
-            //for automaticly select parents
-            autoParent : true,
-            //for drag / drop
-            drag: true
-        },
-        c_data: [{
-            n_id: 1,
-            n_title: 'falan1',
-            n_parentid: 0,
-            n_checkStatus: true,
-            n_elements : [{
-                icon:'fa fa-edit',
-                title:'Edit',
-                //context button click event
-                onClick : (node) => {
-                    console.log('edit - '+node.id);
-                }
-            },{
-                icon:'fa fa-trash',
-                title:'Delete',
-                onClick : (node) => {
-                    console.log('delete - '+node.id);
-                }
-            }],
-        }, {
-            n_id: 2,
-            n_title: 'falan2',
-            n_parentid: 0
-        }, {
-            n_id: 3,
-            n_title: 'falan3',
-            n_parentid: 0
-        }, {
-            n_id: 4,
-            n_title: 'falan1-1',
-            n_parentid: 1
-        }, {
-            n_id: 5,
-            n_title: 'falan1-2',
-            n_parentid: 1
-        }, {
-            n_id: 10,
-            n_title: 'falan1-2-1',
-            n_parentid: 5
-        }]
-    });
+		c_target: 'div_tree',
+		rowCreateCallback: (node) => {
+				//console.log(node)
+		},
+		switchCallback: (node) => {
+				//console.log(node)
+		},
+		drawCallback: () => {
+				//console.log('tree drawed ..');
+		},
+		dragCallback: (node) => {
+				console.log(node);
+		},
+		dropCallback: (node) => {
+				//retuns node with new parent and old parent in 'old_parent' key!!
+				console.log(node);
+		},
+		c_config: {
+				//start as folded or unfolded
+				foldedStatus: false,
+				//for logging
+				logMode: false,
+				//for switch element
+				switchMode: true,
+				//for automaticly select childs
+				autoChild: true,
+				//for automaticly select parents
+				autoParent: true,
+				//for drag / drop
+				drag: true,
+				//for ordering
+				order: true
+		},
+		c_data: [{
+				n_id: 1,
+				n_title: 'falan1',
+				n_parentid: 0,
+				n_order_num : 0,
+				n_checked: true,
+				n_elements: [{
+						icon: 'fa fa-edit',
+						title: 'Edit',
+						//context button click event
+						onClick: (node) => {
+								console.log('edit - ' + node.id);
+						}
+				}, {
+						icon: 'fa fa-trash',
+						title: 'Delete',
+						onClick: (node) => {
+								console.log('delete - ' + node.id);
+						}
+				}],
+		}, {
+				n_id: 2,
+				n_title: 'falan2',
+				n_order_num : 0,
+				n_parentid: 0
+		}, {
+				n_id: 3,
+				n_title: 'falan3',
+				n_parentid: 0,
+				n_order_num : 0,
+		}, {
+				n_id: 4,
+				n_order_num : 0,
+				n_title: 'falan1-1',
+				n_parentid: 1
+		}, {
+				n_id: 5,
+				n_order_num : 0,
+				n_title: 'falan1-2',
+				n_parentid: 1
+		}, {
+				n_id: 10,
+				n_order_num : 0,
+				n_title: 'falan1-2-1',
+				n_parentid: 5
+		}, {
+				n_id: 11,
+				n_order_num : 0,
+				n_title: 'falan1-2-1-1',
+				n_parentid: 10
+		}, {
+				n_id: 6,
+				n_order_num : 0,
+				n_title: 'falan2-1',
+				n_parentid: 2
+		}, {
+				n_id: 7,
+				n_order_num : 0,
+				n_title: 'falan2-2',
+				n_parentid: 2
+		}, {
+				n_id: 8,
+				n_order_num : 0,
+				n_title: 'falan2-3',
+				n_parentid: 2
+		}, {
+				n_id: 9,
+				n_order_num : 0,
+				n_title: 'falan1-2-2',
+				n_parentid: 5
+		}]
+});
+
+
+
+
+
+
+
 
 
 
