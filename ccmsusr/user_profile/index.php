@@ -245,7 +245,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 
-		
+
 	</style>
 	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 		let navActiveItem = [];
@@ -438,6 +438,18 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 		{CCMS_TPL:/body-head.php}
 
+
+
+
+<script type="module">
+import {Page} from '/ccmsusr/_js/page.js';
+const page = new Page();
+/* JavaScript module code here */
+</script>
+
+
+
+
 		<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 			{CCMS_TPL:/_js/footer-1.php}
 
@@ -518,9 +530,7 @@ fetch('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/user_profile/priv_json.php').
 })
 */
 
-import {Page} from '/ccmsusr/_js/page.js';
-const page = new Page();
-/* JavaScript module code here */
+
 
 
 
