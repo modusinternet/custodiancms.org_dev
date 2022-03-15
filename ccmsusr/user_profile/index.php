@@ -460,7 +460,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			//console.log(JSON.stringify(obj[0]));
 			//console.log(obj.dashboard);
 			//console.log(obj[1].dashboard);
-			document.getElementById("tab03Content").innerHTML = obj[0];
+			document.getElementById("tab03Content").innerHTML = JSON.stringify(obj[0][0]);
 
 
 
