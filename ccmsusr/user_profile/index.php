@@ -464,7 +464,11 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 			data.forEach(obj => {
 				Object.entries(obj).forEach(([key, value]) => {
-					console.log(`${key} ${value}`);
+					if(typeof value !== 'object') {
+						console.log(`${key} ${value}`);
+					} else {
+						console.log(`${key}`);
+					}
 				});
 				console.log('-------------------');
 			});
