@@ -451,7 +451,31 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			const priv_tree = '<?= $ccms_user["priv"];?>';
 			const pt = JSON.parse(priv_tree);
 			//console.log(pt[0].dashboard);
-			console.log(pt[1].dashboard);
+			//console.log(pt[1].dashboard);
+
+function search(array, fn) {
+    var result = [];
+    array.forEach(function iter(o) {
+        if (!o || typeof o !== 'object') {
+            return;
+        }
+        if (fn(o)) {
+            result.push(o);
+            return;
+        }
+        Object.keys(o).forEach(function (k) {
+            iter(o[k]);
+        });
+    });
+    return result;
+}
+
+var data = [{ tuple: { old: { MetaCategory: { MetaCatID: 517, ParentMetaCatRef: 0, Name: "D Application" } } }, MetaCatID: 517, ParentMetaCatRef: 0, Name: "D Application", subCategories: [{ tuple: { old: { MetaCategory: { MetaCatID: 518, ParentMetaCatRef: 517, Name: "Compass" } } }, MetaCatID: 518, ParentMetaCatRef: 517, Name: "Compass" }, { tuple: { old: { MetaCategory: { MetaCatID: 519, ParentMetaCatRef: 517, Name: "Orbe" } } }, MetaCatID: 519, ParentMetaCatRef: 517, Name: "Orbe" }, { tuple: { old: { MetaCategory: { MetaCatID: 520, ParentMetaCatRef: 517, Name: "PSI" } } }, MetaCatID: 520, ParentMetaCatRef: 517, Name: "PSI" }, { tuple: { old: { MetaCategory: { MetaCatID: 521, ParentMetaCatRef: 517, Name: "SAP" } } }, MetaCatID: 521, ParentMetaCatRef: 517, Name: "SAP" }] }, { tuple: { old: { MetaCategory: { MetaCatID: 541, ParentMetaCatRef: 0, Name: "D Versions" } } }, MetaCatID: 541, ParentMetaCatRef: 0, Name: "D Versions", subCategories: [{ tuple: { old: { MetaCategory: { MetaCatID: 542, ParentMetaCatRef: 541, Name: "Baseline 2016-12-31" } } }, MetaCatID: 542, ParentMetaCatRef: 541, Name: "Baseline 2016-12-31" }, { tuple: { old: { MetaCategory: { MetaCatID: 543, ParentMetaCatRef: 541, Name: "CLS step 3 2017-04-15" } } }, MetaCatID: 543, ParentMetaCatRef: 541, Name: "CLS step 3 2017-04-15" }] }, { tuple: { old: { MetaCategory: { MetaCatID: 365, ParentMetaCatRef: 0, Name: "Market" } } }, MetaCatID: 365, ParentMetaCatRef: 0, Name: "Market", subCategories: [{ tuple: { old: { MetaCategory: { MetaCatID: 366, ParentMetaCatRef: 365, Name: "Sector" } } }, MetaCatID: 366, ParentMetaCatRef: 365, Name: "Sector", subCategories: [{ tuple: { old: { MetaCategory: { MetaCatID: 463, ParentMetaCatRef: 366, Name: "term" } } }, MetaCatID: 463, ParentMetaCatRef: 366, Name: "term" }, { tuple: { old: { MetaCategory: { MetaCatID: 464, ParentMetaCatRef: 366, Name: "category" } } }, MetaCatID: 464, ParentMetaCatRef: 366, Name: "category" }, { tuple: { old: { MetaCategory: { MetaCatID: 367, ParentMetaCatRef: 366, Name: "Subsector" } } }, MetaCatID: 367, ParentMetaCatRef: 366, Name: "Subsector" }] }] }];
+
+console.log(search(data, function (o) { return o.MetaCatID > 500; }));
+console.log(search(data, function (o) { return o.Name && o.Name.includes('P'); }));
+
+
 
 
 
