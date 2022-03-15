@@ -403,27 +403,16 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-			<div id="tab03Content" class="tabContent">
+			<!-- div id="tab03Content" class="tabContent">
 				<div id="div_tree" class="tree"></div>
 				<label>Add New Item</label><br>
 				<input id="in_item" class="form-control form-control-sm" type="text"/>
 				<button id="btn_add" class="btn btn-sm btn-danger" style="margin-left: 10px;">Add</button><br>
 				<button id="btn_getSelected" class="btn btn-sm btn-danger btn-block">Get Selected Items From Tree</button><br>
 				<textarea id="txt_log" rows="5" class="form-control"></textarea>
-			</div>
+			</div -->
+
+			<div id="privTree"></div>
 
 
 
@@ -441,17 +430,19 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 
-<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}" type="module">
-import {Page} from '/ccmsusr/_js/page.js';
-const page = new Page();
-/* JavaScript module code here */
-</script>
+<!-- script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}" type="module">
+	import {Page} from '/ccmsusr/_js/page.js';
+	const page = new Page();
+</script -->
 
 
 
 
 		<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 			{CCMS_TPL:/_js/footer-1.php}
+
+
+			const priv_tree = '<?= $ccms_user["priv"];?>';
 
 <?php if(!empty($ccms_user["2fa_secret"])): ?>
 			document.getElementById("2fa_radio_0").checked = true;
@@ -476,11 +467,11 @@ const page = new Page();
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 			*/
 
-			///*
+			/*
 			var l=document.createElement("link");l.rel="stylesheet";
 			l.href = "/ccmsusr/_css/pickle.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
-			//*/
+			*/
 
 
 			function loadJSResources() {
