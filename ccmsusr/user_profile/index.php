@@ -403,16 +403,17 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 
-			<!-- div id="tab03Content" class="tabContent">
-				<div id="div_tree" class="tree"></div>
+			<div id="tab03Content" class="tabContent">
+				<!-- div id="div_tree" class="tree"></div>
 				<label>Add New Item</label><br>
 				<input id="in_item" class="form-control form-control-sm" type="text"/>
 				<button id="btn_add" class="btn btn-sm btn-danger" style="margin-left: 10px;">Add</button><br>
 				<button id="btn_getSelected" class="btn btn-sm btn-danger btn-block">Get Selected Items From Tree</button><br>
-				<textarea id="txt_log" rows="5" class="form-control"></textarea>
-			</div -->
+				<textarea id="txt_log" rows="5" class="form-control"></textarea -->
+				<div id="privTree"></div>
+			</div>
 
-			<div id="privTree"></div>
+
 
 
 
