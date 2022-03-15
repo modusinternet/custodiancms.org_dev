@@ -453,10 +453,10 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 
-			const priv_tree = '<?= $ccms_user["priv"];?>';
-			const pt = JSON.parse(priv_tree);
-			//console.log(pt[0].dashboard);
-			//console.log(pt[1].dashboard);
+			const privTreeText = '<?= $ccms_user["priv"];?>';
+			const obj = JSON.parse(privTreeText);
+			console.log(obj.dashboard);
+			//console.log(obj[1].dashboard);
 
 function search(array, fn) {
     var result = [];
