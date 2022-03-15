@@ -443,7 +443,22 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			{CCMS_TPL:/_js/footer-1.php}
 
 
+
+
+
+
+
 			const priv_tree = '<?= $ccms_user["priv"];?>';
+			const pt = JSON.parse(priv_tree);
+			console.log(pt[0].value);
+
+
+
+
+
+
+
+
 
 <?php if(!empty($ccms_user["2fa_secret"])): ?>
 			document.getElementById("2fa_radio_0").checked = true;
