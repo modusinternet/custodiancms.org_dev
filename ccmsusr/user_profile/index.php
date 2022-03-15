@@ -455,7 +455,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 
-			const data = '<?= $ccms_user["priv"];?>';
+			const data = JSON.parse('<?= $ccms_user["priv"];?>');
 			//const obj = JSON.parse(data);
 			//console.log(JSON.stringify(obj[0]));
 			//console.log(obj.dashboard);
