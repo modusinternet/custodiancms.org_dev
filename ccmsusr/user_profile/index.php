@@ -457,9 +457,10 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 			const privTreeText = '<?= $ccms_user["priv"];?>';
 			const obj = JSON.parse(privTreeText);
-			console.log(JSON.stringify(obj[0]));
+			//console.log(JSON.stringify(obj[0]));
 			//console.log(obj.dashboard);
 			//console.log(obj[1].dashboard);
+			document.getElementById("tab03Content").innerHTML = obj[0];
 
 
 
