@@ -476,8 +476,8 @@ var data = [{ tuple: { old: { MetaCategory: { MetaCatID: 517, ParentMetaCatRef: 
 //console.log(search(data, function (o) { return o.MetaCatID > 500; }));
 //console.log(search(data, function (o) { return o.Name && o.Name.includes('P'); }));
 
-document.getElementById("privTree1").innerHTML = search(data, function (o) { return o.MetaCatID > 500; });
-document.getElementById("privTree2").innerHTML = search(data, function (o) { return o.Name && o.Name.includes('P'); });
+document.getElementById("privTree1").innerHTML = JSON.stringify(search(data, function (o) { return o.MetaCatID > 500; }));
+document.getElementById("privTree2").innerHTML = JSON.stringify(search(data, function (o) { return o.Name && o.Name.includes('P'); }));
 
 
 
