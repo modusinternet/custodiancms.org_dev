@@ -416,6 +416,9 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 				<div id="privTree1"></div>
 				<h2>search(data, function (o) { return o.Name && o.Name.includes('P'); })</h2>
 				<div id="privTree2"></div -->
+				<ul id="privTree">
+
+				</ul>
 
 
 			</div>
@@ -455,23 +458,82 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 
-			const data = JSON.parse('<?= $ccms_user["priv"];?>');
+			this.ul = document.getElementById("privTree");
+			this.data = {};
+			//const data = JSON.parse('< ? = $ccms_user["priv"];?>');
+			this.data = JSON.parse('<?= $ccms_user["priv"];?>');
 			//const obj = JSON.parse(data);
 			//console.log(JSON.stringify(obj[0]));
 			//console.log(obj.dashboard);
 			//console.log(obj[1].dashboard);
 			//document.getElementById("tab03Content").innerHTML = JSON.stringify(obj[0][0]);
 
-			data.forEach(obj => {
+			this.data.forEach(data => {
+				/*
 				Object.entries(obj).forEach(([key, value]) => {
 					if(typeof value !== 'object') {
 						console.log(`${key} ${value}`);
 					} else {
 						console.log(`${key}`);
 					}
-				});
-				console.log('-------------------');
+
+					//const liParent = document.createElement('li');
+					//liParent.innerHTML = data.value;
+					//this.appendChild(liParent);
+				}
+				*/
+
+
+				const liParent = document.createElement(`li`);
+				liParent.innerHTML = data.value;
+				this.appendChild(liParent);
+				if(data.children !== undefined) {
+					this.childs(liParent, data);
+					this.hide();
+				}
 			});
+
+childs(liParent, data) {
+  // Create a new unordered list for children
+  const childList = document.createElement(`ul`);
+  data.children.forEach(child => {
+    const liChild = document.createElement(`li`);
+    liChild.innerHTML = child.value;
+    childList.appendChild(liChild);
+    if (child.children !== undefined) {
+      this.childs(liChild, child);
+    }
+  });
+  liParent.appendChild(childList);
+}
+
+// Hide childs function
+hide() {
+  var ulChildren = Array.from(this.querySelectorAll(`ul`));
+  var liChildren = Array.from(this.querySelectorAll(`li`));
+  ulChildren.forEach(ul => {
+    ul.style.display = `none`;
+  });
+  liChildren.forEach(li => {
+    var childrenText = li.childNodes[0];
+    if (li.querySelector(`ul`) != null) {
+      const span = document.createElement(`span`);
+      span.textContent = childrenText.textContent;
+      span.style.cursor = `pointer`;
+      childrenText.parentNode.insertBefore(span, childrenText);
+      childrenText.parentNode.removeChild(childrenText);
+      span.onclick = (event) => {
+        var next = event.target.nextElementSibling;
+        if (next.style.display == ``) {
+          next.style.display = `none`;
+        }
+        else {
+          next.style.display = ``;
+        }
+      }
+    }
+  });
+}
 
 
 
