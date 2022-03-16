@@ -902,7 +902,7 @@ const getDetails = (details) => {
 
 createList(data);
 markupArray.push("</ul>");
-$("#list").html(markupArray.join(""));
+$("#tab03Content").html(markupArray.join(""));
 
 
 
