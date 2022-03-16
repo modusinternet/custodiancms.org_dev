@@ -441,6 +441,14 @@ const data = JSON.parse('<?= $ccms_user["priv"];?>');
 var tab03Content = document.getElementById('tab03Content');
 var ul = document.createElement('ul');
 console.log("data length = [" + data.length + "]");
+
+if(typeof data !== 'object') {
+	console.log("data not an object");
+} else {
+	console.log("data an object");
+}
+
+
 for(var i = 0; i < data.length; ++i) {
 	var li = document.createElement('li');
 	li.innerHTML = data[i];   // Use innerHTML to set the text
