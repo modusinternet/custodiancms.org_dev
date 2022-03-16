@@ -719,10 +719,10 @@ fetch('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/user_profile/priv_json.php').
 ul = $("<ul>");
 for (var i = 0, l = data.length; i < l; ++i) {
 	if(data[i] === undefined) {
-		ul.append("<li>" + JSON.stringify(data[i]) + "</li>");
+		ul.append("<li>UD:" + JSON.stringify(data[i]) + "</li>");
 	} else {
 		//ul.append("<li><a href='" + data[i].link.href + "'>" + data[i].title.content + "</a></li>");
-		ul.append("<li>not undefined</li>");
+		ul.append("<li>NOT UD:" + JSON.stringify(data[i]) + "</li>");
 	}
 }
 $("#privTree").append(ul);
