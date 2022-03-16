@@ -434,6 +434,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 			{CCMS_TPL:/_js/footer-1.php}
 
+/*
 const data = JSON.parse('<?= $ccms_user["priv"];?>');
 
 
@@ -457,8 +458,44 @@ for(var i = 0; i < data.length; ++i) {
 	//ul.appendChild(li);
 }
 tab03Content.appendChild(ul);
+*/
 
 
+
+
+
+
+
+
+
+// (B1) JSON STRING TO OBJECT
+var data = '{"Fruits":["Durian","Elderberries","Feijoa"],"Vegetables":["Corn","Daikon","Eggplant"]}';
+data = JSON.parse(data);
+
+// (B2) CREATE LIST
+var list = document.createElement("ul");
+for (let i in data) {
+  // LIST ITEM
+  let item = document.createElement("li");
+  list.appendChild(item);
+
+  // SUB-SECTION TITLE
+  let head = document.createElement("strong");
+  head.innerHTML = i;
+  item.appendChild(head);
+
+  // SUB-SECTION ITEMS
+  let sublist = document.createElement("ul");
+  item.appendChild(sublist);
+  for (let j of data[i]) {
+    let subitem = document.createElement("li");
+    subitem.innerHTML = j;
+    sublist.appendChild(subitem);
+  }
+}
+
+// (B3) APPEND LIST TO CONTAINER
+document.getElementById("tab03Content").appendChild(list);
 
 
 
