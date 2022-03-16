@@ -440,12 +440,33 @@ const data = JSON.parse('<?= $ccms_user["priv"];?>');
 
 var tab03Content = document.getElementById('tab03Content');
 var ul = document.createElement('ul');
+console.log("data length = [" + data.length + "]");
 for(var i = 0; i < data.length; ++i) {
 	var li = document.createElement('li');
 	li.innerHTML = data[i];   // Use innerHTML to set the text
 	ul.appendChild(li);
 }
 tab03Content.appendChild(ul);    // Note here
+
+
+
+
+
+
+
+/*
+Object.entries(obj).forEach(([key, value]) => {
+	if(typeof value !== 'object') {
+		console.log(`${key} ${value}`);
+	} else {
+		console.log(`${key}`);
+	}
+
+	//const liParent = document.createElement('li');
+	//liParent.innerHTML = data.value;
+	//this.appendChild(liParent);
+}
+*/
 
 
 
@@ -525,19 +546,7 @@ tab03Content.appendChild(ul);    // Note here
 
 
 
-			/*
-			Object.entries(obj).forEach(([key, value]) => {
-				if(typeof value !== 'object') {
-					console.log(`${key} ${value}`);
-				} else {
-					console.log(`${key}`);
-				}
 
-				//const liParent = document.createElement('li');
-				//liParent.innerHTML = data.value;
-				//this.appendChild(liParent);
-			}
-			*/
 
 
 
