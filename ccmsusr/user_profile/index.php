@@ -440,9 +440,9 @@ const data = JSON.parse('<?= $ccms_user["priv"];?>');
 
 var tab03Content = document.getElementById('tab03Content');
 var ul = document.createElement('ul');
-for(var i = 0; i < data.list.length; ++i) {
+for(var i = 0; i < data.length; ++i) {
 	var li = document.createElement('li');
-	li.innerHTML = data.list[i];   // Use innerHTML to set the text
+	li.innerHTML = data[i];   // Use innerHTML to set the text
 	ul.appendChild(li);
 }
 tab03Content.appendChild(ul);    // Note here
