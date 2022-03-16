@@ -434,11 +434,11 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 			{CCMS_TPL:/_js/footer-1.php}
 
-/*
+
 const data = JSON.parse('<?= $ccms_user["priv"];?>');
 
 
-
+/*
 var tab03Content = document.getElementById('tab03Content');
 var ul = document.createElement('ul');
 console.log("data length = [" + data.length + "]");
@@ -469,8 +469,8 @@ tab03Content.appendChild(ul);
 
 
 // (B1) JSON STRING TO OBJECT
-var data = '{"Fruits":["Durian","Elderberries","Feijoa"],"Vegetables":["Corn","Daikon","Eggplant"]}';
-data = JSON.parse(data);
+//var data = '{"Fruits":["Durian","Elderberries","Feijoa"],"Vegetables":["Corn","Daikon","Eggplant"]}';
+//data = JSON.parse(data);
 
 // (B2) CREATE LIST
 var list = document.createElement("ul");
