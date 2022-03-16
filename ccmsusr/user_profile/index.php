@@ -403,25 +403,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 
-			<div id="tab03Content" class="tabContent">
-				<!-- div id="div_tree" class="tree"></div>
-				<label>Add New Item</label><br>
-				<input id="in_item" class="form-control form-control-sm" type="text"/>
-				<button id="btn_add" class="btn btn-sm btn-danger" style="margin-left: 10px;">Add</button><br>
-				<button id="btn_getSelected" class="btn btn-sm btn-danger btn-block">Get Selected Items From Tree</button><br>
-				<textarea id="txt_log" rows="5" class="form-control"></textarea -->
-				<!-- h2>Original</h2>
-				{ tuple: { old: { MetaCategory: { MetaCatID: 517, ParentMetaCatRef: 0, Name: "D Application" } } }, MetaCatID: 517, ParentMetaCatRef: 0, Name: "D Application", subCategories: [{ tuple: { old: { MetaCategory: { MetaCatID: 518, ParentMetaCatRef: 517, Name: "Compass" } } }, MetaCatID: 518, ParentMetaCatRef: 517, Name: "Compass" }, { tuple: { old: { MetaCategory: { MetaCatID: 519, ParentMetaCatRef: 517, Name: "Orbe" } } }, MetaCatID: 519, ParentMetaCatRef: 517, Name: "Orbe" }, { tuple: { old: { MetaCategory: { MetaCatID: 520, ParentMetaCatRef: 517, Name: "PSI" } } }, MetaCatID: 520, ParentMetaCatRef: 517, Name: "PSI" }, { tuple: { old: { MetaCategory: { MetaCatID: 521, ParentMetaCatRef: 517, Name: "SAP" } } }, MetaCatID: 521, ParentMetaCatRef: 517, Name: "SAP" }] }, { tuple: { old: { MetaCategory: { MetaCatID: 541, ParentMetaCatRef: 0, Name: "D Versions" } } }, MetaCatID: 541, ParentMetaCatRef: 0, Name: "D Versions", subCategories: [{ tuple: { old: { MetaCategory: { MetaCatID: 542, ParentMetaCatRef: 541, Name: "Baseline 2016-12-31" } } }, MetaCatID: 542, ParentMetaCatRef: 541, Name: "Baseline 2016-12-31" }, { tuple: { old: { MetaCategory: { MetaCatID: 543, ParentMetaCatRef: 541, Name: "CLS step 3 2017-04-15" } } }, MetaCatID: 543, ParentMetaCatRef: 541, Name: "CLS step 3 2017-04-15" }] }, { tuple: { old: { MetaCategory: { MetaCatID: 365, ParentMetaCatRef: 0, Name: "Market" } } }, MetaCatID: 365, ParentMetaCatRef: 0, Name: "Market", subCategories: [{ tuple: { old: { MetaCategory: { MetaCatID: 366, ParentMetaCatRef: 365, Name: "Sector" } } }, MetaCatID: 366, ParentMetaCatRef: 365, Name: "Sector", subCategories: [{ tuple: { old: { MetaCategory: { MetaCatID: 463, ParentMetaCatRef: 366, Name: "term" } } }, MetaCatID: 463, ParentMetaCatRef: 366, Name: "term" }, { tuple: { old: { MetaCategory: { MetaCatID: 464, ParentMetaCatRef: 366, Name: "category" } } }, MetaCatID: 464, ParentMetaCatRef: 366, Name: "category" }, { tuple: { old: { MetaCategory: { MetaCatID: 367, ParentMetaCatRef: 366, Name: "Subsector" } } }, MetaCatID: 367, ParentMetaCatRef: 366, Name: "Subsector" }] }] }
-				<h2>search(data, function (o) { return o.MetaCatID > 500; })</h2>
-				<div id="privTree1"></div>
-				<h2>search(data, function (o) { return o.Name && o.Name.includes('P'); })</h2>
-				<div id="privTree2"></div -->
-				<div id="privTree">
-
-				</div>
-
-
-			</div>
+			<div id="tab03Content" class="tabContent"></div>
 
 
 
@@ -453,6 +435,23 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			{CCMS_TPL:/_js/footer-1.php}
 
 const data = JSON.parse('<?= $ccms_user["priv"];?>');
+
+
+
+var tab03Content = document.getElementById('tab03Content');
+var ul = document.createElement('ul');
+for(var i = 0; i < data.list.length; ++i) {
+	var li = document.createElement('li');
+	li.innerHTML = data.list[i];   // Use innerHTML to set the text
+	ul.appendChild(li);
+}
+tab03Content.appendChild(ul);    // Note here
+
+
+
+
+
+
 
 
 
@@ -710,29 +709,6 @@ fetch('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/user_profile/priv_json.php').
 	console.log(err);
 })
 */
-
-
-
-
-
-
-ul = $("<ul>");
-for (var i = 0, l = data.length; i < l; ++i) {
-	if(data[i] === undefined) {
-		ul.append("<li>UD:" + JSON.stringify(data[i]) + "</li>");
-	} else {
-		//ul.append("<li><a href='" + data[i].link.href + "'>" + data[i].title.content + "</a></li>");
-		ul.append("<li>NOT UD:" + JSON.stringify(data[i]) + "</li>");
-	}
-}
-$("#privTree").append(ul);
-
-
-
-
-
-
-
 
 
 
