@@ -416,9 +416,9 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 				<div id="privTree1"></div>
 				<h2>search(data, function (o) { return o.Name && o.Name.includes('P'); })</h2>
 				<div id="privTree2"></div -->
-				<ul id="privTree">
+				<div id="privTree">
 
-				</ul>
+				</div>
 
 
 			</div>
@@ -458,10 +458,11 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 
+			/*
 			this.ul = document.getElementById("privTree");
-			this.data = {};
+			//this.data = {};
 			//const data = JSON.parse('< ? = $ccms_user["priv"];?>');
-			this.data = JSON.parse('<?= $ccms_user["priv"];?>');
+			//this.data = JSON.parse('< ? = $ccms_user["priv"];?>');
 			//const obj = JSON.parse(data);
 			//console.log(JSON.stringify(obj[0]));
 			//console.log(obj.dashboard);
@@ -512,21 +513,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			}
 
 			this.data.forEach(data => {
-				/*
-				Object.entries(obj).forEach(([key, value]) => {
-					if(typeof value !== 'object') {
-						console.log(`${key} ${value}`);
-					} else {
-						console.log(`${key}`);
-					}
-
-					//const liParent = document.createElement('li');
-					//liParent.innerHTML = data.value;
-					//this.appendChild(liParent);
-				}
-				*/
-
-
 				const liParent = document.createElement(`li`);
 				liParent.innerHTML = data.value;
 				this.appendChild(liParent);
@@ -535,9 +521,24 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 					this.hide();
 				}
 			});
+			*/
 
 
 
+
+			/*
+			Object.entries(obj).forEach(([key, value]) => {
+				if(typeof value !== 'object') {
+					console.log(`${key} ${value}`);
+				} else {
+					console.log(`${key}`);
+				}
+
+				//const liParent = document.createElement('li');
+				//liParent.innerHTML = data.value;
+				//this.appendChild(liParent);
+			}
+			*/
 
 
 
@@ -569,6 +570,63 @@ console.log(search(data, function (o) { return o.Name && o.Name.includes('P'); }
 document.getElementById("privTree1").innerHTML = JSON.stringify(search(data, function (o) { return o.MetaCatID > 500; }));
 document.getElementById("privTree2").innerHTML = JSON.stringify(search(data, function (o) { return o.Name && o.Name.includes('P'); }));
 */
+
+
+
+
+/*
+for (var i = 0; i < data.length; i++) {
+  tr = $('<tr/>');
+  tr.append("<td>" + data[i].User_Name + "</td>");
+  tr.append("<td>" + data[i].score + "</td>");
+  tr.append("<td>" + data[i].team + "</td>");
+  $('table').append(tr);
+}
+*/
+
+
+
+
+
+
+const data = JSON.parse('<?= $ccms_user["priv"];?>');
+
+/*
+var tb = document.createElement("table");
+if(data !=null) {
+  var keyOfobj = Object.keys(data);
+  var ValOfObj = Object.values(data);
+  for (var i = 0; i < keyOfobj.length; i++) {
+    var tr = document.createElement('tr');
+    var td = document.createElement('td');
+    var key = document.createTextNode(keyOfobj[i]);
+    td.appendChild(key);
+    tr.appendChild(td);
+    tb.appendChild(tr);
+    if(typeof(ValOfObj[i]) == "object") {
+      if(ValOfObj[i] !=null) {
+        tr.setAttribute("style","font-weight: bold");
+        isObject(ValOfObj[i]);
+      } else {
+        var td = document.createElement('td');
+        var value = document.createTextNode(ValOfObj[i]);
+        td.appendChild(value);
+        tr.appendChild(td);
+        tb.appendChild(tr);
+      }
+    } else {
+      var td = document.createElement('td');
+      var value = document.createTextNode(ValOfObj[i]);
+      td.appendChild(value);
+      tr.appendChild(td);
+      tb.appendChild(tr);
+    }
+  }
+}
+*/
+
+
+
 
 
 
@@ -652,6 +710,44 @@ fetch('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/user_profile/priv_json.php').
 	console.log(err);
 })
 */
+
+
+
+
+/*
+$.ajax({
+    type: "GET",
+    url: "/ccmsusr/user_profile/priv_json.php",
+    data: { get_param: 'value' },
+    jsonpCallback: 'friendFeed',
+    dataType: "jsonp",
+    success: function (data) {
+        var obj = data.query.results.entry,  // get entry object (array) from JSON data
+            ul = $("<ul>");                    // create a new ul element
+        // iterate over the array and build the list
+        for (var i = 0, l = obj.length; i < l; ++i) {
+            ul.append("<li><a href='" + obj[i].link.href + "'>" + obj[i].title.content + "</a></li>");
+        }
+        $("#results").append(ul);    // add the list to the DOM
+    }
+});
+*/
+
+ul = $("<ul>");                    // create a new ul element
+// iterate over the array and build the list
+for (var i = 0, l = obj.length; i < l; ++i) {
+	ul.append("<li><a href='" + obj[i].link.href + "'>" + obj[i].title.content + "</a></li>");
+}
+$("#privTree").append(ul);
+
+
+
+
+
+
+
+
+
 
 
 
