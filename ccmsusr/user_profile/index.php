@@ -735,8 +735,8 @@ $.ajax({
 
 ul = $("<ul>");                    // create a new ul element
 // iterate over the array and build the list
-for (var i = 0, l = obj.length; i < l; ++i) {
-	ul.append("<li><a href='" + obj[i].link.href + "'>" + obj[i].title.content + "</a></li>");
+for (var i = 0, l = data.length; i < l; ++i) {
+	ul.append("<li><a href='" + data[i].link.href + "'>" + data[i].title.content + "</a></li>");
 }
 $("#privTree").append(ul);
 
