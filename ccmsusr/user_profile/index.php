@@ -714,29 +714,16 @@ fetch('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/user_profile/priv_json.php').
 
 
 
-/*
-$.ajax({
-    type: "GET",
-    url: "/ccmsusr/user_profile/priv_json.php",
-    data: { get_param: 'value' },
-    jsonpCallback: 'friendFeed',
-    dataType: "jsonp",
-    success: function (data) {
-        var obj = data.query.results.entry,  // get entry object (array) from JSON data
-            ul = $("<ul>");                    // create a new ul element
-        // iterate over the array and build the list
-        for (var i = 0, l = obj.length; i < l; ++i) {
-            ul.append("<li><a href='" + obj[i].link.href + "'>" + obj[i].title.content + "</a></li>");
-        }
-        $("#results").append(ul);    // add the list to the DOM
-    }
-});
-*/
 
-ul = $("<ul>");                    // create a new ul element
-// iterate over the array and build the list
+
+ul = $("<ul>");
 for (var i = 0, l = data.length; i < l; ++i) {
-	ul.append("<li><a href='" + data[i].link.href + "'>" + data[i].title.content + "</a></li>");
+	if(data[i] === undefined) {
+		ul.append("<li>" + JSON.stringify(data[i]) + "</li>");
+	} else {
+		//ul.append("<li><a href='" + data[i].link.href + "'>" + data[i].title.content + "</a></li>");
+		ul.append("<li>not undefined</li>");
+	}
 }
 $("#privTree").append(ul);
 
