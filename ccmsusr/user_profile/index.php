@@ -452,7 +452,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 			{CCMS_TPL:/_js/footer-1.php}
 
-
+const data = JSON.parse('<?= $ccms_user["priv"];?>');
 
 
 
@@ -589,7 +589,7 @@ for (var i = 0; i < data.length; i++) {
 
 
 
-const data = JSON.parse('<?= $ccms_user["priv"];?>');
+
 
 /*
 var tb = document.createElement("table");
