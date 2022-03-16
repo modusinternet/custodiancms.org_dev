@@ -534,7 +534,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 					this.childs(liParent, data);
 					this.hide();
 				}
-			}
+			});
 
 
 
