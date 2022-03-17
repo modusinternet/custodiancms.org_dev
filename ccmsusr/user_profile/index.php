@@ -657,7 +657,7 @@ fetch('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/user_profile/priv_json.php').
 })
 */
 
-const data = {
+const data1 = {
   Parent: {
     img: "father.png",
     name: "Jan Doe",
