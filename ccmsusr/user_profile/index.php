@@ -716,7 +716,7 @@ const getDetails = (details) => {
 			//details[detail].forEach((element) => {
 			Object.keys(details[detail]).forEach((element) => {
 				console.log(element);
-				console.log(detail[element]);
+				console.log(element[0]);
 				//getItems(element);
 			});
 			markupArray.push("</ul>");
