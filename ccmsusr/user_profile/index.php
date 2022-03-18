@@ -712,7 +712,7 @@ const getDetails = (details) => {
   // iterate over the detail items of object
   for (const detail in details) {
     // fetch the value of each item
-		console.log("detail=[" + detail + "]");
+		console.log("detail[0]=[" + detail[0] + "]");
 		console.log("details=[" + details + "]");
 		if(detail == "admin") {
 			//markupArray.push("<ul>${details[detail]}");
