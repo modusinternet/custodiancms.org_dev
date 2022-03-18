@@ -772,11 +772,11 @@ const getDetails = (details) => {
 };
 
 // call the function on page load
-window.onload = () => {
+//window.onload = () => {
   createList(data);
   markupArray.push("</ul>");
   $("#privTree1").html(markupArray.join(""));
-};
+//};
 
 
 
