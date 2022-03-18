@@ -668,11 +668,11 @@ const data2 = JSON.parse(JSON.stringify({
 		dashboard: "1",
 		admin: {
 			sub: {
-				blacklist_settings: "1",
-				github: "1",
+				blacklist_settings: "0",
+				github: "0",
 				language_support: "1",
-				other_controls: "1",
-				user_privileges: "1"
+				other_controls: "0",
+				user_privileges: "0"
 			}
 		},
 		content_groups: "1",
