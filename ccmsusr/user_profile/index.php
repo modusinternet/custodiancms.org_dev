@@ -669,11 +669,13 @@ const data2 = {
 		dashboard: "1",
 		admin: [
 			{
-				blacklist_settings: "1",
-				github: "1",
-				language_support: "1",
-				other_controls: "1",
-				user_privileges: "1"
+				sub: {
+					blacklist_settings: "1",
+					github: "1",
+					language_support: "1",
+					other_controls: "1",
+					user_privileges: "1"
+				}
 			}
 		],
 		content_groups: "1",
@@ -710,7 +712,7 @@ const getDetails = (details) => {
   // iterate over the detail items of object
   for (const detail in details) {
     // fetch the value of each item
-    if(detail == "admin") {
+    if(detail == "sub") {
 			markupArray.push("<ul>${details[detail]}");
 			details[detail].forEach((element) => {
 				getItems(element);
