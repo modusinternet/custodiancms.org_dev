@@ -716,7 +716,7 @@ const getDetails = (details) => {
 			//markupArray.push("<ul>${details[detail]}");
 			markupArray.push("<ul>");
 			//details[detail].forEach((element) => {
-			Object.keys(details).forEach((element) => {
+			Object.keys(details[detail]).forEach((element) => {
 				getItems(element);
 			});
 			markupArray.push("</ul>");
