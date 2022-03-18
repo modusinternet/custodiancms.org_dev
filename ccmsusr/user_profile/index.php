@@ -710,24 +710,17 @@ const getDetails = (details) => {
   // iterate over the detail items of object
   for (const detail in details) {
     // fetch the value of each item
-    if(detail == "img") {
-      markupArray.push(
-        ` img=[${details[detail]}] "> `
-      );
-    } else if(detail == "children") {
-      markupArray.push("<ul>");
-      details[detail].forEach((element) => {
-        getItems(element);
-      });
-      markupArray.push("</ul>");
-		} else if(detail == "admin"){
+    if(detail == "admin"){
 			markupArray.push("<ul>${details[detail]}");
 			details[detail].forEach((element) => {
 				getItems(element);
 			});
 			markupArray.push("</ul>");
 		} else {
-      markupArray.push(` otherDetails=[${details[detail]}] `);
+      //markupArray.push(` otherDetails=[${details[detail]}] `);
+			details[detail].forEach((element) => {
+				getItems(element);
+			});
     }
   }
 };
