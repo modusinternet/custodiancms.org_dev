@@ -667,8 +667,7 @@ const data = {Parent: {img: "father.png",name: "Jan Doe",age: "50",children: [{c
 const data2 = {
 
 		dashboard: "1",
-		admin: "0",
-		children: [
+		admin: [
 			{
 				blacklist_settings: "1",
 				github: "1",
@@ -721,7 +720,7 @@ const getDetails = (details) => {
         getItems(element);
       });
       markupArray.push("</ul>");
-		} else if(detail == "sub"){
+		} else if(detail == "admin"){
 			markupArray.push("<ul>");
 			details[detail].forEach((element) => {
 				getItems(element);
