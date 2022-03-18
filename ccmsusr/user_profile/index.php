@@ -712,8 +712,9 @@ const getDetails = (details) => {
   // iterate over the detail items of object
   for (const detail in details) {
     // fetch the value of each item
-    if(detail == "sub") {
-			markupArray.push("<ul>${details[detail]}");
+    if(details == "admin") {
+			//markupArray.push("<ul>${details[detail]}");
+			markupArray.push("<ul>");
 			details[detail].forEach((element) => {
 				getItems(element);
 			});
