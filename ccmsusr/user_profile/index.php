@@ -657,10 +657,10 @@ fetch('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/user_profile/priv_json.php').
 })
 */
 
-const data_old = '{"Parent":{"img":"father.png","name":"Jan Doe","age":"50","children":[{"child":{"img":"child_1.png","name":"child 1","age":"25"}},{"child":{"img":"child_2.png","name":"child 2","age":"22","children":[{"grandChild":{"img":"child_3.png","name":"grand child 1","age":"12"}}]}},{"child":{"img":"child_4.png","name":"child 3","age":"16","children":[{"grandChild":{"img":"child_5.png","name":"grand child 1","age":"18","children":[{"grandgrandChild":{"img":"child_6.png","name":"great grand child 1","age":"13"}},{"grandgrandChild":{"img":"child_7.png","name":"great grand child 2","age":"10"}}]}}]}}]}}';
+const data1 = '{"Parent":{"img":"father.png","name":"Jan Doe","age":"50","children":[{"child":{"img":"child_1.png","name":"child 1","age":"25"}},{"child":{"img":"child_2.png","name":"child 2","age":"22","children":[{"grandChild":{"img":"child_3.png","name":"grand child 1","age":"12"}}]}},{"child":{"img":"child_4.png","name":"child 3","age":"16","children":[{"grandChild":{"img":"child_5.png","name":"grand child 1","age":"18","children":[{"grandgrandChild":{"img":"child_6.png","name":"great grand child 1","age":"13"}},{"grandgrandChild":{"img":"child_7.png","name":"great grand child 2","age":"10"}}]}}]}}]}}';
 
 // array to hold HTML tags
-let markupArray = ["<ul>"];
+let markupArray1 = ["<ul>"];
 
 // evaluate expressions
 const createList = (items) => {
@@ -674,12 +674,12 @@ const createList = (items) => {
 // get items in the object
 const getItems = (items) => {
   for (const item in items) {
-    markupArray.push(`<li> <div class="test"><span>${item}</span>`);
+    markupArray1.push(`<li> <div class="test"><span>${item}</span>`);
     // fetch the parent object
     let details = items[item];
     getDetails(details);
     // push the closing tag for parent
-    markupArray.push("</li>");
+    markupArray1.push("</li>");
   }
 };
 
@@ -689,25 +689,25 @@ const getDetails = (details) => {
   for (const detail in details) {
     // fetch the value of each item
     if (detail == "img") {
-      markupArray.push(
+      markupArray1.push(
         `<img src="./img/${details[detail]}" alt="${details[detail]}">`
       );
     } else if (detail == "children") {
-      markupArray.push("</div><ul>");
+      markupArray1.push("</div><ul>");
       details[detail].forEach((element) => {
         getItems(element);
       });
 
-      markupArray.push("</ul>");
+      markupArray1.push("</ul>");
     } else {
-      markupArray.push(`<span> ${details[detail]} </span>`);
+      markupArray1.push(`<span> ${details[detail]} </span>`);
     }
   }
 };
 
-createList(data_old);
-markupArray.push("</ul>");
-$("#tab03Content").html(markupArray.join(""));
+createList(data1);
+markupArray1.push("</ul>");
+$("#tab03Content").html(markupArray1.join(""));
 
 
 
@@ -721,10 +721,10 @@ $("#tab03Content").html(markupArray.join(""));
 
 //const data = '< ? = $ccms_user["priv"];?>';
 
-const data = '{"sub":[{"dashboard":{"rw":"1"},"admin":{"rw":"0","sub":[{"blacklist_settings":{"rw":"1"},"github":{"rw":"1"},"language_support":{"rw":"1"},"other_controls":{"rw":"1"},"user_privileges":{"rw":"1"}}]},"content_groups":{"rw":"1"},"content_manager":{"rw":"0","lng":{"ar":"1","bn":"1","de":"1","de-at":"1","de-ch":"1","de-de":"1","de-li":"1","de-lu":"1","en":"1","en-au":"1","en-bz":"1","en-ca":"1","en-gb":"1","en-ie":"1","en-jm":"1","en-nz":"1","en-ph":"1","en-tt":"1","en-us":"1","en-za":"1","en-zw":"1","es":"1","es-ar":"1","es-bo":"1","es-cl":"1","es-co":"1","es-cr":"1","es-do":"1","es-ec":"1","es-es":"1","es-gt":"1","es-hn":"1","es-mx":"1","es-ni":"1","es-pa":"1","es-pe":"1","es-pr":"1","es-py":"1","es-sv":"1","es-uy":"1","es-ve":"1","fr":"1","fr-be":"1","fr-ca":"1","fr-ch":"1","fr-fr":"1","fr-lu":"1","fr-mc":"1","he":"1","hi":"1","ja":"1","ko":"1","ko-kp":"1","ko-kr":"1","ms":"1","nb-no":"1","pt":"1","ru":"1","vi":"1","zh":"1","zh-cn":"1","zh-tw":"1"}}}]}';
+const data2 = '{"sub":[{"dashboard":{"rw":"1"},"admin":{"rw":"0","sub":[{"blacklist_settings":{"rw":"1"},"github":{"rw":"1"},"language_support":{"rw":"1"},"other_controls":{"rw":"1"},"user_privileges":{"rw":"1"}}]},"content_groups":{"rw":"1"},"content_manager":{"rw":"0","lng":{"ar":"1","bn":"1","de":"1","de-at":"1","de-ch":"1","de-de":"1","de-li":"1","de-lu":"1","en":"1","en-au":"1","en-bz":"1","en-ca":"1","en-gb":"1","en-ie":"1","en-jm":"1","en-nz":"1","en-ph":"1","en-tt":"1","en-us":"1","en-za":"1","en-zw":"1","es":"1","es-ar":"1","es-bo":"1","es-cl":"1","es-co":"1","es-cr":"1","es-do":"1","es-ec":"1","es-es":"1","es-gt":"1","es-hn":"1","es-mx":"1","es-ni":"1","es-pa":"1","es-pe":"1","es-pr":"1","es-py":"1","es-sv":"1","es-uy":"1","es-ve":"1","fr":"1","fr-be":"1","fr-ca":"1","fr-ch":"1","fr-fr":"1","fr-lu":"1","fr-mc":"1","he":"1","hi":"1","ja":"1","ko":"1","ko-kp":"1","ko-kr":"1","ms":"1","nb-no":"1","pt":"1","ru":"1","vi":"1","zh":"1","zh-cn":"1","zh-tw":"1"}}}]}';
 
 // array to hold HTML tags
-let markupArray = ["<ul>"];
+let markupArray2 = ["<ul>"];
 
 // evaluate expressions
 const createList = (items) => {
@@ -738,12 +738,12 @@ const createList = (items) => {
 // get items in the object
 const getItems = (items) => {
   for (const item in items) {
-    markupArray.push(`<li> <div class="test"><span>${item}</span>`);
+    markupArray2.push(`<li> <div class="test"><span>${item}</span>`);
     // fetch the parent object
     let details = items[item];
     getDetails(details);
     // push the closing tag for parent
-    markupArray.push("</li>");
+    markupArray2.push("</li>");
   }
 };
 
@@ -753,25 +753,25 @@ const getDetails = (details) => {
   for (const detail in details) {
     // fetch the value of each item
     if (detail == "img") {
-      markupArray.push(
+      markupArray2.push(
         `<img src="./img/${details[detail]}" alt="${details[detail]}">`
       );
     } else if (detail == "children") {
-      markupArray.push("</div><ul>");
+      markupArray2.push("</div><ul>");
       details[detail].forEach((element) => {
         getItems(element);
       });
 
-      markupArray.push("</ul>");
+      markupArray2.push("</ul>");
     } else {
-      markupArray.push(`<span> ${details[detail]} </span>`);
+      markupArray2.push(`<span> ${details[detail]} </span>`);
     }
   }
 };
 
-createList(data);
-markupArray.push("</ul>");
-$("#tab03Content").html(markupArray.join(""));
+createList(data2);
+markupArray2.push("</ul>");
+$("#tab03Content").html(markupArray2.join(""));
 
 
 
