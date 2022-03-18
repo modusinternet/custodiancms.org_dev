@@ -715,8 +715,7 @@ const getDetails = (details) => {
 		if(detail == "sub") {
 			//markupArray.push("<ul>${details[detail]}");
 			markupArray.push("<ul>");
-			//details[detail].forEach((element) => {
-			details.forEach((element) => {
+			details[detail].forEach((element) => {
 				getItems(element);
 			});
 			markupArray.push("</ul>");
