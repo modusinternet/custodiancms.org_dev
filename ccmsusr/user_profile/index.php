@@ -132,9 +132,9 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			padding:20px 0px
 		}
 
-		#tab03Content>ul{margin-left:20px}
+		#tab03Content>div>ul{margin-left:20px}
 
-		#tab03Content>ul li{padding-left:20px}
+		#tab03Content>div>ul li{padding-left:20px}
 
 		/* 435px or wider. */
 		@media only screen and (min-width:435px){
