@@ -667,8 +667,7 @@ const data = {Parent: {img: "father.png",name: "Jan Doe",age: "50",children: [{c
 const data2 = {
 
 		dashboard: "1",
-		admin: [
-			{
+		admin: {
 				sub: {
 					blacklist_settings: "1",
 					github: "1",
@@ -676,8 +675,7 @@ const data2 = {
 					other_controls: "1",
 					user_privileges: "1"
 				}
-			}
-		],
+			},
 		content_groups: "1",
 		content_manager: "0"
 
