@@ -369,7 +369,10 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 				</form>
 			</div>
 
-			<div id="tab03Content" class="tabContent"></div>
+			<div id="tab03Content" class="tabContent">
+				<div id="privTree1"></div>
+				<div id="privTree2"></div>
+			</div>
 			{CCMS_TPL:/footer.html}
 		</main>
 
@@ -707,7 +710,7 @@ const getDetails1 = (details1) => {
 
 createList1(data1);
 markupArray1.push("</ul>");
-$("#tab03Content").html(markupArray1.join(""));
+$("#privTree1").html(markupArray1.join(""));
 
 
 
@@ -771,7 +774,7 @@ const getDetails2 = (details2) => {
 
 createList2(data2);
 markupArray2.push("</ul>");
-$("#tab03Content").html(markupArray2.join(""));
+$("#privTree2").html(markupArray2.join(""));
 
 
 
