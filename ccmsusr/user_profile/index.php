@@ -677,7 +677,7 @@ const createList = (items) => {
 // get items in the object
 const getItems = (items) => {
   for (const item in items) {
-    markupArray.push(`<li> <div class="test"><span>${item}</span>`);
+    markupArray.push(`<li>${item}`);
     // fetch the parent object
     let details = items[item];
     getDetails(details);
@@ -691,19 +691,18 @@ const getDetails = (details) => {
   // iterate over the detail items of object
   for (const detail in details) {
     // fetch the value of each item
-    if (detail == "img") {
+    if(detail == "img") {
       markupArray.push(
-        `<img src="./img/${details[detail]}" alt="${details[detail]}">`
+        ` img=[${details[detail]}] "> `
       );
-    } else if (detail == "children") {
-      markupArray.push("</div><ul>");
+    } else if(detail == "children") {
+      markupArray.push("<ul>");
       details[detail].forEach((element) => {
         getItems(element);
       });
-
       markupArray.push("</ul>");
     } else {
-      markupArray.push(`<span> ${details[detail]} </span>`);
+      markupArray.push(` otherDetails=[${details[detail]}] `);
     }
   }
 };
