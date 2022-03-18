@@ -668,7 +668,7 @@ const data2 = {
 
 		dashboard: "1",
 		admin: "0",
-		sub: [
+		children: [
 			{
 				blacklist_settings: "1",
 				github: "1",
@@ -679,7 +679,7 @@ const data2 = {
 		],
 		content_groups: "1",
 		content_manager: "0"
-	
+
 };
 
 // array to hold HTML tags
