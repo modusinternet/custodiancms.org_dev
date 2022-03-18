@@ -718,6 +718,7 @@ const getDetails = (details) => {
 			Object.keys(details[detail]).forEach((element) => {
 				console.log(element);
 				console.log(details[detail][element]);
+				markupArray.push(`<li>${element} rw: ${details[detail][element]}</li>`);
 				//getItems(element);
 			});
 			markupArray.push("</ul>");
