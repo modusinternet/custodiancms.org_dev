@@ -665,20 +665,18 @@ const data = {Parent: {img: "father.png",name: "Jan Doe",age: "50",children: [{c
 //const data2 = {dashboard: "1",admin: "0",sub: [{blacklist_settings: "1",github:  "1",language_support: "1",other_controls: "1",user_privileges: "1"}]},content_groups: "1",content_manager: "0",lng: {ar: 1,bn: 1,de: 1,de-at: 1,de-ch: 1,de-de: 1,de-li: 1,de-lu: 1,en: 1,en-au: 1,en-bz: 1,en-ca: 1,en-gb: 1,en-ie: 1,en-jm: 1,en-nz: 1,en-ph: 1,en-tt: 1,en-us: 1,en-za: 1,en-zw: 1,es: 1,es-ar: 1,es-bo: 1,es-cl: 1,es-co: 1,es-cr: 1,es-do: 1,es-ec: 1,es-es: 1,es-gt: 1,es-hn: 1,es-mx: 1,es-ni: 1,es-pa: 1,es-pe: 1,es-pr: 1,es-py: 1,es-sv: 1,es-uy: 1,es-ve: 1,fr: 1,fr-be: 1,fr-ca: 1,fr-ch: 1,fr-fr: 1,fr-lu: 1,fr-mc: 1,he: 1,hi: 1,ja: 1,ko: 1,ko-kp: 1,ko-kr: 1,ms: 1,nb-no: 1,pt: 1,ru: 1,vi: 1,zh: 1,zh-cn: 1,zh-tw: 1}}};
 
 const data2 = JSON.parse(JSON.stringify({
-
 		dashboard: "1",
 		admin: {
-				sub: {
-					blacklist_settings: "1",
-					github: "1",
-					language_support: "1",
-					other_controls: "1",
-					user_privileges: "1"
-				}
-			},
+			sub: {
+				blacklist_settings: "1",
+				github: "1",
+				language_support: "1",
+				other_controls: "1",
+				user_privileges: "1"
+			}
+		},
 		content_groups: "1",
 		content_manager: "0"
-
 }));
 
 // array to hold HTML tags
@@ -717,7 +715,9 @@ const getDetails = (details) => {
 			markupArray.push("<ul>");
 			//details[detail].forEach((element) => {
 			Object.keys(details[detail]).forEach((element) => {
-				getItems(element);
+				console.log(element);
+				console.log(detail[element]);
+				//getItems(element);
 			});
 			markupArray.push("</ul>");
 		} else {
