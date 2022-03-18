@@ -663,49 +663,49 @@ const data1 = '{"Parent":{"img":"father.png","name":"Jan Doe","age":"50","childr
 let markupArray1 = ["<ul>"];
 
 // evaluate expressions
-const createList = (items) => {
+const createList1 = (items) => {
   switch ($.type(items)) {
     case "object":
-      getItems(items);
+      getItems1(items);
       break;
   }
 };
 
 // get items in the object
-const getItems = (items) => {
-  for (const item in items) {
-    markupArray1.push(`<li> <div class="test"><span>${item}</span>`);
+const getItems1 = (items) => {
+  for (const item1 in items) {
+    markupArray1.push(`<li> <div class="test"><span>${item1}</span>`);
     // fetch the parent object
-    let details = items[item];
-    getDetails(details);
+    let details1 = items[item1];
+    getDetails1(details1);
     // push the closing tag for parent
     markupArray1.push("</li>");
   }
 };
 
-// get details
-const getDetails = (details) => {
-  // iterate over the detail items of object
-  for (const detail in details) {
-    // fetch the value of each item
-    if (detail == "img") {
+// get details1
+const getDetails1 = (details1) => {
+  // iterate over the detail1 items of object
+  for (const detail1 in details1) {
+    // fetch the value of each item1
+    if (detail1 == "img") {
       markupArray1.push(
-        `<img src="./img/${details[detail]}" alt="${details[detail]}">`
+        `<img src="./img/${details1[detail1]}" alt="${details1[detail1]}">`
       );
-    } else if (detail == "children") {
+    } else if (detail1 == "children") {
       markupArray1.push("</div><ul>");
-      details[detail].forEach((element) => {
-        getItems(element);
+      details1[detail1].forEach((element) => {
+        getItems1(element);
       });
 
       markupArray1.push("</ul>");
     } else {
-      markupArray1.push(`<span> ${details[detail]} </span>`);
+      markupArray1.push(`<span> ${details1[detail1]} </span>`);
     }
   }
 };
 
-createList(data1);
+createList1(data1);
 markupArray1.push("</ul>");
 $("#tab03Content").html(markupArray1.join(""));
 
@@ -727,49 +727,49 @@ const data2 = '{"sub":[{"dashboard":{"rw":"1"},"admin":{"rw":"0","sub":[{"blackl
 let markupArray2 = ["<ul>"];
 
 // evaluate expressions
-const createList = (items) => {
+const createList2 = (items) => {
   switch ($.type(items)) {
     case "object":
-      getItems(items);
+      getItems2(items);
       break;
   }
 };
 
 // get items in the object
-const getItems = (items) => {
-  for (const item in items) {
-    markupArray2.push(`<li> <div class="test"><span>${item}</span>`);
+const getItems2 = (items) => {
+  for (const item2 in items) {
+    markupArray2.push(`<li> <div class="test"><span>${item2}</span>`);
     // fetch the parent object
-    let details = items[item];
-    getDetails(details);
+    let details2 = items[item2];
+    getDetails2(details2);
     // push the closing tag for parent
     markupArray2.push("</li>");
   }
 };
 
-// get details
-const getDetails = (details) => {
-  // iterate over the detail items of object
-  for (const detail in details) {
-    // fetch the value of each item
-    if (detail == "img") {
+// get details2
+const getDetails2 = (details2) => {
+  // iterate over the detail2 items of object
+  for (const detail2 in details2) {
+    // fetch the value of each item2
+    if (detail2 == "img") {
       markupArray2.push(
-        `<img src="./img/${details[detail]}" alt="${details[detail]}">`
+        `<img src="./img/${details2[detail2]}" alt="${details2[detail2]}">`
       );
-    } else if (detail == "children") {
+    } else if (detail2 == "children") {
       markupArray2.push("</div><ul>");
-      details[detail].forEach((element) => {
-        getItems(element);
+      details2[detail2].forEach((element) => {
+        getItems2(element);
       });
 
       markupArray2.push("</ul>");
     } else {
-      markupArray2.push(`<span> ${details[detail]} </span>`);
+      markupArray2.push(`<span> ${details2[detail2]} </span>`);
     }
   }
 };
 
-createList(data2);
+createList2(data2);
 markupArray2.push("</ul>");
 $("#tab03Content").html(markupArray2.join(""));
 
