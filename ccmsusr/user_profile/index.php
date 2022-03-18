@@ -671,57 +671,39 @@ let markupArray = ["<ul>"];
 
 // evaluate expressions
 const createList = (items) => {
-  switch ($.type(items)) {
-    case "object":
-      getItems(items);
-      break;
-  }
+	switch($.type(items)) {
+		case "object":
+			getItems(items);
+			break;
+	}
 };
 
-// get items in the object
 const getItems = (items) => {
-  for (const item in items) {
-    markupArray.push(`<li>${item}`);
-    // fetch the parent object
-    let details = items[item];
-    getDetails(details);
-    // push the closing tag for parent
-    markupArray.push("</li>");
-  }
+	for(const item in items) {
+		markupArray.push(`<li>${item}`);
+		let details = items[item];
+		getDetails(details);
+		markupArray.push("</li>");
+	}
 };
 
-// get details
 const getDetails = (details) => {
-  // iterate over the detail items of object
-  for (const detail in details) {
-    // fetch the value of each item
-		//console.log("detail=[" + detail + "]");
-		//console.log("details=[" + details + "]");
+  for(const detail in details) {
 		if(detail == "sub") {
-			//markupArray.push("<ul>${details[detail]}");
 			markupArray.push("<ul>");
-			//details[detail].forEach((element) => {
-			//console.log(details[detail]);
 			Object.keys(details[detail]).forEach((element) => {
-				console.log(element);
-				console.log(details[detail][element]);
 				markupArray.push(`<li>${element} rw: ${details[detail][element]}</li>`);
-				//getItems(element);
 			});
 			markupArray.push("</ul>");
 		} else {
-      //markupArray.push(` otherDetails=[${details[detail]}] `);
 			markupArray.push(` rw: ${details}`);
-    }
-  }
+		}
+	}
 };
 
-// call the function on page load
-//window.onload = () => {
-  createList(data2);
-  markupArray.push("</ul>");
-  $("#privTree1").html(markupArray.join(""));
-//};
+createList(data2);
+markupArray.push("</ul>");
+$("#privTree1").html(markupArray.join(""));
 
 
 
