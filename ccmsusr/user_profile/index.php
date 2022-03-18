@@ -728,7 +728,7 @@ const getDetails = (details) => {
 
 // call the function on page load
 //window.onload = () => {
-  createList(JSON.parse(JSON.stringify(data2)));
+  createList(JSON.parse(data2));
   markupArray.push("</ul>");
   $("#privTree1").html(markupArray.join(""));
 //};
