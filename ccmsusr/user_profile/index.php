@@ -721,7 +721,7 @@ const getDetails = (details) => {
       });
       markupArray.push("</ul>");
 		} else if(detail == "admin"){
-			markupArray.push("<ul>");
+			markupArray.push("<ul>${details[detail]}");
 			details[detail].forEach((element) => {
 				getItems(element);
 			});
