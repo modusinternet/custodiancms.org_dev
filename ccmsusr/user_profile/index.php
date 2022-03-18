@@ -718,7 +718,7 @@ const getDetails = (details) => {
 			markupArray.push("</ul>");
 		} else {
       //markupArray.push(` otherDetails=[${details[detail]}] `);
-			markupArray.push(`${details}`);
+			markupArray.push(` rw: ${details}`);
     }
   }
 };
