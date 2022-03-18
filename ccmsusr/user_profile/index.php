@@ -712,7 +712,8 @@ const getDetails = (details) => {
   // iterate over the detail items of object
   for (const detail in details) {
     // fetch the value of each item
-    if(detail == "sub") {
+		console.log(details);
+    if(details == "sub") {
 			//markupArray.push("<ul>${details[detail]}");
 			markupArray.push("<ul>");
 			details[detail].forEach((element) => {
