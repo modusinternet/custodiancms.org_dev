@@ -662,8 +662,9 @@ fetch('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/user_profile/priv_json.php').
 
 const data = {Parent: {img: "father.png",name: "Jan Doe",age: "50",children: [{child: {img: "child_1.png",name: "child 1",age: "25",},},{child: {img: "child_2.png",name: "child 2",age: "22",children: [{grandChild: {img: "child_3.png",name: "grand child 1",age: "12",},},],},},{child: {img: "child_4.png",name: "child 3",age: "16",children: [{grandChild: {img: "child_5.png",name: "grand child 1",age: "18",children: [{grandgrandChild: {img: "child_6.png",name: "great grand child 1",age: "13",},},{grandgrandChild: {img: "child_7.png",name: "great grand child 2",age: "10",},},],},},],},},],},};
 
-//const data2 = {dashboard: "1",admin: "0",sub: [{blacklist_settings: "1",github:  "1",language_support: "1",other_controls: "1",user_privileges: "1"}]},content_groups: "1",content_manager: "0",lng: {ar: 1,bn: 1,de: 1,de-at: 1,de-ch: 1,de-de: 1,de-li: 1,de-lu: 1,en: 1,en-au: 1,en-bz: 1,en-ca: 1,en-gb: 1,en-ie: 1,en-jm: 1,en-nz: 1,en-ph: 1,en-tt: 1,en-us: 1,en-za: 1,en-zw: 1,es: 1,es-ar: 1,es-bo: 1,es-cl: 1,es-co: 1,es-cr: 1,es-do: 1,es-ec: 1,es-es: 1,es-gt: 1,es-hn: 1,es-mx: 1,es-ni: 1,es-pa: 1,es-pe: 1,es-pr: 1,es-py: 1,es-sv: 1,es-uy: 1,es-ve: 1,fr: 1,fr-be: 1,fr-ca: 1,fr-ch: 1,fr-fr: 1,fr-lu: 1,fr-mc: 1,he: 1,hi: 1,ja: 1,ko: 1,ko-kp: 1,ko-kr: 1,ms: 1,nb-no: 1,pt: 1,ru: 1,vi: 1,zh: 1,zh-cn: 1,zh-tw: 1}}};
 
+
+// Show, Read, and Write privileges are indecated in the JSON output for each area in the form of rw:0 (do not even show in the site), rw:1 (show up in the site but only readable), rw:2 (read and writable).
 const data2 = JSON.parse(JSON.stringify(<?= $ccms_user["priv"];?>));
 
 // array to hold HTML tags
