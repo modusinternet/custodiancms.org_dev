@@ -397,270 +397,29 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			l.href = "/ccmsusr/_css/metisMenu-3.0.6.min.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
-			/*
-			var tab03Content = document.getElementById('tab03Content');
-			var ul = document.createElement('ul');
-			console.log("data length = [" + data.length + "]");
-
-
-
-			for(var i = 0; i < data.length; ++i) {
-				if(typeof data[i] === 'object') {
-					console.log("data an object");
-				} else {
-					console.log("data NOT an object");
-				}
-
-				//var li = document.createElement('li');
-				//li.innerHTML = data[i];
-				//ul.appendChild(li);
-			}
-			tab03Content.appendChild(ul);
-
-
-
-			// (B1) JSON STRING TO OBJECT
-			//var data = '{"Fruits":["Durian","Elderberries","Feijoa"],"Vegetables":["Corn","Daikon","Eggplant"]}';
-			//data = JSON.parse(data);
-
-			// (B2) CREATE LIST
-			var list = document.createElement("ul");
-			for (let i in data) {
-			  // LIST ITEM
-			  let item = document.createElement("li");
-			  list.appendChild(item);
-
-			  // SUB-SECTION TITLE
-			  let head = document.createElement("strong");
-			  head.innerHTML = i;
-			  item.appendChild(head);
-
-			  // SUB-SECTION ITEMS
-			  let sublist = document.createElement("ul");
-			  item.appendChild(sublist);
-			  for (let j of data[i]) {
-			    let subitem = document.createElement("li");
-			    subitem.innerHTML = j;
-			    sublist.appendChild(subitem);
-			  }
-			}
-
-			// (B3) APPEND LIST TO CONTAINER
-			document.getElementById("tab03Content").appendChild(list);
-
-
-
-			Object.entries(obj).forEach(([key, value]) => {
-				if(typeof value !== 'object') {
-					console.log(`${key} ${value}`);
-				} else {
-					console.log(`${key}`);
-				}
-
-				//const liParent = document.createElement('li');
-				//liParent.innerHTML = data.value;
-				//this.appendChild(liParent);
-			}
-
-
-
-						this.ul = document.getElementById("privTree");
-						//this.data = {};
-						//const data = JSON.parse('< ? = $ccms_user["priv"];?>');
-						//this.data = JSON.parse('< ? = $ccms_user["priv"];?>');
-						//const obj = JSON.parse(data);
-						//console.log(JSON.stringify(obj[0]));
-						//console.log(obj.dashboard);
-						//console.log(obj[1].dashboard);
-						//document.getElementById("tab03Content").innerHTML = JSON.stringify(obj[0][0]);
-
-						function childs(liParent, data) {
-						  // Create a new unordered list for children
-						  const childList = document.createElement('ul');
-						  data.children.forEach(child => {
-						    const liChild = document.createElement('li');
-						    liChild.innerHTML = child.value;
-						    childList.appendChild(liChild);
-						    if(child.children !== undefined) {
-						      this.childs(liChild, child);
-						    }
-						  });
-						  liParent.appendChild(childList);
-						}
-
-						// Hide childs function
-						function hide() {
-						  var ulChildren = Array.from(this.querySelectorAll('ul'));
-						  var liChildren = Array.from(this.querySelectorAll('li'));
-
-						  ulChildren.forEach(ul => {
-						    ul.style.display = 'none';
-						  });
-
-						  liChildren.forEach(li => {
-						    var childrenText = li.childNodes[0];
-						    if(li.querySelector('ul') != null) {
-						      const span = document.createElement('span');
-						      span.textContent = childrenText.textContent;
-						      span.style.cursor = 'pointer';
-						      childrenText.parentNode.insertBefore(span, childrenText);
-						      childrenText.parentNode.removeChild(childrenText);
-						      span.onclick = (event) => {
-						        var next = event.target.nextElementSibling;
-						        if(next.style.display == '') {
-						          next.style.display = 'none';
-						        } else {
-						          next.style.display = '';
-						        }
-						      }
-						    }
-						  });
-						}
-
-						this.data.forEach(data => {
-							const liParent = document.createElement(`li`);
-							liParent.innerHTML = data.value;
-							this.appendChild(liParent);
-							if(data.children !== undefined) {
-								this.childs(liParent, data);
-								this.hide();
-							}
-						});
-
-
-
-			function search(array, fn) {
-			    var result = [];
-			    array.forEach(function iter(o) {
-			        if (!o || typeof o !== 'object') {
-			            return;
-			        }
-			        if (fn(o)) {
-			            result.push(o);
-			            return;
-			        }
-			        Object.keys(o).forEach(function (k) {
-			            iter(o[k]);
-			        });
-			    });
-			    return result;
-			}
-
-			var data = [{ tuple: { old: { MetaCategory: { MetaCatID: 517, ParentMetaCatRef: 0, Name: "D Application" } } }, MetaCatID: 517, ParentMetaCatRef: 0, Name: "D Application", subCategories: [{ tuple: { old: { MetaCategory: { MetaCatID: 518, ParentMetaCatRef: 517, Name: "Compass" } } }, MetaCatID: 518, ParentMetaCatRef: 517, Name: "Compass" }, { tuple: { old: { MetaCategory: { MetaCatID: 519, ParentMetaCatRef: 517, Name: "Orbe" } } }, MetaCatID: 519, ParentMetaCatRef: 517, Name: "Orbe" }, { tuple: { old: { MetaCategory: { MetaCatID: 520, ParentMetaCatRef: 517, Name: "PSI" } } }, MetaCatID: 520, ParentMetaCatRef: 517, Name: "PSI" }, { tuple: { old: { MetaCategory: { MetaCatID: 521, ParentMetaCatRef: 517, Name: "SAP" } } }, MetaCatID: 521, ParentMetaCatRef: 517, Name: "SAP" }] }, { tuple: { old: { MetaCategory: { MetaCatID: 541, ParentMetaCatRef: 0, Name: "D Versions" } } }, MetaCatID: 541, ParentMetaCatRef: 0, Name: "D Versions", subCategories: [{ tuple: { old: { MetaCategory: { MetaCatID: 542, ParentMetaCatRef: 541, Name: "Baseline 2016-12-31" } } }, MetaCatID: 542, ParentMetaCatRef: 541, Name: "Baseline 2016-12-31" }, { tuple: { old: { MetaCategory: { MetaCatID: 543, ParentMetaCatRef: 541, Name: "CLS step 3 2017-04-15" } } }, MetaCatID: 543, ParentMetaCatRef: 541, Name: "CLS step 3 2017-04-15" }] }, { tuple: { old: { MetaCategory: { MetaCatID: 365, ParentMetaCatRef: 0, Name: "Market" } } }, MetaCatID: 365, ParentMetaCatRef: 0, Name: "Market", subCategories: [{ tuple: { old: { MetaCategory: { MetaCatID: 366, ParentMetaCatRef: 365, Name: "Sector" } } }, MetaCatID: 366, ParentMetaCatRef: 365, Name: "Sector", subCategories: [{ tuple: { old: { MetaCategory: { MetaCatID: 463, ParentMetaCatRef: 366, Name: "term" } } }, MetaCatID: 463, ParentMetaCatRef: 366, Name: "term" }, { tuple: { old: { MetaCategory: { MetaCatID: 464, ParentMetaCatRef: 366, Name: "category" } } }, MetaCatID: 464, ParentMetaCatRef: 366, Name: "category" }, { tuple: { old: { MetaCategory: { MetaCatID: 367, ParentMetaCatRef: 366, Name: "Subsector" } } }, MetaCatID: 367, ParentMetaCatRef: 366, Name: "Subsector" }] }] }];
-			console.log(data);
-			console.log(search(data, function (o) { return o.MetaCatID > 500; }));
-			console.log(search(data, function (o) { return o.Name && o.Name.includes('P'); }));
-
-			document.getElementById("privTree1").innerHTML = JSON.stringify(search(data, function (o) { return o.MetaCatID > 500; }));
-			document.getElementById("privTree2").innerHTML = JSON.stringify(search(data, function (o) { return o.Name && o.Name.includes('P'); }));
-
-
-
-			for (var i = 0; i < data.length; i++) {
-			  tr = $('<tr/>');
-			  tr.append("<td>" + data[i].User_Name + "</td>");
-			  tr.append("<td>" + data[i].score + "</td>");
-			  tr.append("<td>" + data[i].team + "</td>");
-			  $('table').append(tr);
-			}
-
-
-
-			var tb = document.createElement("table");
-			if(data !=null) {
-			  var keyOfobj = Object.keys(data);
-			  var ValOfObj = Object.values(data);
-			  for (var i = 0; i < keyOfobj.length; i++) {
-			    var tr = document.createElement('tr');
-			    var td = document.createElement('td');
-			    var key = document.createTextNode(keyOfobj[i]);
-			    td.appendChild(key);
-			    tr.appendChild(td);
-			    tb.appendChild(tr);
-			    if(typeof(ValOfObj[i]) == "object") {
-			      if(ValOfObj[i] !=null) {
-			        tr.setAttribute("style","font-weight: bold");
-			        isObject(ValOfObj[i]);
-			      } else {
-			        var td = document.createElement('td');
-			        var value = document.createTextNode(ValOfObj[i]);
-			        td.appendChild(value);
-			        tr.appendChild(td);
-			        tb.appendChild(tr);
-			      }
-			    } else {
-			      var td = document.createElement('td');
-			      var value = document.createTextNode(ValOfObj[i]);
-			      td.appendChild(value);
-			      tr.appendChild(td);
-			      tb.appendChild(tr);
-			    }
-			  }
-			}
-			*/
-
-
-
-			/*
-			var l=document.createElement("link");l.rel="stylesheet";
-			l.href = "/ccmsusr/_css/font-awesome.min.css";
-			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
-			*/
-
-			/*
-			var l=document.createElement("link");l.rel="stylesheet";
-			l.href = "/ccmsusr/_css/pickle.css";
-			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
-			*/
-
 			function loadJSResources() {
 				/*loadFirst("/ccmsusr/_js/jquery-2.2.0.min.js", function() {*/
 				loadFirst("/ccmsusr/_js/jquery-3.6.0.min.js", function() {
-					/*loadFirst("/ccmsusr/_js/bootstrap-3.3.7.min.js", function() { */
-						loadFirst("/ccmsusr/_js/metisMenu-3.0.7.min.js", function() {
-							loadFirst("/ccmsusr/_js/custodiancms.js", function() {
+					loadFirst("/ccmsusr/_js/metisMenu-3.0.7.min.js", function() {
+						loadFirst("/ccmsusr/_js/custodiancms.js", function() {
 
-								/* user_dropdown START */
-								/* When the user clicks on the svg button add the 'show' class to the dropdown box below it. */
-								$("#user_dropdown_btn").click(function() {
-									$("#user_dropdown_list").addClass("show");
-								});
+							/* user_dropdown START */
+							/* When the user clicks on the svg button add the 'show' class to the dropdown box below it. */
+							$("#user_dropdown_btn").click(function() {
+								$("#user_dropdown_list").addClass("show");
+							});
 
-								/* Hide dropdown menu on click outside */
-								$(document).on("click", function(e){
-									if(!$(e.target).closest("#user_dropdown_btn").length){
-										$("#user_dropdown_list").removeClass("show");
-									}
-								});
-								/* user_dropdown END */
+							/* Hide dropdown menu on click outside */
+							$(document).on("click", function(e){
+								if(!$(e.target).closest("#user_dropdown_btn").length){
+									$("#user_dropdown_list").removeClass("show");
+								}
+							});
+							/* user_dropdown END */
 
-								loadFirst("/ccmsusr/_js/jquery-validate-1.19.3.min.js", function() {
+							loadFirst("/ccmsusr/_js/jquery-validate-1.19.3.min.js", function() {
+								loadFirst("/ccmsusr/_js/additional-methods-1.17.0.min.js", function() {
 
-									loadFirst("/ccmsusr/_js/additional-methods-1.17.0.min.js", function() {
-
-										//loadFirst("/ccmsusr/_js/pickletree.js", function() {
-
-
-/*
-//let data = '{}';
-let data = '<  ?= $ccms_user["priv"];?>';
-let target = '.root';
-jsonView.format(data, target);
-
-
-
-fetch('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/user_profile/priv_json.php').then((res)=> {
-	return res.text();
-}).then((data) => {
-	const tree = jsonview.create(data);
-	jsonview.render(tree, document.querySelector('.root'));
-	jsonview.expand(tree);
-}).catch((err) => {
-	console.log(err);
-})
-*/
-
-const data = {Parent: {img: "father.png",name: "Jan Doe",age: "50",children: [{child: {img: "child_1.png",name: "child 1",age: "25",},},{child: {img: "child_2.png",name: "child 2",age: "22",children: [{grandChild: {img: "child_3.png",name: "grand child 1",age: "12",},},],},},{child: {img: "child_4.png",name: "child 3",age: "16",children: [{grandChild: {img: "child_5.png",name: "grand child 1",age: "18",children: [{grandgrandChild: {img: "child_6.png",name: "great grand child 1",age: "13",},},{grandgrandChild: {img: "child_7.png",name: "great grand child 2",age: "10",},},],},},],},},],},};
 
 
 
@@ -708,86 +467,6 @@ const getDetails = (details) => {
 createList(data2);
 markupArray.push("</ul>");
 $("#privTree1").html(markupArray.join(""));
-
-
-
-
-
-
-
-
-
-
-
-
-//const data = '< ? = $ccms_user["priv"];?>';
-/*
-const data2 = '{sub: {dashboard: {rw: 1},admin: {rw: 0,sub: [{blacklist_settings: {rw: 1},github: {rw: 1},language_support: {rw: 1},other_controls: {rw: 1},user_privileges: {rw: 1}}]},content_groups: {rw: 1},content_manager: {rw: 0,lng: {ar: 1,bn: 1,de: 1,de-at: 1,de-ch: 1,de-de: 1,de-li: 1,de-lu: 1,en: 1,en-au: 1,en-bz: 1,en-ca: 1,en-gb: 1,en-ie: 1,en-jm: 1,en-nz: 1,en-ph: 1,en-tt: 1,en-us: 1,en-za: 1,en-zw: 1,es: 1,es-ar: 1,es-bo: 1,es-cl: 1,es-co: 1,es-cr: 1,es-do: 1,es-ec: 1,es-es: 1,es-gt: 1,es-hn: 1,es-mx: 1,es-ni: 1,es-pa: 1,es-pe: 1,es-pr: 1,es-py: 1,es-sv: 1,es-uy: 1,es-ve: 1,fr: 1,fr-be: 1,fr-ca: 1,fr-ch: 1,fr-fr: 1,fr-lu: 1,fr-mc: 1,he: 1,hi: 1,ja: 1,ko: 1,ko-kp: 1,ko-kr: 1,ms: 1,nb-no: 1,pt: 1,ru: 1,vi: 1,zh: 1,zh-cn: 1,zh-tw: 1}}}}';
-
-// array to hold HTML tags
-let markupArray2 = ["<ul>"];
-
-// evaluate expressions
-const createList2 = (items) => {
-	switch($.type(items)) {
-		case "object":
-			getItems2(items);
-			break;
-	}
-};
-
-// get items in the object
-const getItems2 = (items) => {
-	for(const item2 in items) {
-		markupArray2.push(`<li> <div class="test"><span>${item2}</span>`);
-		// fetch the parent object
-		let details2 = items[item2];
-		getDetails2(details2);
-		// push the closing tag for parent
-		markupArray2.push("</li>");
-	}
-};
-
-// get details2
-const getDetails2 = (details2) => {
-	// iterate over the detail2 items of object
-	for(const detail2 in details2) {
-		// fetch the value of each item2
-		if(detail2 == "img") {
-			markupArray2.push(
-				`<img src="./img/${details2[detail2]}" alt="${details2[detail2]}">`
-			);
-		} else if(detail2 == "children") {
-			markupArray2.push("</div><ul>");
-			details2[detail2].forEach((element) => {
-				getItems2(element);
-			});
-			markupArray2.push("</ul>");
-		} else {
-			markupArray2.push(`<span> ${details2[detail2]} </span>`);
-		}
-	}
-};
-
-createList2(data2);
-markupArray2.push("</ul>");
-$("#privTree2").html(markupArray2.join(""));
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1211,12 +890,9 @@ $("#privTree2").html(markupArray2.join(""));
 
 
 
-
-										//});
 									});
 								});
 							});
-						/*});*/
 					});
 				});
 			}
