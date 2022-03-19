@@ -696,7 +696,7 @@ const getDetails = (details) => {
 			});
 			markupArray.push("</ul>");
 		} else if(detail == "rw") {
-			cosole.log("is rw");
+			console.log("is rw");
 			markupArray.push(` rw: ${details}`);
 		} else {
 			markupArray.push(` rw: ${details}`);
