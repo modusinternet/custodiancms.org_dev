@@ -371,7 +371,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 			<div id="tab03Content" class="tabContent">
 				<p>
-					Areas and functionality of the 'User' area are broken down into 3 different privileges, Show, Read, and Write. These privileges are set for your account in the form of rw: 0 (Do not even show up in the site), rw: 1 (Show up in the site but read only), or rw: 2 (Read and writable).
+					Areas and functionality of the 'User' area are broken down into 3 different privileges, Show, Read, and Write. These privileges are set for your account in the form of rw: 0 (You can not even see it in the site), rw: 1 (Show up in the site but read only), or rw: 2 (Show up, read and writable).
 				</p>
 				<div id="privTree"></div>
 			</div>
