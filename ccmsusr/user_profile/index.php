@@ -371,7 +371,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 			<div id="tab03Content" class="tabContent">
 				<p>
-					Show, Read, and Write privileges are indecated in the JSON output for each area in the form of rw:0 (do not even show in the site), rw:1 (show up in the site but only readable), or rw:2 (read and writable).
+					Show, Read, and Write privileges are indecated in the JSON output for each area in the form of rw: 0 (Do not even show up in the site), rw: 1 (Show up in the site but only readable), or rw: 2 (Read and writable).
 				</p>
 				<div id="privTree"></div>
 			</div>
