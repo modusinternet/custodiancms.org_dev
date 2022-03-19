@@ -695,6 +695,8 @@ const getDetails = (details) => {
 				markupArray.push(`<li>${element} rw: ${details[detail][element]}</li>`);
 			});
 			markupArray.push("</ul>");
+		} else if(detail == "rw") {
+			markupArray.push(` rw: ${details}`);
 		} else {
 			markupArray.push(` rw: ${details}`);
 		}
