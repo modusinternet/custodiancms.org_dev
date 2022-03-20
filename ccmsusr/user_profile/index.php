@@ -371,7 +371,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 			<div id="tab03Content" class="tabContent">
 				<p>
-					Areas and functionality of the 'User' area are broken down into 3 different privileges, Show, Read, and Write. These privileges are set for your account in the form of rw: 0 (You can not even see it in the site), rw: 1 (Show up in the site but read only), or rw: 2 (Show up, read and writable).
+					Areas too and use of functions within the 'User' area are broken down into 3 different privileges.  No access, read only, or read and writable.
 				</p>
 				<div id="privTree"></div>
 			</div>
@@ -457,14 +457,11 @@ const getDetails = (details) => {
 				//markupArray.push(`<li>${element} (rw: ${details[detail][element]})</li>`);
 
 				if(`${details[detail][element]}` === `0`) {
-					markupArray.push(`<li>${element} (rw: ${details[detail][element]})</li>`);
-					console.log("0");
+					markupArray.push(`<li>${element} (No Access)</li>`);
 				} else if(`${details[detail][element]}` === `1`) {
-					markupArray.push(`<li>${element} (rw: ${details[detail][element]})</li>`);
-					console.log("1");
+					markupArray.push(`<li>${element} (Read Only)</li>`);
 				} else {
-					markupArray.push(`<li>${element} (rw: ${details[detail][element]})</li>`);
-					console.log("2");
+					markupArray.push(`<li>${element} (Read and Writtable)</li>`);
 				}
 
 			});
