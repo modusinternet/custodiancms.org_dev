@@ -461,15 +461,33 @@ const getDetails = (details) => {
 				} else if(`${details[detail][element]}` === `1`) {
 					markupArray.push(`<li>${element} (Read Only)</li>`);
 				} else {
-					markupArray.push(`<li>${element} (Read and Writtable)</li>`);
+					markupArray.push(`<li>${element} (Read and Writable)</li>`);
 				}
 
 			});
 			markupArray.push("</ul>");
 		} else if(detail == "rw") {
-			markupArray.push(` (rw: ${details[detail]})`);
+			//markupArray.push(` (rw: ${details[detail]})`);
+
+			if(`${details[detail]}` === `0`) {
+				markupArray.push(` (No Access)`);
+			} else if(`${details[detail]}` === `1`) {
+				markupArray.push(` (Read Only)`);
+			} else {
+				markupArray.push(` (Read and Writable)`);
+			}
+
 		} else {
-			markupArray.push(` (rw: ${details})`);
+			//markupArray.push(` (rw: ${details})`);
+
+			if(`${details}` === `0`) {
+				markupArray.push(` (No Access)`);
+			} else if(`${details}` === `1`) {
+				markupArray.push(` (Read Only)`);
+			} else {
+				markupArray.push(` (Read and Writable)`);
+			}
+
 		}
 	}
 };
