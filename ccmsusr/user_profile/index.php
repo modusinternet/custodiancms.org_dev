@@ -425,6 +425,9 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 
+
+
+
 // Show, Read, and Write privileges are indecated in the JSON output for each area in the form of rw:0 (do not even show in the site), rw:1 (show up in the site but only readable), rw:2 (read and writable).
 const data = JSON.parse(JSON.stringify(<?= $ccms_user["priv"];?>));
 
@@ -450,7 +453,7 @@ const getItems = (items) => {
 };
 
 const getDetails = (details) => {
-  for(const detail in details) {
+	for(const detail in details) {
 		if(detail == "sub") {
 			markupArray.push("<ul>");
 			Object.keys(details[detail]).forEach((element) => {
