@@ -461,7 +461,7 @@ const getDetails = (details) => {
 				} else if(`${details[detail][element]}` === `1`) {
 					markupArray.push(`<li>${element} (Read Only)</li>`);
 				} else {
-					markupArray.push(`<li>${element} (Read and Writable)</li>`);
+					markupArray.push(`<li>${element} (Read and Write)</li>`);
 				}
 
 			});
@@ -474,7 +474,7 @@ const getDetails = (details) => {
 			} else if(`${details[detail]}` === `1`) {
 				markupArray.push(` (Read Only)`);
 			} else {
-				markupArray.push(` (Read and Writable)`);
+				markupArray.push(` (Read and Write)`);
 			}
 
 		} else {
@@ -485,7 +485,7 @@ const getDetails = (details) => {
 			} else if(`${details}` === `1`) {
 				markupArray.push(` (Read Only)`);
 			} else {
-				markupArray.push(` (Read and Writable)`);
+				markupArray.push(` (Read and Write)`);
 			}
 
 		}
