@@ -457,11 +457,11 @@ const getDetails = (details) => {
 				//markupArray.push(`<li>${element} (rw: ${details[detail][element]})</li>`);
 
 				if(`${details[detail][element]}` === `0`) {
-					markupArray.push(`<li style="var(--cl11)">${element} (No Access)</li>`);
+					markupArray.push(`<li style="color:var(--cl11)">${element} (No Access)</li>`);
 				} else if(`${details[detail][element]}` === `1`) {
-					markupArray.push(`<li style="var(--cl4)">${element} (Read Only)</li>`);
+					markupArray.push(`<li style="color:var(--cl4)">${element} (Read Only)</li>`);
 				} else {
-					markupArray.push(`<li style="var(--cl3)">${element} (Read and Write)</li>`);
+					markupArray.push(`<li style="color:var(--cl3)">${element} (Read and Write)</li>`);
 				}
 
 			});
