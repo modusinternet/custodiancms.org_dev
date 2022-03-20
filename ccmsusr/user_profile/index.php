@@ -457,11 +457,11 @@ const getDetails = (details) => {
 				//markupArray.push(`<li>${element} (rw: ${details[detail][element]})</li>`);
 
 				if(`${details[detail][element]}` === `0`) {
-					markupArray.push(`<li style="color:var(--cl11)">${element} (No Access)</li>`);
+					markupArray.push(`<li>${element} <span style="color:var(--cl11)">(No Access)</span></li>`);
 				} else if(`${details[detail][element]}` === `1`) {
-					markupArray.push(`<li style="color:var(--cl4)">${element} (Read Only)</li>`);
+					markupArray.push(`<li>${element} <span style="color:var(--cl4)">(Read Only)</span></li>`);
 				} else {
-					markupArray.push(`<li style="color:var(--cl3)">${element} (Read and Write)</li>`);
+					markupArray.push(`<li>${element} <span style="color:var(--cl3)">(Read and Write)</span></li>`);
 				}
 
 			});
@@ -470,22 +470,22 @@ const getDetails = (details) => {
 			//markupArray.push(` (rw: ${details[detail]})`);
 
 			if(`${details[detail]}` === `0`) {
-				markupArray.push(` (No Access)`);
+				markupArray.push(` <span style="color:var(--cl11)">(No Access)</span>`);
 			} else if(`${details[detail]}` === `1`) {
-				markupArray.push(` (Read Only)`);
+				markupArray.push(` <span style="color:var(--cl4)">(Read Only)</span>`);
 			} else {
-				markupArray.push(` (Read and Write)`);
+				markupArray.push(` <span style="color:var(--cl3)">(Read and Write)</span>`);
 			}
 
 		} else {
 			//markupArray.push(` (rw: ${details})`);
 
 			if(`${details}` === `0`) {
-				markupArray.push(` (No Access)`);
+				markupArray.push(` <span style="color:var(--cl11)">(No Access)</span>`);
 			} else if(`${details}` === `1`) {
-				markupArray.push(` (Read Only)`);
+				markupArray.push(` <span style="color:var(--cl4)">(Read Only)</span>`);
 			} else {
-				markupArray.push(` (Read and Write)`);
+				markupArray.push(` <span style="color:var(--cl3)">(Read and Write)</span>`);
 			}
 
 		}
