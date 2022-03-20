@@ -125,9 +125,9 @@ function ccms_user_admin_slider() {
 		$json_a = json_decode($_SESSION["PRIV"], true);
 	}
 
-echo "asdfasdf=" . $json_a["priv"]["content_manager"]["r"];
+echo "asdfasdf=" . $json_a["content_manager"]["rw"];
 
-	if(($json_a["priv"]["content_manager"]["r"] ?? null) == 1): ?>
+	if(($json_a["content_manager"]["rw"] ?? null) == 1): ?>
 <style>
 	#CCMSTab-slide{
 		font:600 20px/32px "Open Sans",sans-serif;
