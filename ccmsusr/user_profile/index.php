@@ -459,7 +459,7 @@ const getDetails = (details) => {
 				if(`${details[detail][element]}` === `0`) {
 					markupArray.push(`<li>${element} (rw: ${details[detail][element]})</li>`);
 					console.log("0");
-				} else if(${details[detail][element]} === 1) {
+				} else if(`${details[detail][element]}` === `1`) {
 					markupArray.push(`<li>${element} (rw: ${details[detail][element]})</li>`);
 					console.log("1");
 				} else {
