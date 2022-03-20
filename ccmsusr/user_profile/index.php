@@ -454,7 +454,19 @@ const getDetails = (details) => {
 		if(detail == "sub") {
 			markupArray.push("<ul>");
 			Object.keys(details[detail]).forEach((element) => {
-				markupArray.push(`<li>${element} (rw: ${details[detail][element]})</li>`);
+				//markupArray.push(`<li>${element} (rw: ${details[detail][element]})</li>`);
+
+				if(${details[detail][element]} === 0) {
+					markupArray.push(`<li>${element} (rw: ${details[detail][element]})</li>`);
+					console.log("0");
+				} else if(${details[detail][element]} === 1) {
+					markupArray.push(`<li>${element} (rw: ${details[detail][element]})</li>`);
+					console.log("1");
+				} else {
+					markupArray.push(`<li>${element} (rw: ${details[detail][element]})</li>`);
+					console.log("2");
+				}
+
 			});
 			markupArray.push("</ul>");
 		} else if(detail == "rw") {
