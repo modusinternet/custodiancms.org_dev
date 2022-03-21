@@ -472,8 +472,8 @@ const getDetails = (details) => {
 		} else if(detail == "rw") {
 			//markupArray.push(` (rw: ${details[detail]})`);
 
-			console.log("details=["+details+"]");
-			console.log("details[detail]=["+details[detail]+"]");
+			//console.log("details=["+details+"]");
+			//console.log("details[detail]=["+details[detail]+"]");
 
 			if(`${details[detail]}` === "0") {
 				markupArray.push(` <span style="color:var(--cl11)">(No Access)</span>`);
@@ -485,6 +485,9 @@ const getDetails = (details) => {
 
 		} else {
 			//markupArray.push(` (rw: ${details})`);
+
+			console.log("details=["+details+"]");
+			//console.log("details[detail]=["+details[detail]+"]");
 
 			if(`${details}` === "0") {
 				markupArray.push(` <span style="color:var(--cl11)">(No Access)</span>`);
