@@ -446,9 +446,9 @@ const getItems = (items) => {
 				if(`${items[item]}` === "0") {
 					markupArray.push(` <span style="color:var(--cl11)">(No Access)</span>`);
 				} else if(`${items[item]}` === "1") {
-					markupArray.push(` <span style="color:var(--cl4)">(Read Only Access)</span>`);
+					markupArray.push(` <span style="color:var(--cl4)">(Read Only)</span>`);
 				} else {
-					markupArray.push(` <span style="color:var(--cl3)">(Read and Write Access)</span>`);
+					markupArray.push(` <span style="color:var(--cl3)">(Read and Write)</span>`);
 				}
 		}
 		markupArray.push("</li>");
@@ -464,9 +464,9 @@ const getDetails = (details) => {
 				if(`${details[detail][element]}` === "0") {
 					markupArray.push(`<li>${element} <span style="color:var(--cl11)">(No Access)</span></li>`);
 				} else if(`${details[detail][element]}` === "1") {
-					markupArray.push(`<li>${element} <span style="color:var(--cl4)">(Read Only Access)</span></li>`);
+					markupArray.push(`<li>${element} <span style="color:var(--cl4)">(Read Only)</span></li>`);
 				} else {
-					markupArray.push(`<li>${element} <span style="color:var(--cl3)">(Read and Write Access)</span></li>`);
+					markupArray.push(`<li>${element} <span style="color:var(--cl3)">(Read and Write)</span></li>`);
 				}
 			});
 			markupArray.push("</ul>");
@@ -475,9 +475,9 @@ const getDetails = (details) => {
 			if(`${details[detail]}` === "0") {
 				markupArray.push(` <span style="color:var(--cl11)">(No Access)</span>`);
 			} else if(`${details[detail]}` === "1") {
-				markupArray.push(` <span style="color:var(--cl4)">(Read Only Access)</span>`);
+				markupArray.push(` <span style="color:var(--cl4)">(Read Only)</span>`);
 			} else {
-				markupArray.push(` <span style="color:var(--cl3)">(Read and Write Access)</span>`);
+				markupArray.push(` <span style="color:var(--cl3)">(Read and Write)</span>`);
 			}
 		} else {
 			//markupArray.push(` ${details}`);
