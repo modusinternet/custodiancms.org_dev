@@ -287,8 +287,13 @@ function ccms_user_admin_slider() {
 
 				//Find out if it's read and writable in privileges
 				var rwPriv = el.getAttribute("data-ccms-rw");
+				if(rwPriv === 1) {
+					rwPriv = ' disabled';
+				} else {
+					rwPriv = '';
+				}
 
-				var editbtn = $('<button class="CCMS-editor-but CCMS-editor-editbut"<? if(rwPriv === 1) {echo ' disabled';}?>>Edit</button>');
+				var editbtn = $('<button class="CCMS-editor-but CCMS-editor-editbut"'+rwPriv+'>Edit</button>');
 
 
 
