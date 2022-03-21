@@ -285,7 +285,15 @@ function ccms_user_admin_slider() {
 
 //console.log('json_a=['+'< ? = var_dump($json_a);?>'+']');
 
-				var editbtn = $('<button class="CCMS-editor-but CCMS-editor-editbut"<? if($json_a["content_manager"]["sub"][$row["lng"]] === 1) {echo ' disabled';}?>>Edit</button>');
+				//Find out if it's read and writable in privileges
+				textOrig[4] = el.getAttribute("data-ccms-rw");
+
+				var editbtn = $('<button class="CCMS-editor-but CCMS-editor-editbut"<? if(textOrig[4] === 1) {echo ' disabled';}?>>Edit</button>');
+
+
+
+
+
 				var savebtn = $('<button class="CCMS-editor-but CCMS-editor-savebut hidden">Save</button>');
 				var cancelbtn = $('<button class="CCMS-editor-but hidden">Cancel</button>');
 				$(editbtn).prependTo($(el).parent());
