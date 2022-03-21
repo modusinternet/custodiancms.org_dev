@@ -435,6 +435,7 @@ const data = JSON.parse(JSON.stringify(<?= $ccms_user["priv"];?>));
 let markupArray = ["<ul>"];
 
 // evaluate expressions
+/*
 const createList = (items) => {
 	switch($.type(items)) {
 		case "object":
@@ -444,6 +445,7 @@ const createList = (items) => {
 
 	}
 };
+*/
 
 const getItems = (items) => {
 	for(const item in items) {
@@ -486,9 +488,6 @@ const getDetails = (details) => {
 		} else if(detail == "rw") {
 			//markupArray.push(` (rw: ${details[detail]})`);
 
-			//console.log("details=["+details+"]");
-			//console.log("details[detail]=["+details[detail]+"]");
-
 			if(`${details[detail]}` === "0") {
 				markupArray.push(` <span style="color:var(--cl11)">(No Access)</span>`);
 			} else if(`${details[detail]}` === "1") {
@@ -500,16 +499,7 @@ const getDetails = (details) => {
 		} else {
 			//markupArray.push(` (rw: ${details})`);
 
-			console.log("details=["+details+"]");
-			//console.log("details[detail]=["+details[detail]+"]");
-
-			if(`${details}` === "0") {
-				markupArray.push(` <span style="color:var(--cl11)">(No Access)</span>`);
-			} else if(`${details}` === "1") {
-				markupArray.push(` <span style="color:var(--cl4)">(Read Only)</span>`);
-			} else {
-				markupArray.push(` <span style="color:var(--cl3)">(Read and Write)</span>`);
-			}
+			markupArray.push(` *** ${details} ***`);
 
 		}
 	}
