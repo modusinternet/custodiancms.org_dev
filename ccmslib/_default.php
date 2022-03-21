@@ -125,16 +125,6 @@ function ccms_user_admin_slider() {
 		$json_a = json_decode($_SESSION["PRIV"], true);
 	}
 
-
-
-
-
-	//echo "asdfasdf=" . var_dump($json_a);
-	echo "asdfasdf=[" . $json_a["content_manager"]["rw"] . "]";
-	//echo "asdfasdf=" . $_SESSION["PRIV"];
-
-
-
 	if(($json_a["content_manager"]["rw"] ?? null) == 1): ?>
 <style>
 	#CCMSTab-slide{
@@ -186,7 +176,7 @@ function ccms_user_admin_slider() {
 		$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_lng_charset` ORDER BY lngDesc ASC;");
 		if($qry->execute()) {
 			while($row = $qry->fetch()) {
-				if($json_a["priv"]["content_manager"]["r"] == 1 || $json_a["priv"]["content_manager"]["lng"][$row["lng"]] == 2) {
+				if($json_a["content_manager"]["rw"] == 1 || $json_a["content_manager"]["sub"][$row["lng"]] == 1 || $json_a["content_manager"]["sub"][$row["lng"]] == 2) {
 					if($row["ptrLng"]) {
 						echo "<li id=\"ccms_lng-" . $row["lng"] . "\"><a href=\"/" . $row["ptrLng"] . "/" . $tpl . "\" title=\"Points to lng code: " . $row["ptrLng"] . "\">" . $row["lngDesc"] . "</a></li>";
 					} else {
