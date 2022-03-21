@@ -176,15 +176,17 @@ function ccms_user_admin_slider() {
 		$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_lng_charset` ORDER BY lngDesc ASC;");
 		if($qry->execute()) {
 			while($row = $qry->fetch()) {
-				if($json_a["content_manager"]["rw"] == 1 || $json_a["content_manager"]["sub"][$row["lng"]] == 1 || $json_a["content_manager"]["sub"][$row["lng"]] == 2) {
+				if($json_a["content_manager"]["rw"] === 1 || $json_a["content_manager"]["sub"][$row["lng"]] !== 0) {
 					if($row["ptrLng"]) {
-						echo "<li id=\"ccms_lng-" . $row["lng"] . "\"><a href=\"/" . $row["ptrLng"] . "/" . $tpl . "\" title=\"Points to lng code: " . $row["ptrLng"] . "\">" . $row["lngDesc"] . "</a></li>";
+						echo '<li id="ccms_lng-' . $row["lng"] . '"><a href="/' . $row["ptrLng"] . '/' . $tpl . '" title="Points to lng code: ' . $row["ptrLng"] . '">' . $row["lngDesc"] . '</a></li>';
 					} else {
-						echo "<li id=\"ccms_lng-" . $row["lng"] . "\"";
+						echo '<li id="ccms_lng-' . $row["lng"] . '"';
 
-if($row["lng"] === $CLEAN["ccms_lng"]){echo ' style="text-decoration:underline dashed"';}
+						if($row["lng"] === $CLEAN["ccms_lng"]){
+							echo ' style="text-decoration:underline dashed"';
+						}
 
-						echo "><a href=\"/" . $row["lng"] . "/" . $tpl . "\" title=\"lng code: " . $row["lng"] . "\">" . $row["lngDesc"] . "</a></li>";
+						echo '><a href="/' . $row["lng"] . '/' . $tpl . '" title="lng code: ' . $row["lng"] . '">' . $row["lngDesc"] . '</a></li>';
 					}
 				}
 			}
@@ -255,14 +257,34 @@ if($row["lng"] === $CLEAN["ccms_lng"]){echo ' style="text-decoration:underline d
 
 			NodeList.prototype.forEach = Array.prototype.forEach;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 			var divs = document.querySelectorAll('[data-ccms]').forEach(function(el) {
 				var textOrig = [], textNew = null, editor = null;
 				// We add a new class to the node containing the data-ccms attribute.  This generates the box.
 				el.className += " CCMSEdit-edit-link-border";
 				$(el).wrap("<div class=\"CCMS-wrap\"/>");
-				var editbtn = $("<button class=\"CCMS-editor-but CCMS-editor-editbut\">Edit</button>");
-				var savebtn = $("<button class=\"CCMS-editor-but CCMS-editor-savebut hidden\">Save</button>");
-				var cancelbtn = $("<button class=\"CCMS-editor-but hidden\">Cancel</button>");
+				var editbtn = $('<button class="CCMS-editor-but CCMS-editor-editbut"<? if($json_a["content_manager"]["sub"][$row["lng"]] === 1) {echo ' disabled';}?>>Edit</button>');
+				var savebtn = $('<button class="CCMS-editor-but CCMS-editor-savebut hidden">Save</button>');
+				var cancelbtn = $('<button class="CCMS-editor-but hidden">Cancel</button>');
 				$(editbtn).prependTo($(el).parent());
 				$(savebtn).prependTo($(el).parent());
 				$(cancelbtn).prependTo($(el).parent());
@@ -309,6 +331,26 @@ if($row["lng"] === $CLEAN["ccms_lng"]){echo ' style="text-decoration:underline d
 						$("#CCMS-loadingSpinner").fadeOut();
 					});
 				});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 				$(savebtn).click(function() {
 					if(textOrig[1] != $(el).find('textarea').val()) {
