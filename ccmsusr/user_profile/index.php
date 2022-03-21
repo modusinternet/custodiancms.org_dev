@@ -371,7 +371,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 			<div id="tab03Content" class="tabContent">
 				<p>
-					Access too and use of functions within the 'User' area are broken down into 3 different privileges.  No access, read only, or read and writable.
+					Access too and the use of functions within the 'User' area are broken into 3 privilege levels.  No access, read only access, or read and write access.
 				</p>
 				<div id="privTree"></div>
 			</div>
@@ -434,19 +434,6 @@ const data = JSON.parse(JSON.stringify(<?= $ccms_user["priv"];?>));
 // array to hold HTML tags
 let markupArray = ["<ul>"];
 
-// evaluate expressions
-/*
-const createList = (items) => {
-	switch($.type(items)) {
-		case "object":
-			getItems(items);
-			break;
-		default:
-
-	}
-};
-*/
-
 const getItems = (items) => {
 	for(const item in items) {
 		markupArray.push(`<li>${item}`);
@@ -459,9 +446,9 @@ const getItems = (items) => {
 				if(`${items[item]}` === "0") {
 					markupArray.push(` <span style="color:var(--cl11)">(No Access)</span>`);
 				} else if(`${items[item]}` === "1") {
-					markupArray.push(` <span style="color:var(--cl4)">(Read Only)</span>`);
+					markupArray.push(` <span style="color:var(--cl4)">(Read Only Access)</span>`);
 				} else {
-					markupArray.push(` <span style="color:var(--cl3)">(Read and Write)</span>`);
+					markupArray.push(` <span style="color:var(--cl3)">(Read and Write Access)</span>`);
 				}
 		}
 		markupArray.push("</li>");
@@ -473,34 +460,28 @@ const getDetails = (details) => {
 		if(detail == "sub") {
 			markupArray.push("<ul>");
 			Object.keys(details[detail]).forEach((element) => {
-				//markupArray.push(`<li>${element} (rw: ${details[detail][element]})</li>`);
-
+				//markupArray.push(`<li>${element} ${details[detail][element]}</li>`);
 				if(`${details[detail][element]}` === "0") {
 					markupArray.push(`<li>${element} <span style="color:var(--cl11)">(No Access)</span></li>`);
 				} else if(`${details[detail][element]}` === "1") {
-					markupArray.push(`<li>${element} <span style="color:var(--cl4)">(Read Only)</span></li>`);
+					markupArray.push(`<li>${element} <span style="color:var(--cl4)">(Read Only Access)</span></li>`);
 				} else {
-					markupArray.push(`<li>${element} <span style="color:var(--cl3)">(Read and Write)</span></li>`);
+					markupArray.push(`<li>${element} <span style="color:var(--cl3)">(Read and Write Access)</span></li>`);
 				}
-
 			});
 			markupArray.push("</ul>");
 		} else if(detail == "rw") {
-			//markupArray.push(` (rw: ${details[detail]})`);
-
+			//markupArray.push(` ${details[detail]}`);
 			if(`${details[detail]}` === "0") {
 				markupArray.push(` <span style="color:var(--cl11)">(No Access)</span>`);
 			} else if(`${details[detail]}` === "1") {
-				markupArray.push(` <span style="color:var(--cl4)">(Read Only)</span>`);
+				markupArray.push(` <span style="color:var(--cl4)">(Read Only Access)</span>`);
 			} else {
-				markupArray.push(` <span style="color:var(--cl3)">(Read and Write)</span>`);
+				markupArray.push(` <span style="color:var(--cl3)">(Read and Write Access)</span>`);
 			}
-
 		} else {
-			//markupArray.push(` (rw: ${details})`);
-
-			markupArray.push(` *** ${details} ***`);
-
+			//markupArray.push(` ${details}`);
+			console.log(`json details=[${details}]`);
 		}
 	}
 };
