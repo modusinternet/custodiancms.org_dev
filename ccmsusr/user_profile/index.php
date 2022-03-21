@@ -459,9 +459,9 @@ const getDetails = (details) => {
 			Object.keys(details[detail]).forEach((element) => {
 				//markupArray.push(`<li>${element} (rw: ${details[detail][element]})</li>`);
 
-				if(`${details[detail][element]}` === `0`) {
+				if(`${details[detail][element]}` === 0) {
 					markupArray.push(`<li>${element} <span style="color:var(--cl11)">(No Access)</span></li>`);
-				} else if(`${details[detail][element]}` === `1`) {
+				} else if(`${details[detail][element]}` === 1) {
 					markupArray.push(`<li>${element} <span style="color:var(--cl4)">(Read Only)</span></li>`);
 				} else {
 					markupArray.push(`<li>${element} <span style="color:var(--cl3)">(Read and Write)</span></li>`);
@@ -472,9 +472,9 @@ const getDetails = (details) => {
 		} else if(detail == "rw") {
 			//markupArray.push(` (rw: ${details[detail]})`);
 
-			if(`${details[detail]}` === `0`) {
+			if(`${details[detail]}` === 0) {
 				markupArray.push(` <span style="color:var(--cl11)">(No Access)</span>`);
-			} else if(`${details[detail]}` === `1`) {
+			} else if(`${details[detail]}` === 1) {
 				markupArray.push(` <span style="color:var(--cl4)">(Read Only)</span>`);
 			} else {
 				markupArray.push(` <span style="color:var(--cl3)">(Read and Write)</span>`);
@@ -483,9 +483,9 @@ const getDetails = (details) => {
 		} else {
 			//markupArray.push(` (rw: ${details})`);
 
-			if(`${details}` === `0`) {
+			if(`${details}` === 0) {
 				markupArray.push(` <span style="color:var(--cl11)">(No Access)</span>`);
-			} else if(`${details}` === `1`) {
+			} else if(`${details}` === 1) {
 				markupArray.push(` <span style="color:var(--cl4)">(Read Only)</span>`);
 			} else {
 				markupArray.push(` <span style="color:var(--cl3)">(Read and Write)</span>`);
