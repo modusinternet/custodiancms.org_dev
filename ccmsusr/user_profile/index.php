@@ -445,6 +445,10 @@ const createList = (items) => {
 
 const getItems = (items) => {
 	for(const item in items) {
+
+		console.log("items=["+items+"]");
+		console.log("items[item]=["+items[item]+"]");
+
 		markupArray.push(`<li>${item}`);
 		let details = items[item];
 		getDetails(details);
