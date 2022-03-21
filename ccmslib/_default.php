@@ -257,26 +257,6 @@ function ccms_user_admin_slider() {
 
 			NodeList.prototype.forEach = Array.prototype.forEach;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 			var divs = document.querySelectorAll('[data-ccms]').forEach(function(el) {
 				var textOrig = [], textNew = null, editor = null;
 				// We add a new class to the node containing the data-ccms attribute.  This generates the box.
@@ -285,12 +265,12 @@ function ccms_user_admin_slider() {
 
 				//Find out if it's read and writable in privileges
 				var rwPriv = el.getAttribute("data-ccms-rw");
-				if(rwPriv == "1") {
-					// read only
-					rwPriv = '<button class="CCMS-editor-but CCMS-editor-editbut" disabled style="text-decoration:line-through" title="Read Only">Edit</button>';
-				} else {
+				if(rwPriv == "2") {
 					// read and writable
 					rwPriv = '<button class="CCMS-editor-but CCMS-editor-editbut">Edit</button>';
+				} else {
+					// read only
+					rwPriv = '<button class="CCMS-editor-but CCMS-editor-editbut" disabled style="text-decoration:line-through" title="Read Only">Edit</button>';
 				}
 
 				var editbtn = $(rwPriv);
@@ -342,26 +322,6 @@ function ccms_user_admin_slider() {
 						$("#CCMS-loadingSpinner").fadeOut();
 					});
 				});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 				$(savebtn).click(function() {
 					if(textOrig[1] != $(el).find('textarea').val()) {
