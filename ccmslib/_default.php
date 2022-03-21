@@ -281,7 +281,10 @@ function ccms_user_admin_slider() {
 				var textOrig = [], textNew = null, editor = null;
 				// We add a new class to the node containing the data-ccms attribute.  This generates the box.
 				el.className += " CCMSEdit-edit-link-border";
-				$(el).wrap("<div class=\"CCMS-wrap\"/>");
+				$(el).wrap('<div class="CCMS-wrap">');
+
+console.log('json_a["content_manager"]["sub"][$row["lng"]]=['+'<?= $json_a["content_manager"]["sub"][$row["lng"]];?>'+']');
+
 				var editbtn = $('<button class="CCMS-editor-but CCMS-editor-editbut"<? if($json_a["content_manager"]["sub"][$row["lng"]] === 1) {echo ' disabled';}?>>Edit</button>');
 				var savebtn = $('<button class="CCMS-editor-but CCMS-editor-savebut hidden">Save</button>');
 				var cancelbtn = $('<button class="CCMS-editor-but hidden">Cancel</button>');
