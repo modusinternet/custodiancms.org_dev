@@ -371,7 +371,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 			<div id="tab03Content" class="tabContent">
 				<p>
-					Access too and the use of functions within the 'User' area are broken into 3 privilege levels.  No access, read only access, or read and write access.
+					Access too and the use of functions within the 'User' area are broken into 3 privilege levels.  <span style="color:var(--cl11)">No access</span>, <span style="color:var(--cl4)">read only access</span>, or <span style="color:var(--cl3)">read and write access</span>.
 				</p>
 				<div id="privTree"></div>
 			</div>
