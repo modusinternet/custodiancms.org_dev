@@ -287,7 +287,7 @@ function ccms_user_admin_slider() {
 				var rwPriv = el.getAttribute("data-ccms-rw");
 console.log('rwPriv=['+rwPriv+']');
 
-				if(rwPriv === 1) {
+				if(rwPriv == "1") {
 					// read only
 					rwPriv = '<button class="CCMS-editor-but CCMS-editor-editbut" disabled style="text-decoration:line-through">Edit</button>';
 				} else {
