@@ -447,18 +447,6 @@ const createList = (items) => {
 
 const getItems = (items) => {
 	for(const item in items) {
-
-		console.log("items=["+items+"]");
-		console.log("items[item]=["+items[item]+"]");
-
-		/*
-		markupArray.push(`<li>${item}`);
-		let details = items[item];
-		getDetails(details);
-		markupArray.push("</li>");
-		*/
-
-
 		markupArray.push(`<li>${item}`);
 		switch($.type(items[item])) {
 			case "object":
@@ -475,15 +463,6 @@ const getItems = (items) => {
 				}
 		}
 		markupArray.push("</li>");
-
-
-
-
-
-
-
-
-
 	}
 };
 
@@ -536,7 +515,8 @@ const getDetails = (details) => {
 	}
 };
 
-createList(data);
+//createList(data);
+getItems(data);
 markupArray.push("</ul>");
 $("#privTree").html(markupArray.join(""));
 
