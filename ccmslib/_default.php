@@ -283,10 +283,10 @@ function ccms_user_admin_slider() {
 				el.className += " CCMSEdit-edit-link-border";
 				$(el).wrap('<div class="CCMS-wrap">');
 
-//console.log('json_a=['+'< ? = var_dump($json_a);?>'+']');
-
 				//Find out if it's read and writable in privileges
 				var rwPriv = el.getAttribute("data-ccms-rw");
+console.log('rwPriv=['+rwPriv+']');
+
 				if(rwPriv === 1) {
 					// read only
 					rwPriv = '<button class="CCMS-editor-but CCMS-editor-editbut" disabled style="text-decoration:line-through">Edit</button>';
