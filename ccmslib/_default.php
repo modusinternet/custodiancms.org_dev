@@ -125,8 +125,15 @@ function ccms_user_admin_slider() {
 		$json_a = json_decode($_SESSION["PRIV"], true);
 	}
 
+
+
+
+
+	echo "asdfasdf=" . var_dump($json_a);
 	//echo "asdfasdf=" . $json_a["content_manager"]["rw"];
-	echo "asdfasdf=" . $_SESSION["PRIV"];
+	//echo "asdfasdf=" . $_SESSION["PRIV"];
+
+
 
 	if(($json_a["content_manager"]["rw"] ?? null) == 1): ?>
 <style>
