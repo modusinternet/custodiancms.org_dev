@@ -440,6 +440,8 @@ const createList = (items) => {
 		case "object":
 			getItems(items);
 			break;
+		default:
+
 	}
 };
 
@@ -449,10 +451,39 @@ const getItems = (items) => {
 		console.log("items=["+items+"]");
 		console.log("items[item]=["+items[item]+"]");
 
+		/*
 		markupArray.push(`<li>${item}`);
 		let details = items[item];
 		getDetails(details);
 		markupArray.push("</li>");
+		*/
+
+
+		markupArray.push(`<li>${item}`);
+		switch($.type(items[item])) {
+			case "object":
+				let details = items[item];
+				getDetails(details);
+				break;
+			default:
+				if(`${items[item]}` === "0") {
+					markupArray.push(` <span style="color:var(--cl11)">(No Access)</span>`);
+				} else if(`${items[item]}` === "1") {
+					markupArray.push(` <span style="color:var(--cl4)">(Read Only)</span>`);
+				} else {
+					markupArray.push(` <span style="color:var(--cl3)">(Read and Write)</span>`);
+				}
+		}
+		markupArray.push("</li>");
+
+
+
+
+
+
+
+
+
 	}
 };
 
