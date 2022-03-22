@@ -300,6 +300,11 @@ function ccms_user_admin_slider() {
 							$(savebtn).addClass("hidden");
 							$(cancelbtn).addClass("hidden");
 							return;
+						} else if(msg === '{"error":"Session Error"}') {
+							alert("Session error, changes not saved.");
+						} else {
+							alert(msg);
+							//console.log(msg);
 						}
 						textOrig[1] = $.trim($(el).html());
 						$(el).html("");
