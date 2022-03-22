@@ -26,7 +26,7 @@ if(isset($_SESSION['EXPIRED']) == "1") {
 	$json_a = json_decode($_SESSION["PRIV"], true);
 
 	//echo $_SESSION["PRIV"];
-	echo $json_a["content_manager"]["sub"][$CLEAN["ccms_lng"]];
+	echo "asdf=[".$json_a["content_manager"]["sub"][$CLEAN["ccms_lng"]]."]";
 	die;
 }
 
