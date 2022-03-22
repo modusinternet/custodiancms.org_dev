@@ -10,24 +10,11 @@ if (!strstr($_SERVER["HTTP_REFERER"], $CFG["DOMAIN"])) {
 	exit("Invalid submission, your POST does not appeared to have been submitted from the " . $CFG["DOMAIN"] . " website.");
 }
 
-/*
-if (!ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
-    exit("There is a problem with your message, it can not be posted using this form from your current IP Address.  Please contact the website administrators directly by either phone or email if you feel this message is in error for more information.");
-}
-*/
-
-
-
 if(isset($_SESSION['EXPIRED']) == "1") {
 	// Session expired
-
 	$error = "Session Expried";
 } else{
 	$json_a = json_decode($_SESSION["PRIV"], true);
-
-	//echo $_SESSION["PRIV"];
-	//echo "asdf=[".$json_a["content_manager"]["sub"][$CLEAN["ccms_lng"]]."]";
-	//die;
 }
 
 if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
