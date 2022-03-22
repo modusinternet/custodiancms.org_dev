@@ -26,14 +26,14 @@ if(isset($_SESSION['EXPIRED']) == "1") {
 	$json_a = json_decode($_SESSION["PRIV"], true);
 
 	//echo $_SESSION["PRIV"];
-	echo "asdf=[".$json_a["content_manager"]["sub"][$CLEAN["ccms_lng"]]."]";
-	die;
+	//echo "asdf=[".$json_a["content_manager"]["sub"][$CLEAN["ccms_lng"]]."]";
+	//die;
 }
 
 if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
 	$error = "There is a problem with your login, your IP Address is currently being blocked.  Please contact the website administrators directly if you feel this message is in error.";
 
-} elseif($json_a["content_manager"]["rw"] !== 1 && $json_a["content_manager"]["sub"][$CLEAN["ccms_lng"]] !== 2) {
+} elseif($json_a["content_manager"]["rw"] !== "1" && $json_a["content_manager"]["sub"][$CLEAN["ccms_lng"]] !== "2") {
 	$error = "You are not permitted to make edits to content in this language, at this time.  Double check your privileges in the user/admin area.\n";
 
 } elseif ($CLEAN["ccms_ins_db_id"] == "") {
