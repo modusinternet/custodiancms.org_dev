@@ -16,18 +16,32 @@ if (!ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
 }
 */
 
-if(isset($_SESSION['EXPIRED']) == "1") {
+//if(isset($_SESSION['EXPIRED']) == "1") {
 	// Session expired
 
+	//$error = "Session Expried";
+if(isset($_SESSION['EXPIRED']) == "1") {
+	// Session expired
 	$error = "Session Expried";
-} elseif(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
+} else{
+	$json_a = json_decode($_SESSION["PRIV"], true);
+}
+
+if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
 	$error = "There is a problem with your login, your IP Address is currently being blocked.  Please contact the website administrators directly if you feel this message is in error.";
+
+} elseif($json_a["content_manager"]["rw"] != 1 || $json_a["content_manager"]["sub"][$CLEAN["ccms_lng"]] != 2) {
+	$error = "You are not permitted to make edits to content in this language, at this time.  Double check your privileges in the user/admin area.\n";
+
 } elseif ($CLEAN["ccms_ins_db_id"] == "") {
 	$error = "Database record missing.";
+
 } elseif ($CLEAN["ccms_ins_db_id"] == "MINLEN") {
 	$error = "Database record must be between 1-2147483647.";
+
 } elseif ($CLEAN["ccms_ins_db_id"] == "MAXLEN") {
 	$error = "Database record must be between 1-2147483647.";
+
 } elseif ($CLEAN["ccms_ins_db_id"] == "INVAL") {
 	$error = "Database record contains invalid characters.  ( > < & # )  You have used characters in this field which are either not supported by this field or we do not permitted on this system.";
 }
