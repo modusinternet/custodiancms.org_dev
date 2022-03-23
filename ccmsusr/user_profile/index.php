@@ -238,6 +238,27 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 				<div id="info_tab_form_success" role="alert" style="display:none;text-align:center"></div>
 				<div id="info_tab_form_fail" role="alert" style="display:none;text-align:center"></div>
 
+
+
+
+
+
+				<div id="info_tab_form_msg" role="alert" style="display:none;padding-top:50px;z-index: 3;
+				position: fixed;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				overflow: auto;
+				background-color: rgba(0,0,0,0.4);"></div>
+
+
+
+
+
+
+
+
 				<form id="info_tab_form" role="form">
 					<div class="outer_grid">
 						<div class="inner_grid_general">
@@ -723,11 +744,29 @@ $("#privTree").html(markupArray.join(""));
 																$("#info_tab_form_success").css("display", "none");
 															}, 15000);
 														} else {
+															/*
 															//$(form).find('[name="form-status"]').html(msg);
 															$("#info_tab_form_success").css("display", "none");
 															$("#info_tab_form_fail").html(obj.error);
 															$("#info_tab_form_fail").css("display", "block");
 															$("#info_tab_form_fail").scrollView();
+															*/
+
+
+
+
+
+const msg_div = document.getElementById('info_tab_form_msg');
+msg_div.style.display = "block";
+msg_div.textContent = obj.error;
+window.onclick = function(event) {
+  if (event.target == msg_div) {
+    msg_div.style.display = "none";
+  }
+}
+
+
+
 														}
 													});
 													// Called on failure.
