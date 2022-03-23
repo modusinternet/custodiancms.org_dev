@@ -731,6 +731,7 @@ $("#privTree").html(markupArray.join(""));
 													request.done(function(msg) {
 														var obj = JSON.parse(msg);
 														if(obj.success === "1") {
+															/*
 															//$(form).find('[name="form-status"]').html("Info form updated.");
 															$("#info_tab_form_fail").css("display", "none");
 															$("#info_tab_form_success").html("Changes saved.");
@@ -743,27 +744,30 @@ $("#privTree").html(markupArray.join(""));
 																//$(form).find('[name="Message"]').val("");
 																$("#info_tab_form_success").css("display", "none");
 															}, 15000);
+															*/
+
+															const msg_div = document.getElementById('info_tab_form_msg');
+															msg_div.style.display = "block";
+															msg_div.textContent = "Success Code: " + obj.success;
+															window.onclick = function(event) {
+																if (event.target == msg_div) {
+																	msg_div.style.display = "none";
+																}
+															}
 														} else {
-															/*
+															///*
 															//$(form).find('[name="form-status"]').html(msg);
 															$("#info_tab_form_success").css("display", "none");
 															$("#info_tab_form_fail").html(obj.error);
 															$("#info_tab_form_fail").css("display", "block");
 															$("#info_tab_form_fail").scrollView();
-															*/
+															//*/
 
 
 
 
 
-const msg_div = document.getElementById('info_tab_form_msg');
-msg_div.style.display = "block";
-msg_div.textContent = obj.error;
-window.onclick = function(event) {
-  if (event.target == msg_div) {
-    msg_div.style.display = "none";
-  }
-}
+
 
 
 
