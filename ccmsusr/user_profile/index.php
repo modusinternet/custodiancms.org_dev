@@ -249,10 +249,12 @@ border-radius:4px;
 box-shadow:rgba(0,0,0,0.2)0px 4px 10px 0px,rgba(0,0,0,0.19)0px 4px 20px 0px;
 color:var(--cl0);
 display:block;
+left:0;
 padding:20px;
 position:fixed;
-margin:auto;
+margin:0 auto;
 max-width:400px;
+right:0;
 top:-400px;
 transition:all 2s
 "></div>
@@ -753,6 +755,7 @@ $("#privTree").html(markupArray.join(""));
 
 															const msg_div = document.getElementById('info_tab_form_msg');
 															msg_div.style.display = "block";
+															msg_div.style.top = "unset";
 															msg_div.textContent = "Success Code: " + obj.success;
 															window.onclick = function(event) {
 																if (event.target != msg_div) {
