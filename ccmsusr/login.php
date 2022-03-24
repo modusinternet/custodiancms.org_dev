@@ -614,8 +614,8 @@ if(
 				</div>
 			</div>
 <?php endif ?>
-			{CCMS_TPL:/footer.html}
 		</main>
+					{CCMS_TPL:/footer.html}
 		<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 			{CCMS_TPL:/_js/footer-1.php}
 
