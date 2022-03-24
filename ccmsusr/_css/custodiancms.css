@@ -130,6 +130,27 @@ p{margin:0 0 20px}
 
 .alertDiv.success{background-color:var(--cl3)}
 
+.ccms_msg{
+	border-radius:4px;
+	box-shadow:rgba(0,0,0,0.2)0px 4px 10px 0px,rgba(0,0,0,0.19)0px 4px 20px 0px;
+	color:var(--cl0);
+	display:block;
+	left:0;
+	padding:20px;
+	position:fixed;
+	margin:0 auto;
+	max-width:400px;
+	right:0;
+	top:-400px;
+	transition:all 1s;
+}
+
+.ccms_msg.active{top:80px}
+
+.ccms_msg.active.error{background-color:var(--cl11);}
+
+.ccms_msg.active.success{background-color:var(--cl3);}
+
 .logo{
 	/*filter:drop-shadow(5px 5px 5px rgba(10,37,64,.5));
 	filter:drop-shadow(1px 1px rgba(0,0,0,.6));*/

@@ -217,36 +217,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 					"inner_grid_other inner_grid_other inner_grid_other"
 			}
 		}
-
-
-
-
-
-
-
-
-
-
-		.msg{
-			border-radius:4px;
-			box-shadow:rgba(0,0,0,0.2)0px 4px 10px 0px,rgba(0,0,0,0.19)0px 4px 20px 0px;
-			color:var(--cl0);
-			display:block;
-			left:0;
-			padding:20px;
-			position:fixed;
-			margin:0 auto;
-			max-width:400px;
-			right:0;
-			top:-400px;
-			transition:all 1s;
-		}
-
-		.msg.active{top:80px}
-
-		.msg.active.error{background-color:var(--cl11);}
-
-		.msg.active.success{background-color:var(--cl3);}
 	</style>
 	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 		let navActiveItem = [];
@@ -265,7 +235,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			</div>
 
 			<div id="tab01Content" class="tabContent" style="display:block">
-				<div id="info_tab_form_msg" role="alert" class="msg"></div>
+				<div id="info_tab_form_msg" role="alert" class="ccms_msg"></div>
 				<form id="info_tab_form" role="form">
 					<div class="outer_grid">
 						<div class="inner_grid_general">
@@ -347,7 +317,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			</div>
 
 			<div id="tab02Content" class="tabContent">
-				<div id="password_tab_form_msg" role="alert" class="msg"></div>
+				<div id="password_tab_form_msg" role="alert" class="ccms_msg"></div>
 				<form id="password_tab_form" role="form">
 					<div class="inner_grid_login">
 						<input name="ajax_flag" type="hidden" value="1">
@@ -786,28 +756,6 @@ $("#privTree").html(markupArray.join(""));
 											});
 										});
 
-										/* Administrator QR Generator START */
- 										document.getElementById("2fa_radio_2").addEventListener("click", () => {
- 											var twofa_checkbox = document.getElementById('2fa_radio_2');
- 											if(twofa_checkbox.checked){
- 												document.getElementById("ga_qr_img").style.display = "none";
- 												document.getElementById("ga_qr_div").style.display = "block";
- 												document.getElementById("ga_qr_svg").style.display = "block";
-												fetch("https://custodiancms.org/cross-origin-resources/ga-qr-generater.php<?php if(isset($CFG["DOMAIN"])){echo "?domain=" . $CFG["DOMAIN"];}?>")
-		 										.then(response => response.json())
-		 										.then(data => {
-													document.getElementById("2fa_secret").value = data.ga_qr_secret;
-													document.getElementById("2fa_secret_text").innerHTML = data.ga_qr_secret;
-													document.getElementById("ga_qr_img").src = data.ga_qr_url;
-													window.setTimeout(function() {
-														document.getElementById("ga_qr_img").style.display = "block";
-														document.getElementById("ga_qr_svg").style.display = "none";
-													},3000);
-		 										}).catch(console.error);
-											}
-										});
-										/* Administrator QR Generator END */
-
 										/* If '2FA Disabled' selected, remove posible generated QR code from view. */
 										document.getElementById("2fa_radio_1").addEventListener("click", () => {
 											document.getElementById("2fa_secret").value = "";
@@ -943,6 +891,28 @@ $("#privTree").html(markupArray.join(""));
 												}
 											});
 										});
+
+										/* Administrator QR Generator START */
+ 										document.getElementById("2fa_radio_2").addEventListener("click", () => {
+ 											var twofa_checkbox = document.getElementById('2fa_radio_2');
+ 											if(twofa_checkbox.checked){
+ 												document.getElementById("ga_qr_img").style.display = "none";
+ 												document.getElementById("ga_qr_div").style.display = "block";
+ 												document.getElementById("ga_qr_svg").style.display = "block";
+												fetch("https://custodiancms.org/cross-origin-resources/ga-qr-generater.php<?php if(isset($CFG["DOMAIN"])){echo "?domain=" . $CFG["DOMAIN"];}?>")
+		 										.then(response => response.json())
+		 										.then(data => {
+													document.getElementById("2fa_secret").value = data.ga_qr_secret;
+													document.getElementById("2fa_secret_text").innerHTML = data.ga_qr_secret;
+													document.getElementById("ga_qr_img").src = data.ga_qr_url;
+													window.setTimeout(function() {
+														document.getElementById("ga_qr_img").style.display = "block";
+														document.getElementById("ga_qr_svg").style.display = "none";
+													},3000);
+		 										}).catch(console.error);
+											}
+										});
+										/* Administrator QR Generator END */
 
 
 

@@ -118,6 +118,16 @@ function ccms_canonical() {
 }
 
 
+
+
+
+
+
+
+
+
+
+
 function ccms_user_admin_slider() {
 	global $CFG, $CLEAN;
 
@@ -575,6 +585,22 @@ console.log("jQuery not found, trying to load now.")
 </script>
 	<?php endif;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function ccms_dateYear() {
