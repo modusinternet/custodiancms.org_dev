@@ -253,7 +253,8 @@ padding:20px;
 position:fixed;
 margin:auto;
 max-width:400px;
-top:-400px
+top:-400px;
+transition:all 2s
 "></div>
 
 
