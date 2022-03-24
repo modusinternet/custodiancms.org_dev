@@ -139,17 +139,18 @@ p{margin:0 0 20px}
 	padding:20px;
 	position:fixed;
 	margin:0 auto;
-	max-width:400px;
 	right:0;
-	top:-400px;
+	top:-1000px;
 	transition:all 1s;
+	width:90%;
+	z-index:1
 }
 
-.ccms_msg.active{top:80px}
+.ccms_msg.active{top:100px}
 
-.ccms_msg.active.error{background-color:var(--cl11);}
+.ccms_msg.active.error{background-color:var(--cl11)}
 
-.ccms_msg.active.success{background-color:var(--cl3);}
+.ccms_msg.active.success{background-color:var(--cl3)}
 
 .logo{
 	/*filter:drop-shadow(5px 5px 5px rgba(10,37,64,.5));
@@ -326,5 +327,29 @@ p{margin:0 0 20px}
 
 .dropdown-content a:hover{background-color:var(--cl3)}
 
-.show {display: block;}
+.show{display:block;}
 /* w3school dropdown END */
+
+
+/* 435px or wider. */
+@media only screen and (min-width:435px){
+	.ccms_msg{max-width:400px}
+}
+
+
+/* 600px or wider. */
+@media only screen and (min-width:600px){
+	.ccms_msg{max-width:400px}
+}
+
+
+/* 950px or wider. */
+@media only screen and (min-width:950px){
+	.ccms_msg{max-width:400px}
+}
+
+
+/* 1400px or wider. */
+@media only screen and (min-width:1400px){
+	.ccms_msg{max-width:400px}
+}

@@ -136,6 +136,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 		#tab03Content>div>ul li{padding-left:20px}
 
+
 		/* 435px or wider. */
 		@media only screen and (min-width:435px){
 			.inner_grid_general,
@@ -196,6 +197,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			.inner_grid_login>label.error{grid-column:1 / span 2}
 		}
 
+
 		/* 950px or wider. */
 		@media only screen and (min-width:950px){
 			.outer_grid{
@@ -206,6 +208,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 					"inner_grid_contact inner_grid_other"
 			}
 		}
+
 
 		/* 1400px or wider. */
 		@media only screen and (min-width:1400px){
