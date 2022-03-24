@@ -75,7 +75,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 	<body>
 		<main style="padding:20px 20px 20px 0">
 			<h1 style="border-bottom:1px dashed var(--cl3)">Dashboard</h1>
-			<p>This section is still under development, but if you come across any unresolved issues please let us know at: <a class="oj" href="mailto:info@custodiancms.org?subject=unresolved+issue+report">info@custodiancms.org</a></p>
+			<p>This section is still under development, but if you come across any unresolved issues please let us know at: <a class="ccms_a" href="mailto:info@custodiancms.org?subject=unresolved+issue+report">info@custodiancms.org</a></p>
 
 			<div class="modal">
 				<div>
@@ -130,7 +130,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 					</p>
 					@Copyright
 					<p style="margin-left:20px;">
-						&copy; {CCMS_LIB:_default.php;FUNC:ccms_dateYear} assigned by Vincent Hallberg of <a class='oj' href="https://custodiancms.org" rel="noopener" target="_blank">custodiancms.org</a> and <a class='oj' href="https://modusinternet.com" rel="noopener" target="_blank">modusinternet.com</a>
+						&copy; {CCMS_LIB:_default.php;FUNC:ccms_dateYear} assigned by Vincent Hallberg of <a class='ccms_a' href="https://custodiancms.org" rel="noopener" target="_blank">custodiancms.org</a> and <a class='ccms_a' href="https://modusinternet.com" rel="noopener" target="_blank">modusinternet.com</a>
 					</p>
 					<span style="margin:0 20px">License (MIT)</span>
 					<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
