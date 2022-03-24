@@ -606,7 +606,7 @@ if(
 						<label for="ccms_pass_reset_part_2_pass_1">Password <span class="rd">*</span></label>
 						<input class="placeholder" id="ccms_pass_reset_part_2_pass_1" name="ccms_pass_reset_part_2_pass_1" placeholder="Password" style="margin-bottom:1rem" type="password" autocomplete="off" readonly>
 						<label id="ccms_pass_reset_part_2_pass_1_error" class="error" for="ccms_pass_reset_part_2_pass_1" style="display:none"></label>
-						<label for="ccms_pass_reset_part_2_pass_2">Re-Type Password <span class="rd">*</span></label>
+						<label for="ccms_pass_reset_part_2_pass_2">Re-Type<span class="rd">*</span></label>
 						<input class="placeholder" id="ccms_pass_reset_part_2_pass_2" name="ccms_pass_reset_part_2_pass_2" placeholder="Re-Type Password" style="margin-bottom:1rem" type="password" autocomplete="off" readonly>
 						<label id="ccms_pass_reset_part_2_pass_2_error" class="error" for="ccms_pass_reset_part_2_pass_2" style="display:none"></label>
 						<button type="submit"<?php if(!empty($ccms_pass_reset_message["SUCCESS"])) { echo " disabled";} ?>>Submit</button>
@@ -615,7 +615,7 @@ if(
 			</div>
 <?php endif ?>
 		</main>
-					{CCMS_TPL:/footer.html}
+		{CCMS_TPL:/footer.html}
 		<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 			{CCMS_TPL:/_js/footer-1.php}
 
@@ -631,11 +631,9 @@ if(
 			},250);
 			/* Loading Screen END */
 
-			var l = document.createElement("link");
-			l.rel = "stylesheet";
+			var l=document.createElement("link");l.rel="stylesheet";
 			l.href = "/ccmsusr/_css/custodiancms.css";
-			var h = document.getElementsByTagName("head")[0];
-			h.parentNode.insertBefore(l,h);
+			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
 			function loadJSResources() {
 				loadFirst("/ccmsusr/_js/jquery-3.6.0.min.js", function() {
