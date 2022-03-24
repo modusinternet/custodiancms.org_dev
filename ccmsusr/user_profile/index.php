@@ -217,6 +217,33 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 					"inner_grid_other inner_grid_other inner_grid_other"
 			}
 		}
+
+
+
+
+
+
+
+
+
+
+		.msg{
+			background-color:var(--cl3);
+			border-radius:4px;
+			box-shadow:rgba(0,0,0,0.2)0px 4px 10px 0px,rgba(0,0,0,0.19)0px 4px 20px 0px;
+			color:var(--cl0);
+			display:block;
+			left:0;
+			padding:20px;
+			position:fixed;
+			margin:0 auto;
+			max-width:400px;
+			right:0;
+			top:-400px;
+			transition:all 2s
+		}
+
+		.msg.active{top:0}
 	</style>
 	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 		let navActiveItem = [];
@@ -243,21 +270,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 
-				<div id="info_tab_form_msg" role="alert" style="
-background-color:var(--cl3);
-border-radius:4px;
-box-shadow:rgba(0,0,0,0.2)0px 4px 10px 0px,rgba(0,0,0,0.19)0px 4px 20px 0px;
-color:var(--cl0);
-display:block;
-left:0;
-padding:20px;
-position:fixed;
-margin:0 auto;
-max-width:400px;
-right:0;
-top:-400px;
-transition:all 2s
-"></div>
+				<div id="info_tab_form_msg" role="alert" class="msg"></div>
 
 
 
@@ -755,10 +768,12 @@ $("#privTree").html(markupArray.join(""));
 
 															const msg_div = document.getElementById('info_tab_form_msg');
 															msg_div.style.display = "block";
-															msg_div.style.top = "unset";
+															//msg_div.style.top = "unset";
+															msg_div.classList.add("active");
 															msg_div.textContent = "Success Code: " + obj.success;
 															window.onclick = function(event) {
 																if (event.target != msg_div) {
+																	msg_div.classList.remove("active");
 																	msg_div.style.display = "none";
 																}
 															}
