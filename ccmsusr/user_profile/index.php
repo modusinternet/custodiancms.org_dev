@@ -755,7 +755,7 @@ $("#privTree").html(markupArray.join(""));
 															msg_div.style.display = "block";
 															msg_div.textContent = "Success Code: " + obj.success;
 															window.onclick = function(event) {
-																if (event.target == msg_div) {
+																if (event.target != msg_div) {
 																	msg_div.style.display = "none";
 																}
 															}
