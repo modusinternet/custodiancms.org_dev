@@ -243,7 +243,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			transition:all 1s;
 		}
 
-		.msg.active{top:0}
+		.msg.active{top:40px}
 	</style>
 	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 		let navActiveItem = [];
