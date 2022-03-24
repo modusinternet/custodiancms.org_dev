@@ -98,7 +98,6 @@ if(!isset($msg["error"])) {
 
 	$qry->execute(array(':firstname' => $CLEAN["firstname"], ':lastname' => $CLEAN["lastname"], ':alias' => $CLEAN["alias"], ':position' => $CLEAN["position"], ':address1' => $CLEAN["address1"], ':address2' => $CLEAN["address2"], ':prov_state' => $CLEAN["prov_state"], ':country' => $CLEAN["country"], ':post_zip' => $CLEAN["post_zip"], ':email' => $CLEAN["email"], ':phone1' => $CLEAN["phone1"], ':phone2' => $CLEAN["phone2"], ':skype' => $CLEAN["skype"], ':facebook' => $CLEAN["facebook"], ':note' => $CLEAN["note"], ':id' => $_SESSION["USER_ID"] ));
 
-	//$msg["success"] = "Updates Saved"; // update successful
-	$msg["error"] = "'Postal/Zip Code' field contains invalid characters.  The following characters are not permitted in this field. ( > < & # )";
+	$msg["success"] = "Updates Saved"; // update successful
 }
 echo json_encode($msg);
