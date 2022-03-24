@@ -450,10 +450,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 
-
-
-
-
 // Show, Read, and Write privileges are indecated in the JSON output for each area in the form of rw:0 (do not even show in the site), rw:1 (show up in the site but only readable), rw:2 (read and writable).
 const data = JSON.parse(JSON.stringify(<?= $ccms_user["priv"];?>));
 
@@ -516,10 +512,6 @@ const getDetails = (details) => {
 getItems(data);
 markupArray.push("</ul>");
 $("#privTree").html(markupArray.join(""));
-
-
-
-
 
 
 
@@ -766,7 +758,6 @@ $("#privTree").html(markupArray.join(""));
 													// Called on failure.
 													request.fail(function (jqXHR, textStatus, errorThrown){
 														// log the error to the console
-														//console.error( "The following error occured: " + textStatus, errorThrown );
 														console.error( "textStatus: " + textStatus );
 														console.error( "errorThrown: " + errorThrown );
 														const msg_div = document.getElementById('info_tab_form_msg');
@@ -922,7 +913,6 @@ $("#privTree").html(markupArray.join(""));
 													// Called on failure.
 													request.fail(function (jqXHR, textStatus, errorThrown){
 														// log the error to the console
-														//console.error( "The following error occured: " + textStatus, errorThrown );
 														console.error( "textStatus: " + textStatus );
 														console.error( "errorThrown: " + errorThrown );
 														const msg_div = document.getElementById('password_tab_form_msg');
