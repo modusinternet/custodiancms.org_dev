@@ -248,7 +248,7 @@ background-color:var(--cl3);
 border-radius:4px;
 box-shadow:rgba(0, 0, 0, 0.2) 0px 4px 10px 0px, rgba(0, 0, 0, 0.19) 0px 4px 20px 0px;
 color:var(--cl0);
-display:block;
+display:none;
 left:100px;
 padding:20px;
 position:fixed;
