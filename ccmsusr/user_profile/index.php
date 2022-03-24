@@ -243,14 +243,19 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 
-				<div id="info_tab_form_msg" role="alert" style="display:none;padding-top:50px;z-index: 3;
-				position: fixed;
-				left: auto;
-				top: 0;
-				width: 500px;
-				height: auto;
-				overflow: auto;
-				background-color: rgba(0,0,0,0.4);box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);"></div>
+				<div id="info_tab_form_msg" role="alert" style="
+background-color:var(--cl3);
+border-radius:4px;
+box-shadow:rgba(0, 0, 0, 0.2) 0px 4px 10px 0px, rgba(0, 0, 0, 0.19) 0px 4px 20px 0px;
+color:var(--cl0);
+display:block;
+left:100px;
+padding:20px;
+position:fixed;
+width:auto;
+margin:0 auto;
+max-width:430px;
+"></div>
 
 
 
