@@ -642,8 +642,6 @@ if(
 						loadFirst("https://www.google.com/recaptcha/api.js?render={CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}&hl={CCMS_LIB:_default.php;FUNC:ccms_lng}", function() {
 							loadFirst("/ccmsusr/_js/jquery-validate-1.19.3.min.js", function() {
 
-								document.getElementById("ccms_login_email").focus();
-
 								$('#loginHelpLink').click(function(event){
 									event.preventDefault();
 									if($('#ccms_pass_reset_div').is(':visible')) {
