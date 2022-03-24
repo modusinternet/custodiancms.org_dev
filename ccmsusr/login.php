@@ -375,7 +375,7 @@ $email_message .= "\r\n\r\n--" . $boundary . "--";
 	} elseif($CLEAN["ccms_pass_reset_part_2_pass_2"] == "INVAL") {
 		$ccms_pass_reset_message["FAIL"] = "Something is wrong with ccms_pass_reset_part_2_pass_2, it came up as INVALID when testing is with with an open (.+) expression.";
 	} elseif($CLEAN["ccms_pass_reset_part_2_pass_1"] != $CLEAN["ccms_pass_reset_part_2_pass_2"]) {
-		$ccms_pass_reset_message["FAIL"] = "ccms_pass_reset_part_2_pass_1 and ccms_pass_reset_part_2_pass_2 do not match.";
+		$ccms_pass_reset_message["FAIL"] = "Password fields do not match.";
 	} elseif(empty($CLEAN["g-recaptcha-response"])) {
 		$ccms_pass_reset_message["FAIL"] = "'g-recaptcha-response' field missing content.";
 	} elseif($CLEAN["g-recaptcha-response"] == "MAXLEN") {
