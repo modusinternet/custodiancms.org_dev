@@ -771,7 +771,7 @@ $("#privTree").html(markupArray.join(""));
 															*/
 
 															const msg_div = document.getElementById('info_tab_form_msg');
-															msg_div.classList.add("active", "success");
+															msg_div.classList.add("active", "error");
 															msg_div.textContent = obj.success;
 															$("#info_tab_form_msg").scrollView();
 															setTimeout(function() {
