@@ -376,6 +376,8 @@ $email_message .= "\r\n\r\n--" . $boundary . "--";
 		$ccms_pass_reset_message["FAIL"] = "Something is wrong with ccms_pass_reset_part_2_pass_2, it came up as INVALID when testing is with with an open (.+) expression.";
 	} elseif($CLEAN["ccms_pass_reset_part_2_pass_1"] != $CLEAN["ccms_pass_reset_part_2_pass_2"]) {
 		$ccms_pass_reset_message["FAIL"] = "Password fields do not match.";
+
+	/*
 	} elseif(empty($CLEAN["g-recaptcha-response"])) {
 		$ccms_pass_reset_message["FAIL"] = "'g-recaptcha-response' field missing content.";
 	} elseif($CLEAN["g-recaptcha-response"] == "MAXLEN") {
@@ -389,10 +391,63 @@ $email_message .= "\r\n\r\n--" . $boundary . "--";
 			$ccms_pass_reset_message["FAIL"] = 'Google reCAPTCHA failed or expired.  Try again.';
 		}
 	}
+	*/
+	} elseif(empty($CLEAN["g-recaptcha-action"])) {
+		$ccms_pass_reset_message["FAIL"] = "'g-recaptcha-action' field missing content. Try again.";
+	} elseif($CLEAN["g-recaptcha-action"] == "MAXLEN") {
 
-//header("aa_ccms_pass_reset_message: " . $ccms_pass_reset_message["FAIL"]);
+		$ccms_pass_reset_message["FAIL"] = "'g-recaptcha-action' field exceeded its maximum number of 2048 character. Try again.";
 
-	if($ccms_pass_reset_message["FAIL"] === "") {
+	} elseif($CLEAN["g-recaptcha-action"] == "INVAL") {
+		$ccms_pass_reset_message["FAIL"] = "'g-recaptcha-action' field contains invalid characters! Try again.";
+
+	} elseif(empty($CLEAN["g-recaptcha-response"])) {
+		$ccms_pass_reset_message["FAIL"] = "'g-recaptcha-response' field missing content. Try again.";
+
+	} elseif($CLEAN["g-recaptcha-response"] == "MAXLEN") {
+		$ccms_pass_reset_message["FAIL"] = "'g-recaptcha-response' field exceeded its maximum number of 2048 character. Try again.";
+
+	} elseif($CLEAN["g-recaptcha-response"] == "INVAL") {
+		$ccms_pass_reset_message["FAIL"] = "'g-recaptcha-response' field contains invalid characters! Try again.";
+
+	} elseif(!isset($ccms_pass_reset_message["FAIL"])) {
+		$resp = '';
+		// query use fsockopen
+		$fp = @fsockopen('ssl://www.google.com', 443, $errno, $errstr, 10);
+		if($fp !== false) {
+			$out = "GET /recaptcha/api/siteverify?secret={$CFG['GOOGLE_RECAPTCHA_PRIVATEKEY']}&response={$CLEAN['g-recaptcha-response']}&remoteip={$_SERVER['REMOTE_ADDR']} HTTP/1.1\r\n";
+			$out .= "Host: www.google.com\r\n";
+			$out .= "Connection: Close\r\n\r\n";
+			@fwrite($fp, $out);
+			while(!feof($fp)) {
+				//$resp .= fgets($fp, 4096);
+				$resp .= fread($fp, 4096);
+			}
+			@fclose($fp);
+
+			$position = strpos($resp, "\r\n\r\n");
+			$resp = substr($resp, $position);
+			$position = strpos($resp, "{");
+			$resp = substr($resp, $position);
+			$resp = trim($resp, "\r\n0");
+			$resp = json_decode($resp, true);
+
+			if($resp["success"] == false || $resp["action"] !== $CLEAN["g-recaptcha-action"] || $resp["score"] <= 0.4) {
+				$ccms_pass_reset_message["FAIL"] = 'Google reCAPTCHA failed or expired. Try again.';
+				//$ccms_pass_reset_message["FAIL"] = 'Google reCAPTCHA failed or expired. Try again. (success=['.$resp["success"].'], score=['.$resp["score"].'], action=['.$resp["action"].'], error-codes=['.$resp["error-codes"].'])';
+			}
+
+		} else {
+			$ccms_pass_reset_message["FAIL"] = 'Unable to connect to Google reCAPTCHA.)';
+		}
+	}
+
+
+
+
+
+	//if($ccms_pass_reset_message["FAIL"] === "") {
+	if(!isset($ccms_pass_reset_message["FAIL"])){
 		// This is an password reset submittion, so first we need to make sure the ccms_pass_reset_form_code record is still available.
 
 		$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_password_recovery` WHERE `code` = :code AND `ip` = :ip AND `user_agent` = :user_agent LIMIT 1;");
@@ -609,7 +664,8 @@ if(
 						<label for="ccms_pass_reset_part_2_pass_2">Re-Type<span class="rd">*</span></label>
 						<input class="placeholder" id="ccms_pass_reset_part_2_pass_2" name="ccms_pass_reset_part_2_pass_2" placeholder="Re-Type Password" style="margin-bottom:1rem" type="password" autocomplete="off" readonly>
 						<label id="ccms_pass_reset_part_2_pass_2_error" class="error" for="ccms_pass_reset_part_2_pass_2" style="display:none"></label>
-						<button type="submit"<?php if(!empty($ccms_pass_reset_message["SUCCESS"])) { echo " disabled";} ?>>Submit</button>
+						<!-- button type="submit"< ? php if(!empty($ccms_pass_reset_message["SUCCESS"])) { echo " disabled";} ?>>Submit</button -->
+						<button class="g-recaptcha" data-sitekey="reCAPTCHA_site_key" data-callback='onSubmit' data-action='submit'>Submit</button>
 					</form>
 				</div>
 			</div>
