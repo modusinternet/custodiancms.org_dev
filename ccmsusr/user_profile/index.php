@@ -232,7 +232,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			border-radius:4px;
 			box-shadow:rgba(0,0,0,0.2)0px 4px 10px 0px,rgba(0,0,0,0.19)0px 4px 20px 0px;
 			color:var(--cl0);
-			display:block;
+			display:none;
 			left:0;
 			padding:20px;
 			position:fixed;
@@ -240,10 +240,13 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			max-width:400px;
 			right:0;
 			top:-400px;
-			transition:all 2s
+			transition:all 1s
 		}
 
-		.msg.active{top:0}
+		.msg.active{
+			display:block;
+			top:0
+		}
 	</style>
 	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 		let navActiveItem = [];
@@ -767,14 +770,14 @@ $("#privTree").html(markupArray.join(""));
 															*/
 
 															const msg_div = document.getElementById('info_tab_form_msg');
-															msg_div.style.display = "block";
+															//msg_div.style.display = "block";
 															//msg_div.style.top = "unset";
 															msg_div.classList.add("active");
 															msg_div.textContent = "Success Code: " + obj.success;
 															window.onclick = function(event) {
 																if (event.target != msg_div) {
 																	msg_div.classList.remove("active");
-																	msg_div.style.display = "none";
+																	//msg_div.style.display = "none";
 																}
 															}
 
