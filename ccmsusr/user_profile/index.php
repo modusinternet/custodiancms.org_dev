@@ -769,48 +769,38 @@ $("#privTree").html(markupArray.join(""));
 																$("#info_tab_form_success").css("display", "none");
 															}, 15000);
 															*/
-
 															const msg_div = document.getElementById('info_tab_form_msg');
-															msg_div.classList.add("active", "error");
+															msg_div.classList.add("active", "success");
 															msg_div.textContent = obj.success;
 															$("#info_tab_form_msg").scrollView();
 															setTimeout(function() {
-																//$(form).find('[name="form-status"]').html("");
-																//$(form).find('[name="FromEmail"]').val("");
-																//$(form).find('[name="ToEmail"]').val("");
-																//$(form).find('[name="Message"]').val("");
-																msg_div.classList.remove("active");
-															}, 15000);
+																msg_div.classList.remove("active", "success");
+															},15000);
 															window.onclick = function(event) {
-																if (event.target != msg_div) {
-																	msg_div.classList.remove("active");
+																if(event.target != msg_div) {
+																	msg_div.classList.remove("active", "success");
 																}
 															}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 														} else {
+															/*
 															//$(form).find('[name="form-status"]').html(msg);
 															$("#info_tab_form_success").css("display", "none");
 															$("#info_tab_form_fail").html(obj.error);
 															$("#info_tab_form_fail").css("display", "block");
 															$("#info_tab_form_fail").scrollView();
+															*/
+															const msg_div = document.getElementById('info_tab_form_msg');
+															msg_div.classList.add("active", "error");
+															msg_div.textContent = obj.error;
+															$("#info_tab_form_msg").scrollView();
+															setTimeout(function() {
+																msg_div.classList.remove("active", "error");
+															},15000);
+															window.onclick = function(event) {
+																if(event.target != msg_div) {
+																	msg_div.classList.remove("active", "error");
+																}
+															}
 														}
 													});
 													// Called on failure.
@@ -820,9 +810,23 @@ $("#privTree").html(markupArray.join(""));
 														console.error( "textStatus: " + textStatus );
 														console.error( "errorThrown: " + errorThrown );
 														//$(form).find('[name="form-status"]').html("The following error occured: " + textStatus, errorThrown);
+														/*
 														$("#info_tab_form_success").css("display", "none");
 														$("#info_tab_form_fail").css("display", "block");
 														$("#info_tab_form_fail").html("The following error occured: " + textStatus, errorThrown);
+														*/
+														const msg_div = document.getElementById('info_tab_form_msg');
+														msg_div.classList.add("active", "error");
+														msg_div.textContent = "The following error occured: " + textStatus, errorThrown;
+														$("#info_tab_form_msg").scrollView();
+														setTimeout(function() {
+															msg_div.classList.remove("active", "error");
+														},15000);
+														window.onclick = function(event) {
+															if(event.target != msg_div) {
+																msg_div.classList.remove("active", "error");
+															}
+														}
 													});
 													// Called if the request failed or succeeded.
 													request.always(function () {
