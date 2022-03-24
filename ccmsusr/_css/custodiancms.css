@@ -339,7 +339,9 @@ p{margin:0 0 20px}
 
 /* 600px or wider. */
 @media only screen and (min-width:600px){
-	.ccms_msg{max-width:400px}
+	.ccms_msg.active.error{max-width:80%}
+
+	.ccms_msg.active.success{max-width:400px}
 }
 
 
