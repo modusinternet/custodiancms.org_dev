@@ -228,7 +228,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 		.msg{
-			background-color:var(--cl3);
 			border-radius:4px;
 			box-shadow:rgba(0,0,0,0.2)0px 4px 10px 0px,rgba(0,0,0,0.19)0px 4px 20px 0px;
 			color:var(--cl0);
@@ -244,6 +243,10 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		}
 
 		.msg.active{top:80px}
+
+		.msg.active.error{background-color:var(--cl11);}
+
+		.msg.active.success{background-color:var(--cl3);}
 	</style>
 	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 		let navActiveItem = [];
@@ -768,7 +771,7 @@ $("#privTree").html(markupArray.join(""));
 															*/
 
 															const msg_div = document.getElementById('info_tab_form_msg');
-															msg_div.classList.add("active");
+															msg_div.classList.add("active success");
 															msg_div.textContent = obj.success;
 															$("#info_tab_form_msg").scrollView();
 															setTimeout(function() {
