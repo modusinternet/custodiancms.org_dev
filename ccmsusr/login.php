@@ -557,7 +557,7 @@ if(
 				</div>
 			</div>
 			<div style="margin:20px 0;text-align:center">
-				<a class="oj" href="#" id="loginHelpLink">Login Help</a>
+				<a class="ccms_a" href="#" id="loginHelpLink">Login Help</a>
 			</div>
 			<div id="ccms_pass_reset_div" style="display:none">
 	<?php if(!empty($ccms_pass_reset_message["FAIL"])): ?>
@@ -614,6 +614,7 @@ if(
 				</div>
 			</div>
 <?php endif ?>
+			{CCMS_TPL:/footer.html}
 		</main>
 		<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 			{CCMS_TPL:/_js/footer-1.php}

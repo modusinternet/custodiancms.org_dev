@@ -422,11 +422,9 @@ if(($_POST["ccms_auth_token_login"] ?? null) === "1") {
 		<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 			{CCMS_TPL:/_js/footer-1.php}
 
-			var l = document.createElement("link");
-			l.rel = "stylesheet";
+			var l=document.createElement("link");l.rel="stylesheet";
 			l.href = "/ccmsusr/_css/custodiancms.css";
-			var h = document.getElementsByTagName("head")[0];
-			h.parentNode.insertBefore(l,h);
+			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
 			function loadJSResources() {
 				loadFirst("/ccmsusr/_js/jquery-3.6.0.min.js", function() {
