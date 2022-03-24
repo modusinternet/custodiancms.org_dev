@@ -94,7 +94,7 @@ if(!isset($msg["error"])) {
 				}
 			}
 
-			$msg["success"] = "1"; // update successful
+			$msg["success"] = "Updates Saved"; // update successful
 		} else {
 			$msg["error"] = "Password failed, please try again.";
 		}

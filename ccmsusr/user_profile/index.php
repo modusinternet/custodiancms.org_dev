@@ -265,23 +265,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			</div>
 
 			<div id="tab01Content" class="tabContent" style="display:block">
-				<div id="info_tab_form_success" role="alert" style="display:none;text-align:center"></div>
-				<div id="info_tab_form_fail" role="alert" style="display:none;text-align:center"></div>
-
-
-
-
-
-
 				<div id="info_tab_form_msg" role="alert" class="msg"></div>
-
-
-
-
-
-
-
-
 				<form id="info_tab_form" role="form">
 					<div class="outer_grid">
 						<div class="inner_grid_general">
@@ -363,9 +347,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			</div>
 
 			<div id="tab02Content" class="tabContent">
-				<div id="password_tab_form_success" role="alert" style="display:none;text-align:center"></div>
-				<div id="password_tab_form_fail" role="alert" style="display:none;text-align:center"></div>
-
+				<div id="password_tab_form_msg" role="alert" class="msg"></div>
 				<form id="password_tab_form" role="form">
 					<div class="inner_grid_login">
 						<input name="ajax_flag" type="hidden" value="1">
@@ -753,22 +735,7 @@ $("#privTree").html(markupArray.join(""));
 													// Called on success.
 													request.done(function(msg) {
 														var obj = JSON.parse(msg);
-														//if(obj.success === "1") {
 														if(obj.success) {
-															/*
-															//$(form).find('[name="form-status"]').html("Info form updated.");
-															$("#info_tab_form_fail").css("display", "none");
-															$("#info_tab_form_success").html("Changes saved.");
-															$("#info_tab_form_success").css("display", "block");
-															$("#info_tab_form_success").scrollView();
-															setTimeout(function() {
-																//$(form).find('[name="form-status"]').html("");
-																//$(form).find('[name="FromEmail"]').val("");
-																//$(form).find('[name="ToEmail"]').val("");
-																//$(form).find('[name="Message"]').val("");
-																$("#info_tab_form_success").css("display", "none");
-															}, 15000);
-															*/
 															const msg_div = document.getElementById('info_tab_form_msg');
 															msg_div.classList.add("active", "success");
 															msg_div.textContent = obj.success;
@@ -782,13 +749,6 @@ $("#privTree").html(markupArray.join(""));
 																}
 															}
 														} else {
-															/*
-															//$(form).find('[name="form-status"]').html(msg);
-															$("#info_tab_form_success").css("display", "none");
-															$("#info_tab_form_fail").html(obj.error);
-															$("#info_tab_form_fail").css("display", "block");
-															$("#info_tab_form_fail").scrollView();
-															*/
 															const msg_div = document.getElementById('info_tab_form_msg');
 															msg_div.classList.add("active", "error");
 															msg_div.textContent = obj.error;
@@ -809,12 +769,6 @@ $("#privTree").html(markupArray.join(""));
 														//console.error( "The following error occured: " + textStatus, errorThrown );
 														console.error( "textStatus: " + textStatus );
 														console.error( "errorThrown: " + errorThrown );
-														//$(form).find('[name="form-status"]').html("The following error occured: " + textStatus, errorThrown);
-														/*
-														$("#info_tab_form_success").css("display", "none");
-														$("#info_tab_form_fail").css("display", "block");
-														$("#info_tab_form_fail").html("The following error occured: " + textStatus, errorThrown);
-														*/
 														const msg_div = document.getElementById('info_tab_form_msg');
 														msg_div.classList.add("active", "error");
 														msg_div.textContent = "The following error occured: " + textStatus, errorThrown;
@@ -919,27 +873,11 @@ $("#privTree").html(markupArray.join(""));
 													// Called on success.
 													request.done(function(msg) {
 														var obj = JSON.parse(msg);
-														/*
-														if(data.success === "0") { // already blocked
-			 												console.log(ip + " already blocked");
-			 												alert(ip + " already blocked");
-			 											} else if(data.success === "1") { // blocked
-			 												console.log(ip + " blocked");
-			 												alert(ip + " blocked");
-			 											} else if(data.error === "Session Error") {
-			 												document.getElementById("ccms_security_logs").innerHTML = "Session Error";
-			 											} else {
-			 												document.getElementById("ccms_security_logs").innerHTML = "Error: See console for more detail.";
-			 												console.log(data);
-			 											}
-														*/
-
-														if(obj.success === "1") {
-															//$(form).find('[name="form-status"]').html("Password form updated.");
-															$("#password_tab_form_fail").css("display", "none");
-															$("#password_tab_form_success").html("Success: Updates saved.");
-															$("#password_tab_form_success").css("display", "block");
-															$("#password_tab_form_success").scrollView();
+														if(obj.success) {
+															const msg_div = document.getElementById('password_tab_form_msg');
+															msg_div.classList.add("active", "success");
+															msg_div.textContent = obj.success;
+															$("#password_tab_form_msg").scrollView();
 															document.getElementById("2fa_secret").value = "";
 															document.getElementById("2fa_secret_text").innerHTML = "";
 															document.getElementById("ga_qr_img").style.display = "none";
@@ -959,28 +897,46 @@ $("#privTree").html(markupArray.join(""));
 																location.reload(true);
 															}
 															setTimeout(function() {
-																//$(form).find('[name="form-status"]').html("");
-																//$(form).find('[name="FromEmail"]').val("");
-																//$(form).find('[name="ToEmail"]').val("");
-																//$(form).find('[name="Message"]').val("");
-																$("#password_tab_form_success").css("display", "none");
-															}, 10000);
+																msg_div.classList.remove("active", "success");
+															},15000);
+															window.onclick = function(event) {
+																if(event.target != msg_div) {
+																	msg_div.classList.remove("active", "success");
+																}
+															}
 														} else {
-															//$(form).find('[name="form-status"]').html(msg);
-															$("#password_tab_form_success").css("display", "none");
-															$("#password_tab_form_fail").html(obj.error);
-															$("#password_tab_form_fail").css("display", "block");
-															$("#password_tab_form_fail").scrollView();
+															const msg_div = document.getElementById('password_tab_form_msg');
+															msg_div.classList.add("active", "error");
+															msg_div.textContent = obj.error;
+															$("#password_tab_form_msg").scrollView();
+															setTimeout(function() {
+																msg_div.classList.remove("active", "error");
+															},15000);
+															window.onclick = function(event) {
+																if(event.target != msg_div) {
+																	msg_div.classList.remove("active", "error");
+																}
+															}
 														}
 													});
 													// Called on failure.
 													request.fail(function (jqXHR, textStatus, errorThrown){
 														// log the error to the console
 														//console.error( "The following error occured: " + textStatus, errorThrown );
-														//$(form).find('[name="form-status"]').html("The following error occured: " + textStatus, errorThrown);
-														$("#password_tab_form_success").css("display", "none");
-														$("#password_tab_form_fail").css("display", "block");
-														$("#password_tab_form_fail").html("The following error occured: " + textStatus, errorThrown);
+														console.error( "textStatus: " + textStatus );
+														console.error( "errorThrown: " + errorThrown );
+														const msg_div = document.getElementById('password_tab_form_msg');
+														msg_div.classList.add("active", "error");
+														msg_div.textContent = "The following error occured: " + textStatus, errorThrown;
+														$("#password_tab_form_msg").scrollView();
+														setTimeout(function() {
+															msg_div.classList.remove("active", "error");
+														},15000);
+														window.onclick = function(event) {
+															if(event.target != msg_div) {
+																msg_div.classList.remove("active", "error");
+															}
+														}
 													});
 													// Called if the request failed or succeeded.
 													request.always(function () {
