@@ -245,12 +245,12 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 				<div id="info_tab_form_msg" role="alert" style="display:none;padding-top:50px;z-index: 3;
 				position: fixed;
-				left: 0;
+				left: auto;
 				top: 0;
-				width: 100%;
-				height: 100%;
+				width: 500px;
+				height: auto;
 				overflow: auto;
-				background-color: rgba(0,0,0,0.4);"></div>
+				background-color: rgba(0,0,0,0.4);box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);"></div>
 
 
 
@@ -754,23 +754,31 @@ $("#privTree").html(markupArray.join(""));
 																	msg_div.style.display = "none";
 																}
 															}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 														} else {
-															///*
 															//$(form).find('[name="form-status"]').html(msg);
 															$("#info_tab_form_success").css("display", "none");
 															$("#info_tab_form_fail").html(obj.error);
 															$("#info_tab_form_fail").css("display", "block");
 															$("#info_tab_form_fail").scrollView();
-															//*/
-
-
-
-
-
-
-
-
-
 														}
 													});
 													// Called on failure.
