@@ -287,10 +287,11 @@ function ccms_user_admin_slider() {
 	function ccms_tab_switch() {
 		if($("#CCMSTab-slide-tab-checkbox").is(":checked")) {
 			// Tab Open
+			/*
 			if(-1 == compVer(jQuery.fn.jquery, "2.2.4")) {
 					// jQuery version is not high enough
 
-console.log("jQuery already loaded but not high enough.")
+console.log("jQuery is already loaded but it is not high enough version.")
 
 				$('#CCMSEdit-edit-mode-switch-check').prop('checked', false);
 				$('#CCMSEdit-edit-mode-switch-check').prop('disabled', true);
@@ -299,11 +300,9 @@ console.log("jQuery already loaded but not high enough.")
 				$('#CCCMSTab-slide-tab-checkbox').prop('checked', false);
 				$('#CCMSTab-slide-tab-checkbox').prop('disabled', true);
 				localStorage.setItem("CCMSTab-slide-tab-checkbox", false);
-
 				//alert("The User Admin Slider requires jQuery v2.2.4 or higher to run properly.");
-
 				const ccms_msg_div = document.getElementById('ccms_msg');
-				ccms_msg_div.textContent = "The User Admin Slider requires jQuery v2.2.4 or higher to run properly."
+				ccms_msg_div.textContent = "jQuery is already loaded but it is not high enough version. The User Admin Slider requires jQuery v2.2.4 or higher to run properly."
 				ccms_msg_div.classList.add("active", "error");
 				setTimeout(function() {
 					ccms_msg_div.classList.remove("active", "error");
@@ -313,21 +312,11 @@ console.log("jQuery already loaded but not high enough.")
 						ccms_msg_div.classList.remove("active", "error");
 					}
 				}
-
-
-
-
-
-
-
-
-
-
-
 				return false;
 			} else {
+			*/
 				localStorage.setItem("CCMSTab-slide-tab-checkbox", true);
-			}
+			//}
 		} else {
 			// Tab Closed
 			localStorage.setItem("CCMSTab-slide-tab-checkbox", false);
@@ -612,7 +601,7 @@ console.log("jQuery not found, trying to load now.")
 		} else if(-1 == compVer(jQuery.fn.jquery, "2.2.4")) {
 			// jQuery is loaded but the version is too low, kill the process
 
-console.log("jQuery already loaded but not high enough version.")
+console.log("jQuery is already loaded but it is not high enough version.")
 
 			localStorage.setItem("CCMSTab-slide-tab-checkbox", false);
 			localStorage.setItem("CCMSEdit-edit-mode-switch-check", false);
@@ -620,7 +609,7 @@ console.log("jQuery already loaded but not high enough version.")
 			//alert("The User Admin Slider requires jQuery v2.2.4 or higher to run properly.");
 
 			const ccms_msg_div = document.getElementById('ccms_msg');
-			ccms_msg_div.textContent = "The User Admin Slider requires jQuery v2.2.4 or higher to run properly."
+			ccms_msg_div.textContent = "jQuery is already loaded but it is not high enough version. The User Admin Slider requires jQuery v2.2.4 or higher to run properly."
 			ccms_msg_div.classList.add("active", "error");
 			setTimeout(function() {
 				ccms_msg_div.classList.remove("active", "error");
