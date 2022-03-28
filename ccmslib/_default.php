@@ -289,7 +289,9 @@ function ccms_user_admin_slider() {
 			// Tab Open
 			if(-1 == compVer(jQuery.fn.jquery, "2.2.4")) {
 					// jQuery version is not high enough
+
 console.log("jQuery already loaded but not high enough.")
+
 				$('#CCMSEdit-edit-mode-switch-check').prop('checked', false);
 				$('#CCMSEdit-edit-mode-switch-check').prop('disabled', true);
 				localStorage.setItem("CCMSEdit-edit-mode-switch-check", false);
@@ -609,10 +611,26 @@ console.log("jQuery not found, trying to load now.")
 			document.getElementsByTagName('head')[0].appendChild(jq);
 		} else if(-1 == compVer(jQuery.fn.jquery, "2.2.4")) {
 			// jQuery is loaded but the version is too low, kill the process
+
+console.log("jQuery already loaded but not high enough version.")
+
 			localStorage.setItem("CCMSTab-slide-tab-checkbox", false);
 			localStorage.setItem("CCMSEdit-edit-mode-switch-check", false);
 			document.getElementById("CCMSTab-slide").innerHTML = "";
-			alert("The User Admin Slider requires jQuery v2.2.4 or higher to run properly.");
+			//alert("The User Admin Slider requires jQuery v2.2.4 or higher to run properly.");
+
+			const ccms_msg_div = document.getElementById('ccms_msg');
+			ccms_msg_div.textContent = "The User Admin Slider requires jQuery v2.2.4 or higher to run properly."
+			ccms_msg_div.classList.add("active", "fail");
+			setTimeout(function() {
+				ccms_msg_div.classList.remove("active", "fail");
+			},15000);
+			window.onclick = function(event) {
+				if(event.target != ccms_msg_div) {
+					ccms_msg_div.classList.remove("active", "fail");
+				}
+			}
+
 			return false;
 		}
 		document.getElementById("ccms_lng-<?= $CLEAN["ccms_lng"]; ?>").scrollIntoView();
