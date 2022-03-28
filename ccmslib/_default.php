@@ -578,7 +578,7 @@ function ccms_user_admin_slider() {
 							}
 						}
 
-						//return false;
+						return false;
 						//return;
 						//*/
 
