@@ -575,9 +575,12 @@ function ccms_user_admin_slider() {
 
 			var list = document.querySelectorAll('[data-ccms]');
 			for(const value in list) {
+				console.log(value)
+				/*
 				if(list.find('textarea').length) {
 					console.log(value);
 				}
+				*/
 			}
 
 
