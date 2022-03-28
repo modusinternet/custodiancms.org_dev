@@ -577,8 +577,8 @@ function ccms_user_admin_slider() {
 								ccms_msg_div.classList.remove("active", "error");
 							}
 						}
-						//return false;
-						return;
+						return false;
+						//return;
 						//*/
 
 
