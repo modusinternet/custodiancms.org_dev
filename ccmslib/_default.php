@@ -289,7 +289,7 @@ function ccms_user_admin_slider() {
 			// Tab Open
 			if(-1 == compVer(jQuery.fn.jquery, "2.2.4")) {
 					// jQuery version is not high enough
-console.log("jQuery found but not high enough.")
+console.log("jQuery already loaded but not high enough.")
 				$('#CCMSEdit-edit-mode-switch-check').prop('checked', false);
 				$('#CCMSEdit-edit-mode-switch-check').prop('disabled', true);
 				localStorage.setItem("CCMSEdit-edit-mode-switch-check", false);
