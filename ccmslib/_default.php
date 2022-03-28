@@ -421,8 +421,6 @@ function ccms_user_admin_slider() {
 								}
 								return;
 							}
-						} catch (e) {
-							console.log("Not an error.");
 						}
 
 
