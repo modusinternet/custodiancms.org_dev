@@ -558,9 +558,10 @@ function ccms_user_admin_slider() {
 			for(var i in a) {
 				if(a.hasOwnProperty(i)) {
 					if($(a).find('textarea').length) {
-						//alert("Edit Mode can not be disabled while edit windows are still open.  Please saved or cancel open edits before using this switch.");
+						alert("Edit Mode can not be disabled while edit windows are still open.  Please saved or cancel open edits before using this switch.");
 
 
+						/*
 						const ccms_msg_div = document.getElementById('ccms_msg');
 						ccms_msg_div.textContent = "Edit Mode can not be disabled while edit windows are still open.  Please saved or cancel open edits before using this switch.";
 						ccms_msg_div.classList.add("active", "error");
@@ -572,6 +573,7 @@ function ccms_user_admin_slider() {
 								ccms_msg_div.classList.remove("active", "error");
 							}
 						}
+						*/
 
 
 						$('#CCMSEdit-edit-mode-switch-check').prop('checked', true);
