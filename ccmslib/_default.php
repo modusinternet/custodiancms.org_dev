@@ -379,8 +379,31 @@ function ccms_user_admin_slider() {
 						*/
 
 
+
+
+						/*
 						var obj = JSON.parse(msg);
-						if(obj && typeof obj === "object") {
+						if(obj.error) {
+							$(editbtn).removeClass("hidden");
+							$(savebtn).addClass("hidden");
+							$(cancelbtn).addClass("hidden");
+							const ccms_msg_div = document.getElementById('ccms_msg');
+							ccms_msg_div.textContent = obj.error;
+							ccms_msg_div.classList.add("active", "error");
+							setTimeout(function() {
+								ccms_msg_div.classList.remove("active", "error");
+							},15000);
+							window.onclick = function(event) {
+								if(event.target != ccms_msg_div) {
+									ccms_msg_div.classList.remove("active", "error");
+								}
+							}
+							return;
+						}
+						*/
+
+						try {
+							var obj = JSON.parse(msg);
 							if(obj.error) {
 								$(editbtn).removeClass("hidden");
 								$(savebtn).addClass("hidden");
@@ -398,6 +421,8 @@ function ccms_user_admin_slider() {
 								}
 								return;
 							}
+						} catch (e) {
+							console.log("Not an error.");
 						}
 
 
