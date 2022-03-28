@@ -168,7 +168,7 @@ function ccms_user_admin_slider() {
 	.ccms_msg{
 		border-radius:4px;
 		box-shadow:rgba(0,0,0,0.2)0px 4px 10px 0px,rgba(0,0,0,0.19)0px 4px 20px 0px;
-		color:var(--cl0);
+		color:rgb(255,255,255);
 		display:block;
 		left:0;
 		padding:20px;
@@ -183,9 +183,9 @@ function ccms_user_admin_slider() {
 
 	.ccms_msg.active{top:100px}
 
-	.ccms_msg.active.error{background-color:var(--cl11)}
+	.ccms_msg.active.error{background-color:rgb(255,0,0)}
 
-	.ccms_msg.active.success{background-color:var(--cl3)}
+	.ccms_msg.active.success{background-color:rgb(134,177,53)}
 
 	/* 435px or wider. */
 	@media only screen and (min-width:435px){
