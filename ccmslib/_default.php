@@ -299,15 +299,15 @@ function ccms_user_admin_slider() {
 
 				//alert("The User Admin Slider requires jQuery v2.2.4 or higher to run properly.");
 
-				const msg_div = document.getElementById('ccms_msg');
-				msg_div.textContent = "The User Admin Slider requires jQuery v2.2.4 or higher to run properly."
-				msg_div.classList.add("active", "fail");
+				const ccms_msg_div = document.getElementById('ccms_msg');
+				ccms_msg_div.textContent = "The User Admin Slider requires jQuery v2.2.4 or higher to run properly."
+				ccms_msg_div.classList.add("active", "fail");
 				setTimeout(function() {
-					msg_div.classList.add("active", "fail");
+					ccms_msg_div.classList.remove("active", "fail");
 				},15000);
 				window.onclick = function(event) {
-					if(event.target != msg_div) {
-						msg_div.classList.remove("active", "fail");
+					if(event.target != ccms_msg_div) {
+						ccms_msg_div.classList.remove("active", "fail");
 					}
 				}
 
