@@ -170,6 +170,7 @@ function ccms_user_admin_slider() {
 	<label id="CCMSTab-slide-tab" for="CCMSTab-slide-tab-checkbox" title="User Admin Slider">
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#fff" d="M21,12a1,1,0,0,0-1,1v6a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V5A1,1,0,0,1,5,4h6a1,1,0,0,0,0-2H5A3,3,0,0,0,2,5V19a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V13A1,1,0,0,0,21,12ZM6,12.76V17a1,1,0,0,0,1,1h4.24a1,1,0,0,0,.71-.29l6.92-6.93h0L21.71,8a1,1,0,0,0,0-1.42L17.47,2.29a1,1,0,0,0-1.42,0L13.23,5.12h0L6.29,12.05A1,1,0,0,0,6,12.76ZM16.76,4.41l2.83,2.83L18.17,8.66,15.34,5.83ZM8,13.17l5.93-5.93,2.83,2.83L10.83,16H8Z"/></svg>
 	</label>
+	<div id="ccms_msg" role="alert" class="ccms_msg"></div>
 	<div id="CCMSTab-slide-outer">
 		<div id="CCMSTab-slide-inner">
 			<div class="CCMSTab-slide-header">User Admin Slider</div>
@@ -225,8 +226,9 @@ function ccms_user_admin_slider() {
 	function ccms_tab_switch() {
 		if($("#CCMSTab-slide-tab-checkbox").is(":checked")) {
 			// Tab Open
-			if(-1 == compVer(jQuery.fn.jquery, "2.2.4")) {
-				// jQuery version is not high enough
+			//if(-1 == compVer(jQuery.fn.jquery, "2.2.4")) {
+			if(-1 == compVer(jQuery.fn.jquery, "5")) {
+					// jQuery version is not high enough
 				$('#CCMSEdit-edit-mode-switch-check').prop('checked', false);
 				$('#CCMSEdit-edit-mode-switch-check').prop('disabled', true);
 				localStorage.setItem("CCMSEdit-edit-mode-switch-check", false);
@@ -235,7 +237,30 @@ function ccms_user_admin_slider() {
 				$('#CCMSTab-slide-tab-checkbox').prop('disabled', true);
 				localStorage.setItem("CCMSTab-slide-tab-checkbox", false);
 
-				alert("The User Admin Slider requires jQuery v2.2.4 or higher to run properly.");
+				//alert("The User Admin Slider requires jQuery v2.2.4 or higher to run properly.");
+
+				const msg_div = document.getElementById('ccms_msg');
+				msg_div.textContent = "The User Admin Slider requires jQuery v2.2.4 or higher to run properly."
+				msg_div.classList.add("active", "fail");
+				setTimeout(function() {
+					msg_div.classList.add("active", "fail");
+				},15000);
+				window.onclick = function(event) {
+					if(event.target != msg_div) {
+						msg_div.classList.remove("active", "fail");
+					}
+				}
+
+
+
+
+
+
+
+
+
+
+
 				return false;
 			} else {
 				localStorage.setItem("CCMSTab-slide-tab-checkbox", true);
@@ -496,15 +521,17 @@ function ccms_user_admin_slider() {
 		}
 	}
 
+	/*
 	function ccms_lcu(lng) { // ccms_lcu = language cookie update
 		document.cookie = "ccms_lng={CCMS_LIB:_default.php;FUNC:ccms_lng}; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
-		/* insert a new cookie and get it in the cache, just incase we're dealing with the home page.  */
+		// insert a new cookie and get it in the cache, just incase we're dealing with the home page.
 		var d = new Date();
 		d.setTime(d.getTime() + (365*24*60*60*1000));
 		var expires = "expires=" + d.toUTCString();
 		document.cookie = "ccms_lng=" + lng + "; " + expires + "; path=/";
 		return;
 	}
+	*/
 
 	function ccms_load_jquery() {
 		if(typeof jQuery == 'undefined') {
