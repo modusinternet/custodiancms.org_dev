@@ -304,13 +304,13 @@ console.log("jQuery already loaded but not high enough.")
 
 				const ccms_msg_div = document.getElementById('ccms_msg');
 				ccms_msg_div.textContent = "The User Admin Slider requires jQuery v2.2.4 or higher to run properly."
-				ccms_msg_div.classList.add("active", "fail");
+				ccms_msg_div.classList.add("active", "error");
 				setTimeout(function() {
-					ccms_msg_div.classList.remove("active", "fail");
+					ccms_msg_div.classList.remove("active", "error");
 				},15000);
 				window.onclick = function(event) {
 					if(event.target != ccms_msg_div) {
-						ccms_msg_div.classList.remove("active", "fail");
+						ccms_msg_div.classList.remove("active", "error");
 					}
 				}
 
@@ -621,13 +621,13 @@ console.log("jQuery already loaded but not high enough version.")
 
 			const ccms_msg_div = document.getElementById('ccms_msg');
 			ccms_msg_div.textContent = "The User Admin Slider requires jQuery v2.2.4 or higher to run properly."
-			ccms_msg_div.classList.add("active", "fail");
+			ccms_msg_div.classList.add("active", "error");
 			setTimeout(function() {
-				ccms_msg_div.classList.remove("active", "fail");
+				ccms_msg_div.classList.remove("active", "error");
 			},15000);
 			window.onclick = function(event) {
 				if(event.target != ccms_msg_div) {
-					ccms_msg_div.classList.remove("active", "fail");
+					ccms_msg_div.classList.remove("active", "error");
 				}
 			}
 
