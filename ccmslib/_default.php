@@ -178,7 +178,7 @@ function ccms_user_admin_slider() {
 		top:-1000px;
 		transition:all 1s;
 		width:90%;
-		z-index:1
+		z-index:100000000
 	}
 
 	.ccms_msg.active{top:100px}
@@ -577,7 +577,8 @@ function ccms_user_admin_slider() {
 								ccms_msg_div.classList.remove("active", "error");
 							}
 						}
-						return false;
+						//return false;
+						return;
 						//*/
 
 
