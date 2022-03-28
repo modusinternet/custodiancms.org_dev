@@ -287,8 +287,7 @@ function ccms_user_admin_slider() {
 	function ccms_tab_switch() {
 		if($("#CCMSTab-slide-tab-checkbox").is(":checked")) {
 			// Tab Open
-			//if(-1 == compVer(jQuery.fn.jquery, "2.2.4")) {
-			if(-1 == compVer(jQuery.fn.jquery, "5")) {
+			if(-1 == compVer(jQuery.fn.jquery, "2.2.4")) {
 					// jQuery version is not high enough
 				$('#CCMSEdit-edit-mode-switch-check').prop('checked', false);
 				$('#CCMSEdit-edit-mode-switch-check').prop('disabled', true);
