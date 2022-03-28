@@ -572,13 +572,12 @@ function ccms_user_admin_slider() {
 						setTimeout(function() {
 							ccms_msg_div.classList.remove("active", "error");
 						},15000);
-						return false;
 						window.onclick = function(event) {
 							if(event.target != ccms_msg_div) {
 								ccms_msg_div.classList.remove("active", "error");
-								return false;
 							}
 						}
+						return false;
 						//*/
 
 
