@@ -287,36 +287,7 @@ function ccms_user_admin_slider() {
 	function ccms_tab_switch() {
 		if($("#CCMSTab-slide-tab-checkbox").is(":checked")) {
 			// Tab Open
-			/*
-			if(-1 == compVer(jQuery.fn.jquery, "2.2.4")) {
-					// jQuery version is not high enough
-
-console.log("jQuery is already loaded but not a high enough version.")
-
-				$('#CCMSEdit-edit-mode-switch-check').prop('checked', false);
-				$('#CCMSEdit-edit-mode-switch-check').prop('disabled', true);
-				localStorage.setItem("CCMSEdit-edit-mode-switch-check", false);
-
-				$('#CCCMSTab-slide-tab-checkbox').prop('checked', false);
-				$('#CCMSTab-slide-tab-checkbox').prop('disabled', true);
-				localStorage.setItem("CCMSTab-slide-tab-checkbox", false);
-				//alert("The User Admin Slider requires jQuery v2.2.4 or higher to run properly.");
-				const ccms_msg_div = document.getElementById('ccms_msg');
-				ccms_msg_div.textContent = "jQuery is already loaded but not a high enough version. The User Admin Slider requires jQuery v2.2.4 or higher to run properly."
-				ccms_msg_div.classList.add("active", "error");
-				setTimeout(function() {
-					ccms_msg_div.classList.remove("active", "error");
-				},15000);
-				window.onclick = function(event) {
-					if(event.target != ccms_msg_div) {
-						ccms_msg_div.classList.remove("active", "error");
-					}
-				}
-				return false;
-			} else {
-			*/
-				localStorage.setItem("CCMSTab-slide-tab-checkbox", true);
-			//}
+			localStorage.setItem("CCMSTab-slide-tab-checkbox", true);
 		} else {
 			// Tab Closed
 			localStorage.setItem("CCMSTab-slide-tab-checkbox", false);
@@ -368,6 +339,17 @@ console.log("jQuery is already loaded but not a high enough version.")
 				$(savebtn).prependTo($(el).parent());
 				$(cancelbtn).prependTo($(el).parent());
 
+
+
+
+
+
+
+
+
+
+
+
 				$(editbtn).click(function() {
 					$(editbtn).addClass("hidden");
 					$(savebtn).removeClass("hidden");
@@ -381,6 +363,7 @@ console.log("jQuery is already loaded but not a high enough version.")
 						type: "post",
 						data: "ccms_ins_db_id=" + textOrig[0]
 					}).done(function(msg) {
+						/*
 						if(msg === '{"error":"Session Error"}') {
 							alert("Session error, can not be edited right now.");
 							$(editbtn).removeClass("hidden");
@@ -393,6 +376,27 @@ console.log("jQuery is already loaded but not a high enough version.")
 							alert(msg);
 							//console.log(msg);
 						}
+						*/
+
+						var obj = JSON.parse(msg);
+						if(obj.error) {
+							$(editbtn).removeClass("hidden");
+							$(savebtn).addClass("hidden");
+							$(cancelbtn).addClass("hidden");
+							const ccms_msg_div = document.getElementById('ccms_msg');
+							ccms_msg_div.textContent = obj.error;
+							ccms_msg_div.classList.add("active", "error");
+							setTimeout(function() {
+								ccms_msg_div.classList.remove("active", "error");
+							},15000);
+							window.onclick = function(event) {
+								if(event.target != ccms_msg_div) {
+									ccms_msg_div.classList.remove("active", "error");
+								}
+							}
+							return;
+						}
+
 						textOrig[1] = $.trim($(el).html());
 						$(el).html("");
 						editor=$('<textarea class="CCMS-editor-textarea" rows="5">'+msg+'</textarea><div style="position:relative;color:#000;font:16px/1.2 normal;text-align:left;text-transform:none;"><span><strong>Warning</strong>: Only &lt;a&gt;, &lt;blockquote&gt;, &lt;br&gt;, &lt;i&gt;, &lt;img&gt;, &lt;p&gt;, &lt;pre&gt;, &lt;span&gt;, &lt;ul&gt;, &lt;ol&gt;, &lt;li&gt; and CCMS tags like <span style="word-break:break-all;">&#123;CCMS_LIB:_default.php;FUNC:ccms_lng}</span> or &#123;CCMS_DB:index,para1} are permitted here.  All else is automatically removed at the server.<br>Shift+[Enter] for Break</span><span style="position:absolute;bottom:0;right:0;">( ID:'+textOrig[0]+', GRP:'+textOrig[2]+', NAME:'+textOrig[3]+')</span></div>').appendTo($(el));
@@ -415,6 +419,17 @@ console.log("jQuery is already loaded but not a high enough version.")
 						$("#CCMS-loadingSpinner").fadeOut();
 					});
 				});
+
+
+
+
+
+
+
+
+
+
+
 
 				$(savebtn).click(function() {
 					if(textOrig[1] != $(el).find('textarea').val()) {
@@ -550,16 +565,16 @@ console.log("jQuery is already loaded but not a high enough version.")
 		// Return 1  if a > b
 		// Return -1 if a < b
 		// Return 0  if a == b
-		if (a_components === b_components) {return 0;}
+		if(a_components === b_components) {return 0;}
 		var partsNumberA = a_components.split(".");
 		var partsNumberB = b_components.split(".");
-		for (var i = 0; i < partsNumberA.length; i++) {
+		for(var i = 0; i < partsNumberA.length; i++) {
 			var valueA = parseInt(partsNumberA[i]);
 			var valueB = parseInt(partsNumberB[i]);
 			// A bigger than B
-			if (valueA > valueB || isNaN(valueB)) {return 1;}
+			if(valueA > valueB || isNaN(valueB)) {return 1;}
 			// B bigger than A
-			if (valueA < valueB) {return -1;}
+			if(valueA < valueB) {return -1;}
 		}
 	}
 
@@ -572,18 +587,6 @@ console.log("jQuery is already loaded but not a high enough version.")
 			ccms_edit_mode_switch();
 		}
 	}
-
-	/*
-	function ccms_lcu(lng) { // ccms_lcu = language cookie update
-		document.cookie = "ccms_lng={CCMS_LIB:_default.php;FUNC:ccms_lng}; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
-		// insert a new cookie and get it in the cache, just incase we're dealing with the home page.
-		var d = new Date();
-		d.setTime(d.getTime() + (365*24*60*60*1000));
-		var expires = "expires=" + d.toUTCString();
-		document.cookie = "ccms_lng=" + lng + "; " + expires + "; path=/";
-		return;
-	}
-	*/
 
 	function ccms_load_jquery() {
 		if(typeof jQuery == 'undefined') {
@@ -606,7 +609,12 @@ console.log("jQuery is already loaded but not a high enough version.")
 			localStorage.setItem("CCMSTab-slide-tab-checkbox", false);
 			localStorage.setItem("CCMSEdit-edit-mode-switch-check", false);
 			document.getElementById("CCMSTab-slide").innerHTML = "";
-			//alert("The User Admin Slider requires jQuery v2.2.4 or higher to run properly.");
+
+
+
+
+
+
 
 			const ccms_msg_div = document.getElementById('ccms_msg');
 			ccms_msg_div.textContent = "jQuery is already loaded but not a high enough version. The User Admin Slider requires jQuery v2.2.4 or higher to run properly."
@@ -619,6 +627,14 @@ console.log("jQuery is already loaded but not a high enough version.")
 					ccms_msg_div.classList.remove("active", "error");
 				}
 			}
+
+
+
+
+
+
+
+
 
 			return false;
 		}
