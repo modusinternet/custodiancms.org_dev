@@ -562,7 +562,7 @@ function ccms_user_admin_slider() {
 
 
 						const ccms_msg_div = document.getElementById('ccms_msg');
-						ccms_msg_div.textContent = "Edit Mode can not be disabled while edit windows are still open.  Please saved or cancel open edits before using this switch."
+						ccms_msg_div.textContent = "Edit Mode can not be disabled while edit windows are still open.  Please saved or cancel open edits before using this switch.";
 						ccms_msg_div.classList.add("active", "error");
 						setTimeout(function() {
 							ccms_msg_div.classList.remove("active", "error");
@@ -660,7 +660,7 @@ console.log("jQuery is already loaded but not a high enough version.")
 
 
 			const ccms_msg_div = document.getElementById('ccms_msg');
-			ccms_msg_div.textContent = "jQuery is already loaded but not a high enough version. The User Admin Slider requires jQuery v2.2.4 or higher to run properly."
+			ccms_msg_div.textContent = "jQuery is already loaded but not a high enough version. The User Admin Slider requires jQuery v2.2.4 or higher to run properly.";
 			ccms_msg_div.classList.add("active", "error");
 			setTimeout(function() {
 				ccms_msg_div.classList.remove("active", "error");
