@@ -554,41 +554,15 @@ function ccms_user_admin_slider() {
 			})
 		} else {
 			// Edit Switch Off
+			/*
 			var a = document.querySelectorAll('[data-ccms]');
 			for(var i in a) {
 				if(a.hasOwnProperty(i)) {
 					if($(a).find('textarea').length) {
-						//alert("Edit Mode can not be disabled while edit windows are still open.  Please saved or cancel open edits before using this switch.");
-
-
-						///*
-						const ccms_msg_div = document.getElementById('ccms_msg');
-						ccms_msg_div.textContent = "Edit Mode can not be disabled while edit windows are still open.  Please save or cancel open edits before turning this feature off.";
-						ccms_msg_div.classList.add("active", "error");
-
+						alert("Edit Mode can not be disabled while edit windows are still open.  Please saved or cancel open edits before using this switch.");
 						$('#CCMSEdit-edit-mode-switch-check').prop('checked', true);
 						localStorage.setItem("CCMSEdit-edit-mode-switch-check", true);
-
-						setTimeout(function() {
-							ccms_msg_div.classList.remove("active", "error");
-							return false;
-						},15000);
-						window.onclick = function(event) {
-							if(event.target != ccms_msg_div) {
-								ccms_msg_div.classList.remove("active", "error");
-								return false;
-							}
-						}
-
-						//return false;
-						//return;
-						//*/
-
-
-						//$('#CCMSEdit-edit-mode-switch-check').prop('checked', true);
-						//localStorage.setItem("CCMSEdit-edit-mode-switch-check", true);
-						//return false;
-
+						return false;
 					} else {
 						$(".CCMS-wrap button").remove();
 						$(a[i]).unwrap();
@@ -597,6 +571,44 @@ function ccms_user_admin_slider() {
 					}
 				}
 			}
+			*/
+
+			var list = document.querySelectorAll('[data-ccms]');
+			for(const value in list) {
+				if(list.find('textarea').length) {
+					console.log(value);
+				}
+			}
+
+
+
+
+			/*
+			const ccms_msg_div = document.getElementById('ccms_msg');
+			ccms_msg_div.textContent = "Edit Mode can not be disabled while edit windows are still open.  Please save or cancel open edits before turning this feature off.";
+			ccms_msg_div.classList.add("active", "error");
+
+			$('#CCMSEdit-edit-mode-switch-check').prop('checked', true);
+			localStorage.setItem("CCMSEdit-edit-mode-switch-check", true);
+
+			setTimeout(function() {
+				ccms_msg_div.classList.remove("active", "error");
+				//return false;
+			},15000);
+			window.onclick = function(event) {
+				if(event.target != ccms_msg_div) {
+					ccms_msg_div.classList.remove("active", "error");
+					//return false;
+					//e.stopPropagation()
+				}
+			}
+			*/
+
+
+
+
+
+
 		}
 	}
 
