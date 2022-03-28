@@ -563,7 +563,7 @@ function ccms_user_admin_slider() {
 
 						///*
 						const ccms_msg_div = document.getElementById('ccms_msg');
-						ccms_msg_div.textContent = "Edit Mode can not be disabled while edit windows are still open.  Please saved or cancel open edits before using this switch.";
+						ccms_msg_div.textContent = "Edit Mode can not be disabled while edit windows are still open.  Please save or cancel open edits before turning this feature off.";
 						ccms_msg_div.classList.add("active", "error");
 
 						$('#CCMSEdit-edit-mode-switch-check').prop('checked', true);
