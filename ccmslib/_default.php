@@ -600,7 +600,7 @@ function ccms_user_admin_slider() {
 
 						///*
 						window.addEventListener('click', function abc(event) {
-							if(event.target != ccms_msg_div && event.target != ccms_edit_mode_switch)) {
+							if(event.target != ccms_msg_div && event.target != ccms_edit_mode_switch) {
 								ccms_msg_div.classList.remove("active", "error");
 								//return false;
 								//event.stopPropagation();
