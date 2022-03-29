@@ -632,9 +632,10 @@ function ccms_user_admin_slider() {
 						$(list[value]).unwrap();
 						list[value].className = list[value].className.replace(/\bCCMSEdit-edit-link-border\b/, "");
 					}
-					localStorage.setItem("CCMSEdit-edit-mode-switch-check", false);
+
 
 				}
+				localStorage.setItem("CCMSEdit-edit-mode-switch-check", false);
 
 			}
 			//*/
