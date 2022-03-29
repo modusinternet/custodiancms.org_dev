@@ -573,7 +573,7 @@ function ccms_user_admin_slider() {
 			}
 			*/
 
-			var list = document.querySelectorAll('[data-ccms]');
+			const list = document.querySelectorAll('[data-ccms]');
 			//var myJSON = JSON.stringify(list);
 			//console.log(myJSON);
 			///*
