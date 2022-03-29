@@ -588,7 +588,28 @@ function ccms_user_admin_slider() {
 					if($(list).find('textarea').length) {
 					//if(list.find('textarea').length) {
 						console.log("found");
-						//e.stopPropagation();
+
+
+						const ccms_msg_div = document.getElementById('ccms_msg');
+						ccms_msg_div.textContent = "Edit Mode can not be disabled while edit windows are still open.  Please save or cancel open edits before turning this feature off.";
+						ccms_msg_div.classList.add("active", "error");
+
+						$('#CCMSEdit-edit-mode-switch-check').prop('checked', true);
+						localStorage.setItem("CCMSEdit-edit-mode-switch-check", true);
+
+						setTimeout(function() {
+							ccms_msg_div.classList.remove("active", "error");
+							//return false;
+						},15000);
+						window.onclick = function(event) {
+							if(event.target != ccms_msg_div) {
+								ccms_msg_div.classList.remove("active", "error");
+								//return false;
+								event.stopPropagation();
+							}
+						}
+
+
 						break;
 					} else {
 						console.log("not found");
