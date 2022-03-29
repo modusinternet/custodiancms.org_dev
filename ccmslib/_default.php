@@ -624,6 +624,10 @@ function ccms_user_admin_slider() {
 						break;
 					} else {
 						console.log("not found");
+						$(".CCMS-wrap button").remove();
+						$(a[i]).unwrap();
+						a[i].className = a[i].className.replace(/\bCCMSEdit-edit-link-border\b/, "");
+						localStorage.setItem("CCMSEdit-edit-mode-switch-check", false);
 					}
 				}
 
