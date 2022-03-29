@@ -631,9 +631,8 @@ function ccms_user_admin_slider() {
 						$(".CCMS-wrap button").remove();
 						$(list[value]).unwrap();
 						list[value].className = list[value].className.replace(/\bCCMSEdit-edit-link-border\b/, "");
-						localStorage.setItem("CCMSEdit-edit-mode-switch-check", false);
-						break;
 					}
+					localStorage.setItem("CCMSEdit-edit-mode-switch-check", false);
 
 				}
 
