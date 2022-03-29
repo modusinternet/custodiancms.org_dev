@@ -578,7 +578,7 @@ function ccms_user_admin_slider() {
 			//console.log(myJSON);
 			///*
 			for(const value in list) {
-				console.log(value);
+				//console.log(value);
 				//if(list.find('textarea').length) {
 				//	console.log(value);
 				//}
