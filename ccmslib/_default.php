@@ -363,45 +363,6 @@ function ccms_user_admin_slider() {
 						type: "post",
 						data: "ccms_ins_db_id=" + textOrig[0]
 					}).done(function(msg) {
-						/*
-						if(msg === '{"error":"Session Error"}') {
-							alert("Session error, can not be edited right now.");
-							$(editbtn).removeClass("hidden");
-							$(savebtn).addClass("hidden");
-							$(cancelbtn).addClass("hidden");
-							return;
-						} else if(msg === '{"error":"Session Error"}') {
-							alert("Session error, changes not saved.");
-						} else {
-							alert(msg);
-							//console.log(msg);
-						}
-						*/
-
-
-
-
-						/*
-						var obj = JSON.parse(msg);
-						if(obj.error) {
-							$(editbtn).removeClass("hidden");
-							$(savebtn).addClass("hidden");
-							$(cancelbtn).addClass("hidden");
-							const ccms_msg_div = document.getElementById('ccms_msg');
-							ccms_msg_div.textContent = obj.error;
-							ccms_msg_div.classList.add("active", "error");
-							setTimeout(function() {
-								ccms_msg_div.classList.remove("active", "error");
-							},15000);
-							window.onclick = function(event) {
-								if(event.target != ccms_msg_div) {
-									ccms_msg_div.classList.remove("active", "error");
-								}
-							}
-							return;
-						}
-						*/
-
 						try {
 							var obj = JSON.parse(msg);
 							if(obj.error) {
@@ -482,6 +443,7 @@ function ccms_user_admin_slider() {
 							type: "post",
 							data: "ccms_ins_db_id=" + textOrig[0] + "&ccms_ins_db_text=" + encodeURIComponent(textNew)
 						}).done(function(msg) {
+							/*
 							if(msg === "1") {
 								$(editbtn).removeClass("hidden");
 								$(savebtn).addClass("hidden");
@@ -504,6 +466,87 @@ function ccms_user_admin_slider() {
 								alert(msg);
 								//console.log(msg);
 							}
+							*/
+
+
+
+
+
+
+
+
+
+
+
+
+							var obj = JSON.parse(msg);
+							if(obj.success) {
+
+								$(editbtn).removeClass("hidden");
+								$(savebtn).addClass("hidden");
+								$(cancelbtn).addClass("hidden");
+								$(el).html(textNew);
+								try {
+									document.execCommand("styleWithCSS", 0, false);
+								} catch (e) {
+									try {
+										document.execCommand("useCSS", 0, true);
+									} catch (e) {
+										try {
+											document.execCommand('styleWithCSS', false, false);
+										} catch (e) {}
+									}
+								}
+
+								//const msg_div = document.getElementById('info_tab_form_msg');
+								const ccms_msg_div = document.getElementById('ccms_msg');
+								ccms_msg_div.classList.add("active", "success");
+								ccms_msg_div.textContent = obj.success;
+								//$("#info_tab_form_msg").scrollView();
+								setTimeout(function() {
+									ccms_msg_div.classList.remove("active", "success");
+								},15000);
+								window.onclick = function(event) {
+									if(event.target != ccms_msg_div) {
+										ccms_msg_div.classList.remove("active", "success");
+									}
+								}
+							} else {
+								//const ccms_msg_div = document.getElementById('info_tab_form_msg');
+								ccms_msg_div.classList.add("active", "error");
+								ccms_msg_div.textContent = obj.error;
+								//$("#info_tab_form_msg").scrollView();
+								setTimeout(function() {
+									ccms_msg_div.classList.remove("active", "error");
+								},15000);
+								window.onclick = function(event) {
+									if(event.target != ccms_msg_div) {
+										ccms_msg_div.classList.remove("active", "error");
+									}
+								}
+							}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 						}).fail(function (jqXHR, textStatus, errorThrown){
 							// Called on failure.
 							// log the error to the console
@@ -554,78 +597,26 @@ function ccms_user_admin_slider() {
 			})
 		} else {
 			// Edit Switch Off
-			/*
-			var a = document.querySelectorAll('[data-ccms]');
-			for(var i in a) {
-				if(a.hasOwnProperty(i)) {
-					if($(a).find('textarea').length) {
-						alert("Edit Mode can not be disabled while edit windows are still open.  Please saved or cancel open edits before using this switch.");
-						$('#CCMSEdit-edit-mode-switch-check').prop('checked', true);
-						localStorage.setItem("CCMSEdit-edit-mode-switch-check", true);
-						return false;
-					} else {
-						$(".CCMS-wrap button").remove();
-						$(a[i]).unwrap();
-						a[i].className = a[i].className.replace(/\bCCMSEdit-edit-link-border\b/, "");
-						localStorage.setItem("CCMSEdit-edit-mode-switch-check", false);
-					}
-				}
-			}
-			*/
-
 			const list = document.querySelectorAll('[data-ccms]');
 			const ccms_msg_div = document.getElementById('ccms_msg');
-			const ccms_edit_mode_switch = document.getElementById('CCMSEdit-edit-mode-switch-check');//var myJSON = JSON.stringify(list);
-			//console.log(myJSON);
-			///*
+			const ccms_edit_mode_switch = document.getElementById('CCMSEdit-edit-mode-switch-check');//var
+
 			for(const value in list) {
-				//console.log(value);
-				//if(list.find('textarea').length) {
-				//	console.log(value);
-				//}
-
 				if(list.hasOwnProperty(value)) {
-					//console.log(value);
 					if($(list).find('textarea').length) {
-					//if(list.find('textarea').length) {
-						console.log("found");
-
-
-
 						ccms_msg_div.textContent = "Edit Mode can not be disabled while edit windows are still open.  Please save or cancel open edits before turning this feature off.";
 						ccms_msg_div.classList.add("active", "error");
-
 						$('#CCMSEdit-edit-mode-switch-check').prop('checked', true);
 						localStorage.setItem("CCMSEdit-edit-mode-switch-check", true);
-
-						///*
 						window.addEventListener('click', function abc(event) {
 							if(event.target != ccms_msg_div && event.target != ccms_edit_mode_switch) {
 								ccms_msg_div.classList.remove("active", "error");
-								//return false;
-								//event.stopPropagation();
 								window.removeEventListener('click', abc);
 							}
 						});
-						//*/
-
 						setTimeout(function() {
 							ccms_msg_div.classList.remove("active", "error");
-							//return false;
 						},15000);
-						/*
-						window.onclick = function(event) {
-							if(event.target != ccms_msg_div) {
-								ccms_msg_div.classList.remove("active", "error");
-								//return false;
-								event.stopPropagation();
-							}
-						}
-						*/
-
-
-
-
 						break;
 					} else {
 						console.log("not found");
@@ -633,44 +624,9 @@ function ccms_user_admin_slider() {
 						$(list[value]).unwrap();
 						list[value].className = list[value].className.replace(/\bCCMSEdit-edit-link-border\b/, "");
 					}
-
-
 				}
-
-
 			}
 			localStorage.setItem("CCMSEdit-edit-mode-switch-check", false);
-			//*/
-
-
-
-
-			/*
-			const ccms_msg_div = document.getElementById('ccms_msg');
-			ccms_msg_div.textContent = "Edit Mode can not be disabled while edit windows are still open.  Please save or cancel open edits before turning this feature off.";
-			ccms_msg_div.classList.add("active", "error");
-
-			$('#CCMSEdit-edit-mode-switch-check').prop('checked', true);
-			localStorage.setItem("CCMSEdit-edit-mode-switch-check", true);
-
-			setTimeout(function() {
-				ccms_msg_div.classList.remove("active", "error");
-				//return false;
-			},15000);
-			window.onclick = function(event) {
-				if(event.target != ccms_msg_div) {
-					ccms_msg_div.classList.remove("active", "error");
-					//return false;
-					//e.stopPropagation()
-				}
-			}
-			*/
-
-
-
-
-
-
 		}
 	}
 
