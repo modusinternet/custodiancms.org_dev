@@ -584,7 +584,13 @@ function ccms_user_admin_slider() {
 				//}
 
 				if(list.hasOwnProperty(value)) {
-					console.log(value);
+					//console.log(value);
+					//if($(a).find('textarea').length) {
+					if(list.find('textarea').length) {
+						console.log("found");
+					} else {
+						console.log("not found");
+					}
 				}
 
 			}
