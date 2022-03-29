@@ -635,9 +635,10 @@ function ccms_user_admin_slider() {
 
 
 				}
-				localStorage.setItem("CCMSEdit-edit-mode-switch-check", false);
+
 
 			}
+			localStorage.setItem("CCMSEdit-edit-mode-switch-check", false);
 			//*/
 
 
