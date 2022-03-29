@@ -363,6 +363,7 @@ function ccms_user_admin_slider() {
 						type: "post",
 						data: "ccms_ins_db_id=" + textOrig[0]
 					}).done(function(msg) {
+						/*
 						try {
 							var obj = JSON.parse(msg);
 							if(obj.error) {
@@ -398,6 +399,46 @@ function ccms_user_admin_slider() {
 								e.preventDefault();
 							}
 						});
+						*/
+						const ccms_msg_div = document.getElementById('ccms_msg');
+						var obj = JSON.parse(msg);
+
+						if(obj.success) {
+							textOrig[1] = $.trim($(el).html());
+							$(el).html("");
+
+							//ccms_msg_div.textContent = obj.success;
+
+							editor=$('<textarea class="CCMS-editor-textarea" rows="5">'+obj.success+'</textarea><div style="position:relative;color:#000;font:16px/1.2 normal;text-align:left;text-transform:none;"><span><strong>Warning</strong>: Only &lt;a&gt;, &lt;blockquote&gt;, &lt;br&gt;, &lt;i&gt;, &lt;img&gt;, &lt;p&gt;, &lt;pre&gt;, &lt;span&gt;, &lt;ul&gt;, &lt;ol&gt;, &lt;li&gt; and CCMS tags like <span style="word-break:break-all;">&#123;CCMS_LIB:_default.php;FUNC:ccms_lng}</span> or &#123;CCMS_DB:index,para1} are permitted here.  All else is automatically removed at the server.<br>Shift+[Enter] for Break</span><span style="position:absolute;bottom:0;right:0;">( ID:'+textOrig[0]+', GRP:'+textOrig[2]+', NAME:'+textOrig[3]+')</span></div>').appendTo($(el));
+							$(el).find('textarea').keyup(function (e) {
+								if(e.keyCode == 13 && e.shiftKey) {
+									var content = this.value;
+									var caret = getCaret(this);
+									this.value = content.substring(0, caret - 1) + "<br>\n" + content.substring(caret, content.length);
+									$(el).find('textarea').setCursorPosition(caret + 6);
+									e.preventDefault();
+								}
+							});
+						} else {
+							$(editbtn).removeClass("hidden");
+							$(savebtn).addClass("hidden");
+							$(cancelbtn).addClass("hidden");
+							const ccms_msg_div = document.getElementById('ccms_msg');
+							ccms_msg_div.textContent = obj.error;
+							ccms_msg_div.classList.add("active", "error");
+							setTimeout(function() {
+								ccms_msg_div.classList.remove("active", "error");
+							},15000);
+							window.onclick = function(event) {
+								if(event.target != ccms_msg_div) {
+									ccms_msg_div.classList.remove("active", "error");
+								}
+							}
+						}
+
+
+
+
 					}).fail(function (jqXHR, textStatus, errorThrown){
 						// Called on failure.
 						// log the error to the console
@@ -443,31 +484,6 @@ function ccms_user_admin_slider() {
 							type: "post",
 							data: "ccms_ins_db_id=" + textOrig[0] + "&ccms_ins_db_text=" + encodeURIComponent(textNew)
 						}).done(function(msg) {
-							/*
-							if(msg === "1") {
-								$(editbtn).removeClass("hidden");
-								$(savebtn).addClass("hidden");
-								$(cancelbtn).addClass("hidden");
-								$(el).html(textNew);
-								try {
-									document.execCommand("styleWithCSS", 0, false);
-								} catch (e) {
-									try {
-										document.execCommand("useCSS", 0, true);
-									} catch (e) {
-										try {
-											document.execCommand('styleWithCSS', false, false);
-										} catch (e) {}
-									}
-								}
-							} else if(msg === '{"error":"Session Error"}') {
-								alert("Session error, changes not saved.");
-							} else {
-								alert(msg);
-								//console.log(msg);
-							}
-							*/
-							//const msg_div = document.getElementById('info_tab_form_msg');
 							const ccms_msg_div = document.getElementById('ccms_msg');
 							var obj = JSON.parse(msg);
 
@@ -511,28 +527,6 @@ function ccms_user_admin_slider() {
 									}
 								}
 							}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 						}).fail(function (jqXHR, textStatus, errorThrown){
 							// Called on failure.
 							// log the error to the console
@@ -561,6 +555,11 @@ function ccms_user_admin_slider() {
 						}
 					}
 				});
+
+
+
+
+
 
 				$(cancelbtn).click(function(){
 					$(editbtn).removeClass("hidden");
