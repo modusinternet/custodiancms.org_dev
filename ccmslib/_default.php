@@ -633,6 +633,7 @@ function ccms_user_admin_slider() {
 						list[value].className = list[value].className.replace(/\bCCMSEdit-edit-link-border\b/, "");
 						localStorage.setItem("CCMSEdit-edit-mode-switch-check", false);
 					}
+					break;
 				}
 
 			}
