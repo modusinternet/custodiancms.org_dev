@@ -467,22 +467,10 @@ function ccms_user_admin_slider() {
 								//console.log(msg);
 							}
 							*/
-
-
-
-
-
-
-
-
-
-
-
-
 							//const msg_div = document.getElementById('info_tab_form_msg');
 							const ccms_msg_div = document.getElementById('ccms_msg');
 							var obj = JSON.parse(msg);
-							
+
 							if(obj.success) {
 
 								$(editbtn).removeClass("hidden");
@@ -503,20 +491,17 @@ function ccms_user_admin_slider() {
 
 								ccms_msg_div.classList.add("active", "success");
 								ccms_msg_div.textContent = obj.success;
-								//$("#info_tab_form_msg").scrollView();
 								setTimeout(function() {
 									ccms_msg_div.classList.remove("active", "success");
-								},15000);
+								},5000);
 								window.onclick = function(event) {
 									if(event.target != ccms_msg_div) {
 										ccms_msg_div.classList.remove("active", "success");
 									}
 								}
 							} else {
-								//const ccms_msg_div = document.getElementById('info_tab_form_msg');
-								ccms_msg_div.classList.add("active", "error");
 								ccms_msg_div.textContent = obj.error;
-								//$("#info_tab_form_msg").scrollView();
+								ccms_msg_div.classList.add("active", "error");
 								setTimeout(function() {
 									ccms_msg_div.classList.remove("active", "error");
 								},15000);
