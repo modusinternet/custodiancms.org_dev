@@ -597,6 +597,17 @@ function ccms_user_admin_slider() {
 						$('#CCMSEdit-edit-mode-switch-check').prop('checked', true);
 						localStorage.setItem("CCMSEdit-edit-mode-switch-check", true);
 
+						///*
+						window.addEventListener('click', function abc(event) {
+							if(event.target != ccms_msg_div) {
+								ccms_msg_div.classList.remove("active", "error");
+								//return false;
+								//event.stopPropagation();
+								window.removeEventListener('click', abc);
+							}
+						});
+						//*/
+
 						setTimeout(function() {
 							ccms_msg_div.classList.remove("active", "error");
 							//return false;
@@ -611,16 +622,7 @@ function ccms_user_admin_slider() {
 						}
 						*/
 
-						/*
-						window.addEventListener('click', function abc(event) {
-							if(event.target != ccms_msg_div) {
-								ccms_msg_div.classList.remove("active", "error");
-								//return false;
-								//event.stopPropagation();
-								window.removeEventListener('click', abc);
-							}
-						});
-						*/
+
 
 
 						break;
