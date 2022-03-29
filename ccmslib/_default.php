@@ -438,7 +438,7 @@ function ccms_user_admin_slider() {
 						});
 						$("#CCMS-loadingSpinner").fadeIn();
 						$.ajax({
-							url: "/<?= $CLEAN["ccms_lng"]; ?>/user/_js/ccms-user-admin-slider-02-ajax.php?ajax_flag=1",
+							url: "/<?= $CLEAN["ccms_lng"];?>/user/_js/ccms-user-admin-slider-02-ajax.php?ajax_flag=1",
 							cache: false,
 							type: "post",
 							data: "ccms_ins_db_id=" + textOrig[0] + "&ccms_ins_db_text=" + encodeURIComponent(textNew)
