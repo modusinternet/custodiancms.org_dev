@@ -574,16 +574,16 @@ function ccms_user_admin_slider() {
 			*/
 
 			var list = document.querySelectorAll('[data-ccms]');
-			var myJSON = JSON.stringify(list);
-			console.log(myJSON);
-			/*
+			//var myJSON = JSON.stringify(list);
+			//console.log(myJSON);
+			///*
 			for(const value in list) {
-				console.log(value)
-				if(list.find('textarea').length) {
-					console.log(value);
-				}
+				console.log(value);
+				//if(list.find('textarea').length) {
+				//	console.log(value);
+				//}
 			}
-			*/
+			//*/
 
 
 
