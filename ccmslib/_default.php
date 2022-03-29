@@ -582,6 +582,11 @@ function ccms_user_admin_slider() {
 				//if(list.find('textarea').length) {
 				//	console.log(value);
 				//}
+
+				if(list.hasOwnProperty(value)) {
+					console.log(value);
+				}
+
 			}
 			//*/
 
