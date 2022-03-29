@@ -479,7 +479,10 @@ function ccms_user_admin_slider() {
 
 
 
+							//const msg_div = document.getElementById('info_tab_form_msg');
+							const ccms_msg_div = document.getElementById('ccms_msg');
 							var obj = JSON.parse(msg);
+							
 							if(obj.success) {
 
 								$(editbtn).removeClass("hidden");
@@ -498,8 +501,6 @@ function ccms_user_admin_slider() {
 									}
 								}
 
-								//const msg_div = document.getElementById('info_tab_form_msg');
-								const ccms_msg_div = document.getElementById('ccms_msg');
 								ccms_msg_div.classList.add("active", "success");
 								ccms_msg_div.textContent = obj.success;
 								//$("#info_tab_form_msg").scrollView();
