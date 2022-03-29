@@ -611,6 +611,7 @@ function ccms_user_admin_slider() {
 						}
 						*/
 
+						/*
 						window.addEventListener('click', function abc(event) {
 							if(event.target != ccms_msg_div) {
 								ccms_msg_div.classList.remove("active", "error");
@@ -619,6 +620,7 @@ function ccms_user_admin_slider() {
 								window.removeEventListener('click', abc);
 							}
 						});
+						*/
 
 
 						break;
