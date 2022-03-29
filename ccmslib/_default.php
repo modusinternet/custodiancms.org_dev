@@ -118,16 +118,6 @@ function ccms_canonical() {
 }
 
 
-
-
-
-
-
-
-
-
-
-
 function ccms_user_admin_slider() {
 	global $CFG, $CLEAN;
 
@@ -577,22 +567,6 @@ console.log("jQuery is already loaded but not a high enough version.")
 </script>
 	<?php endif;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 function ccms_dateYear() {
