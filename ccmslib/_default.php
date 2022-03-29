@@ -574,7 +574,8 @@ function ccms_user_admin_slider() {
 			*/
 
 			const list = document.querySelectorAll('[data-ccms]');
-			//var myJSON = JSON.stringify(list);
+			const ccms_msg_div = document.getElementById('ccms_msg');
+			const ccms_edit_mode_switch = document.getElementById('CCMSEdit-edit-mode-switch-check');//var myJSON = JSON.stringify(list);
 			//console.log(myJSON);
 			///*
 			for(const value in list) {
@@ -590,7 +591,7 @@ function ccms_user_admin_slider() {
 						console.log("found");
 
 
-						const ccms_msg_div = document.getElementById('ccms_msg');
+
 						ccms_msg_div.textContent = "Edit Mode can not be disabled while edit windows are still open.  Please save or cancel open edits before turning this feature off.";
 						ccms_msg_div.classList.add("active", "error");
 
@@ -599,7 +600,7 @@ function ccms_user_admin_slider() {
 
 						///*
 						window.addEventListener('click', function abc(event) {
-							if(event.target != ccms_msg_div && event.target != $('#CCMSEdit-edit-mode-switch-check')) {
+							if(event.target != ccms_msg_div && event.target != ccms_edit_mode_switch)) {
 								ccms_msg_div.classList.remove("active", "error");
 								//return false;
 								//event.stopPropagation();
