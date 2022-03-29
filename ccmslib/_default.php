@@ -618,7 +618,7 @@ function ccms_user_admin_slider() {
 								//event.stopPropagation();
 								window.removeEventListener('click', abc);
 							}
-						}
+						});
 
 
 						break;
