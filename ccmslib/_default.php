@@ -588,6 +588,8 @@ function ccms_user_admin_slider() {
 					if($(list).find('textarea').length) {
 					//if(list.find('textarea').length) {
 						console.log("found");
+						//e.stopPropagation();
+						break;
 					} else {
 						console.log("not found");
 					}
