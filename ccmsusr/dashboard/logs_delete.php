@@ -32,9 +32,9 @@ if(!isset($msg["error"])) {
 	$qry->execute(array(':id' => $CLEAN["id"]));
 	$count = $qry->rowCount();
 	if($count > 0) {
-		$msg["success"] = "Security Log(ID:" . $CLEAN["id"] . ") Deleted";
+		$msg["success"] = "Security Log (ID:" . $CLEAN["id"] . ") Deleted";
 	} else {
-		$msg["success"] = "Security Log(ID:" . $CLEAN["id"] . ") Already Deleted";
+		$msg["success"] = "Security Log (ID:" . $CLEAN["id"] . ") Already Deleted";
 	}
 }
 
