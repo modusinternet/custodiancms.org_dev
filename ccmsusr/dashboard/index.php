@@ -77,7 +77,10 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			<h1 style="border-bottom:1px dashed var(--cl3)">Dashboard</h1>
 			<p>This section is still under development, but if you come across any unresolved issues please let us know at: <a class="ccms_a" href="mailto:info@custodiancms.org?subject=unresolved+issue+report">info@custodiancms.org</a></p>
 
-			<div class="modal">
+
+				<div id="msg_div" role="alert" class="ccms_msg"></div>
+
+				<div class="modal">
 				<div>
 					<span style="float:left">Security Logs</span>
 					<button class="svg_icon svg_compress_button" id="ccms_compress_button" title="Compress Show/Hide"></button>
@@ -342,19 +345,49 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 											let url = "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/addIpAddressToBlacklist.php";
 											fetch(url + "?token=" + Math.random() + "&ajax_flag=1&ip=" + ip)
 											.then(response => response.json())
-											.then(data => {
-												if(data.success === "0") { // already blocked
+											.then(obj => {
+												/*
+												if(obj.success === "0") { // already blocked
 													console.log(ip + " already blocked");
 													alert(ip + " already blocked");
-												} else if(data.success === "1") { // blocked
+												} else if(obj.success === "1") { // blocked
 													console.log(ip + " blocked");
 													alert(ip + " blocked");
-												} else if(data.error === "Session Error") {
+												} else if(obj.error === "Session Error") {
 													document.getElementById("ccms_security_logs").innerHTML = "Session Error";
 												} else {
 													document.getElementById("ccms_security_logs").innerHTML = "Error: See console for more detail.";
 													console.log(data);
 												}
+												*/
+												const msg_div = document.getElementById('msg_div');
+												if(obj.success) {
+													msg_div.classList.add("active", "success");
+													msg_div.textContent = obj.success;
+													setTimeout(function() {
+														msg_div.classList.remove("active", "success");
+													},15000);
+													window.onclick = function(event) {
+														if(event.target != msg_div) {
+															msg_div.classList.remove("active", "success");
+														}
+													}
+												} else {
+													msg_div.classList.add("active", "error");
+													msg_div.textContent = obj.error;
+													setTimeout(function() {
+														msg_div.classList.remove("active", "error");
+													},15000);
+													window.onclick = function(event) {
+														if(event.target != msg_div) {
+															msg_div.classList.remove("active", "error");
+														}
+													}
+												}
+
+
+
+
 											}).catch(console.error);
 										}
 									}

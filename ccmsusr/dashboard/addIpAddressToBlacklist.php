@@ -35,14 +35,16 @@ if(!isset($msg["error"])) {
 
 	if(isset($row["data"])) {
 		if(strstr($row["data"], $CLEAN["ip"])) {
-			$msg["success"] = "0"; // already found
+			//$msg["success"] = "0";
+			$msg["success"] = $CLEAN["ip"] . " Already Blocked";
 		} else {
 			$qry = $CFG["DBH"]->prepare("UPDATE `ccms_blacklist` SET `data` = :data WHERE `id` = 1;");
 			$qry->execute(array(':data' => $row["data"] . "|" . $CLEAN["ip"]));
-			$msg["success"] = "1"; // success
+			//$msg["success"] = "1";
+			$msg["success"] = $CLEAN["ip"] . " Blocked";
 		}
 	} else {
-		$msg["error"] = "Record no. 1, of the ccms_blacklist table, does not appear to have a 'data' column.";
+		$msg["error"] = "Record no. 1, of the ccms_blacklist table, does not appear to have a 'data' column.  Please contact your website administrator.";
 	}
 }
 
