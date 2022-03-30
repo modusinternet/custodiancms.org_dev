@@ -321,6 +321,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 											fetch(url + "?token=" + Math.random() + "&ajax_flag=1&id=" + id)
 												.then(response => response.json())
 												.then(data => {
+													/*
 													if(data.success === "0") { // success
 														console.log(id + " deleted");
 														document.getElementById("sec-log-row-id-" + id).outerHTML = "";
@@ -333,6 +334,34 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 														document.getElementById("ccms_security_logs").innerHTML = "<p>Error: See console for more detail.</p>";
 														console.log(data);
 													}
+													*/
+
+													const msg_div = document.getElementById('msg_div');
+													if(obj.success) {
+														document.getElementById("sec-log-row-id-" + id).outerHTML = "";
+														msg_div.classList.add("active", "success");
+														msg_div.textContent = obj.success;
+														setTimeout(function() {
+															msg_div.classList.remove("active", "success");
+														},15000);
+														window.onclick = function(event) {
+															if(event.target != msg_div) {
+																msg_div.classList.remove("active", "success");
+															}
+														}
+													} else {
+														msg_div.classList.add("active", "error");
+														msg_div.textContent = obj.error;
+														setTimeout(function() {
+															msg_div.classList.remove("active", "error");
+														},15000);
+														window.onclick = function(event) {
+															if(event.target != msg_div) {
+																msg_div.classList.remove("active", "error");
+															}
+														}
+													}
+
 												}
 											).catch(console.error);
 										}
@@ -346,20 +375,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 											fetch(url + "?token=" + Math.random() + "&ajax_flag=1&ip=" + ip)
 											.then(response => response.json())
 											.then(obj => {
-												/*
-												if(obj.success === "0") { // already blocked
-													console.log(ip + " already blocked");
-													alert(ip + " already blocked");
-												} else if(obj.success === "1") { // blocked
-													console.log(ip + " blocked");
-													alert(ip + " blocked");
-												} else if(obj.error === "Session Error") {
-													document.getElementById("ccms_security_logs").innerHTML = "Session Error";
-												} else {
-													document.getElementById("ccms_security_logs").innerHTML = "Error: See console for more detail.";
-													console.log(data);
-												}
-												*/
 												const msg_div = document.getElementById('msg_div');
 												if(obj.success) {
 													msg_div.classList.add("active", "success");
@@ -384,10 +399,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 														}
 													}
 												}
-
-
-
-
 											}).catch(console.error);
 										}
 									}
