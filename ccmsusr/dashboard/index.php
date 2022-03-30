@@ -424,6 +424,24 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 										.then(r => r.json())
 										.then(content => {
 											securityLogTable(content);
+
+
+
+
+
+											const msg_div = document.getElementById('msg_div');
+											msg_div.classList.add("active", "success");
+											msg_div.textContent = "Security Log Table Reloaded";
+											setTimeout(function() {
+												msg_div.classList.remove("active", "success");
+											},15000);
+											window.onclick = function(event) {
+												if(event.target != msg_div) {
+													msg_div.classList.remove("active", "success");
+												}
+											}
+
+
 										}
 									);
 								});
