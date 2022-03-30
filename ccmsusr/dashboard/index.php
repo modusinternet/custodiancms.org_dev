@@ -320,7 +320,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 											let url = "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/dashboard/logs_delete.php";
 											fetch(url + "?token=" + Math.random() + "&ajax_flag=1&id=" + id)
 												.then(response => response.json())
-												.then(data => {
+												.then(obj => {
 													/*
 													if(data.success === "0") { // success
 														console.log(id + " deleted");
