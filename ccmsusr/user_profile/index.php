@@ -404,11 +404,13 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 					loadFirst("/ccmsusr/_js/metisMenu-3.0.7.min.js", function() {
 						loadFirst("/ccmsusr/_js/custodiancms.js", function() {
 
+
 							/* user_dropdown START */
 							/* When the user clicks on the svg button add the 'show' class to the dropdown box below it. */
 							$("#user_dropdown_btn").click(function() {
 								$("#user_dropdown_list").addClass("show");
 							});
+
 
 							/* Hide dropdown menu on click outside */
 							$(document).on("click", function(e){
@@ -418,324 +420,301 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 							});
 							/* user_dropdown END */
 
+
 							loadFirst("/ccmsusr/_js/jquery-validate-1.19.3.min.js", function() {
 								loadFirst("/ccmsusr/_js/additional-methods-1.17.0.min.js", function() {
 
-
-
-// Show, Read, and Write privileges are indecated in the JSON output for each area in the form of rw:0 (do not even show in the site), rw:1 (show up in the site but only readable), rw:2 (read and writable).
-const data = JSON.parse(JSON.stringify(<?= $ccms_user["priv"];?>));
-
-// array to hold HTML tags
-let markupArray = ["<ul>"];
-
-const getItems = (items) => {
-	for(const item in items) {
-		markupArray.push(`<li>${item}`);
-		switch($.type(items[item])) {
-			case "object":
-				let details = items[item];
-				getDetails(details);
-				break;
-			default:
-				if(`${items[item]}` === "0") {
-					markupArray.push(` <span style="color:var(--cl11)">(No Access)</span>`);
-				} else if(`${items[item]}` === "1") {
-					markupArray.push(` <span style="color:var(--cl4)">(Read Only)</span>`);
-				} else {
-					markupArray.push(` <span style="color:var(--cl3)">(Read and Write)</span>`);
-				}
-		}
-		markupArray.push("</li>");
-	}
-};
-
-const getDetails = (details) => {
-	for(const detail in details) {
-		if(detail == "sub") {
-			markupArray.push("<ul>");
-			Object.keys(details[detail]).forEach((element) => {
-				//markupArray.push(`<li>${element} ${details[detail][element]}</li>`);
-				if(`${details[detail][element]}` === "0") {
-					markupArray.push(`<li>${element} <span style="color:var(--cl11)">(No Access)</span></li>`);
-				} else if(`${details[detail][element]}` === "1") {
-					markupArray.push(`<li>${element} <span style="color:var(--cl4)">(Read Only)</span></li>`);
-				} else {
-					markupArray.push(`<li>${element} <span style="color:var(--cl3)">(Read and Write)</span></li>`);
-				}
-			});
-			markupArray.push("</ul>");
-		} else if(detail == "rw") {
-			//markupArray.push(` ${details[detail]}`);
-			if(`${details[detail]}` === "0") {
-				markupArray.push(` <span style="color:var(--cl11)">(No Access)</span>`);
-			} else if(`${details[detail]}` === "1") {
-				markupArray.push(` <span style="color:var(--cl4)">(Read Only)</span>`);
-			} else {
-				markupArray.push(` <span style="color:var(--cl3)">(Read and Write)</span>`);
-			}
-		} else {
-			//markupArray.push(` ${details}`);
-			console.log(`json details=[${details}]`);
-		}
-	}
-};
-
-//createList(data);
-getItems(data);
-markupArray.push("</ul>");
-$("#privTree").html(markupArray.join(""));
-
-
-
-										document.getElementById("tab01Title").addEventListener("click", () => {
-											let i, tabContent, tab;
-											/* De-activate all tabs. */
-											tab = document.getElementsByClassName("tab");
-											for(i=0; i<tab.length; i++){
-												tab[i].className = tab[i].className.replace(" active","");
-											}
-											/* Hide all tab content areas. */
-											tabContent = document.getElementsByClassName("tabContent");
-											for(i=0; i<tabContent.length; i++){
-												tabContent[i].style.display = "none";
-											}
-											/* Activate the tab. */
-											document.getElementById("tab01Title").className += " active";
-											/* Display the content area for the above tab. */
-											document.getElementById("tab01Content").style.display = "block";
-										});
-
-										document.getElementById("tab02Title").addEventListener("click", () => {
-											let i, tabContent, tab;
-											/* De-activate all tabs. */
-											tab = document.getElementsByClassName("tab");
-											for(i=0; i<tab.length; i++){
-												tab[i].className = tab[i].className.replace(" active","");
-											}
-											/* Hide all tab content areas. */
-											tabContent = document.getElementsByClassName("tabContent");
-											for(i=0; i<tabContent.length; i++){
-												tabContent[i].style.display = "none";
-											}
-											/* Activate the tab. */
-											document.getElementById("tab02Title").className += " active";
-											/* Display the content area for the above tab. */
-											document.getElementById("tab02Content").style.display = "block";
-										});
-
-										document.getElementById("tab03Title").addEventListener("click", () => {
-											let i, tabContent, tab;
-											/* De-activate all tabs. */
-											tab = document.getElementsByClassName("tab");
-											for(i=0; i<tab.length; i++){
-												tab[i].className = tab[i].className.replace(" active","");
-											}
-											/* Hide all tab content areas. */
-											tabContent = document.getElementsByClassName("tabContent");
-											for(i=0; i<tabContent.length; i++){
-												tabContent[i].style.display = "none";
-											}
-											/* Activate the tab. */
-											document.getElementById("tab03Title").className += " active";
-											/* Display the content area for the above tab. */
-											document.getElementById("tab03Content").style.display = "block";
-										});
-
-										/* https://stackoverflow.com/questions/29781848/how-to-disable-browser-save-password-functionality */
-
-										$.validator.addMethod(
-											"matchRegex",
-											function(value, element, regexp) {
-												let re = new RegExp(regexp);
-												return this.optional(element) || re.test(value);
-											}, "Please check your input."
-										);
-
-										$('#info_tab_form').each(function() {
-											$(this).validate({
-												rules: {
-													firstname: {
-														maxlength: 64,
-														matchRegex: /^[^\<\>&#]+$/i
-													},
-													lastname: {
-														maxlength: 64,
-														matchRegex: /^[^\<\>&#]+$/i
-													},
-													alias: {
-														required: true,
-														minlength: 4,
-														maxlength: 32,
-														matchRegex: /^[^\<\>&#]+$/i
-													},
-													position: {
-														maxlength: 128,
-														matchRegex: /^[^\<\>&#]+$/i
-													},
-													address1: {
-														maxlength: 128,
-														matchRegex: /^[^\<\>&#]+$/i
-													},
-													address2: {
-														maxlength: 128,
-														matchRegex: /^[^\<\>&#]+$/i
-													},
-													prov_state: {
-														maxlength: 32,
-														matchRegex: /^[^\<\>&#]+$/i
-													},
-													country: {
-														maxlength: 64,
-														matchRegex: /^[^\<\>&#]+$/i
-													},
-													post_zip: {
-														maxlength: 32,
-														matchRegex: /^[^\<\>&#]+$/i
-													},
-													email: {
-														required: true,
-														/*email: true,*/
-														matchRegex: /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+([A-Z0-9]{2,4})$/i
-													},
-													phone1: {
-														maxlength: 64,
-														matchRegex: /^[^\<\>&#]+$/i
-													},
-													phone2: {
-														maxlength: 64,
-														matchRegex: /^[^\<\>&#]+$/i
-													},
-													skype: {
-														maxlength: 32,
-														matchRegex: /^[^\<\>&#]+$/i
-													},
-													facebook: {
-														maxlength: 128,
-														matchRegex: /^[^\<\>&#]+$/i
-													},
-													note: {
-														maxlength: 1024,
-														matchRegex: /^[^\<\>&#]+$/i
+									// Show, Read, and Write privileges are indecated in the JSON output for each area in the form of rw:0 (do not even show in the site), rw:1 (show up in the site but only readable), rw:2 (read and writable).
+									const data = JSON.parse(JSON.stringify(<?= $ccms_user["priv"];?>));
+									// array to hold HTML tags
+									let markupArray = ["<ul>"];
+									const getItems = (items) => {
+										for(const item in items) {
+											markupArray.push(`<li>${item}`);
+											switch($.type(items[item])) {
+												case "object":
+													let details = items[item];
+													getDetails(details);
+													break;
+												default:
+													if(`${items[item]}` === "0") {
+														markupArray.push(` <span style="color:var(--cl11)">(No Access)</span>`);
+													} else if(`${items[item]}` === "1") {
+														markupArray.push(` <span style="color:var(--cl4)">(Read Only)</span>`);
+													} else {
+														markupArray.push(` <span style="color:var(--cl3)">(Read and Write)</span>`);
 													}
-												},
-												messages: {
-													firstname: {
-														maxlength: "This field has a maximum length of 64 characters or less.",
-														matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
-													},
-													lastname: {
-														maxlength: "This field has a maximum length of 64 characters or less.",
-														matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
-													},
-													alias: {
-														required: "This field is required.",
-														minlength: "This field has a minimum length of 4 characters or more.",
-														maxlength: "This field has a maximum length of 32 characters or less.",
-														matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
-													},
-													position: {
-														maxlength: "This field has a maximum length of 32 characters or less.",
-														matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
-													},
-													address1: {
-														maxlength: "This field has a maximum length of 128 characters or less.",
-														matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
-													},
-													address2: {
-														maxlength: "This field has a maximum length of 128 characters or less.",
-														matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
-													},
-													prov_state: {
-														maxlength: "This field has a maximum length of 32 characters or less.",
-														matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
-													},
-													country: {
-														maxlength: "This field has a maximum length of 64 characters or less.",
-														matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
-													},
-													post_zip: {
-														maxlength: "This field has a maximum length of 32 characters or less.",
-														matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
-													},
-													email: {
-														required: "Please enter a valid email address.",
-														matchRegex: "Please enter a valid email address. FYI: The following characters are not permitted in this field.  ( > < & # )"
-													},
-													phone1: {
-														maxlength: "This field has a maximum length of 64 characters or less.",
-														matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
-													},
-													phone2: {
-														maxlength: "This field has a maximum length of 64 characters or less.",
-														matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
-													},
-													skype: {
-														maxlength: "This field has a maximum length of 32 characters or less.",
-														matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
-													},
-													facebook: {
-														maxlength: "This field has a maximum length of 128 characters or less.",
-														matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
-													},
-													note: {
-														maxlength: "This field has a maximum length of 1024 characters or less.",
-														matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
+											}
+											markupArray.push("</li>");
+										}
+									};
+									const getDetails = (details) => {
+										for(const detail in details) {
+											if(detail == "sub") {
+												markupArray.push("<ul>");
+												Object.keys(details[detail]).forEach((element) => {
+													//markupArray.push(`<li>${element} ${details[detail][element]}</li>`);
+													if(`${details[detail][element]}` === "0") {
+														markupArray.push(`<li>${element} <span style="color:var(--cl11)">(No Access)</span></li>`);
+													} else if(`${details[detail][element]}` === "1") {
+														markupArray.push(`<li>${element} <span style="color:var(--cl4)">(Read Only)</span></li>`);
+													} else {
+														markupArray.push(`<li>${element} <span style="color:var(--cl3)">(Read and Write)</span></li>`);
 													}
+												});
+												markupArray.push("</ul>");
+											} else if(detail == "rw") {
+												//markupArray.push(` ${details[detail]}`);
+												if(`${details[detail]}` === "0") {
+													markupArray.push(` <span style="color:var(--cl11)">(No Access)</span>`);
+												} else if(`${details[detail]}` === "1") {
+													markupArray.push(` <span style="color:var(--cl4)">(Read Only)</span>`);
+												} else {
+													markupArray.push(` <span style="color:var(--cl3)">(Read and Write)</span>`);
+												}
+											} else {
+												//markupArray.push(` ${details}`);
+												console.log(`json details=[${details}]`);
+											}
+										}
+									};
+									getItems(data);
+									markupArray.push("</ul>");
+									$("#privTree").html(markupArray.join(""));
+
+
+									document.getElementById("tab01Title").addEventListener("click", () => {
+										let i, tabContent, tab;
+										/* De-activate all tabs. */
+										tab = document.getElementsByClassName("tab");
+										for(i=0; i<tab.length; i++){
+											tab[i].className = tab[i].className.replace(" active","");
+										}
+										/* Hide all tab content areas. */
+										tabContent = document.getElementsByClassName("tabContent");
+										for(i=0; i<tabContent.length; i++){
+											tabContent[i].style.display = "none";
+										}
+										/* Activate the tab. */
+										document.getElementById("tab01Title").className += " active";
+										/* Display the content area for the above tab. */
+										document.getElementById("tab01Content").style.display = "block";
+									});
+
+
+									document.getElementById("tab02Title").addEventListener("click", () => {
+										let i, tabContent, tab;
+										/* De-activate all tabs. */
+										tab = document.getElementsByClassName("tab");
+										for(i=0; i<tab.length; i++){
+											tab[i].className = tab[i].className.replace(" active","");
+										}
+										/* Hide all tab content areas. */
+										tabContent = document.getElementsByClassName("tabContent");
+										for(i=0; i<tabContent.length; i++){
+											tabContent[i].style.display = "none";
+										}
+										/* Activate the tab. */
+										document.getElementById("tab02Title").className += " active";
+										/* Display the content area for the above tab. */
+										document.getElementById("tab02Content").style.display = "block";
+									});
+
+
+									document.getElementById("tab03Title").addEventListener("click", () => {
+										let i, tabContent, tab;
+										/* De-activate all tabs. */
+										tab = document.getElementsByClassName("tab");
+										for(i=0; i<tab.length; i++){
+											tab[i].className = tab[i].className.replace(" active","");
+										}
+										/* Hide all tab content areas. */
+										tabContent = document.getElementsByClassName("tabContent");
+										for(i=0; i<tabContent.length; i++){
+											tabContent[i].style.display = "none";
+										}
+										/* Activate the tab. */
+										document.getElementById("tab03Title").className += " active";
+										/* Display the content area for the above tab. */
+										document.getElementById("tab03Content").style.display = "block";
+									});
+
+									/* https://stackoverflow.com/questions/29781848/how-to-disable-browser-save-password-functionality */
+
+
+									$.validator.addMethod(
+										"matchRegex",
+										function(value, element, regexp) {
+											let re = new RegExp(regexp);
+											return this.optional(element) || re.test(value);
+										}, "Please check your input."
+									);
+
+									$('#info_tab_form').each(function() {
+										$(this).validate({
+											rules: {
+												firstname: {
+													maxlength: 64,
+													matchRegex: /^[^\<\>&#]+$/i
 												},
-												submitHandler: function(form) {
-													let request;
-													// Abort any pending request.
-													if(request) request.abort();
-													let $inputs = $(form).find("input, select, textarea, button");
-													let serializedData = $(form).serialize();
-													// Disable the inputs for the duration of the ajax request.
-													$inputs.prop("disabled", true);
-													request = $.ajax({
-														url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/user_profile/info_ajax.php",
-														cache: false,
-														type: "post",
-														data: serializedData
-													});
-													// Called on success.
-													request.done(function(msg) {
-														var obj = JSON.parse(msg);
-														if(obj.success) {
-															const msg_div = document.getElementById('info_tab_form_msg');
-															msg_div.classList.add("active", "success");
-															msg_div.textContent = obj.success;
-															$("#info_tab_form_msg").scrollView();
-															setTimeout(function() {
+												lastname: {
+													maxlength: 64,
+													matchRegex: /^[^\<\>&#]+$/i
+												},
+												alias: {
+													required: true,
+													minlength: 4,
+													maxlength: 32,
+													matchRegex: /^[^\<\>&#]+$/i
+												},
+												position: {
+													maxlength: 128,
+													matchRegex: /^[^\<\>&#]+$/i
+												},
+												address1: {
+													maxlength: 128,
+													matchRegex: /^[^\<\>&#]+$/i
+												},
+												address2: {
+													maxlength: 128,
+													matchRegex: /^[^\<\>&#]+$/i
+												},
+												prov_state: {
+													maxlength: 32,
+													matchRegex: /^[^\<\>&#]+$/i
+												},
+												country: {
+													maxlength: 64,
+													matchRegex: /^[^\<\>&#]+$/i
+												},
+												post_zip: {
+													maxlength: 32,
+													matchRegex: /^[^\<\>&#]+$/i
+												},
+												email: {
+													required: true,
+													/*email: true,*/
+													matchRegex: /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+([A-Z0-9]{2,4})$/i
+												},
+												phone1: {
+													maxlength: 64,
+													matchRegex: /^[^\<\>&#]+$/i
+												},
+												phone2: {
+													maxlength: 64,
+													matchRegex: /^[^\<\>&#]+$/i
+												},
+												skype: {
+													maxlength: 32,
+													matchRegex: /^[^\<\>&#]+$/i
+												},
+												facebook: {
+													maxlength: 128,
+													matchRegex: /^[^\<\>&#]+$/i
+												},
+												note: {
+													maxlength: 1024,
+													matchRegex: /^[^\<\>&#]+$/i
+												}
+											},
+											messages: {
+												firstname: {
+													maxlength: "This field has a maximum length of 64 characters or less.",
+													matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
+												},
+												lastname: {
+													maxlength: "This field has a maximum length of 64 characters or less.",
+													matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
+												},
+												alias: {
+													required: "This field is required.",
+													minlength: "This field has a minimum length of 4 characters or more.",
+													maxlength: "This field has a maximum length of 32 characters or less.",
+													matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
+												},
+												position: {
+													maxlength: "This field has a maximum length of 32 characters or less.",
+													matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
+												},
+												address1: {
+													maxlength: "This field has a maximum length of 128 characters or less.",
+													matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
+												},
+												address2: {
+													maxlength: "This field has a maximum length of 128 characters or less.",
+													matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
+												},
+												prov_state: {
+													maxlength: "This field has a maximum length of 32 characters or less.",
+													matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
+												},
+												country: {
+													maxlength: "This field has a maximum length of 64 characters or less.",
+													matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
+												},
+												post_zip: {
+													maxlength: "This field has a maximum length of 32 characters or less.",
+													matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
+												},
+												email: {
+													required: "Please enter a valid email address.",
+													matchRegex: "Please enter a valid email address. FYI: The following characters are not permitted in this field.  ( > < & # )"
+												},
+												phone1: {
+													maxlength: "This field has a maximum length of 64 characters or less.",
+													matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
+												},
+												phone2: {
+													maxlength: "This field has a maximum length of 64 characters or less.",
+													matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
+												},
+												skype: {
+													maxlength: "This field has a maximum length of 32 characters or less.",
+													matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
+												},
+												facebook: {
+													maxlength: "This field has a maximum length of 128 characters or less.",
+													matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
+												},
+												note: {
+													maxlength: "This field has a maximum length of 1024 characters or less.",
+													matchRegex: "The following characters are not permitted in this field.  ( > < & # )"
+												}
+											},
+											submitHandler: function(form) {
+												let request;
+												// Abort any pending request.
+												if(request) request.abort();
+												let $inputs = $(form).find("input, select, textarea, button");
+												let serializedData = $(form).serialize();
+												// Disable the inputs for the duration of the ajax request.
+												$inputs.prop("disabled", true);
+												request = $.ajax({
+													url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/user_profile/info_ajax.php",
+													cache: false,
+													type: "post",
+													data: serializedData
+												});
+												// Called on success.
+												request.done(function(msg) {
+													var obj = JSON.parse(msg);
+													if(obj.success) {
+														const msg_div = document.getElementById('info_tab_form_msg');
+														msg_div.classList.add("active", "success");
+														msg_div.textContent = obj.success;
+														$("#info_tab_form_msg").scrollView();
+														setTimeout(function() {
+															msg_div.classList.remove("active", "success");
+														},15000);
+														window.onclick = function(event) {
+															if(event.target != msg_div) {
 																msg_div.classList.remove("active", "success");
-															},15000);
-															window.onclick = function(event) {
-																if(event.target != msg_div) {
-																	msg_div.classList.remove("active", "success");
-																}
-															}
-														} else {
-															const msg_div = document.getElementById('info_tab_form_msg');
-															msg_div.classList.add("active", "error");
-															msg_div.textContent = obj.error;
-															$("#info_tab_form_msg").scrollView();
-															setTimeout(function() {
-																msg_div.classList.remove("active", "error");
-															},15000);
-															window.onclick = function(event) {
-																if(event.target != msg_div) {
-																	msg_div.classList.remove("active", "error");
-																}
 															}
 														}
-													});
-													// Called on failure.
-													request.fail(function (jqXHR, textStatus, errorThrown){
-														// log the error to the console
-														console.error( "textStatus: " + textStatus );
-														console.error( "errorThrown: " + errorThrown );
+													} else {
 														const msg_div = document.getElementById('info_tab_form_msg');
 														msg_div.classList.add("active", "error");
-														msg_div.textContent = "The following error occured: " + textStatus, errorThrown;
+														msg_div.textContent = obj.error;
 														$("#info_tab_form_msg").scrollView();
 														setTimeout(function() {
 															msg_div.classList.remove("active", "error");
@@ -745,130 +724,131 @@ $("#privTree").html(markupArray.join(""));
 																msg_div.classList.remove("active", "error");
 															}
 														}
-													});
-													// Called if the request failed or succeeded.
-													request.always(function () {
-														// reenable the inputs
-														setTimeout(function() {
-															$inputs.prop("disabled", false);
-														}, 5000);
-													});
-													// Prevent default posting of form.
-													return false;
+													}
+												});
+												// Called on failure.
+												request.fail(function (jqXHR, textStatus, errorThrown){
+													// log the error to the console
+													console.error( "textStatus: " + textStatus );
+													console.error( "errorThrown: " + errorThrown );
+													const msg_div = document.getElementById('info_tab_form_msg');
+													msg_div.classList.add("active", "error");
+													msg_div.textContent = "The following error occured: " + textStatus, errorThrown;
+													$("#info_tab_form_msg").scrollView();
+													setTimeout(function() {
+														msg_div.classList.remove("active", "error");
+													},15000);
+													window.onclick = function(event) {
+														if(event.target != msg_div) {
+															msg_div.classList.remove("active", "error");
+														}
+													}
+												});
+												// Called if the request failed or succeeded.
+												request.always(function () {
+													// reenable the inputs
+													setTimeout(function() {
+														$inputs.prop("disabled", false);
+													}, 5000);
+												});
+												// Prevent default posting of form.
+												return false;
+											}
+										});
+									});
+
+
+									/* If '2FA Disabled' selected, remove posible generated QR code from view. */
+									document.getElementById("2fa_radio_1").addEventListener("click", () => {
+										document.getElementById("2fa_secret").value = "";
+										document.getElementById("2fa_secret_text").innerHTML = "";
+										document.getElementById("ga_qr_img").style.display = "none";
+										document.getElementById("ga_qr_div").style.display = "none";
+										document.getElementById("ga_qr_svg").style.display = "none";
+									});
+
+									$('#password_tab_form').each(function() {
+										$(this).validate({
+											rules: {
+												ccms_login_password: {
+													required: true,
+													minlength: 8
+												},
+												ccms_pass_reset_part_2_pass_1: {
+													minlength: 8,
+													equalTo: "#ccms_pass_reset_part_2_pass_2"
+												},
+												ccms_pass_reset_part_2_pass_2: {
+													minlength: 8,
+													equalTo: "#ccms_pass_reset_part_2_pass_1"
 												}
-											});
-										});
-
-										/* If '2FA Disabled' selected, remove posible generated QR code from view. */
-										document.getElementById("2fa_radio_1").addEventListener("click", () => {
-											document.getElementById("2fa_secret").value = "";
-											document.getElementById("2fa_secret_text").innerHTML = "";
-											document.getElementById("ga_qr_img").style.display = "none";
-											document.getElementById("ga_qr_div").style.display = "none";
-											document.getElementById("ga_qr_svg").style.display = "none";
-										});
-
-										$('#password_tab_form').each(function() {
-											$(this).validate({
-												rules: {
-													ccms_login_password: {
-														required: true,
-														minlength: 8
-													},
-													ccms_pass_reset_part_2_pass_1: {
-														minlength: 8,
-														equalTo: "#ccms_pass_reset_part_2_pass_2"
-													},
-													ccms_pass_reset_part_2_pass_2: {
-														minlength: 8,
-														equalTo: "#ccms_pass_reset_part_2_pass_1"
-													}
+											},
+											messages: {
+												ccms_login_password: {
+													required: "This field is required.",
+													maxlength: "This field has a minimum length of 8 characters or more."
 												},
-												messages: {
-													ccms_login_password: {
-														required: "This field is required.",
-														maxlength: "This field has a minimum length of 8 characters or more."
-													},
-													ccms_pass_reset_part_2_pass_1: {
-														maxlength: "This field has a minimum length of 8 characters or more.",
-														equalTo: "'New Password' and 'Repeat New Password' are not the same."
-													},
-													ccms_pass_reset_part_2_pass_2: {
-														maxlength: "This field has a minimum length of 8 characters or more.",
-														equalTo: "'New Password' and 'Repeat New Password' are not the same."
-													}
+												ccms_pass_reset_part_2_pass_1: {
+													maxlength: "This field has a minimum length of 8 characters or more.",
+													equalTo: "'New Password' and 'Repeat New Password' are not the same."
 												},
-												submitHandler: function(form) {
-													let request;
-													// Abort any pending request.
-													if (request) request.abort();
-													let $inputs = $(form).find("input, select, textarea, button");
-													let serializedData = $(form).serialize();
-													// Disable the inputs for the duration of the ajax request.
-													$inputs.prop("disabled", true);
-													request = $.ajax({
-														url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/user_profile/password_ajax.php",
-														cache: false,
-														type: "post",
-														data: serializedData
-													});
-													// Called on success.
-													request.done(function(msg) {
-														var obj = JSON.parse(msg);
-														if(obj.success) {
-															const msg_div = document.getElementById('password_tab_form_msg');
-															msg_div.classList.add("active", "success");
-															msg_div.textContent = obj.success;
-															$("#password_tab_form_msg").scrollView();
-															document.getElementById("2fa_secret").value = "";
-															document.getElementById("2fa_secret_text").innerHTML = "";
-															document.getElementById("ga_qr_img").style.display = "none";
-															document.getElementById("ga_qr_div").style.display = "none";
-															document.getElementById("ga_qr_svg").style.display = "none";
-															var twoFa_but = document.querySelector("input[type='radio'][name='2fa_radio']:checked");
-															if(twoFa_but.value == "1"){
-																document.getElementById("2fa_radio_0").disabled = true;
-																document.getElementById("2fa_radio_0").style.display = "none";
-																document.getElementById("2fa_radio_0_label").style.display = "none";
-																document.getElementById("2fa_radio_1").checked = true;
-															} else if(twoFa_but.value == "2"){
-																document.getElementById("2fa_radio_0").disabled = false;
-																document.getElementById("2fa_radio_0").style.display = "initial";
-																document.getElementById("2fa_radio_0_label").style.display = "initial";
-																document.getElementById("2fa_radio_0").checked = true;
-																location.reload(true);
-															}
-															setTimeout(function() {
+												ccms_pass_reset_part_2_pass_2: {
+													maxlength: "This field has a minimum length of 8 characters or more.",
+													equalTo: "'New Password' and 'Repeat New Password' are not the same."
+												}
+											},
+											submitHandler: function(form) {
+												let request;
+												// Abort any pending request.
+												if (request) request.abort();
+												let $inputs = $(form).find("input, select, textarea, button");
+												let serializedData = $(form).serialize();
+												// Disable the inputs for the duration of the ajax request.
+												$inputs.prop("disabled", true);
+												request = $.ajax({
+													url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/user_profile/password_ajax.php",
+													cache: false,
+													type: "post",
+													data: serializedData
+												});
+												// Called on success.
+												request.done(function(msg) {
+													var obj = JSON.parse(msg);
+													if(obj.success) {
+														const msg_div = document.getElementById('password_tab_form_msg');
+														msg_div.classList.add("active", "success");
+														msg_div.textContent = obj.success;
+														$("#password_tab_form_msg").scrollView();
+														document.getElementById("2fa_secret").value = "";
+														document.getElementById("2fa_secret_text").innerHTML = "";
+														document.getElementById("ga_qr_img").style.display = "none";
+														document.getElementById("ga_qr_div").style.display = "none";
+														document.getElementById("ga_qr_svg").style.display = "none";
+														var twoFa_but = document.querySelector("input[type='radio'][name='2fa_radio']:checked");
+														if(twoFa_but.value == "1"){
+															document.getElementById("2fa_radio_0").disabled = true;
+															document.getElementById("2fa_radio_0").style.display = "none";
+															document.getElementById("2fa_radio_0_label").style.display = "none";
+															document.getElementById("2fa_radio_1").checked = true;
+														} else if(twoFa_but.value == "2"){
+															document.getElementById("2fa_radio_0").disabled = false;
+															document.getElementById("2fa_radio_0").style.display = "initial";
+															document.getElementById("2fa_radio_0_label").style.display = "initial";
+															document.getElementById("2fa_radio_0").checked = true;
+															location.reload(true);
+														}
+														setTimeout(function() {
+															msg_div.classList.remove("active", "success");
+														},15000);
+														window.onclick = function(event) {
+															if(event.target != msg_div) {
 																msg_div.classList.remove("active", "success");
-															},15000);
-															window.onclick = function(event) {
-																if(event.target != msg_div) {
-																	msg_div.classList.remove("active", "success");
-																}
-															}
-														} else {
-															const msg_div = document.getElementById('password_tab_form_msg');
-															msg_div.classList.add("active", "error");
-															msg_div.textContent = obj.error;
-															$("#password_tab_form_msg").scrollView();
-															setTimeout(function() {
-																msg_div.classList.remove("active", "error");
-															},15000);
-															window.onclick = function(event) {
-																if(event.target != msg_div) {
-																	msg_div.classList.remove("active", "error");
-																}
 															}
 														}
-													});
-													// Called on failure.
-													request.fail(function (jqXHR, textStatus, errorThrown){
-														// log the error to the console
-														console.error( "textStatus: " + textStatus );
-														console.error( "errorThrown: " + errorThrown );
+													} else {
 														const msg_div = document.getElementById('password_tab_form_msg');
 														msg_div.classList.add("active", "error");
-														msg_div.textContent = "The following error occured: " + textStatus, errorThrown;
+														msg_div.textContent = obj.error;
 														$("#password_tab_form_msg").scrollView();
 														setTimeout(function() {
 															msg_div.classList.remove("active", "error");
@@ -878,50 +858,69 @@ $("#privTree").html(markupArray.join(""));
 																msg_div.classList.remove("active", "error");
 															}
 														}
-													});
-													// Called if the request failed or succeeded.
-													request.always(function () {
-														// reenable the inputs
-														setTimeout(function() {
-															$inputs.prop("disabled", false);
-															$("#ccms_login_password").val("");
-															$("#ccms_pass_reset_part_2_pass_1").val("");
-															$("#ccms_pass_reset_part_2_pass_2").val("");
-														}, 5000);
-													});
-													// Prevent default posting of form.
-													return false;
-												}
-											});
-										});
-
-										/* Administrator QR Generator START */
- 										document.getElementById("2fa_radio_2").addEventListener("click", () => {
- 											var twofa_checkbox = document.getElementById('2fa_radio_2');
- 											if(twofa_checkbox.checked){
- 												document.getElementById("ga_qr_img").style.display = "none";
- 												document.getElementById("ga_qr_div").style.display = "block";
- 												document.getElementById("ga_qr_svg").style.display = "block";
-												fetch("https://custodiancms.org/cross-origin-resources/ga-qr-generater.php<?php if(isset($CFG["DOMAIN"])){echo "?domain=" . $CFG["DOMAIN"];}?>")
-		 										.then(response => response.json())
-		 										.then(data => {
-													document.getElementById("2fa_secret").value = data.ga_qr_secret;
-													document.getElementById("2fa_secret_text").innerHTML = data.ga_qr_secret;
-													document.getElementById("ga_qr_img").src = data.ga_qr_url;
-													window.setTimeout(function() {
-														document.getElementById("ga_qr_img").style.display = "block";
-														document.getElementById("ga_qr_svg").style.display = "none";
-													},3000);
-		 										}).catch(console.error);
+													}
+												});
+												// Called on failure.
+												request.fail(function (jqXHR, textStatus, errorThrown){
+													// log the error to the console
+													console.error( "textStatus: " + textStatus );
+													console.error( "errorThrown: " + errorThrown );
+													const msg_div = document.getElementById('password_tab_form_msg');
+													msg_div.classList.add("active", "error");
+													msg_div.textContent = "The following error occured: " + textStatus, errorThrown;
+													$("#password_tab_form_msg").scrollView();
+													setTimeout(function() {
+														msg_div.classList.remove("active", "error");
+													},15000);
+													window.onclick = function(event) {
+														if(event.target != msg_div) {
+															msg_div.classList.remove("active", "error");
+														}
+													}
+												});
+												// Called if the request failed or succeeded.
+												request.always(function () {
+													// reenable the inputs
+													setTimeout(function() {
+														$inputs.prop("disabled", false);
+														$("#ccms_login_password").val("");
+														$("#ccms_pass_reset_part_2_pass_1").val("");
+														$("#ccms_pass_reset_part_2_pass_2").val("");
+													}, 5000);
+												});
+												// Prevent default posting of form.
+												return false;
 											}
 										});
-										/* Administrator QR Generator END */
-
-
-
 									});
+
+
+									/* Administrator QR Generator START */
+									document.getElementById("2fa_radio_2").addEventListener("click", () => {
+										var twofa_checkbox = document.getElementById('2fa_radio_2');
+										if(twofa_checkbox.checked) {
+											document.getElementById("ga_qr_img").style.display = "none";
+											document.getElementById("ga_qr_div").style.display = "block";
+											document.getElementById("ga_qr_svg").style.display = "block";
+											fetch("https://custodiancms.org/cross-origin-resources/ga-qr-generater.php<?php if(isset($CFG["DOMAIN"])) {echo "?domain=" . $CFG["DOMAIN"];}?>")
+	 										.then(response => response.json())
+	 										.then(data => {
+												document.getElementById("2fa_secret").value = data.ga_qr_secret;
+												document.getElementById("2fa_secret_text").innerHTML = data.ga_qr_secret;
+												document.getElementById("ga_qr_img").src = data.ga_qr_url;
+												window.setTimeout(function() {
+													document.getElementById("ga_qr_img").style.display = "block";
+													document.getElementById("ga_qr_svg").style.display = "none";
+												},3000);
+	 										}).catch(console.error);
+										}
+									});
+									/* Administrator QR Generator END */
+
+
 								});
 							});
+						});
 					});
 				});
 			}

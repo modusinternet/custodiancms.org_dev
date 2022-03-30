@@ -13,7 +13,10 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 $msg = array();
 
-if($CLEAN["ccms_login_password"] == "") {
+if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
+	$msg["error"] = "There is a problem with your login, your IP Address is currently being blocked.  Please contact the website administrators directly if you feel this message is in error.";
+
+} elseif($CLEAN["ccms_login_password"] == "") {
 	$msg["error"] = "'Password' field missing content.";
 } elseif($CLEAN["ccms_login_password"] == "MINLEN") {
 	$msg["error"] = "'Password' field is too short, must be 8 or more characters in length.";

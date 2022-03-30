@@ -13,7 +13,10 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 $msg = array();
 
-if($CLEAN["firstname"] == "MAXLEN") {
+if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
+	$msg["error"] = "There is a problem with your login, your IP Address is currently being blocked.  Please contact the website administrators directly if you feel this message is in error.";
+
+} elseif($CLEAN["firstname"] == "MAXLEN") {
 	$msg["error"] = "'Firstname' field exceeded its maximum number of 64 character.";
 } elseif($CLEAN["firstname"] == "INVAL") {
 	$msg["error"] = "'Firstname' field contains invalid characters.  The following characters are not permitted in this field. ( > < & # )";
@@ -100,4 +103,5 @@ if(!isset($msg["error"])) {
 
 	$msg["success"] = "Updates Saved"; // update successful
 }
+
 echo json_encode($msg);

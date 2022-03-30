@@ -13,7 +13,10 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 $msg = array();
 
-if($CLEAN["ip"] == "") {
+if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
+	$msg["error"] = "There is a problem with your login, your IP Address is currently being blocked.  Please contact the website administrators directly if you feel this message is in error.";
+
+} elseif($CLEAN["ip"] == "") {
 	$msg["error"] = "No IP provided.";
 } elseif($CLEAN["ip"] == "MINLEN") {
 	$msg["error"] = "This field must be between 7 to 15 characters";
@@ -42,4 +45,5 @@ if(!isset($msg["error"])) {
 		$msg["error"] = "Record no. 1, of the ccms_blacklist table, does not appear to have a 'data' column.";
 	}
 }
-echo $msg;
+
+echo json_encode($msg);
