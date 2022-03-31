@@ -17,8 +17,11 @@ $privArray = json_decode($_SESSION["PRIV"], true);
 if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
 	$msg["error"] = "There is a problem with your login, your IP Address is currently being blocked.  Please contact the website administrators directly if you feel this message is in error.";
 
-} elseif($privArray["admin"]["rw"] != 1 && $privArray["admin"]["sub"]["blacklist_settings"] != 2) {
-	$msg["error"] = "Blacklist cancelled, you do not have 'Write' privlages.  Double check your privlages and or contact your website administrators directly if you feel this message is in error.";
+} elseif($privArray["admin"]["rw"] != 1) {
+	$msg["error"] = "Blacklist cancelled, you do not have 'Write' privlages.  Double check your privlages and or contact your website administrators directly if you feel this message is in error.(1)";
+
+} elseif($privArray["admin"]["sub"]["blacklist_settings"] != 2) {
+	$msg["error"] = "Blacklist cancelled, you do not have 'Write' privlages.  Double check your privlages and or contact your website administrators directly if you feel this message is in error.(2)";
 
 } elseif($CLEAN["ip"] == "") {
 	$msg["error"] = "No IP provided.";
