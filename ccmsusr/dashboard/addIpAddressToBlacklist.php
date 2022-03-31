@@ -17,7 +17,7 @@ $privArray = json_decode($_SESSION["PRIV"], true);
 if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
 	$msg["error"] = "There is a problem with your login, your IP Address is currently being blocked.  Please contact the website administrators directly if you feel this message is in error.";
 
-} elseif ($privArray["blacklist_settings"] != 2) {
+} elseif ($privArray["admin"]["rw"] != 1 && $privArray["admin"]["sub"]["blacklist_settings"] != 2 ) {
 	$msg["error"] = "Blacklist cancelled, you do not have 'Write' privlages.  Double check your privlages and or contact your website administrators directly if you feel this message is in error.";
 
 } elseif($CLEAN["ip"] == "") {
@@ -28,7 +28,7 @@ if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
 
 } elseif($CLEAN["ip"] == "MAXLEN") {
 	$msg["error"] = "This field must be between 7 to 15 characters";
-	
+
 } elseif($CLEAN["ip"] == "INVAL") {
 	$msg["error"] = "'Name' field contains invalid characters.  ( > < & # )  You have used characters in this field which are either not supported by this field or we do not permitted on this system.";
 }
