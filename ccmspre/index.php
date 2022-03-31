@@ -135,7 +135,7 @@ function CCMS_Set_LNG() {
 
 	if(isset($CLEAN["ccms_lng"]) && $CLEAN["ccms_lng"] !== "MAXLEN" && $CLEAN["ccms_lng"] !== "INVAL") {
 
-		// Make sure what ever language value that's currenlty inside the ccms_lng arg is also found in the SESSION["LNG"].
+		// Make sure whatever language value currenlty inside the ccms_lng arg is also found in the SESSION["LNG"].
 		$_SESSION["LNG"] = $CLEAN["ccms_lng"];
 
 		// A language variable was found in the $_SESSION["LNG"], URI or POST arguments.

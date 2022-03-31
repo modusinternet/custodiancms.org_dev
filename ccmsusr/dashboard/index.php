@@ -212,7 +212,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 										.then(r => r.text())
 										.then(content => {
 											document.getElementById("ccms_news_items").innerHTML = content;
-
 											const msg_div = document.getElementById('msg_div');
 											msg_div.classList.add("active", "success");
 											msg_div.textContent = "CustodianCMS.org News Reloaded";
@@ -224,8 +223,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 													msg_div.classList.remove("active", "success");
 												}
 											}
-
-
 									});
 								});
 
