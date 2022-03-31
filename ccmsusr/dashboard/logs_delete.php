@@ -17,8 +17,10 @@ $privArray = json_decode($_SESSION["PRIV"], true);
 if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
 	$msg["error"] = "There is a problem with your login, your IP Address is currently being blocked.  Please contact the website administrators directly if you feel this message is in error.";
 
-} elseif ($privArray["dashboard"] != 2) {
-	$msg["error"] = "Delete cancelled, you do not have 'Write' privlages.  Double check your privlages and or contact your website administrators directly if you feel this message is in error.";
+} elseif($_SESSION["SUPER"] != 1) {
+	if($privArray["dashboard"] != 2) {
+		$msg["error"] = "Delete cancelled, you do not have 'Write' privlages.  Double check your privlages and or contact your website administrators directly if you feel this message is in error.";
+	}
 
 } elseif($CLEAN["id"] == "") {
 	$msg["error"] = "No ID provided.";
