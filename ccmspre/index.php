@@ -168,12 +168,14 @@ function CCMS_Set_LNG() {
 					$privArray = json_decode($_SESSION["PRIV"], true);
 
 
+					/*
 					if($_SESSION["SUPER"] == "1" || $privArray["content_manager"]["rw"] == 1) {
 						if($_SESSION["SUPER"] == "1" || $privArray["content_manager"]["sub"][$key] == 1 || $privArray["content_manager"]["sub"][$key] == 2) {
 							$CFG["CCMS_LNG_DIR"] = $value["dir"];
 							$CFG["lngCodeActiveFlag"] = true;
 						}
 					}
+					*/
 
 					if($_SESSION["SUPER"] == "1") {
 						// Super users can do anything.
@@ -182,6 +184,13 @@ function CCMS_Set_LNG() {
 					} elseif($privArray["content_manager"]["sub"][$key] != 0) {
 						// So long as you have a valid USER_ID and you are permitted to at least read and or write content in the language reguested it's cool to display.
 						$CFG["CCMS_LNG_DIR"] = $value["dir"];
+						$CFG["lngCodeActiveFlag"] = true;
+					} else {
+
+						$CFG["lngCodeFoundFlag"] = true;
+						$CLEAN["ccms_lng"] = $CFG["DEFAULT_SITE_CHAR_SET"];
+						$_SESSION["LNG"] = $CFG["DEFAULT_SITE_CHAR_SET"];
+						$CFG["CCMS_LNG_DIR"] = $CFG["DEFAULT_SITE_CHAR_SET_DIR"];
 						$CFG["lngCodeActiveFlag"] = true;
 					}
 
