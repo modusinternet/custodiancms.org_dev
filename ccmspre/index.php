@@ -144,23 +144,52 @@ function CCMS_Set_LNG() {
 			if(strcasecmp($key, $CLEAN["ccms_lng"]) == 0) {
 				// The $CLEAN["ccms_lng"] language code was found in the database.
 				$CFG["lngCodeFoundFlag"] = true;
-				//$_SESSION["LNG"] = $key;
 				if($value["status"] == "1") {
 					// The language code provided is active in the database.
 					$CFG["CCMS_LNG_DIR"] = $value["dir"];
 					$CFG["lngCodeActiveFlag"] = true;
 				} elseif(isset($_SESSION["USER_ID"])) {
 					// If this is a verified user trying to make changes to content in a language which is currently not set live, get the users privilages and verify their rights to make updates in the language.
+					/*
 					$qry = $CFG["DBH"]->prepare("SELECT super, priv FROM `ccms_user` WHERE id = :user_id LIMIT 1;");
 					$qry->execute(array(':user_id' => $_SESSION["USER_ID"]));
 					$row = $qry->fetch(PDO::FETCH_ASSOC);
 					$json_a = json_decode($row["priv"], true);
+					$_SESSION["SUPER"] = $row["super"];
+
 					if($row["super"] == "1" || $json_a["priv"]["content_manager"]["r"] == 1) {
 						if($row["super"] == "1" || $json_a["priv"]["content_manager"]["lng"][$key] == 1 || $json_a["priv"]["content_manager"]["lng"][$key] == 2) {
 							$CFG["CCMS_LNG_DIR"] = $value["dir"];
 							$CFG["lngCodeActiveFlag"] = true;
 						}
 					}
+					*/
+
+					$privArray = json_decode($_SESSION["PRIV"], true);
+
+
+					if($_SESSION["SUPER"] == "1" || $privArray["content_manager"]["rw"] == 1) {
+						if($_SESSION["SUPER"] == "1" || $privArray["content_manager"]["sub"][$key] == 1 || $privArray["content_manager"]["sub"][$key] == 2) {
+							$CFG["CCMS_LNG_DIR"] = $value["dir"];
+							$CFG["lngCodeActiveFlag"] = true;
+						}
+					}
+
+					if($_SESSION["SUPER"] == "1") {
+						// Super users can do anything.
+						$CFG["CCMS_LNG_DIR"] = $value["dir"];
+						$CFG["lngCodeActiveFlag"] = true;
+					} elseif($privArray["content_manager"]["sub"][$key] != 0) {
+						// So long as you have a valid USER_ID and you are permitted to at least read and or write content in the language reguested it's cool to display.
+						$CFG["CCMS_LNG_DIR"] = $value["dir"];
+						$CFG["lngCodeActiveFlag"] = true;
+					}
+
+
+
+
+
+
 				}
 				break;
 			}
@@ -361,6 +390,7 @@ function CCMS_Set_SESSION() {
 				$_SESSION["2FA_VALID"] = null;
 				$_SESSION["ALIAS"] = $row["alias"];
 				$_SESSION["PRIV"] = $row["priv"];
+				$_SESSION["SUPER"] = $row["super"];
 			}
 		} else {
 			// Looks like they were properly logged in at one point but their account has either been removed or 'status' is set to '0' now.
