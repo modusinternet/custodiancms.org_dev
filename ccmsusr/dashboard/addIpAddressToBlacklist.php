@@ -22,7 +22,8 @@ if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
 
 } elseif($_SESSION["SUPER"] != 1) {
 	if($privArray["admin"]["rw"] != 1 || $privArray["admin"]["sub"]["blacklist_settings"] != 2) {
-	$msg["error"] = "Blacklist cancelled, you do not have 'Write' privlages.  Double check your privlages and or contact your website administrators directly if you feel this message is in error.(2)";
+		$msg["error"] = "Blacklist cancelled, you do not have 'Write' privlages.  Double check your privlages and or contact your website administrators directly if you feel this message is in error.(2)";
+	}
 
 } elseif($CLEAN["ip"] == "") {
 	$msg["error"] = "No IP provided.";
