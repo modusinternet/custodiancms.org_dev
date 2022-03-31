@@ -166,17 +166,6 @@ function CCMS_Set_LNG() {
 					*/
 
 					$privArray = json_decode($_SESSION["PRIV"], true);
-
-
-					/*
-					if($_SESSION["SUPER"] == "1" || $privArray["content_manager"]["rw"] == 1) {
-						if($_SESSION["SUPER"] == "1" || $privArray["content_manager"]["sub"][$key] == 1 || $privArray["content_manager"]["sub"][$key] == 2) {
-							$CFG["CCMS_LNG_DIR"] = $value["dir"];
-							$CFG["lngCodeActiveFlag"] = true;
-						}
-					}
-					*/
-
 					if($_SESSION["SUPER"] == "1") {
 						// Super users can do anything.
 						$CFG["CCMS_LNG_DIR"] = $value["dir"];
@@ -186,19 +175,13 @@ function CCMS_Set_LNG() {
 						$CFG["CCMS_LNG_DIR"] = $value["dir"];
 						$CFG["lngCodeActiveFlag"] = true;
 					} else {
-
+						// Because they have no access to the language they want to work in and they are not super users, we change all their language output to the default language instead.
 						$CFG["lngCodeFoundFlag"] = true;
 						$CLEAN["ccms_lng"] = $CFG["DEFAULT_SITE_CHAR_SET"];
 						$_SESSION["LNG"] = $CFG["DEFAULT_SITE_CHAR_SET"];
 						$CFG["CCMS_LNG_DIR"] = $CFG["DEFAULT_SITE_CHAR_SET_DIR"];
 						$CFG["lngCodeActiveFlag"] = true;
 					}
-
-
-
-
-
-
 				}
 				break;
 			}
