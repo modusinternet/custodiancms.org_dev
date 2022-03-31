@@ -14,6 +14,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 $msg = array();
 
 print_r($_SESSION["PRIV"]);
+echo $_SESSION["PRIV"]["dashboard"];
 exit;
 
 if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
