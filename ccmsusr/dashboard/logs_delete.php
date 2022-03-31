@@ -12,28 +12,23 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 }
 
 $msg = array();
-
-print_r($_SESSION["PRIV"]);
-$result = json_decode($_SESSION["PRIV"], true);
-echo $result["dashboard"];
-exit;
+$privArray = json_decode($_SESSION["PRIV"], true);
 
 if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
 	$msg["error"] = "There is a problem with your login, your IP Address is currently being blocked.  Please contact the website administrators directly if you feel this message is in error.";
 
-
-
-
-
-
-
+} elseif ($privArray["dashboard"] != 2) {
+	$msg["error"] = "Delete cancelled, you do not have 'Write' privlages.  Double check your privlages and or contact your website administrators directly if you feel this message is in error.";
 
 } elseif($CLEAN["id"] == "") {
 	$msg["error"] = "No ID provided.";
+
 } elseif($CLEAN["id"] == "MINLEN") {
 	$msg["error"] = "This field must be between 1 to 8 characters";
+
 } elseif($CLEAN["id"] == "MAXLEN") {
 	$msg["error"] = "This field must be between 1 to 8 characters";
+
 } elseif($CLEAN["id"] == "INVAL") {
 	$msg["error"] = "'Name' field contains invalid characters.  ( > < & # )  You have used characters in this field which are either not supported by this field or we do not permitted on this system.";
 }
