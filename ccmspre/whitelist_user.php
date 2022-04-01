@@ -85,6 +85,17 @@ define('ANY', '/^(.*)\z/s');
 // /		End of the Pattern.
 // s		Newlines
 
+define('G_RECAPTCHA_RESPONSE', '/^[a-z\pN\-_]*\z/i');
+// ^		Start of line
+// [		Start of the character class.
+// a-z		Any kind of letter from any language, upper or lower case.
+// \pN		Any number.
+// -		Hyphans
+// _		Underscore
+// ]		End of the character class.
+// \z		End of subject or newline at end. (Better then $ because $ does not include /n characters at the end of a line.)
+// /i		Case insensitive
+
 $whitelist = array(
 	"example_given_name"	=> array("type" => "EXAMPLE_EXPRESSION_1",	"minlength"	=> 1,	"maxlength" => 15),
 	"example_age"					=> array("type" => "EXAMPLE_EXPRESSION_2",	"maxlength"	=> 3),
