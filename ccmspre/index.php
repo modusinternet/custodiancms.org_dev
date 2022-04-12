@@ -981,8 +981,21 @@ function CCMS_Main() {
 						$etag = md5($CLEAN["ccms_tpl"]) . "." . $row["date"];
 						header("ETag: " . $etag);
 
-						$search = "{NONCE}";
-						$replace = $CFG["nonce"];
+
+
+						//$search = "{NONCE}";
+						//$replace = $CFG["nonce"];
+						if($_SERVER['REQUEST_URI'] === "/"){
+							$search = array('{NONCE}','<meta name="robots" content="noindex" />');
+							$replace = array($CFG["nonce"],'<meta name="robots" content="noindex" />');
+						} else {
+							$search = array('{NONCE}','<meta name="robots" content="noindex" />');
+							$replace = array($CFG["nonce"]);
+						}
+
+
+
+
 						echo str_replace($search, $replace, $row["content"]);
 					} else {
 						// Cached template IS expried.  It should be removed, rebuilt and recached.
@@ -1028,6 +1041,20 @@ function CCMS_Main() {
 
 							$search = $CFG["nonce"];
 							$replace = "{NONCE}";
+
+							//$search = "{NONCE}";
+							//$replace = $CFG["nonce"];
+							/*
+							if($_SERVER['REQUEST_URI'] === "/"){
+								$search = array('{NONCE}','<meta name="robots" content="noindex" />');
+								$replace = array($CFG["nonce"],'<meta name="robots" content="noindex" />');
+							} else {
+								$search = array('{NONCE}','<meta name="robots" content="noindex" />');
+								$replace = array($CFG["nonce"]);
+							}
+							*/
+
+
 							$buf = str_replace($search, $replace, $buf);
 
 							$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (`url`, `date`, `exp`, `content`) VALUES (:url, :date, :exp, :content)");
