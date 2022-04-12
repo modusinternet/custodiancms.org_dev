@@ -106,12 +106,12 @@ function ccms_canonical() {
 	// https://somedomain.com/cx/ page.
 
 	if($_SERVER['REQUEST_URI'] === "/"){
-		// if the visitor is looking at the root of the website WITHOUT the language dir.
+		// The visitor is looking at the root of the website WITHOUT the language dir.
 		// ie: https://yourdomain.com
 		echo '<meta name="robots" content="noindex" />';
 		echo '<link rel="canonical" href="' . $_SERVER['REQUEST_SCHEME'] . "://" . $CFG["DOMAIN"] . "/" . $CLEAN["ccms_lng"] . '/" />';
 	} else {
-		// if the visitor is looking at the root of the website WITH the language dir.
+		// The visitor is looking at the root of the website WITH the language dir.
 		// ie: https://yourdomain.com/en/
 		echo '<link rel="canonical" href="' . $_SERVER['REQUEST_SCHEME'] . "://" . $CFG["DOMAIN"] . $_SERVER['REQUEST_URI'] . '" />';
 	}

@@ -986,12 +986,16 @@ function CCMS_Main() {
 						//$search = "{NONCE}";
 						//$replace = $CFG["nonce"];
 						if($_SERVER['REQUEST_URI'] === "/"){
-							$search = array('{NONCE}','<meta name="robots" content="noindex" />');
-							$replace = array($CFG["nonce"],'<meta name="robots" content="noindex" />');
+							$search = array('{NONCE}','<link rel="canonical" href="');
+							$replace = array($CFG["nonce"],'<meta name="robots" content="noindex" /><link rel="canonical" href="');
 						} else {
 							$search = array('{NONCE}','<meta name="robots" content="noindex" />');
 							$replace = array($CFG["nonce"]);
 						}
+
+
+
+
 
 
 
@@ -1046,8 +1050,8 @@ function CCMS_Main() {
 							//$replace = $CFG["nonce"];
 							/*
 							if($_SERVER['REQUEST_URI'] === "/"){
-								$search = array('{NONCE}','<meta name="robots" content="noindex" />');
-								$replace = array($CFG["nonce"],'<meta name="robots" content="noindex" />');
+								$search = array('{NONCE}','<link rel="canonical" href="');
+								$replace = array($CFG["nonce"],'<meta name="robots" content="noindex" /><link rel="canonical" href="');
 							} else {
 								$search = array('{NONCE}','<meta name="robots" content="noindex" />');
 								$replace = array($CFG["nonce"]);
