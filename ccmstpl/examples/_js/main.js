@@ -1,4 +1,4 @@
-/* Loading Screen START */
+/* Loading Screen START
 window.setTimeout(function(){
 	document.getElementById("loading_svg").style.opacity="0";
 	window.setTimeout(function(){
@@ -8,7 +8,7 @@ window.setTimeout(function(){
 window.setTimeout(function(){
 	document.getElementsByTagName("body")[0].style.opacity="1";
 },250);
-/* Loading Screen END */
+Loading Screen END */
 
 
 /* Active link selector START */
