@@ -191,7 +191,7 @@ function CCMS_Set_LNG() {
 	} elseif(($_SERVER["HTTP_ACCEPT_LANGUAGE"] ?? null) !== "") {
 		// Something was found in the HTTP_ACCEPT_LANGUAGE variable.
 
-		preg_match_all("/[a-z]{2,3}(-[a-z0-9]{2,3})?/i", $_SERVER["HTTP_ACCEPT_LANGUAGE"], $matches);
+		@preg_match_all("/[a-z]{2,3}(-[a-z0-9]{2,3})?/i", $_SERVER["HTTP_ACCEPT_LANGUAGE"], $matches);
 
 		foreach($matches[0] as $match) {
 			foreach($CFG["CCMS_LNG_CHARSET"] as $key => $value) {
