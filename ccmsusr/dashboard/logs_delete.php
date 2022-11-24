@@ -15,6 +15,7 @@ $msg = array();
 $privArray = json_decode($_SESSION["PRIV"], true);
 
 echo "_SESSION[SUPER]=[" . $_SESSION["SUPER"] . "]\n";
+echo "_SESSION[PRIV]=[" . $_SESSION["PRIV"] . "]\n";
 echo "privArray[dashboard]=[" . $privArray["dashboard"] . "]\n";
 
 if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
