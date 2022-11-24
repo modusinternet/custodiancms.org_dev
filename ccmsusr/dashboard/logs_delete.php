@@ -14,6 +14,9 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 $msg = array();
 $privArray = json_decode($_SESSION["PRIV"], true);
 
+echo "_SESSION[SUPER]=[" . $_SESSION["SUPER"] . "]\n";
+echo "privArray[dashboard]=[" . $privArray["dashboard"] . "]\n";
+
 if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
 	$msg["error"] = "There is a problem with your login, your IP Address is currently being blocked.  Please contact the website administrators directly if you feel this message is in error.";
 
