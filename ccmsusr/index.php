@@ -68,6 +68,10 @@ if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
 
 CCMS_Set_SESSION();
 
+
+echo "_SESSION[SUPER]=[" . $_SESSION["SUPER"] . "]\n";
+
+
 //if(isset($_SESSION["FAIL"]) >= 5) {
 if(($_SESSION["FAIL"] ?? null) >= 5) {
 	// If the users session record indicates that they have attempted to login 5 or more times and failed; do not show this page at all.  Simply redirect them base to the homepage for this site immediatly.
