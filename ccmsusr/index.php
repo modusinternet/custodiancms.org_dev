@@ -70,6 +70,7 @@ CCMS_Set_SESSION();
 
 
 //print_r($_SESSION);
+echo $_SESSION["PRIV"];
 
 
 //if(isset($_SESSION["FAIL"]) >= 5) {

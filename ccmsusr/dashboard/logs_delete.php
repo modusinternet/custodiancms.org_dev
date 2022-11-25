@@ -16,7 +16,7 @@ $privArray = json_decode($_SESSION["PRIV"], true);
 
 
 
-echo $_SESSION["PRIV"];
+//echo $_SESSION["PRIV"];
 /*
 print_r($_SESSION);
 echo "\n\n";
