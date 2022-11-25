@@ -16,11 +16,13 @@ $privArray = json_decode($_SESSION["PRIV"], true);
 
 
 
+echo $_SESSION["PRIV"];
+/*
 print_r($_SESSION);
 echo "\n\n";
 print_r($privArray);
 echo "\n\n";
-
+*/
 
 
 if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
