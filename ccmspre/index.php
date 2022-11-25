@@ -368,7 +368,7 @@ function CCMS_Set_SESSION() {
 		$row = $qry->fetch(PDO::FETCH_ASSOC);
 
 
-print_r($row);
+//print_r($row);
 
 
 
