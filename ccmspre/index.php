@@ -367,6 +367,11 @@ function CCMS_Set_SESSION() {
 		$qry->execute(array(':id' => $_SESSION["USER_ID"]));
 		$row = $qry->fetch(PDO::FETCH_ASSOC);
 
+
+print_r($row);
+
+
+
 		if($row) {
 			// User 'status' is still valid
 
