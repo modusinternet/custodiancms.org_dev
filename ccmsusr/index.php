@@ -69,7 +69,7 @@ if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
 CCMS_Set_SESSION();
 
 
-print_r($_SESSION);
+//print_r($_SESSION);
 
 
 //if(isset($_SESSION["FAIL"]) >= 5) {
