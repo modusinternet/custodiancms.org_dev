@@ -382,14 +382,17 @@ function CCMS_Set_SESSION() {
 					// The user is logged in successfully but they have 2FA enabled and haven't verified it yet.
 
 					$CLEAN["ccms_tpl"] = "/authenticator.php";
-				}/* else {
+				}
+
+				 else {
 					// The user is valid and nothing is outstanding so just update the most current privilages.
 
-					$_SESSION["2FA_VALID"] = null;
+					$_SESSION["2FA_VALID"] = true;
 					$_SESSION["ALIAS"] = $row["alias"];
 					$_SESSION["PRIV"] = $row["priv"];
 					$_SESSION["SUPER"] = $row["super"];
-				}*/
+				}
+
 			} else {
 				// The user is valid and nothing is outstanding so just update the most current privilages.
 
