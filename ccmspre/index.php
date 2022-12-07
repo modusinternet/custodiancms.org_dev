@@ -387,7 +387,7 @@ function CCMS_Set_SESSION() {
 				 else {
 					// The user is valid and nothing is outstanding so just update the most current privilages.
 
-					$_SESSION["2FA_VALID"] = true;
+					//$_SESSION["2FA_VALID"] = true;
 					$_SESSION["ALIAS"] = $row["alias"];
 					$_SESSION["PRIV"] = $row["priv"];
 					$_SESSION["SUPER"] = $row["super"];
