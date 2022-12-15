@@ -223,8 +223,8 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 	</style>
 	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 		/*var navActiveArray = ["admin","admin_nav","admin_blacklist_settings"];*/
-		let navActiveItem = ["nav-admin"];
-		let navActiveSub = ["nav-admin-blacklist"];
+		let navActiveItem = ["nav-admin","nav-admin-blacklist"];
+		let navActiveSub = [];
 		/*let navActiveW3schoolsItem = ["nav-user_admin_blacklist_settings"];*/
 	</script>
 	<body>
