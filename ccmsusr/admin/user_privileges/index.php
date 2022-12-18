@@ -18,7 +18,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 		<meta name="description" content="" />
 		{CCMS_TPL:header-head.html}
 		<script>
-			var navActiveArray = ["admin","admin_nav","admin_user_privileges","nav-user_profile"];
+			/*var navActiveArray = ["admin","admin_nav","admin_user_privileges","nav-user_profile"];*/
+			var navActiveArray = ["nav-user_profile"];
 		</script>
 	</head>
 	<body>
