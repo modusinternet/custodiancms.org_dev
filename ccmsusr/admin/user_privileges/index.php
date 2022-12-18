@@ -18,7 +18,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 		<meta name="description" content="" />
 		{CCMS_TPL:header-head.html}
 		<script>
-			var navActiveArray = ["admin","admin_nav","admin_user_privileges"];
+			var navActiveArray = ["admin","admin_nav","admin_user_privileges","nav-user_profile"];
 		</script>
 	</head>
 	<body>
@@ -67,7 +67,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				l.href = "/ccmsusr/_css/font-awesome-4.7.0.min.css";
 				var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
 			};
-			
+
 			var raf = requestAnimationFrame || mozRequestAnimationFrame || webkitRequestAnimationFrame || msRequestAnimationFrame;
 			if (raf) raf(cb);
 			else window.addEventListener('load', cb);
