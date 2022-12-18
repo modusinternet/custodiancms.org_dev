@@ -19,7 +19,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 		{CCMS_TPL:header-head.html}
 		<script>
 			/*var navActiveArray = ["admin","admin_nav","admin_user_privileges","nav-user_profile"];*/
-			var navActiveArray = ["nav-user_profile"];
+			//let navActiveArray = ["nav-user_profile"];
+			let navActiveW3schoolsItem = ["nav-user_profile"];
 		</script>
 	</head>
 	<body>
