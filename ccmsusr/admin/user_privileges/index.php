@@ -11,7 +11,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 	die();
 }
 ?><!DOCTYPE html>
-<html id="no-fouc" lang="en" style="opacity: 0;">
+<html lang="{CCMS_LIB:_default.php;FUNC:ccms_lng}">
 	<head>
 		<meta charset="utf-8">
 		<title>User Privileges</title>
@@ -74,18 +74,15 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 			function loadJSResources() {
 				loadFirst("/ccmsusr/_js/jquery-2.2.0.min.js", function() { /* JQuery is loaded */
-					loadFirst("/ccmsusr/_js/bootstrap-3.3.7.min.js", function() { /* Bootstrap is loaded */
-						loadFirst("/ccmsusr/_js/metisMenu-2.4.0.min.js", function() { /* MetisMenu JavaScript */
-							/*loadFirst("/ccmsusr/_js/custodiancms.js", function() { /* CustodianCMS JavaScript */
-							loadFirst("/ccmsusr/_js/custodiancms.min.js", function() { /* CustodianCMS JavaScript */
+					//loadFirst("/ccmsusr/_js/bootstrap-3.3.7.min.js", function() { /* Bootstrap is loaded */
+						//loadFirst("/ccmsusr/_js/metisMenu-2.4.0.min.js", function() { /* MetisMenu JavaScript */
+							loadFirst("/ccmsusr/_js/custodiancms.js", function() { /* CustodianCMS JavaScript */
+							//loadFirst("/ccmsusr/_js/custodiancms.min.js", function() { /* CustodianCMS JavaScript */
 
 								navActiveArray.forEach(function(s) {$("#"+s).addClass("active");});
 
 								// Load MetisMenu
-								$('#side-menu').metisMenu();
-
-								// Fade in web page.
-								$("#no-fouc").delay(200).animate({"opacity": "1"}, 500);
+								//$('#side-menu').metisMenu();
 
 								$("#menu-toggle").click(function(e) {
 									e.preventDefault();
@@ -96,8 +93,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 							});
-						});
-					});
+						//});
+					//});
 				});
 			}
 
