@@ -48,7 +48,7 @@
 			<ul aria-expanded="false">
 				<li id="nav-admin-backup">
 					<a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/admin/backup/">
-						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="8 17 12 21 16 17"></polyline><line x1="12" y1="12" x2="12" y2="21"></line><path d="M20.88 18.09A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.29" fill="#6563ff"></path></svg>
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline fill="#6563ff" points="8 17 12 21 16 17"></polyline><line x1="12" y1="12" x2="12" y2="21"></line><path d="M20.88 18.09A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.29"></path></svg>
 						<!-- Icon provided 'royalty-free for commercial use' by https://feathericons.com/?query=down -->
 						Backup
 					</a>
