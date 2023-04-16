@@ -18,7 +18,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 ?><!DOCTYPE html>
 <html lang="{CCMS_LIB:_default.php;FUNC:ccms_lng}">
 	<head>
-		<title><?= $_SERVER["SERVER_NAME"];?> | User | Backup</title>
+		<title><?= $_SERVER["SERVER_NAME"];?> | User | Backup - Restore</title>
 		{CCMS_TPL:head-meta.html}
 	</head>
 	<style>
@@ -229,7 +229,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 	</script>
 	<body>
 		<main style="padding:20px 20px 20px 0">
-			<h1 style="border-bottom:1px dashed var(--cl3)">Admin | Backup</h1>
+			<h1 style="border-bottom:1px dashed var(--cl3)">Admin | Backup - Restore</h1>
 			<p>This section is still under development, but if you come across any unresolved issues please let us know at: <a class="ccms_a" href="mailto:info@custodiancms.org?subject=unresolved+issue+report">info@custodiancms.org</a></p>
 
 
