@@ -224,7 +224,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 		let navActiveItem = [];
 		let navActiveSub = [];
-		/*let navActiveW3schoolsItem = ["nav-user_profile"];*/
+		let navActiveW3schoolsItem = ["nav-user_profile"];
 	</script>
 	<body>
 		<main style="padding:20px 20px 20px 0">
