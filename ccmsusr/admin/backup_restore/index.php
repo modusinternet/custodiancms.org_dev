@@ -250,7 +250,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
 			function loadJSResources() {
-				/*loadFirst("/ccmsusr/_js/jquery-2.2.0.min.js", function() {*/
 				loadFirst("/ccmsusr/_js/jquery-3.6.0.min.js", function() {
 					loadFirst("/ccmsusr/_js/metisMenu-3.0.7.min.js", function() {
 						loadFirst("/ccmsusr/_js/custodiancms.js", function() {
