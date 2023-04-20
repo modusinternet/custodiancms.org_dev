@@ -230,7 +230,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 	<body>
 		<main style="padding:20px 20px 20px 0">
 			<h1 style="border-bottom:1px dashed var(--cl3)">Admin | GitHub</h1>
-			<p>GitHub is the premier tool used by website developers and software engineers to collaborate more than 100 million repositories and projects around the world.  If your work involves distributing anything accross the internet or collaborating with anyone, you need to look into GitHub.</p>
+			<p>GitHub is the premier tool used by website developers and software engineers to collaborate on more than 100 million repositories and projects around the world.  If your work involves distributing anything accross the internet or collaborating with anyone, you need to look into GitHub.</p>
 
 
 
