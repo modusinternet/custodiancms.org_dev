@@ -230,9 +230,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 	<body>
 		<main style="padding:20px 20px 20px 0">
 			<h1 style="border-bottom:1px dashed var(--cl3)">Admin | GitHub</h1>
-			<p>This section is still under development, but if you come across any unresolved issues please let us know at: <a class="ccms_a" href="mailto:info@custodiancms.org?subject=unresolved+issue+report">info@custodiancms.org</a></p>
-
-
+			<p>GitHub is the premier tool used by website and software engineers to collaborate and synchronize more than 85 million repositories and projects around the world.  Basically, if your work involves distributing anything through the internet or collaborating with anyone other than yourself, you need to consider setting up an account on GitHub.</p>
 
 
 
@@ -244,9 +242,9 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 			<div class="tabs">
-				<button class="tab active" id="tab01Title">Info</button>
-				<button class="tab" id="tab02Title">Login</button>
-				<button class="tab" id="tab03Title">Privileges</button>
+				<button class="tab active" id="tab01Title" role="tab">Status</button>
+				<button class="tab" id="tab02Title" role="tab">Details</button>
+				<button class="tab" id="tab03Title" role="tab">Setup</button>
 			</div>
 
 			<div id="tab01Content" class="tabContent" style="display:block">
