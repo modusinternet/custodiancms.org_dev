@@ -243,6 +243,12 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 
+			<div class="tabs">
+				<button class="tab active" id="tab01Title">Info</button>
+				<button class="tab" id="tab02Title">Login</button>
+				<button class="tab" id="tab03Title">Privileges</button>
+			</div>
+
 			<div id="tab01Content" class="tabContent" style="display:block">
 				<div id="info_tab_form_msg" role="alert" class="ccms_msg"></div>
 				<form id="info_tab_form" role="form">
@@ -384,7 +390,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 
-			
+
 
 
 
