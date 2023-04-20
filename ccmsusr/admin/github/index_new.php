@@ -437,6 +437,65 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 
 
+									document.getElementById("tab01Title").addEventListener("click", () => {
+										let i, tabContent, tab;
+										/* De-activate all tabs. */
+										tab = document.getElementsByClassName("tab");
+										for(i=0; i<tab.length; i++){
+											tab[i].className = tab[i].className.replace(" active","");
+										}
+										/* Hide all tab content areas. */
+										tabContent = document.getElementsByClassName("tabContent");
+										for(i=0; i<tabContent.length; i++){
+											tabContent[i].style.display = "none";
+										}
+										/* Activate the tab. */
+										document.getElementById("tab01Title").className += " active";
+										/* Display the content area for the above tab. */
+										document.getElementById("tab01Content").style.display = "block";
+									});
+
+
+									document.getElementById("tab02Title").addEventListener("click", () => {
+										let i, tabContent, tab;
+										/* De-activate all tabs. */
+										tab = document.getElementsByClassName("tab");
+										for(i=0; i<tab.length; i++){
+											tab[i].className = tab[i].className.replace(" active","");
+										}
+										/* Hide all tab content areas. */
+										tabContent = document.getElementsByClassName("tabContent");
+										for(i=0; i<tabContent.length; i++){
+											tabContent[i].style.display = "none";
+										}
+										/* Activate the tab. */
+										document.getElementById("tab02Title").className += " active";
+										/* Display the content area for the above tab. */
+										document.getElementById("tab02Content").style.display = "block";
+									});
+
+
+									document.getElementById("tab03Title").addEventListener("click", () => {
+										let i, tabContent, tab;
+										/* De-activate all tabs. */
+										tab = document.getElementsByClassName("tab");
+										for(i=0; i<tab.length; i++){
+											tab[i].className = tab[i].className.replace(" active","");
+										}
+										/* Hide all tab content areas. */
+										tabContent = document.getElementsByClassName("tabContent");
+										for(i=0; i<tabContent.length; i++){
+											tabContent[i].style.display = "none";
+										}
+										/* Activate the tab. */
+										document.getElementById("tab03Title").className += " active";
+										/* Display the content area for the above tab. */
+										document.getElementById("tab03Content").style.display = "block";
+									});
+
+
+
+
 								});
 							});
 						});
