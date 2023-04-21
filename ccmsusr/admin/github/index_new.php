@@ -182,6 +182,7 @@ if(!is_callable('shell_exec') && true === stripos(ini_get('disable_functions'), 
 							git checkout origin/main -- ccmstpl/examples/index.html
 						</p>
 	<? else: ?>
+					<p>Success</p>
 					<pre style="padding: 15px; margin: 15px 0px 20px;"><?= $msg["git"]["status"];?></pre>
 	<? endif ?>
 <? endif ?>
