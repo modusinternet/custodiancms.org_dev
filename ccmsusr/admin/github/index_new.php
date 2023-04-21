@@ -245,7 +245,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
 			<div id="tab01Content" class="tabContent" style="display:block">
 				<div class="modal">
-					<div>System Info</div>
+					<div>git status</div>
 					<div>
 						<p style="word-break:break-all">Server Name: <span class="oj"><?= $_SERVER["SERVER_NAME"];?></span></p>
 						<p style="word-break:break-all">Document Root: <span class="oj"><?=$_SERVER["DOCUMENT_ROOT"];?></span></p>
@@ -261,6 +261,40 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 						<p>LOG_EVENTS: <span class="oj"><?= $CFG["LOG_EVENTS"];?></span></p>
 						<p>EMAIL_FROM: <span class="oj"><?= $CFG["EMAIL_FROM"];?></span></p>
 						<p style="word-break:break-all">EMAIL_BOUNCES_RETURNED_TO: <span class="oj"><?= $CFG["EMAIL_BOUNCES_RETURNED_TO"];?></span></p>
+
+<? if(isset($msg["shell_exce"]["error"])): ?>
+						<p>Unable to call shell_exce().  Confirm your account has access to this function with your administrator before continuing.</p>
+<? elseif(isset($msg["git"]["error"])): ?>
+						<p>.git is either NOT installed or you do not have access to git from this account.  Confirm with your administrator before continuing.</p>
+						<pre style="padding: 15px; margin: 15px 0px 20px;"><?=$msg["git"]["error"];?></pre>
+<? else: ?>
+	<? if(isset($msg["git"]["status"]["error"])): ?>
+						<p>No .git repository setup in this directory or any of it's parent directories yet.  <a class="href-to-setup" href="#setup">Click here</a> to learn more about how to set up and connect this website to your own GitHub repository.</p>
+						<pre style="padding:15px;margin:15px 0px 20px">fatal: not a git repository (or any of the parent directories): .git</pre>
+	<? elseif(isset($msg["git"]["status"]["warning"])): ?>
+						<p>There is something wrong with this repository, you might need to access it from the command-line and run add/commit/push manunally to fix it.</p>
+						<pre style="padding: 15px; margin: 15px 0px 20px;"><?=$msg["git"]["status"]["warning"];?></pre>
+						<p>(Easier to read file list, remember all files listed are located relative to the document root of your website.)</p>
+						<pre style="padding: 15px; margin: 15px 0px 20px;"><?=$msg["git"]["status2"]["output"];?></pre>
+						<p>Note: Pushing from your server to a GitHub repository is not recommended for security reasons which is why it is not an automated feature in Custodian CMS.  Use the two commands below if needed.</p>
+						<p class="boxed">
+							git commit -am "from server"<br>
+							git push
+						</p>
+						<p>
+							Note: Or, if all you want to do is overwrite a single file on your server with what's currently on the GitHub repo you can try the following command. (NOTE: You may need to navigate into the dir that contains the file you want to overwrite first.)
+						</p>
+						<p class="boxed">
+							git checkout origin/master -- {filename}<br>
+							git checkout -- .htaccess<br>
+							git checkout origin/main -- ccmstpl/examples/index.html
+						</p>
+	<? else: ?>
+					<pre style="padding: 15px; margin: 15px 0px 20px;"><?=$msg["git"]["status"];?></pre>
+	<? endif ?>
+<? endif ?>
+
+
 					</div>
 				</div>
 
