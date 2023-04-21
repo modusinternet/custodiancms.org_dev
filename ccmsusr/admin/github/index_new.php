@@ -72,66 +72,6 @@ if(!is_callable('shell_exec') && true === stripos(ini_get('disable_functions'), 
 	<style>
 		{CCMS_TPL:/_css/head-css.html}
 
-		.inner_grid_general{grid-area:inner_grid_general}
-
-		.inner_grid_address{grid-area:inner_grid_address}
-
-		.inner_grid_contact{grid-area:inner_grid_contact}
-
-		.inner_grid_other{grid-area:inner_grid_other}
-
-		.inner_grid_login{grid-area:inner_grid_login}
-
-		.inner_grid_general,
-		.inner_grid_address,
-		.inner_grid_contact,
-		.inner_grid_other,
-		.inner_grid_login{
-			display:grid;
-			grid-gap:8px
-		}
-
-		.inner_grid_general>h3,
-		.inner_grid_address>h3,
-		.inner_grid_contact>h3,
-		.inner_grid_other>h3,
-		.inner_grid_login>h3{
-			margin:10px 0 0;
-			text-align:center
-		}
-
-		.inner_grid_general>input,
-		.inner_grid_address>input,
-		.inner_grid_contact>input,
-		.inner_grid_other>input,
-		.inner_grid_login>input{height:fit-content}
-
-		.inner_grid_general>label,
-		.inner_grid_address>label,
-		.inner_grid_contact>label,
-		.inner_grid_other>label,
-		.inner_grid_login>label{white-space:nowrap}
-
-		.inner_grid_general>label.error,
-		.inner_grid_address>label.error,
-		.inner_grid_contact>label.error,
-		.inner_grid_other>label.error,
-		.inner_grid_login>label.error{
-			text-align:center;
-			white-space:unset;
-			grid-column:unset
-		}
-
-		.outer_grid{
-			display:grid;
-			grid-gap:8px;
-			grid-template-areas:
-				"inner_grid_general"
-				"inner_grid_address"
-				"inner_grid_contact"
-				"inner_grid_other"
-		}
-
 		.tabs{
 			border-bottom:1px solid var(--cl3);
 			overflow:hidden
@@ -183,91 +123,6 @@ if(!is_callable('shell_exec') && true === stripos(ini_get('disable_functions'), 
 		#tab03Content>div>ul{margin-left:20px}
 
 		#tab03Content>div>ul li{padding-left:20px}
-
-
-		/* 435px or wider. */
-		@media only screen and (min-width:435px){
-			.inner_grid_general,
-			.inner_grid_address,
-			.inner_grid_contact,
-			.inner_grid_other,
-			.inner_grid_login{grid-template-columns:100%}
-
-			.inner_grid_general>label.error,
-			.inner_grid_address>label.error,
-			.inner_grid_contact>label.error,
-			.inner_grid_other>label.error,
-			.inner_grid_login>label.error{
-				text-align:center;
-				white-space:unset
-			}
-		}
-
-
-		/* 600px or wider. */
-		@media only screen and (min-width:600px){
-			.inner_grid_general,
-			.inner_grid_address,
-			.inner_grid_contact,
-			.inner_grid_other,
-			.inner_grid_login{grid-template-columns:minmax(100px, 200px) 1fr}
-
-			.inner_grid_other>button,
-			.inner_grid_login>button{grid-column:1 / span 2}
-
-			.inner_grid_login>div{grid-column:2 / 3}
-
-			.inner_grid_general>h3,
-			.inner_grid_address>h3,
-			.inner_grid_contact>h3,
-			.inner_grid_other>h3,
-			.inner_grid_login>h3{grid-column:1 / span 2}
-
-			.inner_grid_general>input,
-			.inner_grid_address>input,
-			.inner_grid_contact>input,
-			.inner_grid_other>input,
-			.inner_grid_login>input{grid-column:2 / 3}
-
-			.inner_grid_general>label,
-			.inner_grid_address>label,
-			.inner_grid_contact>label,
-			.inner_grid_other>label,
-			.inner_grid_login>label{
-				grid-column:1 / 2;
-				text-align:right
-			}
-
-			.inner_grid_general>label.error,
-			.inner_grid_address>label.error,
-			.inner_grid_contact>label.error,
-			.inner_grid_other>label.error,
-			.inner_grid_login>label.error{grid-column:1 / span 2}
-		}
-
-
-		/* 950px or wider. */
-		@media only screen and (min-width:950px){
-			.outer_grid{
-				display:grid;
-				grid-gap:8px;
-				grid-template-areas:
-					"inner_grid_general inner_grid_address"
-					"inner_grid_contact inner_grid_other"
-			}
-		}
-
-
-		/* 1400px or wider. */
-		@media only screen and (min-width:1400px){
-			.outer_grid{
-				display:grid;
-				grid-gap:8px;
-				grid-template-areas:
-					"inner_grid_general inner_grid_address inner_grid_contact"
-					"inner_grid_other inner_grid_other inner_grid_other"
-			}
-		}
 	</style>
 	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 		/*var navActiveArray = ["admin","admin_nav","admin_blacklist_settings"];*/
@@ -301,6 +156,9 @@ if(!is_callable('shell_exec') && true === stripos(ini_get('disable_functions'), 
 						<p>.git is either NOT installed or you do not have access to git from this account.  Confirm with your administrator before continuing.</p>
 						<pre style="padding: 15px; margin: 15px 0px 20px;"><?=$msg["git"]["error"];?></pre>
 <? else: ?>
+						<p>
+							else<br />
+						</p>
 	<? if(isset($msg["git"]["status"]["error"])): ?>
 						<p>No .git repository setup in this directory or any of it's parent directories yet.  <a class="href-to-setup" href="#setup">Click here</a> to learn more about how to set up and connect this website to your own GitHub repository.</p>
 						<pre style="padding:15px;margin:15px 0px 20px">fatal: not a git repository (or any of the parent directories): .git</pre>
@@ -330,79 +188,6 @@ if(!is_callable('shell_exec') && true === stripos(ini_get('disable_functions'), 
 
 					</div>
 				</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<? if(isset($msg["shell_exce"]["error"])): ?>
-				<div class="panel panel-danger">
-					<div class="panel-heading">Error</div>
-					<div class="panel-body">
-						<p>Unable to call shell_exce().  Confirm your account has access to this function with your administrator before continuing.</p>
-					</div>
-				</div>
-<? elseif(isset($msg["git"]["error"])): ?>
-				<div class="panel panel-danger">
-					<div class="panel-heading">Error</div>
-					<div class="panel-body">
-						<p>.git is either NOT installed or you do not have access to git from this account.  Confirm with your administrator before continuing.</p>
-						<pre style="padding: 15px; margin: 15px 0px 20px;"><?=$msg["git"]["error"];?></pre>
-					</div>
-				</div>
-<? else: ?>
-				<h2>git status</h2>
-	<? if(isset($msg["git"]["status"]["error"])): ?>
-				<div class="panel panel-danger">
-					<div class="panel-heading">Error</div>
-					<div class="panel-body">
-						<p>No .git repository setup in this directory or any of it's parent directories yet.  <a class="href-to-setup" href="#setup">Click here</a> to learn more about how to set up and connect this website to your own GitHub repository.</p>
-						<pre style="padding:15px;margin:15px 0px 20px">fatal: not a git repository (or any of the parent directories): .git</pre>
-					</div>
-				</div>
-	<? elseif(isset($msg["git"]["status"]["warning"])): ?>
-				<div class="panel panel-warning">
-					<div class="panel-heading">Warning</div>
-					<div class="panel-body">
-						<p>There is something wrong with this repository, you might need to access it from the command-line and run add/commit/push manunally to fix it.</p>
-						<pre style="padding: 15px; margin: 15px 0px 20px;"><?=$msg["git"]["status"]["warning"];?></pre>
-						<p>(Easier to read file list, remember all files listed are located relative to the document root of your website.)</p>
-						<pre style="padding: 15px; margin: 15px 0px 20px;"><?=$msg["git"]["status2"]["output"];?></pre>
-						<p>Note: Pushing from your server to a GitHub repository is not recommended for security reasons which is why it is not an automated feature in Custodian CMS.  Use the two commands below if needed.</p>
-						<p class="boxed">
-							git commit -am "from server"<br>
-							git push
-						</p>
-						<p>
-							Note: Or, if all you want to do is overwrite a single file on your server with what's currently on the GitHub repo you can try the following command. (NOTE: You may need to navigate into the dir that contains the file you want to overwrite first.)
-						</p>
-						<p class="boxed">
-							git checkout origin/master -- {filename}<br>
-							git checkout -- .htaccess<br>
-							git checkout origin/main -- ccmstpl/examples/index.html
-						</p>
-					</div>
-				</div>
-	<? else: ?>
-				<div class="panel panel-success">
-					<div class="panel-heading">Success</div>
-					<div class="panel-body">
-						<pre style="padding: 15px; margin: 15px 0px 20px;"><?=$msg["git"]["status"];?></pre>
-					</div>
-				</div>
-	<? endif ?>
-<? endif ?>
 			</div>
 
 
