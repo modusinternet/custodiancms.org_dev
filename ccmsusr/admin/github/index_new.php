@@ -230,16 +230,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 	<body>
 		<main style="padding:20px 20px 20px 0">
 			<h1 style="border-bottom:1px dashed var(--cl3)">Admin | GitHub</h1>
-			<p>GitHub is the premier tool used by website developers and software engineers to collaborate on more than 100 million repositories and projects around the world.  If your work involves distributing anything accross the internet or collaborating with anyone, you need to look into GitHub.</p>
-
-
-
-
-
-
-
-
-
+			<p>GitHub is the premier tool used by website developers and software engineers to collaborate on more than 100 million repositories and projects around the world.</p>
 
 			<div class="tabs">
 				<button class="tab active" id="tab01Title" role="tab">Status</button>
@@ -247,16 +238,86 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 				<button class="tab" id="tab03Title" role="tab">Setup</button>
 			</div>
 
-			<div id="tab01Content" class="tabContent" style="display:block">
 
+
+
+
+
+			<div id="tab01Content" class="tabContent" style="display:block">
+<? if(isset($msg["shell_exce"]["error"])): ?>
+				<div class="panel panel-danger">
+					<div class="panel-heading">Error</div>
+					<div class="panel-body">
+						<p>Unable to call shell_exce().  Confirm your account has access to this function with your administrator before continuing.</p>
+					</div>
+				</div>
+<? elseif(isset($msg["git"]["error"])): ?>
+				<div class="panel panel-danger">
+					<div class="panel-heading">Error</div>
+					<div class="panel-body">
+						<p>.git is either NOT installed or you do not have access to git from this account.  Confirm with your administrator before continuing.</p>
+						<pre style="padding: 15px; margin: 15px 0px 20px;"><?=$msg["git"]["error"];?></pre>
+					</div>
+				</div>
+<? else: ?>
+				<h2>git status</h2>
+	<? if(isset($msg["git"]["status"]["error"])): ?>
+				<div class="panel panel-danger">
+					<div class="panel-heading">Error</div>
+					<div class="panel-body">
+						<p>No .git repository setup in this directory or any of it's parent directories yet.  <a class="href-to-setup" href="#setup">Click here</a> to learn more about how to set up and connect this website to your own GitHub repository.</p>
+						<pre style="padding:15px;margin:15px 0px 20px">fatal: not a git repository (or any of the parent directories): .git</pre>
+					</div>
+				</div>
+	<? elseif(isset($msg["git"]["status"]["warning"])): ?>
+				<div class="panel panel-warning">
+					<div class="panel-heading">Warning</div>
+					<div class="panel-body">
+						<p>There is something wrong with this repository, you might need to access it from the command-line and run add/commit/push manunally to fix it.</p>
+						<pre style="padding: 15px; margin: 15px 0px 20px;"><?=$msg["git"]["status"]["warning"];?></pre>
+						<p>(Easier to read file list, remember all files listed are located relative to the document root of your website.)</p>
+						<pre style="padding: 15px; margin: 15px 0px 20px;"><?=$msg["git"]["status2"]["output"];?></pre>
+						<p>Note: Pushing from your server to a GitHub repository is not recommended for security reasons which is why it is not an automated feature in Custodian CMS.  Use the two commands below if needed.</p>
+						<p class="boxed">
+							git commit -am "from server"<br>
+							git push
+						</p>
+						<p>
+							Note: Or, if all you want to do is overwrite a single file on your server with what's currently on the GitHub repo you can try the following command. (NOTE: You may need to navigate into the dir that contains the file you want to overwrite first.)
+						</p>
+						<p class="boxed">
+							git checkout origin/master -- {filename}<br>
+							git checkout -- .htaccess<br>
+							git checkout origin/main -- ccmstpl/examples/index.html
+						</p>
+					</div>
+				</div>
+	<? else: ?>
+				<div class="panel panel-success">
+					<div class="panel-heading">Success</div>
+					<div class="panel-body">
+						<pre style="padding: 15px; margin: 15px 0px 20px;"><?=$msg["git"]["status"];?></pre>
+					</div>
+				</div>
+	<? endif ?>
+<? endif ?>
 			</div>
+
+
+
+
+
+
+
+
+
 
 			<div id="tab02Content" class="tabContent">
 
 			</div>
 
 			<div id="tab03Content" class="tabContent">
-				
+
 			</div>
 
 
