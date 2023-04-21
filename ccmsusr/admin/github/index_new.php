@@ -158,6 +158,7 @@ if(!is_callable('shell_exec') && true === stripos(ini_get('disable_functions'), 
 <? else: ?>
 						<p>
 							else<br />
+							<? print_r($msg["git"]["status"]))); ?>
 						</p>
 	<? if(isset($msg["git"]["status"]["error"])): ?>
 						<p>No .git repository setup in this directory or any of it's parent directories yet.  <a class="href-to-setup" href="#setup">Click here</a> to learn more about how to set up and connect this website to your own GitHub repository.</p>
