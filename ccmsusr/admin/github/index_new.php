@@ -15,6 +15,54 @@ $qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_user` WHERE `id` = :id LIMIT 1;
 $qry->execute(array(':id' => $_SESSION["USER_ID"]));
 $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 
+
+
+$msg = array();
+
+// Test to see if shell_exce() is disabled.
+if(!is_callable('shell_exec') && true === stripos(ini_get('disable_functions'), 'shell_exec')) {
+	// shell_exce() is disabled.
+	$msg["shell_exce"]["error"] = TRUE;
+} else {
+	// shell_exce() is enabled.
+	// Test to see if git is installed.
+	$output = trim(shell_exec("git --version"));
+
+	// test to confirm git is installed.
+	if(preg_match("/^git version .*/i", $output)) {
+		// git is installed.
+		$msg["git"]["version"] = $output;
+
+		$output = trim(shell_exec("git status"));
+		if($output == "") {
+			 $output = "not a git repository";
+		}
+		if(preg_match("/not a git repository/i", $output)) {
+			// git has not been setup to work with a repository under this directory yet.
+			$msg["git"]["status"]["error"] = $output;
+		} elseif(!preg_match("/nothing to commit/i", $output)) {
+			// There is something wrong with this repository, you might need to access it from the commandline and add/commit/push unresolved files first.
+			$msg["git"]["status"]["warning"] = $output;
+
+			// build and easier list of problem files to read from.
+			$output = trim(shell_exec("git status --porcelain | cut -c4-"));
+			$msg["git"]["status2"]["output"] = $output;
+		} else {
+			// All is well, looks like there is nothing to commit here.
+			$msg["git"]["status"] = $output;
+		}
+
+		$output = trim(shell_exec("git config --list"));
+		$msg["git"]["config"] = $output;
+
+		if(file_exists($_SERVER["DOCUMENT_ROOT"] . "/.gitignore")) {
+			$msg["gitignore"] = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/.gitignore");
+		}
+	} else {
+		// git is NOT installed.
+		$msg["git"]["error"] = $output;
+	}
+}
 ?><!DOCTYPE html>
 <html lang="{CCMS_LIB:_default.php;FUNC:ccms_lng}">
 	<head>
@@ -275,7 +323,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 							git checkout origin/main -- ccmstpl/examples/index.html
 						</p>
 	<? else: ?>
-					<pre style="padding: 15px; margin: 15px 0px 20px;"><?=$msg["git"]["status"];?></pre>
+					<pre style="padding: 15px; margin: 15px 0px 20px;"><?= $msg["git"]["status"];?></pre>
 	<? endif ?>
 <? endif ?>
 
