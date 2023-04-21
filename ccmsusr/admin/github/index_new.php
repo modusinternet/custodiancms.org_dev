@@ -247,21 +247,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 				<div class="modal">
 					<div>git status</div>
 					<div>
-						<p style="word-break:break-all">Server Name: <span class="oj"><?= $_SERVER["SERVER_NAME"];?></span></p>
-						<p style="word-break:break-all">Document Root: <span class="oj"><?=$_SERVER["DOCUMENT_ROOT"];?></span></p>
-						<p>System Address: <span class="oj"><?= $_SERVER["SERVER_ADDR"];?></p>
-						<p>Web Server: <span class="oj"><?php $a = explode(" ",$_SERVER["SERVER_SOFTWARE"]);echo $a[0];?></span></p>
-						<p>PHP Version: <span class="oj"><?= phpversion();?></span></p>
-						<p>PHP Memory Limit: <span class="oj"><?= ini_get("memory_limit");?></span></p>
-						<p>MySQL Version: <span class="oj"><?= $CFG["DBH"]->getAttribute(PDO::ATTR_SERVER_VERSION);?></span></p>
-						<p>COOKIE_SESSION_EXPIRE: <span class="oj"><?= $CFG["COOKIE_SESSION_EXPIRE"];?></span></p>
-						<p>HTML_MIN: <span class="oj"><?= $CFG["HTML_MIN"];?></span></p>
-						<p>CACHE: <span class="oj"><?= $CFG["CACHE"];?></span></p>
-						<p>CACHE_EXPIRE: <span class="oj"><?= $CFG["CACHE_EXPIRE"];?></span></p>
-						<p>LOG_EVENTS: <span class="oj"><?= $CFG["LOG_EVENTS"];?></span></p>
-						<p>EMAIL_FROM: <span class="oj"><?= $CFG["EMAIL_FROM"];?></span></p>
-						<p style="word-break:break-all">EMAIL_BOUNCES_RETURNED_TO: <span class="oj"><?= $CFG["EMAIL_BOUNCES_RETURNED_TO"];?></span></p>
-
 <? if(isset($msg["shell_exce"]["error"])): ?>
 						<p>Unable to call shell_exce().  Confirm your account has access to this function with your administrator before continuing.</p>
 <? elseif(isset($msg["git"]["error"])): ?>
