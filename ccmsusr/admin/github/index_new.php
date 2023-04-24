@@ -148,7 +148,7 @@ if(!is_callable('shell_exec') && true === stripos(ini_get('disable_functions'), 
 
 			<div id="tab01Content" class="tabContent" style="display:block">
 				<div class="modal">
-					<div>git status</div>
+					<div></div>
 					<div>
 <? if(isset($msg["shell_exce"]["error"])): ?>
 						<p>Unable to call shell_exce().  Confirm your account has access to this function with your administrator before continuing.</p>
@@ -156,6 +156,7 @@ if(!is_callable('shell_exec') && true === stripos(ini_get('disable_functions'), 
 						<p>.git is either NOT installed or you do not have access to git from this account.  Confirm with your administrator before continuing.</p>
 						<pre style="padding: 15px; margin: 15px 0px 20px;"><?=$msg["git"]["error"];?></pre>
 <? else: ?>
+						<h2>git status</h2>
 	<? if(isset($msg["git"]["status"]["error"])): ?>
 						<p>No .git repository setup in this directory or any of it's parent directories yet.  <a class="href-to-setup" href="#setup">Click here</a> to learn more about how to set up and connect this website to your own GitHub repository.</p>
 						<pre style="padding:15px;margin:15px 0px 20px">fatal: not a git repository (or any of the parent directories): .git</pre>
