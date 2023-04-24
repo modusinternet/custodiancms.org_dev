@@ -147,9 +147,7 @@ if(!is_callable('shell_exec') && true === stripos(ini_get('disable_functions'), 
 
 
 			<div id="tab01Content" class="tabContent" style="display:block">
-				<div class="modal">
-					<div></div>
-					<div>
+
 <? if(isset($msg["shell_exce"]["error"])): ?>
 						<p>Unable to call shell_exce().  Confirm your account has access to this function with your administrator before continuing.</p>
 <? elseif(isset($msg["git"]["error"])): ?>
@@ -183,9 +181,10 @@ if(!is_callable('shell_exec') && true === stripos(ini_get('disable_functions'), 
 					<pre style="padding: 15px; margin: 15px 0px 20px;"><?=$msg["git"]["status"];?></pre>
 	<? endif ?>
 <? endif ?>
-					</div>
-				</div>
+
 			</div>
+
+
 
 
 			<div id="tab02Content" class="tabContent">
@@ -205,6 +204,10 @@ if(!is_callable('shell_exec') && true === stripos(ini_get('disable_functions'), 
 					</div>
 				</div>
 			</div>
+
+
+
+
 
 			<div id="tab03Content" class="tabContent">
 				<div class="modal">
