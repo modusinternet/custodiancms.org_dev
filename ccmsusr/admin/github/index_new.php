@@ -179,26 +179,29 @@ if(!is_callable('shell_exec') && true === stripos(ini_get('disable_functions'), 
 						</p>
 	<? else: ?>
 					<p>Success</p>
-					<pre style="padding: 15px; margin: 15px 0px 20px;"><?= $msg["git"]["status"];?></pre>
+					<pre style="padding: 15px; margin: 15px 0px 20px;"><?=$msg["git"]["status"];?></pre>
 	<? endif ?>
 <? endif ?>
-
-
 					</div>
 				</div>
 			</div>
 
 
-
-
-
-
-
-
-
-
 			<div id="tab02Content" class="tabContent">
-
+				<div class="modal">
+					<div>git --version</div>
+					<div>
+						<pre style="padding: 15px; margin: 15px 0px 20px;"><?=$msg["git"]["version"];?></pre>
+						<h2>git config --list</h2>
+						<pre style="padding: 15px; margin: 15px 0px 20px;"><?=$msg["git"]["config"];?></pre>
+						<h2>.gitignore</h2>
+<? if(isset($msg["gitignore"])): ?>
+						<pre style="padding: 15px; margin: 15px 0px 20px;"><?=$msg["gitignore"];?></pre>
+<? else: ?>
+						<pre style="padding: 15px; margin: 15px 0px 20px;">.gitignore not found.</pre>
+<? endif ?>
+					</div>
+				</div>
 			</div>
 
 			<div id="tab03Content" class="tabContent">
