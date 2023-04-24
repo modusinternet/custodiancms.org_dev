@@ -189,8 +189,9 @@ if(!is_callable('shell_exec') && true === stripos(ini_get('disable_functions'), 
 
 			<div id="tab02Content" class="tabContent">
 				<div class="modal">
-					<div>git --version</div>
+					<div></div>
 					<div>
+						<h2>git --version</h2>
 						<pre style="padding: 15px; margin: 15px 0px 20px;"><?=$msg["git"]["version"];?></pre>
 						<h2>git config --list</h2>
 						<pre style="padding: 15px; margin: 15px 0px 20px;"><?=$msg["git"]["config"];?></pre>
