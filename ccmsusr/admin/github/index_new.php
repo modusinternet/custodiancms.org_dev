@@ -73,11 +73,11 @@ if(!is_callable('shell_exec') && true === stripos(ini_get('disable_functions'), 
 		{CCMS_TPL:/_css/head-css.html}
 
 		code {
-			font-family:Consolas,"courier new";
-			color:crimson;
 			background-color:#f1f1f1;
-			padding:2px;
-			font-size:105%
+			color:var(--cl3);
+			font-family:Consolas,"courier new";
+			font-weight:normal;
+			padding:2px
 		}
 
 		.tabs{
