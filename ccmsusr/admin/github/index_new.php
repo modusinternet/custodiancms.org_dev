@@ -72,6 +72,14 @@ if(!is_callable('shell_exec') && true === stripos(ini_get('disable_functions'), 
 	<style>
 		{CCMS_TPL:/_css/head-css.html}
 
+		code {
+			font-family:Consolas,"courier new";
+			color:crimson;
+			background-color:#f1f1f1;
+			padding:2px;
+			font-size:105%
+		}
+
 		.tabs{
 			border-bottom:1px solid var(--cl3);
 			overflow:hidden
