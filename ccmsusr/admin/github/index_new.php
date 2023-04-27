@@ -175,7 +175,9 @@ if(!is_callable('shell_exec') && true === stripos(ini_get('disable_functions'), 
 				</p>
 <? else: ?>
 				<p>Success</p>
-				<pre style="padding: 15px; margin: 15px 0px 20px;"><?=$msg["git"]["status"];?></pre>
+				<div style="overflow:auto">
+					<pre style="padding:15px;margin:15px 0px 20px"><?=$msg["git"]["status"];?></pre>
+				</div>
 	<? endif ?>
 <? endif ?>
 			</div>
