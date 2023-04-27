@@ -72,7 +72,7 @@ if(!is_callable('shell_exec') && true === stripos(ini_get('disable_functions'), 
 	<style>
 		{CCMS_TPL:/_css/head-css.html}
 
-		code {
+		code{
 			background-color:#f1f1f1;
 			color:var(--cl3);
 			font-family:Consolas,"courier new";
