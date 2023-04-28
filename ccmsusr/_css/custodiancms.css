@@ -240,10 +240,10 @@ p{margin:0 0 20px}
 .tableRow:nth-child(odd){background-color:#f9f9f9}
 
 
-/* metisMenu START */
-/*
 
-metisMenu START
+
+
+/* metisMenu START */
 .crossed{background:var(--cl1)}
 
 .dropped{
@@ -309,13 +309,7 @@ metisMenu START
 
 #menu-cnt a>svg>path{fill:var(--cl0)}
 
-
-
-
-ANIMATION KEYFRAMES
-
-
-
+/* ANIMATION KEYFRAMES */
 @keyframes rotate-top-bar{
 	40%{transform:translateY(0)}
 	100%{transform:translateY(0) rotate(45deg)}
@@ -335,14 +329,7 @@ ANIMATION KEYFRAMES
 	40%{transform:translateY(0)}
 	100%{transform:translateY(0) rotate(-45deg)}
 }
-metisMenu END
-
-*/
-
-
-
-
-
+/* metisMenu END */
 
 
 
@@ -392,7 +379,6 @@ metisMenu END
 	flex-direction:column;
 	position:relative
 }
-/**/
 /* metisMenu END */
 
 
