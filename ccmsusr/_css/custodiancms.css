@@ -244,6 +244,27 @@ p{margin:0 0 20px}
 
 
 /* metisMenu START */
+/* ANIMATION KEYFRAMES */
+@keyframes rotate-top-bar{
+	40%{transform:translateY(0)}
+	100%{transform:translateY(0) rotate(45deg)}
+}
+
+@keyframes rotate-bottom-bar {
+	40%{transform:translateY(0)}
+	100%{transform: translateY(0) rotate(-45deg)}
+}
+
+@keyframes rotate-top-bar-2 {
+	40%{transform:translateY(0)}
+	100%{transform:translateY(0) rotate(45deg)}
+}
+
+@keyframes rotate-bottom-bar-2 {
+	40%{transform:translateY(0)}
+	100%{transform:translateY(0) rotate(-45deg)}
+}
+
 .crossed{background:var(--cl1)}
 
 .dropped{
@@ -282,48 +303,6 @@ p{margin:0 0 20px}
 .hamburger::after{animation:rotate-bottom-bar-2 0.4s reverse}
 
 .hamburger::before{animation:rotate-top-bar-2 0.4s reverse}
-
-
-
-#menu-cnt svg{
-	position:relative;
-	top:5px;
-	width:30px
-}
-
-#menu-ctn {
-	cursor:pointer;
-	filter:drop-shadow(2px 2px 4px rgba(0,0,0,.2));
-	position:fixed;
-	right:18px;
-	top:25px
-}
-
-#menu-cnt a>svg>path{fill:var(--cl0)}
-
-/* ANIMATION KEYFRAMES */
-@keyframes rotate-top-bar{
-	40%{transform:translateY(0)}
-	100%{transform:translateY(0) rotate(45deg)}
-}
-
-@keyframes rotate-bottom-bar {
-	40%{transform:translateY(0)}
-	100%{transform: translateY(0) rotate(-45deg)}
-}
-
-@keyframes rotate-top-bar-2 {
-	40%{transform:translateY(0)}
-	100%{transform:translateY(0) rotate(45deg)}
-}
-
-@keyframes rotate-bottom-bar-2 {
-	40%{transform:translateY(0)}
-	100%{transform:translateY(0) rotate(-45deg)}
-}
-/* metisMenu END */
-
-
 
 .sidebar-nav{background-color:var(--cl4)}
 
@@ -371,7 +350,24 @@ p{margin:0 0 20px}
 	flex-direction:column;
 	position:relative
 }
+
+#menu-cnt svg{
+	position:relative;
+	top:5px;
+	width:30px
+}
+
+#menu-ctn {
+	cursor:pointer;
+	filter:drop-shadow(2px 2px 4px rgba(0,0,0,.2));
+	position:fixed;
+	right:18px;
+	top:25px
+}
+
+#menu-cnt a>svg>path{fill:var(--cl0)}
 /* metisMenu END */
+
 
 
 
