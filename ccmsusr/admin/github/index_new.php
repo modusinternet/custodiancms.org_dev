@@ -144,8 +144,6 @@ if(!is_callable('shell_exec') && true === stripos(ini_get('disable_functions'), 
 
 
 
-
-
 			<div id="tab01Content" class="tabContent" style="display:block">
 <? if(isset($msg["shell_exce"]["error"])): ?>
 				<p>Unable to call shell_exce().  Confirm your account has access to this function with your administrator before continuing.</p>
@@ -199,7 +197,6 @@ if(!is_callable('shell_exec') && true === stripos(ini_get('disable_functions'), 
 
 
 
-
 			<div id="tab03Content" class="tabContent">
 				<p style="margin: 15px 0px;">Listed below are the basic setup details to connect your website to a GitHub repository.  For more information about how to setup and maintain Git on your server visit <a href="https://git-scm.com/docs" target="_blank">https://git-scm.com/docs</a>.</p>
 				<h2>Repository and Webserver Setup</h2>
@@ -239,10 +236,6 @@ if(!is_callable('shell_exec') && true === stripos(ini_get('disable_functions'), 
 					<li>Install the Atom editor (<a href="https://atom.io" target="_blank">https://atom.io</a>) and go to "File/Add Project Folder" and select the document root folder containing the local copy of your repositories.  You should now be able to make changes using Atom, commit your changes to GitHub which will automaticaly submit them to your live website using the webhook.</li>
 				</ol>
 			</div>
-
-
-
-
 
 
 
