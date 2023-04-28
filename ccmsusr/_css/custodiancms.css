@@ -155,8 +155,6 @@ p{margin:0 0 20px}
 .ccms_msg.active.success{background-color:var(--cl3)}
 
 .logo{
-	/*filter:drop-shadow(5px 5px 5px rgba(10,37,64,.5));
-	filter:drop-shadow(1px 1px rgba(0,0,0,.6));*/
 	filter:drop-shadow(2px 2px 4px rgba(0,0,0,.2));
 	-webkit-transition:all 1.0s ease-in-out;
 	-moz-transition:all 1.0s ease-in-out;
@@ -238,9 +236,6 @@ p{margin:0 0 20px}
 .tableRow{display:table-row}
 
 .tableRow:nth-child(odd){background-color:#f9f9f9}
-
-
-
 
 
 /* metisMenu START */
@@ -368,6 +363,7 @@ p{margin:0 0 20px}
 #menu-cnt a>svg>path{fill:var(--cl0)}
 /* metisMenu END */
 
+
 /* w3school dropdown START */
 .dropbtn {
 	cursor:pointer;
@@ -406,6 +402,31 @@ p{margin:0 0 20px}
 .dropdown-content a:hover{background-color:var(--cl3)}
 
 .show{display:block;}
+
+
+#user_dropdown{
+	position:fixed;
+	right:80px
+}
+
+#user_dropdown_btn{
+	cursor:pointer;
+	background-color:unset;
+	border:none;
+	padding:unset
+}
+
+#user_dropdown_btn>svg>*{pointer-events:none}
+
+#user_dropdown_list a>svg{
+	position:relative;
+	top:5px;
+	width:30px
+}
+
+#user_dropdown_list a>svg>path{fill:var(--cl0)}
+
+
 /* w3school dropdown END */
 
 
