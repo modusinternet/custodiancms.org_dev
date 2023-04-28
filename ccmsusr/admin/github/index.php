@@ -11,12 +11,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 	die();
 }
 
-/*
-$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_user` WHERE `id` = :id LIMIT 1;");
-$qry->execute(array(':id' => $_SESSION["USER_ID"]));
-$ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
-*/
-
 $msg = array();
 
 // Test to see if shell_exce() is disabled.
