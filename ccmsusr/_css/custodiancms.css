@@ -40,8 +40,7 @@ button{
 	border-radius:5px;
 	color:var(--cl0);
 	font:unset;
-	padding:0.5em;
-	/*width:100%*/
+	padding:0.5em
 }
 
 button:hover{background-color:var(--cl3)}
@@ -242,7 +241,111 @@ p{margin:0 0 20px}
 
 
 /* metisMenu START */
-/**/
+/*
+
+metisMenu START
+.crossed{background:var(--cl1)}
+
+.dropped{
+	display:block!important;
+	transition:0.4s all ease-in
+}
+
+.menu-bars{
+	background:var(--cl4);
+	height:4px;
+	list-style:none;
+	margin:0 7px;
+	position:relative;
+	top:18px;
+	transition:0.4s all ease-in;
+	width:30px
+}
+
+.menu-bars::after{transform:translateY(10px)}
+
+.menu-bars::before{transform:translateY(-10px)}
+
+.menu-bars::after,.menu-bars::before{
+	background:var(--cl4);
+	content:'';
+	height:4px;
+	list-style:none;
+	position:absolute;
+	width:30px
+}
+
+.crossed::after{animation:rotate-bottom-bar 0.4s forwards}
+
+.crossed::before{animation:rotate-top-bar 0.4s forwards}
+
+.hamburger::after{animation:rotate-bottom-bar-2 0.4s reverse}
+
+.hamburger::before{animation:rotate-top-bar-2 0.4s reverse}
+
+#menu-cnt{
+	box-shadow:2px 3px 10px 0 rgba(0,0,0,0.2);
+	display:none;
+	height:80%;
+	left:0px;
+	overflow:auto;
+	position:fixed;
+	top:100px
+}
+
+#menu-cnt svg{
+	position:relative;
+	top:5px;
+	width:30px
+}
+
+#menu-ctn {
+	cursor:pointer;
+	filter:drop-shadow(2px 2px 4px rgba(0,0,0,.2));
+	position:fixed;
+	right:18px;
+	top:25px
+}
+
+#menu-cnt a>svg>path{fill:var(--cl0)}
+
+
+
+
+ANIMATION KEYFRAMES
+
+
+
+@keyframes rotate-top-bar{
+	40%{transform:translateY(0)}
+	100%{transform:translateY(0) rotate(45deg)}
+}
+
+@keyframes rotate-bottom-bar {
+	40%{transform:translateY(0)}
+	100%{transform: translateY(0) rotate(-45deg)}
+}
+
+@keyframes rotate-top-bar-2 {
+	40%{transform:translateY(0)}
+	100%{transform:translateY(0) rotate(45deg)}
+}
+
+@keyframes rotate-bottom-bar-2 {
+	40%{transform:translateY(0)}
+	100%{transform:translateY(0) rotate(-45deg)}
+}
+metisMenu END
+
+*/
+
+
+
+
+
+
+
+
 .sidebar-nav{background-color:var(--cl4)}
 
 .sidebar-nav ul{
