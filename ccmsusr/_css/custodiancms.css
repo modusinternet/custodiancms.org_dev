@@ -45,6 +45,14 @@ button{
 
 button:hover{background-color:var(--cl3)}
 
+code{
+	background-color:#f1f1f1;
+	color:var(--cl3);
+	font-family:Consolas,"courier new";
+	font-weight:normal;
+	padding:2px
+}
+
 form{padding-bottom:10px}
 
 h1,h2,h3,h4,h5,h6{

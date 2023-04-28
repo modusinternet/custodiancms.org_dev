@@ -72,14 +72,6 @@ if(!is_callable('shell_exec') && true === stripos(ini_get('disable_functions'), 
 	<style>
 		{CCMS_TPL:/_css/head-css.html}
 
-		code{
-			background-color:#f1f1f1;
-			color:var(--cl3);
-			font-family:Consolas,"courier new";
-			font-weight:normal;
-			padding:2px
-		}
-
 		.tabs{
 			border-bottom:1px solid var(--cl3);
 			overflow:hidden
@@ -193,12 +185,12 @@ if(!is_callable('shell_exec') && true === stripos(ini_get('disable_functions'), 
 
 			<div id="tab02Content" class="tabContent">
 				<h2>git --version</h2>
-				<pre style="padding: 15px; margin: 15px 0px 20px;"><?=$msg["git"]["version"];?></pre>
+				<pre style="padding: 15px; margin: 15px 0px 20px;"><code><?=$msg["git"]["version"];?></code></pre>
 				<h2>git config --list</h2>
-				<pre style="padding: 15px; margin: 15px 0px 20px;"><?=$msg["git"]["config"];?></pre>
+				<pre style="padding: 15px; margin: 15px 0px 20px;"><code><?=$msg["git"]["config"];?></code></pre>
 				<h2>.gitignore</h2>
 <? if(isset($msg["gitignore"])): ?>
-				<pre style="padding: 15px; margin: 15px 0px 20px;"><?=$msg["gitignore"];?></pre>
+				<pre style="padding: 15px; margin: 15px 0px 20px;"><code><?=$msg["gitignore"];?></code></pre>
 <? else: ?>
 				<pre style="padding: 15px; margin: 15px 0px 20px;">.gitignore not found.</pre>
 <? endif ?>
