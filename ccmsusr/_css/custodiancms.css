@@ -283,15 +283,7 @@ p{margin:0 0 20px}
 
 .hamburger::before{animation:rotate-top-bar-2 0.4s reverse}
 
-#menu-cnt{
-	box-shadow:2px 3px 10px 0 rgba(0,0,0,0.2);
-	display:none;
-	height:80%;
-	left:0px;
-	overflow:auto;
-	position:fixed;
-	top:100px
-}
+
 
 #menu-cnt svg{
 	position:relative;
@@ -380,6 +372,10 @@ p{margin:0 0 20px}
 	position:relative
 }
 /* metisMenu END */
+
+
+
+
 
 
 /* w3school dropdown START */
