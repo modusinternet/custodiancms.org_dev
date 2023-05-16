@@ -692,7 +692,8 @@ if(
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
 			function loadJSResources() {
-				loadFirst("/ccmsusr/_js/jquery-3.6.0.min.js", function() {
+				/*loadFirst("/ccmsusr/_js/jquery-3.6.0.min.js", function() {*/
+				loadFirst("/ccmsusr/_js/jquery-3.7.0.min.js", function() {
 					/*loadFirst("/ccmsusr/_js/custodiancms.js", function() {*/
 						/*loadFirst("https://www.google.com/recaptcha/api.js?hl={CCMS_LIB:_default.php;FUNC:ccms_lng}&render={CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}", function() {*/
 						loadFirst("https://www.google.com/recaptcha/api.js?render={CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}&hl={CCMS_LIB:_default.php;FUNC:ccms_lng}", function() {
