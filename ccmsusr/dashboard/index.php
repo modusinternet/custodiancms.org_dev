@@ -16,7 +16,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 		<title><?= $_SERVER["SERVER_NAME"];?> | User | Dashboard</title>
 		{CCMS_TPL:head-meta.html}
 	</head>
-	<style>
+	<style nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 		{CCMS_TPL:/_css/head-css.html}
 
 		button:hover{background-color:transparent}
