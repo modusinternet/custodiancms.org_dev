@@ -178,9 +178,12 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 			arg2 = a variable found in the config file that represents a partial pathway to the style sheet. (Not including details about AWS, language code, or language direction)
 			*/
 
+			/*
 			var l=document.createElement("link");l.rel="stylesheet";
 			l.href = "/ccmsusr/_css/custodiancms.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
+			*/
+			{CCMS_LIB:_default.php;FUNC:ccms_build_css_link("","","CSS-02","","")}
 
 			var l=document.createElement("link");l.rel="stylesheet";
 			l.href = "/ccmsusr/_css/metisMenu-3.0.6.min.css";
