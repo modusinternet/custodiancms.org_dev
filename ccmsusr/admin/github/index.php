@@ -23,10 +23,10 @@ if(isset($_SESSION["USER_ID"])) {
 */
 
 $json_a = json_decode($_SESSION["PRIV"], true);
-print_r($json_a);
+//print_r($json_a);
 //die();
 
-if(($json_a["admin"]["sub"]["github"] ?? null) == 1) {
+if(($json_a["admin"]["sub"]["github"] ?? null) == 2) {
 	echo "Access deniged.";
 	die();
 }
