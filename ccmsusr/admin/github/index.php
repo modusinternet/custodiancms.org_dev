@@ -11,6 +11,24 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 	die();
 }
 
+
+
+
+
+global $CFG, $CLEAN;
+
+if(isset($_SESSION["USER_ID"])) {
+	$json_a = json_decode($_SESSION["PRIV"], true);
+}
+
+if(($json_a["github"]["r"] ?? null) == 1) {
+	echo "Access not permitted.";
+	die();
+}
+
+
+
+
 $msg = array();
 
 // Test to see if shell_exce() is disabled.
