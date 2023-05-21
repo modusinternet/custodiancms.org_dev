@@ -11,11 +11,9 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 	die();
 }
 
-if(isset($_SESSION["USER_ID"])) {
-	$json_a = json_decode($_SESSION["PRIV"], true);
-}
-
-if(($json_a["admin"]["sub"]["github"] ?? null) < 2) {
+/* Confirm privilages to access this page. */
+$json_a = json_decode($_SESSION["PRIV"], true);
+if(($json_a["admin"]["sub"]["github"] ?? null) < 1) {
 	echo "Access denied.";
 	die();
 }
