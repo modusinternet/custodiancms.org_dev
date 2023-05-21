@@ -15,13 +15,11 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 
-global $CFG, $CLEAN;
-
 if(isset($_SESSION["USER_ID"])) {
 	$json_a = json_decode($_SESSION["PRIV"], true);
 }
 
-if(($json_a["github"]["r"] ?? null) == 1) {
+if(($json_a["github"]["b"] ?? null) == 1) {
 	echo "Access not permitted.";
 	die();
 }
