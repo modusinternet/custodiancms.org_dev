@@ -13,7 +13,6 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 if(isset($_SESSION["USER_ID"])) {
 	$json_a = json_decode($_SESSION["PRIV"], true);
-	die();
 }
 
 if(($json_a["admin"]["sub"]["github"] ?? null) < 3) {
