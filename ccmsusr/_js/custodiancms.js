@@ -15,7 +15,7 @@ window.setTimeout(function(){
 $("header").delay(250).animate({"opacity": "1"}, 250);
 
 
-/* metisMenu START 
+/* metisMenu START */
 $(() => {
 	const menu = $('#menu-ctn'),
 	bars = $('.menu-bars'),
@@ -48,7 +48,7 @@ navActiveSub.forEach(function(nl){$("#"+nl+">a").attr("aria-expanded","true");})
 navActiveSub.forEach(function(nl){$("#"+nl+">a").addClass("active");});
 navActiveSub.forEach(function(nl){$("#"+nl+">ul").addClass("mm-show");});
 navActiveItem.forEach(function(nl){$("#"+nl+">a").addClass("active");});
- metisMenu END */
+/* metisMenu END */
 
 
 /* w3schoolMenu START */
