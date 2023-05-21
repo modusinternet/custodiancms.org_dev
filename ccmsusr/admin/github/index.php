@@ -119,10 +119,8 @@ if(!is_callable('shell_exec') && true === stripos(ini_get('disable_functions'), 
 		#tab03Content>div>ul li{padding-left:20px}
 	</style>
 	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
-		/*var navActiveArray = ["admin","admin_nav","admin_blacklist_settings"];*/
 		let navActiveItem = ["nav-admin","nav-admin-github"];
 		let navActiveSub = [];
-		/*let navActiveW3schoolsItem = ["nav-user_admin_blacklist_settings"];*/
 	</script>
 	<body>
 		<main style="padding:20px 20px 20px 0">

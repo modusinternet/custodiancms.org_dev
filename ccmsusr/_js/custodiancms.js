@@ -43,10 +43,12 @@ $(() => {
 });
 
 $("#menu1").metisMenu();
+/*
 navActiveSub.forEach(function(nl){$("#"+nl).addClass("mm-active");});
 navActiveSub.forEach(function(nl){$("#"+nl+">a").attr("aria-expanded","true");});
 navActiveSub.forEach(function(nl){$("#"+nl+">a").addClass("active");});
 navActiveSub.forEach(function(nl){$("#"+nl+">ul").addClass("mm-show");});
+*/
 navActiveItem.forEach(function(nl){$("#"+nl+">a").addClass("active");});
 /* metisMenu END */
 
