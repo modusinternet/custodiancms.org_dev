@@ -17,10 +17,12 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 if(isset($_SESSION["USER_ID"])) {
 	$json_a = json_decode($_SESSION["PRIV"], true);
+	print_r($_SESSION["PRIV"]);
+	die();
 }
 
 if(($json_a["github"]["rw"] ?? null) == 1) {
-	echo "Access not permitted.";
+	echo "Access deniged.";
 	die();
 }
 
