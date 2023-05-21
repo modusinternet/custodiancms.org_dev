@@ -26,7 +26,7 @@ $json_a = json_decode($_SESSION["PRIV"], true);
 //print_r($json_a);
 //die();
 
-if(($json_a["admin"]["sub"]["github"] ?? null) == 2) {
+if(($json_a["admin"]["sub"]["github"] ?? null) < 1) {
 	echo "Access denied.";
 	die();
 }
