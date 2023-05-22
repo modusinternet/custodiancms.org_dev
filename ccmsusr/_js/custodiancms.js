@@ -55,7 +55,7 @@ navActiveItem.forEach(function(nl){$("#"+nl+">a").addClass("active");});
 
 /* w3schoolMenu START */
 //navActiveW3schoolsItem.forEach(function(nl){$("#"+nl).addClass("active");});
-if(navActiveW3schoolsItem.length !== 0) {
+if(typeof navActiveW3schoolsItem !== 'undefined' && navActiveW3schoolsItem.length !== 0) {
 	navActiveW3schoolsItem.forEach(function(nl){$("#"+nl).addClass("active");});
 }
 /* w3schoolMenu END */
