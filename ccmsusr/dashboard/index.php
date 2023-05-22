@@ -330,10 +330,10 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 										divTableRow.innerHTML = '<div class="tableCell">'+ data[i].id
 										+ '</div><div class="tableCell">' + convdataTime
 										+ '</div><div class="tableCell">' + data[i].ip
-										+ '<br><span class="blacklistIpAddress" data-ip="' + data[i].ip
-										+ '">(Blacklist)</span></div><div class="tableCell" style="line-break:anywhere;min-width:200px">' + data[i].url
-										+ '</div><div class="tableCell" style="min-width:390px;width:100%">' + data[i].log
-										+ '</div><div class="tableCell" style="text-align:center"><?php
+										+ '<?php
+/* Confirm write privilages. */
+$json_a = json_decode($_SESSION["PRIV"], true);
+if(($json_a["dashboard"] ?? null) == 2): ?><br><span class="blacklistIpAddress" data-ip="' + data[i].ip + '">(Blacklist)</span><?php endif; ?></div><div class="tableCell" style="line-break:anywhere;min-width:200px">' + data[i].url + '</div><div class="tableCell" style="min-width:390px;width:100%">' + data[i].log + '</div><div class="tableCell" style="text-align:center"><?php
 /* Confirm write privilages. */
 $json_a = json_decode($_SESSION["PRIV"], true);
 if(($json_a["dashboard"] ?? null) == 2): ?><button class="svg_icon svg_delete_button" data-id="' + data[i].id + '" title="Delete"></button><?php endif; ?></div>';
