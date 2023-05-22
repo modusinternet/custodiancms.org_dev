@@ -53,9 +53,9 @@ navActiveItem.forEach(function(nl){$("#"+nl+">a").addClass("active");});
 /* metisMenu END */
 
 
-/* w3schoolMenu START
+/* w3schoolMenu START */
 navActiveW3schoolsItem.forEach(function(nl){$("#"+nl).addClass("active");});
- w3schoolMenu END */
+/* w3schoolMenu END */
 
 
 /* Fetch Cache BEGIN */
