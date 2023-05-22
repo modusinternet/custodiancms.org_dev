@@ -336,7 +336,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 										+ '</div><div class="tableCell" style="text-align:center"><button <?php
 /* Confirm write privilages. */
 $json_a = json_decode($_SESSION["PRIV"], true);
-if(($json_a["dashboard"] ?? null) == 1): ?>disabled <?php endif; ?>class="svg_icon svg_delete_button" data-id="' + data[i].id + '" title="Delete"></button></div>';
+if(($json_a["dashboard"] ?? null) == 1): ?>disabled title="Delete disabled, no write privilages." <?php else: ?>title="Delete"<?php endif; ?> class="svg_icon svg_delete_button" data-id="' + data[i].id + '"></button></div>';
 
 										divTable.appendChild(divTableRow);
 									}
