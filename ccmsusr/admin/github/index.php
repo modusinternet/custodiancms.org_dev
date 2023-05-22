@@ -128,6 +128,7 @@ if(!is_callable('shell_exec') && true === stripos(ini_get('disable_functions'), 
 	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 		let navActiveItem = ["nav-admin","nav-admin-github"];
 		let navActiveSub = [];
+		let navActiveW3schoolsItem = [];
 	</script>
 	<body>
 		<main style="padding:20px 20px 20px 0">
