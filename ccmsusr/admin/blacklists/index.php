@@ -18,7 +18,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 ?><!DOCTYPE html>
 <html lang="{CCMS_LIB:_default.php;FUNC:ccms_lng}">
 	<head>
-		<title><?= $_SERVER["SERVER_NAME"];?> | User | Blacklist Settings</title>
+		<title><?= $_SERVER["SERVER_NAME"];?> | User | Blacklists</title>
 		{CCMS_TPL:head-meta.html}
 	</head>
 	<style>
@@ -222,14 +222,13 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		}
 	</style>
 	<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
-		/*var navActiveArray = ["admin","admin_nav","admin_blacklist_settings"];*/
-		let navActiveItem = ["nav-admin","nav-admin-blacklist_settings"];
+		let navActiveItem = ["nav-admin","nav-admin-blacklists"];
 		let navActiveSub = [];
-		/*let navActiveW3schoolsItem = ["nav-user_admin_blacklist_settings"];*/
+		let navActiveW3schoolsItem = [];
 	</script>
 	<body>
 		<main style="padding:20px 20px 20px 0">
-			<h1 style="border-bottom:1px dashed var(--cl3)">Admin | Blacklist Settings</h1>
+			<h1 style="border-bottom:1px dashed var(--cl3)">Admin | Blacklists</h1>
 			<p>This section is still under development, but if you come across any unresolved issues please let us know at: <a class="ccms_a" href="mailto:info@custodiancms.org?subject=unresolved+issue+report">info@custodiancms.org</a></p>
 
 
@@ -241,18 +240,20 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 		<script nonce="{CCMS_LIB:_default.php;FUNC:ccms_csp_nounce}">
 			{CCMS_TPL:/_js/footer-1.php}
 
+			/*
 			var l=document.createElement("link");l.rel="stylesheet";
 			l.href = "/ccmsusr/_css/custodiancms.css";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
+			*/
+			{CCMS_LIB:_default.php;FUNC:ccms_build_css_link("","","CSS-02","","")}
 
-			//var l=document.createElement("link");l.rel="stylesheet";
-			//l.href = "/ccmsusr/_css/metisMenu-3.0.6.min.css";
-			//var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
+			var l=document.createElement("link");l.rel="stylesheet";
+			l.href = "/ccmsusr/_css/metisMenu-3.0.6.min.css";
+			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
 			function loadJSResources() {
-				/*loadFirst("/ccmsusr/_js/jquery-2.2.0.min.js", function() {*/
-				loadFirst("/ccmsusr/_js/jquery-3.6.0.min.js", function() {
-					//loadFirst("/ccmsusr/_js/metisMenu-3.0.7.min.js", function() {
+				loadFirst("{CCMS_LIB:_default.php;FUNC:ccms_build_js_link("","","JQUERY","","")}", function() {
+					loadFirst("/ccmsusr/_js/metisMenu-3.0.7.min.js", function() {
 						loadFirst("/ccmsusr/_js/custodiancms.js", function() {
 
 
