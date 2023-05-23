@@ -21,7 +21,7 @@ if(($json_a["admin"]["sub"]["blacklists"] ?? null) < 1) {
 ?><!DOCTYPE html>
 <html lang="{CCMS_LIB:_default.php;FUNC:ccms_lng}">
 	<head>
-		<title><?= $_SERVER["SERVER_NAME"];?> | User | Blacklists</title>
+		<title><?= $_SERVER["SERVER_NAME"];?> | User | Admin | Blacklists</title>
 		{CCMS_TPL:head-meta.html}
 	</head>
 	<style>
