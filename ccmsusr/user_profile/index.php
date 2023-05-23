@@ -396,10 +396,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 			*/
 			{CCMS_LIB:_default.php;FUNC:ccms_build_css_link("","","CSS-02","","")}
-
-			var l=document.createElement("link");l.rel="stylesheet";
-			l.href = "/ccmsusr/_css/metisMenu-3.0.6.min.css";
-			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
+			{CCMS_LIB:_default.php;FUNC:ccms_build_css_link("","","metisCSS","","")}
 
 			function loadJSResources() {
 				loadFirst("{CCMS_LIB:_default.php;FUNC:ccms_build_js_link("","","JQUERY","","")}", function() {
