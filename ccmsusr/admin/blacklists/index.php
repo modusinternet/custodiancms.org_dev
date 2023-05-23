@@ -255,24 +255,6 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 				loadFirst("{CCMS_LIB:_default.php;FUNC:ccms_build_js_link("","","JQUERY","","")}", function() {
 					loadFirst("/ccmsusr/_js/metisMenu-3.0.7.min.js", function() {
 						loadFirst("/ccmsusr/_js/custodiancms.js", function() {
-
-
-							/* user_dropdown START */
-							/* When the user clicks on the svg button add the 'show' class to the dropdown box below it. */
-							$("#user_dropdown_btn").click(function() {
-								$("#user_dropdown_list").addClass("show");
-							});
-
-
-							/* Hide dropdown menu on click outside */
-							$(document).on("click", function(e){
-								if(!$(e.target).closest("#user_dropdown_btn").length){
-									$("#user_dropdown_list").removeClass("show");
-								}
-							});
-							/* user_dropdown END */
-
-
 							loadFirst("/ccmsusr/_js/jquery-validate-1.19.3.min.js", function() {
 								loadFirst("/ccmsusr/_js/additional-methods-1.17.0.min.js", function() {
 
@@ -282,7 +264,7 @@ $ccms_user = $qry->fetch(PDO::FETCH_ASSOC);
 								});
 							});
 						});
-					//});
+					});
 				});
 			}
 		</script>
