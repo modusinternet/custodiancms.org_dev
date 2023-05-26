@@ -150,6 +150,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				<li>HTML Minify</li>
 				<li>Templates in Database Cache</li>
 				<li>Clear Cache</li>
+				<li>LOG_EVENTS</li>
 				<li>Backup/Restore</li>
 				<li>Password Recovery attempts currently in the ccms_password_recovery table</li>
 			</ul>
