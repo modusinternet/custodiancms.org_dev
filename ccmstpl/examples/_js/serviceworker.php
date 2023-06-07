@@ -79,7 +79,7 @@ if(!/\/wp\-(.*)|\/recaptcha\/|(\/(([a-z]{2,3})(-[a-z0-9]{2,3})?)\/user\/)/i.test
 			caches.open(cacheName).then(cache => {
 				cache.match(event.request).then(response => {
 					return response;
-				}).then(cache => {
+				}).then(response => {
 /*
 Go here to learn more about cors:
 https://jakearchibald.com/2015/thats-so-fetch/#no-cors-and-opaque-responses
