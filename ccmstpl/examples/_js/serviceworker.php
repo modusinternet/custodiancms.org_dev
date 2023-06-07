@@ -70,34 +70,36 @@ self.addEventListener('activate',(event) => {
 
 self.addEventListener('fetch',(event) => {
 	console.log('SW fetch event.', event.request.method, event.request.url);
-	/*
-		This example demonstrates how to avoid doing a serviceWorker cache of templates if they are coming from WordPress folders, Google RECAPTCHA or the CustodianCMS 'user' folder/admin.
-		if(!/\/wp\-(.*)|\/recaptcha\/|(\/(([a-z]{2,3})(-[a-z0-9]{2,3})?)\/user\/)/i.test(event.request.url)) {
-	*/
+/*
+This example demonstrates how to avoid doing a serviceWorker cache of templates if they are coming from WordPress folders, Google RECAPTCHA or the CustodianCMS 'user' folder/admin.
+if(!/\/wp\-(.*)|\/recaptcha\/|(\/(([a-z]{2,3})(-[a-z0-9]{2,3})?)\/user\/)/i.test(event.request.url)) {
+*/
 	if(!/\/recaptcha\/|(\/(([a-z]{2,3})(-[a-z0-9]{2,3})?)\/user\/)/i.test(event.request.url)){
 		event.respondWith(
 			caches.open(cacheName).then(cache => {
-				return cache.match(event.request).then(response => {
-					/*
-						Go here to learn more about cors:
-						https://jakearchibald.com/2015/thats-so-fetch/#no-cors-and-opaque-responses
-						or
-						https://developers.google.com/web/fundamentals/primers/service-workers/#non-cors_fail_by_default
-						const fetchResponse = await fetch(event.request, {mode:'cors'});
-						const fetchResponse = await fetch(event.request, {mode:'no-cors'});
-						const fetchResponse = await fetch(event.request, {mode:'immutable'});
-					*/
-					const fetchPromise = fetch(event.request).then(networkResponse => {
+				cache.match(event.request).then(response => {
+					return response;
+				}).then(cache => {
+/*
+Go here to learn more about cors:
+https://jakearchibald.com/2015/thats-so-fetch/#no-cors-and-opaque-responses
+or
+https://developers.google.com/web/fundamentals/primers/service-workers/#non-cors_fail_by_default
+const fetchResponse = await fetch(event.request, {mode:'cors'});
+const fetchResponse = await fetch(event.request, {mode:'no-cors'});
+const fetchResponse = await fetch(event.request, {mode:'immutable'});
+*/
+					fetch(event.request).then(response => {
 						/* Makesure never to cache a failed page call. */
-						if(networkResponse.status === 404) {
-							return networkResponse;
+						if(response.status !== 404) {
+							cache.put(event.request, response.clone());
+							return response;
 						}
-						cache.put(event.request, networkResponse.clone());
-						return networkResponse;
-					});
-					return response || fetchPromise;
+					})
 				}).catch(function() {
-					/* The template being called was not found in cache and there is no internet connection at the moment so display the offline page instead.  The code below makes sure we're dispalying the appropriate offline template for the language that's currently selected by the client. */
+/*
+The template being called was not found in cache and there is no internet connection at the moment so display the offline page instead.  The code below makes sure we're dispalying the appropriate offline template for the language that's currently selected by the client.
+*/
 					const regex = /\/(([a-z]{2,3})(-[a-z0-9]{2,3})?)\//i;
 					const lng = event.request.url.match(regex);
 					const searchForThis = '/' + lng[1] + '/examples/offline.html';
@@ -106,7 +108,9 @@ self.addEventListener('fetch',(event) => {
 			})
 		);
 	} else {
-		/* This request appears to be for a Google RECAPTCHA URL or the CustodianCMS '/user/' dir, so don't cache it. Keep it fresh and always comming from the source. */
+/*
+This request appears to be for a Google RECAPTCHA URL or the CustodianCMS '/user/' dir, so don't cache it. Keep it fresh and always comming from the source.
+*/
 		event.respondWith(fetch(event.request));
 	}
 });
