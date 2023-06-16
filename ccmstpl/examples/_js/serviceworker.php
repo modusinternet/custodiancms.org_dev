@@ -79,7 +79,7 @@ if(!/\/wp\-(.*)|\/recaptcha\/|(\/(([a-z]{2,3})(-[a-z0-9]{2,3})?)\/user\/)/i.test
 			caches.open(cacheName).then(cache => {
 				cache.match(event.request).then(response => {
 					return response;
-				}).then(response => {
+				}).then(asdf => {
 /*
 Go here to learn more about cors:
 https://jakearchibald.com/2015/thats-so-fetch/#no-cors-and-opaque-responses
@@ -113,4 +113,49 @@ This request appears to be for a Google RECAPTCHA URL or the CustodianCMS '/user
 */
 		event.respondWith(fetch(event.request));
 	}
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'use strict';
+
+const files = [
+  '/',
+  '/console.css',
+  '/console.js',
+  '/favicon.ico',
+  '/favicon.png',
+  '/manifest.json',
+  '/metarhia.png',
+  '/metarhia.svg',
+];
+
+self.addEventListener('install', (event) => event.waitUntil(
+  caches.open('v1').then((cache) => cache.addAll(files))
+));
+
+self.addEventListener('fetch', (event) => {
+  event.respondWith(caches.match(event.request).then((response) => {
+    if (response !== undefined) return response;
+    return fetch(event.request).then((response) => {
+      const responseClone = response.clone();
+      caches.open('v1').then((cache) => {
+        cache.put(event.request, responseClone);
+      });
+      return response;
+    }).catch((error) => {
+      throw error;
+    });
+  }));
 });
