@@ -13,16 +13,12 @@ Loading Screen END */
 
 /* Active link selector START */
 try{
-	activeArray_01.forEach(function(id){
-		var element = document.getElementById(id);
-		element.classList.add("active");
-	})
-	activeArray_02.forEach(function(id){
+	activeArray.forEach(function(id){
 		var element = document.getElementById(id);
 		element.classList.add("active");
 	})
 }catch(e){
-	/*console.log(e);*/
+	console.log(e);
 }
 /* Active link selector END */
 

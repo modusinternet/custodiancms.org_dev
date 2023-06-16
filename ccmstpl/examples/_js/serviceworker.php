@@ -31,7 +31,7 @@ Add these to the right box under Whitelist Headers, add as custom if necessary:
 Then click the 'Yes, Edit' button at the bottom and give it about 10 minutes to propagate through the system and test using Chrome.
 */
 
-const cacheName = '2023-06-16';
+const cacheName = '2023-06-16.v2';
 
 /* Point this array item to your own 'offline' template if you plan on removing the 'examples' folder in your own development. */
 var cacheFiles = [
@@ -127,7 +127,7 @@ This request appears to be for a Google RECAPTCHA URL or the CustodianCMS '/user
 
 
 
-
+/*
 'use strict';
 
 const files = [
@@ -159,3 +159,4 @@ self.addEventListener('fetch', (event) => {
     });
   }));
 });
+*/
