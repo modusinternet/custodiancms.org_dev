@@ -69,38 +69,33 @@ self.addEventListener('activate',(event) => {
 });
 
 
+/*
 self.addEventListener('fetch',(event) => {
 	console.log('SW fetch event.', event.request.method, event.request.url);
-/*
-This example demonstrates how to avoid doing a serviceWorker cache of templates if they are coming from WordPress folders, Google RECAPTCHA or the CustodianCMS 'user' folder/admin.
-if(!/\/wp\-(.*)|\/recaptcha\/|(\/(([a-z]{2,3})(-[a-z0-9]{2,3})?)\/user\/)/i.test(event.request.url)) {
-*/
+// This example demonstrates how to avoid doing a serviceWorker cache of templates if they are coming from WordPress folders, Google RECAPTCHA or the CustodianCMS 'user' folder/admin.
+// if(!/\/wp\-(.*)|\/recaptcha\/|(\/(([a-z]{2,3})(-[a-z0-9]{2,3})?)\/user\/)/i.test(event.request.url)) {
 	if(!/\/recaptcha\/|(\/(([a-z]{2,3})(-[a-z0-9]{2,3})?)\/user\/)/i.test(event.request.url)){
 		event.respondWith(
 			caches.open(cacheName).then(cache => {
 				cache.match(event.request).then(response => {
 					return response;
 				}).then(asdf => {
-/*
-Go here to learn more about cors:
-https://jakearchibald.com/2015/thats-so-fetch/#no-cors-and-opaque-responses
-or
-https://developers.google.com/web/fundamentals/primers/service-workers/#non-cors_fail_by_default
-const fetchResponse = await fetch(event.request, {mode:'cors'});
-const fetchResponse = await fetch(event.request, {mode:'no-cors'});
-const fetchResponse = await fetch(event.request, {mode:'immutable'});
-*/
+// Go here to learn more about cors:
+// https://jakearchibald.com/2015/thats-so-fetch/#no-cors-and-opaque-responses
+// or
+// https://developers.google.com/web/fundamentals/primers/service-workers/#non-cors_fail_by_default
+// const fetchResponse = await fetch(event.request, {mode:'cors'});
+// const fetchResponse = await fetch(event.request, {mode:'no-cors'});
+// const fetchResponse = await fetch(event.request, {mode:'immutable'});
 					fetch(event.request).then(response => {
-						/* Makesure never to cache a failed page call. */
+// Makesure never to cache a failed page call.
 						if(response.status !== 404) {
 							cache.put(event.request, response.clone());
 							return response;
 						}
 					})
 				}).catch(function() {
-/*
-The template being called was not found in cache and there is no internet connection at the moment so display the offline page instead.  The code below makes sure we're dispalying the appropriate offline template for the language that's currently selected by the client.
-*/
+// The template being called was not found in cache and there is no internet connection at the moment so display the offline page instead.  The code below makes sure we're dispalying the appropriate offline template for the language that's currently selected by the client.
 					const regex = /\/(([a-z]{2,3})(-[a-z0-9]{2,3})?)\//i;
 					const lng = event.request.url.match(regex);
 					const searchForThis = '/' + lng[1] + '/examples/offline.html';
@@ -109,55 +104,77 @@ The template being called was not found in cache and there is no internet connec
 			})
 		);
 	} else {
-/*
-This request appears to be for a Google RECAPTCHA URL or the CustodianCMS '/user/' dir, so don't cache it. Keep it fresh and always comming from the source.
-*/
+// This request appears to be for a Google RECAPTCHA URL or the CustodianCMS '/user/' dir, so don't cache it. Keep it fresh and always comming from the source.
 		event.respondWith(fetch(event.request));
 	}
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-'use strict';
-
-const files = [
-  '/',
-  '/console.css',
-  '/console.js',
-  '/favicon.ico',
-  '/favicon.png',
-  '/manifest.json',
-  '/metarhia.png',
-  '/metarhia.svg',
-];
-
-self.addEventListener('install', (event) => event.waitUntil(
-  caches.open('v1').then((cache) => cache.addAll(files))
-));
-
-self.addEventListener('fetch', (event) => {
-  event.respondWith(caches.match(event.request).then((response) => {
-    if (response !== undefined) return response;
-    return fetch(event.request).then((response) => {
-      const responseClone = response.clone();
-      caches.open('v1').then((cache) => {
-        cache.put(event.request, responseClone);
-      });
-      return response;
-    }).catch((error) => {
-      throw error;
-    });
-  }));
-});
 */
+
+
+
+
+
+
+
+
+
+
+
+// On fetch, use cache but update the entry with the latest contents
+// from the server.
+self.addEventListener('fetch', function(evt) {
+  console.log('The service worker is serving the asset.');
+  // You can use `respondWith()` to answer ASAP...
+  evt.respondWith(fromCache(evt.request));
+  // ...and `waitUntil()` to prevent the worker to be killed until
+  // the cache is updated.
+  evt.waitUntil(
+    update(evt.request)
+    // Finally, send a message to the client to inform it about the
+    // resource is up to date.
+    .then(refresh)
+  );
+});
+
+// Open the cache where the assets were stored and search for the requested
+// resource. Notice that in case of no matching, the promise still resolves
+// but it does with `undefined` as value.
+function fromCache(request) {
+  return caches.open(cacheName).then(function (cache) {
+    return cache.match(request);
+  });
+}
+
+
+// Update consists in opening the cache, performing a network request and
+// storing the new response data.
+function update(request) {
+  return caches.open(cacheName).then(function (cache) {
+    return fetch(request).then(function (response) {
+      return cache.put(request, response.clone()).then(function () {
+        return response;
+      });
+    });
+  });
+}
+
+// Sends a message to the clients.
+function refresh(response) {
+  return self.clients.matchAll().then(function (clients) {
+    clients.forEach(function (client) {
+      // Encode which resource has been updated. By including the
+      // [ETag](https://en.wikipedia.org/wiki/HTTP_ETag) the client can
+      // check if the content has changed.
+      var message = {
+        type: 'refresh',
+        url: response.url,
+        // Notice not all servers return the ETag header. If this is not
+        // provided you should use other cache headers or rely on your own
+        // means to check if the content has changed.
+        eTag: response.headers.get('ETag')
+      };
+      // Tell the client about the update.
+      client.postMessage(JSON.stringify(message));
+    });
+  });
+}
