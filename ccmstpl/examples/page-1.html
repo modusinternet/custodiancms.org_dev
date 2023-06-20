@@ -80,12 +80,7 @@
 
 			function loadJSResources(){
 				loadFirst("{CCMS_LIB:examples/xyzzy.php;FUNC:example_build_js_link("","","JS-01","","")}",function(){
-					loadFirst("/ccmstpl/examples/_js/lazyload-17.4.0.min.js",function(){
-						var lazyLoad = new LazyLoad({
-							elements_selector:".lazy",
-							cancel_on_exit:true
-						});
-					});
+					
 				}{CCMS_LIB:examples/xyzzy.php;FUNC:example_build_js_sri("","JS-01")});
 			}
 		</script>
