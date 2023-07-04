@@ -3,7 +3,7 @@ header("Content-Type: application/javascript; charset=utf-8");
 header("Service-Worker-Allow: /");
 ?>
 
-const cacheName = '2023-06-20.v3';
+const cacheName = '2023-06-20.v4';
 
 /* Point this array item to your own 'offline' template if you plan on removing the 'examples' folder in your own development. */
 var cacheFiles = [
@@ -57,7 +57,7 @@ self.addEventListener('fetch', function(evt) {
 });
 
 function fromCache(request) {
-  return caches.open(CACHE).then(function (cache) {
+  return caches.open(cacheName).then(function (cache) {
     return cache.match(request).then(function (matching) {
       return matching || Promise.reject('no-match');
     });
