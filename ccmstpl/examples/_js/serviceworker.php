@@ -48,7 +48,8 @@ With cache, update and refresh the client will be notified by the service worker
 */
 
 self.addEventListener('fetch', function(evt) {
-  evt.respondWith(fromCache(evt.request));
+  console.log('SW fetch evt.', evt.request.method, evt.request.url);
+	evt.respondWith(fromCache(evt.request));
   evt.waitUntil(
     update(evt.request)
     .then(refresh)
@@ -56,7 +57,7 @@ self.addEventListener('fetch', function(evt) {
 });
 
 function update(request) {
-  return caches.open(CACHE).then(function (cache) {
+  return caches.open(cacheName).then(function (cache) {
     return fetch(request).then(function (response) {
       return cache.put(request, response);
     });
