@@ -56,6 +56,14 @@ self.addEventListener('fetch', function(evt) {
   );
 });
 
+function fromCache(request) {
+  return caches.open(CACHE).then(function (cache) {
+    return cache.match(request).then(function (matching) {
+      return matching || Promise.reject('no-match');
+    });
+  });
+}
+
 function update(request) {
   return caches.open(cacheName).then(function (cache) {
     return fetch(request).then(function (response) {
