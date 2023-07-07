@@ -104,9 +104,9 @@ self.addEventListener('fetch',(event) => {
 					const lng = event.request.url.match(regex);
 					const searchForThis = '/' + lng[1] + '/examples/offline.html';
 					return caches.match(searchForThis);
-				}).then() => {
+				}).then(response => {
 					console.log('aaaaa');
-				}
+				})
 			})
 		);
 	} else {
