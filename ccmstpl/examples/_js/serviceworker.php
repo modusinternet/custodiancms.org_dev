@@ -96,15 +96,17 @@ self.addEventListener('fetch',(event) => {
 						cache.put(event.request, networkResponse.clone());
 						return networkResponse;
 					});
-					// return response || fetchPromise;
-					return fetchPromise || response;
+					return response || fetchPromise;
+					// return fetchPromise || response;
 				}).catch(function() {
 					/* The template being called was not found in cache and there is no internet connection at the moment so display the offline page instead.  The code below makes sure we're dispalying the appropriate offline template for the language that's currently selected by the client. */
 					const regex = /\/(([a-z]{2,3})(-[a-z0-9]{2,3})?)\//i;
 					const lng = event.request.url.match(regex);
 					const searchForThis = '/' + lng[1] + '/examples/offline.html';
 					return caches.match(searchForThis);
-				})
+				}).then() => {
+					console.log('aaaaa');
+				}
 			})
 		);
 	} else {
