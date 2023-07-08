@@ -68,7 +68,7 @@ self.addEventListener('activate',(event) => {
 	})());
 });
 
-var fetchPromise;
+var fP;
 
 self.addEventListener('fetch',(event) => {
 	console.log('SW fetch event.', event.request.method, event.request.url);
@@ -90,7 +90,7 @@ self.addEventListener('fetch',(event) => {
 						const fetchResponse = await fetch(event.request, {mode:'immutable'});
 					*/
 
-					fetchPromise = fetch(event.request).then(networkResponse => {
+					const fetchPromise = fetch(event.request).then(networkResponse => {
 						// Makesure never to cache a failed page call.
 						if(networkResponse.status === 404) {
 							return networkResponse;
@@ -98,6 +98,7 @@ self.addEventListener('fetch',(event) => {
 						cache.put(event.request, networkResponse.clone());
 						return networkResponse;
 					});
+					fP = fetchPromise;
 
 					return response || fetchPromise;
 
@@ -108,7 +109,7 @@ self.addEventListener('fetch',(event) => {
 					const searchForThis = '/' + lng[1] + '/examples/offline.html';
 					return caches.match(searchForThis);
 				}).then(response => {
-					console.log('aaaaa = ', fetchPromise);
+					console.log('fP = ', fP);
 				})
 			})
 		);
