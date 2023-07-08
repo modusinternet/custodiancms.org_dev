@@ -68,7 +68,6 @@ self.addEventListener('activate',(event) => {
 	})());
 });
 
-var fP;
 
 self.addEventListener('fetch',(event) => {
 	console.log('SW fetch event.', event.request.method, event.request.url);
@@ -97,8 +96,9 @@ self.addEventListener('fetch',(event) => {
 						}
 						cache.put(event.request, networkResponse.clone());
 						return networkResponse;
+					}).then(response => {
+						console.log('response = ', response);
 					});
-					fP = fetchPromise;
 
 					return response || fetchPromise;
 
@@ -108,8 +108,6 @@ self.addEventListener('fetch',(event) => {
 					const lng = event.request.url.match(regex);
 					const searchForThis = '/' + lng[1] + '/examples/offline.html';
 					return caches.match(searchForThis);
-				}).then(response => {
-					console.log('fP = ', fP);
 				})
 			})
 		);
