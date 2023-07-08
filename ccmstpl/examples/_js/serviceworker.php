@@ -68,7 +68,7 @@ self.addEventListener('activate',(event) => {
 	})());
 });
 
-const fetchPromise = '';
+var fetchPromise;
 
 self.addEventListener('fetch',(event) => {
 	console.log('SW fetch event.', event.request.method, event.request.url);
