@@ -90,7 +90,7 @@ self.addEventListener('fetch',(event) => {
 					*/
 
 					const fetchPromise = fetch(event.request).then(networkResponse => {
-						// Makesure never to cache a failed page call.
+						/*  Makesure never to cache a failed page call.*/
 						if(networkResponse.status === 404) {
 							return networkResponse;
 						}
