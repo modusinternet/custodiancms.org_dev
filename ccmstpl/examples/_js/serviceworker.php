@@ -68,6 +68,7 @@ self.addEventListener('activate',(event) => {
 	})());
 });
 
+const fetchPromise;
 
 self.addEventListener('fetch',(event) => {
 	console.log('SW fetch event.', event.request.method, event.request.url);
@@ -89,7 +90,7 @@ self.addEventListener('fetch',(event) => {
 						const fetchResponse = await fetch(event.request, {mode:'immutable'});
 					*/
 
-					const fetchPromise = fetch(event.request).then(networkResponse => {
+					fetchPromise = fetch(event.request).then(networkResponse => {
 						// Makesure never to cache a failed page call.
 						if(networkResponse.status === 404) {
 							return networkResponse;
