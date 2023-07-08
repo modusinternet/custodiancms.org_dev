@@ -31,7 +31,7 @@ Add these to the right box under Whitelist Headers, add as custom if necessary:
 Then click the 'Yes, Edit' button at the bottom and give it about 10 minutes to propagate through the system and test using Chrome.
 */
 
-const cacheName = '2023-06-20.v3';
+const cacheName = '2023-07-07.v1';
 
 /* Point this array item to your own 'offline' template if you plan on removing the 'examples' folder in your own development. */
 var cacheFiles = [
@@ -97,7 +97,7 @@ self.addEventListener('fetch',(event) => {
 						cache.put(event.request, networkResponse.clone());
 						return networkResponse;
 					});
-					
+
 					return response || fetchPromise;
 					/*
 					return response || fetch(event.request).then(networkResponse => {
