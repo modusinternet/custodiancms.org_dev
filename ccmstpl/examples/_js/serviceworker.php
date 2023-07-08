@@ -97,7 +97,7 @@ self.addEventListener('fetch',(event) => {
 						cache.put(event.request, networkResponse.clone());
 						return networkResponse;
 					}).then(response => {
-						console.log('response = ', response.url);
+						console.log('response = ', response);
 					});
 
 					return response || fetchPromise;
