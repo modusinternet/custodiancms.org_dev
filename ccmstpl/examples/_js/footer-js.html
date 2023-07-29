@@ -4,6 +4,11 @@ if('serviceWorker' in navigator) {
 			scope:'/'
 		}).then(function(registration) {
 			console.log('SW registered.');
+
+			button.onclick = () => {
+        registration.update();
+      };
+
 		}, function(err) {
 			console.log('SW registration failed: ', err);
 		});
