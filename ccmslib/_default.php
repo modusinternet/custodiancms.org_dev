@@ -219,8 +219,9 @@ function ccms_user_admin_slider() {
 					<span class="slider round"></span>
 				</label>
 			</div>
-
-			Languages found in database which may or maynot be currently set live.
+			<p aria-label="Languages found in database which may or maynot be currently set live">
+				Language List
+			</p>
 			<ul id="CCMSlng-list">
 <?php
 $tpl = htmlspecialchars(preg_replace('/^\/([\pL\pN-]*)\/?(.*)\z/i', '${2}', $_SERVER['REQUEST_URI']));
