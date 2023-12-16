@@ -219,29 +219,31 @@ function ccms_user_admin_slider() {
 					<span class="slider round"></span>
 				</label>
 			</div>
+
+			Languages found in database which may or maynot be currently set live.
 			<ul id="CCMSlng-list">
-		<?php
-		$tpl = htmlspecialchars(preg_replace('/^\/([\pL\pN-]*)\/?(.*)\z/i', '${2}', $_SERVER['REQUEST_URI']));
-		$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_lng_charset` ORDER BY lngDesc ASC;");
-		if($qry->execute()) {
-			while($row = $qry->fetch()) {
-				if($json_a["content_manager"]["rw"] === 1 && $json_a["content_manager"]["sub"][$row["lng"]] !== 0) {
-					// So long as you do have 'content_manager' read privileges (1), and the language your trying to access is not flagged on your account as 'No Access' (0) then it should show up in the list.
-					if($row["ptrLng"]) {
-						echo '<li id="ccms_lng-' . $row["lng"] . '"><a href="/' . $row["ptrLng"] . '/' . $tpl . '" title="Points to lng code: ' . $row["ptrLng"] . '">' . $row["lngDesc"] . '</a></li>';
-					} else {
-						echo '<li id="ccms_lng-' . $row["lng"] . '"';
+<?php
+$tpl = htmlspecialchars(preg_replace('/^\/([\pL\pN-]*)\/?(.*)\z/i', '${2}', $_SERVER['REQUEST_URI']));
+$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_lng_charset` ORDER BY lngDesc ASC;");
+if($qry->execute()) {
+	while($row = $qry->fetch()) {
+		if($json_a["content_manager"]["rw"] === 1 && $json_a["content_manager"]["sub"][$row["lng"]] !== 0) {
+			// So long as you do have 'content_manager' read privileges (1), and the language your trying to access is not flagged on your account as 'No Access' (0) then it should show up in the list.
+			if($row["ptrLng"]) {
+				echo '<li id="ccms_lng-' . $row["lng"] . '"><a href="/' . $row["ptrLng"] . '/' . $tpl . '" title="Points to lng code: ' . $row["ptrLng"] . '">' . $row["lngDesc"] . '</a></li>';
+			} else {
+				echo '<li id="ccms_lng-' . $row["lng"] . '"';
 
-						if($row["lng"] === $CLEAN["ccms_lng"]){
-							echo ' style="text-decoration:underline dashed"';
-						}
-
-						echo '><a href="/' . $row["lng"] . '/' . $tpl . '" title="lng code: ' . $row["lng"] . '">' . $row["lngDesc"] . '</a></li>';
-					}
+				if($row["lng"] === $CLEAN["ccms_lng"]){
+					echo ' style="text-decoration:underline dashed"';
 				}
+
+				echo '><a href="/' . $row["lng"] . '/' . $tpl . '" title="lng code: ' . $row["lng"] . '">' . $row["lngDesc"] . '</a></li>';
 			}
 		}
-		?>
+	}
+}
+?>
 			</ul>
 			<div>
 				<a href="/<?php echo $CLEAN["ccms_lng"]; ?>/user/" style="float:left" title="Dashboard">
