@@ -145,7 +145,9 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 
 
 
-
+<div>
+	Stuff I still need to add somewhere.
+</div>
 			<ul>
 				<li>HTML Minify</li>
 				<li>Templates in Database Cache</li>
