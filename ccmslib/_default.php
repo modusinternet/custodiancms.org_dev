@@ -219,7 +219,7 @@ function ccms_user_admin_slider() {
 					<span class="slider round"></span>
 				</label>
 			</div>
-			<div style="cursor:pointer" title="Languages found in database which may or maynot currently be set live">
+			<div style="cursor:help" title="Languages found in database which may or maynot currently be set live">
 				Language List:
 			</div>
 			<ul id="CCMSlng-list">
