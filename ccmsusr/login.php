@@ -11,6 +11,8 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 	exit;
 }
 
+$ccms_login_message["FAIL"] = "";
+
 if(isset($_SESSION['EXPIRED']) == "1") {
 	// Session expired
 
@@ -55,7 +57,8 @@ if(isset($_SESSION['EXPIRED']) == "1") {
 	} elseif($CLEAN["g-recaptcha-response"] == "INVAL") {
 		$ccms_login_message["FAIL"] = "'g-recaptcha-response' field contains invalid characters! Try again.";
 
-	} elseif(!isset($ccms_login_message["FAIL"])) {
+	//} elseif(!isset($ccms_login_message["FAIL"])) {
+	} elseif(empty($ccms_login_message["FAIL"])) {
 		$resp = '';
 		// query use fsockopen
 		$fp = @fsockopen('ssl://www.google.com', 443, $errno, $errstr, 10);
@@ -87,8 +90,9 @@ if(isset($_SESSION['EXPIRED']) == "1") {
 		}
 	}
 
-	if(!isset($ccms_login_message["FAIL"])) {
-		// No missing, over sized or invalid content submitted in the form so we can procced.
+	//if(!isset($ccms_login_message["FAIL"])) {
+	if(empty($ccms_login_message["FAIL"])) {
+			// No missing, over sized or invalid content submitted in the form so we can procced.
 
 		$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_user` WHERE `email` = :email && `status` = 1 LIMIT 1;");
 		$qry->execute(array(':email' => $CLEAN["ccms_login_email"]));
@@ -169,7 +173,8 @@ if(isset($_SESSION['EXPIRED']) == "1") {
 		$ccms_pass_reset_message["FAIL"] = "'ccms_pass_reset_part_1_email' field contains invalid characters!";
 	}
 
-	if($ccms_pass_reset_message["FAIL"] == "") {
+	//if($ccms_pass_reset_message["FAIL"] == "") {
+	if(empty($ccms_pass_reset_message["FAIL"])) {
 		// The reset form was used and there were no problems with the request upto this point so search the 'ccms_user' database for a matching email address.
 
 		$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_user` WHERE `email` = :ccms_pass_reset_part_1_email && `status` = 1 LIMIT 1;");
@@ -275,7 +280,8 @@ $email_message .= "\r\n\r\n--" . $boundary . "--";
 		$ccms_pass_reset_message["FAIL"] = "'ccms_pass_reset_form_code' field contains invalid characters!";
 	}
 
-	if($ccms_pass_reset_message["FAIL"] == "") {
+	//if($ccms_pass_reset_message["FAIL"] == "") {
+	if(empty($ccms_pass_reset_message["FAIL"])) {
 		// This is an incoming password reset hyperlink, check the 'ccms_password_recovery' table for matches.
 
 		$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_password_recovery` WHERE `code` = :code AND `ip` = :ip AND `user_agent` = :user_agent LIMIT 1;");
@@ -448,7 +454,7 @@ $email_message .= "\r\n\r\n--" . $boundary . "--";
 
 	//if($ccms_pass_reset_message["FAIL"] === "") {
 	if(!isset($ccms_pass_reset_message["FAIL"])){
-		// This is an password reset submittion, so first we need to make sure the ccms_pass_reset_form_code record is still available.
+		// This is a password reset submittion, so first we need to make sure the ccms_pass_reset_form_code record is still found in the ccms_password_recovery table.
 
 		$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_password_recovery` WHERE `code` = :code AND `ip` = :ip AND `user_agent` = :user_agent LIMIT 1;");
 		$qry->execute(array(':code' => $CLEAN["ccms_pass_reset_form_code"], ':ip' => $_SERVER["REMOTE_ADDR"], ':user_agent' => $_SERVER["HTTP_USER_AGENT"]));
