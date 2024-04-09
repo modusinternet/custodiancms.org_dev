@@ -248,7 +248,7 @@ $email_message .= "\r\n\r\n--" . $boundary . "--";
 				header("Location: /");
 				exit;
 			} else {
-				$ccms_pass_reset_message["FAIL"] = "Password reset failed.  An active user with the email address you submitted was not found.";
+				$ccms_pass_reset_message["FAIL"] = "Password reset failed.  An active user with the email address you submitted was not found. (1)";
 			}
 		}
 	} else {
@@ -262,7 +262,7 @@ $email_message .= "\r\n\r\n--" . $boundary . "--";
 			header("Location: /");
 			exit;
 		} else {
-			$ccms_pass_reset_message["FAIL"] .= "Password reset failed, please try again.";
+			$ccms_pass_reset_message["FAIL"] .= "Password reset failed, please try again. (2)";
 		}
 	}
 } elseif(($CLEAN["ccms_pass_reset_part_2"] ?? null) === "1") {
@@ -334,7 +334,7 @@ $email_message .= "\r\n\r\n--" . $boundary . "--";
 				header("Location: /");
 				exit;
 			} else {
-				$ccms_pass_reset_message["FAIL"] = "Password reset failed.  This link is expired or invalid from this browser/device/location.  Please request a new password reset Email for this device from this location.";
+				$ccms_pass_reset_message["FAIL"] = "Password reset failed.  This link is expired or invalid from this browser/device/location.  Please request a new password reset Email for this device from this location. (3)";
 			}
 		}
 	} else {
@@ -351,7 +351,7 @@ $email_message .= "\r\n\r\n--" . $boundary . "--";
 			header("Location: /");
 			exit;
 		} else {
-			$ccms_pass_reset_message["FAIL"] .= " Password reset failed, try again.";
+			$ccms_pass_reset_message["FAIL"] .= " Password reset failed, try again. (4)";
 		}
 	}
 } elseif(($CLEAN["ccms_pass_reset_part_2"] ?? null) === "2") {
@@ -464,7 +464,7 @@ $email_message .= "\r\n\r\n--" . $boundary . "--";
 			// The ccms_pass_reset_form_code in the URL is either expired, invalid from this device or location.
 
 			$CLEAN["ccms_pass_reset_part_2"] = "";
-			$ccms_pass_reset_message["FAIL"] = "Password reset failed.  This link is expired or invalid from this browser/device/location.  Please request a new password reset Email for this device from this location.";
+			$ccms_pass_reset_message["FAIL"] = "Password reset failed.  This link is expired or invalid from this browser/device/location.  Please request a new password reset Email for this device from this location. (5)";
 		} else {
 			// The session is valid. Remove the record from the database because they are one time use only.
 
@@ -481,7 +481,7 @@ $email_message .= "\r\n\r\n--" . $boundary . "--";
 			if(!$row) {
 				// Failed, an active user of the provided ID was not found.
 
-				$ccms_pass_reset_message["FAIL"] = "Password reset failed.  An active user of the provided ID was not found.  Please request a new password reset Email for this browser/device/location because they are one-time use only.";
+				$ccms_pass_reset_message["FAIL"] = "Password reset failed.  An active user of the provided ID was not found.  Please request a new password reset Email for this browser/device/location because they are one-time use only. (6)";
 			} else {
 				// Success, an active user of the provided ID WAS found. Rehash the password and replace original password hash on the server to make even more secure. See https://alias.io/2010/01/store-passwords-safely-with-php-and-mysql/ for more details.
 
