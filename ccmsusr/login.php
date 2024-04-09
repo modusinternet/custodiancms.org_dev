@@ -508,7 +508,7 @@ $email_message .= "\r\n\r\n--" . $boundary . "--";
 			header("Location: /");
 			exit;
 		} else {
-			$ccms_pass_reset_message["FAIL"] .= " Please request a new password reset Email for this browser/device/location because they are one-time use only.";
+			$ccms_pass_reset_message["FAIL"] .= " Please request a new password reset Email for this browser/device/location because they are one-time use only. (1)";
 		}
 	}
 }
