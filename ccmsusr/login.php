@@ -80,9 +80,9 @@ if(isset($_SESSION['EXPIRED']) == "1") {
 			$resp = trim($resp, "\r\n0");
 			$resp = json_decode($resp, true);
 
-			if($resp["success"] == false || $resp["action"] !== $CLEAN["g-recaptcha-action"] || $resp["score"] <= 0.4) {
-				//$ccms_login_message["FAIL"] = 'Google reCAPTCHA failed or expired. Try again. (1)';
-				$ccms_login_message["FAIL"] = 'Google reCAPTCHA failed or expired. Try again. (1)(success=['.$resp["success"].'], score=['.$resp["score"].'], action=['.$resp["action"].'], error-codes=['.$resp["error-codes"].'])';
+			if($resp["success"] === "false" || $resp["action"] !== $CLEAN["g-recaptcha-action"] || $resp["score"] <= 0.4) {
+				$ccms_login_message["FAIL"] = 'Google reCAPTCHA failed or expired. Try again. (1)';
+				//$ccms_login_message["FAIL"] = 'Google reCAPTCHA failed or expired. Try again. (1)(success=['.$resp["success"].'], score=['.$resp["score"].'], action=['.$resp["action"].'], error-codes=['.$resp["error-codes"].'])';
 			}
 
 		} else {
