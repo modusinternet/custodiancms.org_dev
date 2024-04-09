@@ -416,7 +416,8 @@ $email_message .= "\r\n\r\n--" . $boundary . "--";
 	} elseif($CLEAN["g-recaptcha-response"] == "INVAL") {
 		$ccms_pass_reset_message["FAIL"] = "'g-recaptcha-response' field contains invalid characters! Try again.";
 
-	} elseif(!isset($ccms_pass_reset_message["FAIL"])) {
+	//} elseif(!isset($ccms_pass_reset_message["FAIL"])) {
+	} elseif(empty($ccms_pass_reset_message["FAIL"])) {
 		$resp = '';
 		// query use fsockopen
 		$fp = @fsockopen('ssl://www.google.com', 443, $errno, $errstr, 10);
@@ -453,7 +454,8 @@ $email_message .= "\r\n\r\n--" . $boundary . "--";
 
 
 	//if($ccms_pass_reset_message["FAIL"] === "") {
-	if(!isset($ccms_pass_reset_message["FAIL"])){
+	//if(!isset($ccms_pass_reset_message["FAIL"])){
+	if(empty($ccms_pass_reset_message["FAIL"])){
 		// This is a password reset submittion, so first we need to make sure the ccms_pass_reset_form_code record is still found in the ccms_password_recovery table.
 
 		$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_password_recovery` WHERE `code` = :code AND `ip` = :ip AND `user_agent` = :user_agent LIMIT 1;");
@@ -464,7 +466,7 @@ $email_message .= "\r\n\r\n--" . $boundary . "--";
 			// The ccms_pass_reset_form_code in the URL is either expired, invalid from this device or location.
 
 			$CLEAN["ccms_pass_reset_part_2"] = "";
-			$ccms_pass_reset_message["FAIL"] = "Password reset failed.  This link is expired or invalid from this browser/device/location.  Please request a new password reset Email for this device from this location. (5)";
+			$ccms_pass_reset_message["FAIL"] .= "Password reset failed.  This link is expired or invalid from this browser/device/location.  Please request a new password reset Email for this device from this location. (5)";
 		} else {
 			// The session is valid. Remove the record from the database because they are one time use only.
 
@@ -481,7 +483,7 @@ $email_message .= "\r\n\r\n--" . $boundary . "--";
 			if(!$row) {
 				// Failed, an active user of the provided ID was not found.
 
-				$ccms_pass_reset_message["FAIL"] = "Password reset failed.  An active user of the provided ID was not found.  Please request a new password reset Email for this browser/device/location because they are one-time use only. (6)";
+				$ccms_pass_reset_message["FAIL"] .= "Password reset failed.  An active user of the provided ID was not found.  Please request a new password reset Email for this browser/device/location because they are one-time use only. (6)";
 			} else {
 				// Success, an active user of the provided ID WAS found. Rehash the password and replace original password hash on the server to make even more secure. See https://alias.io/2010/01/store-passwords-safely-with-php-and-mysql/ for more details.
 
@@ -508,7 +510,7 @@ $email_message .= "\r\n\r\n--" . $boundary . "--";
 			header("Location: /");
 			exit;
 		} else {
-			$ccms_pass_reset_message["FAIL"] .= " Please request a new password reset Email for this browser/device/location because they are one-time use only. (1)";
+			$ccms_pass_reset_message["FAIL"] .= "Please request a new password reset Email for this browser/device/location because they are one-time use only. (1)";
 		}
 	}
 }
