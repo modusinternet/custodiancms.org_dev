@@ -491,7 +491,7 @@ $email_message .= "\r\n\r\n--" . $boundary . "--";
 				$hash = password_hash($CLEAN["ccms_pass_reset_part_2_pass_1"], PASSWORD_BCRYPT, $options);
 				$qry = $CFG["DBH"]->prepare("UPDATE `ccms_user` SET `hash` = :hash WHERE `id` = :id LIMIT 1;");
 				$qry->execute(array(':hash' => $hash, ':id' => $user_id));
-				$ccms_pass_reset_message["SUCCESS"] = "Success!  Your password has been updated.  Return to the <a href='/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/'>login</a> page now.";
+				$ccms_pass_reset_message["SUCCESS"] = "Success!  Your password has been updated.  Return to the <a class='ccms_a' href='/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/'>login</a> page now.";
 			}
 		}
 	} else {
