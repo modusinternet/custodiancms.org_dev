@@ -760,3 +760,18 @@ function bad_word_check($sentence) {
 		return true;
 	}
 }
+
+
+function ccms_check_whitelist_ips($ip) {
+	global $CFG;
+
+	$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_check_whitelist_ips` WHERE `ip` = :ip LIMIT 1;");
+	$qry->execute(array(':ip' => $_SERVER["REMOTE_ADDR"]));
+	$row = $qry->fetch(PDO::FETCH_ASSOC);
+
+	if($row) {
+		return true;
+	} else {
+		return false;
+	}
+}

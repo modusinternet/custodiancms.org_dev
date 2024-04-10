@@ -382,72 +382,89 @@ $email_message .= "\r\n\r\n--" . $boundary . "--";
 		$ccms_pass_reset_message["FAIL"] = "Something is wrong with ccms_pass_reset_part_2_pass_2, it came up as INVALID when testing is with with an open (.+) expression.";
 	} elseif($CLEAN["ccms_pass_reset_part_2_pass_1"] != $CLEAN["ccms_pass_reset_part_2_pass_2"]) {
 		$ccms_pass_reset_message["FAIL"] = "Password fields do not match.";
+	}
 
-	/*
-	} elseif(empty($CLEAN["g-recaptcha-response"])) {
-		$ccms_pass_reset_message["FAIL"] = "'g-recaptcha-response' field missing content.";
-	} elseif($CLEAN["g-recaptcha-response"] == "MAXLEN") {
-		$ccms_pass_reset_message["FAIL"] = "'g-recaptcha-response' field exceeded its maximum number of 2048 character.";
-	} elseif($CLEAN["g-recaptcha-response"] == "INVAL") {
-		$ccms_pass_reset_message["FAIL"] = "'g-recaptcha-response' field contains invalid characters!";
-	} elseif(!empty($CLEAN["g-recaptcha-response"]) && $CLEAN["g-recaptcha-response"] != "MAXLEN" && $CLEAN["g-recaptcha-response"] != "INVAL") {
-		$resp = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$CFG['GOOGLE_RECAPTCHA_PRIVATEKEY']}&response={$CLEAN['g-recaptcha-response']}&remoteip={$_SERVER['REMOTE_ADDR']}");
-		$resp = json_decode($resp);
-		if($resp->success == false) {
-			$ccms_pass_reset_message["FAIL"] = 'Google reCAPTCHA failed or expired.  Try again.';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	if(empty($ccms_pass_reset_message["FAIL"])) {
+		// If no errors have been found upto this point then check to see if this IP address is found in the ccms_whitelist_ips table, if so we don't need to check this connection with Google reCAPTCHA.
+		if(!ccms_check_whitelist_ips($_SERVER["REMOTE_ADDR"])) {
+
+
+			if(empty($CLEAN["g-recaptcha-action"])) {
+				$ccms_pass_reset_message["FAIL"] = "'g-recaptcha-action' field missing content. Try again.";
+			} elseif($CLEAN["g-recaptcha-action"] == "MAXLEN") {
+
+				$ccms_pass_reset_message["FAIL"] = "'g-recaptcha-action' field exceeded its maximum number of 2048 character. Try again.";
+
+			} elseif($CLEAN["g-recaptcha-action"] == "INVAL") {
+				$ccms_pass_reset_message["FAIL"] = "'g-recaptcha-action' field contains invalid characters! Try again.";
+
+			} elseif(empty($CLEAN["g-recaptcha-response"])) {
+				$ccms_pass_reset_message["FAIL"] = "'g-recaptcha-response' field missing content. Try again.";
+
+			} elseif($CLEAN["g-recaptcha-response"] == "MAXLEN") {
+				$ccms_pass_reset_message["FAIL"] = "'g-recaptcha-response' field exceeded its maximum number of 2048 character. Try again.";
+
+			} elseif($CLEAN["g-recaptcha-response"] == "INVAL") {
+				$ccms_pass_reset_message["FAIL"] = "'g-recaptcha-response' field contains invalid characters! Try again.";
+
+			} elseif(empty($ccms_pass_reset_message["FAIL"])) {
+				// All the Google reCAPTCHA files were found in the form so now we double check them against Googles servers.
+
+				$resp = '';
+				// query use fsockopen
+				$fp = @fsockopen('ssl://www.google.com', 443, $errno, $errstr, 10);
+				if($fp !== false) {
+					$out = "GET /recaptcha/api/siteverify?secret={$CFG['GOOGLE_RECAPTCHA_PRIVATEKEY']}&response={$CLEAN['g-recaptcha-response']}&remoteip={$_SERVER['REMOTE_ADDR']} HTTP/1.1\r\n";
+					$out .= "Host: www.google.com\r\n";
+					$out .= "Connection: Close\r\n\r\n";
+					@fwrite($fp, $out);
+					while(!feof($fp)) {
+						//$resp .= fgets($fp, 4096);
+						$resp .= fread($fp, 4096);
+					}
+					@fclose($fp);
+
+					$position = strpos($resp, "\r\n\r\n");
+					$resp = substr($resp, $position);
+					$position = strpos($resp, "{");
+					$resp = substr($resp, $position);
+					$resp = trim($resp, "\r\n0");
+					$resp = json_decode($resp, true);
+
+					if($resp["success"] === "false" || $resp["action"] !== $CLEAN["g-recaptcha-action"] || $resp["score"] <= 0.4) {
+						$ccms_pass_reset_message["FAIL"] = 'Google reCAPTCHA failed or expired. Try again. (2)';
+						//$ccms_pass_reset_message["FAIL"] = 'Google reCAPTCHA failed or expired. Try again. (2)(success=['.$resp["success"].'], score=['.$resp["score"].'], action=['.$resp["action"].'], error-codes=['.$resp["error-codes"].']) ';
+					}
+				} else {
+					$ccms_pass_reset_message["FAIL"] = 'Unable to connect to Google reCAPTCHA.)';
+				}
+			}
 		}
 	}
-	*/
-	} elseif(empty($CLEAN["g-recaptcha-action"])) {
-		$ccms_pass_reset_message["FAIL"] = "'g-recaptcha-action' field missing content. Try again.";
-	} elseif($CLEAN["g-recaptcha-action"] == "MAXLEN") {
 
-		$ccms_pass_reset_message["FAIL"] = "'g-recaptcha-action' field exceeded its maximum number of 2048 character. Try again.";
 
-	} elseif($CLEAN["g-recaptcha-action"] == "INVAL") {
-		$ccms_pass_reset_message["FAIL"] = "'g-recaptcha-action' field contains invalid characters! Try again.";
 
-	} elseif(empty($CLEAN["g-recaptcha-response"])) {
-		$ccms_pass_reset_message["FAIL"] = "'g-recaptcha-response' field missing content. Try again.";
 
-	} elseif($CLEAN["g-recaptcha-response"] == "MAXLEN") {
-		$ccms_pass_reset_message["FAIL"] = "'g-recaptcha-response' field exceeded its maximum number of 2048 character. Try again.";
 
-	} elseif($CLEAN["g-recaptcha-response"] == "INVAL") {
-		$ccms_pass_reset_message["FAIL"] = "'g-recaptcha-response' field contains invalid characters! Try again.";
 
-	//} elseif(!isset($ccms_pass_reset_message["FAIL"])) {
-	} elseif(empty($ccms_pass_reset_message["FAIL"])) {
-		$resp = '';
-		// query use fsockopen
-		$fp = @fsockopen('ssl://www.google.com', 443, $errno, $errstr, 10);
-		if($fp !== false) {
-			$out = "GET /recaptcha/api/siteverify?secret={$CFG['GOOGLE_RECAPTCHA_PRIVATEKEY']}&response={$CLEAN['g-recaptcha-response']}&remoteip={$_SERVER['REMOTE_ADDR']} HTTP/1.1\r\n";
-			$out .= "Host: www.google.com\r\n";
-			$out .= "Connection: Close\r\n\r\n";
-			@fwrite($fp, $out);
-			while(!feof($fp)) {
-				//$resp .= fgets($fp, 4096);
-				$resp .= fread($fp, 4096);
-			}
-			@fclose($fp);
 
-			$position = strpos($resp, "\r\n\r\n");
-			$resp = substr($resp, $position);
-			$position = strpos($resp, "{");
-			$resp = substr($resp, $position);
-			$resp = trim($resp, "\r\n0");
-			$resp = json_decode($resp, true);
 
-			if($resp["success"] === "false" || $resp["action"] !== $CLEAN["g-recaptcha-action"] || $resp["score"] <= 0.4) {
-				//$ccms_pass_reset_message["FAIL"] = 'Google reCAPTCHA failed or expired. Try again. (2)';
-				$ccms_pass_reset_message["FAIL"] = 'Google reCAPTCHA failed or expired. Try again. (2)(success=['.$resp["success"].'], score=['.$resp["score"].'], action=['.$resp["action"].'], error-codes=['.$resp["error-codes"].']) ';
-			}
 
-		} else {
-			$ccms_pass_reset_message["FAIL"] = 'Unable to connect to Google reCAPTCHA.)';
-		}
-	}
+
 
 
 
