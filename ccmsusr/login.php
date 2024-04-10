@@ -439,7 +439,7 @@ $email_message .= "\r\n\r\n--" . $boundary . "--";
 			$resp = trim($resp, "\r\n0");
 			$resp = json_decode($resp, true);
 
-			if($resp["success"] == false || $resp["action"] !== $CLEAN["g-recaptcha-action"] || $resp["score"] <= 0.4) {
+			if($resp["success"] === "false" || $resp["action"] !== $CLEAN["g-recaptcha-action"] || $resp["score"] <= 0.4) {
 				$ccms_pass_reset_message["FAIL"] = 'Google reCAPTCHA failed or expired. Try again. (2)';
 				//$ccms_pass_reset_message["FAIL"] = 'Google reCAPTCHA failed or expired. Try again. (2)(success=['.$resp["success"].'], score=['.$resp["score"].'], action=['.$resp["action"].'], error-codes=['.$resp["error-codes"].'])';
 			}
