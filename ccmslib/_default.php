@@ -768,7 +768,6 @@ function ccms_check_whitelist_ips($ip) {
 	$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_whitelist_ips` WHERE `ip` = :ip LIMIT 1;");
 	$qry->execute(array(':ip' => $ip));
 	$row = $qry->fetch(PDO::FETCH_ASSOC);
-
 	if($row) {
 		return true;
 	} else {
