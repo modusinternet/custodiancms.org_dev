@@ -361,7 +361,6 @@ $email_message .= "\r\n\r\n--" . $boundary . "--";
 
 	if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
 		$ccms_pass_reset_message["FAIL"] = "There is a problem with your login, your IP Address is currently being blocked.  Please contact the website administrators directly if you feel this message is in error for more information.";
-	//} elseif($CLEAN["ccms_pass_reset_form_code"] == "") {
 	} elseif(empty($CLEAN["ccms_pass_reset_form_code"])) {
 		$ccms_pass_reset_message["FAIL"] = "'ccms_pass_reset_form_code' field missing content.";
 	} elseif($CLEAN["ccms_pass_reset_form_code"] == "MAXLEN") {
@@ -384,43 +383,22 @@ $email_message .= "\r\n\r\n--" . $boundary . "--";
 		$ccms_pass_reset_message["FAIL"] = "Password fields do not match.";
 	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	if(empty($ccms_pass_reset_message["FAIL"])) {
 		// If no errors have been found upto this point then check to see if this IP address is found in the ccms_whitelist_ips table, if so we don't need to check this connection with Google reCAPTCHA.
+
 		if(!ccms_check_whitelist_ips($_SERVER["REMOTE_ADDR"])) {
-
-
 			if(empty($CLEAN["g-recaptcha-action"])) {
 				$ccms_pass_reset_message["FAIL"] = "'g-recaptcha-action' field missing content. Try again.";
 			} elseif($CLEAN["g-recaptcha-action"] == "MAXLEN") {
-
 				$ccms_pass_reset_message["FAIL"] = "'g-recaptcha-action' field exceeded its maximum number of 2048 character. Try again.";
-
 			} elseif($CLEAN["g-recaptcha-action"] == "INVAL") {
 				$ccms_pass_reset_message["FAIL"] = "'g-recaptcha-action' field contains invalid characters! Try again.";
-
 			} elseif(empty($CLEAN["g-recaptcha-response"])) {
 				$ccms_pass_reset_message["FAIL"] = "'g-recaptcha-response' field missing content. Try again.";
-
 			} elseif($CLEAN["g-recaptcha-response"] == "MAXLEN") {
 				$ccms_pass_reset_message["FAIL"] = "'g-recaptcha-response' field exceeded its maximum number of 2048 character. Try again.";
-
 			} elseif($CLEAN["g-recaptcha-response"] == "INVAL") {
 				$ccms_pass_reset_message["FAIL"] = "'g-recaptcha-response' field contains invalid characters! Try again.";
-
 			} elseif(empty($ccms_pass_reset_message["FAIL"])) {
 				// All the Google reCAPTCHA files were found in the form so now we double check them against Googles servers.
 
@@ -456,22 +434,6 @@ $email_message .= "\r\n\r\n--" . $boundary . "--";
 		}
 	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	//if($ccms_pass_reset_message["FAIL"] === "") {
-	//if(!isset($ccms_pass_reset_message["FAIL"])){
 	if(empty($ccms_pass_reset_message["FAIL"])){
 		// This is a password reset submittion, so first we need to make sure the ccms_pass_reset_form_code record is still found in the ccms_password_recovery table.
 
