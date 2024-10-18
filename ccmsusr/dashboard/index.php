@@ -156,7 +156,7 @@ if($_SERVER["SCRIPT_NAME"] != "/ccmsusr/index.php") {
 				<li>Backup/Restore</li>
 				<li>Password Recovery attempts currently in the ccms_password_recovery table</li>
 				<li>Add access to the ccms_whitelist_ips table and an interface to edit them with to the admin.</li>
-			</ul>
+			</ul>test
 
 
 
