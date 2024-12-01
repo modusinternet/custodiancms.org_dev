@@ -140,11 +140,16 @@ function ccms_hrefLang_list() {
 	// on your homepage below the area where this content is being generated.  It only needs to be on the home page.
 	global $CFG, $CLEAN;
 
-	$tpl1 = htmlspecialchars(preg_replace('/^\/([\pL\pN\-]*)\/?(.*)\z/i', '${2}', $_SERVER['REQUEST_URI']));
-	echo "<link rel=\"alternate\" hreflang=\"x-default\" href=\"" . $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["SERVER_NAME"] . "/" . $CFG["DEFAULT_SITE_CHAR_SET"] . "/" . $tpl1 . "\">";
+	//$tpl1 = htmlspecialchars(preg_replace('/^\/([\pL\pN\-]*)\/?(.*)\z/i', '${2}', $_SERVER['REQUEST_URI']));
+	$tpl1 = htmlspecialchars(preg_replace('/^((\/[a-z]{2,3}(-[a-z]{2})?))?([\pL\pN\-\.\/]*)(\?[\pL\pN\-\=\&]*)?$/i', '${4}', $_SERVER['REQUEST_URI']));
+
+	//echo "<link rel=\"alternate\" hreflang=\"x-default\" href=\"" . $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["SERVER_NAME"] . "/" . $CFG["DEFAULT_SITE_CHAR_SET"] . "/" . $tpl1 . "\">";
+	echo "<link rel=\"alternate\" hreflang=\"x-default\" href=\"" . $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["SERVER_NAME"] . "/" . $CFG["DEFAULT_SITE_CHAR_SET"] . $tpl1 . "\">";
+
 	$qry1 = $CFG["DBH"]->prepare("SELECT * FROM `ccms_lng_charset` WHERE `status` = 1 ORDER BY lngDesc ASC;");
 	if($qry1->execute()) {
 		while($row = $qry1->fetch()) {
+			/*
 			if($row["ptrLng"]) {
 				if($row["ptrLng"] != $CLEAN["ccms_lng"]) {
 					// Make sure to show pointers to languages that we are currently not looking at.
@@ -156,9 +161,13 @@ function ccms_hrefLang_list() {
 					echo "<link rel=\"alternate\" hreflang=\"" . $row["lng"] . "\" href=\"" . $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["SERVER_NAME"] . "/" . $row["lng"] . "/" . $tpl1 . "\">";
 				}
 			}
+			*/
+			// Show links to all versions of the page, regarless of the current language you are viewing it in.  If your viewing the site in /en/ and it's the 'x-default' language, it doesn't matter.  Add a rel="alternate" with an 'hreflang' url too itself, regardless.
+			echo "<link rel=\"alternate\" hreflang=\"" . $row["lng"] . "\" href=\"" . $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["SERVER_NAME"] . "/" . $row["lng"] . $tpl1 . "\">";
 		}
 	}
 }
+
 
 function ccms_canonical() {
 	global $CFG, $CLEAN;
@@ -182,13 +191,16 @@ function ccms_canonical() {
 	if($_SERVER['REQUEST_URI'] === "/"){
 		// The visitor is looking at the root of the website WITHOUT the language dir.
 		// ie: https://yourdomain.com
-		echo '<meta name="robots" content="noindex" />';
+		//echo '<meta name="robots" content="noindex" />';
 		echo '<link rel="canonical" href="' . $_SERVER['REQUEST_SCHEME'] . "://" . $CFG["DOMAIN"] . "/" . $CLEAN["ccms_lng"] . '/" />';
-	} else {
+	}
+	/*
+	 else {
 		// The visitor is looking at the root of the website WITH the language dir.
 		// ie: https://yourdomain.com/en/
 		echo '<link rel="canonical" href="' . $_SERVER['REQUEST_SCHEME'] . "://" . $CFG["DOMAIN"] . $_SERVER['REQUEST_URI'] . '" />';
 	}
+	*/
 }
 
 
